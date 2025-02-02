@@ -1,2 +1,2 @@
 # hyperfixation
-Hyperfixation, a mod where I import my... my hyperixations... into Balatro.
+Hyperfixation, a mod where I import my... my hyperfixations... into Balatro.
