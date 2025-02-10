@@ -9,7 +9,7 @@
 	"priority": 0,
 	"badge_colour": "000000",
 	"badge_text_colour": "FCB3EA",
-	"version": "0.3.1",
+	"version": "0.4.1",
 	"dependencies": [
         "Steamodded (>=1.0.*~)",
         "Lovely (>=0.6)"
