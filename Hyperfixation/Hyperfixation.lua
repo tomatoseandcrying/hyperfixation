@@ -4,15 +4,7 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
---SMODS.Sound({
-    --key = "hpfx_1up",
-    --path = "1up.ogg"
---})
---SMODS.Sound({
-    --key = "hpfx_thumbsup",
-    --path = "thumbsup.ogg",
-    --pitch = 1.3
---})
+
 SMODS.Joker{ --Moriah/Isaac
     key = 'moriah',
     loc_txt = {
@@ -144,92 +136,6 @@ SMODS.Joker{ --Farmer/Cain
     end
 }
 
---[[ SMODS.Joker{ --Iscariot/Judas
-    key = 'iscariot',
-    loc_txt = {
-        name = 'Iscariot',
-        text = {
-            "This Joker gains {C:chips}+#2#{} Chips",
-            "if {C:attention}consecutive{} played hand",
-            "triggers the {C:attention}Boss Blind{}",
-            "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",         
-            "Sell this card to create",
-            "a {C:attention}Dark Judas{}"
-
-        }
-      },
-    config = {extra = {chips = 30, chip_gain = 3}},
-    rarity = 2,
-    atlas = 'Hyperfixation',
-    pos = {x = 4, y = 1},
-    cost = 3,
-    unlocked = false,
-    discovered = false,
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    ScoreReset = true,
-    loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
-    end,
-    calculate = function (self, card, context)
-        if context.joker_main then
-            SMODS.calculate_effect(context.blueprint_card or card, {
-                chip_mod = card.ability.extra.chips,
-                message = localize{
-                    type = 'variable',
-                    key = 'a_chips',
-                    vars = {card.ability.extra.chips}
-                },
-            card = card
-            })
-        end    
-        if context.debuffed_hand then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-            ScoreReset = false
-            return {
-                message = 'Silver!',
-                colour = G.C.CHIPS,
-                card = card
-            }
-        end
-
-        if context.end_of_round then
-            local blind_keys = {
-                bl_window = true,
-                bl_head = true,
-                bl_club = true,
-                bl_goad = true,
-                bl_plant = true,
-                bl_tooth = true,
-                bl_pillar = true,
-                bl_flint = true,
-                bl_eye = true,
-                bl_mouth = true,
-                bl_psychic = true,
-                bl_arm = true,
-                bl_ox = true,
-                bl_final_leaf = true
-            }  
-            if blind_keys[G.GAME.blind.config.blind.key] then
-                if ScoreReset then
-                    print(ScoreReset)
-                    return {
-                        message = 'Oops!',
-                        card = card
-                    }
-                end  
-            else
-                print(ScoreReset)
-                return {
-                    message = 'Greedy!',
-                    card = card
-                }
-            end
-            ScoreReset = false
-        end
-    end
-} ]]
 
 SMODS.Joker{ --Cyanosis/Blue Baby
     key = 'cyanosis',
