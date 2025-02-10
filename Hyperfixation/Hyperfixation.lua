@@ -34,8 +34,8 @@ SMODS.Joker{ --Moriah/Isaac
     eternal_compat = true,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main then
-            SMODS.calculate_effect(context.blueprint_card or card, { 
+        if context.joker_main and (to_big{card.ability.extra.chips, card.ability.extra.mult} > to_big(1)) then
+            SMODS.calculate_effect(context.blueprint_card or card, {
             } )
             return{
                 chips = card.ability.extra.chips,
