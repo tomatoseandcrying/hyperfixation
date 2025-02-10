@@ -72,13 +72,13 @@ SMODS.Joker{ --Mary/Magdalene
         return{vars = {card.ability.extra.mult, card.ability.extra.mult_gain, card.ability.extra.rounds, card.ability.extra.c_rounds}}
     end,
     calculate = function (self, card, context)
-        if context.joker_main and G.GAME.current_round.hands_left == 0 then
+        if context.joker_main and G.GAME.current_round.hands_left == 0 and (to_big(card.ability.extra.mult) > to_big(1)) then
           return{
             mult_mod = card.ability.extra.mult,
             message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult} }
           }
         elseif context.end_of_round then
-            if context.main_eval then
+            if context.main_eval and (to_big{card.ability.extra.mult, card.ability.extra.mult_gain} > to_big(1)) then
                 if not context.blueprint_card then
                     if card.ability.extra.c_rounds >= card.ability.extra.rounds then
                         card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
