@@ -11,7 +11,7 @@ SMODS.Atlas{
 }
 SMODS.Sound({
     key = "hpfx_1up",
-    path = "1up.ogg"
+    path = "1up.ogg",
 })
 SMODS.Sound({
     key = "hpfx_thumbsup",
@@ -19,7 +19,7 @@ SMODS.Sound({
 })
 SMODS.Sound({
     key = "hpfx_gulp",
-    path = "Vamp_Gulp.ogg"
+    path = "gulp.ogg",
 })
 
 SMODS.Joker{ --Moriah/Isaac
