@@ -16,7 +16,6 @@ SMODS.Sound({
 SMODS.Sound({
     key = "hpfx_thumbsup",
     path = "thumbsup.ogg",
-    pitch = 1.5
 })
 SMODS.Sound({
     key = "hpfx_gulp",
@@ -97,7 +96,6 @@ SMODS.Joker{ --Mary/Magdalene
                             colour = G.C.MULT,
                             card = card
                         }
-                        
                     else
                         card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1
                     end
