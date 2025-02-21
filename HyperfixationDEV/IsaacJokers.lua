@@ -18,6 +18,11 @@ SMODS.Sound({
     path = "thumbsup.ogg",
     pitch = 1.5
 })
+SMODS.Sound({
+    key = "hpfx_gulp",
+    path = "Vamp_Gulp.ogg"
+})
+
 SMODS.Joker{ --Moriah/Isaac
     key = 'moriah',
     config = {extra = {chips = 22, mult = 2, money = 1}},
@@ -88,6 +93,7 @@ SMODS.Joker{ --Mary/Magdalene
                         card.ability.extra.c_rounds = 0
                         return {
                             message = 'Yum!',
+                            sound = "hpfx_gulp",
                             colour = G.C.MULT,
                             card = card
                         }
