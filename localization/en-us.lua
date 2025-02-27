@@ -25,10 +25,10 @@ return {
                 text = {
                     "{C:attention}+#1#{} Joker slot",
                     "{C:attention}+#1#{} card selection limit"
-                    ---"Doubles the properties of {C:purple}Wheel of Fortune{}"
+                    --"Doubles the probabilities of {C:purple}certain consumables{}" (hidden effect, commented out on purpose)
                 },
             },
---[[             hpfx_iscariot = {
+            j_hpfx_iscariot = {
                 name = 'Iscariot',
                 text = {
                     "This Joker gains {C:chips}+#2#{} Chips",
@@ -39,7 +39,7 @@ return {
                     "a {C:attention}Dark Judas{}"
         
                 },
-            }, ]]
+            },
             j_hpfx_cyanosis = {
                 name = 'Cyanosis',
                 text = {
