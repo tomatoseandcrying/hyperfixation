@@ -6,8 +6,8 @@ SMODS.Atlas({
 }):register()
 
 --talisman conversion function
-to_big = to_big or function(a)
-    return a
+to_big = to_big or function(num)
+    return num
 end
 
 assert(SMODS.load_file('IsaacJokers.lua'))()
