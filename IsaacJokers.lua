@@ -264,8 +264,8 @@ function mod_mult(...)
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i].config.center_key == 'j_hpfx_cyanosis' then
                 G.jokers.cards[i]:calculate_joker({
-                hyperfixation_mod_mult_decrease = last_mult - new_mult,
-            })
+                    hyperfixation_mod_mult_decrease = last_mult - new_mult,
+                })
             end
             
         end
