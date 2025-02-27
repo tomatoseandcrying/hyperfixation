@@ -35,7 +35,7 @@ SMODS.Joker{ --Moriah/Isaac
     cost = 6,
     unlocked = true,
     discovered = false,
-    bluesendDebugMessage_compat = true,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     calculate = function(self, card, context)
@@ -66,7 +66,7 @@ SMODS.Joker{ --Mary/Magdalene
     cost = 4,
     unlocked = false,
     discovered = false,
-    bluesendDebugMessage_compat = true,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     loc_vars = function (self, info_queue, card)
@@ -81,7 +81,7 @@ SMODS.Joker{ --Mary/Magdalene
           }
         elseif context.end_of_round then
             if context.main_eval and (to_big{card.ability.extra.mult, card.ability.extra.mult_gain} > to_big(1)) then
-                if not context.bluesendDebugMessage_card then
+                if not context.blueprint_card then
                     if card.ability.extra.c_rounds >= card.ability.extra.rounds then
                         card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                         card.ability.extra.c_rounds = 0
@@ -116,7 +116,7 @@ SMODS.Joker{ --Farmer/Cain
     atlas = 'IsaacJokers',
     pos = {x = 4, y = 1},
     cost = 5,
-    bluesendDebugMessage_compat = false,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     add_to_deck = function(self, card, from_debuff)
@@ -152,7 +152,7 @@ SMODS.Joker{ --Iscariot/Judas
     cost = 3,
     unlocked = false,
     discovered = false,
-    bluesendDebugMessage_compat = true,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     ScoreReset = true,
@@ -227,7 +227,7 @@ SMODS.Joker{ --Cyanosis/Blue Baby
     cost = -1,
     unlocked = false,
     discovered = false,
-    bluesendDebugMessage_compat = true,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     loc_vars = function (self, info_queue, card)
@@ -242,11 +242,8 @@ SMODS.Joker{ --Cyanosis/Blue Baby
             card = card
             }
         end
-        if context.hyperfixation_mod_mult_decrease and (to_big(card.ability.extra.chips) > to_big(1)) and not context.bluesendDebugMessage_card then
-            sendDebugMessage("hyperfixation_mod_mult_decrease:", context.hyperfixation_mod_mult_decrease)
-            sendDebugMessage("card.ability.extra.chips before:", card.ability.extra.chips)
+        if context.hyperfixation_mod_mult_decrease and (to_big(card.ability.extra.chips) > to_big(1)) and not context.blueprint_card then
             card.ability.extra.chips = card.ability.extra.chips + (context.hyperfixation_mod_mult_decrease * 10)
-            sendDebugMessage("card.ability.extra.chips after:", card.ability.extra.chips)
             return{
                 message = 'Soul...',
                 colour = G.C.CHIPS,
