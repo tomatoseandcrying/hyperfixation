@@ -143,7 +143,7 @@ SMODS.Joker{ --Farmer/Cain
     end
 }
 
-SMODS.Joker{ --Iscariot/Judas
+--[[ SMODS.Joker{ --Iscariot/Judas
     key = 'iscariot',
     config = {extra = {chips = 30, chip_gain = 3}},
     rarity = 2,
@@ -212,9 +212,9 @@ SMODS.Joker{ --Iscariot/Judas
             ScoreReset = false
         end
     end
-}
+} ]]
 
-SMODS.Joker{ --Cyanosis/Blue Baby
+--[[ SMODS.Joker{ --Cyanosis/Blue Baby
     key = 'cyanosis',
     config = {
         extra = {
@@ -251,14 +251,15 @@ SMODS.Joker{ --Cyanosis/Blue Baby
             }
         end
     end
-}
+} ]]
 
 --mult-decrease scoring context designed by BakersDozenBagels below!
 
-local last_mult = 0
-local raw_mod_mult = mod_mult
+--[[ local last_mult = 0
+local raw_mod_mult = mod_mult ]]
+
 -- mod_mult is used after any mult change to apply effects like Rich Get Richer
-function mod_mult(...)
+--[[ function mod_mult(...)
     local new_mult = raw_mod_mult(...)
     if to_big(new_mult) < to_big(last_mult) then
         for i = 1, #G.jokers.cards do
@@ -272,14 +273,15 @@ function mod_mult(...)
     end
     last_mult = new_mult
     return new_mult
-end
+end ]]
 
 -- Reset our tracker at the end of the round so we don't see a fake decrease
-local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
+
+--[[ local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
 function G.FUNCS.evaluate_play(...)
     raw_G_FUNCS_evaluate_play(...)
     last_mult = 0
-end
+end ]]
 
 --[[ local cuc = Card.use_consumeable
 Card.use_consumeable = function(self, area, copier)
