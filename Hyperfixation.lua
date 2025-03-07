@@ -11,3 +11,4 @@ to_big = to_big or function(num)
 end
 
 assert(SMODS.load_file('IsaacJokers.lua'))()
+assert(SMODS.load_file('IjiraqJokers.lua'))()
