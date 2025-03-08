@@ -49,6 +49,18 @@ return {
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
                 },
             },
+            j_hpfx_choker = {
+                name = 'Joker',
+                text = {
+                    "{C:mult}+#1#{} Mult{C:IjiGray}#2#{}"
+                },
+            },
+            j_hpfx_choker_alt = {
+                name = 'Joker{C:IjiGray}...?{}',
+                text = {
+                    "{C:mult}+#1#{} Mult{C:IjiGray}#2#{}"
+                }
+            }
         },
     },
 }

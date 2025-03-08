@@ -6,19 +6,28 @@ SMODS.Atlas{
 }
 
 SMODS.Joker{
-    key = 'Choker',
-    pos = {x = 0,y = 0},
+    key = 'choker',
+    pos = {x = 0, y = 0},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
     config = {
-        unlocked = true,
-        discovered = true,
-        no_collection = true,
-        {extra = {mult = 4}}
+        extra = {mult = 4}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult}}
+        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_choker", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_choker_alt"
     end,
     rarity = 1,
     cost = 2,
+    atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
     perishable_compat = false,
@@ -28,5 +37,5 @@ SMODS.Joker{
                 mult = card.ability.extra.mult
             }
         end
-    end
+    end,
 }
