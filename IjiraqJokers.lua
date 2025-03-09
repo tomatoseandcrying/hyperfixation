@@ -47,12 +47,35 @@ SMODS.Joker{
     perishable_compat = false,
     calculate = function(self, card, context)
         if context.joker_main and to_big(card.ability.extra.mult) > to_big(1) then
-            return{
-                mult = card.ability.extra.mult,
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
                 func = function()
                     card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                end
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            return{
+                mult = card.ability.extra.mult,
             }
         end
-    end,
+    end
 }
