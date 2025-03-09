@@ -6,6 +6,20 @@ SMODS.Atlas{
 }
 
 SMODS.Joker{
+    key = 'ijiraq',
+    pos = {x = 4, y = 12},
+    no_mod_badges = false,
+    unlocked = true,
+    discovered = false,
+    rarity = 4,
+    cost = 8,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true
+}
+
+SMODS.Joker{
     key = 'choker',
     pos = {x = 0, y = 0},
     no_mod_badges = true,
@@ -34,7 +48,10 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.joker_main and to_big(card.ability.extra.mult) > to_big(1) then
             return{
-                mult = card.ability.extra.mult
+                mult = card.ability.extra.mult,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                end
             }
         end
     end,

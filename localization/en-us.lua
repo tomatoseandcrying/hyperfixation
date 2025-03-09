@@ -49,6 +49,12 @@ return {
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
                 },
             },
+            j_hpfx_ijiraq = {
+                name = 'Ijiraq',
+                text = {
+                    "{C:mult}Does nothing rn lmfao{}"
+                },
+            },
             j_hpfx_choker = {
                 name = 'Joker',
                 text = {
