@@ -49,23 +49,41 @@ return {
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
                 },
             },
+
+
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
                     "{C:mult}Does nothing rn lmfao{}"
                 },
             },
+
+
             j_hpfx_choker = {
                 name = 'Joker',
                 text = {
-                    "{C:mult}+#1#{} Mult{C:IjiGray}#2#{}"
+                    "{C:mult}+#1#{} Mult{C:IjiGray, s:0.7}#2#{}"
                 },
             },
             j_hpfx_choker_alt = {
-                name = 'Joker{C:IjiGray}...?{}',
+                name = 'Joker{C:IjiGray, s:0.7}...?{}',
                 text = {
-                    "{C:mult}+#1#{} Mult{C:IjiGray}#2#{}"
-                }
+                    "{C:mult}+#1#{} Mult{C:IjiGray, s:0.7}#2#{}"
+                },
+            },
+            j_hpfx_chaoz = {
+                name = 'Chaos the Clown',
+                text={
+                    "{C:attention}#1#{} free {C:green}Reroll",
+                    "per shop{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_chaoz_alt = {
+                name = 'Chaos the Clown{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:attention}#1#{} free {C:green}Reroll",
+                    "per shop{C:IjiGray, s:0.7}#2#{}",
+                },
             }
         },
     },
