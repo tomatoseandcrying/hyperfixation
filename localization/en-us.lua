@@ -84,6 +84,22 @@ return {
                     "{C:attention}#1#{} free {C:green}Reroll",
                     "per shop{C:IjiGray, s:0.7}#2#{}",
                 },
+            },
+            j_hpfx_jaunty = {
+                name = 'Jolly Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Pair{}{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_jaunty_alt = {
+                name = 'Jolly Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Pair{}{C:IjiGray, s:0.7}#2#{}",
+                },
             }
         },
     },
