@@ -139,7 +139,7 @@ SMODS.Joker{ --Chaos the Clown?
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{--Jolly Joker?
     key = 'jaunty',
     pos = {x = 3, y = 0},
     no_mod_badges = true,
@@ -156,4 +156,43 @@ SMODS.Joker{
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_jaunty", nodes = {} }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
+    rarity = 1,
+    cost = 3,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = false,
+    calculate = function(self, card, context)
+        if context.joker_main and next(context.poker_hands['Pair']) then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            return{
+                mult = card.ability.extra.mult,
+            }
+        end
+    end
 }
