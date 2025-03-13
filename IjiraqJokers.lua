@@ -7,7 +7,8 @@ SMODS.Atlas{
 
 SMODS.Joker{ --Ijiraq
     key = 'ijiraq',
-    pos = {x = 4, y = 12},
+    pos = {x = 0, y = 9},
+    soul_pos = {x = 1, y = 9},
     no_mod_badges = false,
     unlocked = true,
     discovered = false,
