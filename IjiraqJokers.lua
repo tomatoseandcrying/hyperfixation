@@ -141,7 +141,7 @@ SMODS.Joker{ --Chaos the Clown?
 
 SMODS.Joker{--Jolly Joker?
     key = 'jaunty',
-    pos = {x = 3, y = 0},
+    pos = {x = 2, y = 0},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
@@ -155,6 +155,9 @@ SMODS.Joker{--Jolly Joker?
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_jaunty", nodes = {} }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_jaunty_alt"
     end,
     rarity = 1,
     cost = 3,

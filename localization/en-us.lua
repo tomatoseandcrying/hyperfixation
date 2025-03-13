@@ -86,7 +86,7 @@ return {
                 },
             },
             j_hpfx_jaunty = {
-                name = 'Jolly Joker{C:IjiGray, s:0.7}...?{}',
+                name = 'Jolly Joker',
                 text={
                     "{C:mult}+#1#{} Mult if played",
                     "hand contains",
