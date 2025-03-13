@@ -5,7 +5,7 @@ SMODS.Atlas{
     py = 95
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Ijiraq
     key = 'ijiraq',
     pos = {x = 4, y = 12},
     no_mod_badges = false,
@@ -19,7 +19,7 @@ SMODS.Joker{
     perishable_compat = true
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Joker?
     key = 'choker',
     pos = {x = 0, y = 0},
     no_mod_badges = true,
@@ -80,7 +80,7 @@ SMODS.Joker{
     end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Chaos the Clown?
     key = 'chaoz',
     pos = {x = 1, y = 0},
     no_mod_badges = true,
@@ -102,7 +102,7 @@ SMODS.Joker{
         SMODS.change_free_rerolls(1)
     end,
     rarity = 1,
-    cost = 2,
+    cost = 4,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
@@ -137,4 +137,14 @@ SMODS.Joker{
             }))
         end
     end
+}
+
+SMODS.Joker{
+    key = 'jaunty',
+    pos = {x = 3, y = 0},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+
 }
