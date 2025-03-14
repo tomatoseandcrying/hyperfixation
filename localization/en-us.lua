@@ -148,6 +148,22 @@ return {
                     "hand contains",
                     "a {C:attention}Straight{}{C:IjiGray, s:0.7}#2#{}",
                 },
+            },
+            j_hpfx_lockbird = {
+                name = 'Droll Joker',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Flush{}{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_lockbird_alt = {
+                name = 'Droll Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Flush{}{C:IjiGray, s:0.7}#2#{}",
+                },
             }
         },
     },
