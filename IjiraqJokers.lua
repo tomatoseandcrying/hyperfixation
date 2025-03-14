@@ -248,6 +248,67 @@ SMODS.Joker{--Zany Joker?
     end
 }
 
+SMODS.Joker{--Mad Joker?
+    key = 'angry',
+    pos = {x = 4, y = 0},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {mult = 10}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_angry", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_angry_alt"
+    end,
+    rarity = 1,
+    cost = 4,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = false,
+    calculate = function(self, card, context)
+        if context.joker_main and next(context.poker_hands['Two Pair']) then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            return{
+                mult = card.ability.extra.mult,
+            }
+        end
+    end
+}
+
 SMODS.Joker{ --Ijiraq
     key = 'ijiraq',
     pos = {x = 0, y = 9},

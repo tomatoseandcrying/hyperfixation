@@ -116,6 +116,22 @@ return {
                     "hand contains",
                     "a {C:attention}Three of a Kind{}{C:IjiGray, s:0.7}#2#{}",
                 },
+            },
+            j_hpfx_angry = {
+                name = 'Mad Joker',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Two Pair{}{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_angry_alt = {
+                name = 'Mad Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Two Pair{}{C:IjiGray, s:0.7}#2#{}",
+                },
             }
         },
     },
