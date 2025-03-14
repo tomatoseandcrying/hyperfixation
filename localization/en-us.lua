@@ -100,6 +100,22 @@ return {
                     "hand contains",
                     "a {C:attention}Pair{}{C:IjiGray, s:0.7}#2#{}",
                 },
+            },
+            j_hpfx_saney = {
+                name = 'Zany Joker',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Three of a Kind{}{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_saney_alt = {
+                name = 'Zany Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Three of a Kind{}{C:IjiGray, s:0.7}#2#{}",
+                },
             }
         },
     },
