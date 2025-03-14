@@ -6,6 +6,8 @@ SMODS.Atlas{
 }
 
 
+--FlatMults
+
 SMODS.Joker{ --Joker?
     key = 'choker',
     pos = {x = 0, y = 0},
@@ -67,6 +69,8 @@ SMODS.Joker{ --Joker?
     end
 }
 
+--ShopGuys
+
 SMODS.Joker{ --Chaos the Clown?
     key = 'chaoz',
     pos = {x = 1, y = 0},
@@ -125,6 +129,8 @@ SMODS.Joker{ --Chaos the Clown?
         end
     end
 }
+
+--TypeMults
 
 SMODS.Joker{--Jolly Joker?
     key = 'jaunty',
@@ -369,6 +375,11 @@ SMODS.Joker{--Crazy Joker?
         end
     end
 }
+
+--TypeChips
+
+
+--Ijiraq
 
 SMODS.Joker{ --Ijiraq
     key = 'ijiraq',
