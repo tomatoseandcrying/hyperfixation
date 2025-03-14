@@ -132,6 +132,22 @@ return {
                     "hand contains",
                     "a {C:attention}Two Pair{}{C:IjiGray, s:0.7}#2#{}",
                 },
+            },
+            j_hpfx_homer = {
+                name = 'Crazy Joker',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Straight{}{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_homer_alt = {
+                name = 'Crazy Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}Straight{}{C:IjiGray, s:0.7}#2#{}",
+                },
             }
         },
     },
