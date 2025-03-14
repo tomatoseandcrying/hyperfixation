@@ -6,7 +6,7 @@ SMODS.Atlas{
 }
 
 
---FlatMults
+--Flat Mult Jokers
 
 SMODS.Joker{ --Joker?
     key = 'choker',
@@ -33,7 +33,7 @@ SMODS.Joker{ --Joker?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
-    perishable_compat = false,
+    perishable_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and to_big(card.ability.extra.mult) > to_big(1) then
             G.E_MANAGER:add_event(Event({
@@ -69,7 +69,7 @@ SMODS.Joker{ --Joker?
     end
 }
 
---ShopGuys
+--Shop Jokers
 
 SMODS.Joker{ --Chaos the Clown?
     key = 'chaoz',
@@ -97,7 +97,7 @@ SMODS.Joker{ --Chaos the Clown?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
-    perishable_compat = false,
+    perishable_compat = true,
     calculate = function (self, card, context)
         if context.reroll_shop then
             G.E_MANAGER:add_event(Event({
@@ -130,7 +130,7 @@ SMODS.Joker{ --Chaos the Clown?
     end
 }
 
---TypeMults
+--Conditional Mult Jokers
 
 SMODS.Joker{--Jolly Joker?
     key = 'jaunty',
@@ -157,7 +157,7 @@ SMODS.Joker{--Jolly Joker?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
-    perishable_compat = false,
+    perishable_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and next(context.poker_hands['Pair']) then
             G.E_MANAGER:add_event(Event({
@@ -218,7 +218,7 @@ SMODS.Joker{--Zany Joker?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
-    perishable_compat = false,
+    perishable_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and next(context.poker_hands['Three of a Kind']) then
             G.E_MANAGER:add_event(Event({
@@ -279,7 +279,7 @@ SMODS.Joker{--Mad Joker?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
-    perishable_compat = false,
+    perishable_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and next(context.poker_hands['Two Pair']) then
             G.E_MANAGER:add_event(Event({
@@ -340,7 +340,7 @@ SMODS.Joker{--Crazy Joker?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
-    perishable_compat = false,
+    perishable_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and next(context.poker_hands['Straight']) then
             G.E_MANAGER:add_event(Event({
@@ -401,7 +401,7 @@ SMODS.Joker{--Droll Joker?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     eternal_compat = false,
-    perishable_compat = false,
+    perishable_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and next(context.poker_hands['Flush']) then
             G.E_MANAGER:add_event(Event({
@@ -437,10 +437,71 @@ SMODS.Joker{--Droll Joker?
     end
 }
 
---TypeChips
+SMODS.Joker{--Half Joker?
+    key = 'otherhalf',
+    pos = {x = 7, y = 0},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {mult = 20, size = 3}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {card.ability.extra.mult, card.ability.extra.size, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_otherhalf", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_otherhalf_alt"
+    end,
+    rarity = 1,
+    cost = 5,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.joker_main and #context.full_hand <= card.ability.extra.size then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            return{
+                mult = card.ability.extra.mult,
+            }
+        end
+    end
+}
+
+--Conditional Chip Jokers
 
 
---Ijiraq
+--Ijiraq. Just Ijiraq.
 
 SMODS.Joker{ --Ijiraq
     key = 'ijiraq',

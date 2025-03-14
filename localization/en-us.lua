@@ -164,6 +164,22 @@ return {
                     "hand contains",
                     "a {C:attention}Flush{}{C:IjiGray, s:0.7}#2#{}",
                 },
+            },
+            j_hpfx_otherhalf = {
+                name = 'Half Joker',
+                text={
+                    "{C:red}+#1#{} Mult if played",
+                    "hand contains",
+                    "{C:attention}#2#{} or fewer cards{C:IjiGray, s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_otherhalf_alt = {
+                name = 'Half Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:red}+#1#{} Mult if played",
+                    "hand contains",
+                    "{C:attention}#2#{} or fewer cards{C:IjiGray, s:0.7}#3#{}",
+                },
             }
         },
     },
