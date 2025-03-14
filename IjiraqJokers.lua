@@ -5,20 +5,6 @@ SMODS.Atlas{
     py = 95
 }
 
-SMODS.Joker{ --Ijiraq
-    key = 'ijiraq',
-    pos = {x = 0, y = 9},
-    soul_pos = {x = 1, y = 9},
-    no_mod_badges = false,
-    unlocked = true,
-    discovered = false,
-    rarity = 4,
-    cost = 8,
-    atlas = 'IjiraqJokers',
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true
-}
 
 SMODS.Joker{ --Joker?
     key = 'choker',
@@ -199,4 +185,19 @@ SMODS.Joker{--Jolly Joker?
             }
         end
     end
+}
+
+SMODS.Joker{ --Ijiraq
+    key = 'ijiraq',
+    pos = {x = 0, y = 9},
+    soul_pos = {x = 1, y = 9},
+    no_mod_badges = false,
+    unlocked = true,
+    discovered = false,
+    rarity = 4,
+    cost = 8,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true
 }
