@@ -99,7 +99,7 @@ SMODS.Joker{ --Chaos the Clown?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function (self, card, context)
-        if context.reroll_shop then
+        if context.reroll_shop and to_big(card.ability.extra.reroll) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -159,7 +159,7 @@ SMODS.Joker{--Jolly Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and next(context.poker_hands['Pair']) then
+        if context.joker_main and next(context.poker_hands['Pair']) and to_big(card.ability.extra.mult) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -220,7 +220,7 @@ SMODS.Joker{--Zany Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and next(context.poker_hands['Three of a Kind']) then
+        if context.joker_main and next(context.poker_hands['Three of a Kind']) and to_big(card.ability.extra.mult) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -281,7 +281,7 @@ SMODS.Joker{--Mad Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and next(context.poker_hands['Two Pair']) then
+        if context.joker_main and next(context.poker_hands['Two Pair']) and to_big(card.ability.extra.mult) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -342,7 +342,7 @@ SMODS.Joker{--Crazy Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and next(context.poker_hands['Straight']) then
+        if context.joker_main and next(context.poker_hands['Straight']) and to_big(card.ability.extra.mult) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -403,7 +403,7 @@ SMODS.Joker{--Droll Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and next(context.poker_hands['Flush']) then
+        if context.joker_main and next(context.poker_hands['Flush']) and to_big(card.ability.extra.mult) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -447,6 +447,7 @@ SMODS.Joker{--Half Joker?
     config = {
         extra = {mult = 20, size = 3}
     },
+    pixel_size = {w = 71, h = 95/1.7},
     loc_vars = function (self, info_queue, card)
         return{vars = {card.ability.extra.mult, card.ability.extra.size, card.area and card.area == G.jokers and "...?" or ""}}
     end,
@@ -464,7 +465,7 @@ SMODS.Joker{--Half Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and #context.full_hand <= card.ability.extra.size then
+        if context.joker_main and #context.full_hand <= card.ability.extra.size and to_big(card.ability.extra.mult) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -494,6 +495,72 @@ SMODS.Joker{--Half Joker?
             return{
                 mult = card.ability.extra.mult,
             }
+        end
+    end
+}
+
+--Hand n' Discard Jokers
+
+SMODS.Joker{--Merry Andy?
+    key = 'scaryandy',
+    pos = {x = 8, y = 0},
+    no_mod_badges = true,
+    unlocked = true, --Set FALSE on release!!
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {discard_size = 3, hand_size = -1}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {card.ability.extra.discard_size, card.ability.extra.hand_size, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_scaryandy", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_scaryandy_alt"
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discard_size
+		G.hand:change_size(card.ability.extra.hand_size)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+		G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discard_size
+		G.hand:change_size(-card.ability.extra.hand_size)
+	end,
+    rarity = 2,
+    cost = 7,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.discard then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
         end
     end
 }

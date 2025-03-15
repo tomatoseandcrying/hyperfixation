@@ -180,6 +180,22 @@ return {
                     "hand contains",
                     "{C:attention}#2#{} or fewer cards{C:IjiGray, s:0.7}#3#{}",
                 },
+            },
+            j_hpfx_scaryandy = {
+                name = 'Merry Andy',
+                text={
+                    "{C:red}+#1#{} discards",
+                    "each round,",
+                    "{C:red}#2#{} hand size{C:IjiGray, s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_scaryandy_alt = {
+                name = 'Merry Andy{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:red}+#1#{} discards",
+                    "each round,",
+                    "{C:red}#2#{} hand size{C:IjiGray, s:0.7}#3#{}",
+                },
             }
         },
     },
