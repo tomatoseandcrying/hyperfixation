@@ -567,25 +567,26 @@ SMODS.Joker{--Merry Andy?
 
 --Conditional Chip Jokers
 
-SMODS.Joker{ --Stone Joker?
-    key = 'choker',
+--[[ SMODS.Joker{ --Stone Joker? when i figure it out
+    key = 'rocky',
     pos = {x = 9, y = 0},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
     --no_collection = true,
     config = {
-        extra = {mult = 4}
+        extra = {chips = 25}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {card.ability.extra.chips, card.ability.extra.chips*(card.ability.stone_tally or 0), card.area and card.area == G.jokers and "...?" or ""}}
     end,
+    
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_choker", nodes = {} }
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_rocky", nodes = {} }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_choker_alt"
+        card.ability.extra.new_key = "j_hpfx_rocky_alt"
     end,
     rarity = 1,
     cost = 2,
@@ -594,7 +595,7 @@ SMODS.Joker{ --Stone Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and to_big(card.ability.extra.mult) > to_big(1) then
+        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -622,11 +623,11 @@ SMODS.Joker{ --Stone Joker?
                 end,
             }))
             return{
-                mult = card.ability.extra.mult,
+                chips = card.ability.extra.chips,
             }
         end
     end
-}
+} ]]
 
 --Ijiraq. Just Ijiraq.
 
