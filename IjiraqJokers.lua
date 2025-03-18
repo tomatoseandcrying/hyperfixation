@@ -534,7 +534,7 @@ SMODS.Joker{--Merry Andy?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.discard and to_big(card.ability.extra.discard_size) > to_big(1) and to_big(card.ability.extra.hand_size) > to_big(1) then
+        if context.discard then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
