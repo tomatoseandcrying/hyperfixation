@@ -567,9 +567,9 @@ SMODS.Joker{--Merry Andy?
 
 --Conditional Chip Jokers
 
-SMODS.Joker{ --Joker?
+SMODS.Joker{ --Stone Joker?
     key = 'choker',
-    pos = {x = 0, y = 0},
+    pos = {x = 9, y = 0},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
