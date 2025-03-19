@@ -241,6 +241,20 @@ return {
                     "each round{C:IjiGray, s:0.7}#2#{}",
                 },
             },
+            j_hpfx_trapezoid = {
+                name = 'Acrobat',
+                text={
+                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
+                    "{C:attention}hand{} of round{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_trapezoid_alt = {
+                name = 'Acrobat{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
+                    "{C:attention}hand{} of round{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
         },
     },
 }

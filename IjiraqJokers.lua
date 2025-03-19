@@ -753,6 +753,64 @@ SMODS.Joker{ --Drunkard?
     end
 }
 
+SMODS.Joker{ --Acrobat?
+key = 'trapezoid',
+atlas = 'IjiraqJokers',
+pos = {x = 2, y = 1},
+no_mod_badges = true,
+config = {
+    extra = {x_mult = 3}
+},
+unlocked = true,
+discovered = true,
+--no_collection = true,
+loc_vars = function (self, info_queue, card)
+    return{vars = {card.ability.extra.x_mult, card.area and card.area == G.jokers and "...?" or ""}}
+end,
+generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_trapezoid", nodes = {} }
+    SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+end,
+add_to_deck = function(self, card, from_debuff)
+    card.ability.extra.new_key = "j_hpfx_trapezoid_alt"
+end,
+rarity = 2,
+cost = 6,
+blueprint_compat = true,
+eternal_compat = false,
+perishable_compat = true,
+calculate = function(self, card, context)
+    if context.after and G.GAME.current_round.hands_left == 1 then
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                card:flip()
+                return true
+            end,
+        }))
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                play_sound("card1")
+                card:juice_up(0.3, 0.3)
+                return true
+            end,
+        }))
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                card:flip()
+                return true
+            end,
+        }))
+    end
+end
+}
+
 --Ijiraq. Just Ijiraq.
 
 SMODS.Joker{ --Ijiraq
