@@ -691,6 +691,68 @@ SMODS.Joker{ --Juggler?
     end
 }
 
+SMODS.Joker{ --Drunkard?
+    key = 'bubbly',
+    atlas = 'IjiraqJokers',
+    pos = {x = 1, y = 1},
+    no_mod_badges = true,
+    config = {
+        extra = {discard_size = 1}
+    },
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    loc_vars = function (self, info_queue, card)
+        return{vars = {card.ability.extra.discard_size, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_bubbly", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_bubbly_alt"
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discard_size
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discard_size
+    end,
+    rarity = 1,
+    cost = 4,
+    blueprint_compat = false,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.discard then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+        end
+    end
+}
+
 --Ijiraq. Just Ijiraq.
 
 SMODS.Joker{ --Ijiraq

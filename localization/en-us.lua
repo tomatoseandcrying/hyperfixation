@@ -227,6 +227,20 @@ return {
                     "{C:attention}+#1#{} hand size{C:IjiGray, s:0.7}#2#{}",
                 },
             },
+            j_hpfx_bubbly = {
+                name = 'Drunkard',
+                text={
+                    "{C:red}+#1#{} discard",
+                    "each round{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_bubbly_alt = {
+                name = 'Drunkard{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:red}+#1#{} discard",
+                    "each round{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
         },
     },
 }
