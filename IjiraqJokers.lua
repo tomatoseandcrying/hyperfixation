@@ -567,7 +567,7 @@ SMODS.Joker{--Merry Andy?
 
 --Conditional Chip Jokers
 
---[[ SMODS.Joker{ --Stone Joker? when i figure it out
+SMODS.Joker{ --Stone Joker? when i figure it out
     key = 'rocky',
     pos = {x = 9, y = 0},
     no_mod_badges = true,
@@ -577,10 +577,13 @@ SMODS.Joker{--Merry Andy?
     config = {
         extra = {chips = 25}
     },
-    loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.chips, card.ability.extra.chips*(card.ability.stone_tally or 0), card.area and card.area == G.jokers and "...?" or ""}}
+    loc_vars = function(self, info_queue, card)
+        local stone_tally = 0
+        for k, v in pairs(G.playing_cards) do
+            if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
+        end
+        return { vars = { card.ability.extra.chips, card.ability.extra.chips * (stone_tally or 0), card.area and card.area == G.jokers and "...?" or "" } }
     end,
-    
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_rocky", nodes = {} }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
@@ -627,7 +630,7 @@ SMODS.Joker{--Merry Andy?
             }
         end
     end
-} ]]
+}
 
 SMODS.Joker{ --Juggler?
     key = 'jiggler',
