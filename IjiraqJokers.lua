@@ -69,131 +69,6 @@ SMODS.Joker{ --Joker?
     end
 }
 
---Shop Jokers
-
-SMODS.Joker{ --Chaos the Clown?
-    key = 'chaoz',
-    pos = {x = 1, y = 0},
-    no_mod_badges = true,
-    unlocked = true,
-    discovered = true,
-    --no_collection = true,
-    config = {
-        extra = {reroll = 1}
-    },
-    loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.reroll, card.area and card.area == G.jokers and "...?" or ""}}
-    end,
-    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_chaoz", nodes = {} }
-        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_chaoz_alt"
-        SMODS.change_free_rerolls(1)
-    end,
-    rarity = 1,
-    cost = 4,
-    atlas = 'IjiraqJokers',
-    blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
-    calculate = function (self, card, context)
-        if context.reroll_shop and to_big(card.ability.extra.reroll) > to_big(1) then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-        end
-    end
-}
-
-SMODS.Joker{ --Credit Card?
-    key = 'expired',
-    pos = {x = 5, y = 1},
-    no_mod_badges = true,
-    unlocked = true,
-    discovered = true,
-    --no_collection = true,
-    config = {
-        extra = {credit = 20}
-    },
-    loc_vars = function (self, info_queue, card)
-        local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
-        return{vars = {card.ability.extra.credit, card.area and card.area == G.jokers and "...?" or ""}}
-    end,
-    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_expired", nodes = {} }
-        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_expired_alt"
-        G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.credit
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-        G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.credit
-    end,
-    rarity = 1,
-    cost = 1,
-    atlas = 'IjiraqJokers',
-    blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
-    calculate = function (self, card, context)
-        local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
-        if context.buying_card and valueToPutInIf then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-        end
-    end
-}
-
 --Conditional Mult Jokers
 
 SMODS.Joker{--Jolly Joker?
@@ -621,6 +496,84 @@ calculate = function(self, card, context)
 end
 }
 
+
+--Flat Chip Jokers
+
+--nothing yet
+
+
+--Conditional Chip Jokers
+
+SMODS.Joker{ --Stone Joker? when i figure it out
+    key = 'rocky',
+    pos = {x = 9, y = 0},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {chips = 25}
+    },
+    loc_vars = function(self, info_queue, card)
+        local stone_tally = 0
+        for k, v in pairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
+        end
+        return { vars = { card.ability.extra.chips, card.ability.extra.chips * (stone_tally or 0), card.area and card.area == G.jokers and "...?" or "" } }
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_rocky", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_rocky_alt"
+    end,
+    rarity = 1,
+    cost = 2,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            local stone_tally = 0
+            for k, v in pairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
+            end
+            return{
+                chips = (card.ability.extra.chips * stone_tally),
+            }
+        end
+    end
+}
+
+
 --Hand n' Discard Jokers
 
 SMODS.Joker{--Merry Andy?
@@ -811,76 +764,6 @@ SMODS.Joker{ --Drunkard?
     end
 }
 
---Conditional Chip Jokers
-
-SMODS.Joker{ --Stone Joker? when i figure it out
-    key = 'rocky',
-    pos = {x = 9, y = 0},
-    no_mod_badges = true,
-    unlocked = true,
-    discovered = true,
-    --no_collection = true,
-    config = {
-        extra = {chips = 25}
-    },
-    loc_vars = function(self, info_queue, card)
-        local stone_tally = 0
-        for k, v in pairs(G.playing_cards or {}) do
-            if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
-        end
-        return { vars = { card.ability.extra.chips, card.ability.extra.chips * (stone_tally or 0), card.area and card.area == G.jokers and "...?" or "" } }
-    end,
-    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_rocky", nodes = {} }
-        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_rocky_alt"
-    end,
-    rarity = 1,
-    cost = 2,
-    atlas = 'IjiraqJokers',
-    blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
-    calculate = function(self, card, context)
-        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            local stone_tally = 0
-            for k, v in pairs(G.playing_cards or {}) do
-                if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
-            end
-            return{
-                chips = (card.ability.extra.chips * stone_tally),
-            }
-        end
-    end
-}
 
 --Retrigger Jokers
 
@@ -1015,6 +898,133 @@ SMODS.Joker{ --Mime?
         end
     end
 }
+
+
+--Shop Jokers
+
+SMODS.Joker{ --Chaos the Clown?
+    key = 'chaoz',
+    pos = {x = 1, y = 0},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {reroll = 1}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {card.ability.extra.reroll, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_chaoz", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_chaoz_alt"
+        SMODS.change_free_rerolls(1)
+    end,
+    rarity = 1,
+    cost = 4,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function (self, card, context)
+        if context.reroll_shop and to_big(card.ability.extra.reroll) > to_big(1) then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+        end
+    end
+}
+
+SMODS.Joker{ --Credit Card?
+    key = 'expired',
+    pos = {x = 5, y = 1},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {credit = 20}
+    },
+    loc_vars = function (self, info_queue, card)
+        local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
+        return{vars = {card.ability.extra.credit, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_expired", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_expired_alt"
+        G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.credit
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.credit
+    end,
+    rarity = 1,
+    cost = 1,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function (self, card, context)
+        local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
+        if context.buying_card and valueToPutInIf then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+        end
+    end
+}
+
 
 --Ijiraq. Just Ijiraq.
 
