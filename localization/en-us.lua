@@ -197,6 +197,24 @@ return {
                     "{C:red}#2#{} hand size{C:IjiGray, s:0.7}#3#{}",
                 },
             },
+            j_hpfx_rocky = {
+                name = 'Stone Joker',
+                text={
+                    "Gives {C:chips}+#1#{} Chips for",
+                    "each {C:attention}Stone Card",
+                    "in your {C:attention}full deck{C:IjiGray, s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+                },
+            },
+            j_hpfx_rocky_alt = {
+                name = 'Stone Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Gives {C:chips}+#1#{} Chips for",
+                    "each {C:attention}Stone Card",
+                    "in your {C:attention}full deck{C:IjiGray, s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+                },
+            },
             j_hpfx_jiggler = {
                 name = 'Juggler',
                 text={

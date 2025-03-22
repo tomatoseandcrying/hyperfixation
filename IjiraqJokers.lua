@@ -579,7 +579,7 @@ SMODS.Joker{ --Stone Joker? when i figure it out
     },
     loc_vars = function(self, info_queue, card)
         local stone_tally = 0
-        for k, v in pairs(G.playing_cards) do
+        for k, v in pairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
         end
         return { vars = { card.ability.extra.chips, card.ability.extra.chips * (stone_tally or 0), card.area and card.area == G.jokers and "...?" or "" } }
@@ -625,8 +625,12 @@ SMODS.Joker{ --Stone Joker? when i figure it out
                     return true
                 end,
             }))
+            local stone_tally = 0
+            for k, v in pairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
+            end
             return{
-                chips = card.ability.extra.chips,
+                chips = (card.ability.extra.chips * stone_tally),
             }
         end
     end
