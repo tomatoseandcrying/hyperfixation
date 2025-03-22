@@ -255,6 +255,36 @@ return {
                     "{C:attention}hand{} of round{C:IjiGray, s:0.7}#2#{}",
                 },
             },
+            j_hpfx_bustin = {
+                name = 'Sock and Buskin',
+                text={
+                    "Retrigger all",
+                    "played {C:attention}face{} cards{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
+            j_hpfx_bustin_alt = {
+                name = 'Sock and Buskin{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Retrigger all",
+                    "played {C:attention}face{} cards{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
+            j_hpfx_mute = {
+                name = 'Mime',
+                text={
+                    "Retrigger all",
+                    "card {C:attention}held in",
+                    "{C:attention}hand{} abilities{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
+            j_hpfx_mute_alt = {
+                name = 'Mime{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Retrigger all",
+                    "card {C:attention}held in",
+                    "{C:attention}hand{} abilities{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
         },
     },
     misc = {

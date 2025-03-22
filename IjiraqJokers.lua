@@ -818,6 +818,140 @@ SMODS.Joker{ --Stone Joker? when i figure it out
     end
 }
 
+--Retrigger Jokers
+
+SMODS.Joker{ --Sock and Buskin?
+    key = 'bustin',
+    atlas = 'IjiraqJokers',
+    pos = {x = 3, y = 1},
+    no_mod_badges = true,
+    config = {
+        extra = {repetitions = 1}
+    },
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    loc_vars = function (self, info_queue, card)
+        return{vars = {card.ability.extra.repetitions, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_bustin", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_bustin_alt"
+    end,
+    rarity = 2,
+    cost = 6,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.repetition then
+            if context.other_card then
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end,
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                        play_sound("card1")
+                        card:juice_up(0.3, 0.3)
+                        return true
+                    end,
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end,
+                }))
+                return{
+                    message = localize('k_again_ex'),
+                    repetitions = card.ability.extra.repetitions,
+                    card = self
+                }
+            end
+        end
+    end
+}
+
+SMODS.Joker{ --Mime?
+    key = 'mute',
+    atlas = 'IjiraqJokers',
+    pos = {x = 4, y = 1},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {repetitions = 1}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {card.ability.extra.repetitions, card.area and card.area == G.jokers and "...?" or ""}}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_mute", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_mute_alt"
+    end,
+    rarity = 2,
+    cost = 5,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.repetition then
+            if context.cardarea == G.hand then
+                if next(context.card_effects[1]) or #context.card_effects > 1 then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = "after",
+                        delay = 0.15,
+                        func = function()
+                            card:flip()
+                            return true
+                        end,
+                    }))
+                    G.E_MANAGER:add_event(Event({
+                        trigger = "after",
+                        delay = 0.15,
+                        func = function()
+                            card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                            play_sound("card1")
+                            card:juice_up(0.3, 0.3)
+                            return true
+                        end,
+                    }))
+                    G.E_MANAGER:add_event(Event({
+                        trigger = "after",
+                        delay = 0.15,
+                        func = function()
+                            card:flip()
+                            return true
+                        end,
+                    }))
+                    return{
+                        message = localize('k_again_ex'),
+                        repetitions = card.ability.extra.repetitions,
+                        card = self
+                    }
+                end
+            end
+        end
+    end
+}
+
 --Ijiraq. Just Ijiraq.
 
 SMODS.Joker{ --Ijiraq
