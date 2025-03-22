@@ -285,6 +285,20 @@ return {
                     "{C:attention}hand{} abilities{C:IjiGray, s:0.7}#2#{}",
                 }
             },
+            j_hpfx_expired = {
+                name = 'Credit Card',
+                text={
+                    "Go up to",
+                    "{C:red}-$#1#{} in debt{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
+            j_hpfx_expired_alt = {
+                name = 'Credit Card{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Go up to",
+                    "{C:red}-$#1#{} in debt{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
         },
     },
     misc = {

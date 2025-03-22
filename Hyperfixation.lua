@@ -6,9 +6,7 @@ SMODS.Atlas({
 }):register()
 
 --talisman conversion function
-to_big = to_big or function(num)
-    return num
-end
+to_big = to_big or function(x) return x end
 
 Hyperglobal = {}
 local config = SMODS.current_mod.config
