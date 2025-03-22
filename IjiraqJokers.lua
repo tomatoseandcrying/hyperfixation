@@ -499,6 +499,64 @@ SMODS.Joker{--Half Joker?
     end
 }
 
+SMODS.Joker{ --Acrobat?
+key = 'trapezoid',
+atlas = 'IjiraqJokers',
+pos = {x = 2, y = 1},
+no_mod_badges = true,
+config = {
+    extra = {x_mult = 3}
+},
+unlocked = true,
+discovered = true,
+--no_collection = true,
+loc_vars = function (self, info_queue, card)
+    return{vars = {card.ability.extra.x_mult, card.area and card.area == G.jokers and "...?" or ""}}
+end,
+generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_trapezoid", nodes = {} }
+    SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+end,
+add_to_deck = function(self, card, from_debuff)
+    card.ability.extra.new_key = "j_hpfx_trapezoid_alt"
+end,
+rarity = 2,
+cost = 6,
+blueprint_compat = true,
+eternal_compat = false,
+perishable_compat = true,
+calculate = function(self, card, context)
+    if context.after and G.GAME.current_round.hands_left == 1 then
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                card:flip()
+                return true
+            end,
+        }))
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                play_sound("card1")
+                card:juice_up(0.3, 0.3)
+                return true
+            end,
+        }))
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                card:flip()
+                return true
+            end,
+        }))
+    end
+end
+}
+
 --Hand n' Discard Jokers
 
 SMODS.Joker{--Merry Andy?
@@ -561,77 +619,6 @@ SMODS.Joker{--Merry Andy?
                     return true
                 end,
             }))
-        end
-    end
-}
-
---Conditional Chip Jokers
-
-SMODS.Joker{ --Stone Joker? when i figure it out
-    key = 'rocky',
-    pos = {x = 9, y = 0},
-    no_mod_badges = true,
-    unlocked = true,
-    discovered = true,
-    --no_collection = true,
-    config = {
-        extra = {chips = 25}
-    },
-    loc_vars = function(self, info_queue, card)
-        local stone_tally = 0
-        for k, v in pairs(G.playing_cards or {}) do
-            if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
-        end
-        return { vars = { card.ability.extra.chips, card.ability.extra.chips * (stone_tally or 0), card.area and card.area == G.jokers and "...?" or "" } }
-    end,
-    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_rocky", nodes = {} }
-        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_rocky_alt"
-    end,
-    rarity = 1,
-    cost = 2,
-    atlas = 'IjiraqJokers',
-    blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
-    calculate = function(self, card, context)
-        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            local stone_tally = 0
-            for k, v in pairs(G.playing_cards or {}) do
-                if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
-            end
-            return{
-                chips = (card.ability.extra.chips * stone_tally),
-            }
         end
     end
 }
@@ -760,62 +747,75 @@ SMODS.Joker{ --Drunkard?
     end
 }
 
-SMODS.Joker{ --Acrobat?
-key = 'trapezoid',
-atlas = 'IjiraqJokers',
-pos = {x = 2, y = 1},
-no_mod_badges = true,
-config = {
-    extra = {x_mult = 3}
-},
-unlocked = true,
-discovered = true,
---no_collection = true,
-loc_vars = function (self, info_queue, card)
-    return{vars = {card.ability.extra.x_mult, card.area and card.area == G.jokers and "...?" or ""}}
-end,
-generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-    full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_trapezoid", nodes = {} }
-    SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-end,
-add_to_deck = function(self, card, from_debuff)
-    card.ability.extra.new_key = "j_hpfx_trapezoid_alt"
-end,
-rarity = 2,
-cost = 6,
-blueprint_compat = true,
-eternal_compat = false,
-perishable_compat = true,
-calculate = function(self, card, context)
-    if context.after and G.GAME.current_round.hands_left == 1 then
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                play_sound("card1")
-                card:juice_up(0.3, 0.3)
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
+--Conditional Chip Jokers
+
+SMODS.Joker{ --Stone Joker? when i figure it out
+    key = 'rocky',
+    pos = {x = 9, y = 0},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {chips = 25}
+    },
+    loc_vars = function(self, info_queue, card)
+        local stone_tally = 0
+        for k, v in pairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
+        end
+        return { vars = { card.ability.extra.chips, card.ability.extra.chips * (stone_tally or 0), card.area and card.area == G.jokers and "...?" or "" } }
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_rocky", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_rocky_alt"
+    end,
+    rarity = 1,
+    cost = 2,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            local stone_tally = 0
+            for k, v in pairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
+            end
+            return{
+                chips = (card.ability.extra.chips * stone_tally),
+            }
+        end
     end
-end
 }
 
 --Ijiraq. Just Ijiraq.
