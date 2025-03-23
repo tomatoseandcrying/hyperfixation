@@ -315,6 +315,38 @@ return {
                     "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
                 }
             },
+            j_hpfx_lustful = {
+                name = 'Lustful Joker',
+                text={
+                    "Played cards with",
+                    "{C:hearts}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
+            j_hpfx_lustful_alt = {
+                name = 'Lustful Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Played cards with",
+                    "{C:hearts}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
+            j_hpfx_rathalos = {
+                name = 'Wrathful Joker',
+                text={
+                    "Played cards with",
+                    "{C:spades}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
+            j_hpfx_rathalos_alt = {
+                name = 'Wrathful Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Played cards with",
+                    "{C:spades}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
         },
     },
     misc = {

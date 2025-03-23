@@ -632,6 +632,92 @@ SMODS.Joker{--Lusty Joker?
     end
 }
 
+SMODS.Joker{--Wrathful Joker?
+    key = 'rathalos',
+    pos = {x = 8, y = 1},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    -- no_collection = true,
+    config = {
+        extra = {mult = 3, suit = 'Spades'},
+    },
+    loc_vars = function (self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.mult,
+                localize(card.ability.extra.suit, 'suits_singular'),
+                card.area and card.area == G.jokers and "...?" or ""
+            }
+        }
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize{
+            type = 'name',
+            set = "Joker",
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_rathalos",
+            nodes = {}
+        }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_rathalos_alt"
+    end,
+    rarity = 1,
+    cost = 5,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if context.other_card:is_suit(card.ability.extra.suit) then        
+                return {
+                    mult = card.ability.extra.mult,
+                    card = card
+                } 
+            end
+        end
+        if context.after and context.cardarea == G.jokers then
+            local suitFound = false
+            for _, v in ipairs(context.scoring_hand) do
+                if v:is_suit(card.ability.extra.suit) then
+                    suitFound = true
+                    break
+                end
+            end
+            if suitFound then
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end,
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                        play_sound("card1")
+                        card:juice_up(0.3, 0.3)
+                        return true
+                    end,
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end,
+                }))
+            end
+        end
+    end
+}
+
 
 --Conditional XMult Jokers
 
