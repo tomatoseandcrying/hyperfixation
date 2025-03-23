@@ -19,7 +19,10 @@ SMODS.Joker{ --Joker?
         extra = {mult = 4}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.mult, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_choker", nodes = {} }
@@ -82,7 +85,10 @@ SMODS.Joker{--Jolly Joker?
         extra = {mult = 8}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.mult, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_jaunty", nodes = {} }
@@ -143,7 +149,10 @@ SMODS.Joker{--Zany Joker?
         extra = {mult = 12}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.mult, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_saney", nodes = {} }
@@ -204,7 +213,10 @@ SMODS.Joker{--Mad Joker?
         extra = {mult = 10}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.mult, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_angry", nodes = {} }
@@ -265,7 +277,10 @@ SMODS.Joker{--Crazy Joker?
         extra = {mult = 12}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.mult, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_homer", nodes = {} }
@@ -326,7 +341,10 @@ SMODS.Joker{--Droll Joker?
         extra = {mult = 10}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.mult, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_lockbird", nodes = {} }
@@ -388,7 +406,11 @@ SMODS.Joker{--Half Joker?
     },
     pixel_size = {w = 71, h = 95/1.7},
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.mult, card.ability.extra.size, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+        card.ability.extra.mult, 
+        card.ability.extra.size, 
+        card.area and card.area == G.jokers and "...?" or ""
+    }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_otherhalf", nodes = {} }
@@ -524,6 +546,92 @@ SMODS.Joker{--Greedy Joker? thanks to misenrol for the tweaks! notes app at 3:00
     end
 }
 
+SMODS.Joker{--Lusty Joker?
+    key = 'lustful',
+    pos = {x = 7, y = 1},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    -- no_collection = true,
+    config = {
+        extra = {mult = 3, suit = 'Hearts'},
+    },
+    loc_vars = function (self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.mult,
+                localize(card.ability.extra.suit, 'suits_singular'),
+                card.area and card.area == G.jokers and "...?" or ""
+            }
+        }
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize{
+            type = 'name',
+            set = "Joker",
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_lustful",
+            nodes = {}
+        }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_lustful_alt"
+    end,
+    rarity = 1,
+    cost = 5,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if context.other_card:is_suit(card.ability.extra.suit) then        
+                return {
+                    mult = card.ability.extra.mult,
+                    card = card
+                } 
+            end
+        end
+        if context.after and context.cardarea == G.jokers then
+            local suitFound = false
+            for _, v in ipairs(context.scoring_hand) do
+                if v:is_suit(card.ability.extra.suit) then
+                    suitFound = true
+                    break
+                end
+            end
+            if suitFound then
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end,
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                        play_sound("card1")
+                        card:juice_up(0.3, 0.3)
+                        return true
+                    end,
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = "after",
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end,
+                }))
+            end
+        end
+    end
+}
+
 
 --Conditional XMult Jokers
 
@@ -539,7 +647,10 @@ unlocked = true,
 discovered = true,
 --no_collection = true,
 loc_vars = function (self, info_queue, card)
-    return{vars = {card.ability.extra.x_mult, card.area and card.area == G.jokers and "...?" or ""}}
+    return{vars = {
+        card.ability.extra.x_mult, 
+        card.area and card.area == G.jokers and "...?" or ""
+    }}
 end,
 generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_trapezoid", nodes = {} }
@@ -608,7 +719,11 @@ SMODS.Joker{ --Stone Joker? when i figure it out
         for k, v in pairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(v, 'm_stone') then stone_tally = stone_tally + 1 end
         end
-        return { vars = { card.ability.extra.chips, card.ability.extra.chips * (stone_tally or 0), card.area and card.area == G.jokers and "...?" or "" } }
+        return { vars = {
+             card.ability.extra.chips, 
+             card.ability.extra.chips * (stone_tally or 0), 
+             card.area and card.area == G.jokers and "...?" or "" 
+            } }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_rocky", nodes = {} }
@@ -676,7 +791,11 @@ SMODS.Joker{--Merry Andy?
         extra = {discard_size = 3, hand_size = -1}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.discard_size, card.ability.extra.hand_size, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.discard_size, 
+            card.ability.extra.hand_size, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_scaryandy", nodes = {} }
@@ -741,7 +860,10 @@ SMODS.Joker{ --Juggler?
     discovered = true,
     --no_collection = true,
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.hand_size, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.hand_size, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_jiggler", nodes = {} }
@@ -803,7 +925,10 @@ SMODS.Joker{ --Drunkard?
     discovered = true,
     --no_collection = true,
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.discard_size, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.discard_size, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_bubbly", nodes = {} }
@@ -868,7 +993,10 @@ SMODS.Joker{ --Sock and Buskin?
     discovered = true,
     --no_collection = true,
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.repetitions, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.repetitions, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_bustin", nodes = {} }
@@ -933,7 +1061,10 @@ SMODS.Joker{ --Mime?
         extra = {repetitions = 1}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.repetitions, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.repetitions, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_mute", nodes = {} }
@@ -1002,7 +1133,10 @@ SMODS.Joker{ --Chaos the Clown?
         extra = {reroll = 1}
     },
     loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.reroll, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.reroll, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_chaoz", nodes = {} }
@@ -1062,7 +1196,10 @@ SMODS.Joker{ --Credit Card?
     },
     loc_vars = function (self, info_queue, card)
         local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
-        return{vars = {card.ability.extra.credit, card.area and card.area == G.jokers and "...?" or ""}}
+        return{vars = {
+            card.ability.extra.credit, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_expired", nodes = {} }
