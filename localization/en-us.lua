@@ -299,6 +299,22 @@ return {
                     "{C:red}-$#1#{} in debt{C:IjiGray, s:0.7}#2#{}",
                 }
             },
+            j_hpfx_keepah = {
+                name = 'Greedy Joker',
+                text={
+                    "Played cards with",
+                    "{C:diamonds}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
+            j_hpfx_keepah_alt = {
+                name = 'Greedy Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Played cards with",
+                    "{C:diamonds}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
         },
     },
     misc = {
