@@ -347,6 +347,22 @@ return {
                     "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
                 }
             },
+            j_hpfx_hungry = {
+                name = 'Gluttonous Joker',
+                text={
+                    "Played cards with",
+                    "{C:clubs}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
+            j_hpfx_hungry_alt = {
+                name = 'Gluttonous Joker{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "Played cards with",
+                    "{C:clubs}#2#{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
         },
     },
     misc = {
