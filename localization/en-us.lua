@@ -363,6 +363,20 @@ return {
                     "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
                 }
             },
+            j_hpfx_bard = {
+                name = 'Troubadour',
+                text={
+                    "{C:attention}+#1#{} hand size,",
+                    "{C:blue}#2#{} hand each round{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
+            j_hpfx_bard_alt = {
+                name = 'Troubadour{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:attention}+#1#{} hand size,",
+                    "{C:blue}#2#{} hand each round{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
         },
     },
     misc = {

@@ -876,7 +876,7 @@ end
 
 --Conditional Chip Jokers
 
-SMODS.Joker{ --Stone Joker? when i figure it out
+SMODS.Joker{ --Stone Joker?
     key = 'rocky',
     pos = {x = 9, y = 0},
     no_mod_badges = true,
@@ -1150,6 +1150,73 @@ SMODS.Joker{ --Drunkard?
     end
 }
 
+SMODS.Joker{ --Troubadour?
+    key = 'bard',
+    atlas = 'IjiraqJokers',
+    pos = {x = 0, y = 2},
+    no_mod_badges = true,
+    config = {
+        extra = {hand_size = 2, hand_plays = -1}
+    },
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    loc_vars = function (self, info_queue, card)
+        return{vars = {
+            card.ability.extra.hand_size, 
+            card.ability.extra.hand_plays, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_bard", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_bard_alt"
+        G.hand:change_size(card.ability.extra.hand_size)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hand_plays
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.hand:change_size(-card.ability.extra.hand_size)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hand_plays
+    end,
+    rarity = 2,
+    cost = 6,
+    blueprint_compat = false,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.after then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+        end
+    end
+}
 
 --Retrigger Jokers
 
