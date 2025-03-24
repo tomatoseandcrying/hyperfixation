@@ -377,6 +377,22 @@ return {
                     "{C:blue}#2#{} hand each round{C:IjiGray, s:0.7}#3#{}",
                 }
             },
+            j_hpfx_flag = {
+                name = 'Banner',
+                text={
+                    "{C:chips}+#1#{} Chips for",
+                    "each remaining",
+                    "{C:attention}discard{}{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
+            j_hpfx_flag_alt = {
+                name = 'Banner{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:chips}+#1#{} Chips for",
+                    "each remaining",
+                    "{C:attention}discard{}{C:IjiGray, s:0.7}#2#{}",
+                }
+            },
         },
     },
     misc = {
