@@ -812,12 +812,12 @@ SMODS.Joker{--Banner?
     discovered = true,
     -- no_collection = true,
     config = {
-        extra = {mult = 30},
+        extra = {chips = 30},
     },
     loc_vars = function (self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.mult,
+                card.ability.extra.chips,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -841,7 +841,7 @@ SMODS.Joker{--Banner?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and to_big(card.ability.extra.mult) > to_big(1) then
+        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -869,7 +869,7 @@ SMODS.Joker{--Banner?
                 end,
             }))
             return{
-                mult = card.ability.extra.mult*G.GAME.current_round.discards_left,
+                chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left),
             }
         end
     end
