@@ -804,20 +804,21 @@ SMODS.Joker{--Gluttonous Joker?
     end
 }
 
-SMODS.Joker{--Banner?
-    key = 'flag',
-    pos = {x = 1, y = 2},
+SMODS.Joker{--Mystic Summit?
+    key = 'twistit',
+    pos = {x = 2, y = 2},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
     -- no_collection = true,
     config = {
-        extra = {chips = 30},
+        extra = {mult = 15, discards_remaining = 0},
     },
     loc_vars = function (self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.chips,
+                card.ability.extra.mult,
+                card.ability.extra.discards_remaining,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -826,13 +827,13 @@ SMODS.Joker{--Banner?
         full_UI_table.name = localize{
             type = 'name',
             set = "Joker",
-            key = card.ability and card.ability.extra.new_key or "j_hpfx_flag",
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_twistit",
             nodes = {}
         }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_flag_alt"
+        card.ability.extra.new_key = "j_hpfx_twistit_alt"
     end,
     rarity = 1,
     cost = 5,
@@ -841,7 +842,12 @@ SMODS.Joker{--Banner?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
+        if context.joker_main and G.GAME.current_round.discards_left ~= card.ability.extra.discards_remaining then
+            return {
+                mult = card.ability.extra.mult,
+            }
+        end
+        if context.before and G.GAME.current_round.discards_left == card.ability.extra.discards_remaining then
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 delay = 0.15,
@@ -868,9 +874,6 @@ SMODS.Joker{--Banner?
                     return true
                 end,
             }))
-            return{
-                chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left),
-            }
         end
     end
 }
@@ -1019,6 +1022,76 @@ SMODS.Joker{ --Stone Joker?
     end
 }
 
+SMODS.Joker{--Banner?
+    key = 'flag',
+    pos = {x = 1, y = 2},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    -- no_collection = true,
+    config = {
+        extra = {chips = 30},
+    },
+    loc_vars = function (self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.chips,
+                card.area and card.area == G.jokers and "...?" or ""
+            }
+        }
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize{
+            type = 'name',
+            set = "Joker",
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_flag",
+            nodes = {}
+        }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_flag_alt"
+    end,
+    rarity = 1,
+    cost = 5,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            return{
+                chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left),
+            }
+        end
+    end
+}
 
 --Hand n' Discard Jokers
 

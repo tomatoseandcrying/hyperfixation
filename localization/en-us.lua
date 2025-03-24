@@ -393,6 +393,22 @@ return {
                     "{C:attention}discard{}{C:IjiGray, s:0.7}#2#{}",
                 }
             },
+            j_hpfx_twistit = {
+                name = 'Mystic Summit',
+                text={
+                    "{C:mult}+#1#{} Mult when",
+                    "{C:attention}#2#{} discards",
+                    "remaining{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
+            j_hpfx_twistit_alt = {
+                name = 'Mystic Summit{C:IjiGray, s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult when",
+                    "{C:attention}#2#{} discards",
+                    "remaining{C:IjiGray, s:0.7}#3#{}",
+                }
+            },
         },
     },
     misc = {
