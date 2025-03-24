@@ -1502,6 +1502,95 @@ SMODS.Joker{ --Mime?
 }
 
 
+--Enhancement Jokers
+
+SMODS.Joker{ --Marble Joker?
+    key = 'porcelain',
+    atlas = 'IjiraqJokers',
+    pos = {x = 3, y = 2},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {additions = 1}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {
+            card.ability.extra.additions, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_porcelain", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_porcelain_alt"
+    end,
+    rarity = 2,
+    cost = 6,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.setting_blind and not card.getting_sliced then
+            G.E_MANAGER:add_event(Event({
+                func = function() 
+                    local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
+                    G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                    local card = Card(G.play.T.x + G.play.T.w/2, G.play.T.y, G.CARD_W, G.CARD_H, front, G.P_CENTERS.m_stone, {playing_card = G.playing_card})
+                    card:start_materialize({G.C.SECONDARY_SET.Enhanced})
+                    G.play:emplace(card)
+                    table.insert(G.playing_cards, card)
+                    return true
+                end}))
+            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_stone'), colour = G.C.SECONDARY_SET.Enhanced})
+
+            G.E_MANAGER:add_event(Event({
+                func = function() 
+                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+                    return true
+                end}))
+                draw_card(G.play,G.deck, 90,'up', nil)  
+
+            playing_card_joker_effects({true})
+        end
+        if context.hand_drawn then
+            for _, card in ipairs(G.playing_cards) do
+                card:set_ability(G.P_CENTERS.c_base)
+            end
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+        end
+    end
+
+}
+
 --Shop Jokers
 
 SMODS.Joker{ --Chaos the Clown?

@@ -409,6 +409,22 @@ return {
                     "remaining{C:IjiGray, s:0.7}#3#{}",
                 }
             },
+            j_hpfx_porcelain ={
+                name="Marble Joker",
+                text={
+                    "Adds one {C:attention}Stone{} card",
+                    "to deck when",
+                    "{C:attention}Blind{} is selected{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_porcelain_alt ={
+                name="Marble Joker{C:IjiGray, s:0.7}...?",
+                text={
+                    "Adds one {C:attention}Stone{} card",
+                    "to deck when",
+                    "{C:attention}Blind{} is selected{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
         },
     },
     misc = {
