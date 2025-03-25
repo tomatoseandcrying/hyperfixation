@@ -457,6 +457,18 @@ return {
                     "{C:attention}2{}, {C:attention}3{}, {C:attention}4{}, or {C:attention}5{}{C:IjiGray, s:0.7}#3#{}",
                 },
             },
+            j_hpfx_reprint = {
+                name="Misprint",
+                text={
+                    ""
+                },
+            },
+            j_hpfx_reprint_alt = {
+                name="Misprint{C:IjiGray, s:0.7}...?",
+                text={
+                    ""
+                },
+            },
         },
     },
     misc = {
