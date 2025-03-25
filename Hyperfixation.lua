@@ -66,7 +66,7 @@ misenrol for the Greedy Joker? tweaks done in the notes app at 3AM
 someone23832 for the save button
 Bepis for saving my ass like 12 times oml :sob:
 bakshotmaxx for helping with the Ijiraq redesign
-N' for the Ijiraq transformation animation congregation code
+N' for help with the transformation and dynamic description code
 
 Thunk for having the worst code known to man someone kill me 
 ]]
