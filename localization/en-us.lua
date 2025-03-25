@@ -425,6 +425,22 @@ return {
                     "{C:attention}Blind{} is selected{C:IjiGray, s:0.7}#2#{}",
                 },
             },
+            j_hpfx_redeemed = {
+                name="Loyalty Card",
+                text={
+                    "{X:red,C:white} X#1# {} Mult every",
+                    "{C:attention}6{} hands played",
+                    "{C:inactive}5 remaining{C:IjiGray, s:0.7}#4#{}",
+                },
+            },
+            j_hpfx_redeemed_alt = {
+                name="Loyalty Card{C:IjiGray, s:0.7}...?",
+                text={
+                    "{X:red,C:white} X#1# {} Mult every",
+                    "{C:attention}6{} hands played",
+                    "{C:inactive}5 remaining{C:IjiGray, s:0.7}#4#{}",
+                },
+            },
         },
     },
     misc = {
