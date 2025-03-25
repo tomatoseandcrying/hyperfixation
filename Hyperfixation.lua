@@ -48,7 +48,6 @@ end
 loc_colour('red')
 G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
 
---save button thanks to someone23832!
 G.FUNCS.hpfx_save_and_apply = function(e)
     G.ACTIVE_MOD_UI = nil
     SMODS.save_all_config()
@@ -63,7 +62,7 @@ People I Need To Credit:
 me for being awesome and shit
 
 BakersDozenBagels for Cyanosis's mult-decrease scoring context
-misenrol for the Greedy Joker? tweaks
+misenrol for the Greedy Joker? tweaks done in the notes app at 3AM
 someone23832 for the save button
 Bepis for saving my ass like 12 times oml :sob:
 bakshotmaxx for helping with the Ijiraq redesign
