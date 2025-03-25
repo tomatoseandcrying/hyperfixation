@@ -1,0 +1,18 @@
+{
+    "workspace.library": [
+      "C:\\Users\\deadb\\AppData\\Roaming\\Balatro\\Mods\\Steamodded\\lsp_def",
+      "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro",
+      "C:\\Users\\deadb\\love2d-main"
+    ],
+    "diagnostics.disable": [
+        "undefined-global",
+        "lowercase-global",
+        "need-check-nil",
+        "duplicate-set-field",
+        "inject-field",
+        "undefined-field"
+    ],
+    "runtime.version": "LuaJIT",
+    "type.weakUnionCheck": true,
+    "type.weakNilCheck": true
+  }
