@@ -441,6 +441,22 @@ return {
                     "{C:inactive}5 remaining{C:IjiGray, s:0.7}#4#{}",
                 },
             },
+            j_hpfx_whack = {
+                name="Hack",
+                text={
+                    "Retrigger",
+                    "each played",
+                    "{C:attention}2{}, {C:attention}3{}, {C:attention}4{}, or {C:attention}5{}{C:IjiGray, s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_whack_alt = {
+                name="Hack{C:IjiGray, s:0.7}...?",
+                text={
+                    "Retrigger",
+                    "each played",
+                    "{C:attention}2{}, {C:attention}3{}, {C:attention}4{}, or {C:attention}5{}{C:IjiGray, s:0.7}#3#{}",
+                },
+            },
         },
     },
     misc = {

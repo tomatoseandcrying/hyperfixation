@@ -55,3 +55,19 @@ G.FUNCS.hpfx_save_and_apply = function(e)
     SMODS.restart_game()
     SMODS.IN_MODS_TAB = nil
 end
+
+
+--[[ 
+People I Need To Credit:
+------------------------
+me for being awesome and shit
+
+BakersDozenBagels for Cyanosis's mult-decrease scoring context
+misenrol for the Greedy Joker? tweaks
+someone23832 for the save button
+Bepis for saving my ass like 12 times oml :sob:
+bakshotmaxx for helping with the Ijiraq redesign
+N' for the Ijiraq transformation animation congregation code
+
+Thunk for having the worst code known to man someone kill me 
+]]
