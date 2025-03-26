@@ -469,6 +469,24 @@ return {
                     ""
                 },
             },
+            j_hpfx_iron = {
+                name="Steel Joker",
+                text={
+                    "Gives {X:mult,C:white} X#1# {} Mult",
+                    "for each {C:attention}Steel Card",
+                    "in your {C:attention}full deck{C:IjiGray, s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                },
+            },
+            j_hpfx_iron_alt = {
+                name="Steel Joker{C:IjiGray, s:0.7}...?",
+                text={
+                    "Gives {X:mult,C:white} X#1# {} Mult",
+                    "for each {C:attention}Steel Card",
+                    "in your {C:attention}full deck{C:IjiGray, s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                },
+            },
         },
     },
     misc = {
