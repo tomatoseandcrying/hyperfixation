@@ -146,7 +146,7 @@ calculate = function(self, card, context)
 end
 }
 
-SMODS.Joker{
+SMODS.Joker{ --Raised Fist?
     key = 'braised',
     pos = {x = 8, y = 2},
     no_mod_badges = true,
@@ -228,7 +228,6 @@ SMODS.Joker{
         end
     end
 }
-
 
 --Conditional Flat Mult Jokers
 
@@ -1989,6 +1988,75 @@ SMODS.Joker{ --Marble Joker?
         end
     end
 
+}
+
+--Bagchaser Jokers
+
+SMODS.Joker{
+    key = 'pyramid',
+    atlas = 'IjiraqJokers',
+    pos = {x = 9, y = 2},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {money = 4}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {
+            card.ability.extra.money, 
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_pyramid", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_pyramid_alt"
+        G.GAME.dollars = G.GAME.dollars + card.ability.extra.money
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.dollars = G.GAME.dollars - card.ability.extra.money
+    end,
+    rarity = 1,
+    cost = 6,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calc_dollar_bonus = function(self, card)
+		local bonus = card.ability.extra.money
+		if bonus > 0 then 
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            return (bonus * -1) 
+        end
+	end,
 }
 
 --Shop Jokers

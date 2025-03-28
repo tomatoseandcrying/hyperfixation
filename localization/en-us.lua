@@ -503,6 +503,20 @@ return {
                     "held in hand to Mult{C:IjiGray, s:0.7}#1#{}",
                 },
             },
+            j_hpfx_pyramid = {
+                name="Golden Joker",
+                text={
+                    "Earn {C:money}$#1#{} at",
+                    "end of round{C:IjiGray, s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_pyramid_alt = {
+                name="Golden Joker{C:IjiGray, s:0.7}...?",
+                text={
+                    "Earn {C:money}$#1#{} at",
+                    "end of round{C:IjiGray, s:0.7}#2#{}",
+                },
+            }
         },
     },
     misc = {
