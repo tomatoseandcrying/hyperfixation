@@ -487,6 +487,22 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
             },
+            j_hpfx_braised = {
+                name="Raised Fist",
+                text={
+                    "Adds {C:attention}double{} the rank",
+                    "of {C:attention}lowest{} ranked card",
+                    "held in hand to Mult{C:IjiGray, s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_braised_alt = {
+                name="Raised Fist{C:IjiGray, s:0.7}...?",
+                text={
+                    "Adds {C:attention}double{} the rank",
+                    "of {C:attention}lowest{} ranked card",
+                    "held in hand to Mult{C:IjiGray, s:0.7}#1#{}",
+                },
+            },
         },
     },
     misc = {

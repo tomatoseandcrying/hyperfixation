@@ -146,6 +146,89 @@ calculate = function(self, card, context)
 end
 }
 
+SMODS.Joker{
+    key = 'braised',
+    pos = {x = 8, y = 2},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {
+            card.area and card.area == G.jokers and "...?" or ""
+        }}
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_braised", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_braised_alt"
+    end,
+    rarity = 1,
+    cost = 5,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function(self, card, context)
+        if context.individual then
+            if context.cardarea == G.hand then
+                local tempMult, tempID = -1, -1
+                local raised_card = nil
+                for i = 1, #G.hand.cards do
+                    if tempID <= G.hand.cards[i].base.id and G.hand.cards[i].ability.effect ~= 'Stone Card' then
+                        tempMult = G.hand.cards[i].base.nominal
+                        tempID = G.hand.cards[i].base.id
+                        raised_card = G.hand.cards[i]
+                    end
+                end
+                if raised_card == context.other_card then
+                    if context.other_card.debuff then
+                        return {
+                            message = localize('k_debuffed'),
+                            colour = G.C.RED,
+                        }
+                    else
+                        G.E_MANAGER:add_event(Event({
+                            trigger = "after",
+                            delay = 0.15,
+                            func = function()
+                                card:flip()
+                                return true
+                            end,
+                        }))
+                        G.E_MANAGER:add_event(Event({
+                            trigger = "after",
+                            delay = 0.15,
+                            func = function()
+                                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                                play_sound("card1")
+                                card:juice_up(0.3, 0.3)
+                                return true
+                            end,
+                        }))
+                        G.E_MANAGER:add_event(Event({
+                            trigger = "after",
+                            delay = 0.15,
+                            func = function()
+                                card:flip()
+                                return true
+                            end,
+                        }))
+                        return {
+                            h_mult = 2 * tempMult,
+                        }
+                    end
+                end
+            end
+        end
+    end
+}
+
 
 --Conditional Flat Mult Jokers
 
