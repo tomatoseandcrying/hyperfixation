@@ -37,6 +37,18 @@ SMODS.current_mod.config_tab = function ()
 	}}
 end
 
+SMODS.current_mod.optional_features = function()
+	return {
+		post_trigger = true,
+		retrigger_joker = true,
+		quantum_enhancements = true,
+		cardareas = {
+			discard = true,
+			deck = true
+		}
+	}
+end
+
 if config.Isaac then
 	SMODS.load_file('IsaacJokers.lua')()
 end

@@ -516,7 +516,21 @@ return {
                     "Earn {C:money}$#1#{} at",
                     "end of round{C:IjiGray, s:0.7}#2#{}",
                 },
-            }
+            },
+            j_hpfx_blue = {
+                name="Blueprint",
+                text={
+                    "Copies ability of",
+                    "{C:attention}Joker{} to the right{C:IjiGray, s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_blue_alt = {
+                name="Blueprint{C:IjiGray, s:0.7}...?",
+                text={
+                    "Copies ability of",
+                    "{C:attention}Joker{} to the right{C:IjiGray, s:0.7}#1#{}",
+                },
+            },
         },
     },
     misc = {

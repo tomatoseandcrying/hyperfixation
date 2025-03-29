@@ -115,7 +115,6 @@ eternal_compat = false,
 perishable_compat = true,
 calculate = function(self, card, context)
     if context.joker_main then
-        local temp_Mult = pseudorandom('misprint', card.ability.extra.min, card.ability.extra.max)
         G.E_MANAGER:add_event(Event({
             trigger = "after",
             delay = 0.15,
@@ -2189,6 +2188,89 @@ SMODS.Joker{ --Credit Card?
         end
     end
 }
+
+--Yuri
+
+SMODS.Joker{ --Blueprint?
+    key = 'blue',
+    pos = {x = 0, y = 3},
+    no_mod_badges = true,
+    unlocked = true,
+    discovered = true,
+    --no_collection = true,
+    config = {
+        extra = {}
+    },
+    loc_vars = function (self, info_queue, card)
+        card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ''; card.ability.blueprint_compat_check = nil
+        main_end = (card.area and card.area == G.jokers) and {
+            {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
+                {n=G.UIT.C, config={ref_table = card, align = "m", colour = G.C.JOKER_GREY, r = 0.05, padding = 0.06, func = 'blueprint_compat'}, nodes={
+                    {n=G.UIT.T, config={ref_table = card.ability, ref_value = 'blueprint_compat_ui',colour = G.C.UI.TEXT_LIGHT, scale = 0.32*0.8}},
+                }}
+            }}
+        } or nil
+        local other_joker
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if G.jokers[i] == card then other_joker = G.jokers[i+1] end
+            end
+            if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat then
+                card.ability.blueprint_compat = 'compatible'
+            else
+                card.ability.blueprint_compat = 'compatible'
+            end
+        end
+        return{
+            main_end = main_end,
+            vars = {card.area and card.area == G.jokers and "...?" or ""}
+        }
+    end,
+    generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_blue", nodes = {} }
+        SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.new_key = "j_hpfx_blue_alt"
+    end,
+    rarity = 3,
+    cost = 10,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = true,
+    calculate = function (self, card, context)
+        if context.post_trigger then
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = "after",
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end,
+            }))
+        end
+    end
+}
+
 
 --Ijiraq. Just Ijiraq.
 
