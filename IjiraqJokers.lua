@@ -2133,7 +2133,7 @@ SMODS.Joker{ --Credit Card?
         extra = {credit = 20}
     },
     loc_vars = function (self, info_queue, card)
-        local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
+
         return{vars = {
             card.ability.extra.credit, 
             card.area and card.area == G.jokers and "...?" or ""

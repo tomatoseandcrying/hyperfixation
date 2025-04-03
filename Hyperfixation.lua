@@ -77,8 +77,11 @@ BakersDozenBagels for Cyanosis's mult-decrease scoring context
 misenrol for the Greedy Joker? tweaks done in the notes app at 3AM
 someone23832 for the save button
 Bepis for saving my ass like 12 times oml :sob:
-bakshotmaxx for helping with the Ijiraq redesign
+Aikoyori for saving my ass like 6 other times oh god
+Maxx for helping with the Ijiraq redesign, reformatting of Ijiraq's code to make it FAR less complicated
+Delirium for also reformatting Ijiraq's code to make it far less complicated
 N' for help with the transformation and dynamic description code
+revo
 
 Thunk for having the worst code known to man someone kill me 
 ]]
