@@ -2133,7 +2133,6 @@ SMODS.Joker{ --Credit Card?
         extra = {credit = 20}
     },
     loc_vars = function (self, info_queue, card)
-
         return{vars = {
             card.ability.extra.credit, 
             card.area and card.area == G.jokers and "...?" or ""
