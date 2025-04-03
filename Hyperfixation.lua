@@ -73,6 +73,8 @@ People I Need To Credit:
 ------------------------
 me for being awesome and shit
 
+ggezsped for being my first tester!
+
 BakersDozenBagels for Cyanosis's mult-decrease scoring context
 misenrol for the Greedy Joker? tweaks done in the notes app at 3AM
 someone23832 for the save button
