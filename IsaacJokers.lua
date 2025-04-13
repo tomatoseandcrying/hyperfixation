@@ -25,13 +25,13 @@ SMODS.Joker{ --Moriah/Isaac
     loc_vars = function (self, info_queue, card)
         return{vars = {card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.money}}
     end,
-    calc_dollar_bonus = function(self, card)
+    calc_dollar_bonus = function(self, card) --Golden Joker-type effect
         local bonus = card.ability.extra.money
         if bonus > 0 then return bonus end
     end,
     rarity = 2,
     atlas = 'IsaacJokers',
-    pos = {x = 0, y = 0},
+    pos = {x = 0, y = 0}, 
     cost = 6,
     unlocked = true,
     discovered = false,
@@ -39,7 +39,7 @@ SMODS.Joker{ --Moriah/Isaac
     eternal_compat = true,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and (to_big(card.ability.extra.chips) > to_big(1)) and (to_big(card.ability.extra.mult) > to_big(1)) then
+        if context.joker_main and (to_big(card.ability.extra.chips) > to_big(1)) and (to_big(card.ability.extra.mult) > to_big(1)) then --Gives chips and mult
             return{
                 chip_mod = card.ability.extra.chips,
                 sound = "hpfx_thumbsup",
@@ -73,26 +73,26 @@ SMODS.Joker{ --Mary/Magdalene
         return{vars = {card.ability.extra.mult, card.ability.extra.mult_gain, card.ability.extra.rounds, card.ability.extra.c_rounds}}
     end,
     calculate = function (self, card, context)
-        if context.joker_main and G.GAME.current_round.hands_left == 0 and (to_big(card.ability.extra.mult) > to_big(1)) then
+        if context.joker_main and G.GAME.current_round.hands_left == 0 and (to_big(card.ability.extra.mult) > to_big(1)) then --gives mult
           return{
             mult_mod = card.ability.extra.mult,
             sound = 'hpfx_1up',
             message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult}}
           }
-        elseif context.end_of_round then
+        elseif context.end_of_round then --triggers at end of round
             if context.main_eval and (to_big{card.ability.extra.mult, card.ability.extra.mult_gain} > to_big(1)) then
-                if not context.blueprint_card then
-                    if card.ability.extra.c_rounds >= card.ability.extra.rounds then
+                if not context.blueprint_card then 
+                    if card.ability.extra.c_rounds >= card.ability.extra.rounds then -- gains mult only if the required amount of rounds have passed
                         card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-                        card.ability.extra.c_rounds = 0
-                        return {
+                        card.ability.extra.c_rounds = 0 --resets counter
+                        return { --custom message (for flavor <3)
                             message = 'Yum!',
                             sound = "hpfx_gulp",
                             colour = G.C.MULT,
                             card = card
                         }
                     else
-                        card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1
+                        card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
                     end
                 end
             end
@@ -124,23 +124,23 @@ SMODS.Joker{ --Farmer/Cain
         G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.size
         G.hand.config.highlighted_limit = G.hand.config.highlighted_limit + card.ability.extra.size
     end,
---[[     calculate = function (self, card, context)
-        if context.using_consumeable then
-            if context.consumeable.config.center_key == "c_wheel" then
-                if pseudorandom('farmer') < G.farmerProb/card.ability.extra.odds then
-                    for k, v in pairs(G.farmerProb) do 
-                    G.farmerProb[k] = v*2
-                    end
-                end
-            end
-        end
-    end, ]]
     remove_from_deck = function(self, card, from_debuff)
         G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.size
         G.hand.config.highlighted_limit = G.hand.config.highlighted_limit - card.ability.extra.size
         if G.hand.config.highlighted_limit < 5 then G.hand.config.highlighted_limit = 5 end
 		G.hand:unhighlight_all()
-    end
+    end,
+--[[     calculate = function (self, card, context)
+        if context.using_consumeable then
+            if context.consumeable.config.center_key == "c_wheel" then
+                if pseudorandom('farmer') < G.farmerProb/card.ability.extra.odds then
+                    for k, v in pairs(G.farmerProb) do
+                    G.farmerProb[k] = v*2
+                    end
+                end
+            end
+        end
+    end ]]
 }
 
 --[[ SMODS.Joker{ --Iscariot/Judas

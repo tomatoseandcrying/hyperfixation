@@ -50,135 +50,30 @@ return {
                 },
             },
 
-
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
                     "{C:mult}Does nothing rn lmfao{}"
                 },
             },
-
-
-            j_hpfx_choker = {
-                name = 'Joker',
+            j_hpfx_costume = {
+                name = 'whoops',
                 text = {
-                    "{C:mult}+#1#{} Mult{C:IjiGray, s:0.7}#2#{}"
-                },
+                    'if you can see this i fucked up',
+                }
             },
-            j_hpfx_choker_alt = {
-                name = 'Joker{C:IjiGray, s:0.7}...?{}',
-                text = {
-                    "{C:mult}+#1#{} Mult{C:IjiGray, s:0.7}#2#{}"
-                },
-            },
-            j_hpfx_chaoz = {
-                name = 'Chaos the Clown',
+            j_hpfx_trapezoid = {
+                name = 'Acrobat',
                 text={
-                    "{C:attention}#1#{} free {C:green}Reroll",
-                    "per shop{C:IjiGray, s:0.7}#2#{}",
+                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
+                    "{C:attention}hand{} of round{C:IjiGray, s:0.7}#2#{}",
                 },
             },
-            j_hpfx_chaoz_alt = {
-                name = 'Chaos the Clown{C:IjiGray, s:0.7}...?{}',
+            j_hpfx_trapezoid_alt = {
+                name = 'Acrobat{C:IjiGray, s:0.7}...?{}',
                 text={
-                    "{C:attention}#1#{} free {C:green}Reroll",
-                    "per shop{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_jaunty = {
-                name = 'Jolly Joker',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Pair{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_jaunty_alt = {
-                name = 'Jolly Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Pair{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_saney = {
-                name = 'Zany Joker',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Three of a Kind{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_saney_alt = {
-                name = 'Zany Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Three of a Kind{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_angry = {
-                name = 'Mad Joker',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Two Pair{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_angry_alt = {
-                name = 'Mad Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Two Pair{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_homer = {
-                name = 'Crazy Joker',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Straight{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_homer_alt = {
-                name = 'Crazy Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Straight{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_lockbird = {
-                name = 'Droll Joker',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Flush{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_lockbird_alt = {
-                name = 'Droll Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:mult}+#1#{} Mult if played",
-                    "hand contains",
-                    "a {C:attention}Flush{}{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_otherhalf = {
-                name = 'Half Joker',
-                text={
-                    "{C:red}+#1#{} Mult if played",
-                    "hand contains",
-                    "{C:attention}#2#{} or fewer cards{C:IjiGray, s:0.7}#3#{}",
-                },
-            },
-            j_hpfx_otherhalf_alt = {
-                name = 'Half Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:red}+#1#{} Mult if played",
-                    "hand contains",
-                    "{C:attention}#2#{} or fewer cards{C:IjiGray, s:0.7}#3#{}",
+                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
+                    "{C:attention}hand{} of round{C:IjiGray, s:0.7}#2#{}",
                 },
             },
             j_hpfx_scaryandy = {
@@ -197,94 +92,6 @@ return {
                     "{C:red}#2#{} hand size{C:IjiGray, s:0.7}#3#{}",
                 },
             },
-            j_hpfx_rocky = {
-                name = 'Stone Joker',
-                text={
-                    "Gives {C:chips}+#1#{} Chips for",
-                    "each {C:attention}Stone Card",
-                    "in your {C:attention}full deck{C:IjiGray, s:0.7}#3#{}",
-                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
-                },
-            },
-            j_hpfx_rocky_alt = {
-                name = 'Stone Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "Gives {C:chips}+#1#{} Chips for",
-                    "each {C:attention}Stone Card",
-                    "in your {C:attention}full deck{C:IjiGray, s:0.7}#3#{}",
-                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
-                },
-            },
-            j_hpfx_jiggler = {
-                name = 'Juggler',
-                text={
-                    "{C:attention}+#1#{} hand size{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_jiggler_alt = {
-                name = 'Juggler{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:attention}+#1#{} hand size{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_bubbly = {
-                name = 'Drunkard',
-                text={
-                    "{C:red}+#1#{} discard",
-                    "each round{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_bubbly_alt = {
-                name = 'Drunkard{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{C:red}+#1#{} discard",
-                    "each round{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_trapezoid = {
-                name = 'Acrobat',
-                text={
-                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_trapezoid_alt = {
-                name = 'Acrobat{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round{C:IjiGray, s:0.7}#2#{}",
-                },
-            },
-            j_hpfx_bustin = {
-                name = 'Sock and Buskin',
-                text={
-                    "Retrigger all",
-                    "played {C:attention}face{} cards{C:IjiGray, s:0.7}#2#{}",
-                }
-            },
-            j_hpfx_bustin_alt = {
-                name = 'Sock and Buskin{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "Retrigger all",
-                    "played {C:attention}face{} cards{C:IjiGray, s:0.7}#2#{}",
-                }
-            },
-            j_hpfx_mute = {
-                name = 'Mime',
-                text={
-                    "Retrigger all",
-                    "card {C:attention}held in",
-                    "{C:attention}hand{} abilities{C:IjiGray, s:0.7}#2#{}",
-                }
-            },
-            j_hpfx_mute_alt = {
-                name = 'Mime{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "Retrigger all",
-                    "card {C:attention}held in",
-                    "{C:attention}hand{} abilities{C:IjiGray, s:0.7}#2#{}",
-                }
-            },
             j_hpfx_expired = {
                 name = 'Credit Card',
                 text={
@@ -297,70 +104,6 @@ return {
                 text={
                     "Go up to",
                     "{C:red}-$#1#{} in debt{C:IjiGray, s:0.7}#2#{}",
-                }
-            },
-            j_hpfx_keepah = {
-                name = 'Greedy Joker',
-                text={
-                    "Played cards with",
-                    "{C:diamonds}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
-                }
-            },
-            j_hpfx_keepah_alt = {
-                name = 'Greedy Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "Played cards with",
-                    "{C:diamonds}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
-                }
-            },
-            j_hpfx_lustful = {
-                name = 'Lustful Joker',
-                text={
-                    "Played cards with",
-                    "{C:hearts}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
-                }
-            },
-            j_hpfx_lustful_alt = {
-                name = 'Lustful Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "Played cards with",
-                    "{C:hearts}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
-                }
-            },
-            j_hpfx_rathalos = {
-                name = 'Wrathful Joker',
-                text={
-                    "Played cards with",
-                    "{C:spades}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
-                }
-            },
-            j_hpfx_rathalos_alt = {
-                name = 'Wrathful Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "Played cards with",
-                    "{C:spades}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
-                }
-            },
-            j_hpfx_hungry = {
-                name = 'Gluttonous Joker',
-                text={
-                    "Played cards with",
-                    "{C:clubs}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
-                }
-            },
-            j_hpfx_hungry_alt = {
-                name = 'Gluttonous Joker{C:IjiGray, s:0.7}...?{}',
-                text={
-                    "Played cards with",
-                    "{C:clubs}#2#{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:IjiGray, s:0.7}#3#{}",
                 }
             },
             j_hpfx_bard = {
@@ -529,6 +272,14 @@ return {
                 text={
                     "Copies ability of",
                     "{C:attention}Joker{} to the right{C:IjiGray, s:0.7}#1#{}",
+                },
+            },
+        },
+        Tag = {
+            tag_hpfx_ijidebug = {
+                name = 'Ijiraq Debug',
+                text = {
+                    "Debugging tag for Ijiraq",
                 },
             },
         },
