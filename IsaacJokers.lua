@@ -1,4 +1,4 @@
---[[ G.farmerProb = G.GAME.probabilities ]]
+
 
 --Visual Libraries
 SMODS.Atlas{
@@ -77,6 +77,31 @@ local function maryEnd(card, context)
     end
 end
 
+--Consumables
+SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
+    use = function(self, card, area, copier)
+        local testvar = G.GAME.probabilities.normal/(card.ability.extra*(next(SMODS.find_card('j_hpfx_farmer')) and 0.5 or 1))
+        local used_tarot = copier or card
+        local temp_pool = (card.ability.name == 'The Wheel of Fortune' and card.eligible_strength_jokers) or {}
+        if pseudorandom('wheel_of_fortune') < testvar then
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function ()
+                local over = false
+                local eligible_card = pseudorandom_element(temp_pool, pseudoseed(
+                    (card.ability.name == 'The Wheel of Fortune' and 'wheel_of_fortune')
+                ))
+                local edition = nil
+                if card.ability.name == 'The Wheel of Fortune' then
+                    edition = poll_edition('wheel_of_fortune', nil, true, true)
+                end
+                eligible_card:set_edition(edition, true)
+                if card.ability.name == 'The Wheel of Fortune' then check_for_unlock({type = 'have_edition'}) end
+                used_tarot:juice_up(0.3, 0.5)
+            return true end}))
+        end
+        sendDebugMessage(testvar, "Logger")
+    end,
+}, true) --farmer
+
 --Jokers
 SMODS.Joker{ --Moriah/Isaac
     key = 'moriah',
@@ -149,18 +174,7 @@ SMODS.Joker{ --Farmer/Cain
         G.hand.config.highlighted_limit = G.hand.config.highlighted_limit - card.ability.extra.size
         if G.hand.config.highlighted_limit < 5 then G.hand.config.highlighted_limit = 5 end
 		G.hand:unhighlight_all()
-    end,
---[[     calculate = function (self, card, context)
-        if context.using_consumeable then
-            if context.consumeable.config.center_key == "c_wheel" then
-                if pseudorandom('farmer') < G.farmerProb/card.ability.extra.odds then
-                    for k, v in pairs(G.farmerProb) do
-                    G.farmerProb[k] = v*2
-                    end
-                end
-            end
-        end
-    end ]]
+    end
 }
 --[[ SMODS.Joker{ --Iscariot/Judas
     key = 'iscariot',
@@ -296,13 +310,3 @@ function G.FUNCS.evaluate_play(...)
     raw_G_FUNCS_evaluate_play(...)
     last_mult = 0
 end ]]
-
---[[ local cuc = Card.use_consumeable
-Card.use_consumeable = function(self, area, copier)
-  local odds_mod = 1
-  for _,v in ipairs(SMODS.find_card('j_hpfx_farmer')) do odds_mod = odds_mod * v.ability.extra.odds_mod end
-  if self.config.center.key == 'c_wheel' then G.GAME.probabilities.normal = G.GAME.probabilities.normal * odds_mod end
-  cuc(self, area, copier)
-  if self.config.center.key == 'c_wheel' then G.GAME.probabilities.normal = G.GAME.probabilities.normal / odds_mod end
-end ]]
-

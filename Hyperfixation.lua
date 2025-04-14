@@ -83,6 +83,7 @@ Aikoyori for saving my ass like 6 other times oh god
 Maxx for helping with the Ijiraq redesign, reformatting of Ijiraq's code to make it FAR less complicated
 Delirium for also reformatting Ijiraq's code to make it far less complicated
 N' for help with the transformation and dynamic description code
+Larswijn for helping me get Farmer functional!!
 revo
 
 Thunk for having the worst code known to man someone kill me 
