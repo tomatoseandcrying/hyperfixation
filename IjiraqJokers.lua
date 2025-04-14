@@ -1,3 +1,4 @@
+--Visual Libraries
 SMODS.Atlas{
     key = 'IjiraqJokers',
     path = "IjiraqJokers.png",
@@ -7,6 +8,38 @@ SMODS.Atlas{
 
 G.C.IjiGray = HEX('BFD7D5')
 
+
+--Charater-Specific Functions
+local function Transform(card, context)
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            card:flip()
+            return true
+        end,
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+            play_sound("card1")
+            card:juice_up(0.3, 0.3)
+            return true
+        end,
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            card:flip()
+            return true
+        end,
+    }))
+end
+
+--Ijiraq Costume Functions
 function maxx_debug(txt)
 	attention_text({
 		text = txt,
@@ -19,14 +52,12 @@ function maxx_debug(txt)
 		silent = true
 	})
 end
-
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.fodder_card = { jkey = 'ijiraq' }
 	return ret
 end
-
 function SMODS.current_mod.reset_game_globals(run_start)
     if G.GAME.current_round.fodder_card.jkey == 'ijiraq' then
         local ijiraq_pool = get_current_pool("Joker")
@@ -34,7 +65,6 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
     end
 end
-
 local stupidRef = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
    local ihatethis = nil
@@ -54,15 +84,36 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
     end
     return hatethisonethemost
 end
-
 local add2deck_ref = Card.add_to_deck
-
 function Card:add_to_deck(from_debuff)
     if self.isIjiraq then self.visiblyIjiraq = true end
      add2deck_ref(self, from_debuff)
 end
 
+--Ijiraq. Just Ijiraq.
 SMODS.Joker{
+    key = 'ijiraq',
+    pos = {x = 0, y = 9},
+    soul_pos = {x = 1, y = 9},
+    no_mod_badges = false,
+    unlocked = true,
+    discovered = false,
+    rarity = 4,
+    cost = 8,
+    atlas = 'IjiraqJokers',
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = false,
+    config = {
+        extra = {jkey = 'ijiraq'}
+    },
+    loc_vars = function (self, info_queue, card)
+        return{vars = {
+            card.ability.extra.jkey
+        }}
+    end
+}
+SMODS.Joker{ --Costume
 	key = 'costume',
 	atlas = 'IjiraqJokers',
 	rarity = 3,
@@ -90,7 +141,6 @@ SMODS.Joker{
 		end
 	end
 }
-
 local calc_Ref = Card.calculate_joker
 function Card:calculate_joker(context)
     local ret = calc_Ref(self,context)
@@ -127,11 +177,7 @@ function Card:calculate_joker(context)
     return ret 
 end
 
-
---ALTERNATE EFFECT JOKERS FROM HERE ON OUT
-
---Flat Mult Jokers
-
+--Jokers
 SMODS.Joker{ --Misprint?
 key = 'reprint',
 pos = {x = 6, y = 2},
@@ -174,36 +220,10 @@ eternal_compat = false,
 perishable_compat = true,
 calculate = function(self, card, context)
     if context.joker_main then
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                play_sound("card1")
-                card:juice_up(0.3, 0.3)
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
+        return Transform(card, context)
     end
 end
 }
-
 SMODS.Joker{ --Raised Fist?
     key = 'braised',
     pos = {x = 8, y = 2},
@@ -251,44 +271,13 @@ SMODS.Joker{ --Raised Fist?
                             colour = G.C.RED,
                         }
                     else
-                        G.E_MANAGER:add_event(Event({
-                            trigger = "after",
-                            delay = 0.15,
-                            func = function()
-                                card:flip()
-                                return true
-                            end,
-                        }))
-                        G.E_MANAGER:add_event(Event({
-                            trigger = "after",
-                            delay = 0.15,
-                            func = function()
-                                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                                play_sound("card1")
-                                card:juice_up(0.3, 0.3)
-                                return true
-                            end,
-                        }))
-                        G.E_MANAGER:add_event(Event({
-                            trigger = "after",
-                            delay = 0.15,
-                            func = function()
-                                card:flip()
-                                return true
-                            end,
-                        }))
-                        return {
-                            h_mult = 2 * tempMult,
-                        }
+                        return Transform(card, context)
                     end
                 end
             end
         end
     end
 }
-
---Conditional Flat Mult Jokers
-
 SMODS.Joker{--Mystic Summit?
     key = 'twistit',
     pos = {x = 2, y = 2},
@@ -333,38 +322,10 @@ SMODS.Joker{--Mystic Summit?
             }
         end
         if context.before and G.GAME.current_round.discards_left == card.ability.extra.discards_remaining then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
+            return Transform(card, context)
         end
     end
 }
-
---XMult Jokers
-
 SMODS.Joker{--Loyalty Card?
 key = 'redeemed',
 pos = {x = 4, y = 2},
@@ -409,33 +370,8 @@ calculate = function (self, card, context)
             end
         else
             if card.ability.loyalty_remaining == 0 then
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.15,
-                    func = function()
-                        card:flip()
-                        return true
-                    end,
-                }))
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.15,
-                    func = function()
-                        card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                        play_sound("card1")
-                        card:juice_up(0.3, 0.3)
-                        return true
-                    end,
-                }))
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.15,
-                    func = function()
-                        card:flip()
-                        return true
-                    end,
-                }))
                 return {
+                    Transform(card, context),
                     x_mult = 1/card.ability.extra.x_mult
                 }
             end
@@ -443,7 +379,6 @@ calculate = function (self, card, context)
     end
 end
 }
-
 SMODS.Joker{--Steel Joker?
 key = 'iron',
 pos = {x = 7, y = 2},
@@ -480,45 +415,17 @@ eternal_compat = false,
 perishable_compat = true,
 calculate = function(self, card, context)
     if context.joker_main and to_big(card.ability.extra.x_mult) > to_big(0) then
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                play_sound("card1")
-                card:juice_up(0.3, 0.3)
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
         local steel_tally = 0
         for k, v in pairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(v, 'm_steel') then steel_tally = steel_tally + 1 end
         end
         return {
+            Transform(card, context),
             x_mult = 1/(1 + card.ability.extra.x_mult*steel_tally)
         }
     end
 end
 }
-
---Conditional XMult Jokers
-
 SMODS.Joker{ --Acrobat?
 key = 'trapezoid',
 atlas = 'IjiraqJokers',
@@ -550,40 +457,10 @@ eternal_compat = false,
 perishable_compat = true,
 calculate = function(self, card, context)
     if context.after and G.GAME.current_round.hands_left == 1 then
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                play_sound("card1")
-                card:juice_up(0.3, 0.3)
-                return true
-            end,
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = "after",
-            delay = 0.15,
-            func = function()
-                card:flip()
-                return true
-            end,
-        }))
+        return Transform(card, context)
     end
 end
 }
-
---Flat Chip Jokers
-
---Conditional Chip Jokers
-
 SMODS.Joker{--Banner?
     key = 'flag',
     pos = {x = 1, y = 2},
@@ -622,41 +499,13 @@ SMODS.Joker{--Banner?
     perishable_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
             return{
-                chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left),
+                Transform(card, context),
+                chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left)
             }
         end
     end
 }
-
---Hand n' Discard Jokers
-
 SMODS.Joker{--Merry Andy?
     key = 'scaryandy',
     pos = {x = 8, y = 0},
@@ -695,36 +544,10 @@ SMODS.Joker{--Merry Andy?
     perishable_compat = true,
     calculate = function(self, card, context)
         if context.discard then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
+            return Transform(card, context)
         end
     end
 }
-
 SMODS.Joker{ --Troubadour?
     key = 'bard',
     atlas = 'IjiraqJokers',
@@ -763,38 +586,10 @@ SMODS.Joker{ --Troubadour?
     perishable_compat = true,
     calculate = function(self, card, context)
         if context.after then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
+            return Transform(card, context)
         end
     end
 }
-
---Retrigger Jokers
-
 SMODS.Joker{ --Hack?
     key = 'whack',
     atlas = 'IjiraqJokers',
@@ -857,39 +652,11 @@ SMODS.Joker{ --Hack?
                 if played2 and played3 and played4 and played5 then break end
             end
             if played2 and played3 and played4 and played5 then
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.15,
-                    func = function()
-                        card:flip()
-                        return true
-                    end,
-                }))
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.15,
-                    func = function()
-                        card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                        play_sound("card1")
-                        card:juice_up(0.3, 0.3)
-                        return true
-                    end,
-                }))
-                G.E_MANAGER:add_event(Event({
-                    trigger = "after",
-                    delay = 0.15,
-                    func = function()
-                        card:flip()
-                        return true
-                    end,
-                }))
+                return Transform(card, context)
             end
         end
     end
 }
-
---Enhancement Jokers
-
 SMODS.Joker{ --Marble Joker?
     key = 'porcelain',
     atlas = 'IjiraqJokers',
@@ -946,39 +713,11 @@ SMODS.Joker{ --Marble Joker?
             for _, card in ipairs(G.playing_cards) do
                 card:set_ability(G.P_CENTERS.c_base)
             end
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
+            return Transform(card, context)
         end
     end
 
 }
-
---Bagchaser Jokers
-
 SMODS.Joker{ --Golden Joker?
     key = 'pyramid',
     atlas = 'IjiraqJokers',
@@ -1015,39 +754,11 @@ SMODS.Joker{ --Golden Joker?
     calc_dollar_bonus = function(self, card)
 		local bonus = card.ability.extra.money
 		if bonus > 0 then 
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            return (bonus * -1) 
+            return (bonus * -1)
         end
+        return Transform(card, context)
 	end,
 }
-
---Shop Jokers
-
 SMODS.Joker{ --Credit Card?
     key = 'expired',
     pos = {x = 5, y = 1},
@@ -1084,38 +795,10 @@ SMODS.Joker{ --Credit Card?
     calculate = function (self, card, context)
         local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
         if context.buying_card and valueToPutInIf then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
+            return Transform(card, context)
         end
     end
 }
-
---Yuri
-
 SMODS.Joker{ --Blueprint?
     key = 'blue',
     pos = {x = 0, y = 3},
@@ -1166,57 +849,7 @@ SMODS.Joker{ --Blueprint?
     perishable_compat = true,
     calculate = function (self, card, context)
         if context.post_trigger then
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                    play_sound("card1")
-                    card:juice_up(0.3, 0.3)
-                    return true
-                end,
-            }))
-            G.E_MANAGER:add_event(Event({
-                trigger = "after",
-                delay = 0.15,
-                func = function()
-                    card:flip()
-                    return true
-                end,
-            }))
+            return Transform(card, context)
         end
-    end
-}
-
---Ijiraq. Just Ijiraq.
-
-SMODS.Joker{ --Ijiraq
-    key = 'ijiraq',
-    pos = {x = 0, y = 9},
-    soul_pos = {x = 1, y = 9},
-    no_mod_badges = false,
-    unlocked = true,
-    discovered = false,
-    rarity = 4,
-    cost = 8,
-    atlas = 'IjiraqJokers',
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = false,
-    config = {
-        extra = {jkey = 'ijiraq'}
-    },
-    loc_vars = function (self, info_queue, card)
-        return{vars = {
-            card.ability.extra.jkey
-        }}
     end
 }

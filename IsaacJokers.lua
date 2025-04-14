@@ -1,5 +1,3 @@
-
-
 --Visual Libraries
 SMODS.Atlas{
     key = 'IsaacJokers',
