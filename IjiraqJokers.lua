@@ -62,6 +62,36 @@ local function Transform(card, context)
         end,
     }))
 end
+local function Transfodd(self, context)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+            self:flip()
+            return true
+        end
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+            self:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+            play_sound("card1")
+            self:juice_up(0.3, 0.3)
+            return true
+        end
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.15,
+        func = function()
+            self:flip()
+            self.isIjiraq = nil
+            self.visiblyIjiraq = nil
+            return true
+        end
+    }))
+end
 local function braisedMultCalc(card, context)
     local tempMult, tempID = -1, -1
     local raised_card = nil
@@ -311,34 +341,7 @@ local calc_Ref = Card.calculate_joker
 function Card:calculate_joker(context)
     local ret = calc_Ref(self,context)
     if ret and self.isIjiraq then
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.15,
-            func = function()
-                self:flip()
-                return true
-            end
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.15,
-            func = function()
-                self:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
-                play_sound("card1")
-                self:juice_up(0.3, 0.3)
-                return true
-            end
-        }))
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.15,
-            func = function()
-                self:flip()
-				self.isIjiraq = nil
-				self.visiblyIjiraq = nil
-                return true
-            end
-        }))
+        Transfodd(self, context)
     end
     return ret 
 end
