@@ -9,7 +9,31 @@ SMODS.Atlas{
 G.C.IjiGray = HEX('BFD7D5')
 
 
---Charater-Specific Functions
+--General Refactor Functions
+local function stoneGeneration(card, context)
+    G.E_MANAGER:add_event(Event({
+        func = function() 
+            local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
+            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+            local card = Card(G.play.T.x + G.play.T.w/2, G.play.T.y, G.CARD_W, G.CARD_H, front, G.P_CENTERS.m_stone, {playing_card = G.playing_card})
+            card:start_materialize({G.C.SECONDARY_SET.Enhanced})
+            G.play:emplace(card)
+            table.insert(G.playing_cards, card)
+            return true
+        end}))
+    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_stone'), colour = G.C.SECONDARY_SET.Enhanced})
+
+    G.E_MANAGER:add_event(Event({
+        func = function() 
+            G.deck.config.card_limit = G.deck.config.card_limit + 1
+            return true
+        end}))
+        draw_card(G.play,G.deck, 90,'up', nil)  
+
+    playing_card_joker_effects({true})   
+end
+
+--Charater-Specific Refactor Functions
 local function Transform(card, context)
     G.E_MANAGER:add_event(Event({
         trigger = "after",
@@ -37,6 +61,148 @@ local function Transform(card, context)
             return true
         end,
     }))
+end
+local function braisedMultCalc(card, context)
+    local tempMult, tempID = -1, -1
+    local raised_card = nil
+    for i = 1, #G.hand.cards do
+        if tempID <= G.hand.cards[i].base.id and G.hand.cards[i].ability.effect ~= 'Stone Card' then
+            tempMult = G.hand.cards[i].base.nominal
+            tempID = G.hand.cards[i].base.id
+            raised_card = G.hand.cards[i]
+        end
+    end
+    if raised_card == context.other_card then
+        if context.other_card.debuff then
+            return {
+                message = localize('k_debuffed'),
+                colour = G.C.RED,
+            }
+        else
+            return Transform(card, context)
+        end
+    end
+end
+local function braisedHand(card, context)
+    if context.cardarea == G.hand then
+        braisedMultCalc(card, context)
+    end
+end
+local function braisedInd(card, context)
+    if context.individual then
+        braisedHand(card, context)
+    end
+end
+local function disloyalScoring2(card, context)
+    if card.ability.loyalty_remaining == 0 then
+        return {
+            Transform(card, context),
+            x_mult = 1/card.ability.extra.x_mult
+        }
+    end
+end
+local function disloyalBlueprint(card, context)
+    if card.ability.loyalty_remaining == card.ability.extra.every then
+        return {
+            x_mult = card.ability.extra.x_mult
+        } 
+    end
+end
+local function disloyalScoring(card, context)
+    if context.blueprint then
+        disloyalBlueprint(card, context)
+    else
+        disloyalScoring2(card, context)
+    end
+end
+local function disloyalMain(card, context)
+    if context.joker_main then
+        card.ability.loyalty_remaining = (card.ability.extra.every - 1)
+        disloyalScoring(card, context)
+    end
+end
+local function bannerScoring(card, context)
+    if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
+        return{
+            Transform(card, context),
+            chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left)
+        }
+    end
+end
+local function whackCardCheck(card, context)
+    if (context.other_card:get_id() == 2 or
+    context.other_card:get_id() == 3 or
+    context.other_card:get_id() == 4 or
+    context.other_card:get_id() == 5) then
+        return {
+            message = localize('k_again_ex'),
+            repetitions = card.ability.extra.repetitions,
+            card = card
+        } 
+    end
+end
+local function whackRepetition(card, context)
+    if context.repetition then
+        if context.cardarea == G.play then
+            whackCardCheck(card, context)
+        end
+    end
+end
+local function whackBefore(card, context)
+    if context.before and context.cardarea == G.jokers then
+        for _, kard in ipairs(context.scoring_hand) do
+            if kard:get_id() == 2 or kard:get_id() == 3 or kard:get_id() == 4 or kard:get_id() == 5 then
+                table.insert(card.ability.extra.played_cards, kard)
+            end
+        end
+    end
+end
+local function whackAfter(card, context)
+    if context.after then
+        local played2, played3, played4, played5 = false, false, false, false
+        for _, v in ipairs(card.ability.extra.played_cards) do
+            if v:get_id() == 2 then played2 = true
+            elseif v:get_id() == 3 then played3 = true
+            elseif v:get_id() == 4 then played4 = true
+            elseif v:get_id() == 5 then played5 = true end
+            if played2 and played3 and played4 and played5 then break end
+        end
+        if played2 and played3 and played4 and played5 then
+            return Transform(card, context)
+        end
+    end
+end
+local function porcelainBlind(card, context)
+    if context.setting_blind and not card.getting_sliced then
+        stoneGeneration(card, context)
+    end
+end
+local function porcelainDrawn(card, context)
+    if context.hand_drawn then
+        for _, card in ipairs(G.playing_cards) do
+            card:set_ability(G.P_CENTERS.c_base)
+        end
+        return Transform(card, context)
+    end
+end
+local function blueMainEnd(card, context)
+    main_end = (card.area and card.area == G.jokers) and {
+        {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
+            {n=G.UIT.C, config={ref_table = card, align = "m", colour = G.C.JOKER_GREY, r = 0.05, padding = 0.06, func = 'blueprint_compat'}, nodes={
+                {n=G.UIT.T, config={ref_table = card.ability, ref_value = 'blueprint_compat_ui',colour = G.C.UI.TEXT_LIGHT, scale = 0.32*0.8}},
+            }}
+        }}
+    } or nil
+end
+local function blueCompatible(card, context)
+    for i = 1, #G.jokers.cards do
+        if G.jokers[i] == card then other_joker = G.jokers[i+1] end
+    end
+    if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat then
+        card.ability.blueprint_compat = 'compatible'
+    else
+        card.ability.blueprint_compat = 'compatible'
+    end
 end
 
 --Ijiraq Costume Functions
@@ -178,7 +344,7 @@ function Card:calculate_joker(context)
 end
 
 --Jokers
-SMODS.Joker{ --Misprint?
+SMODS.Joker{ --Misprint? REFACTORED
 key = 'reprint',
 pos = {x = 6, y = 2},
 no_mod_badges = true,
@@ -224,7 +390,7 @@ calculate = function(self, card, context)
     end
 end
 }
-SMODS.Joker{ --Raised Fist?
+SMODS.Joker{ --Raised Fist? REFACTORED
     key = 'braised',
     pos = {x = 8, y = 2},
     no_mod_badges = true,
@@ -253,32 +419,10 @@ SMODS.Joker{ --Raised Fist?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.individual then
-            if context.cardarea == G.hand then
-                local tempMult, tempID = -1, -1
-                local raised_card = nil
-                for i = 1, #G.hand.cards do
-                    if tempID <= G.hand.cards[i].base.id and G.hand.cards[i].ability.effect ~= 'Stone Card' then
-                        tempMult = G.hand.cards[i].base.nominal
-                        tempID = G.hand.cards[i].base.id
-                        raised_card = G.hand.cards[i]
-                    end
-                end
-                if raised_card == context.other_card then
-                    if context.other_card.debuff then
-                        return {
-                            message = localize('k_debuffed'),
-                            colour = G.C.RED,
-                        }
-                    else
-                        return Transform(card, context)
-                    end
-                end
-            end
-        end
+        return braisedInd(card, context)
     end
 }
-SMODS.Joker{--Mystic Summit?
+SMODS.Joker{--Mystic Summit? REFACTORED
     key = 'twistit',
     pos = {x = 2, y = 2},
     no_mod_badges = true,
@@ -326,7 +470,7 @@ SMODS.Joker{--Mystic Summit?
         end
     end
 }
-SMODS.Joker{--Loyalty Card?
+SMODS.Joker{--Loyalty Card? REFACTORED
 key = 'redeemed',
 pos = {x = 4, y = 2},
 no_mod_badges = true,
@@ -360,26 +504,10 @@ blueprint_compat = true,
 eternal_compat = false,
 perishable_compat = true,
 calculate = function (self, card, context)
-    if context.joker_main then
-        card.ability.loyalty_remaining = (card.ability.extra.every - 1)
-        if context.blueprint then
-            if card.ability.loyalty_remaining == card.ability.extra.every then
-                return {
-                    x_mult = card.ability.extra.x_mult
-                } 
-            end
-        else
-            if card.ability.loyalty_remaining == 0 then
-                return {
-                    Transform(card, context),
-                    x_mult = 1/card.ability.extra.x_mult
-                }
-            end
-        end
-    end
+    return disloyalMain(card, context)
 end
 }
-SMODS.Joker{--Steel Joker?
+SMODS.Joker{--Steel Joker? REFACTORED
 key = 'iron',
 pos = {x = 7, y = 2},
 no_mod_badges = true,
@@ -426,7 +554,7 @@ calculate = function(self, card, context)
     end
 end
 }
-SMODS.Joker{ --Acrobat?
+SMODS.Joker{ --Acrobat? REFACTORED
 key = 'trapezoid',
 atlas = 'IjiraqJokers',
 pos = {x = 2, y = 1},
@@ -461,7 +589,7 @@ calculate = function(self, card, context)
     end
 end
 }
-SMODS.Joker{--Banner?
+SMODS.Joker{--Banner? REFACTORED
     key = 'flag',
     pos = {x = 1, y = 2},
     no_mod_badges = true,
@@ -498,15 +626,10 @@ SMODS.Joker{--Banner?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
-            return{
-                Transform(card, context),
-                chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left)
-            }
-        end
+        bannerScoring(card, context)
     end
 }
-SMODS.Joker{--Merry Andy?
+SMODS.Joker{--Merry Andy? REFACTORED
     key = 'scaryandy',
     pos = {x = 8, y = 0},
     no_mod_badges = true,
@@ -548,7 +671,7 @@ SMODS.Joker{--Merry Andy?
         end
     end
 }
-SMODS.Joker{ --Troubadour?
+SMODS.Joker{ --Troubadour? REFACTORED
     key = 'bard',
     atlas = 'IjiraqJokers',
     pos = {x = 0, y = 2},
@@ -590,7 +713,7 @@ SMODS.Joker{ --Troubadour?
         end
     end
 }
-SMODS.Joker{ --Hack?
+SMODS.Joker{ --Hack? REFACTORED
     key = 'whack',
     atlas = 'IjiraqJokers',
     pos = {x = 5, y = 2},
@@ -621,43 +744,12 @@ SMODS.Joker{ --Hack?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.repetition then
-            if context.cardarea == G.play then
-                if (context.other_card:get_id() == 2 or
-                context.other_card:get_id() == 3 or
-                context.other_card:get_id() == 4 or
-                context.other_card:get_id() == 5) then
-                    return {
-                        message = localize('k_again_ex'),
-                        repetitions = card.ability.extra.repetitions,
-                        card = card
-                    } 
-                end           
-            end
-        end
-        if context.before and context.cardarea == G.jokers then
-            for _, kard in ipairs(context.scoring_hand) do
-                if kard:get_id() == 2 or kard:get_id() == 3 or kard:get_id() == 4 or kard:get_id() == 5 then
-                    table.insert(card.ability.extra.played_cards, kard)
-                end
-            end
-        end
-        if context.after then
-            local played2, played3, played4, played5 = false, false, false, false
-            for _, v in ipairs(card.ability.extra.played_cards) do
-                if v:get_id() == 2 then played2 = true
-                elseif v:get_id() == 3 then played3 = true
-                elseif v:get_id() == 4 then played4 = true
-                elseif v:get_id() == 5 then played5 = true end
-                if played2 and played3 and played4 and played5 then break end
-            end
-            if played2 and played3 and played4 and played5 then
-                return Transform(card, context)
-            end
-        end
+        return whackRepetition(card, context) 
+        or whackBefore(card, context) 
+        or whackAfter(card, context)
     end
 }
-SMODS.Joker{ --Marble Joker?
+SMODS.Joker{ --Marble Joker? REFACTORED
     key = 'porcelain',
     atlas = 'IjiraqJokers',
     pos = {x = 3, y = 2},
@@ -687,38 +779,10 @@ SMODS.Joker{ --Marble Joker?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.setting_blind and not card.getting_sliced then
-            G.E_MANAGER:add_event(Event({
-                func = function() 
-                    local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
-                    G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                    local card = Card(G.play.T.x + G.play.T.w/2, G.play.T.y, G.CARD_W, G.CARD_H, front, G.P_CENTERS.m_stone, {playing_card = G.playing_card})
-                    card:start_materialize({G.C.SECONDARY_SET.Enhanced})
-                    G.play:emplace(card)
-                    table.insert(G.playing_cards, card)
-                    return true
-                end}))
-            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_stone'), colour = G.C.SECONDARY_SET.Enhanced})
-
-            G.E_MANAGER:add_event(Event({
-                func = function() 
-                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-                    return true
-                end}))
-                draw_card(G.play,G.deck, 90,'up', nil)  
-
-            playing_card_joker_effects({true})
-        end
-        if context.hand_drawn then
-            for _, card in ipairs(G.playing_cards) do
-                card:set_ability(G.P_CENTERS.c_base)
-            end
-            return Transform(card, context)
-        end
+        return porcelainBlind(card, context) or porcelainDrawn(card, context)
     end
-
 }
-SMODS.Joker{ --Golden Joker?
+SMODS.Joker{ --Golden Joker? REFACTORED
     key = 'pyramid',
     atlas = 'IjiraqJokers',
     pos = {x = 9, y = 2},
@@ -759,7 +823,7 @@ SMODS.Joker{ --Golden Joker?
         return Transform(card, context)
 	end,
 }
-SMODS.Joker{ --Credit Card?
+SMODS.Joker{ --Credit Card? REFACTORED
     key = 'expired',
     pos = {x = 5, y = 1},
     no_mod_badges = true,
@@ -799,7 +863,7 @@ SMODS.Joker{ --Credit Card?
         end
     end
 }
-SMODS.Joker{ --Blueprint?
+SMODS.Joker{ --Blueprint? REFACTORED
     key = 'blue',
     pos = {x = 0, y = 3},
     no_mod_badges = true,
@@ -811,23 +875,10 @@ SMODS.Joker{ --Blueprint?
     },
     loc_vars = function (self, info_queue, card)
         card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ''; card.ability.blueprint_compat_check = nil
-        main_end = (card.area and card.area == G.jokers) and {
-            {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
-                {n=G.UIT.C, config={ref_table = card, align = "m", colour = G.C.JOKER_GREY, r = 0.05, padding = 0.06, func = 'blueprint_compat'}, nodes={
-                    {n=G.UIT.T, config={ref_table = card.ability, ref_value = 'blueprint_compat_ui',colour = G.C.UI.TEXT_LIGHT, scale = 0.32*0.8}},
-                }}
-            }}
-        } or nil
+        blueMainEnd(card, context)
         local other_joker
         if G.jokers then
-            for i = 1, #G.jokers.cards do
-                if G.jokers[i] == card then other_joker = G.jokers[i+1] end
-            end
-            if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat then
-                card.ability.blueprint_compat = 'compatible'
-            else
-                card.ability.blueprint_compat = 'compatible'
-            end
+            blueCompatible(card, context)
         end
         return{
             main_end = main_end,
