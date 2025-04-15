@@ -350,7 +350,7 @@ pos = {x = 6, y = 2},
 no_mod_badges = true,
 unlocked = true,
 discovered = true,
---no_collection = true,
+no_collection = true,
 config = {
     extra = {max = 23, min = 0}
 },
@@ -396,7 +396,7 @@ SMODS.Joker{ --Raised Fist? REFACTORED
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {}
     },
@@ -476,7 +476,7 @@ pos = {x = 4, y = 2},
 no_mod_badges = true,
 unlocked = true,
 discovered = true,
---no_collection = true,
+no_collection = true,
 config = {
     extra = {x_mult = 4, every = 1, remaining = "5 remaining"}
 },
@@ -513,7 +513,7 @@ pos = {x = 7, y = 2},
 no_mod_badges = true,
 unlocked = true,
 discovered = true,
---no_collection = true,
+no_collection = true,
 config = {
     extra = {x_mult = 0.2}
 },
@@ -564,7 +564,7 @@ config = {
 },
 unlocked = true,
 discovered = true,
---no_collection = true,
+no_collection = true,
 loc_vars = function (self, info_queue, card)
     return{vars = {
         card.ability.extra.x_mult, 
@@ -635,7 +635,7 @@ SMODS.Joker{--Merry Andy? REFACTORED
     no_mod_badges = true,
     unlocked = true, --Set FALSE on release!!
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {discard_size = 3, hand_size = -1}
     },
@@ -681,7 +681,7 @@ SMODS.Joker{ --Troubadour? REFACTORED
     },
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     loc_vars = function (self, info_queue, card)
         return{vars = {
             card.ability.extra.hand_size, 
@@ -720,7 +720,7 @@ SMODS.Joker{ --Hack? REFACTORED
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {repetitions = 1, played_cards = {}}
     },
@@ -756,7 +756,7 @@ SMODS.Joker{ --Marble Joker? REFACTORED
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {additions = 1}
     },
@@ -789,7 +789,7 @@ SMODS.Joker{ --Golden Joker? REFACTORED
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {money = 4}
     },
@@ -829,7 +829,7 @@ SMODS.Joker{ --Credit Card? REFACTORED
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {credit = 20}
     },
@@ -869,7 +869,7 @@ SMODS.Joker{ --Blueprint? REFACTORED
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {}
     },
