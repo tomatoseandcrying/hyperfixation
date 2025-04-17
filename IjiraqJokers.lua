@@ -250,7 +250,7 @@ end ]]
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
-	ret.current_round.fodder_card = { jkey = 'ijiraq' }
+	ret.current_round.fodder_card = { jkey = 'j_joker' }
 	return ret
 end
 function SMODS.current_mod.reset_game_globals(run_start)
@@ -354,9 +354,10 @@ SMODS.Joker{ --Costume
         end
         card.config.center = G.P_CENTERS[exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker']
         card:set_ability(card.config.center,true)
+        card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
+        card.visiblyIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] ~= nil)
         card:set_sprites(card.config.center)
         card:set_cost()
-        card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
     end,
 --[[ 	calculate = function(self,card,context)
 		if context.before and context.cardarea == G.jokers then

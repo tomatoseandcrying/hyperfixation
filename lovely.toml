@@ -33,7 +33,11 @@ target = "card.lua"
 pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']"
 position = "at"
 payload = '''
-    self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (self.isIjiraq and 'IjiraqJokers') or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
+    if self.isIjiraq then
+        self.children.center.atlas = G.ASSET_ATLAS['IjiraqJokers']
+    else
+        self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
+    end
 '''
 match_indent = true
 times = 1
