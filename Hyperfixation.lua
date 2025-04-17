@@ -55,6 +55,7 @@ end
 
 if config.Ijiraq then
 	SMODS.load_file('IjiraqJokers.lua')()
+	SMODS.load_file('Stickers.lua')()
 end
 
 loc_colour('red')

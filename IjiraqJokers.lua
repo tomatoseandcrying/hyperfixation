@@ -109,18 +109,16 @@ local function braisedMultCalc(card, context)
                 colour = G.C.RED,
             }
         else
-            return Transform(card, context)
+            return{
+            Transform(card, context),
+            h_mult = 2 * tempMult
+            }
         end
     end
 end
-local function braisedHand(card, context)
-    if context.cardarea == G.hand then
+local function braisedCheck(card, context)
+    if context.individual and context.cardarea == G.hand then
         braisedMultCalc(card, context)
-    end
-end
-local function braisedInd(card, context)
-    if context.individual then
-        braisedHand(card, context)
     end
 end
 local function disloyalScoring2(card, context)
@@ -236,7 +234,7 @@ local function blueCompatible(card, context)
 end
 
 --Ijiraq Costume Functions
-function maxx_debug(txt)
+--[[ function maxx_debug(txt)
 	attention_text({
 		text = txt,
 		scale = 1.3, 
@@ -247,7 +245,7 @@ function maxx_debug(txt)
 		offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0},
 		silent = true
 	})
-end
+end ]]
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
@@ -255,11 +253,9 @@ function Game:init_game_object()
 	return ret
 end
 function SMODS.current_mod.reset_game_globals(run_start)
-    if G.GAME.current_round.fodder_card.jkey == 'ijiraq' then
-        local ijiraq_pool = get_current_pool("Joker")
-        local jokester = pseudorandom_element(ijiraq_pool, pseudoseed('ijiraq'))
-        G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
-    end
+    local ijiraq_pool = get_current_pool("Joker")
+    local jokester = pseudorandom_element(ijiraq_pool, pseudoseed('ijiraq'))
+    G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
 end
 local stupidRef = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
@@ -269,13 +265,18 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
         ihatethis = G.localization.descriptions[_c.set][_c.key]['name']
         ihatethis = ihatethis .. '{C:IjiGray}...?{}'
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
+        desc = G.localization.descriptions[_c.set][_c.key]['text']
+        desc[#desc] = desc[#desc] .. "{C:IjiGray}...?{}"
+        G.localization.descriptions[_c.set][_c.key]['text'] = desc
 		changed = true
         init_localization()
     end
     local hatethisonethemost = stupidRef(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
     if changed then
-        ihatethis = ihatethis:sub(1, ihatethis:len() - 17)
+        ihatethis = ihatethis:sub(1, ihatethis:len() - 17) --17 is the exact length of the string "{C:IjiGray}...?{}", change this only if you change the string's length
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
+        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 17)
+        G.localization.descriptions[_c.set][_c.key]['text'] = desc
 		init_localization()
     end
     return hatethisonethemost
@@ -294,7 +295,7 @@ SMODS.Joker{
     no_mod_badges = false,
     unlocked = true,
     discovered = false,
-    rarity = 4,
+    rarity = 3,
     cost = 8,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
@@ -307,6 +308,9 @@ SMODS.Joker{
         return{vars = {
             card.ability.extra.jkey
         }}
+    end,
+    in_pool = function(self, args)
+        return false
     end
 }
 SMODS.Joker{ --Costume
@@ -322,20 +326,42 @@ SMODS.Joker{ --Costume
 	},
 	no_collection = true,
 	loc_vars = function(self,info_queue,card)
-		return {vars = {card.ability.extra.jkey}}
+		return {vars = {card.ability.extra.jkey}}      
 	end,
 	set_ability = function(self, card, initial, delay_sprites)
-        card.config.center = G.P_CENTERS[G.GAME.current_round.fodder_card.jkey or 'j_joker']
+        local exceptions = {
+            j_misprint = 'j_hpfx_reprint',
+            j_raised_fist = 'j_hpfx_braised',
+            j_mystic_summit = 'j_hpfx_twistit',
+            j_loyalty_card = 'j_hpfx_redeemed',
+            j_steel_joker = 'j_hpfx_iron',
+            j_acrobat = 'j_hpfx_trapezoid',
+            j_banner = 'j_hpfx_flag',
+            j_merry_andy = 'j_hpfx_scaryandy',
+            j_troubadour = 'j_hpfx_bard',
+            j_hack = 'j_hpfx_whack',
+            j_marble = 'j_hpfx_porcelain',
+            j_golden = 'j_hpfx_pyramid',
+            j_credit_card = 'j_hpfx_expired',
+            j_blueprint = 'j_hpfx_blue',
+        }
+        if exceptions[G.GAME.current_round.fodder_card.jkey] then
+            local sticker = SMODS.Stickers['hpfx_priceless']
+            sticker.apply(sticker, card, true)
+        end
+        card.config.center = G.P_CENTERS[exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker']
         card:set_ability(card.config.center,true)
         card:set_sprites(card.config.center)
         card:set_cost()
-        card.isIjiraq = true
+        card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
+
     end,
-	calculate = function(self,card,context)
+--[[ 	calculate = function(self,card,context)
 		if context.before and context.cardarea == G.jokers then
 			maxx_debug(G.GAME.current_round.fodder_card.jkey)
 		end
-	end
+
+	end ]]
 }
 local calc_Ref = Card.calculate_joker
 function Card:calculate_joker(context)
@@ -347,7 +373,7 @@ function Card:calculate_joker(context)
 end
 
 --Jokers
-SMODS.Joker{ --Misprint? REFACTORED
+SMODS.Joker{ --Misprint? 
 key = 'reprint',
 pos = {x = 6, y = 2},
 no_mod_badges = true,
@@ -393,7 +419,7 @@ calculate = function(self, card, context)
     end
 end
 }
-SMODS.Joker{ --Raised Fist? REFACTORED
+SMODS.Joker{ --Raised Fist? 
     key = 'braised',
     pos = {x = 8, y = 2},
     no_mod_badges = true,
@@ -422,16 +448,16 @@ SMODS.Joker{ --Raised Fist? REFACTORED
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        return braisedInd(card, context)
+        return braisedCheck(card, context)
     end
 }
-SMODS.Joker{--Mystic Summit? REFACTORED
+SMODS.Joker{--Mystic Summit? 
     key = 'twistit',
     pos = {x = 2, y = 2},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    -- no_collection = true,
+    no_collection = true,
     config = {
         extra = {mult = 15, discards_remaining = 0},
     },
@@ -473,7 +499,7 @@ SMODS.Joker{--Mystic Summit? REFACTORED
         end
     end
 }
-SMODS.Joker{--Loyalty Card? REFACTORED
+SMODS.Joker{--Loyalty Card? 
 key = 'redeemed',
 pos = {x = 4, y = 2},
 no_mod_badges = true,
@@ -510,7 +536,7 @@ calculate = function (self, card, context)
     return disloyalMain(card, context)
 end
 }
-SMODS.Joker{--Steel Joker? REFACTORED
+SMODS.Joker{--Steel Joker? 
 key = 'iron',
 pos = {x = 7, y = 2},
 no_mod_badges = true,
@@ -557,7 +583,7 @@ calculate = function(self, card, context)
     end
 end
 }
-SMODS.Joker{ --Acrobat? REFACTORED
+SMODS.Joker{ --Acrobat? 
 key = 'trapezoid',
 atlas = 'IjiraqJokers',
 pos = {x = 2, y = 1},
@@ -592,13 +618,13 @@ calculate = function(self, card, context)
     end
 end
 }
-SMODS.Joker{--Banner? REFACTORED
+SMODS.Joker{--Banner? 
     key = 'flag',
     pos = {x = 1, y = 2},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    -- no_collection = true,
+    no_collection = true,
     config = {
         extra = {chips = 30},
     },
@@ -632,7 +658,7 @@ SMODS.Joker{--Banner? REFACTORED
         bannerScoring(card, context)
     end
 }
-SMODS.Joker{--Merry Andy? REFACTORED
+SMODS.Joker{--Merry Andy? 
     key = 'scaryandy',
     pos = {x = 8, y = 0},
     no_mod_badges = true,
@@ -674,7 +700,7 @@ SMODS.Joker{--Merry Andy? REFACTORED
         end
     end
 }
-SMODS.Joker{ --Troubadour? REFACTORED
+SMODS.Joker{ --Troubadour? 
     key = 'bard',
     atlas = 'IjiraqJokers',
     pos = {x = 0, y = 2},
@@ -716,7 +742,7 @@ SMODS.Joker{ --Troubadour? REFACTORED
         end
     end
 }
-SMODS.Joker{ --Hack? REFACTORED
+SMODS.Joker{ --Hack? 
     key = 'whack',
     atlas = 'IjiraqJokers',
     pos = {x = 5, y = 2},
@@ -752,7 +778,7 @@ SMODS.Joker{ --Hack? REFACTORED
         or whackAfter(card, context)
     end
 }
-SMODS.Joker{ --Marble Joker? REFACTORED
+SMODS.Joker{ --Marble Joker? 
     key = 'porcelain',
     atlas = 'IjiraqJokers',
     pos = {x = 3, y = 2},
@@ -785,7 +811,7 @@ SMODS.Joker{ --Marble Joker? REFACTORED
         return porcelainBlind(card, context) or porcelainDrawn(card, context)
     end
 }
-SMODS.Joker{ --Golden Joker? REFACTORED
+SMODS.Joker{ --Golden Joker? 
     key = 'pyramid',
     atlas = 'IjiraqJokers',
     pos = {x = 9, y = 2},
@@ -826,7 +852,7 @@ SMODS.Joker{ --Golden Joker? REFACTORED
         return Transform(card, context)
 	end,
 }
-SMODS.Joker{ --Credit Card? REFACTORED
+SMODS.Joker{ --Credit Card? 
     key = 'expired',
     pos = {x = 5, y = 1},
     no_mod_badges = true,
@@ -866,7 +892,7 @@ SMODS.Joker{ --Credit Card? REFACTORED
         end
     end
 }
-SMODS.Joker{ --Blueprint? REFACTORED
+SMODS.Joker{ --Blueprint? 
     key = 'blue',
     pos = {x = 0, y = 3},
     no_mod_badges = true,

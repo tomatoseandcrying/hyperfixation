@@ -1,0 +1,39 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.seal = cardTable.seal"
+position = "after"
+match_indent = true
+payload = '''
+self.isIjiarq  = cardTable.isIjiarq
+self.visiblyIjiraq = cardTable.visiblyIjiraq
+'''
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "seal = self.seal,"
+position = "after"
+match_indent = true
+payload = '''
+isIjiarq = self.isIjiarq,
+visiblyIjiraq = self.visiblyIjiraq,
+'''
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']"
+position = "at"
+payload = '''
+    self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (self.isIjiraq and 'IjiraqJokers') or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
+'''
+match_indent = true
+times = 1

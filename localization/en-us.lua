@@ -275,6 +275,15 @@ return {
                 },
             },
         },
+        Other = {
+            hpfx_priceless = {
+                name = 'Priceless',
+                text = {
+                    "Cannot sell,",
+                    "can still be destroyed.",
+                },
+            },
+        },
         Tag = {
             tag_hpfx_ijidebug = {
                 name = 'Ijiraq Debug',
