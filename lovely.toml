@@ -10,7 +10,7 @@ pattern = "self.seal = cardTable.seal"
 position = "after"
 match_indent = true
 payload = '''
-self.isIjiarq  = cardTable.isIjiarq
+self.isIjiraq  = cardTable.isIjiraq
 self.visiblyIjiraq = cardTable.visiblyIjiraq
 '''
 times = 1
@@ -22,7 +22,7 @@ pattern = "seal = self.seal,"
 position = "after"
 match_indent = true
 payload = '''
-isIjiarq = self.isIjiarq,
+isIjiraq = self.isIjiraq,
 visiblyIjiraq = self.visiblyIjiraq,
 '''
 times = 1

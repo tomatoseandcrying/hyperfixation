@@ -155,7 +155,7 @@ SMODS.Joker{ --Farmer/Cain
             vars = {card.ability.extra.size}
         }
     end,
-    rarity = 3,
+    rarity = 2,
     atlas = 'IsaacJokers',
     pos = {x = 4, y = 1},
     cost = 5,

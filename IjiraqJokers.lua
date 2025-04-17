@@ -111,7 +111,8 @@ local function braisedMultCalc(card, context)
         else
             return{
             Transform(card, context),
-            h_mult = 2 * tempMult
+            h_mult = 2 * tempMult,
+            card = context.other_card
             }
         end
     end
@@ -285,6 +286,8 @@ local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
     if self.isIjiraq then self.visiblyIjiraq = true end
      add2deck_ref(self, from_debuff)
+     local sticker = SMODS.Stickers['hpfx_priceless']
+     sticker.apply(sticker, self, true)
 end
 
 --Ijiraq. Just Ijiraq.
@@ -326,6 +329,22 @@ SMODS.Joker{ --Costume
 	},
 	no_collection = true,
 	loc_vars = function(self,info_queue,card)
+        local exceptions = {
+            j_misprint = 'j_hpfx_reprint',
+            j_raised_fist = 'j_hpfx_braised',
+            j_mystic_summit = 'j_hpfx_twistit',
+            j_loyalty_card = 'j_hpfx_redeemed',
+            j_steel_joker = 'j_hpfx_iron',
+            j_acrobat = 'j_hpfx_trapezoid',
+            j_banner = 'j_hpfx_flag',
+            j_merry_andy = 'j_hpfx_scaryandy',
+            j_troubadour = 'j_hpfx_bard',
+            j_hack = 'j_hpfx_whack',
+            j_marble = 'j_hpfx_porcelain',
+            j_golden = 'j_hpfx_pyramid',
+            j_credit_card = 'j_hpfx_expired',
+            j_blueprint = 'j_hpfx_blue',
+        }
 		return {vars = {card.ability.extra.jkey}}      
 	end,
 	set_ability = function(self, card, initial, delay_sprites)
@@ -354,7 +373,6 @@ SMODS.Joker{ --Costume
         card:set_sprites(card.config.center)
         card:set_cost()
         card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
-
     end,
 --[[ 	calculate = function(self,card,context)
 		if context.before and context.cardarea == G.jokers then
@@ -368,6 +386,17 @@ function Card:calculate_joker(context)
     local ret = calc_Ref(self,context)
     if ret and self.isIjiraq then
         Transfodd(self, context)
+    end
+    if context.setting_blind then
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                play_sound("card1")
+                self:juice_up(0.3, 0.3)
+                return true
+            end,
+        }))
     end
     return ret 
 end

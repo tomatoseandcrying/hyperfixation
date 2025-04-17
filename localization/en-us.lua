@@ -279,7 +279,7 @@ return {
             hpfx_priceless = {
                 name = 'Priceless',
                 text = {
-                    "Cannot sell,",
+                    "Cannot be sold, but",
                     "can still be destroyed.",
                 },
             },
@@ -297,6 +297,9 @@ return {
         dictionary = {
             hpfx_isaac_option = "Play with my TBOI stuff!",
             hpfx_ijiraq_option = "Release the Ijiraq.",
+        },
+        labels = {
+            hpfx_priceless = "Priceless",
         }
     },
 }

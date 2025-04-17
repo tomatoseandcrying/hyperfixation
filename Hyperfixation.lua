@@ -52,11 +52,11 @@ end
 if config.Isaac then
 	SMODS.load_file('IsaacJokers.lua')()
 end
-
 if config.Ijiraq then
 	SMODS.load_file('IjiraqJokers.lua')()
-	SMODS.load_file('Stickers.lua')()
 end
+
+SMODS.load_file('Stickers.lua')()
 
 loc_colour('red')
 G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
@@ -82,9 +82,10 @@ someone23832 for the save button
 Bepis for saving my ass like 12 times oml :sob:
 Aikoyori for saving my ass like 6 other times oh god
 Maxx for helping with the Ijiraq redesign, reformatting of Ijiraq's code to make it FAR less complicated
-Delirium for also reformatting Ijiraq's code to make it far less complicated
+Delirium for also reformatting Ijiraq's code to make it far less complicated, helping me create and fix my sticker
 N' for help with the transformation and dynamic description code
 Larswijn for helping me get Farmer functional!!
+Hamester for helping me fix my sticker
 revo
 
 Thunk for having the worst code known to man someone kill me 
