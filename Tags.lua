@@ -1,3 +1,0 @@
-SMODS.Tag{
-    key = 'ijidebug',
-}
