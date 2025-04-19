@@ -23,7 +23,11 @@ SMODS.Sticker{
         return true
     end,
     apply = function(self, card, val)
-        card.ability[self.key] = val
+        if val then
+            card.ability[self.key] = val
+        else
+            card.ability[self.key] = nil
+        end
         card:set_cost()
     end
 }

@@ -316,7 +316,10 @@ SMODS.Joker{
     end,
     in_pool = function(self, args)
         return false
-    end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        card:remove_sticker('hpfx_priceless')
+    end,
 }
 SMODS.Joker{ --Costume
 	key = 'costume',
