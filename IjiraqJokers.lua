@@ -284,10 +284,12 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
 end
 local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
-    if self.isIjiraq then self.visiblyIjiraq = true end
-     add2deck_ref(self, from_debuff)
-     local sticker = SMODS.Stickers['hpfx_priceless']
-     sticker.apply(sticker, self, true)
+    if self.isIjiraq then 
+        self.visiblyIjiraq = true
+        local sticker = SMODS.Stickers['hpfx_priceless']
+        sticker.apply(sticker, self, true)
+    end
+    add2deck_ref(self, from_debuff)
 end
 
 --Ijiraq. Just Ijiraq.
