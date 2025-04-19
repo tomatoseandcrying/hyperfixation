@@ -357,7 +357,7 @@ SMODS.Joker{ --Costume
         card.config.center = G.P_CENTERS[exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker']
         card:set_ability(card.config.center,true)
         card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
-        card.visiblyIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] ~= nil)
+        card.visiblyIjiraq = false
         card:set_sprites(card.config.center)
         card:set_cost()
     end,
