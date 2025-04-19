@@ -1,16 +1,16 @@
 --Visual Libraries
 SMODS.Atlas{
-    key = 'IjiraqJokers',
+    key = 'IjiraqJokers', --Key for the Jokesters' (and Ijiraq's) atlas
     path = "IjiraqJokers.png",
-    px = 71,
-    py = 95
+    px = 71, --Card width
+    py = 95 --Card height
 }
 
-G.C.IjiGray = HEX('BFD7D5')
+G.C.IjiGray = HEX('BFD7D5') --Custom color for the ...? text, created as a global variable in Hyperfixation.lua, called here like so
 
 
 --General Refactor Functions
-local function stoneGeneration(card, context)
+local function stoneGeneration(card, context) --function to generate a stone card and add it to the deck
     G.E_MANAGER:add_event(Event({
         func = function() 
             local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
@@ -321,7 +321,7 @@ SMODS.Joker{
         card:remove_sticker('hpfx_priceless')
     end,
 }
-SMODS.Joker{ --Costume
+SMODS.Joker{ --Costume (The costume setup only works before, during, or after hand calculations. Anything else will require creation of an exception.)
 	key = 'costume',
 	atlas = 'IjiraqJokers',
 	rarity = 3,
