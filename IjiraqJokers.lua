@@ -1,17 +1,24 @@
 --Visual Libraries
+
 SMODS.Atlas{
-    key = 'IjiraqJokers', --Key for the Jokesters' (and Ijiraq's) atlas
+    --Key of the Jokesters' (and Ijiraq's) atlas. This will be used multiple times in this file.
+    key = 'IjiraqJokers',
+    --Path to the atlas. This is used in a patch to make the Costume overwrite the Jokers' sprites.
     path = "IjiraqJokers.png",
-    px = 71, --Card width
-    py = 95 --Card height
+    --Width of each card in the atlas. These are Jokers, so the width is 71px.
+    px = 71,
+    --Height of each card in the atlas. These are Jokers, so the height is 95px.
+    py = 95
 }
 
-G.C.IjiGray = HEX('BFD7D5') --Custom color for the ...? text, created as a global variable in Hyperfixation.lua, called here like so
+--Custom color for the ...? text, created as a global variable in Hyperfixation.lua, called here like so.
+G.C.IjiGray = HEX('BFD7D5')                           
 
 
 --General Refactor Functions
-local function stoneGeneration(card, context) --function to generate a stone card and add it to the deck
-    G.E_MANAGER:add_event(Event({
+
+local function stoneGeneration(card, context)        --Function that generates a Stone Card and adds it to the Deck.
+    G.E_MANAGER:add_event(Event({                  --Generation event
         func = function() 
             local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
@@ -23,7 +30,7 @@ local function stoneGeneration(card, context) --function to generate a stone car
         end}))
     card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_stone'), colour = G.C.SECONDARY_SET.Enhanced})
 
-    G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event({                  --Event to increase the maximum deck size by 1
         func = function() 
             G.deck.config.card_limit = G.deck.config.card_limit + 1
             return true
@@ -33,9 +40,10 @@ local function stoneGeneration(card, context) --function to generate a stone car
     playing_card_joker_effects({true})   
 end
 
---Charater-Specific Refactor Functions
-local function Transform(card, context)
-    G.E_MANAGER:add_event(Event({
+--Character-Specific Refactor Functions
+
+local function Transform(card, context)             --Function that transforms a joker into Ijiraq.
+    G.E_MANAGER:add_event(Event({                 --Flips the Joker to transform face down.
         trigger = "after",
         delay = 0.15,
         func = function()
@@ -43,7 +51,7 @@ local function Transform(card, context)
             return true
         end,
     }))
-    G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event({                 --While flipped face down, it becomes Ijiraq using set_ability().
         trigger = "after",
         delay = 0.15,
         func = function()
@@ -53,7 +61,7 @@ local function Transform(card, context)
             return true
         end,
     }))
-    G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event({                 --Flips the Joker face up again, but now as Ijiraq.
         trigger = "after",
         delay = 0.15,
         func = function()
@@ -62,8 +70,8 @@ local function Transform(card, context)
         end,
     }))
 end
-local function Transfodd(self, context)
-    G.E_MANAGER:add_event(Event({
+local function Transfodd(self, context)             --Modified Transform() designed for Ijiraq's costume.
+    G.E_MANAGER:add_event(Event({                 --Flips the Joker to transform face down.
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -71,7 +79,7 @@ local function Transfodd(self, context)
             return true
         end
     }))
-    G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event({                 --While flipped face down, it becomes Ijiraq using set_ability()
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -81,7 +89,7 @@ local function Transfodd(self, context)
             return true
         end
     }))
-    G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event({                 --Flips the card face up again, but now as Ijiraq.
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -92,7 +100,7 @@ local function Transfodd(self, context)
         end
     }))
 end
-local function braisedMultCalc(card, context)
+local function braisedMultCalc(card, context)       --(1/2 Raised Fist?) Calculates the mult to be returned in braisedCheck().
     local tempMult, tempID = -1, -1
     local raised_card = nil
     for i = 1, #G.hand.cards do
@@ -117,12 +125,12 @@ local function braisedMultCalc(card, context)
         end
     end
 end
-local function braisedCheck(card, context)
+local function braisedCheck(card, context)         --(2/2) Checks if the score is currently calculating in-hand cards, calls braisedMultCalc() if so.
     if context.individual and context.cardarea == G.hand then
         braisedMultCalc(card, context)
     end
 end
-local function disloyalScoring2(card, context)
+local function disloyalScoring2(card, context)      --(1/4 Loyalty Card?) Function that transforms the card into Ijiraq. Returns xMult as a fraction.
     if card.ability.loyalty_remaining == 0 then
         return {
             Transform(card, context),
@@ -130,27 +138,27 @@ local function disloyalScoring2(card, context)
         }
     end
 end
-local function disloyalBlueprint(card, context)
+local function disloyalBlueprint(card, context)     --(2/4) Function that has Blueprint copy the xMult if it's the proper round.
     if card.ability.loyalty_remaining == card.ability.extra.every then
         return {
             x_mult = card.ability.extra.x_mult
         } 
     end
 end
-local function disloyalScoring(card, context)
+local function disloyalScoring(card, context)      --(3/4) Function that handles the scoring.
     if context.blueprint then
         disloyalBlueprint(card, context)
     else
         disloyalScoring2(card, context)
     end
 end
-local function disloyalMain(card, context)
+local function disloyalMain(card, context)        --(4/4) Function that handles round counter and scoring. Increments the round counter during every scoring hand.
     if context.joker_main then
         card.ability.loyalty_remaining = (card.ability.extra.every - 1)
         disloyalScoring(card, context)
     end
 end
-local function bannerScoring(card, context)
+local function bannerScoring(card, context)      --Banner's effect but the total chips are multiplied by -1.
     if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
         return{
             Transform(card, context),
@@ -158,7 +166,7 @@ local function bannerScoring(card, context)
         }
     end
 end
-local function whackCardCheck(card, context)
+local function whackCardCheck(card, context)   --(1/4 Hack?) Checks if the card applies for repetition. If so, it stores record of its play for later.
     if (context.other_card:get_id() == 2 or
     context.other_card:get_id() == 3 or
     context.other_card:get_id() == 4 or
@@ -170,7 +178,7 @@ local function whackCardCheck(card, context)
         } 
     end
 end
-local function whackRepetition(card, context)
+local function whackRepetition(card, context)  --(2/4) Calls whackCardCheck() when scoring enters the repetition phase.
     if context.repetition then
         if context.cardarea == G.play then
             whackCardCheck(card, context)
@@ -235,6 +243,7 @@ local function blueCompatible(card, context)
 end
 
 --Ijiraq Costume Functions
+
 --[[ function maxx_debug(txt)
 	attention_text({
 		text = txt,
@@ -293,6 +302,7 @@ function Card:add_to_deck(from_debuff)
 end
 
 --Ijiraq. Just Ijiraq.
+
 SMODS.Joker{
     key = 'ijiraq',
     pos = {x = 0, y = 9},
@@ -392,6 +402,7 @@ function Card:calculate_joker(context)
 end
 
 --Jokers
+
 SMODS.Joker{ --Misprint? 
 key = 'reprint',
 pos = {x = 6, y = 2},
