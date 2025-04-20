@@ -17,8 +17,10 @@ G.C.IjiGray = HEX('BFD7D5')
 
 --General Refactor Functions
 
-local function stoneGeneration(card, context)        --Function that generates a Stone Card and adds it to the Deck.
-    G.E_MANAGER:add_event(Event({                  --Generation event
+--Function that generates a Stone Card and adds it to the Deck.
+local function stoneGeneration(card, context)
+    --Generation event       
+    G.E_MANAGER:add_event(Event({                  
         func = function() 
             local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
@@ -30,7 +32,8 @@ local function stoneGeneration(card, context)        --Function that generates a
         end}))
     card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_stone'), colour = G.C.SECONDARY_SET.Enhanced})
 
-    G.E_MANAGER:add_event(Event({                  --Event to increase the maximum deck size by 1
+    --Event to increase the maximum deck size by 1
+    G.E_MANAGER:add_event(Event({                  
         func = function() 
             G.deck.config.card_limit = G.deck.config.card_limit + 1
             return true
@@ -42,7 +45,8 @@ end
 
 --Character-Specific Refactor Functions
 
-local function Transform(card, context)             --Function that transforms a joker into Ijiraq.
+--Function that transforms a joker into Ijiraq.
+local function Transform(card, context)             
     G.E_MANAGER:add_event(Event({                 --Flips the Joker to transform face down.
         trigger = "after",
         delay = 0.15,
@@ -70,8 +74,10 @@ local function Transform(card, context)             --Function that transforms a
         end,
     }))
 end
-local function Transfodd(self, context)             --Modified Transform() designed for Ijiraq's costume.
-    G.E_MANAGER:add_event(Event({                 --Flips the Joker to transform face down.
+--Modified Transform() designed for Ijiraq's costume.
+local function Transfodd(self, context)
+    --Flips the Joker to transform face down.           
+    G.E_MANAGER:add_event(Event({                 
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -79,7 +85,8 @@ local function Transfodd(self, context)             --Modified Transform() desig
             return true
         end
     }))
-    G.E_MANAGER:add_event(Event({                 --While flipped face down, it becomes Ijiraq using set_ability()
+    --While flipped face down, it becomes Ijiraq using set_ability()
+    G.E_MANAGER:add_event(Event({                 
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -89,7 +96,8 @@ local function Transfodd(self, context)             --Modified Transform() desig
             return true
         end
     }))
-    G.E_MANAGER:add_event(Event({                 --Flips the card face up again, but now as Ijiraq.
+    --Flips the card face up again, but now as Ijiraq.
+    G.E_MANAGER:add_event(Event({                 
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -100,7 +108,8 @@ local function Transfodd(self, context)             --Modified Transform() desig
         end
     }))
 end
-local function braisedMultCalc(card, context)       --(1/2 Raised Fist?) Calculates the mult to be returned in braisedCheck().
+--(1/2 Raised Fist?) Calculates the mult to be returned in braisedCheck().
+local function braisedMultCalc(card, context)       
     local tempMult, tempID = -1, -1
     local raised_card = nil
     for i = 1, #G.hand.cards do
@@ -125,12 +134,14 @@ local function braisedMultCalc(card, context)       --(1/2 Raised Fist?) Calcula
         end
     end
 end
-local function braisedCheck(card, context)         --(2/2) Checks if the score is currently calculating in-hand cards, calls braisedMultCalc() if so.
+--(2/2) Checks if the score is currently calculating in-hand cards, calls braisedMultCalc() if so.
+local function braisedCheck(card, context)         
     if context.individual and context.cardarea == G.hand then
         braisedMultCalc(card, context)
     end
 end
-local function disloyalScoring2(card, context)      --(1/4 Loyalty Card?) Function that transforms the card into Ijiraq. Returns xMult as a fraction.
+--(1/4 Loyalty Card?) Function that transforms the card into Ijiraq. Returns xMult as a fraction.
+local function disloyalScoring2(card, context)      
     if card.ability.loyalty_remaining == 0 then
         return {
             Transform(card, context),
@@ -138,27 +149,31 @@ local function disloyalScoring2(card, context)      --(1/4 Loyalty Card?) Functi
         }
     end
 end
-local function disloyalBlueprint(card, context)     --(2/4) Function that has Blueprint copy the xMult if it's the proper round.
+--(2/4) Function that has Blueprint copy the xMult if it's the proper round.
+local function disloyalBlueprint(card, context)     
     if card.ability.loyalty_remaining == card.ability.extra.every then
         return {
             x_mult = card.ability.extra.x_mult
         } 
     end
 end
-local function disloyalScoring(card, context)      --(3/4) Function that handles the scoring.
+--(3/4) Function that handles the scoring.
+local function disloyalScoring(card, context)      
     if context.blueprint then
         disloyalBlueprint(card, context)
     else
         disloyalScoring2(card, context)
     end
 end
-local function disloyalMain(card, context)        --(4/4) Function that handles round counter and scoring. Increments the round counter during every scoring hand.
+--(4/4) Function that handles round counter and scoring. Increments the round counter during main scoring timing.
+local function disloyalMain(card, context)        
     if context.joker_main then
         card.ability.loyalty_remaining = (card.ability.extra.every - 1)
         disloyalScoring(card, context)
     end
 end
-local function bannerScoring(card, context)      --Banner's effect but the total chips are multiplied by -1.
+--Banner's effect but the total chips are multiplied by -1.
+local function bannerScoring(card, context)      
     if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
         return{
             Transform(card, context),
@@ -166,7 +181,8 @@ local function bannerScoring(card, context)      --Banner's effect but the total
         }
     end
 end
-local function whackCardCheck(card, context)   --(1/4 Hack?) Checks if the card applies for repetition. If so, it stores record of its play for later.
+--(1/4 Hack?) Checks if the card played is 2, 3, 4, or 5. If so, it repeats scoring of each according to the number of repetitions.
+local function whackCardCheck(card, context)   
     if (context.other_card:get_id() == 2 or
     context.other_card:get_id() == 3 or
     context.other_card:get_id() == 4 or
@@ -178,13 +194,15 @@ local function whackCardCheck(card, context)   --(1/4 Hack?) Checks if the card 
         } 
     end
 end
-local function whackRepetition(card, context)  --(2/4) Calls whackCardCheck() when scoring enters the repetition phase.
+--(2/4) Calls whackCardCheck() to check for repetitions during a played hand.
+local function whackRepetition(card, context)  
     if context.repetition then
         if context.cardarea == G.play then
             whackCardCheck(card, context)
         end
     end
 end
+--(3/4) Checks if the applicable repetition card is in the scoring hand and if so, stores it for later.
 local function whackBefore(card, context)
     if context.before and context.cardarea == G.jokers then
         for _, kard in ipairs(context.scoring_hand) do
@@ -194,6 +212,7 @@ local function whackBefore(card, context)
         end
     end
 end
+--(4/4) Sets trackers to false after scoring. Each tracker is set to true if the applicable card was played. (e.g: if 2 was played, then played2 = true)
 local function whackAfter(card, context)
     if context.after then
         local played2, played3, played4, played5 = false, false, false, false
@@ -204,16 +223,19 @@ local function whackAfter(card, context)
             elseif v:get_id() == 5 then played5 = true end
             if played2 and played3 and played4 and played5 then break end
         end
+        --If all applicable cards were played at least once, it returns the Transform() function to transform the card into Ijiraq.
         if played2 and played3 and played4 and played5 then
             return Transform(card, context)
         end
     end
 end
+--(1/2 Marble Joker?) Calls the stoneGeneration() function at the start of the blind as long as the card isn't being destroyed. (think Ceremonial Dagger)
 local function porcelainBlind(card, context)
     if context.setting_blind and not card.getting_sliced then
         stoneGeneration(card, context)
     end
 end
+--(2/2) Unenhances all Stone cards in your deck, then calls the Transform() function.
 local function porcelainDrawn(card, context)
     if context.hand_drawn then
         for _, card in ipairs(G.playing_cards) do
@@ -222,6 +244,7 @@ local function porcelainDrawn(card, context)
         return Transform(card, context)
     end
 end
+--(1/2 Blueprint?) Fake blueprint compatibility function. Another hint that this Blueprint is fake.
 local function blueMainEnd(card, context)
     main_end = (card.area and card.area == G.jokers) and {
         {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
@@ -231,6 +254,7 @@ local function blueMainEnd(card, context)
         }}
     } or nil
 end
+--(2/2) Visual Fake Blueprint compatibility function.
 local function blueCompatible(card, context)
     for i = 1, #G.jokers.cards do
         if G.jokers[i] == card then other_joker = G.jokers[i+1] end
@@ -256,17 +280,22 @@ end
 		silent = true
 	})
 end ]]
+
+
 local igo = Game.init_game_object
+--Function that declares a variable that tracks what Joker the Costume will pretend to be. (1/2)
 function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.fodder_card = { jkey = 'j_joker' }
 	return ret
 end
+--Function that has the Costume change its look and abilities each round. (2/3)
 function SMODS.current_mod.reset_game_globals(run_start)
     local ijiraq_pool = get_current_pool("Joker")
     local jokester = pseudorandom_element(ijiraq_pool, pseudoseed('ijiraq'))
     G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
 end
+--Function using generate_card_ui() to template the Costume's description and title, including the generation of '...?' placement, once visiblyIjiraq is true. (3/3)
 local stupidRef = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
    local ihatethis = nil
@@ -291,6 +320,7 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
     end
     return hatethisonethemost
 end
+--Sets Costume's visiblyIjiraq value to true and applies the sticker to the card once it's added to the deck.
 local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
     if self.isIjiraq then 
@@ -301,9 +331,8 @@ function Card:add_to_deck(from_debuff)
     add2deck_ref(self, from_debuff)
 end
 
---Ijiraq. Just Ijiraq.
 
-SMODS.Joker{
+SMODS.Joker{ --Ijiraq.
     key = 'ijiraq',
     pos = {x = 0, y = 9},
     soul_pos = {x = 1, y = 9},
@@ -316,7 +345,7 @@ SMODS.Joker{
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = false,
-    config = {
+    config = { --
         extra = {jkey = 'ijiraq'}
     },
     loc_vars = function (self, info_queue, card)
