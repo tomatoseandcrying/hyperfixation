@@ -19,9 +19,6 @@ SMODS.Sticker{
     needs_enabled_flag = false,
     calculate = function(self, card, context)
     end,
-    should_apply = function(self, card, center, area, bypass_roll)
-        return true
-    end,
     apply = function(self, card, val)
         if val then
             card.ability[self.key] = val
