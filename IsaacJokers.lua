@@ -174,7 +174,7 @@ SMODS.Joker{ --Farmer/Cain
 		G.hand:unhighlight_all()
     end
 }
---[[ SMODS.Joker{ --Iscariot/Judas
+SMODS.Joker{ --Iscariot/Judas
     key = 'iscariot',
     config = {extra = {chips = 30, chip_gain = 3}},
     rarity = 2,
@@ -243,7 +243,7 @@ SMODS.Joker{ --Farmer/Cain
             ScoreReset = false
         end
     end
-} ]]
+}
 --[[ SMODS.Joker{ --Cyanosis/Blue Baby
     key = 'cyanosis',
     config = {
