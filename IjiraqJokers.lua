@@ -283,7 +283,7 @@ end ]]
 
 
 local igo = Game.init_game_object
---Function that declares a variable that tracks what Joker the Costume will pretend to be. (1/2)
+--Function that declares a variable that tracks what Joker the Costume will pretend to be. (1/3)
 function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.fodder_card = { jkey = 'j_joker' }
@@ -320,14 +320,10 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
     end
     return hatethisonethemost
 end
---Sets Costume's visiblyIjiraq value to true and applies the sticker to the card once it's added to the deck.
+--Sets Costume's visiblyIjiraq value to true once it's added to the deck.
 local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
-    if self.isIjiraq then 
-        self.visiblyIjiraq = true
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, self, true)
-    end
+    if self.isIjiraq then self.visiblyIjiraq = true end
     add2deck_ref(self, from_debuff)
 end
 
@@ -392,10 +388,8 @@ SMODS.Joker{ --Costume (The costume setup only works before, during, or after ha
             j_credit_card = 'j_hpfx_expired',
             j_blueprint = 'j_hpfx_blue',
         }
-        if exceptions[G.GAME.current_round.fodder_card.jkey] then
-            local sticker = SMODS.Stickers['hpfx_priceless']
-            sticker.apply(sticker, card, true)
-        end
+        local sticker = SMODS.Stickers['hpfx_priceless']
+        sticker.apply(sticker, card, true)
         card.config.center = G.P_CENTERS[exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker']
         card:set_ability(card.config.center,true)
         card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
