@@ -191,56 +191,36 @@ SMODS.Joker{ --Iscariot/Judas
         return {vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
     end,
     calculate = function (self, card, context)
+        local blind_keys = {
+            bl_window = true,
+            bl_head = true,
+            bl_club = true,
+            bl_goad = true,
+            bl_plant = true,
+            bl_tooth = true,
+            bl_pillar = true,
+            bl_flint = true,
+            bl_eye = true,
+            bl_mouth = true,
+            bl_psychic = true,
+            bl_arm = true,
+            bl_ox = true,
+            bl_final_leaf = true
+        }
         if context.joker_main and (to_big{card.ability.extra.chips, card.ability.extra.chip_gain} > to_big(1)) then
             return{
                 chip_mod = card.ability.extra.chips,
                 message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}},
             card = card
             }
-        end    
-        if context.debuffed_hand then
+        end
+        if G.GAME.blind.triggered and blind_keys[G.GAME.blind.config.blind.key] then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-            ScoreReset = false
             return {
                 message = 'Silver!',
                 colour = G.C.CHIPS,
                 card = card
             }
-        end
-
-        if context.end_of_round then
-            local blind_keys = {
-                bl_window = true,
-                bl_head = true,
-                bl_club = true,
-                bl_goad = true,
-                bl_plant = true,
-                bl_tooth = true,
-                bl_pillar = true,
-                bl_flint = true,
-                bl_eye = true,
-                bl_mouth = true,
-                bl_psychic = true,
-                bl_arm = true,
-                bl_ox = true,
-                bl_final_leaf = true
-            }  
-            if blind_keys[G.GAME.blind.config.blind.key] then
-                if ScoreReset then
-                    sendDebugMessage(ScoreReset)
-                    return {
-                        message = 'Oops!',
-                        card = card
-                    }
-                end  
-            else
-                sendDebugMessage(ScoreReset)
-                return {
-                    message = 'Greedy!',
-                    card = card
-                }
-            end
-            ScoreReset = false
         end
     end
 }
