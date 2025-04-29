@@ -21,7 +21,7 @@ SMODS.Sound({
 })
 
 --General Refactor Functions
-local function chipScoring(card, context)
+function chipScoring(card, context)
     return{
         chip_mod = card.ability.extra.chips,
         sound = "hpfx_thumbsup",
@@ -30,31 +30,21 @@ local function chipScoring(card, context)
     }
     
 end
-local function multScoring(card, context)
+function multScoring(card, context)
     return{
         mult_mod = card.ability.extra.mult,
         sound = 'hpfx_1up',
         message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult}}
     }    
 end
-local function counterIncrement(card, context)
+function counterIncrement(card, context)
     if context.main_eval and (to_big{card.ability.extra.mult, card.ability.extra.mult_gain} > to_big(1)) then
         card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
     end
 end
+talisCheck = (to_big(card.ability.extra.chips) > to_big(1)) and (to_big(card.ability.extra.mult) > to_big(1))
 
 --Character-Specific Refactor Functions
-local function moriahMain(card, context)
-    if context.joker_main and (to_big(card.ability.extra.chips) > to_big(1)) and (to_big(card.ability.extra.mult) > to_big(1)) then --gives chips
-        return{
-            chipScoring(card, context), --chips scoring function
-            extra = {
-            multScoring(card, context), --mult scoring function
-            },
-        }
-    end
-    
-end
 local function maryMain(card, context)
     if context.joker_main and G.GAME.current_round.hands_left == 0 and (to_big(card.ability.extra.mult) > to_big(1)) then --gives mult
         multScoring(card, context) --mult scoring function
@@ -101,29 +91,7 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
 }, true) --farmer
 
 --Jokers
-SMODS.Joker{ --Moriah/Isaac
-    key = 'moriah',
-    config = {extra = {chips = 22, mult = 2, money = 1}},
-    loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.money}}
-    end,
-    calc_dollar_bonus = function(self, card) --Golden Joker-type effect
-        local bonus = card.ability.extra.money
-        if bonus > 0 then return bonus end
-    end,
-    rarity = 2,
-    atlas = 'IsaacJokers',
-    pos = {x = 0, y = 0}, 
-    cost = 6,
-    unlocked = true,
-    discovered = false,
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    calculate = function(self, card, context)
-        return moriahMain(card, context)
-    end
-}
+
 SMODS.Joker{ --Mary/Magdalene
     key = 'mary',
     config = {extra = {mult = 8, mult_gain = 2, rounds = 3, c_rounds = 0}},
@@ -214,7 +182,7 @@ SMODS.Joker{ --Iscariot/Judas
             card = card
             }
         end
-        if G.GAME.blind.triggered and blind_keys[G.GAME.blind.config.blind.key] then
+        if context.debuffed_hand and blind_keys[G.GAME.blind.config.blind.key] then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
             return {
                 message = 'Silver!',

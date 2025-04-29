@@ -50,7 +50,7 @@ SMODS.current_mod.optional_features = function()
 end
 
 if config.Isaac then
-	SMODS.load_file('IsaacJokers.lua')()
+	SMODS.load_file('IsaacCenter.lua')()
 end
 if config.Ijiraq then
 	SMODS.load_file('IjiraqJokers.lua')()
