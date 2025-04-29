@@ -20,6 +20,9 @@ SMODS.Sound({
     path = "gulp.ogg",
 })
 
+--File Loading
+assert(SMODS.load_file('Isaac/Jokers/Moriah.lua'))()
+
 --General Refactor Functions
 function chipScoring(card, context)
     return{
@@ -42,7 +45,6 @@ function counterIncrement(card, context)
         card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
     end
 end
-talisCheck = (to_big(card.ability.extra.chips) > to_big(1)) and (to_big(card.ability.extra.mult) > to_big(1))
 
 --Character-Specific Refactor Functions
 local function maryMain(card, context)
