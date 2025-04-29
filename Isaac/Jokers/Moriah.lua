@@ -27,8 +27,7 @@ SMODS.Joker{
     eternal_compat = true,
     perishable_compat = true,
     calculate = function(self, card, context)
-        local talisCheck = (to_big(card.ability.extra.chips) > to_big(1)) and (to_big(card.ability.extra.mult) > to_big(1))
-        if context.joker_main and talisCheck then --gives chips
+        if context.joker_main and (to_big(card.ability.extra.chips) > to_big(1)) and (to_big(card.ability.extra.mult) > to_big(1)) then --gives chips
             return{
                 chipScoring(card, context), --chips scoring function
                 extra = {

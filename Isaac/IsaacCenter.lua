@@ -20,9 +20,6 @@ SMODS.Sound({
     path = "gulp.ogg",
 })
 
---File Loading
-assert(SMODS.load_file('Isaac/Jokers/Moriah.lua'))()
-
 --General Refactor Functions
 function chipScoring(card, context)
     return{

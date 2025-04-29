@@ -51,6 +51,7 @@ end
 
 if config.Isaac then
 	SMODS.load_file('Isaac/IsaacCenter.lua')()
+	SMODS.load_file('Isaac/Jokers/Moriah.lua')()
 end
 if config.Ijiraq then
 	SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
