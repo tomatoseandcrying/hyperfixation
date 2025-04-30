@@ -31,9 +31,9 @@ SMODS.Joker{
         (to_big(card.ability.extra.chips) > to_big(1)) and
         (to_big(card.ability.extra.mult) > to_big(1)) then --gives chips
             return{
-                unpack(isaacChip(card, context)), --chips scoring function
+                isaacChip(card, context), --chips scoring function
                 extra = {
-                unpack(isaacMult(card, context)), --mult scoring function
+                isaacMult(card, context), --mult scoring function
                 },
             }
         end
