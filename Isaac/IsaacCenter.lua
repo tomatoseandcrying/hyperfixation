@@ -1,26 +1,5 @@
 assert(SMODS.load_file('Isaac/Jokers/Moriah.lua'))()
-
---Character-Specific Refactor Functions
-local function maryMain(card, context)
-    if context.joker_main and G.GAME.current_round.hands_left == 0 and (to_big(card.ability.extra.mult) > to_big(1)) then --gives mult
-        multScoring(card, context) --mult scoring function
-    end
-end
-local function maryEnd(card, context)
-    if context.end_of_round then --triggers at end of round
-        counterIncrement(card, context) --increments the counter
-        if not context.blueprint_card and card.ability.extra.c_rounds >= card.ability.extra.rounds then  -- gains mult only if the required amount of rounds have passed
-            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-            card.ability.extra.c_rounds = 0 --resets counter
-            return { --custom message (for flavor <3)
-                message = 'Yum!',
-                sound = "hpfx_gulp",
-                colour = G.C.MULT
-            }
-        end
-    end
-end
-
+assert(SMODS.load_file('Isaac/Jokers/Mary.lua'))()
 
 
 --Jokers

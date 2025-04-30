@@ -134,7 +134,7 @@ end
 
 
 --[[ 
-People I Need To Credit:
+People I Need To Credit ingame too:
 ------------------------
 me for being awesome and shit
 
