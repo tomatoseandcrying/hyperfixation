@@ -1,47 +1,4 @@
---Visual Libraries
-SMODS.Atlas{
-    key = 'IsaacJokers',
-    path = "IsaacJokers.png",
-    px = 71,
-    py = 95
-}
-
---Audio Libraries
-SMODS.Sound({
-    key = "hpfx_1up",
-    path = "1up.ogg",
-})
-SMODS.Sound({
-    key = "hpfx_thumbsup",
-    path = "thumbsup.ogg",
-})
-SMODS.Sound({
-    key = "hpfx_gulp",
-    path = "gulp.ogg",
-})
-
---General Refactor Functions
-function chipScoring(card, context)
-    return{
-        chip_mod = card.ability.extra.chips,
-        sound = "hpfx_thumbsup",
-        colour = G.C.CHIPS,
-        message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}
-    }
-    
-end
-function multScoring(card, context)
-    return{
-        mult_mod = card.ability.extra.mult,
-        sound = 'hpfx_1up',
-        message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult}}
-    }    
-end
-function counterIncrement(card, context)
-    if context.main_eval and (to_big{card.ability.extra.mult, card.ability.extra.mult_gain} > to_big(1)) then
-        card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
-    end
-end
+assert(SMODS.load_file('Isaac/Jokers/Moriah.lua')())
 
 --Character-Specific Refactor Functions
 local function maryMain(card, context)
@@ -64,30 +21,7 @@ local function maryEnd(card, context)
     end
 end
 
---Consumables
-SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
-    use = function(self, card, area, copier)
-        local testvar = G.GAME.probabilities.normal/(card.ability.extra*(next(SMODS.find_card('j_hpfx_farmer')) and 0.5 or 1))
-        local used_tarot = copier or card
-        local temp_pool = (card.ability.name == 'The Wheel of Fortune' and card.eligible_strength_jokers) or {}
-        if pseudorandom('wheel_of_fortune') < testvar then
-            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function ()
-                local over = false
-                local eligible_card = pseudorandom_element(temp_pool, pseudoseed(
-                    (card.ability.name == 'The Wheel of Fortune' and 'wheel_of_fortune')
-                ))
-                local edition = nil
-                if card.ability.name == 'The Wheel of Fortune' then
-                    edition = poll_edition('wheel_of_fortune', nil, true, true)
-                end
-                eligible_card:set_edition(edition, true)
-                if card.ability.name == 'The Wheel of Fortune' then check_for_unlock({type = 'have_edition'}) end
-                used_tarot:juice_up(0.3, 0.5)
-            return true end}))
-        end
-        sendDebugMessage(testvar, "Logger")
-    end,
-}, true) --farmer
+
 
 --Jokers
 
