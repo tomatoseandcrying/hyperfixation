@@ -1,9 +1,9 @@
 SMODS.Joker{
     key = 'moriah',
     config = {extra = {
-    chips = 22, 
-    mult = 2, 
-    money = 1
+        chips = 22, 
+        mult = 2, 
+        money = 1
     }},
     loc_vars = function (self, info_queue, card)
         return{
@@ -21,7 +21,7 @@ SMODS.Joker{
     atlas = 'IsaacJokers',
     pos = {x = 0, y = 0}, 
     cost = 6,
-    unlocked = true,
+    unlocked = false,
     discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
@@ -38,4 +38,4 @@ SMODS.Joker{
             }
         end
     end
-}
+}--unlock condition: get Oops

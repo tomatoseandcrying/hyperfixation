@@ -150,6 +150,7 @@ Delirium for also reformatting Ijiraq's code to make it far less complicated, he
 N' for help with the transformation and dynamic description code
 Larswijn for helping me get Farmer functional!!
 Hamester for helping me fix my sticker
+Astra for fixing my file splitting/global function issues!
 revo
 
 Thunk for having the worst code known to man someone kill me 
