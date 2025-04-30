@@ -1,4 +1,4 @@
-assert(SMODS.load_file('Isaac/Jokers/Moriah.lua')())
+assert(SMODS.load_file('Isaac/Jokers/Moriah.lua'))()
 
 --Character-Specific Refactor Functions
 local function maryMain(card, context)

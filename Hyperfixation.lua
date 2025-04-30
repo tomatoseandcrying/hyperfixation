@@ -26,20 +26,19 @@ SMODS.Sound({
 })
 --General Refactor Functions
 function isaacChip(card, context)
-    return{
-        chip_mod = card.ability.extra.chips,
-        sound = "hpfx_thumbsup",
-        colour = G.C.CHIPS,
-        message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}
-    }
-    
+	SMODS.calculate_effect({
+		chip_mod = card.ability.extra.chips, 
+		sound = "hpfx_thumbsup", 
+		colour = G.C.CHIPS, 
+		message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}
+	}, card)
 end
 function isaacMult(card, context)
-    return{
+    SMODS.calculate_effect({
         mult_mod = card.ability.extra.mult,
         sound = 'hpfx_1up',
         message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult}}
-    }    
+    }, card)
 end
 function counterIncrement(card, context)
     if context.main_eval and (to_big{card.ability.extra.mult, card.ability.extra.mult_gain} > to_big(1)) then
