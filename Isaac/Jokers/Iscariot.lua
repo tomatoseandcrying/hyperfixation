@@ -37,16 +37,17 @@ SMODS.Joker{ --Iscariot/Judas
                 isaacChip(card, context) --chips scoring function
             }
         end
+        if context.cardarea == G.play and
+        context.main_eval then
         if G.GAME.blind.triggered then
-            print('something')
             if blind_keys[G.GAME.blind.config.blind.key] then
-                chipGain(card, context) --chips gain function
-                return {
-                    message = 'Silver!',
-                    colour = G.C.CHIPS,
-                    card = card
-                }   
-            end
+            chipGain(card, context) --chips gain function
+            return {
+            message = 'Silver!',
+            colour = G.C.CHIPS,
+            card = card
+            } end
+        end
         end
     end
 }
