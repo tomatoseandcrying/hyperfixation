@@ -10,7 +10,6 @@ SMODS.Joker{ --Iscariot/Judas
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    ScoreReset = true,
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
     end,
@@ -36,12 +35,14 @@ SMODS.Joker{ --Iscariot/Judas
             isaacChip(card, context) --chips scoring function
         end
         if context.debuffed_hand and blind_keys[G.GAME.blind.config.blind.key] then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-            return {
-                message = 'Silver!',
-                colour = G.C.CHIPS,
-                card = card
-            }
+            if G.GAME.blind.triggered then
+                chipGain(card, context) --chips gain function
+                return {
+                    message = 'Silver!',
+                    colour = G.C.CHIPS,
+                    card = card
+                }   
+            end
         end
     end
 }

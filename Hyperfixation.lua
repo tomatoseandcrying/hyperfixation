@@ -25,6 +25,9 @@ SMODS.Sound({
     path = "gulp.ogg",
 })
 --General Refactor Functions
+function chipGain(card, context)
+	card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
+end
 function isaacChip(card, context)
 	SMODS.calculate_effect({
 		chip_mod = card.ability.extra.chips, 
