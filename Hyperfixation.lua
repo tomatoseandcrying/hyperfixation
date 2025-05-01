@@ -28,6 +28,19 @@ SMODS.Sound({
 	key = "hpfx_silver",
 	path = "dimedrop.ogg",
 })
+SMODS.Sound({
+	key = "hpfx_death1",
+	path = "Isaac_dies_new.ogg",
+})
+SMODS.Sound({
+	key = "hpfx_death2",
+	path = "Isaac_dies_new_1.ogg",
+})
+SMODS.Sound({
+	key = "hpfx_death3",
+	path = "Isaac_dies_new_2.ogg",
+})
+
 
 --General Refactor Functions
 function chipGain(card, context)

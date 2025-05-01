@@ -50,5 +50,11 @@ SMODS.Joker{ --Iscariot/Judas
                 } end
             end
         end
+        if context.selling_card and selling_self then
+            return {
+            sound = ('hpfx_death') .. math.min(math.floor(pseudorandom("isold", 1, 4)), 3),
+            card = card
+            }
+        end
     end
 }
