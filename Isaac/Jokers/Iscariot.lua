@@ -52,7 +52,7 @@ SMODS.Joker{ --Iscariot/Judas
         end
         if context.selling_self == true then
             return {
-            sound = ('hpfx_death') .. pseudorandom("isold", 1, 3),
+            sound = ('hpfx_hpfx_death') .. pseudorandom("isold", 1, 3),
             card = card
             }
         end
