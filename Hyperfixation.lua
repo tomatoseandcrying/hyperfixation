@@ -24,6 +24,11 @@ SMODS.Sound({
     key = "hpfx_gulp",
     path = "gulp.ogg",
 })
+SMODS.Sound({
+	key = "hpfx_silver",
+	path = "dimedrop.ogg",
+})
+
 --General Refactor Functions
 function chipGain(card, context)
 	card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
