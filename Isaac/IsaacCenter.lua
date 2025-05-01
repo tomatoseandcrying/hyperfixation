@@ -3,11 +3,6 @@ assert(SMODS.load_file('Isaac/Jokers/Mary.lua'))()
 assert(SMODS.load_file('Isaac/Jokers/Farmer.lua'))()
 assert(SMODS.load_file('Isaac/Jokers/Iscariot.lua'))()
 
-
---Jokers
-
-
-
 --[[ SMODS.Joker{ --Cyanosis/Blue Baby
     key = 'cyanosis',
     config = {
