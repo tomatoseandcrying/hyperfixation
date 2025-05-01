@@ -39,7 +39,7 @@ SMODS.Joker{ --Iscariot/Judas
             
         end
         if context.debuffed_hand then
-            if G.GAME.blind.triggered and blind_keys[G.GAME.blind.config.blind.key] then
+            if blind_keys[G.GAME.blind.config.blind.key] then
                 chipGain(card, context) --chips gain function
                 return {
                     message = 'Silver!',
