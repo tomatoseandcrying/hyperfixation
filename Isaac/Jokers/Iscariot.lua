@@ -31,11 +31,15 @@ SMODS.Joker{ --Iscariot/Judas
             bl_final_leaf = true
         }
         if context.joker_main and 
-        (to_big{card.ability.extra.chips, card.ability.extra.chip_gain} > to_big(1)) then
-            isaacChip(card, context) --chips scoring function
+        (to_big(card.ability.extra.chips) > to_big(1)) and
+        (to_big(card.ability.extra.chip_gain) > to_big(1)) then
+            return{
+                isaacChip(card, context) --chips scoring function
+            }
+            
         end
-        if context.debuffed_hand and blind_keys[G.GAME.blind.config.blind.key] then
-            if G.GAME.blind.triggered then
+        if context.debuffed_hand then
+            if G.GAME.blind.triggered and blind_keys[G.GAME.blind.config.blind.key] then
                 chipGain(card, context) --chips gain function
                 return {
                     message = 'Silver!',
