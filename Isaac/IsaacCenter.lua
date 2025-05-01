@@ -1,5 +1,7 @@
 assert(SMODS.load_file('Isaac/Jokers/Moriah.lua'))()
 assert(SMODS.load_file('Isaac/Jokers/Mary.lua'))()
+assert(SMODS.load_file('Isaac/Jokers/Farmer.lua'))()
+assert(SMODS.load_file('Isaac/Jokers/Iscariot.lua'))()
 
 
 --Jokers
