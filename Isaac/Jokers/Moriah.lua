@@ -26,6 +26,9 @@ SMODS.Joker{
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
+    remove_from_deck = function (self, card, from_debuff)
+        play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
+    end,
     calculate = function(self, card, context)
         if context.joker_main and 
         (to_big(card.ability.extra.chips) > to_big(1)) and
