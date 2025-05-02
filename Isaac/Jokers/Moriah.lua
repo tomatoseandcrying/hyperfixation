@@ -13,7 +13,7 @@ SMODS.Joker{
         card.ability.extra.money
     }}
     end,
-    calc_dollar_bonus = function(self, card) --Golden Joker-type effect
+    calc_dollar_bonus = function(self, card)
         local bonus = card.ability.extra.money
         if bonus > 0 then return bonus end
     end,
@@ -32,11 +32,11 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.joker_main and 
         (to_big(card.ability.extra.chips) > to_big(1)) and
-        (to_big(card.ability.extra.mult) > to_big(1)) then --gives chips
+        (to_big(card.ability.extra.mult) > to_big(1)) then
             return{
-                isaacChip(card, context), --chips scoring function
+                isaacChip(card, context),
                 extra = {
-                isaacMult(card, context), --mult scoring function
+                isaacMult(card, context),
                 },
             }
         end

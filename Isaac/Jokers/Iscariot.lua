@@ -37,14 +37,14 @@ SMODS.Joker{ --Iscariot/Judas
         (to_big(card.ability.extra.chips) > to_big(1)) and
         (to_big(card.ability.extra.chip_gain) > to_big(1)) then
             return{
-                isaacChip(card, context) --chips scoring function
+                isaacChip(card, context)
             }
         end
         if context.cardarea == G.play and
         context.main_eval then
             if G.GAME.blind.triggered then
                 if blind_keys[G.GAME.blind.config.blind.key] then
-                chipGain(card, context) --chips gain function
+                chipGain(card, context)
                 return {
                 message = 'Silver!',
                 sound = 'hpfx_silver',

@@ -30,16 +30,16 @@ SMODS.Joker{
     calculate = function (self, card, context)
         if context.joker_main and 
         G.GAME.current_round.hands_left == 0 and 
-        (to_big(card.ability.extra.mult) > to_big(1)) then --gives mult
-            isaacMult(card, context) --mult scoring function
+        (to_big(card.ability.extra.mult) > to_big(1)) then
+            isaacMult(card, context)
         end
-        if context.end_of_round then --triggers at end of round
-            counterIncrement(card, context) --increments the counter
+        if context.end_of_round then
+            counterIncrement(card, context)
             if not context.blueprint_card and 
-            card.ability.extra.c_rounds >= card.ability.extra.rounds then  -- gains mult only if the req rounds
+            card.ability.extra.c_rounds >= card.ability.extra.rounds then
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-                card.ability.extra.c_rounds = 0 --resets counter
-                return { --custom message (for flavor <3)
+                card.ability.extra.c_rounds = 0
+                return {
                     message = 'Yum!',
                     sound = "hpfx_gulp",
                     colour = G.C.MULT
