@@ -53,9 +53,6 @@ SMODS.Joker{ --Iscariot/Judas
                 } end
             end
         end
-        if context.selling_self then
-            
-        end
     end
 }
 --unlock condition: trigger a Boss Blind's effect without Matador three times
