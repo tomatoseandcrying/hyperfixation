@@ -48,3 +48,4 @@ SMODS.Joker{
         end
     end
 }
+--unlock condition: gain at least 7 mult in a single round using Jokers 

@@ -28,3 +28,4 @@ SMODS.Joker{
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end
 }
+--unlock condition: Nope! on Wheel of Fortune 3 times in a row
