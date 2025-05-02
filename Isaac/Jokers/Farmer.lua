@@ -25,5 +25,6 @@ SMODS.Joker{
         G.hand.config.highlighted_limit = G.hand.config.highlighted_limit - card.ability.extra.size
         if G.hand.config.highlighted_limit < 5 then G.hand.config.highlighted_limit = 5 end
 		G.hand:unhighlight_all()
+        play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end
 }
