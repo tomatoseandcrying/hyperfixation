@@ -66,7 +66,7 @@ function counterIncrement(card, context)
         card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
     end
 end
---Consumables
+--Ownerships
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
     use = function(self, card, area, copier)
         local testvar = G.GAME.probabilities.normal/(card.ability.extra*(next(SMODS.find_card('j_hpfx_farmer')) and 0.5 or 1))
@@ -89,6 +89,11 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
         end
         sendDebugMessage(testvar, "Logger")
     end,
+}, true)
+SMODS.Joker:take_ownership('oops', {
+add_to_deck = function(self, card, context)
+	check_for_unlock({type = 'hpfx_oops'})
+end,
 }, true)
 --talisman conversion function
 to_big = to_big or function(x) return x end
@@ -164,11 +169,12 @@ someone23832 for the save button
 Bepis for saving my ass like 12 times oml :sob:
 Aikoyori for saving my ass like 6 other times oh god
 Maxx for helping with the Ijiraq redesign, reformatting of Ijiraq's code to make it FAR less complicated
-Delirium for also reformatting Ijiraq's code to make it far less complicated, helping me create and fix my sticker
+Delirium for also reformatting Ijiraq's code to make it far less complicated, helping me create and fix my sticker, helping me with unlock conditions
 N' for help with the transformation and dynamic description code
 Larswijn for helping me get Farmer functional!!
 Hamester for helping me fix my sticker
 Astra for fixing my file splitting/global function issues!
+FoxDeploy for helping me with unlock conditions
 revo
 
 Thunk for having the worst code known to man someone kill me 
