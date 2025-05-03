@@ -147,7 +147,6 @@ G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
 G.FUNCS.hpfx_save_and_apply = function(e)
     G.ACTIVE_MOD_UI = nil
     SMODS.save_all_config()
-    SMODS.restart_game()
     SMODS.IN_MODS_TAB = nil
 end
 
