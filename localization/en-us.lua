@@ -9,6 +9,9 @@ return {
                     "Earn {C:money}$#3#{} at",
                     "end of the round"
                 },
+                unlock = {
+                    "Have Oops! All 6s in your deck",
+                },
             },
             j_hpfx_mary = {
                 name = 'Mary',

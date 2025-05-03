@@ -21,7 +21,16 @@ SMODS.Joker{
     atlas = 'IsaacJokers',
     pos = {x = 0, y = 0}, 
     cost = 6,
+    no_collection = config.Isaac or false,
     unlocked = false,
+    check_for_unlock = function(self, args)
+        if args.type == 'hpfx_oops' then
+            unlock_card(self)
+        end
+    end,
+    in_pool = function(self, args)
+        return config.Isaac
+    end,
     discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
