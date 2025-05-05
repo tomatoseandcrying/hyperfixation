@@ -1,10 +1,14 @@
 SMODS.Joker{
     key = 'moriah',
-    config = {extra = {
-        chips = 22, 
-        mult = 2, 
-        money = 1
-    }},
+    rarity = 2,
+    atlas = 'IsaacJokers',
+    pos = {x = 0, y = 0}, 
+    cost = 6,
+    unlocked = false,
+    discovered = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
     loc_vars = function (self, info_queue, card)
         return{
         vars = {
@@ -17,20 +21,14 @@ SMODS.Joker{
         local bonus = card.ability.extra.money
         if bonus > 0 then return bonus end
     end,
-    rarity = 2,
-    atlas = 'IsaacJokers',
-    pos = {x = 0, y = 0}, 
-    cost = 6,
-    unlocked = false,
+    in_pool = function (self, args)
+        return Hyperglobal.config.Isaac
+    end,
     check_for_unlock = function(self, args)
         if args.type == 'hpfx_oops' then
             unlock_card(self)
         end
     end,
-    discovered = false,
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
     remove_from_deck = function (self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end,
