@@ -1,13 +1,8 @@
 SMODS.Joker{
     key = 'farmer',
-    loc_txt = {
-    },
     config = {extra = {size = 1}},
     unlocked = false,
     discovered = false,
-    loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.size}}
-    end,
     rarity = 2,
     atlas = 'IsaacJokers',
     pos = {x = 4, y = 1},
@@ -26,6 +21,9 @@ SMODS.Joker{
         if G.hand.config.highlighted_limit < 5 then G.hand.config.highlighted_limit = 5 end
 		G.hand:unhighlight_all()
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
-    end
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.size}}
+    end,
 }
 --unlock condition: Nope! on Wheel of Fortune 3 times in a row

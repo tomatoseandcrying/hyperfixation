@@ -1,11 +1,5 @@
 SMODS.Joker{
     key = 'mary',
-    config = {extra = {
-        mult = 8, 
-        mult_gain = 2, 
-        rounds = 3, 
-        c_rounds = 0
-    }},
     rarity = 1,
     atlas = 'IsaacJokers',
     pos = {x = 1, y = 0},
@@ -46,6 +40,12 @@ SMODS.Joker{
                 }
             end
         end
-    end
+    end,
+    config = {extra = {
+        mult = 8, 
+        mult_gain = 2, 
+        rounds = 3, 
+        c_rounds = 0
+    }},
 }
 --unlock condition: gain at least 7 mult in a single round using Jokers 
