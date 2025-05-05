@@ -28,9 +28,6 @@ SMODS.Joker{
             unlock_card(self)
         end
     end,
-    in_pool = function(self, args)
-        return config.Isaac
-    end,
     discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
