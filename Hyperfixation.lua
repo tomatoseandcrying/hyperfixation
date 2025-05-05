@@ -121,7 +121,7 @@ SMODS.current_mod.config_tab = function ()
 		}},
 		{n = G.UIT.R, config = {align = "bm", padding = 0}, nodes = {
 			{n=G.UIT.C, config={button = "hpfx_save_and_apply", hover = true, colour = HEX("FCB3EA"), minw = 4, minh = 1, align = "cm", r = 0.1}, nodes={
-				{n=G.UIT.T, config={text = "Save (restarts!)", scale = 0.44, colour = G.C.UI.TEXT_LIGHT, align = "cm"}},
+				{n=G.UIT.T, config={text = "Save", scale = 0.44, colour = G.C.UI.TEXT_LIGHT, align = "cm"}},
 			}}
 		}}
 	}}
