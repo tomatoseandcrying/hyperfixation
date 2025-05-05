@@ -10,7 +10,7 @@ return {
                     "end of the round"
                 },
                 unlock = {
-                    "Have Oops! All 6s in your deck",
+                    "Have {C:attention)Oops! All 6s{} in your deck",
                 },
             },
             j_hpfx_mary = {
