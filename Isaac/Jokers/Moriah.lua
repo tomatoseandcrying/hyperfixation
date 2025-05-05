@@ -46,4 +46,5 @@ SMODS.Joker{
             }
         end
     end
-}--unlock condition: get Oops
+}
+
