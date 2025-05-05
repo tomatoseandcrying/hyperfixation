@@ -98,8 +98,8 @@ end,
 --talisman conversion function
 to_big = to_big or function(x) return x end
 
-Hyperglobal = {}
-local config = SMODS.current_mod.config
+Hyperglobal = SMODS.current_mod
+local config = Hyperglobal.config
 
 SMODS.current_mod.config_tab = function ()
 	return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
