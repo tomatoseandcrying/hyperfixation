@@ -9,6 +9,11 @@ SMODS.Joker{
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
+    config = {extra = {
+    chips = 22, 
+    mult = 2, 
+    money = 1
+    }},
     loc_vars = function (self, info_queue, card)
         return{
         vars = {
