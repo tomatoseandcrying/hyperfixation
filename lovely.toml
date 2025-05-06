@@ -41,3 +41,9 @@ payload = '''
 '''
 match_indent = true
 times = 1
+
+[[patches]]
+[[patches.pattern]]
+target = "state_events.lua"
+position = "after"
+payload = "'check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})'''

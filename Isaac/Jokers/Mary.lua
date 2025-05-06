@@ -29,7 +29,9 @@ SMODS.Joker{
     end, ]]
     check_for_unlock = function(self, args)
         if args.type == 'hpfx_7mult' then
-            unlock_card(self)
+            if to_big(args.mult) >= to_big(7) then
+                unlock_card(self)
+            end
         end
     end,
     remove_from_deck = function (self, card, from_debuff)
