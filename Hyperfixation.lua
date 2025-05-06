@@ -99,19 +99,7 @@ add_to_deck = function(self, card, context)
 end,
 }, true)
 
-local preJokerMult = 0
-local postJokerMult = mod_mult
-function mod_mult()
-	local new_mult = postJokerMult()
-	if to_big(new_mult) < to_big(preJokerMult) then
-		hpfx7mult = preJokerMult - new_mult
-	end
-	if to_big(hpfx7mult) >= to_big(7) then
-		check_for_unlock({type = 'hpfx_7mult'})
-	end
-	preJokerMult = new_mult
-	return new_mult
-end
+
 
 local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
 function G.FUNCS.evaluate_play()
