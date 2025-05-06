@@ -22,13 +22,9 @@ SMODS.Joker{
         card.ability.extra.money
     }}
     end,
-    calc_dollar_bonus = function(self, card)
-        local bonus = card.ability.extra.money
-        if bonus > 0 then return bonus end
-    end,
-    in_pool = function (self, args)
+--[[     in_pool = function (self, args)
         return Hyperglobal.config.Isaac
-    end,
+    end, ]]
     check_for_unlock = function(self, args)
         if args.type == 'hpfx_oops' then
             unlock_card(self)
@@ -36,6 +32,10 @@ SMODS.Joker{
     end,
     remove_from_deck = function (self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
+    end,
+    calc_dollar_bonus = function(self, card)
+        local bonus = card.ability.extra.money
+        if bonus > 0 then return bonus end
     end,
     calculate = function(self, card, context)
         if context.joker_main and 
@@ -50,4 +50,5 @@ SMODS.Joker{
         end
     end
 }
-
+--unlock condition: Obtain Oops! All 6s during a run
+--tainted unlock condition: Win a run in no more than 8 rounds

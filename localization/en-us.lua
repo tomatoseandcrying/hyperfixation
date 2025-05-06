@@ -10,7 +10,8 @@ return {
                     "end of the round"
                 },
                 unlock = {
-                    "Have {C:attention)Oops! All 6s{} in your deck",
+                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_oops'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
+                    "{C:inactive}--unlock condition: Obtain Oops! All 6s during a run{}"
                 },
             },
             j_hpfx_mary = {
@@ -21,6 +22,10 @@ return {
                     "Gains {C:mult}+#2#{} Mult",
                     "every {C:attention}#3#{} rounds",
                     "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)"
+                },
+                unlock = {
+                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_7mult'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
+                    "{C:inactive}--unlock condition: Score at least 7 Mult in a single round{}",
                 },
             },
             j_hpfx_farmer = {

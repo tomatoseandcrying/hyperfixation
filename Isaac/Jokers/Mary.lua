@@ -9,6 +9,12 @@ SMODS.Joker{
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
+    config = {extra = {
+        mult = 8, 
+        mult_gain = 2, 
+        rounds = 3, 
+        c_rounds = 0
+    }},
     loc_vars = function (self, info_queue, card)    
         return{
         vars = {
@@ -17,6 +23,14 @@ SMODS.Joker{
             card.ability.extra.rounds, 
             card.ability.extra.c_rounds
         }}
+    end,
+--[[     in_pool = function (self, args)
+        return Hyperglobal.config.Isaac
+    end, ]]
+    check_for_unlock = function(self, args)
+        if args.type == 'hpfx_7mult' then
+            unlock_card(self)
+        end
     end,
     remove_from_deck = function (self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
@@ -41,11 +55,7 @@ SMODS.Joker{
             end
         end
     end,
-    config = {extra = {
-        mult = 8, 
-        mult_gain = 2, 
-        rounds = 3, 
-        c_rounds = 0
-    }},
+
 }
---unlock condition: gain at least 7 mult in a single round using Jokers 
+--unlock condition: Score at least 7 Mult in a single round
+--tainted unlock condition: Let Mary succumb to Madness

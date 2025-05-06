@@ -11,6 +11,7 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
+
 --Audio Libraries
 SMODS.Sound({
     key = "hpfx_1up",
@@ -41,7 +42,6 @@ SMODS.Sound({
 	path = "Isaac_dies_new_2.ogg",
 })
 
-
 --General Refactor Functions
 function chipGain(card, context)
 	card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
@@ -66,7 +66,8 @@ function counterIncrement(card, context)
         card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
     end
 end
---Ownerships
+
+--Ownerships (not unlock)
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
     use = function(self, card, area, copier)
         local testvar = G.GAME.probabilities.normal/(card.ability.extra*(next(SMODS.find_card('j_hpfx_farmer')) and 0.5 or 1))
@@ -90,17 +91,40 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
         sendDebugMessage(testvar, "Logger")
     end,
 }, true)
+
+--Unlock Conditions
 SMODS.Joker:take_ownership('oops', {
 add_to_deck = function(self, card, context)
 	check_for_unlock({type = 'hpfx_oops'})
 end,
 }, true)
+
+local preJokerMult = 0
+local postJokerMult = mod_mult
+function mod_mult()
+	local new_mult = postJokerMult()
+	if to_big(new_mult) < to_big(preJokerMult) then
+		hpfx7mult = preJokerMult - new_mult
+	end
+	if to_big(hpfx7mult) >= to_big(7) then
+		check_for_unlock({type = 'hpfx_7mult'})
+	end
+	preJokerMult = new_mult
+	return new_mult
+end
+
+local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
+function G.FUNCS.evaluate_play()
+	raw_G_FUNCS_evaluate_play()
+	preJokerMult = 0
+end
+
 --talisman conversion function
 to_big = to_big or function(x) return x end
 
+--Config
 Hyperglobal = SMODS.current_mod
 local config = SMODS.current_mod.config
-
 SMODS.current_mod.config_tab = function ()
 	return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
 		{n = G.UIT.R, config = {align = "cl", padding = 0}, nodes = {
@@ -126,7 +150,6 @@ SMODS.current_mod.config_tab = function ()
 		}}
 	}}
 end
-
 SMODS.current_mod.optional_features = function()
 	return {
 		post_trigger = true,
@@ -138,22 +161,21 @@ SMODS.current_mod.optional_features = function()
 		}
 	}
 end
-
-
-SMODS.load_file('Isaac/IsaacCenter.lua')()
-SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
-
-
-SMODS.load_file('Stickers.lua')()
-
-loc_colour('red')
-G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
-
 G.FUNCS.hpfx_save_and_apply = function(e)
     G.ACTIVE_MOD_UI = nil
     SMODS.save_all_config()
     SMODS.IN_MODS_TAB = nil
 end
+
+--File Loading
+SMODS.load_file('Isaac/IsaacCenter.lua')()
+SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
+SMODS.load_file('Stickers.lua')()
+
+--Custom Colors
+loc_colour('red')
+G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
+
 
 
 --[[ 
