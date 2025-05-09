@@ -59,5 +59,3 @@ SMODS.Joker{
     end,
 
 }
---unlock condition: Score at least 7 Mult in a single round
---tainted unlock condition: Let Mary succumb to Madness

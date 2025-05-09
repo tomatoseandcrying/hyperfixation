@@ -50,5 +50,3 @@ SMODS.Joker{
         end
     end
 }
---unlock condition: Obtain Oops! All 6s during a run
---tainted unlock condition: Win a run in no more than 8 rounds

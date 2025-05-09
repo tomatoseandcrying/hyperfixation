@@ -47,8 +47,7 @@ return {
                     "each {C:attention}consecutive{} played card",
                     "that triggers the {C:attention}Boss Blind{}",
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",         
-                    "Sell this card to create",
-                    "a {C:attention}Dark Judas{}"
+                    --"Turns {C:attention}Traitor{} when sold",
         
                 },
             },
