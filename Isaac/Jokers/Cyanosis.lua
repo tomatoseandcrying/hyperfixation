@@ -41,13 +41,10 @@ local raw_mod_mult = mod_mult
 -- mod_mult is used after any mult change to apply effects like Rich Get Richer
 function mod_mult(...)
     local new_mult = raw_mod_mult(...)
-    if to_big(new_mult) < to_big(last_mult) then
-        for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].config.center_key == 'j_hpfx_cyanosis' then
-            G.jokers.cards[i]:calculate_joker
-            ({hyperfixation_mod_mult_decrease = last_mult - new_mult})
-            end
-        end
+    if to_big(new_mult) < to_big(last_mult) and next(SMODS.find_card('j_hpfx_cyanosis')) then
+        SMODS.calculate_context({
+            hyperfixation_mod_mult_decrease = last_mult - new_mult
+        })
     end
     last_mult = new_mult
     return new_mult
