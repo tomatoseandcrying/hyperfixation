@@ -24,9 +24,6 @@ SMODS.Joker{
             card.ability.extra.c_rounds
         }}
     end,
---[[     in_pool = function (self, args)
-        return Hyperglobal.config.Isaac
-    end, ]]
     check_for_unlock = function(self, args)
         if args.type == 'hpfx_7mult' then
             if to_big(args.mult) >= to_big(7) then
@@ -57,5 +54,8 @@ SMODS.Joker{
             end
         end
     end,
+    --[[     in_pool = function (self, args)
+        return Hyperglobal.config.Isaac
+    end, ]]
 
 }
