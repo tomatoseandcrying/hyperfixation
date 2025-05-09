@@ -1,4 +1,4 @@
---[[ SMODS.Joker{ --Cyanosis/Blue Baby
+SMODS.Joker{ --Cyanosis/Blue Baby
     key = 'cyanosis',
     config = {
         extra = {
@@ -35,13 +35,13 @@
             }
         end
     end
-} ]]
+}
 
 --mult-decrease scoring context designed by BakersDozenBagels below!
---[[ local last_mult = 0
-local raw_mod_mult = mod_mult ]]
+local last_mult = 0
+local raw_mod_mult = mod_mult
 -- mod_mult is used after any mult change to apply effects like Rich Get Richer
---[[ function mod_mult(...)
+function mod_mult(...)
     local new_mult = raw_mod_mult(...)
     if to_big(new_mult) < to_big(last_mult) then
         for i = 1, #G.jokers.cards do
@@ -54,11 +54,11 @@ local raw_mod_mult = mod_mult ]]
     end
     last_mult = new_mult
     return new_mult
-end ]]
+end
 
 -- Reset our tracker at the end of the round so we don't see a fake decrease
---[[ local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
+local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
 function G.FUNCS.evaluate_play(...)
     raw_G_FUNCS_evaluate_play(...)
     last_mult = 0
-end ]]
+end
