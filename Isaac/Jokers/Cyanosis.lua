@@ -22,7 +22,6 @@ SMODS.Joker{ --Cyanosis/Blue Baby
             return{isaacChip(card, context)}
         end
         if context.hyperfixation_mod_mult_decrease and
-        (to_big(card.ability.extra.chips) > to_big(1)) and
         not context.blueprint_card then
             card.ability.extra.chips = card.ability.extra.chips +
             (context.hyperfixation_mod_mult_decrease * 10)
