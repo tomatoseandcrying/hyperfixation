@@ -1,10 +1,6 @@
 SMODS.Joker{ --Cyanosis/Blue Baby
     key = 'cyanosis',
-    config = {
-        extra = {
-            chips = 0
-        }
-    },
+    config = {extra = {chips = 0}},
     rarity = 1,
     atlas = 'IsaacJokers',
     pos = {x = 4, y = 1},
@@ -15,19 +11,18 @@ SMODS.Joker{ --Cyanosis/Blue Baby
     eternal_compat = true,
     perishable_compat = true,
     loc_vars = function (self, info_queue, card)
-        return{vars = {
-            card.ability.extra.chips
-        }}
+        return{vars = {card.ability.extra.chips}}
     end,
     calculate = function (self, card, context)
-        if context.joker_main then
-            return{
-                chips = card.ability.extra.chips,
-            card = card
-            }
+        if context.joker_main and
+        (to_big(card.ability.extra.chips) > to_big(1)) then
+            return{isaacChip(card, context)}
         end
-        if context.hyperfixation_mod_mult_decrease and (to_big(card.ability.extra.chips) > to_big(1)) and not context.blueprint_card then
-            card.ability.extra.chips = card.ability.extra.chips + (context.hyperfixation_mod_mult_decrease * 10)
+        if context.hyperfixation_mod_mult_decrease and
+        (to_big(card.ability.extra.chips) > to_big(1)) and
+        not context.blueprint_card then
+            card.ability.extra.chips = card.ability.extra.chips +
+            (context.hyperfixation_mod_mult_decrease * 10)
             return{
                 message = 'Soul...',
                 colour = G.C.CHIPS,
@@ -46,10 +41,9 @@ function mod_mult(...)
     if to_big(new_mult) < to_big(last_mult) then
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i].config.center_key == 'j_hpfx_cyanosis' then
-                G.jokers.cards[i]:calculate_joker({
-                    hyperfixation_mod_mult_decrease = last_mult - new_mult,
-                })
-            end          
+            G.jokers.cards[i]:calculate_joker
+            ({hyperfixation_mod_mult_decrease = last_mult - new_mult})
+            end
         end
     end
     last_mult = new_mult
