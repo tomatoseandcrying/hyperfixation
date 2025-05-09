@@ -10,6 +10,14 @@ SMODS.Joker{
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.size}}
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'hpfx_nope' then
+            unlock_card(self)
+        end
+    end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.size = math.floor(card.ability.extra.size)
         G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.size
@@ -21,9 +29,6 @@ SMODS.Joker{
         if G.hand.config.highlighted_limit < 5 then G.hand.config.highlighted_limit = 5 end
 		G.hand:unhighlight_all()
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
-    end,
-    loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.size}}
     end,
 }
 --unlock condition: Nope! on Wheel of Fortune 3 times in a row

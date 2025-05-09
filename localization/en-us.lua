@@ -25,7 +25,7 @@ return {
                 },
                 unlock = {
                     "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_7mult'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
-                    "{C:inactive}--unlock condition: Score at least 7 Mult in a single round{}",
+                    "{C:inactive}--unlock condition: Score at least 7 Mult within a single hand{}",
                 },
             },
             j_hpfx_farmer = {
@@ -34,6 +34,10 @@ return {
                     "{C:attention}+#1#{} Joker slot",
                     "{C:attention}+#1#{} card selection limit"
                     --"Doubles the probabilities of {C:purple}certain consumables{}" (hidden effect, commented out on purpose)
+                },
+                unlock = {
+                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_nope'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
+                    "{C:inactive}--unlock condition: Nope! on Wheel of Fortune 3 times in a row{}"
                 },
             },
             j_hpfx_iscariot = {

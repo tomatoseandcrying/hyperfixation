@@ -42,6 +42,19 @@ SMODS.Sound({
 	path = "Isaac_dies_new_2.ogg",
 })
 
+--File Loading
+SMODS.load_file('Isaac/IsaacCenter.lua')()
+SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
+SMODS.load_file('Stickers.lua')()
+SMODS.load_file('src/overrides.lua')()
+
+--Custom Colors
+loc_colour('red')
+G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
+
+--talisman conversion function
+to_big = to_big or function(x) return x end
+
 --General Refactor Functions
 function chipGain(card, context)
 	card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
@@ -75,6 +88,7 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
         local temp_pool = (card.ability.name == 'The Wheel of Fortune' and card.eligible_strength_jokers) or {}
         if pseudorandom('wheel_of_fortune') < testvar then
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function ()
+				G.GAME.wheel_fails = 0
                 local over = false
                 local eligible_card = pseudorandom_element(temp_pool, pseudoseed(
                     (card.ability.name == 'The Wheel of Fortune' and 'wheel_of_fortune')
@@ -87,8 +101,29 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
                 if card.ability.name == 'The Wheel of Fortune' then check_for_unlock({type = 'have_edition'}) end
                 used_tarot:juice_up(0.3, 0.5)
             return true end}))
+		else
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+				G.GAME.wheel_fails = G.GAME.wheel_fails + 1
+                attention_text({
+                    text = localize('k_nope_ex'),
+                    scale = 1.3, 
+                    hold = 1.4,
+                    major = used_tarot,
+                    backdrop_colour = G.C.SECONDARY_SET.Tarot,
+                    align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and 'tm' or 'cm',
+                    offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0},
+                    silent = true
+                    })
+                    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.06*G.SETTINGS.GAMESPEED, blockable = false, blocking = false, func = function()
+                        play_sound('tarot2', 0.76, 0.4);return true end}))
+                    play_sound('tarot2', 1, 0.4)
+                    used_tarot:juice_up(0.3, 0.5)
+            return true end }))
         end
-        sendDebugMessage(testvar, "Logger")
+		if G.GAME.wheel_fails <= 3 then
+			check_for_unlock({type = 'hpfx_nope'})
+		end
+        sendDebugMessage(G.GAME.wheel_fails, "Logger")
     end,
 }, true)
 
@@ -98,17 +133,6 @@ add_to_deck = function(self, card, context)
 	check_for_unlock({type = 'hpfx_oops'})
 end,
 }, true)
-
-
-
-local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
-function G.FUNCS.evaluate_play()
-	raw_G_FUNCS_evaluate_play()
-	preJokerMult = 0
-end
-
---talisman conversion function
-to_big = to_big or function(x) return x end
 
 --Config
 Hyperglobal = SMODS.current_mod
@@ -155,14 +179,7 @@ G.FUNCS.hpfx_save_and_apply = function(e)
     SMODS.IN_MODS_TAB = nil
 end
 
---File Loading
-SMODS.load_file('Isaac/IsaacCenter.lua')()
-SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
-SMODS.load_file('Stickers.lua')()
 
---Custom Colors
-loc_colour('red')
-G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
 
 
 
