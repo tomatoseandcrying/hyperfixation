@@ -2,7 +2,7 @@ SMODS.Joker{
     key = 'moriah',
     rarity = 2,
     atlas = 'IsaacJokers',
-    pos = {x = 0, y = 0}, 
+    pos = {x = 0, y = 0},
     cost = 6,
     unlocked = false,
     discovered = false,
@@ -10,15 +10,15 @@ SMODS.Joker{
     eternal_compat = true,
     perishable_compat = true,
     config = {extra = {
-    chips = 22, 
-    mult = 2, 
+    chips = 22,
+    mult = 2,
     money = 1
     }},
     loc_vars = function (self, info_queue, card)
         return{
         vars = {
-        card.ability.extra.chips, 
-        card.ability.extra.mult, 
+        card.ability.extra.chips,
+        card.ability.extra.mult,
         card.ability.extra.money
     }}
     end,
@@ -35,7 +35,7 @@ SMODS.Joker{
         if bonus > 0 then return bonus end
     end,
     calculate = function(self, card, context)
-        if context.joker_main and 
+        if context.joker_main and
         (to_big(card.ability.extra.chips) > to_big(1)) and
         (to_big(card.ability.extra.mult) > to_big(1)) then
             return{

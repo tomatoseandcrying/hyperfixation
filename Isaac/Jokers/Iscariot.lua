@@ -33,7 +33,7 @@ SMODS.Joker{ --Iscariot/Judas
             bl_ox = true,
             bl_final_leaf = true
         }
-        if context.joker_main and 
+        if context.joker_main and
         (to_big(card.ability.extra.chips) > to_big(1)) and
         (to_big(card.ability.extra.chip_gain) > to_big(1)) then
             return{

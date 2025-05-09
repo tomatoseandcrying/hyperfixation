@@ -10,17 +10,17 @@ SMODS.Joker{
     eternal_compat = true,
     perishable_compat = true,
     config = {extra = {
-        mult = 8, 
-        mult_gain = 2, 
-        rounds = 3, 
+        mult = 8,
+        mult_gain = 2,
+        rounds = 3,
         c_rounds = 0
     }},
-    loc_vars = function (self, info_queue, card)    
+    loc_vars = function (self, info_queue, card)
         return{
         vars = {
-            card.ability.extra.mult, 
-            card.ability.extra.mult_gain, 
-            card.ability.extra.rounds, 
+            card.ability.extra.mult,
+            card.ability.extra.mult_gain,
+            card.ability.extra.rounds,
             card.ability.extra.c_rounds
         }}
     end,
@@ -36,13 +36,13 @@ SMODS.Joker{
     end,
     calculate = function (self, card, context)
         if context.joker_main and 
-        G.GAME.current_round.hands_left == 0 and 
+        G.GAME.current_round.hands_left == 0 and
         (to_big(card.ability.extra.mult) > to_big(1)) then
             isaacMult(card, context)
         end
         if context.end_of_round then
             counterIncrement(card, context)
-            if not context.blueprint_card and 
+            if not context.blueprint_card and
             card.ability.extra.c_rounds >= card.ability.extra.rounds then
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                 card.ability.extra.c_rounds = 0

@@ -31,7 +31,7 @@ SMODS.Sound({
 })
 SMODS.Sound({
 	key = "hpfx_death1",
-	path = "Isaac_dies_new.ogg",S
+	path = "Isaac_dies_new.ogg",
 })
 SMODS.Sound({
 	key = "hpfx_death2",
@@ -61,9 +61,9 @@ function chipGain(card, context)
 end
 function isaacChip(card, context)
 	SMODS.calculate_effect({
-		chip_mod = card.ability.extra.chips, 
-		sound = "hpfx_thumbsup", 
-		colour = G.C.CHIPS, 
+		chip_mod = card.ability.extra.chips,
+		sound = "hpfx_thumbsup",
+		colour = G.C.CHIPS,
 		message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}
 	}, card)
 end
@@ -123,7 +123,6 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
 		if G.GAME.wheel_fails >= 2 then
 			check_for_unlock({type = 'hpfx_nope'})
 		end
-        sendDebugMessage(G.GAME.wheel_fails, "Logger")
     end,
 }, true)
 
@@ -173,7 +172,7 @@ SMODS.current_mod.optional_features = function()
 		}
 	}
 end
-G.FUNCS.hpfx_save_and_apply = function(e)
+G.FUNCS.hpfx_save_and_apply = function()
     G.ACTIVE_MOD_UI = nil
     SMODS.save_all_config()
     SMODS.IN_MODS_TAB = nil
