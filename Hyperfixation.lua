@@ -120,7 +120,7 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
                     used_tarot:juice_up(0.3, 0.5)
             return true end }))
         end
-		if G.GAME.wheel_fails <= 3 then
+		if G.GAME.wheel_fails >= 3 then
 			check_for_unlock({type = 'hpfx_nope'})
 		end
         sendDebugMessage(G.GAME.wheel_fails, "Logger")
