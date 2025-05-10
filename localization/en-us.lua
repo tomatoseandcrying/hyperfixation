@@ -59,6 +59,10 @@ return {
                     "{s:0.7}I hate the Flint{}",
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
                 },
+                unlock = {
+                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_momheart'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
+                    "{C:inactive}--unlock condition: Defeat Crimson Heart ten times{}",
+                },
             },
 
             j_hpfx_ijiraq = {

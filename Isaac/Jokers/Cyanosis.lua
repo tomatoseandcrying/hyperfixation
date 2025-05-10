@@ -13,6 +13,11 @@ SMODS.Joker{ --Cyanosis/Blue Baby
     loc_vars = function (self, info_queue, card)
         return{vars = {card.ability.extra.chips}}
     end,
+    check_for_unlock = function(self, args)
+    if args.type == 'hpfx_momheart' then
+        unlock_card(self)
+    end
+    end,
     remove_from_deck = function (self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end,

@@ -132,6 +132,8 @@ add_to_deck = function(self, card, context)
 	check_for_unlock({type = 'hpfx_oops'})
 end,
 }, true)
+G.PROFILES[G.SETTINGS.profile].crimsonCount = nil
+
 
 --Config
 Hyperglobal = SMODS.current_mod
