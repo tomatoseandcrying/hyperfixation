@@ -10,6 +10,8 @@ local bdf = Blind.defeat
 function Blind:defeat(silent)
     if self.name == 'Crimson Heart' then
         G.PROFILES[G.SETTINGS.profile].crimsonCount = G.PROFILES[G.SETTINGS.profile].crimsonCount + 1
+        G:save_progress()
+        G.FILE_HANDLER.force = true
         if G.PROFILES[G.SETTINGS.profile].crimsonCount >= 1 then
             check_for_unlock({type = 'hpfx_momheart'})
         end
