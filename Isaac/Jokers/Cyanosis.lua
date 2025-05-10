@@ -3,7 +3,7 @@ SMODS.Joker{ --Cyanosis/Blue Baby
     config = {extra = {chips = 0}},
     rarity = 1,
     atlas = 'IsaacJokers',
-    pos = {x = 4, y = 1},
+    pos = {x = 4, y = 0},
     cost = -1,
     unlocked = false,
     discovered = false,

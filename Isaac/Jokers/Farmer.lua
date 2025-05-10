@@ -5,7 +5,7 @@ SMODS.Joker{
     discovered = false,
     rarity = 2,
     atlas = 'IsaacJokers',
-    pos = {x = 4, y = 1},
+    pos = {x = 2, y = 0},
     cost = 5,
     blueprint_compat = false,
     eternal_compat = true,
