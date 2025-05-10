@@ -133,7 +133,7 @@ SMODS.Joker:take_ownership('oops', {
 	end,
 }, true)
 
-G.PROFILES[G.SETTINGS.profile].crimsonCount = nil
+G.PROFILES[G.SETTINGS.profile].crimsonCount = crimsonCount or 0
 
 
 --Config
