@@ -3,15 +3,14 @@ function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.fodder_card = { jkey = 'j_joker' }
     ret.wheel_fails = 0
-    ret.crimsonCount = crimsonCount or 0
 	return ret
 end
 
 local bdf = Blind.defeat
 function Blind:defeat(silent)
     if self.name == 'Crimson Heart' then
-        G.GAME.crimsonCount = G.GAME.crimsonCount + 1
-        if G.GAME.crimsonCount >= 1 then
+        G.PROFILES[G.SETTINGS.profile].crimsonCount = G.PROFILES[G.SETTINGS.profile].crimsonCount + 1
+        if G.PROFILES[G.SETTINGS.profile].crimsonCount >= 1 then
             check_for_unlock({type = 'hpfx_momheart'})
         end
     end
