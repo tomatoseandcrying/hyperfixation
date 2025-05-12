@@ -25,7 +25,7 @@ function SMODS.calculate_context(context, return_table)
             check_for_unlock({type = 'hpfx_devil'})
         end
     end
-    return ccc(self, return_table)
+    return ccc(context, return_table)
 end
 
 function SMODS.current_mod.reset_game_globals(run_start)
