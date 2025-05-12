@@ -19,7 +19,7 @@ end
 
 local ccc = SMODS.calculate_context
 function SMODS.calculate_context(context, return_table)
-    if context.using_consumeable and context.consumeable.ability.mod_conv == 'm_gold' then
+    if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
         G.PROFILES[G.SETTINGS.profile].devilCount = G.PROFILES[G.SETTINGS.profile].devilCount + 1
         if G.PROFILES[G.SETTINGS.profile].devilCount >= 3 then
             check_for_unlock({type = 'hpfx_devil'})
