@@ -50,6 +50,10 @@ return {
                     --"Turns {C:attention}Traitor{} when sold",
         
                 },
+                unlock = {
+                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_devil'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
+                    "{C:inactive}--unlock condition: Use The Devil 3 times{}"
+                },  
             },
             j_hpfx_cyanosis = {
                 name = 'Cyanosis',
