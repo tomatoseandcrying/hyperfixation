@@ -17,6 +17,17 @@ function Blind:defeat(silent)
     return bdf(self, silent)
 end
 
+local ccc = SMODS.calculate_context
+function SMODS.calculate_context(context, return_table)
+    if context.using_consumeable and context.consumeable.ability.mod_conv == 'm_gold' then
+        G.PROFILES[G.SETTINGS.profile].devilCount = G.PROFILES[G.SETTINGS.profile].devilCount + 1
+        if G.PROFILES[G.SETTINGS.profile].devilCount >= 3 then
+            check_for_unlock({type = 'hpfx_devil'})
+        end
+    end
+    return ccc(self, return_table)
+end
+
 function SMODS.current_mod.reset_game_globals(run_start)
     local ijiraq_pool = get_current_pool("Joker")
     local jokester = pseudorandom_element(ijiraq_pool, pseudoseed('ijiraq'))

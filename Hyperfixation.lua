@@ -125,7 +125,6 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
 		end
     end,
 }, true)
-
 --Unlock Conditions
 SMODS.Joker:take_ownership('oops', {
 	add_to_deck = function(self, card, context)
@@ -134,6 +133,7 @@ SMODS.Joker:take_ownership('oops', {
 }, true)
 
 G.PROFILES[G.SETTINGS.profile].crimsonCount = crimsonCount or 0
+G.PROFILES[G.SETTINGS.profile].devilCount = devilCount or 0
 
 
 --Config

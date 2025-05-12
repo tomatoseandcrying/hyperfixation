@@ -3,7 +3,7 @@ SMODS.Joker{ --Iscariot/Judas
     config = {extra = {chips = 30, chip_gain = 3}},
     rarity = 2,
     atlas = 'IsaacJokers',
-    pos = {x = 4, y = 1},
+    pos = {x = 3, y = 0},
     cost = 3,
     unlocked = false,
     discovered = false,
@@ -12,6 +12,11 @@ SMODS.Joker{ --Iscariot/Judas
     perishable_compat = true,
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'hpfx_devil' then
+            unlock_card(self)
+        end
     end,
     remove_from_deck = function (self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
