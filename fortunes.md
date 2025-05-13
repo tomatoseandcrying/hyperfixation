@@ -21,6 +21,6 @@ You are guided by your shadow
 "Cyanosis" Unlock:
 The crimson folds ten times over
 "Soiled" Unlock:
-shit yourself
+Set Blue, then Blue, then Blue the Blue
 
 

@@ -8,3 +8,4 @@ assert(SMODS.load_file('Isaac/Jokers/Cyanosis.lua'))()
 --tainted unlock condition: Destroy Mary using Madness Joker
 --tainted unlock condition: Feed Swashbuckler to Ceremonial Dagger
 --tainted unlock condition: Win a run with Dark Judas
+--tainted unlock condition: Have Blueprint copy Blue Joker
