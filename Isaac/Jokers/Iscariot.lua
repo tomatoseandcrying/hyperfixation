@@ -4,6 +4,7 @@ SMODS.Joker{ --Iscariot/Judas
     rarity = 2,
     atlas = 'IsaacJokers',
     pos = {x = 3, y = 0},
+    soul_pos = {x = 3, y = 1},
     cost = 3,
     unlocked = false,
     discovered = false,
