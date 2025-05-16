@@ -1,7 +1,7 @@
 SMODS.Joker{ --Iscariot/Judas
     key = 'iscariot',
-    config = {extra = {chips = 30, chip_gain = 3}},
-    rarity = 2,
+    config = {extra = {chips = 30, chip_gain = 4}},
+    rarity = 1,
     atlas = 'IsaacJokers',
     pos = {x = 3, y = 0},
     cost = 3,

@@ -44,8 +44,8 @@ return {
                 name = 'Iscariot',
                 text = {
                     "This Joker gains {C:chips}+#2#{} Chips for",
-                    "each {C:attention}consecutive{} played card",
-                    "that triggers the {C:attention}Boss Blind{}",
+                    "each played card if played hand",
+                    "triggers the {C:attention}Boss Blind{}",
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",         
                     --"Turns {C:attention}Traitor{} when sold",
         
