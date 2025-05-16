@@ -17,11 +17,10 @@ return {
             j_hpfx_mary = {
                 name = 'Mary',
                 text = {
-                    "{C:mult}+#1#{} Mult in {C:attention}final",
+                    "{C:mult}+#1#{} Mult on {C:attention}final",
                     "{C:attention}hand{} of round",
                     "Gains {C:mult}+#2#{} Mult",
                     "every {C:attention}#3#{} rounds",
-                    "{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult)"
                 },
                 unlock = {
                     "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_7mult'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
@@ -59,7 +58,7 @@ return {
                 name = 'Cyanosis',
                 text = {
                     "Each time you lose scoring {C:mult}Mult{}, this",
-                    "Joker gains {X:chips, C:white}X10{} that amount of {C:chips}Chips{}",
+                    "Joker gains {X:chips,C:white}X10{} that amount of {C:chips}Chips{}",
                     "{s:0.7}I hate the Flint{}",
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
                 },
