@@ -5,3 +5,4 @@ Discord server for the mod is [right over here!](https://discord.gg/QwJtrdy4xS)
 
 [Wiki page](https://balatromods.miraheze.org/wiki/Hyperfixation) is up and in development!
 
+New images will be added with the release of version 0.5!
