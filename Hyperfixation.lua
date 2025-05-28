@@ -181,6 +181,22 @@ G.FUNCS.hpfx_save_and_apply = function()
     SMODS.IN_MODS_TAB = nil
 end
 
+--Quips
+eternal_jimbo = Card_Character.add_speech_bubble
+jEternal = jEternal or false
+Card_Character.add_speech_bubble = function (self, arg1, arg2, arg3)
+	for _, v in ipairs(SMODS.find_card('j_joker')) do
+		if v.ability.eternal then jEternal = true break
+		else jEternal = false
+		end
+	end
+	if jEternal then
+	eternal_jimbo(self, 'eternal_jimbo' .. pseudorandom("ejimbo", 1, 2), nil, {quip = true})
+	else
+	eternal_jimbo(self, arg1, arg2, arg3)
+	end
+end
+
 
 
 
