@@ -320,13 +320,15 @@ return {
             hpfx_priceless = "Priceless",
         },
         quips = {
-            eternal_jimbo1 = 
+            eternal_jimbo1 = {
             "They say you draw the",
             "hand life gives you...",
             "I drew eternity.",
-            eternal_jimbo2 =
+            },
+            eternal_jimbo2 = {
             "Your luck remains fleeting,",
             "while Jimbo remains eternal."
+            }
         },
     },
 }
