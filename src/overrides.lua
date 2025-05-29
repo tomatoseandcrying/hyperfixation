@@ -3,6 +3,7 @@ function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.fodder_card = { jkey = 'j_joker' }
     ret.wheel_fails = 0
+    ret.hpfx_nothingEverHappens = true
 	return ret
 end
 
@@ -37,7 +38,7 @@ end
 local chud = Card.calculate_joker
 function Card:calculate_joker(context)
     local ret, trig = chud(self, context)
-    if next(ret) or trig then
+    if (ret and next(ret)) or trig then
         G.GAME.hpfx_nothingEverHappens = false
     end
     if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets_ante >= 3 then

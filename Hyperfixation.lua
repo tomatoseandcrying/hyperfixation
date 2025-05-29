@@ -45,6 +45,7 @@ SMODS.Sound({
 --File Loading
 SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
+SMODS.load_file('Love of the Game/LoveCenter.lua')()
 SMODS.load_file('Stickers.lua')()
 SMODS.load_file('src/overrides.lua')()
 
@@ -134,7 +135,6 @@ SMODS.Joker:take_ownership('oops', {
 
 G.PROFILES[G.SETTINGS.profile].crimsonCount = crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].devilCount = devilCount or 0
-G.GAME.hpfx_nothingEverHappens = true
 
 
 --Config
