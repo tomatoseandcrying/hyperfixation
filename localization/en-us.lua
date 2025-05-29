@@ -68,6 +68,19 @@ return {
                 },
             },
 
+            j_hpfx_chud = {
+                name = 'chud joker',
+                text = {
+                    "{C:inactive}nothing",
+                    "{C:inactive}ever",
+                    "{C:inactive}happens",
+                },
+                unlock = {
+                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_chud'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
+                    "{C:inactive}--unlock condition: Win a Blind past Ante 2 with all Jokers untriggered{}"
+                },
+            },
+
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {

@@ -134,6 +134,7 @@ SMODS.Joker:take_ownership('oops', {
 
 G.PROFILES[G.SETTINGS.profile].crimsonCount = crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].devilCount = devilCount or 0
+G.GAME.hpfx_nothingEverHappens = true
 
 
 --Config

@@ -33,3 +33,19 @@ function SMODS.current_mod.reset_game_globals(run_start)
     local jokester = pseudorandom_element(ijiraq_pool, pseudoseed('ijiraq'))
     G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
 end
+
+local chud = Card.calculate_joker
+function Card:calculate_joker(context)
+    local ret, trig = chud(self, context)
+    if next(ret) or trig then
+        G.GAME.hpfx_nothingEverHappens = false
+    end
+    if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets_ante >= 3 then
+        if G.GAME.hpfx_nothingEverHappens then
+            check_for_unlock({type = 'hpfx_chud'})
+        else
+            G.GAME.hpfx_nothingEverHappens = true
+        end
+    end
+    return chud(self, context)
+end
