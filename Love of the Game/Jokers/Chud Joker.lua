@@ -35,13 +35,17 @@ SMODS.Joker{
         if context.joker_main and
            (to_big(card.ability.extra.xmult) > to_big(1)) then
             return {
-                SMODS.calculate_effect({
-                    mult_mod = card.ability.extra.xmult,
-                    message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.xmult}}
-                }, card),
+                Xmult = card.ability.extra.xmult,
             }
         end
-
+        if context.chudxmult and not context.blueprint_card then
+            card.ability.extra.xmult = context.chudxmult
+            return {
+                message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
+                colour = G.C.MULT,
+                card = card,
+            }
+        end
     end,
 }
 
