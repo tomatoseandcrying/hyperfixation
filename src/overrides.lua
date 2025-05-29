@@ -41,7 +41,7 @@ function Card:calculate_joker(context)
     if (ret and next(ret)) or trig then
         G.GAME.hpfx_nothingEverHappens = false
     end
-    if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets_ante >= 3 then
+    if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets.ante >= 3 then
         if G.GAME.hpfx_nothingEverHappens then
             check_for_unlock({type = 'hpfx_chud'})
         else
