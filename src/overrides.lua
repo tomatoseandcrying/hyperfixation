@@ -29,7 +29,7 @@ function SMODS.calculate_context(context, return_table)
     end
     if context.using_consumeable and not context.blueprint_card and G.GAME.chudhit > 0 then
         for _, card in ipairs(G.jokers.cards) do
-            if card.key == "chud" then
+            if card.key == "j_hpfx_chud" then
                 card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
                 return {
                     message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
