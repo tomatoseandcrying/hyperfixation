@@ -27,18 +27,6 @@ function SMODS.calculate_context(context, return_table)
             check_for_unlock({type = 'hpfx_devil'})
         end
     end
-    if context.using_consumeable and not context.blueprint_card and G.GAME.chudhit > 0 then
-        for _, card in ipairs(G.jokers.cards) do
-            if card.key == "j_hpfx_chud" then
-                card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-                return {
-                    message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
-                    colour = G.C.MULT,
-                    card = card,
-                }
-            end
-        end
-    end
     return ccc(context, return_table)
 end
 
@@ -48,18 +36,18 @@ function SMODS.current_mod.reset_game_globals(run_start)
     G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
 end
 
-local chud = Card.calculate_joker
+local chudlock = Card.calculate_joker
 function Card:calculate_joker(context)
-    local ret, trig = chud(self, context)
+    local ret, trig = chudlock(self, context)
     if (ret and next(ret)) or trig then
         G.GAME.hpfx_nothingEverHappens = false
     end
     if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets.ante >= 3 then
         if G.GAME.hpfx_nothingEverHappens then
-            check_for_unlock({type = 'hpfx_chud'})
+            check_for_unlock({type = 'hpfx_chudlock'})
         else
             G.GAME.hpfx_nothingEverHappens = true
         end
     end
-    return chud(self, context)
+    return chudlock(self, context)
 end
