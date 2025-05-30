@@ -48,9 +48,7 @@ SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
 SMODS.load_file('Love of the Game/LoveCenter.lua')()
 SMODS.load_file('Stickers.lua')()
-for _, def in ipairs(SMODS.Centers) do
-    print("Registered joker key:", def.key)
-end
+
 
 --Custom Colors
 loc_colour('red')
@@ -94,20 +92,6 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function ()
 				G.GAME.wheel_fails = 0
 				G.GAME.chudhit = G.GAME.chudhit + 1
-				for _, card in ipairs(G.jokers.cards) do
-				print("Joker key:", card.key, "xmult:", card.ability and card.ability.extra and card.ability.extra.xmult)
-    			if card.key == "j_hpfx_chud" then
-        		card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-				print("Chud Joker found! New xmult:", card.ability.extra.xmult)
-        		attention_text({
-				text = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
-				scale = 1.2,
-				hold = 1.2,
-				major = card,
-				colour = G.C.MULT,
-				})
-				end
-				end
                 local over = false
                 local eligible_card = pseudorandom_element(temp_pool, pseudoseed(
                     (card.ability.name == 'The Wheel of Fortune' and 'wheel_of_fortune')

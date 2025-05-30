@@ -27,7 +27,7 @@ SMODS.Joker{
         end
     end,
     check_for_unlock = function(self, args)
-        if args.type == 'hpfx_chudlock' then
+        if args.type == 'hpfx_chud' then
             unlock_card(self)
         end
     end,
