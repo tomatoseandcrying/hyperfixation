@@ -92,6 +92,7 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function ()
 				G.GAME.wheel_fails = 0
 				G.GAME.chudhit = G.GAME.chudhit + 1
+				SMODS.calculate_context{chudhit = true}
                 local over = false
                 local eligible_card = pseudorandom_element(temp_pool, pseudoseed(
                     (card.ability.name == 'The Wheel of Fortune' and 'wheel_of_fortune')
