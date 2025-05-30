@@ -72,7 +72,7 @@ return {
                 name = 'chud joker',
                 text = {
                     "nothing ever happens",
-                    "{C:inactive}Currently {C:mult}X#1#{} {C:inactive}Mult{}",
+                    "{C:inactive,s:0.7}(Currently {X:mult,C:white,s:0.7}X#1#{} {C:inactive,s:0.7}Mult){}",
 
 
                 },

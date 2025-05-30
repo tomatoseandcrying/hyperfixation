@@ -6,7 +6,7 @@ SMODS.Joker{
     cost = 4,
     unlocked = false,
     discovered = false,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     config = {extra = {
@@ -38,32 +38,5 @@ SMODS.Joker{
                 Xmult = card.ability.extra.xmult,
             }
         end
-        if context.chudxmult and not context.blueprint_card then
-            card.ability.extra.xmult = context.chudxmult
-            return {
-                message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
-                colour = G.C.MULT,
-                card = card,
-            }
-        end
     end,
 }
-
-local chudlast = 0
-local chudnow = G.GAME.chudhit
-function G.GAME.chudhit(...)
-    local chudhitnow = chudnow(...)
-    if to_big(chudhitnow) > to_big(chudlast) then
-        SMODS.calculate_context({
-            chudxmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-        })
-    end
-    chudlast = chudhitnow
-    return chudhitnow
-end
-
-local raw_G_FUNCS_evaluate_play = G.FUNCS.evaluate_play
-function G.FUNCS.evaluate_play(...)
-    raw_G_FUNCS_evaluate_play(...)
-    chudlast = 0
-end

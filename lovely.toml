@@ -52,38 +52,3 @@ position = "after"
 payload = '''
     check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
 '''
-
-[[patches]]
-[patches.pattern]
-match_indent = true
-times = 1
-target = "card.lua"
-pattern = '''
-    if self.ability.name == 'Ectoplasm' or self.ability.name == 'Hex' or pseudorandom('wheel_of_fortune') < G.GAME.probabilities.normal/self.ability.extra then 
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-'''
-position = "after"
-payload = '''
-    G.GAME.chudhit = G.GAME.chudhit + 1
-'''
-
-[[patches]]
-[patches.pattern]
-match_indent = true
-times = 1
-target = "card.lua"
-pattern = '''
-        if self.ability.name == 'Ectoplasm' then 
-            G.GAME.ecto_minus = G.GAME.ecto_minus or 1
-            G.hand:change_size(-G.GAME.ecto_minus)
-            G.GAME.ecto_minus = G.GAME.ecto_minus + 1
-        end
-        used_tarot:juice_up(0.3, 0.5)
-    return true end }))
-else
-    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-'''
-position = "after"
-payload = '''
-    G.GAME.chudhit = 0
-'''
