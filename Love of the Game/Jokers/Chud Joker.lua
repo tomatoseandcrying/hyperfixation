@@ -38,5 +38,21 @@ SMODS.Joker{
                 Xmult = card.ability.extra.xmult,
             }
         end
+        if context.chudhit then
+            card.ability.extra.xmult = 
+            card.ability.extra.xmult * 
+            card.ability.extra.xmult_gain
+            return {
+                message = localize{
+                    type = 'variable', 
+                    key = 'a_xmult', 
+                    vars = {
+                        card.ability.extra.xmult
+                    }
+                },
+                colour = G.C.MULT,
+                card = card,
+            }
+        end
     end,
 }
