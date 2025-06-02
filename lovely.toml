@@ -42,6 +42,8 @@ payload = '''
 match_indent = true
 times = 1
 
+
+# Mary unlock check
 [[patches]]
 [patches.pattern]
 match_indent = true
@@ -51,4 +53,16 @@ pattern = "check_for_unlock({type = 'chip_score', chips = math.floor(hand_chips*
 position = "after"
 payload = '''
     check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
+'''
+
+# Chud Bloodstone
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = "pseudorandom('bloodstone') < G.GAME.probabilities.normal/self.ability.extra.odds then"
+position = "after"
+payload = '''
+    SMODS.calculate_context{chudhit = true}
 '''

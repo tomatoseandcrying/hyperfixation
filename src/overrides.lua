@@ -3,7 +3,6 @@ function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.fodder_card = { jkey = 'j_joker' }
     ret.wheel_fails = 0
-    ret.chudhit = 0
     ret.hpfx_nothingEverHappens = true
 	return ret
 end
