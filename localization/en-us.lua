@@ -71,7 +71,7 @@ return {
             j_hpfx_chud = {
                 name = 'chud joker',
                 text = {
-                    "nothing ever happens",
+                    "{s:3,E:1,C:dark_edition}nothing ever happens{}",
                     "{C:inactive,s:0.7}(Currently {X:mult,C:white,s:0.7}X#1#{} {C:inactive,s:0.7}Mult){}",
 
 
