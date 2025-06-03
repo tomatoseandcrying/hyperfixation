@@ -16,17 +16,10 @@ Moriah
 Mary
 
 ### card.lua Patches:
-<ins>**calculate_joker<ins>\
-\
-<ins>**Bloodstone**</ins>\
-Chud Joker\
-<ins>**Hallucination**</ins>\
-Chud Joker\
-<ins>**Cavendish/Gros Michel**</ins>\
-Chud Joker\
-<ins>**Space Joker**</ins>\
-Chud Joker\
-<ins>**8 Ball**</ins>\
-Chud Joker\
-<ins>**Business Card**</ins>\
-Chud Joker
+<ins>**Chud Joker**</ins>\
+Bloodstone\
+Hallucination\
+Gros Michel and Cavendish\
+Space Joker\
+8 Ball\
+Business Card
