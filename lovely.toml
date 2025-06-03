@@ -66,3 +66,25 @@ position = "after"
 payload = '''
     SMODS.calculate_context{chudhit = true}
 '''
+
+# Chud Hallucination
+[[patches]]
+[patches.pattern]
+match_indent = true 
+times = 1
+target = "card.lua"
+pattern = '''
+if context.open_booster then
+    if self.ability.name == 'Hallucination' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+        if pseudorandom('halu'..G.GAME.round_resets.ante) < G.GAME.probabilities.normal/self.ability.extra then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+                func = (function()
+                        local card = create_card('Tarot',G.consumeables, nil, nil, nil, nil, nil, 'hal')
+'''
+position = "after"
+payload = '''
+    SMODS.calculate_context{chudhit = true}
+'''
