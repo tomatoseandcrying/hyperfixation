@@ -1,4 +1,4 @@
-### Please report any issues here, or in my mod's thread in the Balatro Discord. Alternatively report them as a tester in the mod's official server.
+### Please report any issues here, or in my mod's [thread](https://discord.com/channels/1116389027176787968/1335324781528092672) in the Balatro Discord. Alternatively, report them as a tester in the mod's [official server](https://discord.gg/QwJtrdy4xS).
 
 
 Note: Chud Joker calls a custom calculate context `context.chudhit` on probability hits. This is not automatic and must be implemented manually.
