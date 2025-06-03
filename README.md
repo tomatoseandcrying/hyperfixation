@@ -4,11 +4,12 @@
 Note: Chud Joker calls a custom calculate context `context.chudhit` on probability hits. This is not automatic and must be implemented manually.
 
 ### This mod takes ownership of:
-#### Wheel of Fortune
+<ins>**Wheel of Fortune**</ins>\
 Farmer\
 Chud Joker\
-Oops! All 6s
 
+<ins>**Oops! All 6s**</ins>\
+Moriah\
 
 # This mod patches into:
 ## <ins>functions/state_events.lua</ins>
