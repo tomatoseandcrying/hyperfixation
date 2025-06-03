@@ -33,11 +33,11 @@ target = "card.lua"
 pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']"
 position = "at"
 payload = '''
-    if self.isIjiraq then
-        self.children.center.atlas = G.ASSET_ATLAS['IjiraqJokers']
-    else
-        self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
-    end
+if self.isIjiraq then
+    self.children.center.atlas = G.ASSET_ATLAS['IjiraqJokers']
+else
+    self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
+end
 '''
 match_indent = true
 times = 1
@@ -52,7 +52,7 @@ target = "functions/state_events.lua"
 pattern = "check_for_unlock({type = 'chip_score', chips = math.floor(hand_chips*mult)})"
 position = "after"
 payload = '''
-    check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
+check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
 '''
 
 # Chud Bloodstone
@@ -64,7 +64,7 @@ target = "card.lua"
 pattern = "pseudorandom('bloodstone') < G.GAME.probabilities.normal/self.ability.extra.odds then"
 position = "after"
 payload = '''
-    SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{chudhit = true}
 '''
 
 # Chud Hallucination
@@ -85,7 +85,7 @@ if context.open_booster then
 '''
 position = "after"
 payload = '''
-    SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{chudhit = true}
 '''
 
 # Chudnana
@@ -102,7 +102,7 @@ if self.ability.name == 'Gros Michel' or self.ability.name == 'Cavendish' then
 '''
 position = "after"
 payload = '''
-    SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{chudhit = true}
 '''
 
 # Chud Ball
@@ -124,7 +124,7 @@ if self.ability.name == '8 Ball' and #G.consumeables.cards + G.GAME.consumeable_
 '''
 position = "after"
 payload = '''
-    SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{chudhit = true}
 '''
 
 # Space Chud
@@ -136,12 +136,8 @@ target = "card.lua"
 pattern = '''
 if self.ability.name == 'Space Joker' and pseudorandom('space') < G.GAME.probabilities.normal/self.ability.extra then
     return {
-        card = self,
-        level_up = true,
-        message = localize('k_level_up_ex')
-    }
 '''
 position = "after"
 payload = '''
-    SMODS.calculate_context{chudhit = true}
+func = function() SMODS.calculate_context({chudhit = true}) end,
 '''

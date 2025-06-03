@@ -11,7 +11,7 @@ SMODS.Joker{
     perishable_compat = true,
     config = {extra = {
         xmult = 2,
-        xmult_gain = 10,
+        xmult_gain = math.sqrt(10),
     }},
     loc_vars = function (self, info_queue, card)
         return {
@@ -44,9 +44,9 @@ SMODS.Joker{
             }
         end
         if context.chudhit then
-            card.ability.extra.xmult = 
-            card.ability.extra.xmult * 
-            card.ability.extra.xmult_gain
+            card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
+            local decimal = card.ability.extra.xmult - math.floor(card.ability.extra.xmult)
+            if decimal >= 0.5 then card.ability.extra.xmult = (math.floor((card.ability.extra.xmult*0.1)+0.5)*10) end
             return {
                 message = localize{
                     type = 'variable', 

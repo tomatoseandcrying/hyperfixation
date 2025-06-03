@@ -1,18 +1,32 @@
 Please report any issues here, or in my mod's thread on the Discord. Alternatively report them as a tester in the mod's official server.
 
-For any crossmodders! 
 
-Chud Joker uses a custom context to detect probability hits: "context.chudhit" (go figure)
-To use this properly, you'll need to include "SMODS.calculate_context{chudhit = true}" within your probability effect
+## Please note:
+Chud Joker calls a custom calculate context to detect probability hits: "context.chudhit" (go figure)
 
-This mod takes ownership of:
-Wheel of Fortune (Farmer, Chud Joker)
-Oops! All 6s (Unlock Condition)
+# This mod takes ownership of:
+## <ins>Wheel of Fortune</ins>
+-Farmer
+-Chud Joker
+-Oops! All 6s
 
-And patches:
-The chipscore unlock check
-Bloodstone
-Hallucination
-Both Bananas
-Space Joker
-8 Ball
+
+# This mod patches into:
+## <ins>functions/state_events.lua</ins>
+### evaluate_play_final_scoring 
+-Mary
+
+## <ins>card.lua</ins>
+### calculate_joker
+<ins>Bloodstone</ins>
+-Chud Joker
+<ins>Hallucination</ins>
+-Chud Joker
+<ins>Cavendish/Gros Michel</ins>
+-Chud Joker
+<ins>Space Joker</ins>
+-Chud Joker
+<ins>8 Ball</ins>
+-Chud Joker
+<ins>Business Card</ins>
+-Chud Joker
