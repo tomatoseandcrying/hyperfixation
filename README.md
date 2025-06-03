@@ -11,21 +11,21 @@ Chud Joker
 <ins>**Oops! All 6s**</ins>\
 Moriah
 
-### This mod patches into functions/state_events.lua
-<ins>**evaluate_play_final_scoring**</ins>\
+## This mod patches into functions/state_events.lua:
+### evaluate_play_final_scoring
 Mary
 
-## <ins>card.lua</ins>
+## This mod patches into card.lua:
 ### calculate_joker
-<ins>Bloodstone</ins>
--Chud Joker
-<ins>Hallucination</ins>
--Chud Joker
-<ins>Cavendish/Gros Michel</ins>
--Chud Joker
-<ins>Space Joker</ins>
--Chud Joker
-<ins>8 Ball</ins>
--Chud Joker
-<ins>Business Card</ins>
--Chud Joker
+<ins>Bloodstone</ins>\
+Chud Joker\
+<ins>Hallucination</ins>\
+Chud Joker\
+<ins>Cavendish/Gros Michel</ins>\
+Chud Joker\
+<ins>Space Joker</ins>\
+Chud Joker\
+<ins>8 Ball</ins>\
+Chud Joker\
+<ins>Business Card</ins>\
+Chud Joker
