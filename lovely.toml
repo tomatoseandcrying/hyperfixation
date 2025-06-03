@@ -150,13 +150,10 @@ times = 1
 target = "card.lua"
 pattern = '''
 if self.ability.name == 'Business Card' and
-                    context.other_card:is_face() and
-                    pseudorandom('business') < G.GAME.probabilities.normal/self.ability.extra then
-                        G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + 2
-                        if not Talisman.config_file.disable_anims then G.E_MANAGER:add_event(Event({func = (function() G.GAME.dollar_buffer = 0; return true end)})) else G.GAME.dollar_buffer = 0 end
-                        return {
+    context.other_card:is_face() and
+    pseudorandom('business') < G.GAME.probabilities.normal/self.ability.extra then
 '''
 position = "after"
 payload = '''
-func = function() SMODS.calculate_context({chudhit = true}) end,
+SMODS.calculate_context{chudhit = true}
 '''
