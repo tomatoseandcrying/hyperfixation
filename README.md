@@ -1,7 +1,7 @@
-Please report any issues here, or in my mod's thread on the Discord. Alternatively report them as a tester in the mod's official server.
+### Please report any issues here, or in my mod's thread on the Discord. Alternatively report them as a tester in the mod's official server.
 
 
-### Please note: Chud Joker calls a custom calculate context `contexxt.chudhit` on probability hits. This is not automatic and must be implemented manually.
+Note: Chud Joker calls a custom calculate context `context.chudhit` on probability hits. This is not automatic and must be implemented manually.
 
 # This mod takes ownership of:
 ## <ins>Wheel of Fortune</ins>
