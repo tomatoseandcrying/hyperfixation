@@ -3,11 +3,11 @@
 
 Note: Chud Joker calls a custom calculate context `context.chudhit` on probability hits. This is not automatic and must be implemented manually.
 
-# This mod takes ownership of:
-## <ins>Wheel of Fortune</ins>
--Farmer
--Chud Joker
--Oops! All 6s
+## This mod takes ownership of:
+### <ins>Wheel of Fortune</ins>
+Farmer\
+Chud Joker\
+Oops! All 6s
 
 
 # This mod patches into:
