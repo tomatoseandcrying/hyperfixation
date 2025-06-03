@@ -11,8 +11,8 @@ Chud Joker
 <ins>**Oops! All 6s**</ins>\
 Moriah
 
-## This mod patches into functions/state_events.lua:
-### evaluate_play_final_scoring
+### This mod patches into functions/state_events.lua:
+<ins>**evaluate_play_final_scoring**</ins>\
 Mary
 
 ## This mod patches into card.lua:
