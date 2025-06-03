@@ -3,8 +3,7 @@ Please report any issues here, or in my mod's thread on the Discord. Alternative
 For any crossmodders! 
 
 Chud Joker uses a custom context to detect probability hits: "context.chudhit" (go figure)
-To use this properly, you'll need to include "G.GAME.chudhit = G.GAME.chudhit + 1" whenever you hit the probability check
-You'll also need to reset it with "G.GAME.chudhit = 0" whenever the probability check misses
+To use this properly, you'll need to include "SMODS.calculate_context{chudhit = true}" within your probability effect
 
 This mod takes ownership of:
 Wheel of Fortune (Farmer, Chud Joker)
@@ -13,3 +12,7 @@ Oops! All 6s (Unlock Condition)
 And patches:
 The chipscore unlock check
 Bloodstone
+Hallucination
+Both Bananas
+Space Joker
+8 Ball

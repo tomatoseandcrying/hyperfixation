@@ -82,8 +82,58 @@ if context.open_booster then
                 trigger = 'before',
                 delay = 0.0,
                 func = (function()
-                        local card = create_card('Tarot',G.consumeables, nil, nil, nil, nil, nil, 'hal')
 '''
+position = "after"
+payload = '''
+    SMODS.calculate_context{chudhit = true}
+'''
+
+# Chudnana
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = '''
+if self.ability.name == 'Gros Michel' or self.ability.name == 'Cavendish' then
+                    if pseudorandom(self.ability.name == 'Cavendish' and 'cavendish' or 'gros_michel') < G.GAME.probabilities.normal/self.ability.extra.odds then 
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+'''
+position = "after"
+payload = '''
+    SMODS.calculate_context{chudhit = true}
+'''
+
+# Chud Ball
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = '''
+if self.ability.name == '8 Ball' and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    if (context.other_card:get_id() == 8) and (pseudorandom('8ball') < G.GAME.probabilities.normal/self.ability.extra) then
+                        G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                        return {
+                            extra = {focus = self, message = localize('k_plus_tarot'), func = function()
+                                G.E_MANAGER:add_event(Event({
+                                    trigger = 'before',
+                                    delay = 0.0,
+                                    func = (function()
+'''
+position = "after"
+payload = '''
+    SMODS.calculate_context{chudhit = true}
+'''
+
+# Space Chud
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = "if self.ability.name == 'Space Joker' and pseudorandom('space') < G.GAME.probabilities.normal/self.ability.extra then"
 position = "after"
 payload = '''
     SMODS.calculate_context{chudhit = true}
