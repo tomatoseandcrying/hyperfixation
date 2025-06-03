@@ -17,15 +17,15 @@ Mary
 
 ## This mod patches into card.lua:
 ### calculate_joker
-<ins>Bloodstone</ins>\
+<ins>**Bloodstone**</ins>\
 Chud Joker\
-<ins>Hallucination</ins>\
+<ins>**Hallucination**</ins>\
 Chud Joker\
-<ins>Cavendish/Gros Michel</ins>\
+<ins>**Cavendish/Gros Michel**</ins>\
 Chud Joker\
-<ins>Space Joker</ins>\
+<ins>**Space Joker**</ins>\
 Chud Joker\
-<ins>8 Ball</ins>\
+<ins>**8 Ball**</ins>\
 Chud Joker\
-<ins>Business Card</ins>\
+<ins>**Business Card**</ins>\
 Chud Joker
