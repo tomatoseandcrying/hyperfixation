@@ -6,15 +6,15 @@ Note: Chud Joker calls a custom calculate context `context.chudhit` on probabili
 ### This mod takes ownership of:
 <ins>**Wheel of Fortune**</ins>\
 Farmer\
-Chud Joker\
+Chud Joker
 
 <ins>**Oops! All 6s**</ins>\
-Moriah\
+Moriah
 
-# This mod patches into:
-## <ins>functions/state_events.lua</ins>
-### evaluate_play_final_scoring 
--Mary
+### This mod patches into:
+#### functions/state_events.lua
+<ins>**evaluate_play_final_scoring**</ins>\
+Mary
 
 ## <ins>card.lua</ins>
 ### calculate_joker
