@@ -51,6 +51,14 @@ function Card:calculate_joker(context)
     return chud(self, context)
 end
 
+G.P_CENTERS.m_glass.calculate = G.P_CENTERS.m_glass.calculate or function() end
+local hookTo = G.P_CENTERS.m_glass.calculate
+function G.P_CENTERS.m_glass:calculate(card, context)
+    local ret = hookTo(self, card, context)
+    --do the damn calc context thing thing 
+    return ret
+end
+
 --[[ local hyperrandom
 function pseudorandom(seed)
 local result = hyperrandom(seed)
