@@ -43,10 +43,8 @@ SMODS.Joker{
                 Xmult = card.ability.extra.xmult,
             }
         end
-        if context.chudhit then
+        if context.chudhit and not context.repetition then
             card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-            local decimal = card.ability.extra.xmult - math.floor(card.ability.extra.xmult)
-            if decimal >= 0.5 then card.ability.extra.xmult = (math.floor((card.ability.extra.xmult*0.1)+0.5)*10) end
             return {
                 message = localize{
                     type = 'variable', 
