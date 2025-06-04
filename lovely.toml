@@ -3,7 +3,7 @@ version = "1.0.0"
 priority = 0
 
 
-[[patches]]
+[[patches]] # Ijiraq Patch 1 (patches properly)
 [patches.pattern]
 target = "card.lua"
 pattern = "self.seal = cardTable.seal"
@@ -15,7 +15,7 @@ self.visiblyIjiraq = cardTable.visiblyIjiraq
 '''
 times = 1
 
-[[patches]]
+[[patches]] # Ijiraq Patch 2 (patches properly)
 [patches.pattern]
 target = "card.lua"
 pattern = "seal = self.seal,"
@@ -27,7 +27,7 @@ visiblyIjiraq = self.visiblyIjiraq,
 '''
 times = 1
 
-[[patches]]
+[[patches]] # Ijiraq Patch 3 (patches properly)
 [patches.pattern]
 target = "card.lua"
 pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']"
