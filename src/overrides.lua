@@ -65,7 +65,7 @@ G.P_CENTERS.m_lucky.calculate = G.P_CENTERS.m_lucky.calculate or function() end
 local hookTo = G.P_CENTERS.m_lucky.calculate
 function G.P_CENTERS.m_lucky:calculate(card, context)
     local ret = hookTo(self, card, context)
-        if ret and card.lucky_trigger then
+        if ret and not card.lucky_trigger then
             SMODS.calculate_context{chudhit = true}
         end
     return ret
