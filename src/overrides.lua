@@ -18,14 +18,6 @@ function Blind:defeat(silent)
     return bdf(self, silent)
 end
 
---[[ local bsf = Blind.stay_flipped
-function Blind:stay_flipped(silent)
-    if self.name == 'The Wheel' and pseudorandom(pseudoseed('wheel')) < G.GAME.probabilities.normal/7 then
-        SMODS.calculate_context{chudhit = true}
-    end
-    return bsf(self, silent)
-end ]]
-
 local ccc = SMODS.calculate_context
 function SMODS.calculate_context(context, return_table)
     if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then

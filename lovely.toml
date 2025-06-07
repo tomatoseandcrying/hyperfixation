@@ -157,3 +157,17 @@ position = "after"
 payload = '''
 SMODS.calculate_context{chudhit = true}
 '''
+
+# Chud Wheel (The Boss One)
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "blind.lua"
+pattern = '''
+if self.name == 'The Wheel' and pseudorandom(pseudoseed('wheel')) < G.GAME.probabilities.normal/7 then
+'''
+position = "after"
+payload = '''
+SMODS.calculate_context{chudhit = true}
+'''
