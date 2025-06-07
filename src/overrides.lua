@@ -18,13 +18,13 @@ function Blind:defeat(silent)
     return bdf(self, silent)
 end
 
-local bsf = Blind.stay_flipped
+--[[ local bsf = Blind.stay_flipped
 function Blind:stay_flipped(silent)
     if self.name == 'The Wheel' and pseudorandom(pseudoseed('wheel')) < G.GAME.probabilities.normal/7 then
         SMODS.calculate_context{chudhit = true}
     end
     return bsf(self, silent)
-end
+end ]]
 
 local ccc = SMODS.calculate_context
 function SMODS.calculate_context(context, return_table)
@@ -63,7 +63,7 @@ G.P_CENTERS.m_glass.calculate = G.P_CENTERS.m_glass.calculate or function() end
 local hookTo = G.P_CENTERS.m_glass.calculate
 function G.P_CENTERS.m_glass:calculate(card, context)
     local ret = hookTo(self, card, context)
-        if card.glass_trigger then
+        if ret and card.glass_trigger then
             SMODS.calculate_context{chudhit = true}
         end
     return ret
@@ -73,7 +73,7 @@ G.P_CENTERS.m_lucky.calculate = G.P_CENTERS.m_lucky.calculate or function() end
 local hookTo = G.P_CENTERS.m_lucky.calculate
 function G.P_CENTERS.m_lucky:calculate(card, context)
     local ret = hookTo(self, card, context)
-        if card.lucky_trigger then
+        if ret and card.lucky_trigger then
             SMODS.calculate_context{chudhit = true}
         end
     return ret
