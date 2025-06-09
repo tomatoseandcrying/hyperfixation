@@ -23,7 +23,7 @@ SMODS.Joker{
     end,
     add_to_deck = function(self, card, from_debuff)
         for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = v--/10
+            G.GAME.probabilities[k] = v/10
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
