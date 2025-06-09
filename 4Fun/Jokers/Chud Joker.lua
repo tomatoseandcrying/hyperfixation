@@ -40,26 +40,28 @@ SMODS.Joker{
         if context.joker_main and
            (to_big(card.ability.extra.xmult) > to_big(1)) then
             return {
-                Xmult = card.ability.extra.xmult,
+                x_mult = card.ability.extra.xmult,
             }
         end
         if context.chudhit and context.main_eval then
-            G.E_MANAGER:add_event(Event({trigger = 'immediate', delay = 0.4, func = function ()
-                card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-                SMODS.calculate_effect({message = localize{
-                type = 'variable',
-                key = 'a_xmult',
-                vars = {card.ability.extra.xmult}},
-                colour = G.C.MULT}, card)
-                return true
-            end
-            }))
+            card.ability.extra.xmult = card.ability.extra.xmult *
+            card.ability.extra.xmult_gain
+            print("triggered joker")
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT,
+                message_card = card
+            }
         end
-        if context.individual then
-            if context.other_card.lucky_trigger
-            and not context.blueprint then
-            SMODS.calculate_context{chudhit = true}
-            end
+        if context.individual and
+        context.cardarea == G.play and
+        context.other_card.lucky_trigger and
+        not context.end_of_round and
+        not context.blueprint and
+        not context.after then
+            card.ability.extra.xmult =
+            card.ability.extra.xmult *
+            card.ability.extra.xmult_gain
         end
-    end,
+    end
 }
