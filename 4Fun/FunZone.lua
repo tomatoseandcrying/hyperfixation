@@ -1,1 +1,1 @@
-assert(SMODS.load_file('FunZone/Jokers/Chud Joker.lua'))()
+assert(SMODS.load_file('4Fun/Jokers/Chud Joker.lua'))()

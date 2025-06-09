@@ -44,18 +44,16 @@ SMODS.Joker{
             }
         end
         if context.chudhit and context.main_eval then
-            card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-            return {
-                message = localize{
-                    type = 'variable',
-                    key = 'a_xmult',
-                    vars = {
-                        card.ability.extra.xmult
-                    },
-                },
-                colour = G.C.MULT,
-                card = card,
-            }
+            G.E_MANAGER:add_event(Event({trigger = 'immediate', delay = 0.4, func = function ()
+                card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
+                SMODS.calculate_effect({message = localize{
+                type = 'variable',
+                key = 'a_xmult',
+                vars = {card.ability.extra.xmult}},
+                colour = G.C.MULT}, card)
+                return true
+            end
+            }))
         end
         if context.individual then
             if context.other_card.lucky_trigger
