@@ -46,7 +46,7 @@ SMODS.Sound({
 SMODS.load_file('src/overrides.lua')()
 SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/IjiraqJokers.lua')()
-SMODS.load_file('Love of the Game/LoveCenter.lua')()
+SMODS.load_file('4Fun/FunZone.lua')()
 SMODS.load_file('Stickers.lua')()
 
 

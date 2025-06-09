@@ -1,7 +1,7 @@
 SMODS.Joker{
     key = 'chud',
     rarity = 2,
-    --atlas = 'LoveofTheGameJokers',
+    --atlas = 'Jokers4Fun',
     pos = {x = 0, y = 0},
     cost = 4,
     unlocked = false,

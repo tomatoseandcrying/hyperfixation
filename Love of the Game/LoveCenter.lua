@@ -1,1 +1,0 @@
-assert(SMODS.load_file('Love of the Game/Jokers/Chud Joker.lua'))()
