@@ -61,29 +61,52 @@ function G.P_CENTERS.m_glass:calculate(card, context)
     return ret
 end
 
---[[ local hyperrandom
-function pseudorandom(seed)
-local result = hyperrandom(seed)
-local odds = nil
-local self_ref = nil
-for i = 1, 10 do
-local name, value = debug.getlocal(2, i)
-if name == "self" then
-    self_ref = value
-    break
-end
-if self_ref and self_ref.ability and self_ref.ability.extra then
-local success = pcall(function() extra_odds = self_ref.ability.extra.odds end)
-if not success then
-local success = pcall(function() extra_odds = self_ref.ability.extra.odds_1 end)
-end
-if not success then
-local success = pcall(function() extra_odds = self_ref.ability.extra end)
-end
-odds = G.GAME.probabilities.normal/extra_odds
-    if result >= odds then
-    print("failure on seed", seed, "resulting in", result, "with odds", odds)
+local calc_Ref = Card.calculate_joker
+function Card:calculate_joker(context)
+    local ret = calc_Ref(self,context)
+    if ret and self.isIjiraq then
+        Card:Transfodd(context)
     end
+    if context.setting_blind then
+        G.E_MANAGER:add_event(Event({
+            trigger = "after",
+            delay = 0.15,
+            func = function()
+                play_sound("card1")
+                self:juice_up(0.3, 0.3)
+                return true
+            end,
+        }))
+    end
+    return ret 
 end
-    return result end
-end ]]
+
+local stupidRef = generate_card_ui
+function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+   local ihatethis = nil
+   local changed = false
+    if card and (card.config.center and card.config.center.key == _c.key) and card.visiblyIjiraq then
+        ihatethis = G.localization.descriptions[_c.set][_c.key]['name']
+        ihatethis = ihatethis .. '{C:IjiGray}...?{}'
+        G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
+        desc = G.localization.descriptions[_c.set][_c.key]['text']
+        desc[#desc] = desc[#desc] .. "{C:IjiGray}...?{}"
+        G.localization.descriptions[_c.set][_c.key]['text'] = desc
+		changed = true
+        init_localization()
+    end
+    local hatethisonethemost = stupidRef(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+    if changed then
+        ihatethis = ihatethis:sub(1, ihatethis:len() - 17) --17 is the exact length of the string "{C:IjiGray}...?{}", change this only if you change the string's length
+        G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
+        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 17)
+        G.localization.descriptions[_c.set][_c.key]['text'] = desc
+		init_localization()
+    end
+    return hatethisonethemost
+end
+local add2deck_ref = Card.add_to_deck
+function Card:add_to_deck(from_debuff)
+    if self.isIjiraq then self.visiblyIjiraq = true end
+    add2deck_ref(self, from_debuff)
+end
