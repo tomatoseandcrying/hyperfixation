@@ -11,6 +11,12 @@ SMODS.Atlas{
     px = 71,
     py = 95
 }
+SMODS.Atlas{
+	key = 'Jokers4Fun',
+	path = "Jokers4Fun.png",
+	px = 71,
+	py = 95
+}
 
 --Audio Libraries
 SMODS.Sound({

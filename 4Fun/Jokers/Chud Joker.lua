@@ -1,8 +1,9 @@
 SMODS.Joker{
     key = 'chud',
     rarity = 2,
-    --atlas = 'Jokers4Fun',
+    atlas = 'Jokers4Fun',
     pos = {x = 0, y = 0},
+    soul_pos = {x = 1, y = 0},
     cost = 4,
     unlocked = false,
     discovered = false,
