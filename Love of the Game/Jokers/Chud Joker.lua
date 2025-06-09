@@ -43,19 +43,25 @@ SMODS.Joker{
                 Xmult = card.ability.extra.xmult,
             }
         end
-        if context.chudhit and not context.repetition then
+        if context.chudhit and context.main_eval then
             card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
             return {
                 message = localize{
-                    type = 'variable', 
-                    key = 'a_xmult', 
+                    type = 'variable',
+                    key = 'a_xmult',
                     vars = {
                         card.ability.extra.xmult
-                    }
+                    },
                 },
                 colour = G.C.MULT,
                 card = card,
             }
+        end
+        if context.individual then
+            if context.other_card.lucky_trigger
+            and not context.blueprint then
+            SMODS.calculate_context{chudhit = true}
+            end
         end
     end,
 }

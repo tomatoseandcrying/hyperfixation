@@ -61,16 +61,6 @@ function G.P_CENTERS.m_glass:calculate(card, context)
     return ret
 end
 
-G.P_CENTERS.m_lucky.calculate = G.P_CENTERS.m_lucky.calculate or function() end
-local hookTo = G.P_CENTERS.m_lucky.calculate
-function G.P_CENTERS.m_lucky:calculate(card, context)
-    local ret = hookTo(self, card, context)
-        if ret and card.lucky_trigger == false then
-            SMODS.calculate_context{chudhit = true}
-        end
-    return ret
-end
-
 --[[ local hyperrandom
 function pseudorandom(seed)
 local result = hyperrandom(seed)
