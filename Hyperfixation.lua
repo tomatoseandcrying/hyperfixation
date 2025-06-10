@@ -1,3 +1,5 @@
+Hyperglobal = SMODS.current_mod
+
 --Visual Libraries
 SMODS.Atlas({
 	key = "modicon",
@@ -60,6 +62,13 @@ SMODS.load_file('src/overrides.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 --SMODS.load_file('4Fun/FunZone.lua')()
 SMODS.load_file('Stickers.lua')()
+local mod_path = "" .. Hyperglobal.path
+function load_folder(folder)
+	local files = NFS.getDirectoryItems(mod_path .. folder)
+	for i, file in ipairs(files) do
+		SMODS.load_file(folder .. "/" .. file)()
+	end
+end
 
 
 --Custom Colors
@@ -373,7 +382,6 @@ G.PROFILES[G.SETTINGS.profile].devilCount = devilCount or 0
 
 
 --Config
-Hyperglobal = SMODS.current_mod
 local config = SMODS.current_mod.config
 SMODS.current_mod.config_tab = function ()
 	return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
@@ -460,3 +468,21 @@ revo
 
 Thunk for having the worst code known to man someone kill me 
 ]]
+
+
+
+
+--debug
+
+--[[ function maxx_debug(txt)
+	attention_text({
+		text = txt,
+		scale = 1.3, 
+		hold = 1.4,
+		major = aura_card,
+		backdrop_colour = G.C.RARITY[4],
+		align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and 'tm' or 'cm',
+		offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0},
+		silent = true
+	})
+end ]]
