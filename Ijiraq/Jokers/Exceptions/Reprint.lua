@@ -5,7 +5,7 @@ pos = {x = 6, y = 2},
 no_mod_badges = true,
 unlocked = true,
 discovered = true,
---no_collection = true,
+no_collection = true,
 config = {
     extra = {max = 23, min = 0}
 },
