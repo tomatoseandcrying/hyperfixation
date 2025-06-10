@@ -56,19 +56,20 @@ SMODS.Sound({
 	path = "Isaac_dies_new_2.ogg",
 })
 
+
+mod_path = "" .. SMODS.current_mod.path
+function load_folder(folder)
+	files = NFS.getDirectoryItems(mod_path .. folder)
+	for i, file in ipairs(files) do
+		SMODS.load_file(folder .. "/" .. file)()
+	end
+end
 --File Loading
 SMODS.load_file('src/overrides.lua')()
 --SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 --SMODS.load_file('4Fun/FunZone.lua')()
 SMODS.load_file('Stickers.lua')()
-local mod_path = "" .. Hyperglobal.path
-function load_folder(folder)
-	local files = NFS.getDirectoryItems(mod_path .. folder)
-	for i, file in ipairs(files) do
-		SMODS.load_file(folder .. "/" .. file)()
-	end
-end
 
 
 --Custom Colors
@@ -143,14 +144,7 @@ function Transform(card, context)
             return true
         end,
     }))
-    G.E_MANAGER:add_event(Event({
-        trigger = "after",
-        delay = 0.15,
-        func = function()
-            card:flip()
-            return true
-        end,
-    }))
+	return true
 end
 function Card:Transfodd(context)
     G.E_MANAGER:add_event(Event({                 
@@ -175,12 +169,12 @@ function Card:Transfodd(context)
         trigger = 'after',
         delay = 0.15,
         func = function()
-            self:flip()
             self.isIjiraq = nil
             self.visiblyIjiraq = nil
             return true
         end
     }))
+	return true
 end
 function braisedMultCalc(card, context)
     local tempMult, tempID = -1, -1

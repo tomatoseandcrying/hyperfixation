@@ -41,7 +41,7 @@ atlas = 'IjiraqJokers',
 blueprint_compat = true,
 calculate = function(self, card, context)
     if context.joker_main then
-        return Transform(card, context)
+        Transform(card, context)
     end
 end
 }
