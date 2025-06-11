@@ -29,13 +29,13 @@ SMODS.Joker{ --Credit Card?
     rarity = 1,
     cost = 1,
     atlas = 'IjiraqJokers',
-    blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
+    blueprint_compat = false,
     calculate = function (self, card, context)
-        local valueToPutInIf = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
-        if context.buying_card and valueToPutInIf then
-            return Transform(card, context)
+        local vif = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
+        if context.buying_card and vif then
+            func = function ()
+            Transform(card, context)       
+            end
         end
     end
 }

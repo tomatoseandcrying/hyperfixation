@@ -51,15 +51,58 @@ SMODS.Joker{ --Blueprint?
     blueprint_compat = true,
     eternal_compat = false,
     perishable_compat = true,
-    calculate = function (self, card, context)
-        local otherpos = nil
-        for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i] == card then
-                otherpos = i break
+    -- manage reload manual replacement
+    update = function(self, card, dt)
+        if type(card.ability.current_area) ~= 'table' then
+            card.ability.current_area = card.area
+        end
+        if not card.area or (card.area ~= G.jokers) then
+            card.ability.current_area = nil
+            return
+        end
+        local joker_idx = 1
+        if not card.ability.current_cards then
+        card.ability.current_cards = {} end
+        local area_changed =
+        #card.area.cards ~= #card.ability.current_cards
+        for i, v in ipairs(card.area.cards) do
+            if v == card then
+                joker_idx = i
+                if area_changed then
+                    break
+                end
+            end
+            if not area_changed and
+            v.ID ~= card.ability.current_cards[i] then
+                area_changed = true
             end
         end
-        if otherpos and G.jokers.cards[otherpos - 1] then
-            Transform(card, context)
+        -- don't do potentially expensive sprite creation if nothing has changed
+        if not area_changed and
+        card.ability.current_area == card.area and
+        joker_idx == card.ability.last_index then
+            return
         end
-    end
+        if G.STATE ~= G.STATES.HAND_PLAYED and
+        G.STATE ~= G.STATES.DRAW_TO_HAND and
+        G.STATE ~= G.STATES.PLAY_TAROT then
+            if G.jokers.cards[joker_idx+1] then
+                G.E_MANAGER:add_event(Event({
+                    trigger = "immediate",
+                    delay = 0,
+                    func = function()
+                    Transform(card, context)
+                    return true
+                    end,
+                }))
+            end
+        card.ability.current_cards = {}
+        for _, v in ipairs(card.ability.current_area.cards) do
+            card.ability.current_cards[#card.ability.current_cards+1] = v.ID
+        end
+        card.ability.current_area = card.area
+        card.ability.last_index = joker_idx
+        end
+    end,
 }
+

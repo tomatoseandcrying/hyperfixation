@@ -37,7 +37,9 @@ SMODS.Joker{ --Troubadour?
     perishable_compat = true,
     calculate = function(self, card, context)
         if context.after then
-            Transform(card, context)
+            func = function ()
+            Transform(card, context)       
+            end
         end
     end
 }

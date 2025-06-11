@@ -144,6 +144,14 @@ function Transform(card, context)
             return true
         end,
     }))
+    G.E_MANAGER:add_event(Event({
+    trigger = "after",
+    delay = 0.15,
+    func = function()
+        card:flip()
+        return true
+    end,
+    }))
 	return true
 end
 function Card:Transfodd(context)
@@ -175,36 +183,6 @@ function Card:Transfodd(context)
         end
     }))
 	return true
-end
-function braisedMultCalc(card, context)
-    local tempMult, tempID = -1, -1
-    local raised_card = nil
-    for i = 1, #G.hand.cards do
-        if tempID <= G.hand.cards[i].base.id and G.hand.cards[i].ability.effect ~= 'Stone Card' then
-            tempMult = G.hand.cards[i].base.nominal
-            tempID = G.hand.cards[i].base.id
-            raised_card = G.hand.cards[i]
-        end
-    end
-    if raised_card == context.other_card then
-        if context.other_card.debuff then
-            return {
-                message = localize('k_debuffed'),
-                colour = G.C.RED,
-            }
-        else
-            return{
-            Transform(card, context),
-            h_mult = 2 * tempMult,
-            card = context.other_card
-            }
-        end
-    end
-end
-function braisedCheck(card, context)
-    if context.individual and context.cardarea == G.hand then
-        braisedMultCalc(card, context)
-    end
 end
 function disloyalScoring2(card, context)
     if card.ability.loyalty_remaining == 0 then

@@ -25,9 +25,35 @@ SMODS.Joker{ --Raised Fist?
     cost = 5,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
     calculate = function(self, card, context)
-        return braisedCheck(card, context)
+        if context.individual and 
+        context.cardarea == G.hand and 
+        not context.end_of_round then
+            local tempMult, tempID = -1, -1
+            local raised_card = nil
+            for i = 1, #G.hand.cards do
+                if tempID <= G.hand.cards[i].base.id and 
+                not SMODS.has_no_rank(G.hand.cards[i]) then
+                tempMult = G.hand.cards[i].base.nominal
+                tempID = G.hand.cards[i].base.id
+                raised_card = G.hand.cards[i]
+                end
+            end
+            if raised_card == context.other_card then
+                if context.other_card.debuff then
+                    return {
+                        message = localize('k_debuffed'),
+                        colour = G.C.RED,
+                    }
+                else
+                    return{
+                    mult = 2 * tempMult,
+                    func = function ()
+                    Transform(card, context)    
+                    end
+                    }
+                end
+            end
+        end
     end
 }
