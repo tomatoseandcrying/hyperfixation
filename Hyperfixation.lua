@@ -104,7 +104,7 @@ function counterIncrement(card, context)
     end
 end
 function stoneGeneration(card, context)
-    G.E_MANAGER:add_event(Event({              
+    G.E_MANAGER:add_event(Event({
         func = function()
             local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
@@ -116,8 +116,8 @@ function stoneGeneration(card, context)
         end
     }))
     card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_stone'), colour = G.C.SECONDARY_SET.Enhanced})
-    G.E_MANAGER:add_event(Event({                  
-        func = function() 
+    G.E_MANAGER:add_event(Event({
+        func = function()
             G.deck.config.card_limit = G.deck.config.card_limit + 1
             return true
         end
@@ -147,7 +147,7 @@ function Transform(card, context)
 	return true
 end
 function Card:Transfodd(context)
-    G.E_MANAGER:add_event(Event({                 
+    G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -155,7 +155,7 @@ function Card:Transfodd(context)
             return true
         end
     }))
-    G.E_MANAGER:add_event(Event({                 
+    G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -165,7 +165,7 @@ function Card:Transfodd(context)
             return true
         end
     }))
-    G.E_MANAGER:add_event(Event({                 
+    G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.15,
         func = function()
@@ -218,7 +218,7 @@ function disloyalBlueprint(card, context)
     if card.ability.loyalty_remaining == card.ability.extra.every then
         return {
             x_mult = card.ability.extra.x_mult
-        } 
+        }
     end
 end
 function disloyalScoring(card, context)
@@ -251,7 +251,7 @@ function whackCardCheck(card, context)
             message = localize('k_again_ex'),
             repetitions = card.ability.extra.repetitions,
             card = card
-        } 
+        }
     end
 end
 function whackRepetition(card, context)
@@ -298,25 +298,6 @@ function porcelainDrawn(card, context)
         return Transform(card, context)
     end
 end
-function blueMainEnd(card, context)
-    main_end = (card.area and card.area == G.jokers) and {
-        {n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
-            {n=G.UIT.C, config={ref_table = card, align = "m", colour = G.C.JOKER_GREY, r = 0.05, padding = 0.06, func = 'blueprint_compat'}, nodes={
-                {n=G.UIT.T, config={ref_table = card.ability, ref_value = 'blueprint_compat_ui',colour = G.C.UI.TEXT_LIGHT, scale = 0.32*0.8}},
-            }}
-        }}
-    } or nil
-end
-function blueCompatible(card, context)
-    for i = 1, #G.jokers.cards do
-        if G.jokers[i] == card then other_joker = G.jokers[i+1] end
-    end
-    if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat then
-        card.ability.blueprint_compat = 'compatible'
-    else
-        card.ability.blueprint_compat = 'compatible'
-    end
-end
 
 --Ownerships (not unlock)
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
@@ -345,7 +326,7 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
 				G.GAME.wheel_fails = G.GAME.wheel_fails + 1
                 attention_text({
                     text = localize('k_nope_ex'),
-                    scale = 1.3, 
+                    scale = 1.3,
                     hold = 1.4,
                     major = used_tarot,
                     backdrop_colour = G.C.SECONDARY_SET.Tarot,
@@ -439,7 +420,7 @@ end
 
 
 
---[[ 
+--[[
 People I Need To Credit ingame too:
 ------------------------
 me for being awesome and shit
@@ -460,7 +441,7 @@ Astra for fixing my file splitting/global function issues!
 FoxDeploy for helping me with unlock conditions
 revo
 
-Thunk for having the worst code known to man someone kill me 
+Thunk for having the worst code known to man someone kill me
 ]]
 
 
@@ -471,7 +452,7 @@ Thunk for having the worst code known to man someone kill me
 --[[ function maxx_debug(txt)
 	attention_text({
 		text = txt,
-		scale = 1.3, 
+		scale = 1.3,
 		hold = 1.4,
 		major = aura_card,
 		backdrop_colour = G.C.RARITY[4],

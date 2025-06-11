@@ -1,24 +1,41 @@
-G.C.IjiGray = HEX('BFD7D5')     
-SMODS.Joker{ --Blueprint? 
+G.C.IjiGray = HEX('BFD7D5')
+SMODS.Joker{ --Blueprint?
     key = 'blue',
     pos = {x = 0, y = 3},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    no_collection = true,
+    --no_collection = true,
     config = {
         extra = {}
     },
     loc_vars = function (self, info_queue, card)
-        card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ''; card.ability.blueprint_compat_check = nil
-        blueMainEnd(card, context)
-        local other_joker
-        if G.jokers then
-            blueCompatible(card, context)
-        end
+        if card.area and card.area == G.jokers then
+            local other_joker
+            for i = 1, #G.jokers.cards do
+                if G.jokers[i] == card then other_joker = G.jokers[i+1] end
+            end
+        local compatible = other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat
+        main_end = {
+        {n = G.UIT.C, config = { align = "bm", minh = 0.4 }, nodes = {
+        {n = G.UIT.C, config = {
+            ref_table = card,
+            align = "m",
+            colour = compatible and
+            mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8) or
+            mix_colours(G.C.RED, G.C.JOKER_GREY, 0.8),
+            r = 0.05, padding = 0.06},
+        nodes = {
+            {n = G.UIT.T, config = {
+                text = ' ' .. localize('k_' .. (compatible and 'compatible' or 'incompatible')) .. ' ',
+                colour = G.C.UI.TEXT_LIGHT,
+                scale = 0.32 * 0.8}
+            },
+        }}}}
+        } end
         return{
-            main_end = main_end,
-            vars = {card.area and card.area == G.jokers and "...?" or ""}
+        main_end = main_end,
+        vars = {card.area and card.area == G.jokers and "...?" or ""}
         }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
@@ -35,8 +52,14 @@ SMODS.Joker{ --Blueprint?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function (self, card, context)
-        if context.post_trigger then
-            return Transform(card, context)
+        local otherpos = nil
+        for i = 1, #G.jokers.cards do
+            if G.jokers.cards[i] == card then
+                otherpos = i break
+            end
+        end
+        if otherpos and G.jokers.cards[otherpos - 1] then
+            Transform(card, context)
         end
     end
 }
