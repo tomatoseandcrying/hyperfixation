@@ -9,7 +9,7 @@ SMODS.Joker{ --Troubadour?
     },
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     loc_vars = function (self, info_queue, card)
         return{vars = {
             card.ability.extra.hand_size,
@@ -36,10 +36,11 @@ SMODS.Joker{ --Troubadour?
     eternal_compat = false,
     perishable_compat = true,
     calculate = function(self, card, context)
-        if context.after then
+        if context.after then return{
             func = function ()
             hpfx_Transform(card, context)
             end
+        }
         end
     end
 }
