@@ -28,7 +28,7 @@ SMODS.Joker{ --Costume (The costume setup only works before, during, or after ha
             j_marble = 'j_hpfx_porcelain',
             j_golden = 'j_hpfx_pyramid',
             j_credit_card = 'j_hpfx_expired',
-            j_blueprint = 'j_hpfx_blue',
+            j_blueprint = 'j_hpfx_bluebell',
         }
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)

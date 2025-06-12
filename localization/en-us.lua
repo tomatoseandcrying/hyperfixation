@@ -292,14 +292,14 @@ return {
                     "end of round{C:hpfx_IjiGray, s:0.7}#2#{}",
                 },
             },
-            j_hpfx_blue = {
+            j_hpfx_bluebell = {
                 name="Blueprint",
                 text={
                     "Copies ability of",
                     "{C:attention}Joker{} to the right{C:hpfx_IjiGray, s:0.7}#1#{}",
                 },
             },
-            j_hpfx_blue_alt = {
+            j_hpfx_bluebell_alt = {
                 name="Blueprint{C:hpfx_IjiGray, s:0.7}...?",
                 text={
                     "Copies ability of",

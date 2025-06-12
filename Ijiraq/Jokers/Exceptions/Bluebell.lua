@@ -1,6 +1,6 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
 SMODS.Joker{ --Blueprint?
-    key = 'blue',
+    key = 'bluebell',
     pos = {x = 0, y = 3},
     no_mod_badges = true,
     unlocked = true,
@@ -44,13 +44,13 @@ SMODS.Joker{ --Blueprint?
         full_UI_table.name = localize { 
             type = 'name', 
             set = "Joker", 
-            key = card.ability and card.ability.extra.new_key or "j_hpfx_blue", 
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_bluebell", 
             nodes = {} 
         }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_blue_alt"
+        card.ability.extra.new_key = "j_hpfx_bluebell_alt"
     end,
     rarity = 3,
     cost = 10,
