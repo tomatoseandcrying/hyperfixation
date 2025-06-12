@@ -1,18 +1,19 @@
-G.C.IjiGray = HEX('BFD7D5')    
-SMODS.Joker{ --Credit Card? 
+G.C.hpfx_IjiGray = HEX('BFD7D5')
+SMODS.Joker{ --Credit Card?
     key = 'expired',
     pos = {x = 5, y = 1},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    no_collection = true,
+    --no_collection = true,
     config = {
-        extra = {credit = 20}
+        extra = {credit = 20, dollars = 0}
     },
     loc_vars = function (self, info_queue, card)
         return{vars = {
-            card.ability.extra.credit, 
-            card.area and card.area == G.jokers and "...?" or ""
+            card.ability.extra.credit,
+            card.area and card.area == G.jokers and "...?" or "",
+            card.ability.extra.dollars
         }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
@@ -31,10 +32,13 @@ SMODS.Joker{ --Credit Card?
     atlas = 'IjiraqJokers',
     blueprint_compat = false,
     calculate = function (self, card, context)
-        local vif = Talisman and to_big and to_big(G.GAME.dollars):lte(0) or G.GAME.dollars <= to_big(0)
-        if context.buying_card and vif then
+        if context.buying_card and
+        not context.blueprint and
+        to_big(G.GAME.dollars) -
+        to_big(context.card.cost) <=
+        to_big(card.ability.extra.dollars) then
             func = function ()
-            Transform(card, context)       
+            hpfx_Transform(card, context)
             end
         end
     end

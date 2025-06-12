@@ -1,4 +1,4 @@
-G.C.IjiGray = HEX('BFD7D5') 
+G.C.hpfx_IjiGray = HEX('BFD7D5') 
 SMODS.Joker{--Mystic Summit? 
     key = 'twistit',
     pos = {x = 2, y = 2},
@@ -43,7 +43,7 @@ SMODS.Joker{--Mystic Summit?
             }
         end
         if context.before and G.GAME.current_round.discards_left == card.ability.extra.discards_remaining then
-            return Transform(card, context)
+            return hpfx_Transform(card, context)
         end
     end
 }

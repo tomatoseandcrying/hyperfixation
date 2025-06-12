@@ -44,7 +44,7 @@ SMODS.Joker{
                 x_mult = card.ability.extra.xmult,
             }
         end
-        if context.chudhit and context.main_eval then
+        if context.hpfx_chudhit and context.main_eval then
             card.ability.extra.xmult = card.ability.extra.xmult *
             card.ability.extra.xmult_gain
             print("triggered joker")

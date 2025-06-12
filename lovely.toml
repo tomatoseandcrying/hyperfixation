@@ -64,7 +64,7 @@ target = "card.lua"
 pattern = "pseudorandom('bloodstone') < G.GAME.probabilities.normal/self.ability.extra.odds then"
 position = "after"
 payload = '''
-SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{hpfx_chudhit = true}
 '''
 
 # Chud Hallucination
@@ -85,7 +85,7 @@ if context.open_booster then
 '''
 position = "after"
 payload = '''
-SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{hpfx_chudhit = true}
 '''
 
 # Chudnana
@@ -102,7 +102,7 @@ if self.ability.name == 'Gros Michel' or self.ability.name == 'Cavendish' then
 '''
 position = "after"
 payload = '''
-SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{hpfx_chudhit = true}
 '''
 
 # Chud Ball
@@ -124,7 +124,7 @@ if self.ability.name == '8 Ball' and #G.consumeables.cards + G.GAME.consumeable_
 '''
 position = "after"
 payload = '''
-SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{hpfx_chudhit = true}
 '''
 
 # Space Chud
@@ -139,7 +139,7 @@ if self.ability.name == 'Space Joker' and pseudorandom('space') < G.GAME.probabi
 '''
 position = "after"
 payload = '''
-func = function() SMODS.calculate_context({chudhit = true}) end,
+func = function() SMODS.calculate_context({hpfx_chudhit = true}) end,
 '''
 
 # Business Chud
@@ -155,7 +155,7 @@ if self.ability.name == 'Business Card' and
 '''
 position = "after"
 payload = '''
-SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{hpfx_chudhit = true}
 '''
 
 # Chud Wheel (The Boss One)
@@ -169,5 +169,5 @@ if self.name == 'The Wheel' and pseudorandom(pseudoseed('wheel')) < G.GAME.proba
 '''
 position = "after"
 payload = '''
-SMODS.calculate_context{chudhit = true}
+SMODS.calculate_context{hpfx_chudhit = true}
 '''

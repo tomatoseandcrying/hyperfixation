@@ -24,7 +24,7 @@ SMODS.Joker{ --Cyanosis/Blue Baby
     calculate = function (self, card, context)
         if context.joker_main and
         (to_big(card.ability.extra.chips) > to_big(1)) then
-            return{isaacChip(card, context)}
+            return{hpfx_isaacChip(card, context)}
         end
         if context.hyperfixation_mod_mult_decrease and
         not context.blueprint_card then

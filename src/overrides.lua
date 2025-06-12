@@ -10,8 +10,8 @@ end
 local bdf = Blind.defeat
 function Blind:defeat(silent)
     if self.name == 'Crimson Heart' then
-        G.PROFILES[G.SETTINGS.profile].crimsonCount = G.PROFILES[G.SETTINGS.profile].crimsonCount + 1
-        if G.PROFILES[G.SETTINGS.profile].crimsonCount >= 10 then
+        G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount + 1
+        if G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount >= 10 then
             check_for_unlock({type = 'hpfx_momheart'})
         end
     end
@@ -21,8 +21,8 @@ end
 local ccc = SMODS.calculate_context
 function SMODS.calculate_context(context, return_table)
     if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
-        G.PROFILES[G.SETTINGS.profile].devilCount = G.PROFILES[G.SETTINGS.profile].devilCount + 1
-        if G.PROFILES[G.SETTINGS.profile].devilCount >= 3 then
+        G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount + 1
+        if G.PROFILES[G.SETTINGS.profile].hpfx_devilCount >= 3 then
             check_for_unlock({type = 'hpfx_devil'})
         end
     end
@@ -56,7 +56,7 @@ local hookTo = G.P_CENTERS.m_glass.calculate
 function G.P_CENTERS.m_glass:calculate(card, context)
     local ret = hookTo(self, card, context)
         if ret and card.glass_trigger then
-            SMODS.calculate_context{chudhit = true}
+            SMODS.calculate_context{hpfx_chudhit = true}
         end
     return ret
 end
@@ -87,19 +87,19 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
    local changed = false
     if card and (card.config.center and card.config.center.key == _c.key) and card.visiblyIjiraq then
         ihatethis = G.localization.descriptions[_c.set][_c.key]['name']
-        ihatethis = ihatethis .. '{C:IjiGray}...?{}'
+        ihatethis = ihatethis .. '{C:hpfx_IjiGray}...?{}'
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
         desc = G.localization.descriptions[_c.set][_c.key]['text']
-        desc[#desc] = desc[#desc] .. "{C:IjiGray}...?{}"
+        desc[#desc] = desc[#desc] .. "{C:hpfx_IjiGray}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
 		changed = true
         init_localization()
     end
     local hatethisonethemost = stupidRef(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
     if changed then
-        ihatethis = ihatethis:sub(1, ihatethis:len() - 17) --17 is the exact length of the string "{C:IjiGray}...?{}", change this only if you change the string's length
+        ihatethis = ihatethis:sub(1, ihatethis:len() - 22) --17 is the exact length of the string "{C:hpfx_IjiGray}...?{}", change this only if you change the string's length
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
-        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 17)
+        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 22)
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
 		init_localization()
     end

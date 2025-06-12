@@ -1,4 +1,4 @@
-G.C.IjiGray = HEX('BFD7D5')       
+G.C.hpfx_IjiGray = HEX('BFD7D5')       
 
 SMODS.Joker{--Merry Andy? 
     key = 'scaryandy',
@@ -38,7 +38,7 @@ SMODS.Joker{--Merry Andy?
     perishable_compat = true,
     calculate = function(self, card, context)
         if context.discard then
-            return Transform(card, context)
+            return hpfx_Transform(card, context)
         end
     end
 }

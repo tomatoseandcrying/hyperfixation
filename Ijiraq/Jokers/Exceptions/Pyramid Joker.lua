@@ -1,4 +1,4 @@
-G.C.IjiGray = HEX('BFD7D5')    
+G.C.hpfx_IjiGray = HEX('BFD7D5')    
 SMODS.Joker{ --Golden Joker? 
     key = 'pyramid',
     atlas = 'IjiraqJokers',
@@ -37,6 +37,6 @@ SMODS.Joker{ --Golden Joker?
 		if bonus > 0 then 
             return (bonus * -1)
         end
-        return Transform(card, context)
+        return hpfx_Transform(card, context)
 	end,
 }

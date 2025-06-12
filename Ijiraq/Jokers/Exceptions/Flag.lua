@@ -1,4 +1,4 @@
-G.C.IjiGray = HEX('BFD7D5')      
+G.C.hpfx_IjiGray = HEX('BFD7D5')      
 SMODS.Joker{--Banner? 
     key = 'flag',
     pos = {x = 1, y = 2},
@@ -33,9 +33,14 @@ SMODS.Joker{--Banner?
     cost = 5,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
     calculate = function(self, card, context)
-        bannerScoring(card, context)
+        if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
+            return{
+                chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left),
+                func = function ()
+                    hpfx_Transform(card, context)
+                end
+            }
+        end
     end
 }

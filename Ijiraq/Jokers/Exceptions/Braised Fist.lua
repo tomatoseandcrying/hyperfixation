@@ -1,5 +1,5 @@
-G.C.IjiGray = HEX('BFD7D5')     
-SMODS.Joker{ --Raised Fist? 
+G.C.hpfx_IjiGray = HEX('BFD7D5')
+SMODS.Joker{ --Raised Fist?
     key = 'braised',
     pos = {x = 8, y = 2},
     no_mod_badges = true,
@@ -26,13 +26,13 @@ SMODS.Joker{ --Raised Fist?
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
     calculate = function(self, card, context)
-        if context.individual and 
-        context.cardarea == G.hand and 
+        if context.individual and
+        context.cardarea == G.hand and
         not context.end_of_round then
             local tempMult, tempID = -1, -1
             local raised_card = nil
             for i = 1, #G.hand.cards do
-                if tempID <= G.hand.cards[i].base.id and 
+                if tempID <= G.hand.cards[i].base.id and
                 not SMODS.has_no_rank(G.hand.cards[i]) then
                 tempMult = G.hand.cards[i].base.nominal
                 tempID = G.hand.cards[i].base.id
@@ -49,7 +49,7 @@ SMODS.Joker{ --Raised Fist?
                     return{
                     mult = 2 * tempMult,
                     func = function ()
-                    Transform(card, context)    
+                        hpfx_Transform(card, context)
                     end
                     }
                 end

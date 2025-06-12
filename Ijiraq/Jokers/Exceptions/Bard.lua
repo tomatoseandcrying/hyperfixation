@@ -1,5 +1,5 @@
-G.C.IjiGray = HEX('BFD7D5')      
-SMODS.Joker{ --Troubadour? 
+G.C.hpfx_IjiGray = HEX('BFD7D5')
+SMODS.Joker{ --Troubadour?
     key = 'bard',
     atlas = 'IjiraqJokers',
     pos = {x = 0, y = 2},
@@ -9,11 +9,11 @@ SMODS.Joker{ --Troubadour?
     },
     unlocked = true,
     discovered = true,
-    no_collection = true,
+    --no_collection = true,
     loc_vars = function (self, info_queue, card)
         return{vars = {
-            card.ability.extra.hand_size, 
-            -card.ability.extra.hand_plays, 
+            card.ability.extra.hand_size,
+            -card.ability.extra.hand_plays,
             card.area and card.area == G.jokers and "...?" or ""
         }}
     end,
@@ -38,7 +38,7 @@ SMODS.Joker{ --Troubadour?
     calculate = function(self, card, context)
         if context.after then
             func = function ()
-            Transform(card, context)       
+            hpfx_Transform(card, context)
             end
         end
     end

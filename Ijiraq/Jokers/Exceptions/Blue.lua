@@ -1,11 +1,11 @@
-G.C.IjiGray = HEX('BFD7D5')
+G.C.hpfx_IjiGray = HEX('BFD7D5')
 SMODS.Joker{ --Blueprint?
     key = 'blue',
     pos = {x = 0, y = 3},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {}
     },
@@ -91,7 +91,7 @@ SMODS.Joker{ --Blueprint?
                     trigger = "immediate",
                     delay = 0,
                     func = function()
-                    Transform(card, context)
+                    hpfx_Transform(card, context)
                     return true
                     end,
                 }))

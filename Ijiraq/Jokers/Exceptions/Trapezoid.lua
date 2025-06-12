@@ -1,4 +1,4 @@
-G.C.IjiGray = HEX('BFD7D5')     
+G.C.hpfx_IjiGray = HEX('BFD7D5')     
 SMODS.Joker{ --Acrobat? 
 key = 'trapezoid',
 atlas = 'IjiraqJokers',
@@ -30,7 +30,7 @@ eternal_compat = false,
 perishable_compat = true,
 calculate = function(self, card, context)
     if context.after and G.GAME.current_round.hands_left == 1 then
-        return Transform(card, context)
+        return hpfx_Transform(card, context)
     end
 end
 }

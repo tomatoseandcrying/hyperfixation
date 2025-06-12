@@ -1,4 +1,4 @@
-G.C.IjiGray = HEX('BFD7D5') 
+G.C.hpfx_IjiGray = HEX('BFD7D5') 
 SMODS.Joker{ --Marble Joker? 
     key = 'porcelain',
     atlas = 'IjiraqJokers',

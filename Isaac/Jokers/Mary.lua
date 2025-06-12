@@ -38,7 +38,7 @@ SMODS.Joker{
         if context.joker_main and 
         G.GAME.current_round.hands_left == 0 and
         (to_big(card.ability.extra.mult) > to_big(1)) then
-            isaacMult(card, context)
+            hpfx_isaacMult(card, context)
         end
         if context.end_of_round then
             counterIncrement(card, context)

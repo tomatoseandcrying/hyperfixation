@@ -39,9 +39,9 @@ SMODS.Joker{
         (to_big(card.ability.extra.chips) > to_big(1)) and
         (to_big(card.ability.extra.mult) > to_big(1)) then
             return{
-                isaacChip(card, context),
+                hpfx_isaacChip(card, context),
                 extra = {
-                isaacMult(card, context),
+                hpfx_isaacMult(card, context),
                 },
             }
         end

@@ -1,4 +1,4 @@
-G.C.IjiGray = HEX('BFD7D5')         
+G.C.hpfx_IjiGray = HEX('BFD7D5')         
 SMODS.Joker{--Steel Joker? 
 key = 'iron',
 pos = {x = 7, y = 2},
@@ -40,7 +40,7 @@ calculate = function(self, card, context)
             if SMODS.has_enhancement(v, 'm_steel') then steel_tally = steel_tally + 1 end
         end
         return {
-            Transform(card, context),
+            hpfx_Transform(card, context),
             x_mult = 1/(1 + card.ability.extra.x_mult*steel_tally)
         }
     end

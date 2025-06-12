@@ -74,16 +74,16 @@ SMODS.load_file('Stickers.lua')()
 
 --Custom Colors
 loc_colour('red')
-G.ARGS.LOC_COLOURS['IjiGray'] = HEX("BFD7D5")
+G.ARGS.LOC_COLOURS['hpfx_IjiGray'] = HEX("BFD7D5")
 
 --talisman conversion function
 to_big = to_big or function(x) return x end
 
 --Refactor Functions
-function chipGain(card, context)
+function hpfx_chipGain(card, context)
 	card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
 end
-function isaacChip(card, context)
+function hpfx_isaacChip(card, context)
 	SMODS.calculate_effect({
 		chip_mod = card.ability.extra.chips,
 		sound = "hpfx_thumbsup",
@@ -91,7 +91,7 @@ function isaacChip(card, context)
 		message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}
 	}, card)
 end
-function isaacMult(card, context)
+function hpfx_isaacMult(card, context)
     SMODS.calculate_effect({
         mult_mod = card.ability.extra.mult,
         sound = 'hpfx_1up',
@@ -125,7 +125,7 @@ function stoneGeneration(card, context)
     draw_card(G.play,G.deck, 90,'up', nil)
     playing_card_joker_effects({true})
 end
-function Transform(card, context)
+function hpfx_Transform(card, context)
     G.E_MANAGER:add_event(Event({
         trigger = "after",
         delay = 0.15,
@@ -187,7 +187,7 @@ end
 function disloyalScoring2(card, context)
     if card.ability.loyalty_remaining == 0 then
         return {
-            Transform(card, context),
+            hpfx_Transform(card, context),
             x_mult = 1/card.ability.extra.x_mult
         }
     end
@@ -210,14 +210,6 @@ function disloyalMain(card, context)
     if context.joker_main then
         card.ability.loyalty_remaining = (card.ability.extra.every - 1)
         disloyalScoring(card, context)
-    end
-end
-function bannerScoring(card, context)
-    if context.joker_main and to_big(card.ability.extra.chips) > to_big(1) then
-        return{
-            Transform(card, context),
-            chips = -(card.ability.extra.chips*G.GAME.current_round.discards_left)
-        }
     end
 end
 function whackCardCheck(card, context)
@@ -259,7 +251,7 @@ function whackAfter(card, context)
             if played2 and played3 and played4 and played5 then break end
         end
         if played2 and played3 and played4 and played5 then
-            return Transform(card, context)
+            return hpfx_Transform(card, context)
         end
     end
 end
@@ -273,20 +265,20 @@ function porcelainDrawn(card, context)
         for _, card in ipairs(G.playing_cards) do
             card:set_ability(G.P_CENTERS.c_base)
         end
-        return Transform(card, context)
+        return hpfx_Transform(card, context)
     end
 end
 
 --Ownerships (not unlock)
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
     use = function(self, card, area, copier)
-        local testvar = G.GAME.probabilities.normal/(card.ability.extra*(next(SMODS.find_card('j_hpfx_farmer')) and 0.5 or 1))
+        local hpfx_testvar = G.GAME.probabilities.normal/(card.ability.extra*(next(SMODS.find_card('j_hpfx_farmer')) and 0.5 or 1))
         local used_tarot = copier or card
         local temp_pool = (card.ability.name == 'The Wheel of Fortune' and card.eligible_strength_jokers) or {}
-        if pseudorandom('wheel_of_fortune') < testvar then
+        if pseudorandom('wheel_of_fortune') < hpfx_testvar then
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function ()
 				G.GAME.wheel_fails = 0
-				SMODS.calculate_context{chudhit = true}
+				SMODS.calculate_context{hpfx_chudhit = true}
                 local over = false
                 local eligible_card = pseudorandom_element(temp_pool, pseudoseed(
                     (card.ability.name == 'The Wheel of Fortune' and 'wheel_of_fortune')
@@ -330,8 +322,8 @@ SMODS.Joker:take_ownership('oops', {
 	end,
 }, true)
 
-G.PROFILES[G.SETTINGS.profile].crimsonCount = crimsonCount or 0
-G.PROFILES[G.SETTINGS.profile].devilCount = devilCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
 
 
 --Config
@@ -379,48 +371,20 @@ G.FUNCS.hpfx_save_and_apply = function()
 end
 
 --Quips
-eternal_jimbo = Card_Character.add_speech_bubble
-jEternal = jEternal or false
+hpfx_eternal_jimbo = Card_Character.add_speech_bubble
+hpfx_jEternal = hpfx_jEternal or false
 Card_Character.add_speech_bubble = function (self, arg1, arg2, arg3)
 	for _, v in ipairs(SMODS.find_card('j_joker')) do
-		if v.ability.eternal then jEternal = true break
-		else jEternal = false
+		if v.ability.eternal then hpfx_jEternal = true break
+		else hpfx_jEternal = false
 		end
 	end
-	if jEternal then
-	eternal_jimbo(self, 'eternal_jimbo' .. pseudorandom("ejimbo", 1, 2), nil, {quip = true})
+	if hpfx_jEternal then
+	hpfx_eternal_jimbo(self, 'hpfx_eternal_jimbo' .. pseudorandom("ejimbo", 1, 2), nil, {quip = true})
 	else
-	eternal_jimbo(self, arg1, arg2, arg3)
+	hpfx_eternal_jimbo(self, arg1, arg2, arg3)
 	end
 end
-
-
-
-
-
---[[
-People I Need To Credit ingame too:
-------------------------
-me for being awesome and shit
-
-ggezsped for being my first tester!
-
-BakersDozenBagels for Cyanosis's mult-decrease scoring context
-misenrol for the Greedy Joker? tweaks done in the notes app at 3AM
-someone23832 for the save button
-Bepis for saving my ass like 12 times oml :sob:
-Aikoyori for saving my ass like 6 other times oh god
-Maxx for helping with the Ijiraq redesign, reformatting of Ijiraq's code to make it FAR less complicated
-Delirium for also reformatting Ijiraq's code to make it far less complicated, helping me create and fix my sticker, helping me with unlock conditions
-N' for help with the transformation and dynamic description code
-Larswijn for helping me get Farmer functional!!
-Hamester for helping me fix my sticker
-Astra for fixing my file splitting/global function issues!
-FoxDeploy for helping me with unlock conditions
-revo
-
-Thunk for having the worst code known to man someone kill me
-]]
 
 
 
