@@ -32,14 +32,23 @@ SMODS.Joker{ --Credit Card?
     atlas = 'IjiraqJokers',
     blueprint_compat = false,
     calculate = function (self, card, context)
+        local fuckYou = false
         if context.buying_card and
-        not context.blueprint and
-        to_big(G.GAME.dollars) -
-        to_big(context.card.cost) <=
-        to_big(card.ability.extra.dollars) then
-            func = function ()
-            hpfx_Transform(card, context)
-            end
+        not context.blueprint then
+            fuckYou = true
+        end
+        if to_big(G.GAME.dollars) <=
+        to_big(card.ability.extra.dollars) and
+        fuckYou then
+            G.E_MANAGER:add_event(Event({
+                trigger = "immediate",
+                delay = 0,
+                func = function()
+                hpfx_Transform(card, context)
+                return true
+                end,
+            }))
+            fuckYou = false
         end
     end
 }

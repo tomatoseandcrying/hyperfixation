@@ -47,7 +47,6 @@ SMODS.Joker{
         if context.hpfx_chudhit and context.main_eval then
             card.ability.extra.xmult = card.ability.extra.xmult *
             card.ability.extra.xmult_gain
-            print("triggered joker")
             return {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.MULT,
