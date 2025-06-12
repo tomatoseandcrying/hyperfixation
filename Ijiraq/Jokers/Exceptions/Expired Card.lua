@@ -43,7 +43,7 @@ SMODS.Joker { --Credit Card?
     calculate = function(self, card, context)
         if context.buying_card and not context.blueprint
         and to_big(G.GAME.dollars) - to_big(context.card.cost) <=
-        to_big(card.ability.extra.dollars) and context.main_eval
+        to_big(card.ability.extra.dollars)
         then
             print("guh")
             hpfx_Transform(card, context)
