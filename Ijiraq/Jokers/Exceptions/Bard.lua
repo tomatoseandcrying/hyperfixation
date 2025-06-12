@@ -5,7 +5,10 @@ SMODS.Joker{ --Troubadour?
     pos = {x = 0, y = 2},
     no_mod_badges = true,
     config = {
-        extra = {hand_size = 2, hand_plays = -1}
+        extra = {
+            hand_size = 2, 
+            hand_plays = -1
+        }
     },
     unlocked = true,
     discovered = true,
@@ -18,7 +21,12 @@ SMODS.Joker{ --Troubadour?
         }}
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_bard", nodes = {} }
+        full_UI_table.name = localize { 
+            type = 'name', 
+            set = "Joker", 
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_bard", 
+            nodes = {} 
+        }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)

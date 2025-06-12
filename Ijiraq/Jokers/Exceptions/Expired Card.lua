@@ -7,7 +7,10 @@ SMODS.Joker { --Credit Card?
     discovered = true,
     --no_collection = true,
     config = {
-        extra = { credit = 20, dollars = 0 }
+        extra = { 
+            credit = 20, 
+            dollars = 0 
+        }
     },
     loc_vars = function(self, info_queue, card)
         return {
@@ -19,7 +22,11 @@ SMODS.Joker { --Credit Card?
         }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_expired", nodes = {} }
+        full_UI_table.name = localize { 
+            type = 'name', 
+            set = "Joker", 
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_expired", 
+            nodes = {} }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)
