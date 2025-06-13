@@ -189,7 +189,7 @@ return {
                 text={
                     "Adds one {C:attention}Stone{} card",
                     "to deck when",
-                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray, s:0.7}#2#{}",
+                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray, s:0.7}#1#{}",
                 },
             },
             j_hpfx_porcelain_alt ={
@@ -197,7 +197,7 @@ return {
                 text={
                     "Adds one {C:attention}Stone{} card",
                     "to deck when",
-                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray, s:0.7}#2#{}",
+                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray, s:0.7}#1#{}",
                 },
             },
             j_hpfx_redeemed = {

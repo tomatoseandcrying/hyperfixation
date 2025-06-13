@@ -104,26 +104,39 @@ function counterIncrement(card, context)
     end
 end
 function stoneGeneration(card, context)
+    local stone_card = create_playing_card(
+        {center = G.P_CENTERS.m_stone},
+        G.discard,
+        true,
+        false,
+        nil,
+        true
+    )
     G.E_MANAGER:add_event(Event({
         func = function()
-            local front = pseudorandom_element(G.P_CARDS, pseudoseed('marb_fr'))
-            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-            local card = Card(G.play.T.x + G.play.T.w/2, G.play.T.y, G.CARD_W, G.CARD_H, front, G.P_CENTERS.m_stone, {playing_card = G.playing_card})
-            card:start_materialize({G.C.SECONDARY_SET.Enhanced})
-            G.play:emplace(card)
-            table.insert(G.playing_cards, card)
+            stone_card:start_materialize({ G.C.SECONDARY_SET.Enhanced })
+            G.play:emplace(stone_card)
             return true
         end
     }))
-    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_stone'), colour = G.C.SECONDARY_SET.Enhanced})
-    G.E_MANAGER:add_event(Event({
+    return {
+        message = localize('k_plus_stone'),
+        colour = G.C.SECONDARY_SET.Enhanced,
         func = function()
-            G.deck.config.card_limit = G.deck.config.card_limit + 1
-            return true
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.deck.config.card_limit =
+                    G.deck.config.card_limit + 1
+                    return true
+                end
+            }))
+            draw_card(G.play, G.deck, 90, 'up')
+            SMODS.calculate_context(
+            {
+            playing_card_added = true,
+            cards = { stone_card } })
         end
-    }))
-    draw_card(G.play,G.deck, 90,'up', nil)
-    playing_card_joker_effects({true})
+    }
 end
 function hpfx_Transform(card, context)
     G.E_MANAGER:add_event(Event({
@@ -253,19 +266,6 @@ function whackAfter(card, context)
         if played2 and played3 and played4 and played5 then
             return hpfx_Transform(card, context)
         end
-    end
-end
-function porcelainBlind(card, context)
-    if context.setting_blind and not card.getting_sliced then
-        stoneGeneration(card, context)
-    end
-end
-function porcelainDrawn(card, context)
-    if context.hand_drawn then
-        for _, card in ipairs(G.playing_cards) do
-            card:set_ability(G.P_CENTERS.c_base)
-        end
-        return hpfx_Transform(card, context)
     end
 end
 
@@ -403,3 +403,9 @@ end
 		silent = true
 	})
 end ]]
+
+function debugstone(context, card)
+    for _, card in ipairs(G.playing_cards) do
+        card:set_ability(G.P_CENTERS.m_stone)
+    end
+end
