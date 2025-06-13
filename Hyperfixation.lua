@@ -386,12 +386,8 @@ Card_Character.add_speech_bubble = function (self, arg1, arg2, arg3)
 	end
 end
 
-
-
-
 --debug
-
---[[ function maxx_debug(txt)
+function maxx_debug(txt)
 	attention_text({
 		text = txt,
 		scale = 1.3,
@@ -402,9 +398,8 @@ end
 		offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0},
 		silent = true
 	})
-end ]]
-
-function debugstone(context, card)
+end
+function toma_debug_porcelaintest(context, card)
     for _, card in ipairs(G.playing_cards) do
         card:set_ability(G.P_CENTERS.m_stone)
     end

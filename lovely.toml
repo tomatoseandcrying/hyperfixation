@@ -171,3 +171,24 @@ position = "after"
 payload = '''
 SMODS.calculate_context{hpfx_chudhit = true}
 '''
+
+# Golden Joker? transformation
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "functions/state_events.lua"
+pattern = '''
+if ret then
+    i = i+1
+    add_round_eval_row({dollars = ret, bonus = true, name='joker'..i, pitch = pitch, card = _card})
+    pitch = pitch + 0.06
+    dollars = dollars + ret
+end
+'''
+position = "after"
+payload = '''
+if _card.config.center.key == "j_hpfx_pyramid" then
+    hpfx_Transform(_card)
+end
+'''

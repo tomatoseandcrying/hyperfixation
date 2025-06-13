@@ -6,7 +6,7 @@ SMODS.Joker{ --Marble Joker?
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {additions = 1}
     },

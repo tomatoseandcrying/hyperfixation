@@ -15,6 +15,9 @@ Moriah
 <ins>**evaluate_play_final_scoring**</ins>\
 Mary
 
+<ins>**calculate_dollar_bonus**</ins>\
+Golden Joker?
+
 ### card.lua Patches:
 <ins>**Chud Joker**</ins>\
 Bloodstone\
