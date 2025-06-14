@@ -5,7 +5,9 @@ atlas = 'IjiraqJokers',
 pos = {x = 2, y = 1},
 no_mod_badges = true,
 config = {
-    extra = {x_mult = 3}
+    extra = {
+        x_mult = 3
+    }
 },
 unlocked = true,
 discovered = true,
@@ -14,7 +16,8 @@ loc_vars = function (self, info_queue, card)
     return{vars = {
         card.ability.extra.x_mult, 
         card.area and card.area == G.jokers and "...?" or ""
-    }}
+    }
+}
 end,
 generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     full_UI_table.name = localize { type = 'name', set = "Joker", key = card.ability and card.ability.extra.new_key or "j_hpfx_trapezoid", nodes = {} }
@@ -26,11 +29,13 @@ end,
 rarity = 2,
 cost = 6,
 blueprint_compat = true,
-eternal_compat = false,
-perishable_compat = true,
 calculate = function(self, card, context)
     if context.after and G.GAME.current_round.hands_left == 1 then
-        return hpfx_Transform(card, context)
+        return{
+            func = function()
+                hpfx_Transform(card, context)
+            end,
+        }
     end
 end
 }
