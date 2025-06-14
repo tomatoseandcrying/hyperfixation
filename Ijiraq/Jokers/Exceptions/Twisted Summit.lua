@@ -1,5 +1,5 @@
-G.C.hpfx_IjiGray = HEX('BFD7D5') 
-SMODS.Joker{--Mystic Summit? 
+G.C.hpfx_IjiGray = HEX('BFD7D5')
+SMODS.Joker{--Mystic Summit?
     key = 'twistit',
     pos = {x = 2, y = 2},
     no_mod_badges = true,
@@ -7,7 +7,10 @@ SMODS.Joker{--Mystic Summit?
     discovered = true,
     no_collection = true,
     config = {
-        extra = {mult = 15, discards_remaining = 0},
+        extra = {
+            mult = 15,
+            discards_remaining = 0
+        },
     },
     loc_vars = function (self, info_queue, card)
         return {
@@ -34,16 +37,22 @@ SMODS.Joker{--Mystic Summit?
     cost = 5,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
     calculate = function(self, card, context)
-        if context.joker_main and G.GAME.current_round.discards_left ~= card.ability.extra.discards_remaining then
+        if context.joker_main and
+        G.GAME.current_round.discards_left ~=
+        card.ability.extra.discards_remaining then
             return {
                 mult = card.ability.extra.mult,
             }
         end
-        if context.before and G.GAME.current_round.discards_left == card.ability.extra.discards_remaining then
-            return hpfx_Transform(card, context)
+        if context.before and
+        G.GAME.current_round.discards_left ==
+        card.ability.extra.discards_remaining then
+            return{
+                func = function()
+                    hpfx_Transform(card, context)
+                end,
+            }
         end
     end
 }
