@@ -56,7 +56,7 @@ SMODS.Sound({
 	path = "Isaac_dies_new_2.ogg",
 })
 
-
+--File Loading
 mod_path = "" .. SMODS.current_mod.path
 function load_folder(folder)
 	files = NFS.getDirectoryItems(mod_path .. folder)
@@ -64,7 +64,6 @@ function load_folder(folder)
 		SMODS.load_file(folder .. "/" .. file)()
 	end
 end
---File Loading
 SMODS.load_file('src/overrides.lua')()
 --SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
