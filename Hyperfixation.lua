@@ -256,7 +256,7 @@ G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
 
 --Config
 local config = SMODS.current_mod.config
-SMODS.current_mod.config_tab = function ()
+--[[ SMODS.current_mod.config_tab = function ()
 	return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
 		{n = G.UIT.R, config = {align = "cl", padding = 0}, nodes = {
 			{n = G.UIT.C, config = {align = "cl", padding = 0.05}, nodes = {
@@ -280,7 +280,7 @@ SMODS.current_mod.config_tab = function ()
 			}}
 		}}
 	}}
-end
+end ]]
 SMODS.current_mod.optional_features = function()
 	return {
 		post_trigger = true,
@@ -292,11 +292,11 @@ SMODS.current_mod.optional_features = function()
 		}
 	}
 end
-G.FUNCS.hpfx_save_and_apply = function()
+--[[ G.FUNCS.hpfx_save_and_apply = function()
     G.ACTIVE_MOD_UI = nil
     SMODS.save_all_config()
     SMODS.IN_MODS_TAB = nil
-end
+end ]]
 
 --Quips
 hpfx_eternal_jimbo = Card_Character.add_speech_bubble
