@@ -197,49 +197,6 @@ function Card:Transfodd(context)
     }))
 	return true
 end
-function whackCardCheck(card, context)
-    if (context.other_card:get_id() == 2 or
-    context.other_card:get_id() == 3 or
-    context.other_card:get_id() == 4 or
-    context.other_card:get_id() == 5) then
-        return {
-            message = localize('k_again_ex'),
-            repetitions = card.ability.extra.repetitions,
-            card = card
-        }
-    end
-end
-function whackRepetition(card, context)
-    if context.repetition then
-        if context.cardarea == G.play then
-            whackCardCheck(card, context)
-        end
-    end
-end
-function whackBefore(card, context)
-    if context.before and context.cardarea == G.jokers then
-        for _, kard in ipairs(context.scoring_hand) do
-            if kard:get_id() == 2 or kard:get_id() == 3 or kard:get_id() == 4 or kard:get_id() == 5 then
-                table.insert(card.ability.extra.played_cards, kard)
-            end
-        end
-    end
-end
-function whackAfter(card, context)
-    if context.after then
-        local played2, played3, played4, played5 = false, false, false, false
-        for _, v in ipairs(card.ability.extra.played_cards) do
-            if v:get_id() == 2 then played2 = true
-            elseif v:get_id() == 3 then played3 = true
-            elseif v:get_id() == 4 then played4 = true
-            elseif v:get_id() == 5 then played5 = true end
-            if played2 and played3 and played4 and played5 then break end
-        end
-        if played2 and played3 and played4 and played5 then
-            return hpfx_Transform(card, context)
-        end
-    end
-end
 
 --Ownerships (not unlock)
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
