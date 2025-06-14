@@ -6,7 +6,7 @@ SMODS.Joker{ --Golden Joker?
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {money = 4}
     },
@@ -34,9 +34,7 @@ SMODS.Joker{ --Golden Joker?
     end,
     rarity = 1,
     cost = 6,
-    blueprint_compat = true,
-    eternal_compat = false,
-    perishable_compat = true,
+    blueprint_compat = false,
     calc_dollar_bonus = function(self, card)
         return -card.ability.extra.money
     end

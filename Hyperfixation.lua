@@ -197,34 +197,6 @@ function Card:Transfodd(context)
     }))
 	return true
 end
-function disloyalScoring2(card, context)
-    if card.ability.loyalty_remaining == 0 then
-        return {
-            hpfx_Transform(card, context),
-            x_mult = 1/card.ability.extra.x_mult
-        }
-    end
-end
-function disloyalBlueprint(card, context)
-    if card.ability.loyalty_remaining == card.ability.extra.every then
-        return {
-            x_mult = card.ability.extra.x_mult
-        }
-    end
-end
-function disloyalScoring(card, context)
-    if context.blueprint then
-        disloyalBlueprint(card, context)
-    else
-        disloyalScoring2(card, context)
-    end
-end
-function disloyalMain(card, context)
-    if context.joker_main then
-        card.ability.loyalty_remaining = (card.ability.extra.every - 1)
-        disloyalScoring(card, context)
-    end
-end
 function whackCardCheck(card, context)
     if (context.other_card:get_id() == 2 or
     context.other_card:get_id() == 3 or
