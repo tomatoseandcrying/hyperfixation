@@ -6,7 +6,7 @@ SMODS.Joker{--Merry Andy?
     no_mod_badges = true,
     unlocked = true, --Set FALSE on release!!
     discovered = true,
-    --no_collection = true,
+    no_collection = true,
     config = {
         extra = {
             discard_size = 3,
