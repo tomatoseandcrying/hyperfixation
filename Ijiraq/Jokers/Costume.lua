@@ -3,7 +3,6 @@ SMODS.Joker{ --Costume (The costume setup only works before, during, or after ha
 	atlas = 'IjiraqJokers',
 	rarity = 3,
 	blueprint_compat = false,
-	eternal_compat = false,
 	pos = { x = 0, y = 0 },
 	config = { extra = {
 			jkey = 'fodder'
@@ -30,19 +29,18 @@ SMODS.Joker{ --Costume (The costume setup only works before, during, or after ha
             j_credit_card = 'j_hpfx_expired',
             j_blueprint = 'j_hpfx_bluebell',
         }
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
-        card.config.center = G.P_CENTERS[exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker']
-        card:set_ability(card.config.center,true)
+        card:set_ability(exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker', true)
+        --card:set_sprites(card.config.center)
         card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
         card.visiblyIjiraq = false
-        card:set_sprites(card.config.center)
-        card:set_cost()
     end,
---[[ 	calculate = function(self,card,context)
+    add_to_deck = function (self, card, from_debuff)
+        local sticker = SMODS.Stickers['hpfx_priceless']
+        sticker.apply(sticker, card, true)
+    end,
+	calculate = function(self,card,context)
 		if context.before and context.cardarea == G.jokers then
 			maxx_debug(G.GAME.current_round.fodder_card.jkey)
 		end
-
-	end ]]
+	end
 }

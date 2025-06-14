@@ -34,6 +34,8 @@ generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_U
 end,
 add_to_deck = function(self, card, from_debuff)
     card.ability.extra.new_key = "j_hpfx_reprint_alt"
+    local sticker = SMODS.Stickers['hpfx_priceless']
+    sticker.apply(sticker, card, true)
 end,
 rarity = 1,
 cost = 4,

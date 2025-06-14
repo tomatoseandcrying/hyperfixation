@@ -33,6 +33,8 @@ SMODS.Joker{ --Troubadour?
         card.ability.extra.new_key = "j_hpfx_bard_alt"
         G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hand_plays
         G.hand:change_size(card.ability.extra.hand_size)
+        local sticker = SMODS.Stickers['hpfx_priceless']
+        sticker.apply(sticker, card, true)
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hand_plays

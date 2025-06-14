@@ -28,6 +28,8 @@ SMODS.Joker{ --Golden Joker?
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_pyramid_alt"
         G.GAME.dollars = G.GAME.dollars + card.ability.extra.money
+        local sticker = SMODS.Stickers['hpfx_priceless']
+        sticker.apply(sticker, card, true)
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.dollars = G.GAME.dollars - card.ability.extra.money

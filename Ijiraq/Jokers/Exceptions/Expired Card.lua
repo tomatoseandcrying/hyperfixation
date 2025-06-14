@@ -32,6 +32,8 @@ SMODS.Joker { --Credit Card?
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_expired_alt"
         G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.credit
+        local sticker = SMODS.Stickers['hpfx_priceless']
+        sticker.apply(sticker, card, true)
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.credit
