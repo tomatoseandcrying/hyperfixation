@@ -33,14 +33,36 @@ target = "card.lua"
 pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']"
 position = "at"
 payload = '''
+sendFatalMessage(self.isIjiraq)
 if self.isIjiraq then
-    self.children.center.atlas = G.ASSET_ATLAS['IjiraqJokers']
+    self.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
 else
     self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
 end
 '''
 match_indent = true
 times = 1
+
+[[patches]] 
+[patches.pattern]
+target = "card.lua"
+pattern = '''if _center.soul_pos then'''
+position = "before"
+payload = '''
+if self.isIjiraq then
+    self.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
+    self.children.center:set_sprite_pos(_center.pos)
+else
+    self:remove()
+end
+'''
+match_indent = true
+times = 1
+
+
+
+
+
 
 
 # Mary unlock check

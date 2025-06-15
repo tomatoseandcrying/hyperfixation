@@ -179,7 +179,8 @@ function Card:Transfodd(context)
         trigger = 'after',
         delay = 0.15,
         func = function()
-            self:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+            self.config.center = G.P_CENTERS['j_hpfx_ijiraq']
+            self:set_ability(self.config.center,true)
             play_sound("card1")
             self:juice_up(0.3, 0.3)
             return true
@@ -191,6 +192,7 @@ function Card:Transfodd(context)
         func = function()
             self.isIjiraq = nil
             self.visiblyIjiraq = nil
+            self:flip()
             return true
         end
     }))

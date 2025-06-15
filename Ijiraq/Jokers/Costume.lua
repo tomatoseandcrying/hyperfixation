@@ -29,10 +29,10 @@ SMODS.Joker{ --Costume (The costume setup only works before, during, or after ha
             j_credit_card = 'j_hpfx_expired',
             j_blueprint = 'j_hpfx_bluebell',
         }
-        card:set_ability(exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker', true)
-        --card:set_sprites(card.config.center)
         card.isIjiraq = (exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
         card.visiblyIjiraq = false
+        card:set_ability(exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker', true)
+        card:set_cost()
     end,
     add_to_deck = function (self, card, from_debuff)
         local sticker = SMODS.Stickers['hpfx_priceless']
