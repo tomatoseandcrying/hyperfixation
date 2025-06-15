@@ -32,6 +32,7 @@ end
 function SMODS.current_mod.reset_game_globals(run_start)
     local ijiraq_pool = get_current_pool("Joker")
     local jokester = pseudorandom_element(ijiraq_pool, pseudoseed('ijiraq'))
+---@diagnostic disable-next-line: cast-local-type
     if jokester and jokester == 'UNAVAILABLE' then jokester = 'j_joker' end
     G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
 end
