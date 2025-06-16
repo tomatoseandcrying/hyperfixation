@@ -123,6 +123,58 @@ function Card:add_to_deck(from_debuff)
     add2deck_ref(self, from_debuff)
 end
 
+local cosreg = SMODS.DrawSteps.front.func
+SMODS.DrawStep:take_ownership("front",{
+    func = function (card, layer)
+        if  card.ability.name == "j_hpfx_costume" and card.children.front and card.children.front.atlas then
+            local iji = card.children.front.atlas.name
+            card.children.front.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
+            card.children.front:reset()
+            cosreg(card,layer)
+            card.children.front.atlas = G.ASSET_ATLAS[iji]
+            
+        else
+            cosreg(card,layer)
+        end
+    end
+})
+
+local cosedd = SMODS.DrawSteps.edition.func
+SMODS.DrawStep:take_ownership("edition",{
+    func = function (card, layer)
+        if card.edition and not card.delay_edition then
+            if  card.ability.name == "j_hpfx_costume" and card.children.front and card.children.front.atlas then
+                local iji = card.children.front.atlas.name
+                card.children.front.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
+                card.children.front:reset()
+                cosedd(card,layer)
+                card.children.front.atlas = G.ASSET_ATLAS[iji]
+                
+            else
+                cosedd(card,layer)
+            end
+        end
+    end
+})
+
+local cosdeb = SMODS.DrawSteps.greyed.func
+SMODS.DrawStep:take_ownership("greyed",{
+    func = function (card, layer)
+        if card.greyed then
+            if  card.ability.name == "j_hpfx_costume" and card.children.front and card.children.front.atlas then
+                local iji = card.children.front.atlas.name
+                card.children.front.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
+                card.children.front:reset()
+                cosdeb(card,layer)
+                card.children.front.atlas = G.ASSET_ATLAS[iji]
+                
+            else
+                cosdeb(card,layer)
+            end
+        end
+    end
+})
+
 local ref_ease_hands = ease_hands_played
 function ease_hands_played(mod, instant)
     local ret = ref_ease_hands(mod, instant)
