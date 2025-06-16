@@ -34,7 +34,7 @@ pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center
 position = "at"
 payload = '''
 print("UNGABUNGA")
-if self.isIjiraq then
+if true then
     self.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
 else
     self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
@@ -43,7 +43,7 @@ end
 match_indent = true
 times = 1
 
-[[patches]] 
+[[patches]] # Ijiraq Patch 4 (patches properly)
 [patches.pattern]
 target = "card.lua"
 pattern = '''if _center.soul_pos then'''
@@ -59,6 +59,22 @@ end
 match_indent = true
 times = 1
 
+[[patches]] # Ijiraq Patch 5 (patches properly)
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if _center then 
+    if _center.set then
+'''
+position = "at"
+payload = '''
+if _center then
+    print("center!")
+    if _center.set then
+        print("set!")
+'''
+match_indent = true
+times = 1
 
 
 
