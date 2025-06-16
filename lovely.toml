@@ -3,7 +3,7 @@ version = "1.0.0"
 priority = 0
 
 
-[[patches]] # Ijiraq Patch 1 (patches properly)
+[[patches]] # Ijiraq Patch 1 (patches properly) WORKS
 [patches.pattern]
 target = "card.lua"
 pattern = "self.seal = cardTable.seal"
@@ -15,7 +15,7 @@ self.visiblyIjiraq = cardTable.visiblyIjiraq
 '''
 times = 1
 
-[[patches]] # Ijiraq Patch 2 (patches properly)
+[[patches]] # Ijiraq Patch 2 (patches properly) WORKS
 [patches.pattern]
 target = "card.lua"
 pattern = "seal = self.seal,"
@@ -33,7 +33,7 @@ target = "card.lua"
 pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']"
 position = "at"
 payload = '''
-sendFatalMessage(self.isIjiraq)
+print("UNGABUNGA")
 if self.isIjiraq then
     self.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
 else

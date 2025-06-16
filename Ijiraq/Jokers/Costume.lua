@@ -38,9 +38,9 @@ SMODS.Joker{ --Costume (The costume setup only works before, during, or after ha
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
     end,
-	calculate = function(self,card,context)
+--[[ 	calculate = function(self,card,context)
 		if context.before and context.cardarea == G.jokers then
 			maxx_debug(G.GAME.current_round.fodder_card.jkey)
 		end
-	end
+	end ]]
 }
