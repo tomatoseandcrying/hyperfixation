@@ -1,4 +1,4 @@
-SMODS.Joker{ --Costume (The costume setup only works before, during, or after hand calculations. Anything else will require creation of an exception.)
+SMODS.Joker{ --Costume
 	key = 'costume',
 	atlas = 'IjiraqJokers',
 	rarity = 3,
@@ -33,6 +33,12 @@ SMODS.Joker{ --Costume (The costume setup only works before, during, or after ha
         card.visiblyIjiraq = false
         card:set_ability(exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or 'j_joker', true)
         card:set_cost()
+        card.children.front = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS[G.P_CENTERS[G.GAME.current_round.fodder_card.jkey].atlas], G.P_CENTERS[G.GAME.current_round.fodder_card.jkey].pos)
+        card.children.front.states.hover = card.states.hover
+        card.children.front.states.click = card.states.click
+        card.children.front.states.drag = card.states.drag
+        card.children.front.states.collide.can = false
+        card.children.front:set_role({major = card, role_type = 'Glued', draw_major = card})
     end,
     add_to_deck = function (self, card, from_debuff)
         local sticker = SMODS.Stickers['hpfx_priceless']
