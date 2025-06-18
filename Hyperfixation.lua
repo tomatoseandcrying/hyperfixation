@@ -316,6 +316,24 @@ Card_Character.add_speech_bubble = function (self, arg1, arg2, arg3)
 	end
 end
 
+--tables
+exceptions = {
+    j_misprint = 'j_hpfx_reprint',
+    j_raised_fist = 'j_hpfx_braised',
+    j_mystic_summit = 'j_hpfx_twistit',
+    j_loyalty_card = 'j_hpfx_redeemed',
+    j_steel_joker = 'j_hpfx_iron',
+    j_acrobat = 'j_hpfx_trapezoid',
+    j_banner = 'j_hpfx_flag',
+    j_merry_andy = 'j_hpfx_scaryandy',
+    j_troubadour = 'j_hpfx_bard',
+    j_hack = 'j_hpfx_whack',
+    j_marble = 'j_hpfx_porcelain',
+    j_golden = 'j_hpfx_pyramid',
+    j_credit_card = 'j_hpfx_expired',
+    j_blueprint = 'j_hpfx_bluebell',
+}
+
 --debug
 function maxx_debug(txt)
 	attention_text({

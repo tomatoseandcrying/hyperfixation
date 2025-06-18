@@ -37,6 +37,36 @@ function SMODS.current_mod.reset_game_globals(run_start)
         if jokester and jokester == 'UNAVAILABLE' then jokester = 'j_joker' end
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
         end
+        for _, card in ipairs(G.jokers.cards) do
+            if card.isIjiraq or exceptions[G.GAME.current_round.fodder_card.jkey] then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function()
+                        G.P_CENTERS.j_hpfx_costume:set_ability(card)
+                        play_sound("card1")
+                        card:juice_up(0.3, 0.3)
+                        return true
+                    end
+                }))
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function()
+                        card:flip()
+                        return true
+                    end
+                }))
+            end
+        end
     end
 
 local chud = Card.calculate_joker
@@ -124,58 +154,6 @@ function Card:add_to_deck(from_debuff)
         end
     add2deck_ref(self, from_debuff)
 end
-
---[[ local cosreg = SMODS.DrawSteps.center.func
-SMODS.DrawStep:take_ownership("center",{
-    func = function (card, layer)
-        if  card.ability.name == "j_hpfx_costume" and card.children.center and card.children.center.atlas then
-            local iji = card.children.center.atlas.name
-            card.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
-            card.children.center:reset()
-            cosreg(card,layer)
-            card.children.center.atlas = G.ASSET_ATLAS[iji]
-            
-        else
-            cosreg(card,layer)
-        end
-    end
-})
-
-local cosedd = SMODS.DrawSteps.edition.func
-SMODS.DrawStep:take_ownership("edition",{
-    func = function (card, layer)
-        if card.edition and not card.delay_edition then
-            if  card.ability.name == "j_hpfx_costume" and card.children.center and card.children.center.atlas then
-                local iji = card.children.center.atlas.name
-                card.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
-                card.children.center:reset()
-                cosedd(card,layer)
-                card.children.center.atlas = G.ASSET_ATLAS[iji]
-                
-            else
-                cosedd(card,layer)
-            end
-        end
-    end
-})
-
-local cosdeb = SMODS.DrawSteps.debuff.func
-SMODS.DrawStep:take_ownership("debuff",{
-    func = function (card, layer)
-        if card.greyed then
-            if  card.ability.name == "j_hpfx_costume" and card.children.center and card.children.center.atlas then
-                local iji = card.children.center.atlas.name
-                card.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
-                card.children.center:reset()
-                cosdeb(card,layer)
-                card.children.center.atlas = G.ASSET_ATLAS[iji]
-                
-            else
-                cosdeb(card,layer)
-            end
-        end
-    end
-}) ]]
 
 local ref_ease_hands = ease_hands_played
 function ease_hands_played(mod, instant)
