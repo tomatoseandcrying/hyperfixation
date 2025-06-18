@@ -107,7 +107,7 @@ function Card:calculate_joker(context)
             end
         }))
     end
-    if context.setting_blind then
+    if context.setting_blind and self.isIjiraq then
         G.E_MANAGER:add_event(Event({
             trigger = "after",
             delay = 0.15,
