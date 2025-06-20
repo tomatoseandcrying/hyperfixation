@@ -55,6 +55,10 @@ SMODS.Sound({
 	key = "hpfx_death3",
 	path = "Isaac_dies_new_2.ogg",
 })
+SMODS.Sound({
+    key = "hpfx_fall",
+    path = "lich-fall.ogg",
+})
 
 --File Loading
 mod_path = "" .. SMODS.current_mod.path
@@ -139,6 +143,14 @@ function stoneGeneration(card, context)
 end
 function hpfx_Transform(card, context)
     G.E_MANAGER:add_event(Event({
+        trigger = "immediate",
+        delay = 0,
+        func = function ()
+            table.insert(G.GAME.raqeffects, card.config.center.key or G.GAME.current_round.fodder_card.jkey)
+            return true
+        end,
+    }))
+    G.E_MANAGER:add_event(Event({
         trigger = "after",
         delay = 0.15,
         func = function()
@@ -167,6 +179,14 @@ function hpfx_Transform(card, context)
 	return true
 end
 function Card:Transfodd(context)
+        G.E_MANAGER:add_event(Event({
+        trigger = "immediate",
+        delay = 0,
+        func = function ()
+            table.insert(G.GAME.raqeffects, self.config.center.key or G.GAME.current_round.fodder_card.jkey)
+            return true
+        end,
+    }))
     G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.15,
@@ -254,6 +274,7 @@ SMODS.Joker:take_ownership('oops', {
 
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
+
 
 
 --Config

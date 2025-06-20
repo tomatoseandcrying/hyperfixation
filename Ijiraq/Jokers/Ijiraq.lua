@@ -24,5 +24,24 @@ SMODS.Joker{ --Ijiraq.
     end,
     add_to_deck = function(self, card, from_debuff)
         card:remove_sticker('hpfx_priceless')
+        for k, v in ipairs(SMODS.find_card('j_hpfx_ijiraq')) do
+            if v ~= card then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                    SMODS.calculate_effect({message = 'Fall.', colour = G.C.RED, sound = 'hpfx_fall'}, card)
+                    return true
+                    end
+                }))
+                G.E_MANAGER:add_event(Event({
+                    func = function ()
+                    v:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true
+                    end
+                }))
+            end
+        end
     end,
+
 }
+
+--Effect: Gains the ability of every Joker it disguised as this run. Destroys all other copies of Ijiraq.

@@ -36,38 +36,41 @@ function SMODS.current_mod.reset_game_globals(run_start)
         ---@diagnostic disable-next-line: cast-local-type
         if jokester and jokester == 'UNAVAILABLE' then jokester = 'j_joker' end
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
-        end
-        for _, card in ipairs(G.jokers.cards) do
-            if card.isIjiraq or exceptions[G.GAME.current_round.fodder_card.jkey] then
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.15,
-                    func = function()
-                        card:flip()
-                        return true
-                    end
-                }))
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.15,
-                    func = function()
-                        G.P_CENTERS.j_hpfx_costume:set_ability(card)
-                        play_sound("card1")
-                        card:juice_up(0.3, 0.3)
-                        return true
-                    end
-                }))
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.15,
-                    func = function()
-                        card:flip()
-                        return true
-                    end
-                }))
-            end
+    end
+    for _, card in ipairs(G.jokers.cards) do
+        if card.isIjiraq or exceptions[G.GAME.current_round.fodder_card.jkey] then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.P_CENTERS.j_hpfx_costume:set_ability(card)
+                    play_sound("card1")
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    return true
+                end
+            }))
         end
     end
+    if run_start then
+        G.GAME.raqeffects = {}
+    end
+end
 
 local chud = Card.calculate_joker
 function Card:calculate_joker(context)
