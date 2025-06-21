@@ -147,7 +147,7 @@ function hpfx_Transform(card, context)
         delay = 0,
         func = function ()
             if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
-                table.insert(raqeffects, card.config.center.key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(G.GAME.raqeffects, card.config.center.key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
@@ -185,8 +185,8 @@ function Card:Transfodd(context)
         trigger = "immediate",
         delay = 0,
         func = function ()
-            if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
-            table.insert(raqeffects, self.config.center.key or G.GAME.current_round.fodder_card.jkey)
+            if self.config.center.blueprint_compat and self.config.center.key ~= 'j_hpfx_ijiraq' then
+            table.insert(G.GAME.raqeffects, self.config.center.key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
