@@ -1,3 +1,94 @@
+function hpfx.create_fake_joker(ref, key, reason, juice)
+    local center = G.P_CENTERS[key]
+    local ability
+    local messagecard = juice or ref
+    if reason then
+        if reason == "calculate" then
+            ability = ref.ability.savedvalues[key]
+        elseif reason == "add_to_deck" or 
+        reason == "remove_from_deck" then
+            ability = center.config
+        end
+    end
+    if ability then
+        ability.set = center.set
+        ability.name = center.name
+    end
+    local fake_card = {
+        ability = ability or ref.ability,
+        config = {
+            center = center
+        },
+        hpfxfaker = true,
+        hpfxmessagecard = messagecard,
+        T = copy_table(ref.T),
+        VT = copy_table(ref.VT),
+        kids = ref.kids,
+        states = copy_table(ref.states),
+        role = {
+            roletype = 'Major',
+            offset = {x = 0, y = 0},
+            major = nil,
+            majordraw = ref,
+            xy_bond = 'Strong',
+            wh_bond = 'Strong',
+            r_bond = 'Strong',
+            scale_bond = 'Strong'
+        },
+        alignment = {
+            type = 'a',
+            offset = {x = 0, y = 0},
+            prev_type = '',
+            prev_offset = {x = 0, y = 0},
+        },
+        base_cost = ref.base_cost,
+        area = ref.area,
+        CT = ref.CT,
+        ambient_tilt = 0.2,
+        tilt_var = {mx = 0, my = 0, dx = 0, dy = 0, amt = 0},
+        params = ref.params,
+        sell_cost = ref.sell_cost,
+        cost = ref.cost,
+        unique_val = ref.unique_val,
+        zoom = true,
+        discard_pos = {
+            r = 0,
+            x = 0,
+            y = 0,
+        },
+        facing = 'front',
+        sprite_facing = 'front',
+        click_timeout = 0.3,
+        original_T = copy_table(ref.T),
+    }
+    fake_card.ability.extra_value = ref.ability.extra_value or 0
+    fake_card.ability.cry_prob = ref.ability.cry_prob or 1
+    for k, v in pairs(Card) do
+        if type(v) == "function" then
+            fake_card[k] = v
+        end
+    end
+    fake_card.juice_up = function(self, scale, rot_amount)
+        return messagecard:juice_up(scale, rot_amount)
+    end
+    fake_card.remove = function(self)
+        return nil
+    end
+    return fake_card
+end
+
+function hpfx.get_joker_return(key, context, card, juice)
+    local center = G.P_CENTERS[key]
+    if center then
+        card.ability.savedvalues = card.ability.savedvalues or {}
+        card.ability.savedvalues[key] = card.ability.savedvalues[key] or copy_table(center.config)
+        local fake_card = hpfx.create_fake_joker(card, key, "calculate", juice)
+        if center.calculate and type(center.calculate) == "function" and not isvanilla then
+            return center:calculate(fake_card, context), fake_card
+        end
+    end
+end
+
 SMODS.Joker{ --Ijiraq.
     key = 'ijiraq',
     pos = {x = 0, y = 9},
@@ -15,7 +106,7 @@ SMODS.Joker{ --Ijiraq.
         extra = {jkey = 'ijiraq'}
     },
     loc_vars = function (self, info_queue, card)
-        if G.GAME.raqeffects['j_blueprint'] then
+        if raqeffects['j_blueprint'] then
             if card.area and card.area == G.jokers then
             local other_joker
             for i = 1, #G.jokers.cards do
@@ -53,7 +144,7 @@ SMODS.Joker{ --Ijiraq.
                 }}}}}
             end
         end
-        if G.GAME.raqeffects['j_brainstorm'] then
+        if raqeffects['j_brainstorm'] then
             if card.area and card.area == G.jokers then
             local compatible = G.jokers.cards[1] and
             G.jokers.cards[1] ~= card and
@@ -120,11 +211,10 @@ SMODS.Joker{ --Ijiraq.
         end
     end,
     calculate = function(self, card, context)
-        local i = 1
-        for _, card in ipairs(G.GAME.raqeffects) do
-            return SMODS.blueprint_effect(card, G.GAME.raqeffects[i], context)
+        for k, v in pairs(raqeffects) do
+            table.insert(raqeffects, hpfx.get_joker_return)
         end
-        i = i + 1
+        return SMDOS.merge_effects(raqeffects)
     end
 }
 

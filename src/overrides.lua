@@ -68,7 +68,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         end
     end
     if run_start then
-        G.GAME.raqeffects = {}
+        raqeffects = {}
     end
 end
 
