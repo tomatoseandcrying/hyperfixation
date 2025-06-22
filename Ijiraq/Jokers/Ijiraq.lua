@@ -92,6 +92,8 @@ function Hyperglobal.get_joker_return(key, context, card)
     end
 end
 
+
+
 SMODS.Joker{ --Ijiraq.
     key = 'ijiraq',
     pos = {x = 0, y = 9},
@@ -146,9 +148,10 @@ SMODS.Joker{ --Ijiraq.
         for k, v in pairs(G.GAME.raqeffects) do
             table.insert(raqeffects, (Hyperglobal.get_joker_return(v, context. card)))
         end
-        print(get_joker_return())
+        local ret = function(...) end
+        print(ret)
         return SMODS.merge_effects(raqeffects)
-    end
+    end,
 }
 
 --Effect: Gains the ability of every Joker it disguised as this run. Destroys all other copies of Ijiraq.
