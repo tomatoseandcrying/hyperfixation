@@ -147,12 +147,13 @@ function hpfx_Transform(card, context)
         delay = 0,
         func = function ()
             if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
+                local key = card.config.center.key
                 for k, v in pairs(exceptions) do
                     if key == v then
                         key = k
                     end
                 end
-                table.insert(G.GAME.raqeffects, card.config.center.key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
@@ -191,12 +192,13 @@ function Card:Transfodd(context)
         delay = 0,
         func = function ()
             if self.config.center.blueprint_compat and self.config.center.key ~= 'j_hpfx_ijiraq' then
+                local key = self.config.center.key
                 for k, v in pairs(exceptions) do
                     if key == v then
                         key = k
                     end
                 end
-            table.insert(G.GAME.raqeffects, self.config.center.key or G.GAME.current_round.fodder_card.jkey)
+            table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
