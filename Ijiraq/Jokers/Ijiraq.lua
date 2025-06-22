@@ -77,13 +77,13 @@ function Hyperglobal.create_fake_joker(ref, key, reason, juice)
     return fake_card
 end
 
-function Hyperglobal.get_joker_return(key, context, card, juice)
+function Hyperglobal.get_joker_return(key, context, card)
     local center = G.P_CENTERS[key]
     if center then
         card.ability.savedvalues = card.ability.savedvalues or {}
         card.ability.savedvalues[key] = card.ability.savedvalues[key] or copy_table(center.config)
-        local fake_card = hpfx.create_fake_joker(card, key, "calculate", juice)
-        if center.calculate and type(center.calculate) == "function" and not isvanilla then
+        local fake_card = hpfx.create_fake_joker(card, key, "calculate")
+        if center.calculate and type(center.calculate) == "function" then
             return center:calculate(fake_card, context)
         end
     end
@@ -141,8 +141,9 @@ SMODS.Joker{ --Ijiraq.
     calculate = function(self, card, context)
         local raqeffects = {}
         for k, v in pairs(G.GAME.raqeffects) do
-            table.insert(raqeffects, (Hyperglobal.get_joker_return(key, context. card, juice)))
+            table.insert(raqeffects, (Hyperglobal.get_joker_return(v, context. card)))
         end
+        print(get_joker_return)
         return SMODS.merge_effects(raqeffects)
     end
 }
