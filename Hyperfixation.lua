@@ -191,6 +191,11 @@ function Card:Transfodd(context)
         delay = 0,
         func = function ()
             if self.config.center.blueprint_compat and self.config.center.key ~= 'j_hpfx_ijiraq' then
+                for k, v in pairs(exceptions) do
+                    if key == v then
+                        key = k
+                    end
+                end
             table.insert(G.GAME.raqeffects, self.config.center.key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
