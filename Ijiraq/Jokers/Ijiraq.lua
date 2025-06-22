@@ -139,10 +139,11 @@ SMODS.Joker{ --Ijiraq.
         end
     end,
     calculate = function(self, card, context)
+        local raqeffects = {}
         for k, v in pairs(G.GAME.raqeffects) do
-            table.insert(G.GAME.raqeffects, Hyperglobal.get_joker_return)
+            table.insert(raqeffects, (Hyperglobal.get_joker_return(key, context. card, juice)))
         end
-        return SMDOS.merge_effects(G.GAME.raqeffects)
+        return SMODS.merge_effects(raqeffects)
     end
 }
 
