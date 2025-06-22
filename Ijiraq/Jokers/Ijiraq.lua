@@ -84,7 +84,7 @@ function Hyperglobal.get_joker_return(key, context, card, juice)
         card.ability.savedvalues[key] = card.ability.savedvalues[key] or copy_table(center.config)
         local fake_card = hpfx.create_fake_joker(card, key, "calculate", juice)
         if center.calculate and type(center.calculate) == "function" and not isvanilla then
-            return center:calculate(fake_card, context), fake_card
+            return center:calculate(fake_card, context)
         end
     end
 end
