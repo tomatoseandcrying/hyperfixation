@@ -48,6 +48,7 @@ SMODS.Joker{ --Ijiraq.
         end
     end,
     calculate = function(self, card, context)
+        
     end,
 }
 

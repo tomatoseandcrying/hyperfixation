@@ -29,8 +29,10 @@ times = 1
 
 [[patches]]
 [patches.pattern]
-target = "function/common_events.lua"
-pattern = '''local jokers, triggered = card:calculate_joker(context)'''
+times = 1
+match_indent = true
+target = "functions/common_events.lua"
+pattern = "local jokers, triggered = card:calculate_joker(context)"
 position = "at"
 payload = '''
 if G.GAME.raqeffects and next(G.GAME.raqeffects) then

@@ -225,6 +225,7 @@ function Card:Transfodd(context)
 	return true
 end
 function Hyperglobal.safe_set_ability(self, center)
+    print("test")
     if not self or not center then return nil end
     local oldcenter = self.config.center
     G.GAME.hpfx_ijiraq_savedvalues = G.GAME.hpfx_ijiraq_savedvalues or {}
