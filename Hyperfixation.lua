@@ -148,11 +148,6 @@ function hpfx_Transform(card, context)
         func = function ()
             if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
-                for k, v in pairs(exceptions) do
-                    if key == v then
-                        key = k
-                    end
-                end
                 table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
@@ -192,12 +187,7 @@ function Card:Transfodd(context)
         delay = 0,
         func = function ()
             if self.config.center.blueprint_compat and self.config.center.key ~= 'j_hpfx_ijiraq' then
-                local key = self.config.center.key
-                for k, v in pairs(exceptions) do
-                    if key == v then
-                        key = k
-                    end
-                end
+            local key = self.config.center.key
             table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
@@ -233,6 +223,51 @@ function Card:Transfodd(context)
         end
     }))
 	return true
+end
+function Hyperglobal.safe_set_ability(self, center)
+    if not self or not center then return nil end
+    local oldcenter = self.config.center
+    G.GAME.hpfx_ijiraq_savedvalues = G.GAME.hpfx_ijiraq_savedvalues or {}
+    G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] = G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] or {}
+    G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][oldcenter.key] = copy_table(self.ability)
+    for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][center.key] or center.config) do
+        if type(v) == 'table' then self.ability[k] = copy_table(v) else self.ability[k] = v
+            if k == "Xmult" then self.ability.x_mult = v end
+        end
+    end
+    self.ability.x_mult = center.config.Xmult or center.config.x_mult or 1
+    self.ability.name = center.name
+    self.ability.set = center.set
+    self.ability.effect = center.effect
+    self.config.center = center
+    for k, v in pairs(G.P_CENTERS) do
+        if center == v then self.config.center.key = k end
+    end
+    if self.ability.name == "Invisible Joker" then
+        self.ability.invis_rounds = 0
+    end
+    if self.ability.name == 'To Do List' then
+        local _poker_hands = {}
+        for k, v in pairs(G.GAME.hands) do
+            if v.visible then _poker_hands[#_poker_hands+1] = k end
+        end
+        local old_hand = self.ability.to_do_poker_hand
+        self.ability.to_do_poker_hand = nil
+        while not self.ability.to_do_poker_hand do
+            self.ability.to_do_poker_hand = pseudorandom_element(_poker_hands, pseudoseed((self.area and self.area.config.type == 'title') and 'false_to_do' or 'to_do'))
+            if self.ability.to_do_poker_hand == old_hand then self.ability.to_do_poker_hand = nil end
+        end
+    end
+    if self.ability.name == 'Caino' then
+        self.ability.caino_xmult = 1
+    end
+    if self.ability.name == 'Yorick' then
+        self.ability.yorick_discards = self.ability.extra.discards
+    end
+    if self.ability.name == 'Loyalty Card' then
+        self.ability.burnt_hand = 0
+        self.ability.loyalty_remaining = self.ability.extra.every
+    end
 end
 
 --Ownerships (not unlock)

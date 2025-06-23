@@ -27,58 +27,28 @@ visiblyIjiraq = self.visiblyIjiraq,
 '''
 times = 1
 
-# [[patches]] # Ijiraq Patch 3 (patches properly)
-# [patches.pattern]
-# target = "card.lua"
-# pattern = "self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']"
-# position = "at"
-# payload = '''
-# print("UNGABUNGA")
-# if true then
-#     self.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
-# else
-#     self.children.center.atlas = G.ASSET_ATLAS[(_center.atlas or (_center.set == 'Joker' or _center.consumeable or _center.set == 'Voucher') and _center.set) or 'centers']
-# end
-# '''
-# match_indent = true
-# times = 1
-
-# [[patches]] # Ijiraq Patch 4 (patches properly)
-# [patches.pattern]
-# target = "card.lua"
-# pattern = '''if _center.soul_pos then'''
-# position = "before"
-# payload = '''
-# if self.isIjiraq then
-#     self.children.center.atlas = G.ASSET_ATLAS['hpfx_IjiraqJokers']
-#     self.children.center:set_sprite_pos(_center.pos)
-# else
-#     self:remove()
-# end
-# '''
-# match_indent = true
-# times = 1
-
-# [[patches]] # Ijiraq Patch 5 (patches properly)
-# [patches.pattern]
-# target = "card.lua"
-# pattern = '''
-# if _center then 
-#     if _center.set then
-# '''
-# position = "at"
-# payload = '''
-# if _center then
-#     print("center!")
-#     if _center.set then
-#         print("set!")
-# '''
-# match_indent = true
-# times = 1
-
-
-
-
+[[patches]]
+[patches.pattern]
+target = "function/common_events.lua"
+pattern = '''local jokers, triggered = card:calculate_joker(context)'''
+position = "at"
+payload = '''
+if G.GAME.raqeffects and next(G.GAME.raqeffects) then
+    local old_ability, old_center, old_center_key, extra_jokers_list, jokers_table = copy_table(card.ability), card.config.center, card.config.center_key, G.GAME.raqeffects, {}
+    table.sort(extra_jokers_list, function(a, b) return (G.P_CENTERS[a].order or 0) < (G.P_CENTERS[b].order or 0) end)
+    table.insert(extra_jokers_list, 1, card.config.center.key)
+    for _, k in ipairs(extra_jokers_list) do
+        Hyperglobal.safe_set_ability(card, G.P_CENTERS[k])
+        local joker = card:calculate_joker(context)
+        if joker then
+            table.insert(jokers_table, joker)
+        end
+    end
+    card.ability, card.config.center, card.config.center_key, jokers = old_ability, old_center, old_center_key, SMODS.merge_effects(jokers_table)
+else
+    local jokers, triggered = card:calculate_joker(context)
+end
+'''
 
 
 # Mary unlock check
