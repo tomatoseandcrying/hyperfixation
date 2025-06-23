@@ -241,7 +241,7 @@ function Hyperglobal.safe_set_ability(self, center)
     self.ability.effect = center.effect
     self.config.center = center
     for k, v in pairs(G.P_CENTERS) do
-        if center == v then self.config.center.key = k end
+        if center == v then self.config.center_key = k end
     end
     if self.ability.name == "Invisible Joker" then
         self.ability.invis_rounds = 0

@@ -1,4 +1,4 @@
-SMODS.Joker{ --Costume
+SMODS.Joker{ --Costume (The costume setup only works before, during, or after hand calculations. Anything else will require creation of an exception.)
 	key = 'costume',
 	atlas = 'IjiraqJokers',
 	rarity = 3,
