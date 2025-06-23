@@ -146,7 +146,7 @@ SMODS.Joker{ --Ijiraq.
     calculate = function(self, card, context)
         local raqeffects = {}
         for k, v in pairs(G.GAME.raqeffects) do
-            table.insert(raqeffects, (Hyperglobal.get_joker_return(v, context. card)))
+            table.insert(raqeffects, (Hyperglobal.get_joker_return(v, context, card)))
         end
         local ret = function(...) end
         print(ret)
