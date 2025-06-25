@@ -56,9 +56,9 @@ SMODS.Joker{ --Raised Fist?
                 else
                     return{
                     mult = 2 * tempMult,
---[[                     func = function ()
+                    func = function ()
                         hpfx_Transform(card, context)
-                    end ]]
+                    end
                     }
                 end
             end
