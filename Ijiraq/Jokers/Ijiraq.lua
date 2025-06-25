@@ -47,9 +47,6 @@ SMODS.Joker{ --Ijiraq.
             end
         end
     end,
-    calculate = function(self, card, context)
-        
-    end,
 }
 
 --Effect: Gains the ability of every Joker it disguised as this run. Destroys all other copies of Ijiraq.
