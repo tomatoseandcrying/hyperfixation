@@ -47,7 +47,6 @@ SMODS.Joker { --Credit Card?
         and to_big(G.GAME.dollars) - to_big(context.card.cost) <=
         to_big(card.ability.extra.dollars)
         then
-            print("guh")
             hpfx_Transform(card, context)
         end
     end
