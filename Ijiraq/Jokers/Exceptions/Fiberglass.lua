@@ -53,22 +53,22 @@ SMODS.Joker{
                     func = function()
                     G.E_MANAGER:add_event(Event({
                     func = function()
-                        card.ability.extra.xmult = 
+                        card.ability.extra.xmult =
                         card.ability.extra.xmult -
-                        card.ability.extra.xmult_gain * 
+                        card.ability.extra.xmult_gain *
                         glass_cards return true
                         end
                     }))
                     SMODS.calculate_effect(
                         {
                         message = localize
-                        { 
-                        type = 'variable', 
-                        key = 'a_xmult', 
-                        vars = { 
+                        {
+                        type = 'variable',
+                        key = 'a_xmult',
+                        vars = {
                             card.ability.extra.xmult -
-                            card.ability.extra.xmult_gain * 
-                            glass_cards 
+                            card.ability.extra.xmult_gain *
+                            glass_cards
                         } }
                         }, card)
                     return true
@@ -78,12 +78,12 @@ SMODS.Joker{
                 }
             end
         end
-        if context.using_consumeable and 
-        not context.blueprint and 
+        if context.using_consumeable and
+        not context.blueprint and
         context.consumeable.config.center.key == 'c_hanged_man' then
             local glass_cards = 0
             for _, removed_card in ipairs(G.hand.highlighted) do
-                if SMODS.has_enhancement(removed_card, 'm_glass') then 
+                if SMODS.has_enhancement(removed_card, 'm_glass') then
                 glass_cards = glass_cards + 1 end
             end
             if glass_cards > 0 then
@@ -91,10 +91,10 @@ SMODS.Joker{
                     card.ability.extra.xmult_gain * glass_cards
                 return {
                     message = localize {
-                        type = 'variable', 
-                        key = 'a_xmult', 
+                        type = 'variable',
+                        key = 'a_xmult',
                         vars = {
-                            card.ability.extra.xmult 
+                            card.ability.extra.xmult
                         } }
                 }
             end
@@ -104,7 +104,7 @@ SMODS.Joker{
                 xmult = card.ability.extra.xmult
             }
         end
-        local glassmultcount = (card.ability.extra.xmult - 
+        local glassmultcount = (card.ability.extra.xmult -
         card.ability.extra.xmult_gain * glass_cards)
         if context.main_eval and glassmultcount == 0 then
             return {
