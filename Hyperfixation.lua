@@ -409,6 +409,7 @@ exceptions = {
     j_golden = 'j_hpfx_pyramid',
     j_credit_card = 'j_hpfx_expired',
     j_blueprint = 'j_hpfx_bluebell',
+    j_chaos = 'j_hpfx_chaoz'
 }
 
 --debug

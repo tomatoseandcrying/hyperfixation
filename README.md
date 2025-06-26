@@ -29,8 +29,11 @@ Business Card
 
 <ins>**Ijiraq**</ins>\
 Costume variables\
-Costume sprites
 
 ### blind.lua Patches:
 <ins>**Chud Joker**</ins>\
 The Wheel
+
+### common_events.lua Patches:
+<ins>**Ijiraq**</ins>
+joker effects
