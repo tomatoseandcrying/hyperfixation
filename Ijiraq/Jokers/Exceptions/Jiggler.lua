@@ -1,7 +1,6 @@
-G.C.hpfx_IjiGray = HEX('BFD7D5')
 SMODS.Joker{
-    key = 'chaoz',
-    pos = {x = 1, y = 0},
+    key = 'jiggler',
+    pos = {x = 0, y = 1},
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
@@ -11,13 +10,13 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-            rerolls = 1
+            h_size = 1
         }
     },
     loc_vars = function (self, info_queue, card)
-        return{
+        return {
             vars = {
-                card.ability.extra.rerolls,
+                card.ability.extra.h_size,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -26,25 +25,25 @@ SMODS.Joker{
         full_UI_table.name = localize {
             type = 'name',
             set = "Joker",
-            key = card.ability and card.ability.extra.new_key or "j_hpfx_chaoz",
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_jiggler",
             nodes = {}
         }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)
-        SMODS.change_free_rerolls(card.ability.extra.rerolls)
-        card.ability.extra.new_key = "j_hpfx_chaoz_alt"
+        G.hand:change_size(card.ability.extra.h_size)
+        card.ability.extra.new_key = "j_hpfx_jiggler_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
     end,
     remove_from_deck = function (self, card, from_debuff)
-        SMODS.change_free_rerolls(-card.ability.extra.rerolls)
+        G.hand:change_size(-card.ability.extra.h_size)
     end,
     calculate = function (self, card, context)
-        if context.reroll_shop then
-            return{
+        if context.after then
+            return {
                 func = function ()
-                    hpfx_Transform(card, context)
+                hpfx_Transform(card, context)
                 end
             }
         end

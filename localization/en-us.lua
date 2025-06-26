@@ -320,6 +320,18 @@ return {
                     "{C:attention}#1#{} free {C:green}Reroll",
                     "per shop{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
+            },
+            j_hpfx_jiggler = {
+                name="Juggler",
+                text={
+                    "{C:attention}+#1#{} hand size{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_jiggler_alt = {
+                name="Juggler{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "{C:attention}+#1#{} hand size{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
             }
         },
         Other = {
