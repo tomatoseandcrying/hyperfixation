@@ -332,7 +332,21 @@ return {
                 text={
                     "{C:attention}+#1#{} hand size{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
-            }
+            },
+            j_hpfx_scrumpy = {
+                name="Drunkard",
+                text={
+                    "{C:red}+#1#{} discard",
+                    "each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_scrumpy_alt = {
+                name="Drunkard{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "{C:red}+#1#{} discard",
+                    "each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

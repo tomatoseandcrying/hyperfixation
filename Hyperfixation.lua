@@ -410,7 +410,8 @@ exceptions = {
     j_credit_card = 'j_hpfx_expired',
     j_blueprint = 'j_hpfx_bluebell',
     j_chaos = 'j_hpfx_chaoz',
-    j_juggler = 'j_hpfx_jiggler'
+    j_juggler = 'j_hpfx_jiggler',
+    j_drunkard = 'j_hpfx_scrumpy'
 }
 
 --debug
