@@ -411,7 +411,8 @@ exceptions = {
     j_blueprint = 'j_hpfx_bluebell',
     j_chaos = 'j_hpfx_chaoz',
     j_juggler = 'j_hpfx_jiggler',
-    j_drunkard = 'j_hpfx_scrumpy'
+    j_drunkard = 'j_hpfx_scrumpy',
+    j_glass = 'j_hpfx_fiberglass'
 }
 
 --debug
