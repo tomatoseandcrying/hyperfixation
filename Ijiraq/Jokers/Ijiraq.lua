@@ -11,7 +11,7 @@ SMODS.Joker{ --Ijiraq.
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = false,
-    config = { --
+    config = { 
         extra = {jkey = 'ijiraq'}
     },
     loc_vars = function (self, info_queue, card)
