@@ -347,6 +347,24 @@ return {
                     "each round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_fiberglass = {
+                name="Glass Joker",
+                text={
+                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "for every {C:attention}Glass Card",
+                    "that is destroyed",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_fiberglass_alt = {
+                name="Glass Joker{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "for every {C:attention}Glass Card",
+                    "that is destroyed",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

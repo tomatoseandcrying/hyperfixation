@@ -1,3 +1,4 @@
+G.C.hpfx_IjiGray = HEX('BFD7D5')
 SMODS.Joker{
     key = 'scrumpy',
     pos = {x = 1, y = 1},
