@@ -365,6 +365,26 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_pomni = {
+                name = 'Abstract Joker',
+                text={
+                    "{C:mult}+#1#{} Mult for",
+                    "each {C:attention}Joker{} card",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "",
+                    "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
+                },
+            },
+            j_hpfx_pomni_alt = {
+                name = 'Abstract Joker{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult for",
+                    "each {C:attention}Joker{} card",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "",
+                    "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

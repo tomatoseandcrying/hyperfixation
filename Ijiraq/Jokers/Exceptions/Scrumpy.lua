@@ -3,6 +3,7 @@ SMODS.Joker{
     key = 'scrumpy',
     pos = {x = 1, y = 1},
     no_mod_badges = true,
+    no_collection = true,
     unlocked = true,
     discovered = true,
     blueprint_compat = false,

@@ -3,6 +3,7 @@ SMODS.Joker{
     key = 'chaoz',
     pos = {x = 1, y = 0},
     no_mod_badges = true,
+    no_collection = true,
     unlocked = true,
     discovered = true,
     blueprint_compat = false,
