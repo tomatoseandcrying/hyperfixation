@@ -501,6 +501,26 @@ return {
                     "when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_ribtickler = {
+                name = 'Mr. Bones',
+                text = {
+                    "Prevents Death",
+                    "if chips scored",
+                    "are at least {C:attention}25%",
+                    "of required chips",
+                    "{S:1.1,C:red,E:2}self destructs{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_ribtickler_alt = {
+                name = 'Mr. Bones{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "Prevents Death",
+                    "if chips scored",
+                    "are at least {C:attention}25%",
+                    "of required chips",
+                    "{S:1.1,C:red,E:2}self destructs{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -524,6 +544,9 @@ return {
         dictionary = {
             hpfx_isaac_option = "Play with my TBOI stuff!",
             hpfx_ijiraq_option = "Release the Ijiraq.",
+
+            hpfx_fakesaved_ex = "Saved?",
+            hpfx_ribtickler = "Spared by Ijiraq"
         },
         labels = {
             hpfx_priceless = "Priceless",
