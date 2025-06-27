@@ -385,6 +385,36 @@ return {
                     "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
                 },
             },
+            j_hpfx_belated_grat = {
+                name = 'Delayed Gratification',
+                text={
+                    "Earn {C:money}$#1#{} per {C:attention}discard{} if",
+                    "no discards are used",
+                    "by end of the round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_belated_grat_alt = {
+                name = 'Delayed Gratification{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Earn {C:money}$#1#{} per {C:attention}discard{} if",
+                    "no discards are used",
+                    "by end of the round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_tocket = {
+                name = 'Golden Ticket',
+                text={
+                    "Played {C:attention}Gold{} cards",
+                    "earn {C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_tocket_alt = {
+                name = 'Golden Ticket{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Played {C:attention}Gold{} cards",
+                    "earn {C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

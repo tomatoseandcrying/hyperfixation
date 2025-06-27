@@ -413,7 +413,9 @@ exceptions = {
     j_juggler = 'j_hpfx_jiggler',
     j_drunkard = 'j_hpfx_scrumpy',
     j_glass = 'j_hpfx_fiberglass',
-    j_abstract = 'j_hpfx_pomni'
+    j_abstract = 'j_hpfx_pomni',
+    j_delayed_grat = 'j_hpfx_belated_grat',
+    j_ticket = 'j_hpfx_tocket'
 }
 
 --debug
