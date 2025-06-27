@@ -57,6 +57,6 @@
         ],
         "description": "Ijiraq exception boilerplate",
 		"isFileTemplate":true,
-		"scope": "lua.json" 
+		"scope": "lua." 
     }
 }
