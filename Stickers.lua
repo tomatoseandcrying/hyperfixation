@@ -35,5 +35,3 @@ function Card:can_sell_card(context)
     end
     return nosellsticker_hook(self, context)
 end
-
-

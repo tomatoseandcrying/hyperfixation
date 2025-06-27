@@ -205,16 +205,16 @@ return {
                 name="Loyalty Card",
                 text={
                     "{X:red,C:white} X#1# {} Mult every",
-                    "{C:attention}6{} hands played",
-                    "{C:inactive}5 remaining{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:attention}6{} hands played{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:inactive}5 remaining",
                 },
             },
             j_hpfx_redeemed_alt = {
                 name="Loyalty Card{C:hpfx_IjiGray,s:0.7}...?",
                 text={
                     "{X:red,C:white} X#1# {} Mult every",
-                    "{C:attention}6{} hands played",
-                    "{C:inactive}5 remaining{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:attention}6{} hands played{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:inactive}5 remaining",
                 },
             },
             j_hpfx_whack = {
@@ -352,8 +352,8 @@ return {
                 text={
                     "This Joker gains {X:mult,C:white} X#1# {} Mult",
                     "for every {C:attention}Glass Card",
-                    "that is destroyed",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "that is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
             },
             j_hpfx_fiberglass_alt = {
@@ -361,16 +361,16 @@ return {
                 text={
                     "This Joker gains {X:mult,C:white} X#1# {} Mult",
                     "for every {C:attention}Glass Card",
-                    "that is destroyed",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "that is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
             },
             j_hpfx_pomni = {
                 name = 'Abstract Joker',
                 text={
                     "{C:mult}+#1#{} Mult for",
-                    "each {C:attention}Joker{} card",
-                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
                     "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
                 },
@@ -379,8 +379,8 @@ return {
                 name = 'Abstract Joker{C:hpfx_IjiGray,s:0.7}...?{}',
                 text={
                     "{C:mult}+#1#{} Mult for",
-                    "each {C:attention}Joker{} card",
-                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult){C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
                     "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
                 },
@@ -420,7 +420,7 @@ return {
                 text={
                     "All cards are",
                     "considered",
-                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
             j_hpfx_apophenia_alt = {
@@ -428,23 +428,59 @@ return {
                 text={
                     "All cards are",
                     "considered",
-                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
             j_hpfx_not_fortune_teller = {
                 name = 'Cartomancer',
                 text={
                     "Create a {C:tarot}Tarot{} card",
-                    "when {C:attention}Blind{} is selected",
-                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "when {C:attention}Blind{} is selected{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:inactive}(Must have room)",
                 },
             },
             j_hpfx_not_fortune_teller_alt = {
                 name = 'Cartomancer{C:hpfx_IjiGray,s:0.7}...?{}',
                 text={
                     "Create a {C:tarot}Tarot{} card",
-                    "when {C:attention}Blind{} is selected",
-                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "when {C:attention}Blind{} is selected{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            j_hpfx_odd_steven = {
+                name = 'Even Steven',
+                text = {
+                    "Played cards with",
+                    "{C:attention}even{} rank give",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(10, 8, 6, 4, 2)",
+                },
+            },
+            j_hpfx_odd_steven_alt = {
+                name = 'Even Steven{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "Played cards with",
+                    "{C:attention}even{} rank give",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(10, 8, 6, 4, 2)",
+                },
+            },
+            j_hpfx_even_todd = {
+                name = 'Odd Todd',
+                text = {
+                    "Played cards with",
+                    "{C:attention}odd{} rank give",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(A, 9, 7, 5, 3)",
+                },
+            },
+            j_hpfx_even_todd_alt = {
+                name = 'Odd Todd{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "Played cards with",
+                    "{C:attention}odd{} rank give",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(A, 9, 7, 5, 3)",
                 },
             },
         },
