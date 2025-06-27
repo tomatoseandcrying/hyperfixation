@@ -542,8 +542,8 @@ return {
     },
     misc = {
         dictionary = {
-            hpfx_isaac_option = "Play with my TBOI stuff!",
-            hpfx_ijiraq_option = "Release the Ijiraq.",
+            --hpfx_isaac_option = "Play with my TBOI stuff!",
+            --hpfx_ijiraq_option = "Release the Ijiraq.",
 
             hpfx_fakesaved_ex = "Saved?",
             hpfx_ribtickler = "Spared by Ijiraq"
