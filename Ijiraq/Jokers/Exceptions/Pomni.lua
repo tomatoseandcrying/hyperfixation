@@ -40,7 +40,7 @@ SMODS.Joker{
         card.ability.extra.new_key = "j_hpfx_pomni_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
-        if card.ability.extra.joker_count >= 4 then
+        if card.ability.extra.joker_count >= 5 then
             func = function ()
                 hpfx_Transform(card, context)
             end

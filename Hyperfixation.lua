@@ -415,7 +415,8 @@ exceptions = {
     j_glass = 'j_hpfx_fiberglass',
     j_abstract = 'j_hpfx_pomni',
     j_delayed_grat = 'j_hpfx_belated_grat',
-    j_ticket = 'j_hpfx_tocket'
+    j_ticket = 'j_hpfx_tocket',
+    j_pareidolia = 'j_hpfx_apophenia'
 }
 
 --debug

@@ -415,6 +415,22 @@ return {
                     "earn {C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_apophenia = {
+                name = 'Pareidolia',
+                text={
+                    "All cards are",
+                    "considered",
+                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_apophenia_alt = {
+                name = 'Pareidolia{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "All cards are",
+                    "considered",
+                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
