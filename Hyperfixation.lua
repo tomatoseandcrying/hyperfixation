@@ -419,7 +419,8 @@ exceptions = {
     j_pareidolia = 'j_hpfx_apophenia',
     j_cartomancer = 'j_hpfx_not_fortune_teller',
     j_even_steven = 'j_hpfx_odd_steven',
-    j_odd_todd = 'j_hpfx_even_todd'
+    j_odd_todd = 'j_hpfx_even_todd',
+    j_scholar = 'j_hpfx_flunkie'
 }
 
 --debug

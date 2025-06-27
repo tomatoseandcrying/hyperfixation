@@ -483,6 +483,24 @@ return {
                     "{C:inactive}(A, 9, 7, 5, 3)",
                 },
             },
+            j_hpfx_flunkie = {
+                name = 'Scholar',
+                text = {
+                    "Played {C:attention}Aces{}",
+                    "give {C:chips}+#2#{} Chips",
+                    "and {C:mult}+#1#{} Mult",
+                    "when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_flunkie_alt = {
+                name = 'Scholar{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "Played {C:attention}Aces{}",
+                    "give {C:chips}+#2#{} Chips",
+                    "and {C:mult}+#1#{} Mult",
+                    "when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
