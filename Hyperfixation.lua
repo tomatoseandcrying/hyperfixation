@@ -416,7 +416,8 @@ exceptions = {
     j_abstract = 'j_hpfx_pomni',
     j_delayed_grat = 'j_hpfx_belated_grat',
     j_ticket = 'j_hpfx_tocket',
-    j_pareidolia = 'j_hpfx_apophenia'
+    j_pareidolia = 'j_hpfx_apophenia',
+    j_cartomancer = 'j_hpfx_not_fortune_teller'
 }
 
 --debug

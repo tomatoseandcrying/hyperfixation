@@ -431,6 +431,22 @@ return {
                     "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_not_fortune_teller = {
+                name = 'Cartomancer',
+                text={
+                    "Create a {C:tarot}Tarot{} card",
+                    "when {C:attention}Blind{} is selected",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_not_fortune_teller_alt = {
+                name = 'Cartomancer{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Create a {C:tarot}Tarot{} card",
+                    "when {C:attention}Blind{} is selected",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
