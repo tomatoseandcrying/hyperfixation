@@ -1,6 +1,6 @@
 {
     "jokester template": {
-        "prefix": "G.C.hpfx",
+        "prefix": "G.C.hpfx_IjiGray",
         "body": [
             "G.C.hpfx_IjiGray = HEX('BFD7D5')\r",
             "SMODS.Joker{\r",
