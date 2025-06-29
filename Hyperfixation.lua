@@ -421,7 +421,8 @@ exceptions = {
     j_even_steven = 'j_hpfx_odd_steven',
     j_odd_todd = 'j_hpfx_even_todd',
     j_scholar = 'j_hpfx_flunkie',
-    j_mr_bones = 'j_hpfx_ribtickler'
+    j_mr_bones = 'j_hpfx_ribtickler',
+    j_seeing_double = 'j_hpfx_peeking_twice'
 }
 
 --debug

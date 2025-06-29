@@ -521,6 +521,26 @@ return {
                     "{S:1.1,C:red,E:2}self destructs{}{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_peeking_twice = {
+                name = 'Seeing Double',
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult if played",
+                    "hand has a scoring",
+                    "{C:clubs}Club{} card and a scoring",
+                    "card of any other {C:attention}suit{}{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "",
+                    "{s:0.5}[{C:diamonds}#2#{}, {C:hearts}#3#{}, {C:spades}#4#{}]{}",
+                },
+            },
+            j_hpfx_peeking_twice_alt = {
+                name = 'Seeing Double{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{X:mult,C:white} X#1# {} Mult if played",
+                    "hand has a scoring",
+                    "{C:clubs}Club{} card and a scoring",
+                    "card of any other {C:attention}suit{}{C:hpfx_IjiGray,s:0.7}#5#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -546,7 +566,7 @@ return {
             --hpfx_ijiraq_option = "Release the Ijiraq.",
 
             hpfx_fakesaved_ex = "Saved?",
-            hpfx_ribtickler = "Spared by Ijiraq"
+            hpfx_ribtickler = "Spared... for now.",
         },
         labels = {
             hpfx_priceless = "Priceless",
