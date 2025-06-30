@@ -691,6 +691,22 @@ return {
                     "played {C:attention}poker hand{}{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_manolo = {
+                name="Matador",
+                text={
+                    "Earn {C:money}$#1#{} if played",
+                    "hand triggers the",
+                    "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_manolo_alt = {
+                name="Matador{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "Earn {C:money}$#1#{} if played",
+                    "hand triggers the",
+                    "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
