@@ -422,7 +422,12 @@ exceptions = {
     j_odd_todd = 'j_hpfx_even_todd',
     j_scholar = 'j_hpfx_flunkie',
     j_mr_bones = 'j_hpfx_ribtickler',
-    j_seeing_double = 'j_hpfx_peeking_twice'
+    j_seeing_double = 'j_hpfx_peeking_twice',
+    j_duo = 'j_hpfx_dupla',
+    j_trio = 'j_hpfx_triada',
+    j_family = 'j_hpfx_familia',
+    j_order = 'j_hpfx_orden',
+    j_tribe = 'j_hpfx_tribu'
 }
 
 --debug

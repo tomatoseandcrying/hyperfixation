@@ -98,14 +98,14 @@ return {
             j_hpfx_trapezoid = {
                 name = 'Acrobat',
                 text={
-                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
+                    "{X:red,C:white}X#1#{} Mult on {C:attention}final",
                     "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
             j_hpfx_trapezoid_alt = {
                 name = 'Acrobat{C:hpfx_IjiGray,s:0.7}...?{}',
                 text={
-                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
+                    "{X:red,C:white}X#1#{} Mult on {C:attention}final",
                     "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
@@ -204,7 +204,7 @@ return {
             j_hpfx_redeemed = {
                 name="Loyalty Card",
                 text={
-                    "{X:red,C:white} X#1# {} Mult every",
+                    "{X:red,C:white}X#1#{} Mult every",
                     "{C:attention}6{} hands played{C:hpfx_IjiGray,s:0.7}#4#{}",
                     "{C:inactive}5 remaining",
                 },
@@ -212,7 +212,7 @@ return {
             j_hpfx_redeemed_alt = {
                 name="Loyalty Card{C:hpfx_IjiGray,s:0.7}...?",
                 text={
-                    "{X:red,C:white} X#1# {} Mult every",
+                    "{X:red,C:white}X#1#{} Mult every",
                     "{C:attention}6{} hands played{C:hpfx_IjiGray,s:0.7}#4#{}",
                     "{C:inactive}5 remaining",
                 },
@@ -248,10 +248,10 @@ return {
             j_hpfx_iron = {
                 name="Steel Joker",
                 text={
-                    "Gives {X:mult,C:white} X#1# {} Mult",
+                    "Gives {X:mult,C:white}X#1#{} Mult",
                     "for each {C:attention}Steel Card",
                     "in your {C:attention}full deck{C:hpfx_IjiGray,s:0.7}#3#{}",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
             j_hpfx_iron_alt = {
@@ -260,7 +260,7 @@ return {
                     "Gives {X:mult,C:white} X#1# {} Mult",
                     "for each {C:attention}Steel Card",
                     "in your {C:attention}full deck{C:hpfx_IjiGray,s:0.7}#3#{}",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
             j_hpfx_braised = {
@@ -350,19 +350,19 @@ return {
             j_hpfx_fiberglass = {
                 name="Glass Joker",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Glass Card",
                     "that is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
             j_hpfx_fiberglass_alt = {
                 name="Glass Joker{C:hpfx_IjiGray,s:0.7}...?",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Glass Card",
                     "that is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
             j_hpfx_pomni = {
@@ -524,7 +524,7 @@ return {
             j_hpfx_peeking_twice = {
                 name = 'Seeing Double',
                 text = {
-                    "{X:mult,C:white} X#1# {} Mult if played",
+                    "{X:mult,C:white}X#1#{} Mult if played",
                     "hand has a scoring",
                     "{C:clubs}Club{} card and a scoring",
                     "card of any other {C:attention}suit{}{C:hpfx_IjiGray,s:0.7}#5#{}",
@@ -535,10 +535,92 @@ return {
             j_hpfx_peeking_twice_alt = {
                 name = 'Seeing Double{C:hpfx_IjiGray,s:0.7}...?{}',
                 text = {
-                    "{X:mult,C:white} X#1# {} Mult if played",
+                    "{X:mult,C:white}X#1#{} Mult if played",
                     "hand has a scoring",
                     "{C:clubs}Club{} card and a scoring",
                     "card of any other {C:attention}suit{}{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "",
+                    "{s:0.5}[{C:diamonds}#2#{}, {C:hearts}#3#{}, {C:spades}#4#{}]{}",
+                },
+            },
+            j_hpfx_dupla = {
+                name = 'The Duo',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_dupla_alt = {
+                name = 'The Duo{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_triada = {
+                name = 'The Trio',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_triada_alt = {
+                name = 'The Trio{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_familia = {
+                name = 'The Family',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_familia_alt = {
+                name = 'The Family{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_orden = {
+                name = 'The Order',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_orden_alt = {
+                name = 'The Order{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_tribu = {
+                name = 'The Tribe',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_tribu_alt = {
+                name = 'The Tribe{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
         },
