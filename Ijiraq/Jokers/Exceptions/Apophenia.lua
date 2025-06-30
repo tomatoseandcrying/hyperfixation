@@ -33,10 +33,10 @@ SMODS.Joker{
         for _, pard in ipairs(G.playing_cards) do
             if not pard:get_id() == 11 or not pard:get_id() == 12 or not pard:get_id() == 13 then
                 SMODS.destroy_cards(pard)
-                func = function ()
-                    hpfx_Transform(card, context)
-                end
             end
+        end
+        func = function ()
+            hpfx_Transform(card, context)
         end
     end
 }

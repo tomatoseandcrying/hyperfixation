@@ -440,6 +440,7 @@ exceptions = {
     j_matador = 'j_hpfx_manolo',
     j_ceremonial = 'j_hpfx_ritual',
     j_ring_master = 'j_hpfx_showman',
+    j_sixth_sense = 'j_hpfx_nix_sense'
 }
 
 --debug

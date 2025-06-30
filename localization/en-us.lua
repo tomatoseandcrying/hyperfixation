@@ -743,6 +743,24 @@ return {
                     "appear multiple times{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_nix_sense = {
+                name="Sixth Sense",
+                text={
+                    "If {C:attention}first hand{} of round is",
+                    "a single {C:attention}6{}, destroy it and",
+                    "create a {C:spectral}Spectral{} card",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#1#",
+                },
+            },
+            j_hpfx_nix_sense_alt = {
+                name="Sixth Sense{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "If {C:attention}first hand{} of round is",
+                    "a single {C:attention}6{}, destroy it and",
+                    "create a {C:spectral}Spectral{} card",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#2#",
+                },
+            }
         },
         Other = {
             hpfx_priceless = {
