@@ -23,8 +23,12 @@ SMODS.Joker{
         card.ability.extra.size = math.floor(card.ability.extra.size)
         G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.size
         G.hand.config.highlighted_limit = G.hand.config.highlighted_limit + card.ability.extra.size
+        SMODS.change_play_limit(card.ability.extra.size)
+        SMODS.change_discard_limit(card.ability.extra.size)
     end,
     remove_from_deck = function(self, card, from_debuff)
+        SMODS.change_play_limit(-card.ability.extra.size)
+        SMODS.change_discard_limit(-card.ability.extra.size)
         G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.size
         G.hand.config.highlighted_limit = G.hand.config.highlighted_limit - card.ability.extra.size
         if G.hand.config.highlighted_limit < 5 then G.hand.config.highlighted_limit = 5 end

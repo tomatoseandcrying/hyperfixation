@@ -727,6 +727,22 @@ return {
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 }
             },
+            j_hpfx_showman = {
+                name="Showman",
+                text={
+                    "{C:attention}Joker{}, {C:tarot}Tarot{}, {C:planet}Planet{},",
+                    "and {C:spectral}Spectral{} cards may",
+                    "appear multiple times{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_showman_alt = {
+                name="Showman{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "{C:attention}Joker{}, {C:tarot}Tarot{}, {C:planet}Planet{},",
+                    "and {C:spectral}Spectral{} cards may",
+                    "appear multiple times{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -745,6 +761,10 @@ return {
 
             hpfx_fakesaved_ex = "Saved?",
             hpfx_ribtickler = "Spared... for now.",
+            hpfx_pickup1_ex = "Pick it up.",
+            hpfx_pickup2_ex = "Pick.",
+            hpfx_pickup3_ex = "It.",
+            hpfx_pickup4_ex = "Up.",
         },
         labels = {
             hpfx_priceless = "Priceless",

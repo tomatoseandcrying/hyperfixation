@@ -59,6 +59,11 @@ SMODS.Sound({
     key = "hpfx_fall",
     path = "lich-fall.ogg",
 })
+SMODS.Sound({
+    key = "hpfx_pickup",
+    path = "lastwishpickup.ogg",
+    volume = 0.6,
+})
 
 --File Loading
 mod_path = "" .. SMODS.current_mod.path
@@ -434,6 +439,7 @@ exceptions = {
     j_space = 'j_hpfx_time',
     j_matador = 'j_hpfx_manolo',
     j_ceremonial = 'j_hpfx_ritual',
+    j_ring_master = 'j_hpfx_showman',
 }
 
 --debug
