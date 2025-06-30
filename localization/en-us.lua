@@ -707,6 +707,26 @@ return {
                     "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_ritual = {
+                name="Ceremonial Dagger",
+                text={
+                    "When {C:attention}Blind{} is selected,",
+                    "destroy Joker to the right",
+                    "and permanently add {C:attention}double",
+                    "its sell value to this {C:red}Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                }
+            },
+            j_hpfx_ritual_alt = {
+                name="Ceremonial Dagger{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "When {C:attention}Blind{} is selected,",
+                    "destroy Joker to the right",
+                    "and permanently add {C:attention}double",
+                    "its sell value to this {C:red}Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                }
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -716,15 +736,7 @@ return {
                     "can still be destroyed.",
                 },
             },
-        },
-        Tag = {
-            tag_hpfx_ijidebug = {
-                name = 'Ijiraq Debug',
-                text = {
-                    "Debugging tag for Ijiraq",
-                },
-            },
-        },
+        }
     },
     misc = {
         dictionary = {
