@@ -675,6 +675,22 @@ return {
                     "{C:inactive}(Currently {X:red,C:white}X#1#{C:inactive}{C:hpfx_IjiGray,s:0.7}#2#{})",
                 },
             },
+            j_hpfx_time = {
+                name="Space Joker",
+                text={
+                    "{C:green}#1# in #2#{} chance to",
+                    "upgrade level of",
+                    "played {C:attention}poker hand{}{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_time_alt = {
+                name="Space Joker{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "{C:green}#1# in #2#{} chance to",
+                    "upgrade level of",
+                    "played {C:attention}poker hand{}{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

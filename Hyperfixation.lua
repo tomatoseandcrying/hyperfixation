@@ -430,7 +430,8 @@ exceptions = {
     j_tribe = 'j_hpfx_tribu',
     j_8_ball = 'j_hpfx_7_ball',
     j_fibonacci = 'j_hpfx_golden_ratio',
-    j_stencil = 'j_hpfx_cutout'
+    j_stencil = 'j_hpfx_cutout',
+    j_space = 'j_hpfx_time'
 }
 
 --debug
