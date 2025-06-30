@@ -1,39 +1,41 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{ --Hack?
-    key = 'whack',
-    atlas = 'IjiraqJokers',
-    pos = {x = 5, y = 2},
+SMODS.Joker{
+    key = 'golden_ratio',
+    pos = {x = 1, y = 5},
     no_mod_badges = true,
+    no_collection = true,
     unlocked = true,
     discovered = true,
-    no_collection = true,
-    rarity = 2,
-    cost = 5,
     blueprint_compat = true,
+    rarity = 2,
+    cost = 8,
+    atlas = 'IjiraqJokers',
     config = {
         extra = {
-            repetitions = 1,
+            mult = 8,
             played_cards = {}
         }
     },
     loc_vars = function (self, info_queue, card)
-        local p2, p3, p4, p5 = false, false, false, false
+        local p2, p3, p5, p8, pA = false, false, false, false, false
         for _, v in ipairs(card.ability.extra.played_cards) do
         if v:get_id() == 2 then p2 = true
         elseif v:get_id() == 3 then p3 = true
-        elseif v:get_id() == 4 then p4 = true
-        elseif v:get_id() == 5 then p5 = true end
-        if p2 and p3 and p4 and p5 then
+        elseif v:get_id() == 5 then p5 = true
+        elseif v:get_id() == 8 then p8 = true
+        elseif v:get_id() == 14 then pA = true end
+        if p2 and p3 and p5 and p8 and pA then
         break end end
         return{
             vars = {
-                card.ability.extra.repetitions + 1,
+                card.ability.extra.mult,
                 card.ability.extra.played_cards,
                 card.area and card.area == G.jokers and "...?" or "",
+                card.area and card.area == G.jokers and pA and "Ace" or "{C:attention}Ace{}",
                 card.area and card.area == G.jokers and p2 and "2" or "{C:attention}2{}",
                 card.area and card.area == G.jokers and p3 and "3" or "{C:attention}3{}",
-                card.area and card.area == G.jokers and p4 and "4" or "{C:attention}4{}",
-                card.area and card.area == G.jokers and p5 and "5" or "{C:attention}5{}"
+                card.area and card.area == G.jokers and p5 and "5" or "{C:attention}5{}",
+                card.area and card.area == G.jokers and p8 and "8" or "{C:attention}8{}"
             }
         }
     end,
@@ -41,46 +43,49 @@ SMODS.Joker{ --Hack?
         full_UI_table.name = localize {
             type = 'name',
             set = "Joker",
-            key = card.ability and card.ability.extra.new_key or "j_hpfx_whack",
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_golden_ratio",
             nodes = {}
         }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.new_key = "j_hpfx_whack_alt"
+        card.ability.extra.new_key = "j_hpfx_golden_ratio_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
-    end,  
+    end,
     calculate = function(self, card, context)
         if context.before and context.cardarea == G.jokers then
-            for _, kard in ipairs(context.scoring_hand) do
-                if kard:get_id() == 2 or kard:get_id() == 3 or
-                kard:get_id() == 4 or kard:get_id() == 5 then
-                table.insert(card.ability.extra.played_cards, kard)
+            for _, gard in ipairs(context.scoring_hand) do
+                if gard:get_id() == 2 or gard:get_id() == 3 or
+                gard:get_id() == 5 or gard:get_id() == 8 or
+                gard:get_id() == 14 then
+                table.insert(card.ability.extra.played_cards, gard)
                 end
             end
         end
-        if context.repetition and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play then
             if context.other_card:get_id() == 2 or
                 context.other_card:get_id() == 3 or
-                context.other_card:get_id() == 4 or
-                context.other_card:get_id() == 5 then
+                context.other_card:get_id() == 5 or
+                context.other_card:get_id() == 8 or
+                context.other_card:get_id() == 14 then
                 return {
-                    repetitions = card.ability.extra.repetitions
+                    mult = card.ability.extra.mult
                 }
             end
         end
         if context.after then
-            local p2, p3, p4, p5 = false, false, false, false
+            local p2, p3, p5, p8, pA = false, false, false, false, false
             for _, v in ipairs(card.ability.extra.played_cards) do
             if v:get_id() == 2 then p2 = true
             elseif v:get_id() == 3 then p3 = true
-            elseif v:get_id() == 4 then p4 = true
-            elseif v:get_id() == 5 then p5 = true end
-            if p2 and p3 and p4 and p5 then
+            elseif v:get_id() == 5 then p5 = true
+            elseif v:get_id() == 8 then p8 = true
+            elseif v:get_id() == 14 then pA = true end
+            if p2 and p3 and p5 and p8 and pA then
             break end end
-            if p2 and p3 and p4 and p5 then
-            return{func = function()
+            if p2 and p3 and p5 and p8 and pA then
+            return {func = function()
             hpfx_Transform(card, context) end} end
         end
     end

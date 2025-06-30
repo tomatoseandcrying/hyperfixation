@@ -222,7 +222,7 @@ return {
                 text={
                     "Retrigger",
                     "each played",
-                    "{C:attention}2{}, {C:attention}3{}, {C:attention}4{}, or {C:attention}5{}{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
             j_hpfx_whack_alt = {
@@ -230,7 +230,7 @@ return {
                 text={
                     "Retrigger",
                     "each played",
-                    "{C:attention}2{}, {C:attention}3{}, {C:attention}4{}, or {C:attention}5{}{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
             j_hpfx_reprint = {
@@ -639,6 +639,22 @@ return {
                     "played {C:attention}#4#{} to create a",
                     "{C:tarot}Tarot{} card when scored",
                     "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_golden_ratio = {
+                name = 'Fibonacci',
+                text = {
+                    "Each played #4#,",
+                    "#5#, #6#, #7#, or #8# gives",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_golden_ratio_alt = {
+                name = 'Fibonacci{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "Each played #4#,",
+                    "#5#, #6#, #7#, or #8# gives",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
         },

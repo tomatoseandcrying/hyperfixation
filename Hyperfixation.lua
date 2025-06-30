@@ -429,6 +429,7 @@ exceptions = {
     j_order = 'j_hpfx_orden',
     j_tribe = 'j_hpfx_tribu',
     j_8_ball = 'j_hpfx_7_ball',
+    j_fibonacci = 'j_hpfx_golden_ratio',
 }
 
 --debug
