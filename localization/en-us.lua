@@ -657,6 +657,24 @@ return {
                     "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_cutout = {
+                name = 'Joker Stencil',
+                text = {
+                    "{X:red,C:white}X1{} Mult for each",
+                    "empty {C:attention}Joker{} slot",
+                    "{s:0.8}Joker Stencil included",
+                    "{C:inactive}(Currently {X:red,C:white}X#1#{C:inactive}{C:hpfx_IjiGray,s:0.7}#2#{})",
+                },
+            },
+            j_hpfx_cutout_alt = {
+                name = 'Joker Stencil{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{X:red,C:white}X1{} Mult for each",
+                    "empty {C:attention}Joker{} slot",
+                    "{s:0.8}Joker Stencil included",
+                    "{C:inactive}(Currently {X:red,C:white}X#1#{C:inactive}{C:hpfx_IjiGray,s:0.7}#2#{})",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
