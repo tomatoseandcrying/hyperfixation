@@ -427,7 +427,8 @@ exceptions = {
     j_trio = 'j_hpfx_triada',
     j_family = 'j_hpfx_familia',
     j_order = 'j_hpfx_orden',
-    j_tribe = 'j_hpfx_tribu'
+    j_tribe = 'j_hpfx_tribu',
+    j_8_ball = 'j_hpfx_7_ball',
 }
 
 --debug

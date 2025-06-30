@@ -623,6 +623,24 @@ return {
                     "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_7_ball = {
+                name = '8 Ball',
+                text = {
+                    "{C:green}#1# in #2#{} chance for each",
+                    "played {C:attention}#4#{} to create a",
+                    "{C:tarot}Tarot{} card when scored",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_7_ball_alt = {
+                name = '8 Ball{C:hpfx_IjiGray,s:0.7}...?{}',
+                text = {
+                    "{C:green}#1# in #2#{} chance for each",
+                    "played {C:attention}#4#{} to create a",
+                    "{C:tarot}Tarot{} card when scored",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
