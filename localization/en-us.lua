@@ -777,6 +777,27 @@ return {
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive})",
                 },
             },
+            j_hpfx_dont_come_back = {
+                name = 'Hit The Road',
+                text={
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "for every {C:attention}Jack{}",
+                    "discarded this round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                    "",
+                    "#4#",
+
+                },
+            },
+            j_hpfx_dont_come_back_alt = {
+                name = 'Hit The Road{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "for every {C:attention}Jack{}",
+                    "discarded this round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                },
+            },
             
         },
         Other = {
