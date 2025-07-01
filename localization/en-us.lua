@@ -748,8 +748,8 @@ return {
                 text={
                     "If {C:attention}first hand{} of round is",
                     "a single {C:attention}6{}, destroy it and",
-                    "create a {C:spectral}Spectral{} card",
-                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#1#",
+                    "create a {C:spectral}Spectral{} card{C:hpfx_IjiGray,s:0.7}#1#",
+                    "{C:inactive}(Must have room)",
                 },
             },
             j_hpfx_nix_sense_alt = {
@@ -757,10 +757,27 @@ return {
                 text={
                     "If {C:attention}first hand{} of round is",
                     "a single {C:attention}6{}, destroy it and",
-                    "create a {C:spectral}Spectral{} card",
-                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#2#",
+                    "create a {C:spectral}Spectral{} card{C:hpfx_IjiGray,s:0.7}#1#",
+                    "{C:inactive}(Must have room)",
                 },
-            }
+            },
+            j_hpfx_not_cartomancer = {
+                name="Fortune Teller",
+                text={
+                    "{C:red}+#1#{} Mult per {C:purple}Tarot{}",
+                    "card used this run{C:hpfx_IjiGray,s:0.7}#5#",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive})",
+                },
+            },
+            j_hpfx_not_cartomancer_alt = {
+                name="Fortune Teller{C:hpfx_IjiGray,s:0.7}...?",
+                text={
+                    "{C:red}+#1#{} Mult per {C:purple}Tarot{}",
+                    "card used this run{C:hpfx_IjiGray,s:0.7}#5#",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive})",
+                },
+            },
+            
         },
         Other = {
             hpfx_priceless = {

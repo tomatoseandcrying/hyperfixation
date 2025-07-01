@@ -48,6 +48,11 @@ SMODS.Joker{
             for _, v in ipairs(filtered_hand_table) do
                 SMODS.smart_level_up_hand(card, v, true, 1)
             end
+            return{
+                func = function ()
+                    hpfx_Transform(card, context)
+                end
+            }
         end
     end
 }
