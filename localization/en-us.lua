@@ -903,6 +903,24 @@ return {
                     "made with {C:attention}4{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_close_michelle = {
+                name = 'Gros Michel',
+                text={
+                    "{C:mult}+#1#{} Mult",
+                    "{C:green}#2# in 6{} chance this",
+                    "card is destroyed",
+                    "at end of round{C:hpfx_IjiGray,s:0.7}#4#{}",
+                },
+            },
+            j_hpfx_close_michelle_alt = {
+                name = 'Gros Michel{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult",
+                    "{C:green}#2# in 6{} chance this",
+                    "card is destroyed",
+                    "at end of round{C:hpfx_IjiGray,s:0.7}#4#{}",
+                },
+            },
 
         },
         Other = {
@@ -926,7 +944,9 @@ return {
             hpfx_pickup2_ex = "Pick.",
             hpfx_pickup3_ex = "It.",
             hpfx_pickup4_ex = "Up.",
-            hpfx_missmiji = "Miss me?"
+            hpfx_missmiji = "Miss me?",
+            hpfx_spread_ex = "Spread.",
+            hpfx_wither_ex = "Wither."
         },
         labels = {
             hpfx_priceless = "Priceless",
