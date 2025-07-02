@@ -443,7 +443,8 @@ exceptions = {
     j_sixth_sense = 'j_hpfx_nix_sense',
     j_fortune_teller = 'j_hpfx_not_cartomancer',
     j_hit_the_road = 'j_hpfx_dont_come_back',
-    j_flower_pot = 'j_daisy_vase'
+    j_flower_pot = 'j_daisy_vase',
+    j_ride_the_bus = 'j_get_an_uber'
 }
 
 --debug

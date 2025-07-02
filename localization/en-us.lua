@@ -817,6 +817,26 @@ return {
                     "#5# card, and #6# card{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_get_an_uber = {
+                name = 'Ride The Bus',
+                text={
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "per {C:attention}consecutive{} hand",
+                    "played without a",
+                    "scoring {C:attention}face{} card{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                },
+            },
+            j_hpfx_get_an_uber_alt = {
+                name = 'Ride The Bus{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "per {C:attention}consecutive{} hand",
+                    "played without a",
+                    "scoring {C:attention}face{} card{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                },
+            },
 
         },
         Other = {
@@ -840,6 +860,7 @@ return {
             hpfx_pickup2_ex = "Pick.",
             hpfx_pickup3_ex = "It.",
             hpfx_pickup4_ex = "Up.",
+            hpfx_missmiji = "Miss me?"
         },
         labels = {
             hpfx_priceless = "Priceless",
