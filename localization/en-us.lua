@@ -935,6 +935,22 @@ return {
                     "{C:attention}-#2#{} hand size{C:hpfx_IjiGray,s:0.7}#4#{}",
                 },
             },
+            j_hpfx_hung_chad = {
+                name = 'Hanging Chad',
+                text={
+                    "Retrigger {C:attention}first{} played",
+                    "card used in scoring",
+                    "{C:attention}#1#{} additional times{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_hung_chad_alt = {
+                name = 'Hanging Chad{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Retrigger {C:attention}first{} played",
+                    "card used in scoring",
+                    "{C:attention}#1#{} additional times{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
 
         },
         Other = {
