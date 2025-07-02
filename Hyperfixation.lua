@@ -442,7 +442,8 @@ exceptions = {
     j_ring_master = 'j_hpfx_showman',
     j_sixth_sense = 'j_hpfx_nix_sense',
     j_fortune_teller = 'j_hpfx_not_cartomancer',
-    j_hit_the_road = 'j_hpfx_dont_come_back'
+    j_hit_the_road = 'j_hpfx_dont_come_back',
+    j_flower_pot = 'j_daisy_vase'
 }
 
 --debug

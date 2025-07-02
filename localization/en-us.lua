@@ -45,14 +45,14 @@ return {
                     "This Joker gains {C:chips}+#2#{} Chips for",
                     "each played card if played hand",
                     "triggers the {C:attention}Boss Blind{}",
-                    "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",       
+                    "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
                     --"Turns {C:attention}Traitor{} when sold",
-        
+
                 },
                 unlock = {
                     "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_devil'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
                     "{C:inactive}--unlock condition: Use The Devil 3 times{}"
-                },  
+                },
             },
             j_hpfx_cyanosis = {
                 name = 'Cyanosis',
@@ -786,7 +786,6 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                     "",
                     "#4#",
-
                 },
             },
             j_hpfx_dont_come_back_alt = {
@@ -796,9 +795,29 @@ return {
                     "for every {C:attention}Jack{}",
                     "discarded this round{C:hpfx_IjiGray,s:0.7}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                    "",
+                    "#4#",
                 },
             },
-            
+            j_hpfx_daisy_vase = {
+                name = 'Flower Pot',
+                text={
+                    "{X:mult,C:white}X#1#{} Mult if poker",
+                    "hand contains a",
+                    "#3# card, #4# card,",
+                    "#5# card, and #6# card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_daisy_vase_alt = {
+                name = 'Flower Pot{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "{X:mult,C:white}X#1#{} Mult if poker",
+                    "hand contains a",
+                    "#3# card, #4# card,",
+                    "#5# card, and #6# card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+
         },
         Other = {
             hpfx_priceless = {
