@@ -56,6 +56,7 @@ SMODS.Joker{
                         {set = 'Tarot',
                         key_append = 'hpfx_7_ball'}
                         G.GAME.consumeable_buffer = 0
+                        SMODS.calculate_context{hpfx_chudhit = true}
                         return true
                         end,
                     })) end
