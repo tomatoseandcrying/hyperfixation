@@ -853,6 +853,24 @@ return {
                     "gives {C:mult}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_smudged = {
+                name = 'Smeared Joker',
+                text={
+                    "{C:hearts}Hearts{} and {C:diamonds}Diamonds",
+                    "count as the same suit,",
+                    "{C:spades}Spades{} and {C:clubs}Clubs",
+                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_smudged_alt = {
+                name = 'Smeared Joker{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "{C:hearts}Hearts{} and {C:diamonds}Diamonds",
+                    "count as the same suit,",
+                    "{C:spades}Spades{} and {C:clubs}Clubs",
+                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
 
         },
         Other = {
