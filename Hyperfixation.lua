@@ -280,7 +280,7 @@ function Hyperglobal.safe_set_ability(self, center)
     end
 end
 
---Ownerships (not unlock)
+--Ownerships
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
     use = function(self, card, area, copier)
         local hpfx_testvar = G.GAME.probabilities.normal/(card.ability.extra*(next(SMODS.find_card('j_hpfx_farmer')) and 0.5 or 1))
@@ -326,12 +326,27 @@ SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
 		end
     end,
 }, true)
---Unlock Conditions
 SMODS.Joker:take_ownership('oops', {
 	add_to_deck = function(self, card, context)
 		check_for_unlock({type = 'hpfx_oops'})
 	end,
 }, true)
+SMODS.PokerHandPart:take_ownership('_straight', {
+    func = function(hand)
+        return get_straight(hand,
+            (next(SMODS.find_card('j_four_fingers')) or next(SMODS.find_card('j_hpfx_and_thumb'))) and 4 or 5,
+            not not (next(SMODS.find_card('j_shortcut')) or next(SMODS.find_card('j_hpfx_secretway')))
+        )
+    end,
+}, true)
+SMODS.PokerHandPart:take_ownership('_flush', {
+    func = function(hand)
+        return get_flush(hand,
+            (next(SMODS.find_card('j_four_fingers')) or next(SMODS.find_card('j_hpfx_and_thumb'))) and 4 or 5
+        )
+    end,
+}, true)
+--Unlock Conditions
 
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
