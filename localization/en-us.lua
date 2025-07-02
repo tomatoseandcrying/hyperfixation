@@ -921,6 +921,20 @@ return {
                     "at end of round{C:hpfx_IjiGray,s:0.7}#4#{}",
                 },
             },
+            j_hpfx_buttowski = {
+                name = 'Stuntman',
+                text={
+                    "{C:chips}+#1#{} Chips,",
+                    "{C:attention}-#2#{} hand size{C:hpfx_IjiGray,s:0.7}#4#{}",
+                },
+            },
+            j_hpfx_buttowski_alt = {
+                name = 'Stuntman{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "{C:chips}+#1#{} Chips,",
+                    "{C:attention}-#2#{} hand size{C:hpfx_IjiGray,s:0.7}#4#{}",
+                },
+            },
 
         },
         Other = {

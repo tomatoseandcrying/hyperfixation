@@ -464,7 +464,8 @@ exceptions = {
     j_smeared = 'j_hpfx_smudged',
     j_oops = 'j_hpfx_whoops',
     j_four_fingers = 'j_hpfx_and_thumb',
-    j_gros_michel = 'j_hpfx_close_michelle'
+    j_gros_michel = 'j_hpfx_close_michelle',
+    j_stuntman = 'j_hpfx_buttowski'
 }
 
 --debug
