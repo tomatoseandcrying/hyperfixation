@@ -467,7 +467,8 @@ exceptions = {
     j_gros_michel = 'j_hpfx_close_michelle',
     j_stuntman = 'j_hpfx_buttowski',
     j_hanging_chad = 'j_hpfx_hung_chad',
-    j_drivers_license = 'j_learners_permit'
+    j_drivers_license = 'j_learners_permit',
+    j_invisible = 'j_hpfx_invincible'
 }
 
 --debug

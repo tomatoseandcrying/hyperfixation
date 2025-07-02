@@ -969,6 +969,24 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive})",
                 },
             },
+            j_hpfx_invincible = {
+                name = 'Invisible Joker',
+                text={
+                    "After {C:attention}#1#{} rounds,",
+                    "sell this card to",
+                    "{C:attention}Duplicate{} a random Joker{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
+                },
+            },
+            j_hpfx_invincible_alt = {
+                name = 'Invisible Joker{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "After {C:attention}#1#{} rounds,",
+                    "sell this card to",
+                    "{C:attention}Duplicate{} a random Joker{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
+                },
+            },
 
         },
         Other = {
