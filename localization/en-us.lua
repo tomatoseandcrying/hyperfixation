@@ -859,7 +859,7 @@ return {
                     "{C:hearts}Hearts{} and {C:diamonds}Diamonds",
                     "count as the same suit,",
                     "{C:spades}Spades{} and {C:clubs}Clubs",
-                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
             j_hpfx_smudged_alt = {
@@ -868,14 +868,14 @@ return {
                     "{C:hearts}Hearts{} and {C:diamonds}Diamonds",
                     "count as the same suit,",
                     "{C:spades}Spades{} and {C:clubs}Clubs",
-                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
             j_hpfx_whoops = {
                 name = 'Oops! All 6s',
                 text={
                     "Doubles all {C:attention}listed",
-                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray,s:0.7}#1#{}",
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
                 },
             },
@@ -883,8 +883,24 @@ return {
                 name = 'Oops! All 6s{C:hpfx_IjiGray,s:0.7}...?{}',
                 text={
                     "Doubles all {C:attention}listed",
-                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray,s:0.7}#1#{}",
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
+                },
+            },
+            j_hpfx_and_thumb = {
+                name = 'Four Fingers',
+                text={
+                    "All {C:attention}Flushes{} and",
+                    "{C:attention}Straights{} can be",
+                    "made with {C:attention}4{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_and_thumb_alt = {
+                name = 'Four Fingers{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "All {C:attention}Flushes{} and",
+                    "{C:attention}Straights{} can be",
+                    "made with {C:attention}4{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
 
