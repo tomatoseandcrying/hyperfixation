@@ -837,6 +837,22 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
+            j_hpfx_take_the_sun = {
+                name = 'Shoot The Moon',
+                text={
+                    "Each {C:attention}Queen{}",
+                    "held in hand",
+                    "gives {C:mult}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_take_the_sun_alt = {
+                name = 'Shoot The Moon{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Each {C:attention}Queen{}",
+                    "held in hand",
+                    "gives {C:mult}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
 
         },
         Other = {
