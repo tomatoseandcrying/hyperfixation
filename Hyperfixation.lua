@@ -446,7 +446,8 @@ exceptions = {
     j_flower_pot = 'j_hpfx_daisy_vase',
     j_ride_the_bus = 'j_hpfx_get_an_uber',
     j_shoot_the_moon = 'j_hpfx_take_the_sun',
-    j_smeared = 'j_hpfx_smudged'
+    j_smeared = 'j_hpfx_smudged',
+    j_oops = 'j_hpfx_whoops'
 }
 
 --debug
