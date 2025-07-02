@@ -86,5 +86,19 @@ SMODS.Joker{
                 return { message = localize('k_no_other_jokers') }
             end
         end
+        if context.end_of_round and context.game_over == false 
+        and context.main_eval and not context.blueprint then
+            card.ability.extra.invis_rounds = card.ability.extra.invis_rounds + 1
+            if card.ability.extra.invis_rounds == card.ability.extra.total_rounds then
+                local eval = function(card) return not card.REMOVED end
+                juice_card_until(card, eval, true)
+            end
+            return {
+                message = (card.ability.extra.invis_rounds < card.ability.extra.total_rounds) and
+                    (card.ability.extra.invis_rounds .. '/' .. card.ability.extra.total_rounds) or
+                    localize('k_active_ex'),
+                colour = G.C.FILTER
+            }
+        end
     end
 }
