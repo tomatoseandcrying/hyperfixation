@@ -951,6 +951,24 @@ return {
                     "{C:attention}#1#{} additional times{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_learners_permit = {
+                name = "Driver's License",
+                text={
+                    "{X:mult,C:white} X#1# {} Mult if you have",
+                    "at least {C:attention}16{} Enhanced",
+                    "cards in your full deck{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive})"
+                },
+            },
+            j_hpfx_learners_permit_alt = {
+                name = "Driver's License{C:hpfx_IjiGray,s:0.7}...?{}",
+                text={
+                    "{X:mult,C:white} X#1# {} Mult if you have",
+                    "at least {C:attention}16{} Enhanced",
+                    "cards in your full deck{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive})",
+                },
+            },
 
         },
         Other = {
