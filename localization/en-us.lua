@@ -1003,7 +1003,22 @@ return {
                     "the shop are {C:attention}free{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
-
+            j_hpfx_charred = {
+                name = 'Burnt Joker',
+                text={
+                    "Upgrade the level of",
+                    "the first {C:attention}discarded",
+                    "poker hand each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_charred_alt = {
+                name = 'Burnt Joker{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Upgrade the level of",
+                    "the first {C:attention}discarded",
+                    "poker hand each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
