@@ -987,6 +987,22 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
                 },
             },
+            j_hpfx_galilimbo = {
+                name = 'Astronomer',
+                text={
+                    "All {C:planet}Planet{} cards and",
+                    "{C:planet}Celestial Packs{} in",
+                    "the shop are {C:attention}free{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_galilimbo_alt = {
+                name = 'Astronomer{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "All {C:planet}Planet{} cards and",
+                    "{C:planet}Celestial Packs{} in",
+                    "the shop are {C:attention}free{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
 
         },
         Other = {

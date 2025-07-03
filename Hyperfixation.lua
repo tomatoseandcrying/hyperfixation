@@ -280,6 +280,24 @@ function Hyperglobal.safe_set_ability(self, center)
     end
 end
 
+Hyperglobal.og_boostweight = Hyperglobal.og_boostweight or {}
+
+function Card:set_booster_weight(booster_kind, new_weight)
+    local boostertable = Hyperglobal.og_boostweight[booster.kind]
+    for _, booster in pairs(G.P_CENTER_POOLS.Booster or {}) do
+        if booster_kind == true or booster.kind == booster_kind then
+            if boostertable == nil then boostertable = booster.weight end
+            if new_weight == nil then booster.weight = boostertable
+            elseif type(new_weight) == "number" then
+                if new_weight >= 0 then booster.weight = new_weight
+                else booster.weight = boostertable end
+            else
+                print('invalid use of set_booster_weight')
+            end
+        end
+    end
+end
+
 --Ownerships
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
     use = function(self, card, area, copier)
@@ -346,6 +364,50 @@ SMODS.PokerHandPart:take_ownership('_flush', {
         )
     end,
 }, true)
+SMODS.Booster:take_ownership_by_kind('Arcana', {
+    create_card = function(self, card, i)
+        local _card
+        if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "ar2" }
+        else
+            _card = { set = "Tarot", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "ar1" }
+        end
+        return _card
+    end,
+})
+SMODS.Booster:take_ownership_by_kind('Buffoon', {
+    create_card = function(self, card, i)
+        local _card
+        if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "bf2" }
+        else
+            _card = { set = "Joker", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "bf1" }
+        end
+        return _card
+    end,
+})
+SMODS.Booster:take_ownership_by_kind('Spectral', {
+    create_card = function(self, card, i)
+        local _card
+        if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sp2" }
+        else
+            _card = { set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sp1" }
+        end
+        return _card
+    end,
+})
+SMODS.Booster:take_ownership_by_kind('Standard', {
+    create_card = function(self, card, i)
+        local _card
+        if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "st2" }
+        else
+            _card = { set = "Standard", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "st1" }
+        end
+        return _card
+    end,
+})
 --Unlock Conditions
 
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
@@ -468,7 +530,8 @@ exceptions = {
     j_stuntman = 'j_hpfx_buttowski',
     j_hanging_chad = 'j_hpfx_hung_chad',
     j_drivers_license = 'j_learners_permit',
-    j_invisible = 'j_hpfx_invincible'
+    j_invisible = 'j_hpfx_invincible',
+    j_astronomer = 'j_hpfx_galilimbo'
 }
 
 --debug

@@ -38,7 +38,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
     end
     for _, card in ipairs(G.jokers.cards) do
-        if card.isIjiraq or exceptions[G.GAME.current_round.fodder_card.jkey] and 
+        if card.isIjiraq or exceptions[G.GAME.current_round.fodder_card.jkey] and
         not card.config.center.key == 'j_hpfx_ijiraq' then
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -122,7 +122,7 @@ function Card:calculate_joker(context)
             end,
         }))
     end
-    return ret 
+    return ret
 end
 
 local stupidRef = generate_card_ui
@@ -151,7 +151,7 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
 end
 local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
-    if self.isIjiraq then 
+    if self.isIjiraq then
         self.visiblyIjiraq = true
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, self, true)
@@ -207,4 +207,14 @@ function ease_ante(mod)
         end
     }))
     return ret
+end
+
+local card_set_cost_ref = Card.set_cost
+function Card:set_cost()
+    card_set_cost_ref(self)
+    if next(SMODS.find_card("j_hpfx_galilimbo")) then
+        if (self.ability.set == 'Planet' or (self.ability.set == 'Booster' and self.config.center.kind == 'Celestial')) then self.cost = 0 end
+        self.sell_cost = math.max(1, math.floor(self.cost / 2)) + (self.ability.extra_value or 0)
+        self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
+    end
 end

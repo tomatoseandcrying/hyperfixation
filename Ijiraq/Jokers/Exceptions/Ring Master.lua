@@ -36,10 +36,13 @@ SMODS.Joker{
         G.E_MANAGER:add_event(Event({
             func = function ()
                 G.GAME.edition_rate = G.GAME.edition_rate + (card.ability.extra.rate * 10)
+                G.GAME.playing_card_rate = G.GAME.playing_card_rate + (card.ability.extra.rate * 10)
                 G.GAME.joker_rate = G.GAME.joker_rate - (card.ability.extra.rate * 10)
                 G.GAME.tarot_rate = G.GAME.tarot_rate - (card.ability.extra.rate * 10)
+                G.GAME.planet_rate = G.GAME.planet_rate - (card.ability.extra.rate * 10)
                 G.GAME.spectral_rate = G.GAME.spectral_rate - (card.ability.extra.rate * 10)
-                G.GAME.playing_card_rate = G.GAME.playing_card_rate + (card.ability.extra.rate * 10)
+                Card:set_booster_weight(true, 0)
+                Card:set_booster_weight('Standard')
                 return true
             end
         }))
@@ -51,10 +54,12 @@ SMODS.Joker{
         G.E_MANAGER:add_event(Event({
             func = function ()
                 G.GAME.edition_rate = G.GAME.edition_rate - (card.ability.extra.rate * 10)
+                G.GAME.playing_card_rate = G.GAME.playing_card_rate - (card.ability.extra.rate * 10)
                 G.GAME.joker_rate = G.GAME.joker_rate + (card.ability.extra.rate * 10)
                 G.GAME.tarot_rate = G.GAME.tarot_rate + (card.ability.extra.rate * 10)
+                G.GAME.planet_rate = G.GAME.planet_rate + (card.ability.extra.rate * 10)
                 G.GAME.spectral_rate = G.GAME.spectral_rate + (card.ability.extra.rate * 10)
-                G.GAME.playing_card_rate = G.GAME.playing_card_rate - (card.ability.extra.rate * 10)
+                Card:set_booster_weight(true)
                 return true
             end
         })) 
