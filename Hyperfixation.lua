@@ -535,7 +535,8 @@ exceptions = {
     j_burnt = 'j_hpfx_charred',
     j_dusk = 'j_hpfx_dawn',
     j_throwback = 'j_hpfx_flashforward',
-    j_brainstorm = 'j_hpfx_stormcloud'
+    j_brainstorm = 'j_hpfx_stormcloud',
+    j_satellite = 'j_hpfx_apollo'
 }
 
 --debug

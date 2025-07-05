@@ -1039,7 +1039,7 @@ return {
                 name = 'Throwback',
                 text={
                     "{X:mult,C:white}X#1#{} Mult for each",
-                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1047,7 +1047,7 @@ return {
                 name = 'Throwback{C:hpfx_IjiGray,s:0.7}...?{}',
                 text={
                     "{X:mult,C:white}X#1#{} Mult for each",
-                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1063,6 +1063,24 @@ return {
                 text={
                     "Copies the ability",
                     "of leftmost {C:attention}Joker{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_apollo = {
+                name = 'Satellite',
+                text={
+                    "Earn {C:money}$#1#{} at end of",
+                    "round per unique {C:planet}Planet",
+                    "card used this run{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+                },
+            },
+            j_hpfx_apollo_alt = {
+                name = 'Satellite{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Earn {C:money}$#1#{} at end of",
+                    "round per unique {C:planet}Planet",
+                    "card used this run{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
             },
         },
