@@ -1019,6 +1019,22 @@ return {
                     "poker hand each round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_dawn = {
+                name = 'Dusk',
+                text={
+                    "Retrigger all played",
+                    "cards in {C:attention}final",
+                    "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_dawn_alt = {
+                name = 'Dusk{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Retrigger all played",
+                    "cards in {C:attention}final",
+                    "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

@@ -532,7 +532,8 @@ exceptions = {
     j_drivers_license = 'j_learners_permit',
     j_invisible = 'j_hpfx_invincible',
     j_astronomer = 'j_hpfx_galilimbo',
-    j_burnt = 'j_hpfx_charred'
+    j_burnt = 'j_hpfx_charred',
+    j_dusk = 'j_hpfx_dawn'
 }
 
 --debug
