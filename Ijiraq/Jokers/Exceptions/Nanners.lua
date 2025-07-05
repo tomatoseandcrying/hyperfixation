@@ -59,8 +59,7 @@ SMODS.Joker{
                             blockable = false,
                             func = function()
                                 local michelleOfferings = G.jokers.cards
-                                local michelleSacrifice = pseudorandom_element
-                                (michelleOfferings, pseudoseed("hpfx_close_michelle"))
+                                local michelleSacrifice = pseudorandom_element(michelleOfferings, pseudoseed("hpfx_close_michelle"))
                                 michelleSacrifice:hpfx_Transform(card, context)
                                 return true
                             end
