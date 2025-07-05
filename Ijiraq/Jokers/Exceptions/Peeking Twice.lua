@@ -72,8 +72,7 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.joker_main and
-        SMODS.seeing_double_check
-        (context.scoring_hand, 'Clubs') then
+        SMODS.seeing_double_check(context.scoring_hand, 'Clubs') then
             return {
             xmult = card.ability.extra.xmult
             }
