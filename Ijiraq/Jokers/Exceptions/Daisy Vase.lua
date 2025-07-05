@@ -13,7 +13,7 @@ SMODS.Joker{
     config = {
         extra = {
             xmult = 3,
-            played_cards = {}
+            played_suits = {}
         }
     },
     loc_vars = function (self, info_queue, card)
