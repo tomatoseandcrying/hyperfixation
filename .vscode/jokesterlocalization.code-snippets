@@ -9,7 +9,7 @@
             "    },\r",
             "},\r",
             "j_hpfx_$1_alt = {\r",
-            "    name = '$2{C:hpfx_IjiGray,s:0.7}...?{}',\r",
+            "    name = '$2{C:hpfx_IjiGray}...?{}',\r",
             "    text={\r",
             "        \"{C:hpfx_IjiGray,s:0.7}#2#{}\",\r",
             "    },\r",
