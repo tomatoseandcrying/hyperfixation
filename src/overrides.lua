@@ -222,7 +222,8 @@ end
 function G.UIDEF.hpfx_transform_button(card) --UI of the actual button
     local transform = nil
     local key = card.config.center.key
-    if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq' then local specil = nil
+    if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq'
+    and card.config.center.rarity == 'Legendary' then local specil = nil
         for k, v in pairs(exceptions) do if key == v then specil = true break end end
         if specil or card.visiblyIjiraq then
             transform = {n=G.UIT.C, config={align = "cr"}, nodes={
