@@ -43,6 +43,14 @@ SMODS.Joker{
             if ccard:is_face() then
                 SMODS.destroy_cards(ccard)
             end
+            local face_cards = 0
+            for _, removed_card in ipairs(context.removed) do
+                if removed_card:is_face() then face_cards = face_cards + 1 end
+            end
+            if face_cards > 0 then
+                card.ability.extra.xmult = card.ability.extra.xmult +
+                    face_cards * card.ability.extra.xmult_gain
+            end
         end
     end,
     calculate = function(self, card, context)
