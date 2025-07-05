@@ -1083,6 +1083,22 @@ return {
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
             },
+            j_hpfx_snowgrave = {
+                name = 'Rough Gem',
+                text={
+                    "Played cards with",
+                    "{C:diamonds}Diamond{} suit earn",
+                    "{C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_snowgrave_alt = {
+                name = 'Rough Gem{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Played cards with",
+                    "{C:diamonds}Diamond{} suit earn",
+                    "{C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
             j_hpfx_sanguinerock = {
                 name = 'Bloodstone',
                 text={
@@ -1115,6 +1131,22 @@ return {
                     "Played cards with",
                     "{C:spades}Spade{} suit give",
                     "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_obsidian = {
+                name = 'Onyx Agate',
+                text={
+                    "Played cards with",
+                    "{C:clubs}Club{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_obsidian_alt = {
+                name = 'Onyx Agate{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Played cards with",
+                    "{C:clubs}Club{} suit give",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
         },
