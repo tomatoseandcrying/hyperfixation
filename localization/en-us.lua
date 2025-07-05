@@ -1051,6 +1051,20 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
+            j_hpfx_stormcloud = {
+                name = 'Brainstorm',
+                text={
+                    "Copies the ability",
+                    "of leftmost {C:attention}Joker{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_stormcloud_alt = {
+                name = 'Brainstorm{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Copies the ability",
+                    "of leftmost {C:attention}Joker{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

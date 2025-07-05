@@ -6,9 +6,6 @@ SMODS.Joker{ --Blueprint?
     unlocked = true,
     discovered = true,
     no_collection = true,
-    config = {
-        extra = {}
-    },
     loc_vars = function (self, info_queue, card)
         if card.area and card.area == G.jokers then
             local other_joker
