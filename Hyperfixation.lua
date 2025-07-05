@@ -537,7 +537,8 @@ exceptions = {
     j_throwback = 'j_hpfx_flashforward',
     j_brainstorm = 'j_hpfx_stormcloud',
     j_satellite = 'j_hpfx_apollo',
-    j_bloodstone = 'j_hpfx_sanguinerock'
+    j_bloodstone = 'j_hpfx_sanguinerock',
+    j_arrowhead = 'j_hpfx_ahead'
 }
 
 --debug

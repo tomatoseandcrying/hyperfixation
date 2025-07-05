@@ -1101,6 +1101,22 @@ return {
                     "{X:mult,C:white}X#3#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#4#{}",
                 },
             },
+            j_hpfx_ahead = {
+                name = 'Arrowhead',
+                text={
+                    "Played cards with",
+                    "{C:spades}Spade{} suit give",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_ahead_alt = {
+                name = 'Arrowhead{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "Played cards with",
+                    "{C:spades}Spade{} suit give",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
