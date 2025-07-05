@@ -1035,6 +1035,22 @@ return {
                     "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_flashforward = {
+                name = 'Throwback',
+                text={
+                    "{X:mult,C:white}X#1#{} Mult for each",
+                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                },
+            },
+            j_hpfx_flashforward_alt = {
+                name = 'Throwback{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "{X:mult,C:white}X#1#{} Mult for each",
+                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

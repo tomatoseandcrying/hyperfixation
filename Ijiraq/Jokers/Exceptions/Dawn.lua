@@ -13,7 +13,6 @@ SMODS.Joker{
     config = {
         extra = {
         repetitions = 1,
-        copy = 1
         }
     },
     loc_vars = function (self, info_queue, card)
@@ -21,7 +20,6 @@ SMODS.Joker{
             vars = {
                 card.ability.extra.repetitions,
                 card.area and card.area == G.jokers and "...?" or "",
-                card.ability.extra.copy
             }
         }
     end,
@@ -40,8 +38,9 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play 
+        if context.repetition and context.cardarea == G.play
         and G.GAME.current_round.hands_left == 0 then
+            local copies = {}
             for _, scored_card in ipairs(context.scoring_hand) do
                 G.playing_card = (G.playing_card and G.playing_card + 1) or 1
                 local copy_card = copy_card(scored_card, nil, nil, G.playing_card)
@@ -50,35 +49,33 @@ SMODS.Joker{
                 table.insert(G.playing_cards, copy_card)
                 G.hand:emplace(copy_card)
                 copy_card.states.visible = nil
-
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         copy_card:start_materialize()
                         return true
                     end
                 }))
+                table.insert(copies, copy_card)
+            end
+            if #copies > 0 then
                 return {
                     message = localize('k_copied_ex'),
                     colour = G.C.CHIPS,
+                    repetitions = card.ability.extra.repetitions,
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 SMODS.calculate_context({
-                                    playing_card_added = true, 
-                                    cards = {copy_card}
+                                    playing_card_added = true,
+                                    cards = copies
                                 })
+                                hpfx_Transform(card, context)
                                 return true
                             end
                         }))
                     end
                 }
             end
-            return {
-                repetitions = card.ability.extra.repetitions,
-                func = function ()
-                    hpfx_Transform(card, context)
-                end
-            }
         end
     end
 }
