@@ -536,7 +536,8 @@ exceptions = {
     j_dusk = 'j_hpfx_dawn',
     j_throwback = 'j_hpfx_flashforward',
     j_brainstorm = 'j_hpfx_stormcloud',
-    j_satellite = 'j_hpfx_apollo'
+    j_satellite = 'j_hpfx_apollo',
+    j_bloodstone = 'j_hpfx_sanguinerock'
 }
 
 --debug

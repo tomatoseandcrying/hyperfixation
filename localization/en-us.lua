@@ -1083,6 +1083,24 @@ return {
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
             },
+            j_hpfx_sanguinerock = {
+                name = 'Bloodstone',
+                text={
+                    "{C:green}#1# in #2#{} chance for",
+                    "played cards with",
+                    "{C:hearts}Heart{} suit to give",
+                    "{X:mult,C:white}X#3#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#4#{}",
+                },
+            },
+            j_hpfx_sanguinerock_alt = {
+                name = 'Bloodstone{C:hpfx_IjiGray,s:0.7}...?{}',
+                text={
+                    "{C:green}#1# in #2#{} chance for",
+                    "played cards with",
+                    "{C:hearts}Heart{} suit to give",
+                    "{X:mult,C:white}X#3#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#4#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
