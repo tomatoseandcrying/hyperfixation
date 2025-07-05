@@ -134,7 +134,7 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
         ihatethis = ihatethis .. '{C:hpfx_IjiGray}...?{}'
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
         desc = G.localization.descriptions[_c.set][_c.key]['text']
-        desc[#desc] = desc[#desc] .. "{C:hpfx_IjiGray}...?{}"
+        desc[#desc] = desc[#desc] .. "{C:hpfx_IjiGray,s:0.7}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
 		changed = true
         init_localization()
@@ -143,7 +143,7 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
     if changed then
         ihatethis = ihatethis:sub(1, ihatethis:len() - 22) --22 is the exact length of the string "{C:hpfx_IjiGray}...?{}", change this only if you change the string's length
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
-        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 22)
+        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 28) --same here but with "{C:hpfx_IjiGray,s:0.7}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
 		init_localization()
     end
@@ -217,4 +217,31 @@ function Card:set_cost()
         self.sell_cost = math.max(1, math.floor(self.cost / 2)) + (self.ability.extra_value or 0)
         self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
     end
+end
+
+function G.UIDEF.hpfx_transform_button(card) --UI of the actual button
+    local transform = nil
+    local key = card.config.center.key
+    if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq' then local specil = nil
+        for k, v in pairs(exceptions) do if key == v then specil = true break end end
+        if specil or card.visiblyIjiraq then
+            transform = {n=G.UIT.C, config={align = "cr"}, nodes={
+            {n=G.UIT.C, config={ref_table = card, align = "cr", maxw = 1.25, padding = 0.1, r=0.08, minw = 1.25, hover = true,
+            shadow = true, minh = (card.area and card.area.config.type == 'joker') and 0 or 1, colour = G.C.RED,
+            one_press = true, button = 'hpfx_Transbutt'},
+            nodes={
+                {n=G.UIT.B, config = {w=0.1,h=0.6}},
+                {n=G.UIT.T, config={text = localize('hpfx_shed'),colour = G.C.UI.TEXT_LIGHT, scale = 0.6, shadow = true}}
+            }},
+        }} end
+        return transform
+    end
+end
+
+local notthunk = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more button
+  local ret = notthunk(card)
+  local inner_nodes = ret.nodes[1].nodes[2].nodes
+  inner_nodes[#inner_nodes+1] = G.UIDEF.hpfx_transform_button(card)
+  return ret
 end

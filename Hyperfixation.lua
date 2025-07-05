@@ -153,6 +153,11 @@ function hpfx_Transform(card, context)
         func = function ()
             if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
+                for k, v in pairs(exceptions) do
+                    if key == v then
+                        key = k
+                    end
+                end
                 table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
@@ -233,6 +238,55 @@ function Card:Transfodd(context)
         end
     }))
 	return true
+end 
+function G.FUNCS.hpfx_Transbutt(e)
+    local card = e.config.ref_table
+    G.E_MANAGER:add_event(Event({
+        trigger = "immediate",
+        delay = 0,
+        func = function ()
+            if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
+                local key = card.config.center.key
+                for k, v in pairs(exceptions) do
+                    if key == v then
+                        key = k
+                    end
+                end
+                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+            end
+            G.jokers:unhighlight_all()
+            return true
+        end,
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            card:flip()
+            return true
+        end,
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            card:set_ability(G.P_CENTERS["j_hpfx_ijiraq"])
+            play_sound("card1")
+            card:juice_up(0.3, 0.3)
+            return true
+        end,
+    }))
+    G.E_MANAGER:add_event(Event({
+    trigger = "after",
+    delay = 0.15,
+    func = function()
+        card:flip()
+        return true
+    end,
+    }))
+    --here?
+	return true
+    --or maybe here?
 end
 function Hyperglobal.safe_set_ability(self, center)
     if not self or not center then return nil end
@@ -540,7 +594,8 @@ exceptions = {
     j_rough_gem = 'j_hpfx_snowgrave',
     j_bloodstone = 'j_hpfx_sanguinerock',
     j_arrowhead = 'j_hpfx_ahead',
-    j_onyx_agate = 'j_hpfx_obsidian'
+    j_onyx_agate = 'j_hpfx_obsidian',
+    j_caino = 'j_hpfx_canio'
 }
 
 --debug
