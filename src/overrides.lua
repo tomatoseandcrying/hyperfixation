@@ -239,11 +239,14 @@ function G.UIDEF.hpfx_transform_button(card) --UI of the actual button
     end
 end
 
-local notthunk = G.UIDEF.use_and_sell_buttons
+local stupidfuckingbuttonref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more button
-  local ret = notthunk(card)
-  local inner_nodes
-  if card.ability.set == "Joker" and card.area == G.jokers then inner_nodes = ret.nodes[1].nodes end
-  if inner_nodes then inner_nodes[#inner_nodes+1] = G.UIDEF.hpfx_transform_button(card) end
+  local ret = stupidfuckingbuttonref(card)
+  if card.area and card.area.config.type == 'joker' and card.ability.set == 'Joker' then
+     local transbutton = G.UIDEF.hpfx_transform_button(card)
+     ret.nodes[1].nodes[2].nodes = ret.nodes[1].nodes[2].nodes or {}
+     table.insert(ret.nodes[1].nodes[2].nodes, transbutton)
+     return ret
+  end
   return ret
 end
