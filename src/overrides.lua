@@ -243,11 +243,7 @@ local notthunk = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more button
   local ret = notthunk(card)
   local inner_nodes
-  if card.ability.set == "Joker" and card.area == G.jokers then
-    inner_nodes = ret.nodes[1].nodes
-  end
-  if inner_nodes then
-    inner_nodes[#inner_nodes+1] = G.UIDEF.hpfx_transform_button(card)
-  end
+  if card.ability.set == "Joker" and card.area == G.jokers then inner_nodes = ret.nodes[1].nodes end
+  if inner_nodes then inner_nodes[#inner_nodes+1] = G.UIDEF.hpfx_transform_button(card) end
   return ret
 end
