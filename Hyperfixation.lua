@@ -413,9 +413,7 @@ SMODS.PokerHandPart:take_ownership('_straight', {
 }, true)
 SMODS.PokerHandPart:take_ownership('_flush', {
     func = function(hand)
-        return get_flush(hand,
-            (next(SMODS.find_card('j_four_fingers')) or next(SMODS.find_card('j_hpfx_and_thumb'))) and 4 or 5
-        )
+        return get_flush(hand, (next(SMODS.find_card('j_four_fingers')) or next(SMODS.find_card('j_hpfx_and_thumb'))) and 4 or 5)
     end,
 }, true)
 SMODS.Booster:take_ownership_by_kind('Arcana', {
@@ -428,40 +426,40 @@ SMODS.Booster:take_ownership_by_kind('Arcana', {
         end
         return _card
     end,
-})
+}, true)
 SMODS.Booster:take_ownership_by_kind('Buffoon', {
     create_card = function(self, card, i)
         local _card
         if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
-            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "bf2" }
+            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "buf2" }
         else
-            _card = { set = "Joker", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "bf1" }
+            _card = { set = "Joker", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "buf" }
         end
         return _card
     end,
-})
+}, true)
 SMODS.Booster:take_ownership_by_kind('Spectral', {
     create_card = function(self, card, i)
         local _card
         if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
-            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sp2" }
+            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "spe2" }
         else
-            _card = { set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sp1" }
+            _card = { set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "spe" }
         end
         return _card
     end,
-})
+}, true)
 SMODS.Booster:take_ownership_by_kind('Standard', {
     create_card = function(self, card, i)
         local _card
         if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
-            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "st2" }
+            _card = { set = "Celestial", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sta2" }
         else
-            _card = { set = "Standard", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "st1" }
+            _card = { set = "Base", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sta" }
         end
         return _card
     end,
-})
+}, true)
 --Unlock Conditions
 
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
