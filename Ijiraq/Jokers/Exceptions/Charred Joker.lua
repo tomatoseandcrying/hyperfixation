@@ -10,6 +10,7 @@ SMODS.Joker{
     rarity = 3,
     cost = 8,
     atlas = 'IjiraqJokers',
+    config = {extra = {}},
     loc_vars = function (self, info_queue, card)
         return{
             vars = {

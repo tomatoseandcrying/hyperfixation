@@ -10,6 +10,7 @@ SMODS.Joker{
     rarity = 3,
     cost = 10,
     atlas = 'IjiraqJokers',
+    config = {extra = {}},
     loc_vars = function (self, info_queue, card)
         if card.area and card.area == G.jokers then
             local other_joker

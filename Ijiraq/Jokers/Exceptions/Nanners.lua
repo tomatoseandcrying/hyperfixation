@@ -53,13 +53,12 @@ SMODS.Joker{
                         card.states.drag.is = true
                         card.children.center.pinch.x = true
                         SMODS.calculate_context{hpfx_chudhit = true}
+                        local michelleSacrifice = pseudorandom_element(G.jokers.cards, pseudoseed("hpfx_close_michelle"))
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.3,
                             blockable = false,
                             func = function()
-                                local michelleOfferings = G.jokers.cards
-                                local michelleSacrifice = pseudorandom_element(michelleOfferings, pseudoseed("hpfx_close_michelle"))
                                 michelleSacrifice:hpfx_Transform(card, context)
                                 return true
                             end

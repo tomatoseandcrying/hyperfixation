@@ -1167,6 +1167,22 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
+            j_hpfx_dribblinit = {
+                name = 'Triboulet',
+                text={
+                    "Played {C:attention}Kings{} and",
+                    "{C:attention}Queens{} each give",
+                    "{X:mult,C:white}X#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_dribblinit_alt = {
+                name = 'Triboulet{C:hpfx_IjiGray}...?{}',
+                text={
+                    "Played {C:attention}Kings{} and",
+                    "{C:attention}Queens{} each give",
+                    "{X:mult,C:white}X#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

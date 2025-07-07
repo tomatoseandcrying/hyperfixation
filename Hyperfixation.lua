@@ -74,9 +74,9 @@ function load_folder(folder)
 	end
 end
 SMODS.load_file('src/overrides.lua')()
---SMODS.load_file('Isaac/IsaacCenter.lua')()
+SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
---SMODS.load_file('4Fun/FunZone.lua')()
+SMODS.load_file('4Fun/FunZone.lua')()
 SMODS.load_file('Stickers.lua')()
 
 
@@ -595,7 +595,8 @@ exceptions = {
     j_bloodstone = 'j_hpfx_sanguinerock',
     j_arrowhead = 'j_hpfx_ahead',
     j_onyx_agate = 'j_hpfx_obsidian',
-    j_caino = 'j_hpfx_canio'
+    j_caino = 'j_hpfx_canio',
+    j_triboulet = 'j_hpfx_dribblinit'
 }
 
 --debug
