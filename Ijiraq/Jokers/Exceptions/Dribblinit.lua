@@ -43,7 +43,7 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and
         (context.other_card:get_id() == 12 or context.other_card:get_id() == 13)
-        and not context.blueprint then
+        and not context.blueprint and not context.end_of_round and not context.after then
             card.ability.extra.xmult = (card.ability.extra.xmult * card.ability.extra.xmult_gain)
             return {
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
