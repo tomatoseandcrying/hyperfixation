@@ -15,16 +15,16 @@ SMODS.Joker{
         extra = {
         xmult = 1,
         xmult_gain = 1,
-        discards = 23,
-        discards_remaining = 23
+        dis = 23,
+        dis_rem = 23
         }
     },
     loc_vars = function (self, info_queue, card)
         return{
             vars = {
                 card.ability.extra.xmult_gain,
-                card.ability.extra.discards,
-                card.ability.extra.discards_remaining,
+                card.ability.extra.dis,
+                card.ability.extra.dis_rem,
                 card.ability.extra.xmult,
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -46,19 +46,54 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.discard and not context.blueprint then
-        if card.ability.extra.discards_remaining <= 1 then
-        card.ability.extra.discards_remaining = card.ability.extra.discards
-        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-        return{colour = G.C.RED, message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}}
-        else return{func = function() card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - 1 end}
-        end end
-        if context.hand_drawn and not context.blueprint then
-        if card.ability.extra.discards_remaining <= 1 then
-        card.ability.extra.discards_remaining = card.ability.extra.discards
-        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-        return{colour = G.C.RED, message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}}
-        else return{func = function() card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - #context.hand_drawn end}
-        end end
-        if context.joker_main then return{xmult = card.ability.extra.xmult} end
+            if card.ability.extra.dis_rem <= 1 then
+                card.ability.extra.dis_rem = card.ability.extra.dis
+                card.ability.extra.xmult =
+                card.ability.extra.xmult + card.ability.extra.xmult_gain
+                return{
+                    message = localize{
+                        type = 'variable',
+                        key = 'a_xmult',
+                        vars = {card.ability.extra.xmult}
+                    },
+                    colour = G.C.RED
+                }
+            else
+                return{
+                    func = function()
+                        card.ability.extra.dis_rem =
+                        card.ability.extra.dis_rem - 1
+                    end
+                }
+            end
+        elseif context.hand_drawn and not context.blueprint then
+            return{
+                func = function()
+                    local subtract = #context.hand_drawn
+                    local dis_rem = card.ability.extra.dis_rem
+                    if dis_rem - subtract <= 0 then
+                        local overflow = subtract - dis_rem
+                        card.ability.extra.dis_rem = card.ability.extra.dis
+                        card.ability.extra.xmult =
+                        card.ability.extra.xmult + card.ability.extra.xmult_gain
+                        card.ability.extra.dis_rem =
+                        card.ability.extra.dis_rem - overflow
+                    else
+                        card.ability.extra.dis_rem = dis_rem - subtract
+                    end
+                end,
+                message = localize{
+                    type = 'variable',
+                    key ='a_xmult',
+                    vars = {card.ability.extra.xmult}
+                },
+                colour = G.C.RED
+            }
+        end
+        if context.joker_main then
+            return{
+                xmult = card.ability.extra.xmult
+            }
+        end
     end
 }
