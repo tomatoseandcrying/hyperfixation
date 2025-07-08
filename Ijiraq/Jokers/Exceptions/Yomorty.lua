@@ -48,16 +48,8 @@ SMODS.Joker{
         if context.discard and not context.blueprint then
             if card.ability.extra.dis_rem <= 1 then
                 card.ability.extra.dis_rem = card.ability.extra.dis
-                card.ability.extra.xmult =
-                card.ability.extra.xmult + card.ability.extra.xmult_gain
-                return{
-                    message = localize{
-                        type = 'variable',
-                        key = 'a_xmult',
-                        vars = {card.ability.extra.xmult}
-                    },
-                    colour = G.C.RED
-                }
+                    card.ability.extra.xmult =
+                    card.ability.extra.xmult + card.ability.extra.xmult_gain
             else
                 return{
                     func = function()
@@ -74,10 +66,10 @@ SMODS.Joker{
                     if dis_rem - subtract <= 0 then
                         local overflow = subtract - dis_rem
                         card.ability.extra.dis_rem = card.ability.extra.dis
-                        card.ability.extra.xmult =
-                        card.ability.extra.xmult + card.ability.extra.xmult_gain
-                        card.ability.extra.dis_rem =
-                        card.ability.extra.dis_rem - overflow
+                            card.ability.extra.xmult =
+                            card.ability.extra.xmult + card.ability.extra.xmult_gain
+                                card.ability.extra.dis_rem =
+                                card.ability.extra.dis_rem - overflow
                     else
                         card.ability.extra.dis_rem = dis_rem - subtract
                     end
@@ -87,9 +79,7 @@ SMODS.Joker{
         if (context.discard or context.hand_drawn) and not context.blueprint then
             if card.ability.extra.dis_rem <= 1 then
                 return{
-                    message = localize{
-                        type = 'variable',
-                        key = 'a_xmult',
+                    message = localize{type = 'variable', key = 'a_xmult',
                         vars = {card.ability.extra.xmult}},
                     colour = G.C.RED
                 }
