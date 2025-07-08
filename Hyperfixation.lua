@@ -337,8 +337,8 @@ end
 Hyperglobal.og_boostweight = Hyperglobal.og_boostweight or {}
 
 function Card:set_booster_weight(booster_kind, new_weight)
-    local boostertable = Hyperglobal.og_boostweight[booster.kind]
     for _, booster in pairs(G.P_CENTER_POOLS.Booster or {}) do
+        local boostertable = Hyperglobal.og_boostweight[booster.kind]
         if booster_kind == true or booster.kind == booster_kind then
             if boostertable == nil then boostertable = booster.weight end
             if new_weight == nil then booster.weight = boostertable
