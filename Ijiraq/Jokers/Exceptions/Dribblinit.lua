@@ -14,7 +14,7 @@ SMODS.Joker{
     config = {
         extra = {
         xmult = 2,
-        xmult_gain = 2
+        xmult_gain = math.sqrt(2)
         }
     },
     loc_vars = function (self, info_queue, card)
