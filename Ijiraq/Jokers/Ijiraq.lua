@@ -16,7 +16,7 @@ SMODS.Joker{ --Ijiraq.
     },
     loc_vars = function (self, info_queue, card)
         for _, v in pairs(G.GAME.raqeffects) do
-            info_queue[#info_queue+1] = v
+            info_queue[#info_queue+1] = G.P_CENTERS[v]
         end
         return{
             main_end = main_end,
