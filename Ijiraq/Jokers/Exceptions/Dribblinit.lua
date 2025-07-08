@@ -41,20 +41,15 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and not context.blueprint and
-        (context.other_card:get_id() == 12 or context.other_card:get_id() == 13) then
-            G.E_MANAGER:add_event(Event({
-            func = function()
-                G.E_MANAGER:add_event(Event({
-                func = function()
-                    card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-                    SMODS.calculate_effect({colour = G.C.RED, message = localize{
-                        type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}},
-                    context.other_card)
-                return true end
-                }))
-                return true end
-            }))
+        if context.individual and context.cardarea == G.play and
+        (context.other_card:get_id() == 12 or context.other_card:get_id() == 13)
+        and not context.blueprint then
+            card.ability.extra.xmult = (card.ability.extra.xmult * card.ability.extra.xmult_gain)
+            return {
+                message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
+                colour = G.C.RED,
+                message_card = context.other_card
+            }
         end
         if context.joker_main then return {xmult = card.ability.extra.xmult} end
     end
