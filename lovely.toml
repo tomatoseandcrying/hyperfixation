@@ -214,7 +214,7 @@ target = "card.lua"
 pattern = "card.T.x = self.T.x"
 position = "at"
 payload = '''
-if (next(SMODS.find_card('j_hpfx_galilimbo')) then
+if next(SMODS.find_card('j_hpfx_galilimbo')) then
     if pseudorandom('galilimbo') > 0.8 then
         card:remove()
         card = nil
