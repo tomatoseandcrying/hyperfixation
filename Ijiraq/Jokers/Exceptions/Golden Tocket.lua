@@ -16,6 +16,7 @@ SMODS.Joker{
         }
     },
     loc_vars = function (self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
         return{
             vars = {
                 card.ability.extra.dollars,
@@ -40,12 +41,13 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play
         and SMODS.has_enhancement(context.other_card, 'm_gold') then
+            G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
             return {
                 dollars = card.ability.extra.dollars,
                 func = function() -- This is for timing purposes, it runs after the dollar manipulation
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            G.GAME.dollar_buffer = G.GAME.dollar_buffer + card.ability.extra.dollars
+                            G.GAME.dollar_buffer = 0
                             return true
                         end
                     }))
