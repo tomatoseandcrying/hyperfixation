@@ -217,6 +217,17 @@ function Card:set_cost()
         self.sell_cost = math.max(1, math.floor(self.cost / 2)) + (self.ability.extra_value or 0)
         self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
     end
+    for _, v in pairs(G.GAME.raqeffects) do
+        local found = false
+        if v == 'j_astronomer' then
+            found = true
+        end
+        if next(SMODS.find_card("j_hpfx_ijiraq")) and found == true then
+            if (self.ability.set == 'Planet' or (self.ability.set == 'Booster' and self.config.center.kind == 'Celestial')) then self.cost = 0 end
+            self.sell_cost = math.max(1, math.floor(self.cost / 2)) + (self.ability.extra_value or 0)
+            self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
+        end
+    end
 end
 
 function G.UIDEF.hpfx_transform_button(card) --UI of the actual button
