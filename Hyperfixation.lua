@@ -540,7 +540,8 @@ exceptions = {
     j_arrowhead = 'j_hpfx_ahead',
     j_onyx_agate = 'j_hpfx_obsidian',
     j_caino = 'j_hpfx_canio',
-    j_triboulet = 'j_hpfx_dribblinit'
+    j_triboulet = 'j_hpfx_dribblinit',
+    j_yorick = 'j_hpfx_yomorty'
 }
 
 --debug

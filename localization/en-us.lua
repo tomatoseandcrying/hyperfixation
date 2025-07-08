@@ -1183,6 +1183,24 @@ return {
                     "{X:mult,C:white}X#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_yomorty = {
+                name = 'Yorick',
+                text={
+                    "This Joker gains",
+                    "{X:mult,C:white}X#1#{} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
+                    "cards discarded{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
+                },
+            },
+            j_hpfx_yomorty_alt = {
+                name = 'Yorick{C:hpfx_IjiGray}...?{}',
+                text={
+                    "This Joker gains",
+                    "{X:mult,C:white} X#1# {} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
+                    "cards discarded{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
