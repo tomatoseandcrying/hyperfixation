@@ -250,3 +250,30 @@ function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more butt
   end
   return ret
 end
+
+local bcofcthereis = SMODS.four_fingers
+function SMODS.four_fingers()
+    bcofcthereis()
+    if next(SMODS.find_card('j_hpfx_and_thumb')) then
+        return 4
+    end
+    return bcofcthereis
+end
+
+local whywouldnttherebe = SMODS.shortcut
+function SMODS.shortcut()
+    whywouldnttherebe()
+    if next(SMODS.find_card('j_hpfx_and_thumb')) then
+        return true
+    end
+    return whywouldnttherebe
+end
+
+local canyoubelievethat = SMODS.shortcut
+function SMODS.shortcut()
+    canyoubelievethat()
+    if next(SMODS.find_card('j_hpfx_and_thumb')) then
+        return true
+    end
+    return canyoubelievethat
+end

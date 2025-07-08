@@ -11,7 +11,11 @@ SMODS.Joker{
     cost = 5,
     atlas = 'IjiraqJokers',
     config = {
-        extra = {rate = 4, odds = 6}
+        extra = {
+            rate = 40, 
+            odds = 6,
+            og_rates = {}
+        }
     },
     loc_vars = function (self, info_queue, card)
         return{
@@ -19,7 +23,8 @@ SMODS.Joker{
                 card.area and card.area == G.jokers and "...?" or "",
                 card.ability.extra.rate,
                 G.GAME and G.GAME.probabilities.normal or 1,
-                card.ability.extra.odds
+                card.ability.extra.odds,
+                card.ability.extra.og_rates
             }
         }
     end,
@@ -35,12 +40,13 @@ SMODS.Joker{
     add_to_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({
             func = function ()
-                G.GAME.edition_rate = G.GAME.edition_rate + (card.ability.extra.rate * 10)
-                G.GAME.playing_card_rate = G.GAME.playing_card_rate + (card.ability.extra.rate * 10)
-                G.GAME.joker_rate = G.GAME.joker_rate - (card.ability.extra.rate * 10)
-                G.GAME.tarot_rate = G.GAME.tarot_rate - (card.ability.extra.rate * 10)
-                G.GAME.planet_rate = G.GAME.planet_rate - (card.ability.extra.rate * 10)
-                G.GAME.spectral_rate = G.GAME.spectral_rate - (card.ability.extra.rate * 10)
+                card.ability.extra.og_rates = {
+                joker = G.GAME.joker_rate,
+                tarot = G.GAME.tarot_rate,
+                planet = G.GAME.planet_rate,
+                spectral = G.GAME.spectral_rate
+                }
+                G.GAME.joker_rate, G.GAME.tarot_rate, G.GAME.planet_rate, G.GAME.spectral_rate = 0,0,0,0
                 Card:set_booster_weight(true, 0)
                 Card:set_booster_weight('Standard')
                 return true
@@ -53,16 +59,15 @@ SMODS.Joker{
     remove_from_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({
             func = function ()
-                G.GAME.edition_rate = G.GAME.edition_rate - (card.ability.extra.rate * 10)
-                G.GAME.playing_card_rate = G.GAME.playing_card_rate - (card.ability.extra.rate * 10)
-                G.GAME.joker_rate = G.GAME.joker_rate + (card.ability.extra.rate * 10)
-                G.GAME.tarot_rate = G.GAME.tarot_rate + (card.ability.extra.rate * 10)
-                G.GAME.planet_rate = G.GAME.planet_rate + (card.ability.extra.rate * 10)
-                G.GAME.spectral_rate = G.GAME.spectral_rate + (card.ability.extra.rate * 10)
+                local ogr = card.ability.extra.og_rates
+                G.GAME.joker_rate = ogr.joker
+                G.GAME.tarot_rate = ogr.tarot
+                G.GAME.planet_rate = ogr.planet
+                G.GAME.spectral_rate = ogr.spectral
                 Card:set_booster_weight(true)
                 return true
             end
-        })) 
+        }))
         card.ability.extra.new_key = "j_hpfx_showman"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.remove(sticker, card, true)
@@ -88,12 +93,12 @@ SMODS.Joker{
                         text = localize('hpfx_pickup1_ex'), scale = 1.3,
                         hold = 1.4, major = card,
                         backdrop_colour = G.C.SECONDARY_SET.Tarot,
-                        align = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        align = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
                             'tm' or 'cm',
-                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
                         silent = true
                     })
@@ -109,12 +114,12 @@ SMODS.Joker{
                         text = localize('hpfx_pickup2_ex'), scale = 1.3,
                         hold = 1.4, major = card,
                         backdrop_colour = G.C.SECONDARY_SET.Tarot,
-                        align = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        align = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
                             'tm' or 'cm',
-                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
                         silent = true
                     })
@@ -130,12 +135,12 @@ SMODS.Joker{
                         text = localize('hpfx_pickup3_ex'), scale = 1.3,
                         hold = 1.4, major = card,
                         backdrop_colour = G.C.SECONDARY_SET.Tarot,
-                        align = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        align = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
                             'tm' or 'cm',
-                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
                         silent = true
                     })
@@ -151,12 +156,12 @@ SMODS.Joker{
                         text = localize('hpfx_pickup4_ex'), scale = 1.3,
                         hold = 1.4, major = card,
                         backdrop_colour = G.C.SECONDARY_SET.Tarot,
-                        align = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        align = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
                             'tm' or 'cm',
-                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
                         silent = true
                     })
@@ -175,12 +180,12 @@ SMODS.Joker{
                         text = localize('k_nope_ex'), scale = 1.3,
                         hold = 1.4, major = card,
                         backdrop_colour = G.C.SECONDARY_SET.Tarot,
-                        align = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        align = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
                             'tm' or 'cm',
-                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or 
-                        G.STATE == G.STATES.SPECTRAL_PACK or 
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or
+                        G.STATE == G.STATES.SPECTRAL_PACK or
                         G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
                         silent = true
                     })

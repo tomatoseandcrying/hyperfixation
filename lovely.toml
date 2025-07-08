@@ -204,3 +204,81 @@ if _card.config.center.key == "j_hpfx_pyramid" then
     hpfx_Transform(_card)
 end
 '''
+
+# Galilimbo Patch 1
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = '''
+if G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then
+    card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'ar2')
+else
+    card = create_card("Tarot", G.pack_cards, nil, nil, true, true, nil, 'ar1')
+end
+'''
+position = "at"
+payload = '''
+if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'ar3')
+elseif G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then
+    card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'ar2')
+else
+    card = create_card("Tarot", G.pack_cards, nil, nil, true, true, nil, 'ar1')
+end
+'''
+
+# Galilimbo Patch 2
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = '''
+card = create_card("Joker", G.pack_cards, nil, nil, true, true, nil, 'buf')
+'''
+position = "at"
+payload = '''
+if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'buf2')
+else
+    card = create_card("Joker", G.pack_cards, nil, nil, true, true, nil, 'buf')
+end
+'''
+
+# Galilimbo Patch 3
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = '''
+card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'spe')
+'''
+position = "at"
+payload = '''
+if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'spe2')
+else
+    card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'spe')
+end
+'''
+
+# Galilimbo Patch 4
+[[patches]]
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = '''
+card = create_card((pseudorandom(pseudoseed('stdset'..G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base", G.pack_cards, nil, nil, nil, true, nil, 'sta')
+'''
+position = "at"
+payload = '''
+if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
+    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'sta2')
+else
+    card = create_card((pseudorandom(pseudoseed('stdset'..G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base", G.pack_cards, nil, nil, nil, true, nil, 'sta')
+end
+'''
