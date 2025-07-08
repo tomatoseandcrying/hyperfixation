@@ -39,13 +39,6 @@ SMODS.Joker{
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
     end,
-    update = function (self, card, dt)
-        if G.jokers and card.ability.extra.joker_count <= 1 then
-            func = function ()
-                hpfx_Transform(card, context)
-            end
-        end
-    end,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint then local my_pos = nil
             for i = 1, #G.jokers.cards do if G.jokers.cards[i] == card then my_pos = i break end end
@@ -66,6 +59,13 @@ SMODS.Joker{
                     message = localize{type = 'variable', key = 'a_mult',
                     vars = {card.ability.extra.mult + 2 * sliced_card.sell_cost}}, colour = G.C.RED, no_juice = true
                 }
+            end
+            for i = 1, #G.jokers.cards do if #G.jokers.cards == i and G.jokers.cards[i] == card then
+                return{
+                    func = function ()
+                        hpfx_Transform(card, context)
+                    end}
+                end
             end
         end
     end
