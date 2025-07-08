@@ -45,25 +45,20 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if (context.discard or context.hand_drawn) and not context.blueprint then
+        if context.discard and not context.blueprint then
         if card.ability.extra.discards_remaining <= 1 then
-            card.ability.extra.discards_remaining = card.ability.extra.discards
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-                return{
-                colour = G.C.RED,
-                message = localize{
-                    type = 'variable', key = 'a_xmult',
-                    vars = {card.ability.extra.xmult}}
-                }
-            else
-                return{
-                    func = function()
-                        card.ability.extra.discards_remaining =
-                        (card.ability.extra.discards_remaining - (1 + #context.hand_drawn))
-                    end
-                }
-            end
-        end
+        card.ability.extra.discards_remaining = card.ability.extra.discards
+        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+        return{colour = G.C.RED, message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}}
+        else return{func = function() card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - 1 end}
+        end end
+        if context.hand_drawn and not context.blueprint then
+        if card.ability.extra.discards_remaining <= 1 then
+        card.ability.extra.discards_remaining = card.ability.extra.discards
+        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+        return{colour = G.C.RED, message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}}
+        else return{func = function() card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - #context.hand_drawn end}
+        end end
         if context.joker_main then return{xmult = card.ability.extra.xmult} end
     end
 }
