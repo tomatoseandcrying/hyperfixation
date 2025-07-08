@@ -77,7 +77,8 @@ SMODS.Joker{
             }
         end
         if (context.discard or context.hand_drawn) and not context.blueprint then
-            if card.ability.extra.dis_rem <= 1 then
+            if card.ability.extra.dis_rem <= 1  or
+                (card.ability.extra.dis_rem - #context.hand_drawn <= 0) then
                 return{
                     message = localize{type = 'variable', key = 'a_xmult',
                         vars = {card.ability.extra.xmult}},
