@@ -253,18 +253,16 @@ end
 
 local bcofcthereis = SMODS.four_fingers
 function SMODS.four_fingers()
-    bcofcthereis()
     if next(SMODS.find_card('j_hpfx_and_thumb')) then
         return 4
     end
-    return bcofcthereis
+    return bcofcthereis()
 end
 
 local whywouldnttherebe = SMODS.shortcut
 function SMODS.shortcut()
-    whywouldnttherebe()
     if next(SMODS.find_card('j_hpfx_secretway')) then
         return true
     end
-    return whywouldnttherebe
+    return whywouldnttherebe()
 end
