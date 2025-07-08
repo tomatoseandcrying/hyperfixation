@@ -221,7 +221,7 @@ end
 position = "at"
 payload = '''
 if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
-    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'ar3')
+    card = create_card("Planet", G.pack_cards, nil, nil, true, true, nil, 'ar3')
 elseif G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then
     card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'ar2')
 else
@@ -241,7 +241,7 @@ card = create_card("Joker", G.pack_cards, nil, nil, true, true, nil, 'buf')
 position = "at"
 payload = '''
 if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
-    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'buf2')
+    card = create_card("Planet", G.pack_cards, nil, nil, true, true, nil, 'buf2')
 else
     card = create_card("Joker", G.pack_cards, nil, nil, true, true, nil, 'buf')
 end
@@ -259,7 +259,7 @@ card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'spe')
 position = "at"
 payload = '''
 if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
-    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'spe2')
+    card = create_card("Planet", G.pack_cards, nil, nil, true, true, nil, 'spe2')
 else
     card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'spe')
 end
@@ -277,7 +277,7 @@ card = create_card((pseudorandom(pseudoseed('stdset'..G.GAME.round_resets.ante))
 position = "at"
 payload = '''
 if (next(SMODS.find_card('j_hpfx_galilimbo')) and pseudorandom('galilimbo') > 0.8) then
-    card = create_card("Celestial", G.pack_cards, nil, nil, true, true, nil, 'sta2')
+    card = create_card("Planet", G.pack_cards, nil, nil, true, true, nil, 'sta2')
 else
     card = create_card((pseudorandom(pseudoseed('stdset'..G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base", G.pack_cards, nil, nil, nil, true, nil, 'sta')
 end
