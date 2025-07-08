@@ -53,7 +53,7 @@ SMODS.Joker{
         }))
     end,
     calculate = function(self, card, context)
-        if context.using_consumeable and context.consumeable.ability.set == "Planet"  then
+        if context.using_consumeable and context.consumeable.ability.set == "Planet" then
             return {
                 func = function ()
                     hpfx_Transform(card, context)

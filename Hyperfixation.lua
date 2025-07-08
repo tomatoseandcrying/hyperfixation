@@ -151,7 +151,7 @@ function hpfx_Transform(card, context)
         trigger = "immediate",
         delay = 0,
         func = function ()
-            if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
+            if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
                 for k, v in pairs(exceptions) do
                     if key == v then
@@ -196,7 +196,7 @@ function Card:Transfodd(context)
         trigger = "immediate",
         delay = 0,
         func = function ()
-            if self.config.center.blueprint_compat and self.config.center.key ~= 'j_hpfx_ijiraq' then
+            if self.config.center.key ~= 'j_hpfx_ijiraq' then
             local key = self.config.center.key
             for k, v in pairs(exceptions) do
                 if key == v then
@@ -245,7 +245,7 @@ function G.FUNCS.hpfx_Transbutt(e)
         trigger = "immediate",
         delay = 0,
         func = function ()
-            if card.config.center.blueprint_compat and card.config.center.key ~= 'j_hpfx_ijiraq' then
+            if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
                 for k, v in pairs(exceptions) do
                     if key == v then
