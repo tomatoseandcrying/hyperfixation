@@ -41,18 +41,17 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and not context.blueprint and
-            (context.other_card:get_id() == 12 or context.other_card:get_id() == 13) then
-                card.ability.extra.xmult = card.ability.extra.xmult *
-                    card.ability.extra.xmult_gain
-                return {
-                message = localize{
-                    type = 'variable',
-                    key = 'a_xmult',
-                    vars = {card.ability.extra.xmult
-                }},
-                colour = G.C.RED
-            }
+        if context.individual then
+            if context.cardarea == G.play and not context.blueprint then
+                if (context.other_card:get_id() == 12 or context.other_card:get_id() == 13) then
+                    card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
+                    return {message = localize{
+                    type = 'variable', key = 'a_xmult',
+                    vars = {card.ability.extra.xmult}
+                        }, colour = G.C.RED
+                    }
+                end
+            end
         end
         if context.joker_main then return {xmult = card.ability.extra.xmult} end
     end

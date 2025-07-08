@@ -561,13 +561,3 @@ function toma_debug_porcelaintest()
         card:set_ability(G.P_CENTERS.m_stone)
     end
 end
-function spawnjokerthingshop()
-    local card
-    card = create_card("Joker", G.shop_jokers, nil, nil, nil, nil, "j_hpfx_ritual")
-    create_shop_card_ui(card, "Joker", G.shop_jokers)
-    card.states.visible = false
-    card:start_materialize()
-    card.ability.couponed = true
-    card:set_cost()
-    return card
-end
