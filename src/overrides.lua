@@ -263,7 +263,7 @@ end
 local whywouldnttherebe = SMODS.shortcut
 function SMODS.shortcut()
     whywouldnttherebe()
-    if next(SMODS.find_card('j_hpfx_and_thumb')) or next(SMODS.find_card('j_hpfx_secretway')) then
+    if next(SMODS.find_card('j_hpfx_secretway')) then
         return true
     end
     return whywouldnttherebe
