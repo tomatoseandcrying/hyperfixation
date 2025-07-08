@@ -11,10 +11,13 @@ SMODS.Joker{ --Ijiraq.
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = false,
-    config = { 
+    config = {
         extra = {jkey = 'ijiraq'}
     },
     loc_vars = function (self, info_queue, card)
+        for _, v in pairs(G.GAME.raqeffects) do
+            info_queue[#info_queue+1] = v
+        end
         return{
             main_end = main_end,
         vars = {
@@ -47,6 +50,14 @@ SMODS.Joker{ --Ijiraq.
             end
         end
     end,
+    calc_dollar_bonus = function (self, card) --Golden Joker Ability
+        for _, v in pairs(G.GAME.raqeffects) do
+            local bonus = 4
+            local found = false
+            if v == 'j_golden' then
+                found = true
+            end
+            if found then return bonus end
+        end
+    end
 }
-
---Effect: Gains the ability of every Joker it disguised as this run. Destroys all other copies of Ijiraq.

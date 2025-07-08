@@ -41,7 +41,8 @@ SMODS.Joker{
         end
     end,
     calculate = function(self, card, context)
-        if context.hpfx_chudhit and context.post_trigger then
+        if context.post_trigger then
+            SMODS.calculate_context{hpfx_chudhit = true}
             return {
                 func = function ()
                     hpfx_Transform(card, context)
