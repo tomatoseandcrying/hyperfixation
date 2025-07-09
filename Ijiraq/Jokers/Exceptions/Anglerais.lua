@@ -171,7 +171,7 @@ SMODS.Joker{
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
-                                'c_devil', 'c_tower', 'c_judgement'
+                                'c_devil', 'c_moon', 'c_judgement'
                             }
                             G.E_MANAGER:add_event(Event({
                             func = function()
@@ -249,7 +249,7 @@ SMODS.Joker{
                         }))
                     end
                 }
-            elseif b == 'bl_wall' or b == 'bl_water' or b == 'bl_plant' then --Jack and Shit | Wall, Water, Plant
+            elseif b == 'bl_wall' or b == 'bl_water' or b == 'bl_plant' or b == 'bl_final_vessel' or b == 'bl_final_heart' then --Nope!
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -447,13 +447,8 @@ SMODS.Joker{
                                 'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
-                                'c_strength', 'c_hanged_man',
-                                'c_temperance', 'c_devil', 'c_tower',
-                                'c_judgement', 'c_moon', 'c_familiar',
-                                'c_grim', 'c_incantation', 'c_aura',
-                                'c_wraith', 'c_sigil', 'c_ectoplasm',
-                                'c_immolate', 'c_ankh', 'c_hex',
-                                'c_cryptid', 'c_soul', 'c_black_hole'
+                                'c_strength', 'c_hanged_man', 'c_temperance',
+                                'c_devil', 'c_world', 'c_judgement'
                             }
                             G.E_MANAGER:add_event(Event({
                             func = function()
@@ -538,13 +533,8 @@ SMODS.Joker{
                                 'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
-                                'c_strength', 'c_hanged_man',
-                                'c_temperance', 'c_devil', 'c_tower',
-                                'c_judgement', 'c_sun', 'c_familiar',
-                                'c_grim', 'c_incantation', 'c_aura',
-                                'c_wraith', 'c_sigil', 'c_ectoplasm',
-                                'c_immolate', 'c_ankh', 'c_hex',
-                                'c_cryptid', 'c_soul', 'c_black_hole'
+                                'c_strength', 'c_hanged_man', 'c_temperance',
+                                'c_devil', 'c_sun', 'c_judgement'
                             }
                             G.E_MANAGER:add_event(Event({
                             func = function()
@@ -563,6 +553,74 @@ SMODS.Joker{
 
                             for i = 1, #nonchichead do
                             hpfx_temp_unban(nonchichead[i]) end
+                            return true end)
+                        }))
+                    end
+                }
+            elseif b == 'bl_final_leaf' then --Judgement + Wraith | Verdant Leaf
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_judgement',
+                            key_append = 'hpfx_anglerais'}
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+
+                            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Spectral', key = 'c_wraith',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_spectral'),
+                            colour = G.C.SECONDARY_SET.Spectral},
+                            context.blueprint_card or card)
+                            return true end)
+                        }))
+                    end
+                }
+            elseif b == 'bl_window' then --Non-Diamond Suit-Tarot | Window
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            local nonchicwindow = {
+                                'c_fool', 'c_magician', 'c_highpriestess',
+                                'c_empress', 'c_emperor', 'c_heirophant',
+                                'c_lovers', 'c_chariot', 'c_justice',
+                                'c_hermit', 'c_wheel_of_fortune',
+                                'c_strength', 'c_hanged_man', 'c_temperance',
+                                'c_devil', 'c_star', 'c_judgement'
+                            }
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            for i = 1, #nonchicwindow do
+                            hpfx_temp_ban(nonchicwindow[i]) end
+                            SMODS.add_card{
+                            set = 'Tarot',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+
+                            for i = 1, #nonchicwindow do
+                            hpfx_temp_unban(nonchicwindow[i]) end
                             return true end)
                         }))
                     end
