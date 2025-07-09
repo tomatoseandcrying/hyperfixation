@@ -37,8 +37,8 @@ SMODS.Joker{
         if context.setting_blind and not context.blueprint and #G.consumeables.cards
         + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-
-            if G.GAME.blind.config.blind.key == 'bl_ox' then --Gives you Hermit on The Ox
+            local b = G.GAME.blind.config.blind.key
+            if b == 'bl_ox' then --Hermit | Ox
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -59,7 +59,7 @@ SMODS.Joker{
                         }))
                     end
                 }
-            elseif G.GAME.blind.config.blind.key == 'bl_hook' then --Gives you Medium on The Hook
+            elseif b == 'bl_hook' then --Medium | Hook
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -80,7 +80,7 @@ SMODS.Joker{
                         }))
                     end
                 }
-            elseif G.GAME.blind.config.blind.key == 'bl_mouth' then --Gives you a Planet [Telescope] on The Mouth
+            elseif b == 'bl_mouth' then --Planet Card (Telescope Effect) | Mouth
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -111,7 +111,7 @@ SMODS.Joker{
                         }))
                     end
                 }
-            elseif G.GAME.blind.config.blind.key == 'bl_fish' then --Gives you a Tarot [Enchancement] and a Spectral [Seal] on The Fish
+            elseif b == 'bl_fish' or b == 'bl_house' or b == 'bl_mark' then --Tarot Card (Enhancement) + Seal | Fish, House, Mark
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -133,7 +133,6 @@ SMODS.Joker{
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
-                            G.GAME.consumeable_buffer = 0
                             return true end}))
 
                             SMODS.calculate_effect({
@@ -160,7 +159,7 @@ SMODS.Joker{
                         }))
                     end
                 }
-            elseif G.GAME.blind.config.blind.key == 'bl_club' then --Gives you a Tarot [Non-Club Suit Conversion] on The Club
+            elseif b == 'bl_club' then --Non-Club Suit-Tarot | Club
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -194,7 +193,70 @@ SMODS.Joker{
                         }))
                     end
                 }
+            elseif b == 'bl_manacle' then --Cryptid | Manacle
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_cryptid',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+                            return true end)
+                        }))
+                    end
+                }
+            elseif b == 'bl_tooth' then --2 Talisman | Tooth
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_talisman',
+                            key_append = 'hpfx_anglerais'}
+                            return true end}))
+
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_talisman',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_spectral'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+                            return true end)
+                        }))
+                    end
+                }
+            elseif b == 'bl_wall' then --Jack and Shit | Wall
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            SMODS.calculate_effect({
+                            message = localize('k_nope_ex')},
+                            context.blueprint_card or card)
+                            G.GAME.consumeable_buffer = 0
+                            return true end)
+                        }))
+                    end
+                }
             else return nil, true end
+            
         end
     end
 }
