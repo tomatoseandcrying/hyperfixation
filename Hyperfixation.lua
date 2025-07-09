@@ -354,6 +354,19 @@ function Card:set_booster_weight(booster_kind, new_weight)
         end
     end
 end
+function hpfx_temp_ban(key)
+    if G.GAME.banned_keys[key] == true then
+    G.GAME.banned_keys[key] = 214389 end
+    if not G.GAME.banned_keys[key] then
+    G.GAME.banned_keys[key] = 214389
+    elseif G.GAME.banned_keys[key] % 214389 == 0 then
+    G.GAME.banned_keys[key] = G.GAME.banned_keys[key] + 214389
+end end
+function hpfx_temp_unban(key)
+    if G.GAME.banned_keys[key] == 214389 then G.GAME.banned_keys[key] = nil
+    elseif G.GAME.banned_keys[key] % 214389 == 0 then
+    G.GAME.banned_keys[key] = G.GAME.banned_keys[key] - 214389
+end end
 
 --Ownerships
 SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
@@ -541,7 +554,8 @@ exceptions = {
     j_onyx_agate = 'j_hpfx_obsidian',
     j_caino = 'j_hpfx_canio',
     j_triboulet = 'j_hpfx_dribblinit',
-    j_yorick = 'j_hpfx_yomorty'
+    j_yorick = 'j_hpfx_yomorty',
+    j_chicot = 'j_hpfx_anglerais'
 }
 
 --debug

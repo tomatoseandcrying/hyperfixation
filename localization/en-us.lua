@@ -1201,6 +1201,20 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
                 },
             },
+            j_hpfx_anglerais = {
+                name = 'Chicot',
+                text={
+                    "Disables effect of",
+                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_anglerais_alt = {
+                name = 'Chicot{C:hpfx_IjiGray}...?{}',
+                text={
+                    "Disables effect of",
+                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
