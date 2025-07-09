@@ -194,7 +194,7 @@ SMODS.Joker{
                         }))
                     end
                 }
-            end
+            else return nil, true end
         end
     end
 }
