@@ -45,25 +45,13 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.discard and not context.blueprint then
-            if card.ability.extra.dis_rem <= 1 then
-                card.ability.extra.dis_rem = card.ability.extra.dis
-                    card.ability.extra.xmult =
-                    card.ability.extra.xmult + card.ability.extra.xmult_gain
-            else
-                return{
-                    func = function()
-                        card.ability.extra.dis_rem =
-                        card.ability.extra.dis_rem - 1
-                    end
-                }
-            end
-        elseif context.hand_drawn and not context.blueprint then
+        if (context.discard or context.hand_drawn) and not context.blueprint then
+            local subtract = context.hand_drawn and #context.hand_drawn or 1
+            local dis_rem = card.ability.extra.dis_rem
+            local will_trigger = dis_rem <= 1 or (dis_rem - subtract <= 0)
             return{
                 func = function()
-                    local subtract = #context.hand_drawn
-                    local dis_rem = card.ability.extra.dis_rem
-                    if dis_rem - subtract <= 0 then
+                    if will_trigger then
                         local overflow = subtract - dis_rem
                         card.ability.extra.dis_rem = card.ability.extra.dis
                             card.ability.extra.xmult =
@@ -73,18 +61,11 @@ SMODS.Joker{
                     else
                         card.ability.extra.dis_rem = dis_rem - subtract
                     end
-                end
+                end,
+                message = will_trigger and localize{type = 'variable', key = 'a_xmult',
+                    vars = {card.ability.extra.xmult + card.ability.extra.xmult_gain}} or nil,
+                colour = will_trigger and G.C.RED or nil
             }
-        end
-        if (context.discard or context.hand_drawn) and not context.blueprint then
-            local subtract = #context.hand_drawn
-            if card.ability.extra.dis_rem <= 1  or (card.ability.extra.dis_rem - subtract <= 0) then
-                return{
-                    message = localize{type = 'variable', key = 'a_xmult',
-                        vars = {card.ability.extra.xmult}},
-                    colour = G.C.RED
-                }
-            end
         end
         if context.joker_main then
             return{
