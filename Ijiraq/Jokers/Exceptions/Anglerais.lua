@@ -38,7 +38,7 @@ SMODS.Joker{
         + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
 
-            if G.GAME.blind.config.blind.key == 'bl_ox' then --Gives you Hermit on The Ox
+            if G.GAME.blind.config.blind.key == 'bl_ox' then --Hermit on The Ox
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
