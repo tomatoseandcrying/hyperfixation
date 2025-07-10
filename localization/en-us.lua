@@ -1205,14 +1205,14 @@ return {
                 name = 'Chicot',
                 text={
                     "Disables effect of",
-                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
             j_hpfx_anglerais_alt = {
                 name = 'Chicot{C:hpfx_IjiGray}...?{}',
                 text={
                     "Disables effect of",
-                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
         },
