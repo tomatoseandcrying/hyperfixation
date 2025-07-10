@@ -139,7 +139,7 @@ SMODS.Joker{
                         G.E_MANAGER:add_event(Event({
                         func = (function()
                             local nonchicfish = {
-                            'c_fool', 'c_highpriestess', 'c_emperor',
+                            'c_fool', 'c_high_priestess', 'c_emperor',
                             'c_hermit', 'c_wheel_of_fortune', 'c_strength',
                             'c_hanged_man', 'c_temperance', 'c_star',
                             'c_moon', 'c_sun', 'c_judgement', 'c_world',
@@ -188,7 +188,7 @@ SMODS.Joker{
                         G.E_MANAGER:add_event(Event({
                         func = (function()
                             local nonchicclub = {
-                                'c_fool', 'c_magician', 'c_highpriestess',
+                                'c_fool', 'c_magician', 'c_high_priestess',
                                 'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
@@ -325,7 +325,7 @@ SMODS.Joker{
                         G.E_MANAGER:add_event(Event({
                         func = (function()
                             local nonchicwheel = {
-                            'c_fool', 'c_highpriestess', 'c_emperor',
+                            'c_fool', 'c_high_priestess', 'c_emperor',
                             'c_hermit', 'c_strength', 'c_hanged_man',
                             'c_temperance', 'c_star', 'c_moon', 'c_sun',
                             'c_judgement', 'c_world', 'c_familiar', 'c_grim',
@@ -466,7 +466,7 @@ SMODS.Joker{
                         G.E_MANAGER:add_event(Event({
                         func = (function()
                             local nonchicgoad = {
-                                'c_fool', 'c_magician', 'c_highpriestess',
+                                'c_fool', 'c_magician', 'c_high_priestess',
                                 'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
@@ -552,7 +552,7 @@ SMODS.Joker{
                         G.E_MANAGER:add_event(Event({
                         func = (function()
                             local nonchichead = {
-                                'c_fool', 'c_magician', 'c_highpriestess',
+                                'c_fool', 'c_magician', 'c_high_priestess',
                                 'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
@@ -620,7 +620,7 @@ SMODS.Joker{
                         G.E_MANAGER:add_event(Event({
                         func = (function()
                             local nonchicwindow = {
-                                'c_fool', 'c_magician', 'c_highpriestess',
+                                'c_fool', 'c_magician', 'c_high_priestess',
                                 'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
@@ -689,7 +689,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchicpillar = {
                                 'c_star', 'c_moon', 'c_sun', 'c_world',
-                                'c_fool', 'c_highpriestess', 'c_emperor',
+                                'c_fool', 'c_high_priestess', 'c_emperor',
                                 'c_wheel_of_fortune', 'c_judgement',
                                 'c_hanged_man', 'c_temperance', 'c_hermit',
                             }
