@@ -778,7 +778,8 @@ SMODS.Joker{
                         }))
                     end
                 }
-            else G.GAME.consumeable_buffer = 0 return nil, true end
+            else G.E_MANAGER:add_event(Event({func = function() G.GAME.consumeable_buffer = 0 return true end }))
+            return nil, true end
             G.GAME.consumeable_buffer = 0 --just in case
         end
     end
