@@ -778,8 +778,8 @@ SMODS.Joker{
                         }))
                     end
                 }
-            else return nil, true end
-            G.GAME.consumeable_buffer = 0
+            else G.GAME.consumeable_buffer = 0 return nil, true end
+            G.GAME.consumeable_buffer = 0 --just in case
         end
     end
 }
