@@ -330,10 +330,7 @@ SMODS.Joker{
                             'c_fool', 'c_high_priestess', 'c_emperor',
                             'c_hermit', 'c_strength', 'c_hanged_man',
                             'c_temperance', 'c_star', 'c_moon', 'c_sun',
-                            'c_judgement', 'c_world', 'c_familiar', 'c_grim',
-                            'c_incantation', 'c_aura', 'c_wraith', 'c_sigil',
-                            'c_ectoplasm', 'c_immolate', 'c_ankh', 'c_hex',
-                            'c_cryptid', 'c_soul', 'c_black_hole'
+                            'c_judgement', 'c_world', 'c_familiar'
                             }
                             G.E_MANAGER:add_event(Event({
                             func = function()
@@ -343,6 +340,9 @@ SMODS.Joker{
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
+
+                            for i = 1, #nonchicwheel do
+                            hpfx_temp_unban(nonchicwheel[i]) end
                             return true end}))
 
                             SMODS.calculate_effect({
@@ -376,9 +376,6 @@ SMODS.Joker{
                             message = localize('k_plus_tarot'),
                             colour = G.C.PURPLE},
                             context.blueprint_card or card)
-
-                            for i = 1, #nonchicwheel do
-                            hpfx_temp_unban(nonchicwheel[i]) end
                             return true end)
                         }))
                     end
