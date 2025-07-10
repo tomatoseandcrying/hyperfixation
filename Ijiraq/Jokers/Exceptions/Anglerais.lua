@@ -1,4 +1,26 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
+--Taken from MoreFluff
+function hpfx_temp_ban(key)
+    if G.GAME.banned_keys[key] == true then
+        G.GAME.banned_keys[key] = 214389
+    end
+    if not G.GAME.banned_keys[key] then
+        G.GAME.banned_keys[key] = 214389
+    elseif type(G.GAME.banned_keys[key]) == 'number'
+    and G.GAME.banned_keys[key] % 214389 == 0 then
+        G.GAME.banned_keys[key] = G.GAME.banned_keys[key] + 214389
+    end
+end
+--This too
+function hpfx_temp_unban(key)
+    if G.GAME.banned_keys[key] == 214389 then
+        G.GAME.banned_keys[key] = nil
+    elseif type(G.GAME.banned_keys[key]) == "number"
+    and G.GAME.banned_keys % 214389 == 0 then
+        G.GAME.banned_keys[key] = G.GAME.banned_keys[key] - 214389
+    end
+end
+
 SMODS.Joker{
     key = 'anglerais',
     pos = {x = 6, y = 8},
