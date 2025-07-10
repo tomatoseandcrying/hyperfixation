@@ -625,6 +625,127 @@ SMODS.Joker{
                         }))
                     end
                 }
+            elseif b == 'bl_serpent' then --2 Justice | Serpent
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_justice',
+                            key_append = 'hpfx_anglerais'}
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+
+                            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_justice',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+                            return true end)
+                        }))
+                    end
+                }
+            elseif b == 'bl_pillar' then --Non-Suit Tarot | Pillar
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            local nonchicpillar = {
+                                'c_star', 'c_moon', 'c_sun', 'c_world',
+                                'c_fool', 'c_highpriestess', 'c_emperor',
+                                'c_wheel_of_fortune', 'c_judgement',
+                                'c_hanged_man', 'c_temperance', 'c_hermit',
+                            }
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            for i = 1, #nonchicpillar do
+                            hpfx_temp_ban(nonchicpillar[i]) end
+                            SMODS.add_card{
+                            set = 'Tarot',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+
+                            for i = 1, #nonchicpillar do
+                            hpfx_temp_unban(nonchicpillar[i]) end
+                            return true end)
+                        }))
+                    end
+                }
+            elseif b == 'bl_flint' then --Empress and Hierophant | Flint
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_empress',
+                            key_append = 'hpfx_anglerais'}
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+
+                            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Tarot', key = 'c_heirophant',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_tarot'),
+                            colour = G.C.PURPLE},
+                            context.blueprint_card or card)
+                            return true end)
+                        }))
+                    end
+                }
+            elseif b == 'bl_final_acorn' then --Ankh | Amber Acorn
+                return {
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            G.E_MANAGER:add_event(Event({
+                            func = function()
+                            SMODS.add_card{
+                            set = 'Spectral', key = 'c_ankh',
+                            key_append = 'hpfx_anglerais'}
+                            G.GAME.consumeable_buffer = 0
+                            return true end}))
+
+                            SMODS.calculate_effect({
+                            message = localize('k_plus_spectral'),
+                            colour = G.C.SECONDARY_SET.Spectral},
+                            context.blueprint_card or card)
+                            return true end)
+                        }))
+                    end
+                }
             else return nil, true end
             G.GAME.consumeable_buffer = 0
         end
