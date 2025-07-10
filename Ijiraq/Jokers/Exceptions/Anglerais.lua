@@ -277,7 +277,8 @@ SMODS.Joker{
                         G.E_MANAGER:add_event(Event({
                         func = (function()
                             SMODS.calculate_effect({
-                            message = localize('k_nope_ex')},
+                            message = localize('k_nope_ex'),
+                            colour = G.C.PURPLE},
                             context.blueprint_card or card)
                             G.GAME.consumeable_buffer = 0
                             return true end)
