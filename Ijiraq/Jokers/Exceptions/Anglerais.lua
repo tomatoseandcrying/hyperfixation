@@ -190,7 +190,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchicclub = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_hierophant',
+                                'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -468,7 +468,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchicgoad = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_hierophant',
+                                'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -483,15 +483,15 @@ SMODS.Joker{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
                             G.GAME.consumeable_buffer = 0
+
+                            for i = 1, #nonchicgoad do
+                            hpfx_temp_unban(nonchicgoad[i]) end
                             return true end}))
 
                             SMODS.calculate_effect({
                             message = localize('k_plus_tarot'),
                             colour = G.C.PURPLE},
                             context.blueprint_card or card)
-                            
-                            for i = 1, #nonchicgoad do
-                            hpfx_temp_unban(nonchicgoad[i]) end
                             return true end)
                         }))
                     end
@@ -558,7 +558,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchichead = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_hierophant',
+                                'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -573,15 +573,15 @@ SMODS.Joker{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
                             G.GAME.consumeable_buffer = 0
+
+                            for i = 1, #nonchichead do
+                            hpfx_temp_unban(nonchichead[i]) end
                             return true end}))
 
                             SMODS.calculate_effect({
                             message = localize('k_plus_tarot'),
                             colour = G.C.PURPLE},
                             context.blueprint_card or card)
-
-                            for i = 1, #nonchichead do
-                            hpfx_temp_unban(nonchichead[i]) end
                             return true end)
                         }))
                     end
@@ -627,7 +627,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchicwindow = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_hierophant',
+                                'c_empress', 'c_emperor', 'c_heirophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -709,15 +709,15 @@ SMODS.Joker{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
                             G.GAME.consumeable_buffer = 0
+
+                            for i = 1, #nonchicpillar do
+                            hpfx_temp_unban(nonchicpillar[i]) end
                             return true end}))
 
                             SMODS.calculate_effect({
                             message = localize('k_plus_tarot'),
                             colour = G.C.PURPLE},
                             context.blueprint_card or card)
-
-                            for i = 1, #nonchicpillar do
-                            hpfx_temp_unban(nonchicpillar[i]) end
                             return true end)
                         }))
                     end
@@ -741,9 +741,10 @@ SMODS.Joker{
 
                             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                             G.E_MANAGER:add_event(Event({
+                            delay = 0.01,
                             func = function()
                             SMODS.add_card{
-                            set = 'Tarot', key = 'c_hierophant',
+                            set = 'Tarot', key = 'c_heirophant',
                             key_append = 'hpfx_anglerais'}
                             G.GAME.consumeable_buffer = 0
                             return true end}))
