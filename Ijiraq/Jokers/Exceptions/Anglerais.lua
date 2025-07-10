@@ -152,6 +152,7 @@ SMODS.Joker{
                             func = function()
                             for i = 1, #nonchicfish do
                             hpfx_temp_ban(nonchicfish[i]) end
+
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
@@ -199,6 +200,7 @@ SMODS.Joker{
                             func = function()
                             for i = 1, #nonchicclub do
                             hpfx_temp_ban(nonchicclub[i]) end
+
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
@@ -337,6 +339,7 @@ SMODS.Joker{
                             func = function()
                             for i = 1, #nonchicwheel do
                             hpfx_temp_ban(nonchicwheel[i]) end
+
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
@@ -373,6 +376,7 @@ SMODS.Joker{
                             message = localize('k_plus_tarot'),
                             colour = G.C.PURPLE},
                             context.blueprint_card or card)
+
                             for i = 1, #nonchicwheel do
                             hpfx_temp_unban(nonchicwheel[i]) end
                             return true end)
@@ -477,6 +481,7 @@ SMODS.Joker{
                             func = function()
                             for i = 1, #nonchicgoad do
                             hpfx_temp_ban(nonchicgoad[i]) end
+
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
@@ -487,6 +492,9 @@ SMODS.Joker{
                             message = localize('k_plus_tarot'),
                             colour = G.C.PURPLE},
                             context.blueprint_card or card)
+                            
+                            for i = 1, #nonchicgoad do
+                            hpfx_temp_unban(nonchicgoad[i]) end
                             return true end)
                         }))
                     end
@@ -563,6 +571,7 @@ SMODS.Joker{
                             func = function()
                             for i = 1, #nonchichead do
                             hpfx_temp_ban(nonchichead[i]) end
+
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
@@ -631,6 +640,7 @@ SMODS.Joker{
                             func = function()
                             for i = 1, #nonchicwindow do
                             hpfx_temp_ban(nonchicwindow[i]) end
+
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
@@ -697,6 +707,7 @@ SMODS.Joker{
                             func = function()
                             for i = 1, #nonchicpillar do
                             hpfx_temp_ban(nonchicpillar[i]) end
+                            
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
