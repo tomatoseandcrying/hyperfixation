@@ -190,7 +190,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchicclub = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_heirophant',
+                                'c_empress', 'c_emperor', 'c_hierophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -471,7 +471,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchicgoad = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_heirophant',
+                                'c_empress', 'c_emperor', 'c_hierophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -561,7 +561,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchichead = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_heirophant',
+                                'c_empress', 'c_emperor', 'c_hierophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -630,7 +630,7 @@ SMODS.Joker{
                         func = (function()
                             local nonchicwindow = {
                                 'c_fool', 'c_magician', 'c_high_priestess',
-                                'c_empress', 'c_emperor', 'c_heirophant',
+                                'c_empress', 'c_emperor', 'c_hierophant',
                                 'c_lovers', 'c_chariot', 'c_justice',
                                 'c_hermit', 'c_wheel_of_fortune',
                                 'c_strength', 'c_hanged_man', 'c_temperance',
@@ -701,13 +701,13 @@ SMODS.Joker{
                                 'c_star', 'c_moon', 'c_sun', 'c_world',
                                 'c_fool', 'c_high_priestess', 'c_emperor',
                                 'c_wheel_of_fortune', 'c_judgement',
-                                'c_hanged_man', 'c_temperance', 'c_hermit',
+                                'c_hanged_man', 'c_temperance', 'c_hermit'
                             }
                             G.E_MANAGER:add_event(Event({
                             func = function()
                             for i = 1, #nonchicpillar do
                             hpfx_temp_ban(nonchicpillar[i]) end
-                            
+
                             SMODS.add_card{
                             set = 'Tarot',
                             key_append = 'hpfx_anglerais'}
@@ -746,7 +746,7 @@ SMODS.Joker{
                             G.E_MANAGER:add_event(Event({
                             func = function()
                             SMODS.add_card{
-                            set = 'Tarot', key = 'c_heirophant',
+                            set = 'Tarot', key = 'c_hierophant',
                             key_append = 'hpfx_anglerais'}
                             G.GAME.consumeable_buffer = 0
                             return true end}))
