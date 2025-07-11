@@ -1259,7 +1259,7 @@ return {
             hpfx_spread_ex = "Spread.",
             hpfx_wither_ex = "Wither.",
             hpfx_shed = "SHED",
-            hpfx_perknado = "Toggle"
+            hpfx_perknado = "Refocus"
         },
         labels = {
             hpfx_priceless = "Priceless",

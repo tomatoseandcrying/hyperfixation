@@ -276,15 +276,15 @@ function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more butt
                             n = G.UIT.ROOT,
                             config = {
                                 ref_table = card, align = 'bm',
-                                padding = 0.1, r = 0.08, maxw = G.CARD_W,
+                                padding = 0.05, r = 0.08, maxw = G.CARD_W,
                                 hover = true, shadow = true, colour = G.C.DARK_EDITION,
-                                one_press = false, button = 'hpfx_Perktoggle', minh = 0.36
+                                one_press = false, button = 'hpfx_Perktoggle', minh = 0.6
                             },
                             nodes = {{
                                 n = G.UIT.T,
                                 config = {
                                     text = localize('hpfx_perknado'),
-                                    colour = G.C.WHITE, scale = 0.4, shadow = false
+                                    colour = G.C.WHITE, scale = 0.45, shadow = false
                                 }
                             }}
                         }
