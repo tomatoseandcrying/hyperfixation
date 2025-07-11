@@ -244,24 +244,66 @@ function G.UIDEF.hpfx_transform_button(card) --UI of the actual button
             shadow = true, minh = (card.area and card.area.config.type == 'joker') and 0 or 1, colour = G.C.RED,
             one_press = true, button = 'hpfx_Transbutt'},
             nodes={
-                {n=G.UIT.B, config = {w=0.1,h=0.6}},
-                {n=G.UIT.T, config={text = localize('hpfx_shed'),colour = G.C.UI.TEXT_LIGHT, scale = 0.6, shadow = true}}
+                {n=G.UIT.B, config = {w = 0.1, h = 0.6}},
+                {n=G.UIT.T, config = {text = localize('hpfx_shed'), colour = G.C.UI.TEXT_LIGHT, scale = 0.6, shadow = true}}
             }},
         }} end
         return transform
     end
 end
 
+function G.UIDEF.hpfx_perknado_toggle(card)
+    local key = card.config.center.key
+    if card.area and card.area.config.type == 'joker' and key == 'j_hpfx_perknado' then
+
+
+    end
+    return true
+end
+
 local stupidfuckingbuttonref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more button
-  local ret = stupidfuckingbuttonref(card)
-  if card.area and card.area == G.jokers and card.ability.set == 'Joker' then
-     local transbutton = G.UIDEF.hpfx_transform_button(card)
-     ret.nodes[1].nodes[2].nodes = ret.nodes[1].nodes[2].nodes or {}
-     table.insert(ret.nodes[1].nodes[2].nodes, transbutton)
-     return ret
-  end
-  return ret
+    local ret = stupidfuckingbuttonref(card)
+    local owned = card.area and card.area == G.jokers and card.ability.set == 'Joker'
+    local key = card.config.center.key
+        if owned and key ~= 'j_hpfx_ijiraq' then
+            if key == 'j_hpfx_perknado' then
+                G.E_MANAGER:add_event(Event({
+                    blocking = false,
+                    blockable = false,
+                    func = (function()
+                        local perkpopper = {
+                            n = G.UIT.ROOT,
+                            config = {
+                                ref_table = card, align = 'bm',
+                                padding = 0.1, r = 0.08, maxw = G.CARD_W,
+                                hover = true, shadow = true, colour = G.C.DARK_EDITION,
+                                one_press = false, button = 'hpfx_Perktoggle', minh = 0.36
+                            },
+                            nodes = {{
+                                n = G.UIT.T,
+                                config = {
+                                    text = localize('hpfx_perknado'),
+                                    colour = G.C.WHITE, scale = 0.4, shadow = false
+                                }
+                            }}
+                        }
+                        card.children.buy_button = UIBox{
+                            definition = perkpopper,
+                            config = {
+                                align = 'bm', offset = {x = 0, y = -0.3},
+                                major = card, bond = 'Weak', parent = card
+                            }
+                        }
+                        return true
+                    end)
+                }))
+            end
+        end
+        local transbutton = G.UIDEF.hpfx_transform_button(card)
+        ret.nodes[1].nodes[2].nodes = ret.nodes[1].nodes[2].nodes or {}
+        table.insert(ret.nodes[1].nodes[2].nodes, transbutton)
+    return ret
 end
 
 local bcofcthereis = SMODS.four_fingers

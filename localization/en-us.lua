@@ -1215,6 +1215,24 @@ return {
                     "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_perknado = {
+                name = 'Perkeo',
+                text={
+                    "Creates a {C:dark_edition}Negative{} copy of",
+                    "{C:attention}1{} random {C:attention}consumable{}",
+                    "card in your possession",
+                    "at the end of the {C:attention}shop{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_perknado_alt = {
+                name = 'Perkeo{C:hpfx_IjiGray}...?{}',
+                text={
+                    "Creates a {C:dark_edition}Negative{} copy of",
+                    "{C:attention}1{} random {C:attention}consumable{}",
+                    "card in your possession",
+                    "at the end of the {C:attention}shop{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -1240,7 +1258,8 @@ return {
             hpfx_missmiji = "Miss me?",
             hpfx_spread_ex = "Spread.",
             hpfx_wither_ex = "Wither.",
-            hpfx_shed = "SHED"
+            hpfx_shed = "SHED",
+            hpfx_perknado = "Toggle"
         },
         labels = {
             hpfx_priceless = "Priceless",

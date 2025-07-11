@@ -288,6 +288,17 @@ function G.FUNCS.hpfx_Transbutt(e)
 	return true
     --or maybe here?
 end
+function G.FUNCS.hpfx_Perktoggle(e)
+    local card = e.config.ref_table
+    G.E_MANAGER:add_event(Event({
+        trigger = "immediate",
+        delay = 0,
+        func = function ()
+            print('im perkin it')
+            return true
+        end,
+    }))
+end
 function Hyperglobal.safe_set_ability(self, center)
     if not self or not center then return nil end
     local oldcenter = self.config.center
@@ -542,7 +553,8 @@ exceptions = {
     j_caino = 'j_hpfx_canio',
     j_triboulet = 'j_hpfx_dribblinit',
     j_yorick = 'j_hpfx_yomorty',
-    j_chicot = 'j_hpfx_anglerais'
+    j_chicot = 'j_hpfx_anglerais',
+    j_perkeo = 'j_hpfx_perknado'
 }
 
 --debug
