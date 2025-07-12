@@ -292,16 +292,19 @@ function G.FUNCS.hpfx_Perktoggle(e)
     local _card = e.config.ref_table
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
-        delay = 0,
+        delay = 0.1,
         func = function ()
             _card.ability.extra.toggle = not _card.ability.extra.toggle
-            if _card.ability.extra.toggle then
-                if _card.children and _card.children.floating_sprite then
-                    _card.children.floating_sprite.atlas = G.ASSET_ATLAS["hpfx_IjiraqJokers"]
-                end
-            else
-                if _card.children and _card.children.floating_sprite then
-                    _card.children.floating_sprite.atlas = G.ASSET_ATLAS["Jokers"]
+            if _card.children and _card.children.floating_sprite then
+                if _card.children.floating_sprite.atlas ~= nil then
+                    if _card.ability.extra.toggle then
+                        _card.children.floating_sprite.atlas =
+                            G.ASSET_ATLAS["hpfx_IjiraqJokers"]
+                    else
+                        _card.children.floating_sprite.atlas =
+                            G.ASSET_ATLAS["Jokers"]
+                    end
+                    _card.children.floating_sprite:set_sprite_pos(_card.children.floating_sprite.sprite_pos)
                 end
             end
             return true
