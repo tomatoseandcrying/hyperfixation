@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../lovely/dump"
+		},
+		{
+			"path": "../smods-main"
+		}
+	],
+	"settings": {}
+}

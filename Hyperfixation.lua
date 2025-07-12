@@ -289,12 +289,21 @@ function G.FUNCS.hpfx_Transbutt(e)
     --or maybe here?
 end
 function G.FUNCS.hpfx_Perktoggle(e)
-    local card = e.config.ref_table
+    local _card = e.config.ref_table
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
         delay = 0,
         func = function ()
-            print('im perkin it')
+            _card.ability.extra.toggle = not _card.ability.extra.toggle
+            if _card.ability.extra.toggle then
+                if _card.children and _card.children.floating_sprite then
+                    _card.children.floating_sprite.atlas = G.ASSET_ATLAS["hpfx_IjiraqJokers"]
+                end
+            else
+                if _card.children and _card.children.floating_sprite then
+                    _card.children.floating_sprite.atlas = G.ASSET_ATLAS["Jokers"]
+                end
+            end
             return true
         end,
     }))

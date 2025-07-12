@@ -1,3 +1,4 @@
+--Initializations
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
@@ -7,6 +8,7 @@ function Game:init_game_object()
 	return ret
 end
 
+--Unlock Conditions
 local bdf = Blind.defeat
 function Blind:defeat(silent)
     if self.name == 'Crimson Heart' then
@@ -17,7 +19,6 @@ function Blind:defeat(silent)
     end
     return bdf(self, silent)
 end
-
 local ccc = SMODS.calculate_context
 function SMODS.calculate_context(context, return_table)
     if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
@@ -28,7 +29,85 @@ function SMODS.calculate_context(context, return_table)
     end
     return ccc(context, return_table)
 end
+local chud = Card.calculate_joker
+function Card:calculate_joker(context)
+    local ret, trig = chud(self, context)
+    if (ret and next(ret)) or trig then
+        G.GAME.hpfx_nothingEverHappens = false
+    end
+    if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets.ante >= 3 then
+        if G.GAME.hpfx_nothingEverHappens then
+            check_for_unlock({ type = 'hpfx_chud' })
+        else
+            G.GAME.hpfx_nothingEverHappens = true
+        end
+    end
+    return chud(self, context)
+end
 
+--Gamestate Change Detections
+local ref_ease_hands = ease_hands_played
+function ease_hands_played(mod, instant)
+    local ret = ref_ease_hands(mod, instant)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+            SMODS.calculate_context({ hpfx_change_hands = true })
+            return true
+        end
+    }))
+
+    return ret
+end
+local ref_ease_discards = ease_discard
+function ease_discard(mod, instant, silent)
+    local ret = ref_ease_discards(mod, instant, silent)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+            SMODS.calculate_context({ hpfx_change_discards = true })
+            return true
+        end
+    }))
+    return ret
+end
+local ref_ease_dollars = ease_dollars
+function ease_dollars(mod, instant)
+    local ret = ref_ease_dollars(mod, instant)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+            SMODS.calculate_context({ hpfx_change_dollars = true })
+            return true
+        end
+    }))
+    return ret
+end
+local ref_ease_ante = ease_ante
+function ease_ante(mod)
+    local ret = ref_ease_ante(mod)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'immediate',
+        func = function()
+            SMODS.calculate_context({ hpfx_change_ante = true })
+            return true
+        end
+    }))
+    return ret
+end
+
+--Chud Joker Context Calls
+G.P_CENTERS.m_glass.calculate = G.P_CENTERS.m_glass.calculate or function() end
+local hookTo = G.P_CENTERS.m_glass.calculate
+function G.P_CENTERS.m_glass:calculate(card, context)
+    local ret = hookTo(self, card, context)
+        if ret and card.glass_trigger then
+            SMODS.calculate_context{hpfx_chudhit = true}
+        end
+    return ret
+end
+
+--Jokester Transformation Logic
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start or G.GAME.round_resets.blind_states.Boss == "Defeated" then
         local ijiraq_pool = get_current_pool("Joker")
@@ -39,7 +118,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
     for _, card in ipairs(G.jokers.cards) do
         if card.isIjiraq or exceptions[G.GAME.current_round.fodder_card.jkey] and
-        not card.config.center.key == 'j_hpfx_ijiraq' then
+            not card.config.center.key == 'j_hpfx_ijiraq' then
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 delay = 0.15,
@@ -73,32 +152,8 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
 end
 
-local chud = Card.calculate_joker
-function Card:calculate_joker(context)
-    local ret, trig = chud(self, context)
-    if (ret and next(ret)) or trig then
-        G.GAME.hpfx_nothingEverHappens = false
-    end
-    if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets.ante >= 3 then
-        if G.GAME.hpfx_nothingEverHappens then
-            check_for_unlock({type = 'hpfx_chud'})
-        else
-            G.GAME.hpfx_nothingEverHappens = true
-        end
-    end
-    return chud(self, context)
-end
 
-G.P_CENTERS.m_glass.calculate = G.P_CENTERS.m_glass.calculate or function() end
-local hookTo = G.P_CENTERS.m_glass.calculate
-function G.P_CENTERS.m_glass:calculate(card, context)
-    local ret = hookTo(self, card, context)
-        if ret and card.glass_trigger then
-            SMODS.calculate_context{hpfx_chudhit = true}
-        end
-    return ret
-end
-
+--Jokester Visual Elements
 local calc_Ref = Card.calculate_joker
 function Card:calculate_joker(context)
     local ret = calc_Ref(self,context)
@@ -124,7 +179,6 @@ function Card:calculate_joker(context)
     end
     return ret
 end
-
 local stupidRef = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
    local ihatethis = nil
@@ -149,6 +203,8 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
     end
     return hatethisonethemost
 end
+
+--Jokester Gameplay Elements
 local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
     if self.isIjiraq then
@@ -158,57 +214,6 @@ function Card:add_to_deck(from_debuff)
         end
     add2deck_ref(self, from_debuff)
 end
-
-local ref_ease_hands = ease_hands_played
-function ease_hands_played(mod, instant)
-    local ret = ref_ease_hands(mod, instant)
-    G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-            SMODS.calculate_context({hpfx_change_hands = true})
-            return true
-        end
-    }))
-
-    return ret
-end
-local ref_ease_discards = ease_discard
-function ease_discard(mod, instant, silent)
-    local ret = ref_ease_discards(mod, instant, silent)
-    G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-            SMODS.calculate_context({hpfx_change_discards = true})
-            return true
-        end
-    }))
-    return ret
-end
-local ref_ease_dollars = ease_dollars
-function ease_dollars(mod, instant)
-    local ret = ref_ease_dollars(mod, instant)
-    G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-            SMODS.calculate_context({hpfx_change_dollars = true})
-            return true
-        end
-    }))
-    return ret
-end
-local ref_ease_ante = ease_ante
-function ease_ante(mod)
-    local ret = ref_ease_ante(mod)
-    G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-            SMODS.calculate_context({hpfx_change_ante = true})
-            return true
-        end
-    }))
-    return ret
-end
-
 local card_set_cost_ref = Card.set_cost
 function Card:set_cost()
     card_set_cost_ref(self)
@@ -231,8 +236,91 @@ function Card:set_cost()
         end
     end
 end
+local bcofcthereis = SMODS.four_fingers
+function SMODS.four_fingers()
+    if next(SMODS.find_card('j_hpfx_and_thumb')) then
+        return 4
+    end
+    return bcofcthereis()
+end
+local whywouldnttherebe = SMODS.shortcut
+function SMODS.shortcut()
+    if next(SMODS.find_card('j_hpfx_secretway')) then
+        return true
+    end
+    return whywouldnttherebe()
+end
 
-function G.UIDEF.hpfx_transform_button(card) --UI of the actual button
+--Custom Button Generation Logic
+local stupidfuckingbuttonref = G.UIDEF.use_and_sell_buttons
+function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more button
+    local ret = stupidfuckingbuttonref(card)
+    local owned = card.area and card.area == G.jokers and card.ability.set == 'Joker'
+    local key = card.config.center.key
+    if owned and key ~= 'j_hpfx_ijiraq' then
+        local transbutton = G.UIDEF.hpfx_transform_button(card)
+        if ret.nodes and ret.nodes[1] and ret.nodes[1].nodes and ret.nodes[1].nodes[2] then
+            ret.nodes[1].nodes[2].nodes = ret.nodes[1].nodes[2].nodes or {}
+            table.insert(ret.nodes[1].nodes[2].nodes, transbutton)
+        end
+    end
+    return ret
+end
+local highlightschmilight = Card.highlight --reversing logic of the toggle's rendering
+function Card:highlight(is_higlighted)
+    local ret = highlightschmilight(self, is_higlighted)
+    self.highlighted = is_higlighted
+    local key = self.config.center.key
+    local owned = self.area and self.area == G.jokers and self.ability.set == 'Joker'
+    if owned and key == 'j_hpfx_perknado' then
+        if self.highlighted then
+            if self.children.toggle_button then
+                self.children.toggle_button:remove()
+                self.children.toggle_button = nil
+            end
+        else
+            if not self.children.toggle_button then
+                local perkpopper = {
+                    n = G.UIT.ROOT,
+                    config = {
+                        ref_table = self,
+                        align = 'bm',
+                        padding = 0.05,
+                        r = 0.08,
+                        maxw = G.CARD_W,
+                        hover = true,
+                        shadow = true,
+                        colour = G.C.DARK_EDITION,
+                        one_press = false,
+                        button = 'hpfx_Perktoggle',
+                        minh = 0.6,
+                        instance_type = "UIBOX"
+                    },
+                    nodes = { {
+                        n = G.UIT.T,
+                        config = {
+                            text = localize('hpfx_perknado'),
+                            colour = G.C.WHITE,
+                            scale = 0.45,
+                            shadow = false
+                        }
+                    } }
+                }
+                self.children.toggle_button = UIBox {
+                    definition = perkpopper,
+                    config = {
+                        align = 'bm', offset = { x = 0, y = -0.3 },
+                        major = self, bond = 'Weak', parent = self,
+                    }
+                }
+            end
+        end
+    end
+    return ret
+end
+
+--Custom Button Functionality
+function G.UIDEF.hpfx_transform_button(card)
     local transform = nil
     local key = card.config.center.key
     if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq'
@@ -250,74 +338,4 @@ function G.UIDEF.hpfx_transform_button(card) --UI of the actual button
         }} end
         return transform
     end
-end
-
-function G.UIDEF.hpfx_perknado_toggle(card)
-    local key = card.config.center.key
-    if card.area and card.area.config.type == 'joker' and key == 'j_hpfx_perknado' then
-
-
-    end
-    return true
-end
-
-local stupidfuckingbuttonref = G.UIDEF.use_and_sell_buttons
-function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more button
-    local ret = stupidfuckingbuttonref(card)
-    local owned = card.area and card.area == G.jokers and card.ability.set == 'Joker'
-    local key = card.config.center.key
-        if owned and key ~= 'j_hpfx_ijiraq' then
-            if key == 'j_hpfx_perknado' then
-                G.E_MANAGER:add_event(Event({
-                    blocking = false,
-                    blockable = false,
-                    func = (function()
-                        local perkpopper = {
-                            n = G.UIT.ROOT,
-                            config = {
-                                ref_table = card, align = 'bm',
-                                padding = 0.05, r = 0.08, maxw = G.CARD_W,
-                                hover = true, shadow = true, colour = G.C.DARK_EDITION,
-                                one_press = false, button = 'hpfx_Perktoggle', minh = 0.6
-                            },
-                            nodes = {{
-                                n = G.UIT.T,
-                                config = {
-                                    text = localize('hpfx_perknado'),
-                                    colour = G.C.WHITE, scale = 0.45, shadow = false
-                                }
-                            }}
-                        }
-                        card.children.buy_button = UIBox{
-                            definition = perkpopper,
-                            config = {
-                                align = 'bm', offset = {x = 0, y = -0.3},
-                                major = card, bond = 'Weak', parent = card
-                            }
-                        }
-                        return true
-                    end)
-                }))
-            end
-        end
-        local transbutton = G.UIDEF.hpfx_transform_button(card)
-        ret.nodes[1].nodes[2].nodes = ret.nodes[1].nodes[2].nodes or {}
-        table.insert(ret.nodes[1].nodes[2].nodes, transbutton)
-    return ret
-end
-
-local bcofcthereis = SMODS.four_fingers
-function SMODS.four_fingers()
-    if next(SMODS.find_card('j_hpfx_and_thumb')) then
-        return 4
-    end
-    return bcofcthereis()
-end
-
-local whywouldnttherebe = SMODS.shortcut
-function SMODS.shortcut()
-    if next(SMODS.find_card('j_hpfx_secretway')) then
-        return true
-    end
-    return whywouldnttherebe()
 end

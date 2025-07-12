@@ -11,7 +11,7 @@ SMODS.Joker{
     rarity = 4,
     cost = 20,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
+    config = {extra = {toggle = true}},
     loc_vars = function (self, info_queue, card)
         info_queue[#info_queue + 1] = {
             key = 'e_negative_consumable',
@@ -19,7 +19,8 @@ SMODS.Joker{
             config = {extra = 1}}
         return{
             vars = {
-                card.area and card.area == G.jokers and "...?" or ""
+                card.area and card.area == G.jokers and "...?" or "",
+                card.ability.extra.toggle
             }
         }
     end,
@@ -36,16 +37,36 @@ SMODS.Joker{
         card.ability.extra.new_key = "j_hpfx_perknado_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
-    end,
-    calculate = function(self, card, context)
-        if context.ending_shop and G.consumeables.cards[1] then
+        if card.area == G.jokers then
+            card:highlight(false)
+        else
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    local copied_card = copy_card(
-                        pseudorandom_element(G.consumeables.cards, pseudoseed('hpfx_perknado')))
-                    copied_card:set_edition("e_negative", true)
-                    copied_card:add_to_deck()
-                    G.consumeables:emplace(copied_card)
+                    if card.area == G.jokers then
+                        card:highlight(false)
+                    end
+                    return true
+                end
+            }))
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.ending_shop then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    if card.ability.extra.toggle then
+                        local copied_card =
+                            copy_card(pseudorandom_element(G.consumeables.cards, pseudoseed('hpfx_perknado')))
+                        copied_card:set_edition("e_negative", true)
+                        copied_card:add_to_deck()
+                        G.consumeables:emplace(copied_card)
+                    elseif not card.ability.extra.toggle then
+                        local copied_card =
+                            copy_card(pseudorandom_element(G.jokers.cards, pseudoseed('hpfx_perknado')))
+                        copied_card:set_edition("e_negative", true)
+                        copied_card:add_to_deck()
+                        G.jokers:emplace(copied_card)
+                    end
                     return true
                 end
             }))
