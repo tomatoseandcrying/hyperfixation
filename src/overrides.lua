@@ -315,7 +315,13 @@ function Card:highlight(is_higlighted)
                 }
             end
         end
+    elseif key == 'j_hpfx_ijiraq' then
+        if self.children.toggle_button then
+            self.children.toggle_button:remove()
+            self.children.toggle_button = nil
+        end
     end
+
     return ret
 end
 

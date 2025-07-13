@@ -74,6 +74,7 @@ function load_folder(folder)
 	end
 end
 SMODS.load_file('src/overrides.lua')()
+SMODS.load_file('lib/ui.lua')()
 SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 SMODS.load_file('4Fun/FunZone.lua')()
@@ -295,18 +296,6 @@ function G.FUNCS.hpfx_Perktoggle(e)
         delay = 0.1,
         func = function ()
             _card.ability.extra.toggle = not _card.ability.extra.toggle
-            if _card.children and _card.children.floating_sprite then
-                if _card.children.floating_sprite.atlas ~= nil then
-                    if _card.ability.extra.toggle then
-                        _card.children.floating_sprite.atlas =
-                            G.ASSET_ATLAS["hpfx_IjiraqJokers"]
-                    else
-                        _card.children.floating_sprite.atlas =
-                            G.ASSET_ATLAS["Jokers"]
-                    end
-                    _card.children.floating_sprite:set_sprite_pos(_card.children.floating_sprite.sprite_pos)
-                end
-            end
             return true
         end,
     }))
