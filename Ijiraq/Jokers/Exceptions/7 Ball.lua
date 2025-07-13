@@ -10,14 +10,13 @@ SMODS.Joker{
     rarity = 1,
     cost = 5,
     atlas = 'IjiraqJokers',
-    config = {
-        extra = {odds = 1}
-    },
+    config = {extra = {}},
     loc_vars = function (self, info_queue, card)
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 4, '7ball')
         return{
             vars = {
-                (G.GAME and G.GAME.probabilities.normal or 1),
-                card.ability.extra.odds,
+                new_num,
+                new_denom,
                 card.area and card.area == G.jokers and "...?" or "",
                 card.area and card.area == G.jokers and "7" or "8"
             }
@@ -56,7 +55,6 @@ SMODS.Joker{
                         {set = 'Tarot',
                         key_append = 'hpfx_7_ball'}
                         G.GAME.consumeable_buffer = 0
-                        SMODS.calculate_context{hpfx_chudhit = true}
                         return true
                         end,
                     })) end

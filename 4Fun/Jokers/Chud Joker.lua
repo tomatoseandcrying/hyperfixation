@@ -15,53 +15,21 @@ SMODS.Joker{
         xmult_gain = math.sqrt(10),
     }},
     loc_vars = function (self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.xmult,
-                card.ability.extra.xmult_gain,
-            }
-        }
-    end,
-    add_to_deck = function(self, card, from_debuff)
-        for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = v/10
-        end
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-        for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = v
-        end
+        return {vars = {card.ability.extra.xmult, card.ability.extra.xmult_gain}}
     end,
     check_for_unlock = function(self, args)
-        if args.type == 'hpfx_chud' then
-            unlock_card(self)
-        end
+        if args.type == 'hpfx_chud' then unlock_card(self) end
     end,
     calculate = function(self, card, context)
-        if context.joker_main and
-           (to_big(card.ability.extra.xmult) > to_big(1)) then
-            return {
-                x_mult = card.ability.extra.xmult,
-            }
+        if context.mod_probability and not context.blueprint then
+            return {denominator = context.denominator * 10}
         end
-        if context.hpfx_chudhit and context.main_eval then
-            card.ability.extra.xmult = card.ability.extra.xmult *
-            card.ability.extra.xmult_gain
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.MULT,
-                message_card = card
-            }
+        if context.pseudorandom_result and context.result and not context.blueprint then
+            card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
+            return {message = localize('k_upgrade_ex'), colour = G.C.MULT, message_card = card}
         end
-        if context.individual and
-        context.cardarea == G.play and
-        context.other_card.lucky_trigger and
-        not context.end_of_round and
-        not context.blueprint and
-        not context.after then
-            card.ability.extra.xmult =
-            card.ability.extra.xmult *
-            card.ability.extra.xmult_gain
+        if context.joker_main and (to_big(card.ability.extra.xmult) > to_big(1)) then
+            return { x_mult = card.ability.extra.xmult }
         end
     end
 }

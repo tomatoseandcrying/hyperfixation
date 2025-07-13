@@ -50,7 +50,6 @@ SMODS.Joker{
             end
             return{
                 func = function ()
-                    SMODS.calculate_context{hpfx_chudhit = true}
                     hpfx_Transform(card, context)
                 end
             }

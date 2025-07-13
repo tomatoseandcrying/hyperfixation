@@ -42,7 +42,6 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") and
             pseudorandom('hpfx_sanguinerock') < G.GAME.probabilities.normal / card.ability.extra.odds then
-            SMODS.calculate_context{hpfx_chudhit = true}
             return {
                 xmult = card.ability.extra.Xmult,
                 func = function ()

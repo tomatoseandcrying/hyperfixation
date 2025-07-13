@@ -35,9 +35,9 @@ function Card:calculate_joker(context)
     if (ret and next(ret)) or trig then
         G.GAME.hpfx_nothingEverHappens = false
     end
-    if context.end_of_round and context.main_eval and G.GAME.blind.boss and G.GAME.round_resets.ante >= 3 then
+    if context.end_of_round and context.beat_boss and G.GAME.round_resets.ante >= 3 then
         if G.GAME.hpfx_nothingEverHappens then
-            check_for_unlock({ type = 'hpfx_chud' })
+            check_for_unlock({type = 'hpfx_chud'})
         else
             G.GAME.hpfx_nothingEverHappens = true
         end
@@ -93,17 +93,6 @@ function ease_ante(mod)
             return true
         end
     }))
-    return ret
-end
-
---Chud Joker Context Calls
-G.P_CENTERS.m_glass.calculate = G.P_CENTERS.m_glass.calculate or function() end
-local hookTo = G.P_CENTERS.m_glass.calculate
-function G.P_CENTERS.m_glass:calculate(card, context)
-    local ret = hookTo(self, card, context)
-        if ret and card.glass_trigger then
-            SMODS.calculate_context{hpfx_chudhit = true}
-        end
     return ret
 end
 
