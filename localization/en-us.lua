@@ -1219,7 +1219,7 @@ return {
                 name = 'Perkeo',
                 text={
                     "Creates a {C:dark_edition}Negative{} copy of",
-                    "{C:attention}1{} random {C:attention}consumable{}",
+                    "{C:attention}1{} random {C:attention}#3#{}",
                     "card in your possession",
                     "at the end of the {C:attention}shop{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
@@ -1228,8 +1228,8 @@ return {
                 name = 'Perkeo{C:hpfx_IjiGray}...?{}',
                 text={
                     "Creates a {C:dark_edition}Negative{} copy of",
-                    "{C:attention}1{} random {C:attention}consumable{}",
-                    "card in your possession",
+                    "{C:attention}1{} random {C:attention}#3#{}",
+                    "#4#in your possession",
                     "at the end of the {C:attention}shop{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },

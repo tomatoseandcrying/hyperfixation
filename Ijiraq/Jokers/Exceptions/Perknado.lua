@@ -46,13 +46,15 @@ SMODS.Joker{
     end,
     loc_vars = function (self, info_queue, card)
         info_queue[#info_queue + 1] = {
-            key = 'e_negative_consumable',
+            key = card.ability.extra.toggle and 'e_negative_consumable' or 'e_negative',
             set = 'Edition',
             config = {extra = 1}}
         return{
             vars = {
-                card.area and card.area == G.jokers and "...?" or "",
-                card.ability.extra.toggle
+                card.area and card.area == G.jokers and card.ability.extra.toggle and "...?" or "",
+                card.ability.extra.toggle,
+                card.ability.extra.toggle and "consumable" or "Joker",
+                card.ability.extra.toggle and "card " or ""
             }
         }
     end,
@@ -71,11 +73,13 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
         if card.area == G.jokers then
             card:highlight(false)
+            card.ability.extra.toggle = true
         else
             G.E_MANAGER:add_event(Event({
                 func = function()
                     if card.area == G.jokers then
                         card:highlight(false)
+                        card.ability.extra.toggle = true
                     end
                     return true
                 end
@@ -83,21 +87,35 @@ SMODS.Joker{
         end
     end,
     calculate = function(self, card, context)
-        if context.ending_shop then
+        local jokers = {}
+        for i = 1, #G.jokers.cards do
+            if G.jokers.cards[i] ~= card then jokers[#jokers + 1] = G.jokers.cards[i] end
+        end
+        if context.ending_shop and ((card.ability.extra.toggle and G.consumeables.cards[1]) or
+        (not card.ability.extra.toggle and #jokers > 0)) then
             G.E_MANAGER:add_event(Event({
                 func = function()
                     if card.ability.extra.toggle then
-                        local copied_card =
-                        copy_card(pseudorandom_element(G.consumeables.cards, pseudoseed('hpfx_perknado')))
+                        local chosen_card =
+                        pseudorandom_element(G.consumeables.cards, pseudoseed('hpfx_perknado'))
+                        local copied_card = copy_card(chosen_card, nil, nil, nil, nil)
                         copied_card:set_edition("e_negative", true)
                         copied_card:add_to_deck()
                         G.consumeables:emplace(copied_card)
                     elseif not card.ability.extra.toggle then
-                        local copied_card =
-                        copy_card(pseudorandom_element(G.jokers.cards, pseudoseed('hpfx_perknado')))
-                        copied_card:set_edition("e_negative", true)
-                        copied_card:add_to_deck()
-                        G.jokers:emplace(copied_card)
+                        if #G.jokers.cards <= G.jokers.config.card_limit then
+                            local chosen_joker =
+                            pseudorandom_element(G.jokers.cards, pseudoseed('hpfx_perknado'))
+                            local copied_joker = copy_card(chosen_joker, nil, nil, nil, nil)
+                            copied_joker:set_edition("e_negative", true)
+                            copied_joker:add_to_deck()
+                            G.jokers:emplace(copied_joker)
+                            return { message = localize('k_duplicated_ex') }
+                        else
+                            return { message = localize('k_no_room_ex') }
+                        end
+                    else
+                        return { message = localize('k_no_other_jokers') }
                     end
                     return true
                 end
