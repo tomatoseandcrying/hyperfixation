@@ -11,18 +11,14 @@ SMODS.Joker{
     rarity = 1,
     cost = 5,
     atlas = 'IjiraqJokers',
-    config = {
-        extra = {
-        odds = 1,
-        mult = 15
-        }
-    },
+    config = {extra = {mult = 15}},
     loc_vars = function (self, info_queue, card)
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 1, 'hpfxmichelle_id')
         return{
             vars = {
                 card.ability.extra.mult,
-                G.GAME and G.GAME.probabilities.normal or 1,
-                card.ability.extra.odds,
+                new_num,
+                new_denom,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -44,7 +40,7 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and 
         context.main_eval and not context.blueprint then
-            if pseudorandom('hpfx_close_michelle') < G.GAME.probabilities.normal / card.ability.extra.odds then
+            if SMODS.pseudorandom_probability(card, 'hpfxmichelle_seed', 1, 1, 'hpfxmichelle_id') then
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         play_sound('tarot1')
@@ -58,14 +54,18 @@ SMODS.Joker{
                             delay = 0.3,
                             blockable = false,
                             func = function()
-                                michelleSacrifice:hpfx_Transform(card, context)
+                                michelleSacrifice:hpfx_Transform(michelleSacrifice, context)
                                 return true
                             end
                         }))
                         return true
                     end
                 }))
-                card.ability.extra.odds = card.ability.extra.odds + 1
+                if context.mod_probability then
+                    return{
+                        denominator = context.denominator + 1
+                    }
+                end
                 return {
                     message = localize('hpfx_spread_ex')             
                 }
