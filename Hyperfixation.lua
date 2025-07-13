@@ -2,24 +2,24 @@ Hyperglobal = SMODS.current_mod
 
 --Visual Libraries
 SMODS.Atlas({
-	key = "modicon",
-	path = "icon.png",
-	px = 32,
-	py = 32,
+    key = "modicon",
+    path = "icon.png",
+    px = 32,
+    py = 32,
 }):register()
-SMODS.Atlas{
+SMODS.Atlas {
     key = 'IsaacJokers',
     path = "IsaacJokers.png",
     px = 71,
     py = 95
 }
-SMODS.Atlas{
-	key = 'Jokers4Fun',
-	path = "Jokers4Fun.png",
-	px = 71,
-	py = 95
+SMODS.Atlas {
+    key = 'Jokers4Fun',
+    path = "Jokers4Fun.png",
+    px = 71,
+    py = 95
 }
-SMODS.Atlas{
+SMODS.Atlas {
     key = 'IjiraqJokers',
     path = "IjiraqJokers.png",
     px = 71,
@@ -40,20 +40,20 @@ SMODS.Sound({
     path = "gulp.ogg",
 })
 SMODS.Sound({
-	key = "hpfx_silver",
-	path = "dimedrop.ogg",
+    key = "hpfx_silver",
+    path = "dimedrop.ogg",
 })
 SMODS.Sound({
-	key = "hpfx_death1",
-	path = "Isaac_dies_new.ogg",
+    key = "hpfx_death1",
+    path = "Isaac_dies_new.ogg",
 })
 SMODS.Sound({
-	key = "hpfx_death2",
-	path = "Isaac_dies_new_1.ogg",
+    key = "hpfx_death2",
+    path = "Isaac_dies_new_1.ogg",
 })
 SMODS.Sound({
-	key = "hpfx_death3",
-	path = "Isaac_dies_new_2.ogg",
+    key = "hpfx_death3",
+    path = "Isaac_dies_new_2.ogg",
 })
 SMODS.Sound({
     key = "hpfx_fall",
@@ -68,11 +68,12 @@ SMODS.Sound({
 --File Loading
 mod_path = "" .. SMODS.current_mod.path
 function load_folder(folder)
-	files = NFS.getDirectoryItems(mod_path .. folder)
-	for i, file in ipairs(files) do
-		SMODS.load_file(folder .. "/" .. file)()
-	end
+    files = NFS.getDirectoryItems(mod_path .. folder)
+    for i, file in ipairs(files) do
+        SMODS.load_file(folder .. "/" .. file)()
+    end
 end
+
 SMODS.load_file('src/overrides.lua')()
 SMODS.load_file('lib/ui.lua')()
 SMODS.load_file('Isaac/IsaacCenter.lua')()
@@ -90,31 +91,35 @@ to_big = to_big or function(x) return x end
 
 --Refactor Functions
 function hpfx_chipGain(card, context)
-	card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
+    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
 end
+
 function hpfx_isaacChip(card, context)
-	SMODS.calculate_effect({
-		chip_mod = card.ability.extra.chips,
-		sound = "hpfx_thumbsup",
-		colour = G.C.CHIPS,
-		message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}
-	}, card)
+    SMODS.calculate_effect({
+        chip_mod = card.ability.extra.chips,
+        sound = "hpfx_thumbsup",
+        colour = G.C.CHIPS,
+        message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }
+    }, card)
 end
+
 function hpfx_isaacMult(card, context)
     SMODS.calculate_effect({
         mult_mod = card.ability.extra.mult,
         sound = 'hpfx_1up',
-        message = localize{type = 'variable', key = 'a_mult', vars = {card.ability.extra.mult}}
+        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
     }, card)
 end
+
 function counterIncrement(card, context)
-    if context.main_eval and (to_big{card.ability.extra.mult, card.ability.extra.mult_gain} > to_big(1)) then
+    if context.main_eval and (to_big { card.ability.extra.mult, card.ability.extra.mult_gain } > to_big(1)) then
         card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
     end
 end
+
 function stoneGeneration(card, context)
     local stone_card = create_playing_card(
-        {center = G.P_CENTERS.m_stone},
+        { center = G.P_CENTERS.m_stone },
         G.discard,
         true,
         false,
@@ -135,23 +140,25 @@ function stoneGeneration(card, context)
             G.E_MANAGER:add_event(Event({
                 func = function()
                     G.deck.config.card_limit =
-                    G.deck.config.card_limit + 1
+                        G.deck.config.card_limit + 1
                     return true
                 end
             }))
             draw_card(G.play, G.deck, 90, 'up')
             SMODS.calculate_context(
-            {
-            playing_card_added = true,
-            cards = { stone_card } })
+                {
+                    playing_card_added = true,
+                    cards = { stone_card }
+                })
         end
     }
 end
+
 function hpfx_Transform(card, context)
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
         delay = 0,
-        func = function ()
+        func = function()
             if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
                 for k, v in pairs(exceptions) do
@@ -183,28 +190,29 @@ function hpfx_Transform(card, context)
         end,
     }))
     G.E_MANAGER:add_event(Event({
-    trigger = "after",
-    delay = 0.15,
-    func = function()
-        card:flip()
-        return true
-    end,
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            card:flip()
+            return true
+        end,
     }))
-	return true
+    return true
 end
+
 function Card:Transfodd(context)
-        G.E_MANAGER:add_event(Event({
+    G.E_MANAGER:add_event(Event({
         trigger = "immediate",
         delay = 0,
-        func = function ()
+        func = function()
             if self.config.center.key ~= 'j_hpfx_ijiraq' then
-            local key = self.config.center.key
-            for k, v in pairs(exceptions) do
-                if key == v then
-                    key = k
+                local key = self.config.center.key
+                for k, v in pairs(exceptions) do
+                    if key == v then
+                        key = k
+                    end
                 end
-            end
-            table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
@@ -222,7 +230,7 @@ function Card:Transfodd(context)
         delay = 0.15,
         func = function()
             self.config.center = G.P_CENTERS['j_hpfx_ijiraq']
-            self:set_ability(self.config.center,true)
+            self:set_ability(self.config.center, true)
             play_sound("card1")
             self:juice_up(0.3, 0.3)
             return true
@@ -238,14 +246,15 @@ function Card:Transfodd(context)
             return true
         end
     }))
-	return true
+    return true
 end
+
 function G.FUNCS.hpfx_Transbutt(e)
     local card = e.config.ref_table
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
         delay = 0,
-        func = function ()
+        func = function()
             if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
                 for k, v in pairs(exceptions) do
@@ -278,28 +287,30 @@ function G.FUNCS.hpfx_Transbutt(e)
         end,
     }))
     G.E_MANAGER:add_event(Event({
-    trigger = "after",
-    delay = 0.15,
-    func = function()
-        card:flip()
-        return true
-    end,
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            card:flip()
+            return true
+        end,
     }))
     --here?
-	return true
+    return true
     --or maybe here?
 end
+
 function G.FUNCS.hpfx_Perktoggle(e)
     local _card = e.config.ref_table
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
         delay = 0.1,
-        func = function ()
+        func = function()
             _card.ability.extra.toggle = not _card.ability.extra.toggle
             return true
         end,
     }))
 end
+
 function Hyperglobal.safe_set_ability(self, center)
     if not self or not center then return nil end
     local oldcenter = self.config.center
@@ -307,7 +318,10 @@ function Hyperglobal.safe_set_ability(self, center)
     G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] = G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] or {}
     G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][oldcenter.key] = copy_table(self.ability)
     for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][center.key] or center.config) do
-        if type(v) == 'table' then self.ability[k] = copy_table(v) else self.ability[k] = v
+        if type(v) == 'table' then
+            self.ability[k] = copy_table(v)
+        else
+            self.ability[k] = v
             if k == "Xmult" then self.ability.x_mult = v end
         end
     end
@@ -325,12 +339,13 @@ function Hyperglobal.safe_set_ability(self, center)
     if self.ability.name == 'To Do List' then
         local _poker_hands = {}
         for k, v in pairs(G.GAME.hands) do
-            if v.visible then _poker_hands[#_poker_hands+1] = k end
+            if v.visible then _poker_hands[#_poker_hands + 1] = k end
         end
         local old_hand = self.ability.to_do_poker_hand
         self.ability.to_do_poker_hand = nil
         while not self.ability.to_do_poker_hand do
-            self.ability.to_do_poker_hand = pseudorandom_element(_poker_hands, pseudoseed((self.area and self.area.config.type == 'title') and 'false_to_do' or 'to_do'))
+            self.ability.to_do_poker_hand = pseudorandom_element(_poker_hands,
+                pseudoseed((self.area and self.area.config.type == 'title') and 'false_to_do' or 'to_do'))
             if self.ability.to_do_poker_hand == old_hand then self.ability.to_do_poker_hand = nil end
         end
     end
@@ -356,10 +371,14 @@ function Card:set_booster_weight(booster_kind, new_weight)
         local boostertable = Hyperglobal.og_boostweight[booster.kind]
         if booster_kind == true or booster.kind == booster_kind then
             if boostertable == nil then boostertable = booster.weight end
-            if new_weight == nil then booster.weight = boostertable
+            if new_weight == nil then
+                booster.weight = boostertable
             elseif type(new_weight) == "number" then
-                if new_weight >= 0 then booster.weight = new_weight
-                else booster.weight = boostertable end
+                if new_weight >= 0 then
+                    booster.weight = new_weight
+                else
+                    booster.weight = boostertable
+                end
             else
                 print('invalid use of set_booster_weight')
             end
@@ -370,68 +389,6 @@ end
 --Unlock Conditions
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
-SMODS.Consumable:take_ownership('c_wheel_of_fortune', {
-    use = function(self, card, area, copier)
-        local used_tarot = copier or card
-        local temp_pool = (card.ability.name == 'The Wheel of Fortune' and card.eligible_strength_jokers) or {}
-        if pseudorandom('wheel_of_fortune') < G.GAME.probabilities.normal / self.ability.extra then
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.4,
-                func = function()
-                    G.GAME.wheel_fails = 0
-                    local over = false
-                    local eligible_card = pseudorandom_element(temp_pool, pseudoseed(
-                        (card.ability.name == 'The Wheel of Fortune' and 'wheel_of_fortune')
-                    ))
-                    local edition = nil
-                    if card.ability.name == 'The Wheel of Fortune' then
-                        edition = poll_edition('wheel_of_fortune', nil, true, true)
-                    end
-                    eligible_card:set_edition(edition, true)
-                    if card.ability.name == 'The Wheel of Fortune' then check_for_unlock({ type = 'have_edition' }) end
-                    used_tarot:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-        else
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.4,
-                func = function()
-                    G.GAME.wheel_fails = G.GAME.wheel_fails + 1
-                    attention_text({
-                        text = localize('k_nope_ex'),
-                        scale = 1.3,
-                        hold = 1.4,
-                        major = used_tarot,
-                        backdrop_colour = G.C.SECONDARY_SET.Tarot,
-                        align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
-                        'tm' or 'cm',
-                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
-                        silent = true
-                    })
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.06 * G.SETTINGS.GAMESPEED,
-                        blockable = false,
-                        blocking = false,
-                        func = function()
-                            play_sound('tarot2', 0.76, 0.4); return true
-                        end
-                    }))
-                    play_sound('tarot2', 1, 0.4)
-                    used_tarot:juice_up(0.3, 0.5)
-                    return true
-                end
-            }))
-        end
-        delay(0.6)
-        if G.GAME.wheel_fails >= 2 then
-            check_for_unlock({ type = 'hpfx_nope' })
-        end
-    end
-}, true)
 SMODS.Joker:take_ownership('oops', {
     add_to_deck = function(self, card, context)
         check_for_unlock({ type = 'hpfx_oops' })
@@ -466,15 +423,15 @@ local config = SMODS.current_mod.config
 	}}
 end ]]
 SMODS.current_mod.optional_features = function()
-	return {
-		post_trigger = true,
-		retrigger_joker = true,
-		quantum_enhancements = true,
-		cardareas = {
-			discard = true,
-			deck = true
-		}
-	}
+    return {
+        post_trigger = true,
+        retrigger_joker = true,
+        quantum_enhancements = true,
+        cardareas = {
+            discard = true,
+            deck = true
+        }
+    }
 end
 --[[ G.FUNCS.hpfx_save_and_apply = function()
     G.ACTIVE_MOD_UI = nil
@@ -485,17 +442,20 @@ end ]]
 --Quips
 hpfx_eternal_jimbo = Card_Character.add_speech_bubble
 hpfx_jEternal = hpfx_jEternal or false
-Card_Character.add_speech_bubble = function (self, arg1, arg2, arg3)
-	for _, v in ipairs(SMODS.find_card('j_joker')) do
-		if v.ability.eternal then hpfx_jEternal = true break
-		else hpfx_jEternal = false
-		end
-	end
-	if hpfx_jEternal then
-	hpfx_eternal_jimbo(self, 'hpfx_eternal_jimbo' .. pseudorandom("ejimbo", 1, 2), nil, {quip = true})
-	else
-	hpfx_eternal_jimbo(self, arg1, arg2, arg3)
-	end
+Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
+    for _, v in ipairs(SMODS.find_card('j_joker')) do
+        if v.ability.eternal then
+            hpfx_jEternal = true
+            break
+        else
+            hpfx_jEternal = false
+        end
+    end
+    if hpfx_jEternal then
+        hpfx_eternal_jimbo(self, 'hpfx_eternal_jimbo' .. pseudorandom("ejimbo", 1, 2), nil, { quip = true })
+    else
+        hpfx_eternal_jimbo(self, arg1, arg2, arg3)
+    end
 end
 
 --tables
@@ -573,17 +533,18 @@ exceptions = {
 
 --debug
 function maxx_debug(txt)
-	attention_text({
-		text = txt,
-		scale = 1.3,
-		hold = 1.4,
-		major = aura_card,
-		backdrop_colour = G.C.RARITY[4],
-		align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and 'tm' or 'cm',
-		offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0},
-		silent = true
-	})
+    attention_text({
+        text = txt,
+        scale = 1.3,
+        hold = 1.4,
+        major = aura_card,
+        backdrop_colour = G.C.RARITY[4],
+        align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and 'tm' or 'cm',
+        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0 },
+        silent = true
+    })
 end
+
 function toma_debug_porcelaintest()
     for _, card in ipairs(G.playing_cards) do
         card:set_ability(G.P_CENTERS.m_stone)

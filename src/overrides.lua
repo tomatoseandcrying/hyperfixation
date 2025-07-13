@@ -1,11 +1,11 @@
 --Initializations
 local igo = Game.init_game_object
 function Game:init_game_object()
-	local ret = igo(self)
-	ret.current_round.fodder_card = { jkey = 'j_joker' }
+    local ret = igo(self)
+    ret.current_round.fodder_card = { jkey = 'j_joker' }
     ret.wheel_fails = 0
     ret.hpfx_nothingEverHappens = true
-	return ret
+    return ret
 end
 
 --Unlock Conditions
@@ -14,21 +14,23 @@ function Blind:defeat(silent)
     if self.name == 'Crimson Heart' then
         G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount + 1
         if G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount >= 10 then
-            check_for_unlock({type = 'hpfx_momheart'})
+            check_for_unlock({ type = 'hpfx_momheart' })
         end
     end
     return bdf(self, silent)
 end
+
 local ccc = SMODS.calculate_context
 function SMODS.calculate_context(context, return_table)
     if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
         G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount + 1
         if G.PROFILES[G.SETTINGS.profile].hpfx_devilCount >= 3 then
-            check_for_unlock({type = 'hpfx_devil'})
+            check_for_unlock({ type = 'hpfx_devil' })
         end
     end
     return ccc(context, return_table)
 end
+
 local chud = Card.calculate_joker
 function Card:calculate_joker(context)
     local ret, trig = chud(self, context)
@@ -37,12 +39,26 @@ function Card:calculate_joker(context)
     end
     if context.end_of_round and context.beat_boss and G.GAME.round_resets.ante >= 3 then
         if G.GAME.hpfx_nothingEverHappens then
-            check_for_unlock({type = 'hpfx_chud'})
+            check_for_unlock({ type = 'hpfx_chud' })
         else
             G.GAME.hpfx_nothingEverHappens = true
         end
     end
     return chud(self, context)
+end
+
+local farm = SMODS.pseudorandom_probability
+function SMODS.pseudorandom_probability(card, num, denom, key)
+    local ret = farm(card, num, denom, key)
+    if key == 'wheel_of_fortune' then
+        if not ret then G.GAME.wheel_fails = 0
+        else G.GAME.wheel_fails = G.GAME.wheel_fails + 1
+            if G.GAME.wheel_fails >= 3 then
+                check_for_unlock({ type = 'hpfx_nope' })
+            end
+        end
+    end
+    return ret
 end
 
 --Gamestate Change Detections
@@ -59,6 +75,7 @@ function ease_hands_played(mod, instant)
 
     return ret
 end
+
 local ref_ease_discards = ease_discard
 function ease_discard(mod, instant, silent)
     local ret = ref_ease_discards(mod, instant, silent)
@@ -71,6 +88,7 @@ function ease_discard(mod, instant, silent)
     }))
     return ret
 end
+
 local ref_ease_dollars = ease_dollars
 function ease_dollars(mod, instant)
     local ret = ref_ease_dollars(mod, instant)
@@ -83,6 +101,7 @@ function ease_dollars(mod, instant)
     }))
     return ret
 end
+
 local ref_ease_ante = ease_ante
 function ease_ante(mod)
     local ret = ref_ease_ante(mod)
@@ -141,11 +160,10 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
 end
 
-
 --Jokester Visual Elements
 local calc_Ref = Card.calculate_joker
 function Card:calculate_joker(context)
-    local ret = calc_Ref(self,context)
+    local ret = calc_Ref(self, context)
     if ret and self.isIjiraq then
         self.isIjiraq = false
         G.E_MANAGER:add_event(Event({
@@ -168,10 +186,11 @@ function Card:calculate_joker(context)
     end
     return ret
 end
+
 local stupidRef = generate_card_ui
 function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
-   local ihatethis = nil
-   local changed = false
+    local ihatethis = nil
+    local changed = false
     if card and (card.config.center and card.config.center.key == _c.key) and card.visiblyIjiraq then
         ihatethis = G.localization.descriptions[_c.set][_c.key]['name']
         ihatethis = ihatethis .. '{C:hpfx_IjiGray}...?{}'
@@ -179,16 +198,17 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
         desc = G.localization.descriptions[_c.set][_c.key]['text']
         desc[#desc] = desc[#desc] .. "{C:hpfx_IjiGray,s:0.7}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
-		changed = true
+        changed = true
         init_localization()
     end
-    local hatethisonethemost = stupidRef(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)
+    local hatethisonethemost = stupidRef(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start,
+        main_end, card)
     if changed then
-        ihatethis = ihatethis:sub(1, ihatethis:len() - 22) --22 is the exact length of the string "{C:hpfx_IjiGray}...?{}", change this only if you change the string's length
+        ihatethis = ihatethis:sub(1, ihatethis:len() - 22)       --22 is the exact length of the string "{C:hpfx_IjiGray}...?{}", change this only if you change the string's length
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
         desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 28) --same here but with "{C:hpfx_IjiGray,s:0.7}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
-		init_localization()
+        init_localization()
     end
     return hatethisonethemost
 end
@@ -200,9 +220,10 @@ function Card:add_to_deck(from_debuff)
         self.visiblyIjiraq = true
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, self, true)
-        end
+    end
     add2deck_ref(self, from_debuff)
 end
+
 local card_set_cost_ref = Card.set_cost
 function Card:set_cost()
     card_set_cost_ref(self)
@@ -225,6 +246,7 @@ function Card:set_cost()
         end
     end
 end
+
 local bcofcthereis = SMODS.four_fingers
 function SMODS.four_fingers()
     if next(SMODS.find_card('j_hpfx_and_thumb')) then
@@ -232,6 +254,7 @@ function SMODS.four_fingers()
     end
     return bcofcthereis()
 end
+
 local whywouldnttherebe = SMODS.shortcut
 function SMODS.shortcut()
     if next(SMODS.find_card('j_hpfx_secretway')) then
@@ -255,6 +278,7 @@ function G.UIDEF.use_and_sell_buttons(card) --hook into buttons to add more butt
     end
     return ret
 end
+
 local highlightschmilight = Card.highlight --reversing logic of the toggle's rendering
 function Card:highlight(is_higlighted)
     local ret = highlightschmilight(self, is_higlighted)
@@ -319,18 +343,41 @@ function G.UIDEF.hpfx_transform_button(card)
     local transform = nil
     local key = card.config.center.key
     if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq'
-    and card.config.center.rarity == 4 then local specil = nil
-        for k, v in pairs(exceptions) do if key == v then specil = true break end end
+        and card.config.center.rarity == 4 then
+        local specil = nil
+        for k, v in pairs(exceptions) do if key == v then
+                specil = true
+                break
+            end end
         if specil or card.visiblyIjiraq then
-            transform = {n=G.UIT.C, config={align = "cr"}, nodes={
-            {n=G.UIT.C, config={ref_table = card, align = "cr", maxw = 1.25, padding = 0.1, r=0.08, minw = 1.25, hover = true,
-            shadow = true, minh = (card.area and card.area.config.type == 'joker') and 0 or 1, colour = G.C.RED,
-            one_press = true, button = 'hpfx_Transbutt'},
-            nodes={
-                {n=G.UIT.B, config = {w = 0.1, h = 0.6}},
-                {n=G.UIT.T, config = {text = localize('hpfx_shed'), colour = G.C.UI.TEXT_LIGHT, scale = 0.6, shadow = true}}
-            }},
-        }} end
+            transform = {
+                n = G.UIT.C,
+                config = { align = "cr" },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = {
+                            ref_table = card,
+                            align = "cr",
+                            maxw = 1.25,
+                            padding = 0.1,
+                            r = 0.08,
+                            minw = 1.25,
+                            hover = true,
+                            shadow = true,
+                            minh = (card.area and card.area.config.type == 'joker') and 0 or 1,
+                            colour = G.C.RED,
+                            one_press = true,
+                            button = 'hpfx_Transbutt'
+                        },
+                        nodes = {
+                            { n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
+                            { n = G.UIT.T, config = { text = localize('hpfx_shed'), colour = G.C.UI.TEXT_LIGHT, scale = 0.6, shadow = true } }
+                        }
+                    },
+                }
+            }
+        end
         return transform
     end
 end
