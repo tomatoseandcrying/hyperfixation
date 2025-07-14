@@ -13,17 +13,17 @@ SMODS.Joker{
     config = {
         extra = {
             rate = 40, 
-            odds = 6,
             og_rates = {}
         }
     },
     loc_vars = function (self, info_queue, card)
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 6, 'hpfxshowman_id')
         return{
             vars = {
                 card.area and card.area == G.jokers and "...?" or "",
                 card.ability.extra.rate,
-                G.GAME and G.GAME.probabilities.normal or 1,
-                card.ability.extra.odds,
+                new_num,
+                new_denom,
                 card.ability.extra.og_rates
             }
         }
@@ -169,7 +169,7 @@ SMODS.Joker{
             }))
         end
         if context.buying_card then
-            if (pseudorandom('ring_master') < G.GAME.probabilities.normal / card.ability.extra.odds) then
+            if SMODS.pseudorandom_probability(card, 'hpfxshowman_seed', 1, 6, 'hpfxshowman_id') then
                 return {func = function () hpfx_Transform(card, context) end}
             else return {
                     G.E_MANAGER:add_event(Event({
