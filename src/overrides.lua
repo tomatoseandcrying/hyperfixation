@@ -68,7 +68,7 @@ function ease_hands_played(mod, instant)
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function()
-            SMODS.calculate_context({ hpfx_change_hands = true })
+            SMODS.calculate_context({hpfx_change_hands = true})
             return true
         end
     }))
