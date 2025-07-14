@@ -1233,6 +1233,24 @@ return {
                     "at the end of the {C:attention}shop{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_sirtificate = {
+                name = 'Certificate',
+                text={
+                    "When round begins,",
+                    "add a random {C:attention}playing",
+                    "{C:attention}card{} with a random",
+                    "{C:attention}seal{} to your hand{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_sirtificate_alt = {
+                name = 'Certificate{C:hpfx_IjiGray}...?{}',
+                text={
+                    "When round begins,",
+                    "add a random {C:attention}playing",
+                    "{C:attention}card{} with a random",
+                    "{C:attention}seal{} to your hand{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

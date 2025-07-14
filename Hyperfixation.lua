@@ -528,7 +528,8 @@ exceptions = {
     j_triboulet = 'j_hpfx_dribblinit',
     j_yorick = 'j_hpfx_yomorty',
     j_chicot = 'j_hpfx_anglerais',
-    j_perkeo = 'j_hpfx_perknado'
+    j_perkeo = 'j_hpfx_perknado',
+    j_certificate = 'j_hpfx_sirtificate',
 }
 
 --debug
