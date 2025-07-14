@@ -31,16 +31,11 @@ SMODS.Joker{
         card.ability.extra.new_key = "j_hpfx_whoops_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
-        for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = v / 2
-        end
-    end,
-    remove_from_deck = function (self, card, from_debuff)
-        for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = v * 2
-        end
     end,
     calculate = function(self, card, context)
+        if context.mod_probability and not context.blueprint then
+            return {denominator = context.denominator * 2}
+        end
         if context.post_trigger then
             return {
                 func = function ()
