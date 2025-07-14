@@ -12,7 +12,7 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {extra = {mult = 1}},
     loc_vars = function (self, info_queue, card)
-        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 6, 'hpfxnotcartomancer_id')
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 6, 'hpfx_notcartomancer_id')
         return{
             vars = {
                 card.ability.extra.mult,
@@ -38,7 +38,7 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == "Tarot" then
-            if SMODS.pseudorandom_probability(card, 'hpfxnotcartomancer_seed', 1, 6, 'hpfxnotcartomancer_id') then
+            if SMODS.pseudorandom_probability(card, 'hpfx_notcartomancer_seed', 1, 6, 'hpfx_notcartomancer_id') then
                 return{
                     mult = card.ability.extra.mult *
                     (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.tarot or 0),

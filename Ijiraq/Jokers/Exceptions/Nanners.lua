@@ -13,7 +13,7 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {extra = {mult = 15}},
     loc_vars = function (self, info_queue, card)
-        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 1, 'hpfxmichelle_id')
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 1, 'hpfx_michelle_id')
         return{
             vars = {
                 card.ability.extra.mult,
@@ -40,7 +40,7 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and 
         context.main_eval and not context.blueprint then
-            if SMODS.pseudorandom_probability(card, 'hpfxmichelle_seed', 1, 1, 'hpfxmichelle_id') then
+            if SMODS.pseudorandom_probability(card, 'hpfx_michelle_seed', 1, 1, 'hpfx_michelle_id') then
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         play_sound('tarot1')

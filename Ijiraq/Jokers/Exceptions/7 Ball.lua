@@ -12,7 +12,7 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {extra = {}},
     loc_vars = function (self, info_queue, card)
-        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 4, 'hpfx7ball_id')
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 4, 'hpfx_7ball_id')
         return{
             vars = {
                 new_num,
@@ -41,7 +41,7 @@ SMODS.Joker{
         and #G.consumeables.cards + G.GAME.consumeable_buffer
         < G.consumeables.config.card_limit then
             if (context.other_card:get_id() == 7) and 
-            SMODS.pseudorandom_probability(card, 'hpfx7ball_seed', 1, 4, 'hpfx7ball_id') then
+            SMODS.pseudorandom_probability(card, 'hpfx_7ball_seed', 1, 4, 'hpfx_7ball_id') then
                 G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                 return {
                 extra = {

@@ -10,17 +10,13 @@ SMODS.Joker{
     rarity = 2,
     cost = 7,
     atlas = 'IjiraqJokers',
-    config = {
-        extra = {
-        odds = 2,
-        xmult = 1.5
-        }
-    },
+    config = {extra = {xmult = 1.5}},
     loc_vars = function (self, info_queue, card)
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 2, 'hpfx_sanguinerock_id')
         return{
             vars = {
-                G.GAME.probabilities.normal or 1,
-                card.ability.extra.odds,
+                new_num,
+                new_denom,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -41,7 +37,7 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") and
-            pseudorandom('hpfx_sanguinerock') < G.GAME.probabilities.normal / card.ability.extra.odds then
+            SMODS.pseudorandom_probability(card, 'hpfx_sanguinerock_seed', 1, 4, 'hpfx_sanguinerock_id') then
             return {
                 xmult = card.ability.extra.Xmult,
                 func = function ()
