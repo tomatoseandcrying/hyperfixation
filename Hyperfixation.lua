@@ -530,6 +530,7 @@ exceptions = {
     j_chicot = 'j_hpfx_anglerais',
     j_perkeo = 'j_hpfx_perknado',
     j_certificate = 'j_hpfx_sirtificate',
+    j_bootstraps = 'j_hpfx_shoebuckles'
 }
 
 --debug

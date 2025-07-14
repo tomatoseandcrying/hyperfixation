@@ -1251,6 +1251,22 @@ return {
                     "{C:attention}seal{} to your hand{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_shoebuckles = {
+                name = 'Bootstraps',
+                text={
+                    "{C:mult}+#1#{} Mult for every",
+                    "{C:money}$#2#{} you have{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+                },
+            },
+            j_hpfx_shoebuckles_alt = {
+                name = 'Bootstraps{C:hpfx_IjiGray}...?{}',
+                text={
+                    "{C:mult}+#1#{} Mult for every",
+                    "{C:money}$#2#{} you have{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
