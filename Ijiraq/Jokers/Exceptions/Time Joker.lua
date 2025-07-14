@@ -10,14 +10,13 @@ SMODS.Joker{
     rarity = 2,
     cost = 5,
     atlas = 'IjiraqJokers',
-    config = {
-        extra = {odds = 4}
-    },
+    config = {extra = {}},
     loc_vars = function (self, info_queue, card)
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 4, 'hpfx_time_id')
         return{
             vars = {
-                G.GAME and G.GAME.probabilities.normal or 1,
-                card.ability.extra.odds,
+                new_num,
+                new_denom,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -38,7 +37,7 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.before and context.main_eval and
-        pseudorandom('time') < G.GAME.probabilities.normal/card.ability.extra.odds then
+        SMODS.pseudorandom_probability(card, 'hpfx_time_seed', 1, 4, 'hpfx_time_id') then
             local hand_table = G.handlist
             local played_hand = G.GAME.hands[context.scoring_name]
             local filtered_hand_table = {}
