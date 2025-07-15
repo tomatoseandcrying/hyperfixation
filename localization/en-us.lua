@@ -1267,6 +1267,22 @@ return {
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
                 },
             },
+            j_hpfx_chicken = {
+                name = 'Egg',
+                text={
+                    "Gains {C:money}$#1#{} of",
+                    "{C:attention}sell value{} at",
+                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_chicken_alt = {
+                name = 'Egg{C:hpfx_IjiGray}...?{}',
+                text={
+                    "Gains {C:money}$#1#{} of",
+                    "{C:attention}sell value{} at",
+                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

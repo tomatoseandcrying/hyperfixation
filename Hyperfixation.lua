@@ -1,4 +1,5 @@
 Hyperglobal = SMODS.current_mod
+Hyperglobal.og_boostweight = Hyperglobal.og_boostweight or {}
 
 --Visual Libraries
 SMODS.Atlas({
@@ -89,7 +90,7 @@ G.ARGS.LOC_COLOURS['hpfx_IjiGray'] = HEX("BFD7D5")
 --talisman conversion function
 to_big = to_big or function(x) return x end
 
---Refactor Functions
+--Functions
 function hpfx_chipGain(card, context)
     card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
 end
@@ -361,8 +362,6 @@ function Hyperglobal.safe_set_ability(self, center)
     end
 end
 
-Hyperglobal.og_boostweight = Hyperglobal.og_boostweight or {}
-
 function Card:set_booster_weight(booster_kind, new_weight)
     for _, booster in pairs(G.P_CENTER_POOLS.Booster or {}) do
         if Hyperglobal.og_boostweight[booster.kind] == nil then
@@ -384,6 +383,12 @@ function Card:set_booster_weight(booster_kind, new_weight)
             end
         end
     end
+end
+
+function roundmyshitprettyplease(thingwearerounding, tothemultipleof)
+    local getdivided = thingwearerounding / (tothemultipleof or 1)
+    local getrounded = tothemultipleof * math.floor(getdivided)
+    return getrounded
 end
 
 --Unlock Conditions
@@ -530,7 +535,8 @@ exceptions = {
     j_chicot = 'j_hpfx_anglerais',
     j_perkeo = 'j_hpfx_perknado',
     j_certificate = 'j_hpfx_sirtificate',
-    j_bootstraps = 'j_hpfx_shoebuckles'
+    j_bootstraps = 'j_hpfx_shoebuckles',
+    j_egg = 'j_hpfx_chicken',
 }
 
 --debug
