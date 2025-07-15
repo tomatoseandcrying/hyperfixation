@@ -1283,6 +1283,22 @@ return {
                     "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_robber = {
+                name = 'Burglar',
+                text={
+                    "When {C:attention}Blind{} is selected,",
+                    "gain {C:blue}+#1#{} Hands and",
+                    "{C:attention}lose all discards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_robber_alt = {
+                name = 'Burglar{C:hpfx_IjiGray}...?{}',
+                text={
+                    "When {C:attention}Blind{} is selected,",
+                    "gain {C:blue}+#1#{} Hands and",
+                    "{C:attention}lose all discards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

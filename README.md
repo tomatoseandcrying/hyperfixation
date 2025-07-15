@@ -61,7 +61,8 @@ Ante Change (Custom Context)
 
 <ins>**reset_game_globals**</ins>/
 Costume (Run Seeding)/
-Ijiraq (Effect Table init)
+Ijiraq (Effect Table init)/
+Egg? (Sell Value Seeding)
 
 <ins>**generate_card_ui**</ins>/
 Costume (Dynamic Descriptions)

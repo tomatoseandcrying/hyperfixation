@@ -537,6 +537,7 @@ exceptions = {
     j_certificate = 'j_hpfx_sirtificate',
     j_bootstraps = 'j_hpfx_shoebuckles',
     j_egg = 'j_hpfx_chicken',
+    j_burglar = 'j_hpfx_robber'
 }
 
 --debug
