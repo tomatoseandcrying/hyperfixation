@@ -543,7 +543,8 @@ exceptions = {
     j_hiker = 'j_hpfx_hitchhiker',
     j_faceless = 'j_hpfx_noface',
     j_square = 'j_hpfx_rectangle',
-    j_joker = 'j_hpfx_jumbo'
+    j_joker = 'j_hpfx_jumbo',
+    j_shortcut = 'j_hpfx_secretway'
 }
 
 --debug

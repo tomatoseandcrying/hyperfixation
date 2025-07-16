@@ -1389,6 +1389,22 @@ return {
                     "{C:red,s:1.1}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_secretway = {
+                name = 'Shortcut',
+                text = {
+                    "Allows {C:attention}Straights{} to be",
+                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(ex: {C:attention}10 8 6 5 3{C:inactive})",
+                },
+            },
+            j_hpfx_secretway_alt = {
+                name = 'Shortcut{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Allows {C:attention}Straights{} to be",
+                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:inactive}(ex: {C:attention}10 8 6 5 3{C:inactive})",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
