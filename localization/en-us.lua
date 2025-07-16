@@ -1347,6 +1347,24 @@ return {
                     "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_noface = {
+                name = 'Faceless Joker',
+                text = {
+                    "Earn {C:money}$#1#{} if {C:attention}#2#{} or",
+                    "more {C:attention}face cards{}",
+                    "are discarded",
+                    "at the same time{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_noface_alt = {
+                name = 'Faceless Joker{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Earn {C:money}$#1#{} if {C:attention}#2#{} or",
+                    "more {C:attention}face cards{}",
+                    "are discarded",
+                    "at the same time{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
