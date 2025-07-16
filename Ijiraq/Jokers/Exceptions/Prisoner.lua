@@ -47,5 +47,16 @@ SMODS.Joker {
                 return true
             end
         }))
+        G.E_MANAGER:add_event(Event({
+            delay = 0.3,
+            func = function()
+                SMODS.calculate_effect({
+                    message = localize('hpfx_no'),
+                    colour = G.C.hpfx_IjiGray,
+                }, card)
+                SMODS.destroy_cards(card)
+                return true
+            end
+        }))
     end
 }

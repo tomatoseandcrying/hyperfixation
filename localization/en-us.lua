@@ -1417,6 +1417,7 @@ return {
             hpfx_shed = "SHED",
             hpfx_perknado = "Refocus",
             hpfx_hey = "Don't worry about him.",
+            hpfx_no = "No!",
         },
         labels = {
             hpfx_priceless = "Priceless",
