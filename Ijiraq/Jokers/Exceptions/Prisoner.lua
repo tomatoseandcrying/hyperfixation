@@ -54,7 +54,7 @@ SMODS.Joker {
                     message = localize('hpfx_no'),
                     colour = G.C.hpfx_IjiGray,
                 }, card)
-                SMODS.destroy_cards(card)
+                SMODS.destroy_cards(card, true)
                 return true
             end
         }))
