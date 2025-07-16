@@ -540,6 +540,7 @@ exceptions = {
     j_burglar = 'j_hpfx_robber',
     j_splash = 'j_hpfx_splatter',
     j_constellation = 'j_hpfx_sagittarius',
+    j_hiker = 'j_hpfx_hitchhiker',
 }
 
 --debug

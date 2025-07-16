@@ -1325,7 +1325,26 @@ return {
             j_hpfx_sagittarius_alt = {
                 name = 'Constellation{C:hpfx_IjiGray}...?{}',
                 text = {
-                    "{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "This Joker gains",
+                    "{X:mult,C:white}X#1#{} Mult every time",
+                    "a {C:planet}Planet{} card is used{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                },
+            },
+            j_hpfx_hitchhiker = {
+                name = 'Hiker',
+                text = {
+                    "Every played {C:attention}card{}",
+                    "permanently gains",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_hitchhiker_alt = {
+                name = 'Hiker{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Every played {C:attention}card{}",
+                    "permanently gains",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
         },
