@@ -541,7 +541,9 @@ exceptions = {
     j_splash = 'j_hpfx_splatter',
     j_constellation = 'j_hpfx_sagittarius',
     j_hiker = 'j_hpfx_hitchhiker',
-    j_faceless = "j_hpfx_noface"
+    j_faceless = 'j_hpfx_noface',
+    j_square = 'j_hpfx_rectangle',
+    j_joker = 'j_hpfx_jumbo'
 }
 
 --debug

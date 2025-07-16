@@ -1365,6 +1365,30 @@ return {
                     "at the same time{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_rectangle = {
+                name = 'Square Joker',
+                text = {
+                    "{C:inactive,s:0.85}Get me the hell out of here!{}",
+                },
+            },
+            j_hpfx_rectangle_alt = {
+                name = 'Prisoner.',
+                text = {
+                    "{C:inactive,s:0.85}Get me the hell out of here!{}",
+                },
+            },
+            j_hpfx_jumbo = {
+                name = 'Joker',
+                text = {
+                    "{C:red,s:1.1}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_jumbo_alt = {
+                name = 'Joker{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "{C:red,s:1.1}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -1391,7 +1415,8 @@ return {
             hpfx_spread_ex = "Spread.",
             hpfx_wither_ex = "Wither.",
             hpfx_shed = "SHED",
-            hpfx_perknado = "Refocus"
+            hpfx_perknado = "Refocus",
+            hpfx_hey = "Don't worry about him.",
         },
         labels = {
             hpfx_priceless = "Priceless",
