@@ -544,7 +544,8 @@ exceptions = {
     j_faceless = 'j_hpfx_noface',
     j_square = 'j_hpfx_rectangle',
     j_joker = 'j_hpfx_jumbo',
-    j_shortcut = 'j_hpfx_secretway'
+    j_shortcut = 'j_hpfx_secretway',
+    j_cloud_9 = 'j_hpfx_earthbound',
 }
 
 --debug

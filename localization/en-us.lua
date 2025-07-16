@@ -1405,6 +1405,24 @@ return {
                     "{C:inactive}(ex: {C:attention}10 8 6 5 3{C:inactive})",
                 },
             },
+            j_hpfx_earthbound = {
+                name = 'Cloud 9',
+                text = {
+                    "Earn {C:money}$#1#{} for each",
+                    "{C:attention}9{} in your {C:attention}full deck",
+                    "at end of round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:money}$#2#{}{C:inactive})",
+                },
+            },
+            j_hpfx_earthbound_alt = {
+                name = 'Cloud 9{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Earn {C:money}$#1#{} for each",
+                    "{C:attention}9{} in your {C:attention}full deck",
+                    "at end of round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {C:money}$#2#{}{C:inactive})",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
