@@ -1313,6 +1313,21 @@ return {
                     "counts in scoring{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_sagittarius = {
+                name = 'Constellation',
+                text = {
+                    "This Joker gains",
+                    "{X:mult,C:white}X#1#{} Mult every time",
+                    "a {C:planet}Planet{} card is used{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                },
+            },
+            j_hpfx_sagittarius_alt = {
+                name = 'Constellation{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

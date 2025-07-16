@@ -539,6 +539,7 @@ exceptions = {
     j_egg = 'j_hpfx_chicken',
     j_burglar = 'j_hpfx_robber',
     j_splash = 'j_hpfx_splatter',
+    j_constellation = 'j_hpfx_sagittarius',
 }
 
 --debug

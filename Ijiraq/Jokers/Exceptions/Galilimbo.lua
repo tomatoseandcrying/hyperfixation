@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'galilimbo',
-    pos = {x = 2, y = 7},
+    pos = { x = 2, y = 7 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,9 +10,9 @@ SMODS.Joker{
     rarity = 2,
     cost = 8,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
-        return{
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -41,7 +41,7 @@ SMODS.Joker{
             end
         }))
     end,
-    remove_from_deck = function (self, card, from_debuff)
+    remove_from_deck = function(self, card, from_debuff)
         Card:set_booster_weight('Celestial')
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -53,9 +53,10 @@ SMODS.Joker{
         }))
     end,
     calculate = function(self, card, context)
-        if context.using_consumeable and context.consumeable.ability.set == "Planet" then
+        if context.using_consumeable and context.consumeable.ability.set == "Planet" and not
+            next(SMODS.find_card("j_hpfx_sagittarius")) then
             return {
-                func = function ()
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }
