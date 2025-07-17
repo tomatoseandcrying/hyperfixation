@@ -1423,6 +1423,22 @@ return {
                     "{C:inactive}(Currently {C:money}$#2#{}{C:inactive})",
                 },
             },
+            j_hpfx_blastoff = {
+                name = 'Rocket',
+                text = {
+                    "Earn {C:money}$#1#{} at end of round",
+                    "Payout increases by {C:money}$#2#{}",
+                    "when {C:attention}Boss Blind{} is defeated{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_blastoff_alt = {
+                name = 'Rocket{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Earn {C:money}$#1#{} at end of round",
+                    "Payout increases by {C:money}$#2#{}",
+                    "when {C:attention}Boss Blind{} is defeated{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
