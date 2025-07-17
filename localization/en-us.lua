@@ -1585,6 +1585,22 @@ return {
                     "the next {C:attention}#1#{} hands{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_frowny = {
+                name = 'Smiley Face',
+                text = {
+                    "Played {C:attention}face{} cards",
+                    "give {C:mult}+#1#{} Mult",
+                    "when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_frowny_alt = {
+                name = 'Smiley Face{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Played {C:attention}face{} cards",
+                    "give {C:mult}+#1#{} Mult",
+                    "when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

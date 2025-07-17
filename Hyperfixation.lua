@@ -556,6 +556,7 @@ exceptions = {
     j_diet_cola = 'j_hpfx_cola',
     j_trading_card = 'j_hpfx_collecting',
     j_selzer = 'j_hpfx_seltzer',
+    j_smiley = 'j_hpfx_frowny',
 }
 
 --debug
