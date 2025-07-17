@@ -1523,6 +1523,20 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
+            j_hpfx_softball = {
+                name = 'Baseball Card',
+                text = {
+                    "{C:green}Uncommon{} Jokers",
+                    "each give {X:mult,C:white}X#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_softball_alt = {
+                name = 'Baseball Card{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "{C:green}Uncommon{} Jokers",
+                    "each give {X:mult,C:white}X#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
