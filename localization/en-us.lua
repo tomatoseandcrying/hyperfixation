@@ -1537,6 +1537,22 @@ return {
                     "each give {X:mult,C:white}X#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_cola = {
+                name = 'Diet Cola',
+                text = {
+                    "Sell this card to",
+                    "create a free",
+                    "{C:attention}Double Tag{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_cola_alt = {
+                name = 'Diet Cola{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Sell this card to",
+                    "create a free",
+                    "{C:attention}Double Tag{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
