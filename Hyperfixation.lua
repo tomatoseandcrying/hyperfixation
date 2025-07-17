@@ -548,7 +548,8 @@ exceptions = {
     j_cloud_9 = 'j_hpfx_earthbound',
     j_rocket = 'j_hpfx_blastoff',
     j_luchador = 'j_hpfx_wrestler',
-    j_gift = 'j_hpfx_card'
+    j_gift = 'j_hpfx_card',
+    j_turtle_bean = 'j_hpfx_lima_bean'
 }
 
 --debug

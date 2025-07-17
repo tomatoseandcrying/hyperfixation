@@ -1473,6 +1473,22 @@ return {
                     "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_lima_bean = {
+                name = 'Turtle Bean',
+                text = {
+                    "{C:attention}+#1#{} hand size,",
+                    "reduces by",
+                    "{C:red}#2#{} every round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_lima_bean_alt = {
+                name = 'Turtle Bean{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "{C:attention}+#1#{} hand size,",
+                    "reduces by",
+                    "{C:red}#2#{} every round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
