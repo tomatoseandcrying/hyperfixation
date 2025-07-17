@@ -1569,6 +1569,22 @@ return {
                     "it and earn {C:money}$#1#{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_seltzer = {
+                name = 'Seltzer',
+                text = {
+                    "Retrigger all",
+                    "cards played for",
+                    "the next {C:attention}#1#{} hands{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_seltzer_alt = {
+                name = 'Seltzer{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Retrigger all",
+                    "cards played for",
+                    "the next {C:attention}#1#{} hands{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
