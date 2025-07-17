@@ -1505,6 +1505,24 @@ return {
                     "have at end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_illusion = {
+                name = 'Hallucination',
+                text = {
+                    "{C:green}#1# in #2#{} chance to create",
+                    "a {C:tarot}Tarot{} card when any",
+                    "{C:attention}Booster Pack{} is opened{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
+            j_hpfx_illusion_alt = {
+                name = 'Hallucination{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "{C:green}#1# in #2#{} chance to create",
+                    "a {C:tarot}Tarot{} card when any",
+                    "{C:attention}Booster Pack{} is opened{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
