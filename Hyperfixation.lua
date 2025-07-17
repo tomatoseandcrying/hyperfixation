@@ -554,6 +554,7 @@ exceptions = {
     j_hallucination = 'j_hpfx_illusion',
     j_baseball = 'j_hpfx_softball',
     j_diet_cola = 'j_hpfx_cola',
+    j_trading_card = 'j_hpfx_collecting',
 }
 
 --debug

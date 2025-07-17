@@ -1553,6 +1553,22 @@ return {
                     "{C:attention}Double Tag{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_collecting = {
+                name = 'Trading Card',
+                text = {
+                    "If {C:attention}first discard{} of round",
+                    "has only {C:attention}1{} card, destroy",
+                    "it and earn {C:money}$#1#{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_collecting_alt = {
+                name = 'Trading Card{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "If {C:attention}first discard{} of round",
+                    "has only {C:attention}1{} card, destroy",
+                    "it and earn {C:money}$#1#{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
