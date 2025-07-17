@@ -1439,6 +1439,22 @@ return {
                     "when {C:attention}Boss Blind{} is defeated{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_wrestler = {
+                name = 'Luchador',
+                text = {
+                    "Sell this card to",
+                    "disable the current",
+                    "{C:attention}Boss Blind{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
+            j_hpfx_wrestler_alt = {
+                name = 'Luchador{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Sell this card to",
+                    "disable the current",
+                    "{C:attention}Boss Blind{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

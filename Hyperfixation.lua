@@ -546,7 +546,8 @@ exceptions = {
     j_joker = 'j_hpfx_jumbo',
     j_shortcut = 'j_hpfx_secretway',
     j_cloud_9 = 'j_hpfx_earthbound',
-    j_rocket = 'j_hpfx_blastoff'
+    j_rocket = 'j_hpfx_blastoff',
+    j_luchador = 'j_hpfx_wrestler',
 }
 
 --debug
