@@ -557,6 +557,7 @@ exceptions = {
     j_trading_card = 'j_hpfx_collecting',
     j_selzer = 'j_hpfx_seltzer',
     j_smiley = 'j_hpfx_frowny',
+    j_walkie_talkie = 'j_hpfx_talkie_walkie',
 }
 
 --debug

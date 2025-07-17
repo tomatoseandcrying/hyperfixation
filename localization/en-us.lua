@@ -1601,6 +1601,22 @@ return {
                     "when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
             },
+            j_hpfx_talkie_walkie = {
+                name = 'Walkie Talkie',
+                text = {
+                    "Each played {C:attention}10{} or {C:attention}4",
+                    "gives {C:chips}+#1#{} Chips and",
+                    "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
+            j_hpfx_talkie_walkie_alt = {
+                name = 'Walkie Talkie{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Each played {C:attention}10{} or {C:attention}4",
+                    "gives {C:chips}+#1#{} Chips and",
+                    "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
