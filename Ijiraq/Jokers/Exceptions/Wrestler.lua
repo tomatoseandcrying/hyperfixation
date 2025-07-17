@@ -7,6 +7,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
+    eternal_compat = false,
     rarity = 2,
     cost = 5,
     atlas = 'IjiraqJokers',

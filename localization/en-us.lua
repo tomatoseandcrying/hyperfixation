@@ -1455,6 +1455,24 @@ return {
                     "{C:attention}Boss Blind{}{C:hpfx_IjiGray,s:0.7}#1#{}",
                 },
             },
+            j_hpfx_card = {
+                name = 'Gift Card',
+                text = {
+                    "Add {C:money}$#1#{} of {C:attention}sell value",
+                    "to every {C:attention}Joker{} and",
+                    "{C:attention}Consumable{} card at",
+                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_card_alt = {
+                name = 'Gift Card{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Add {C:money}$#1#{} of {C:attention}sell value",
+                    "to every {C:attention}Joker{} and",
+                    "{C:attention}Consumable{} card at",
+                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -1484,6 +1502,7 @@ return {
             hpfx_perknado = "Refocus",
             hpfx_hey = "Don't worry about him.",
             hpfx_no = "No!",
+            hpfx_val_down = "Value Down!"
         },
         labels = {
             hpfx_priceless = "Priceless",
