@@ -83,7 +83,7 @@ end
 '''
 position = "after"
 payload = '''
-if _card.config.center.key == "j_hpfx_pyramid" or _card.config.center.key == "j_hpfx_earthbound" or _card.config.center.key == "j_hpfx_blastoff" then
+if _card.config.center.key == "j_hpfx_pyramid" or _card.config.center.key == "j_hpfx_earthbound" or _card.config.center.key == "j_hpfx_blastoff" or _card.config.center.key == "j_hpfx_take_the_moon" then
     hpfx_Transform(_card)
 end
 '''

@@ -1489,6 +1489,22 @@ return {
                     "{C:red}#2#{} every round{C:hpfx_IjiGray,s:0.7}#3#{}",
                 },
             },
+            j_hpfx_take_the_moon = {
+                name = 'To The Moon',
+                text = {
+                    "Earn an extra {C:money}$#1#{} of",
+                    "{C:attention}interest{} for every {C:money}$5{} you",
+                    "have at end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
+            j_hpfx_take_the_moon_alt = {
+                name = 'To The Moon{C:hpfx_IjiGray}...?{}',
+                text = {
+                    "Earn an extra {C:money}$#1#{} of",
+                    "{C:attention}interest{} for every {C:money}$5{} you",
+                    "have at end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                },
+            },
         },
         Other = {
             hpfx_priceless = {

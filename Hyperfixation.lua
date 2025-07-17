@@ -549,7 +549,8 @@ exceptions = {
     j_rocket = 'j_hpfx_blastoff',
     j_luchador = 'j_hpfx_wrestler',
     j_gift = 'j_hpfx_card',
-    j_turtle_bean = 'j_hpfx_lima_bean'
+    j_turtle_bean = 'j_hpfx_lima_bean',
+    j_to_the_moon = 'j_hpfx_take_the_moon',
 }
 
 --debug
