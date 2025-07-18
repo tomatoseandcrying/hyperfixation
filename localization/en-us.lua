@@ -372,7 +372,7 @@ return {
                     "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
-                    "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
+                    "{X:hpfx_IjiGray,C:white}#3#/4{}"
                 },
             },
             j_hpfx_pomni_alt = {
@@ -382,7 +382,7 @@ return {
                     "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
-                    "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
+                    "{X:hpfx_IjiGray,C:white}#3#/4{}"
                 },
             },
             j_hpfx_belated_grat = {

@@ -41,9 +41,17 @@ SMODS.Joker {
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
         if #G.jokers.cards >= 4 then
-            func = function()
-                hpfx_Transform(card, context)
+            for k, v in ipairs(SMODS.find_card('j_hpfx_pomni')) do
+                if v ~= card then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            v:start_dissolve({ G.C.RED }, nil, 1.6)
+                            return true
+                        end
+                    }))
+                end
             end
+            hpfx_Transform(card, context)
         end
     end,
     calculate = function(self, card, context)
