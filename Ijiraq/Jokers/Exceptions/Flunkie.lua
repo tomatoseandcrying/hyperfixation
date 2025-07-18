@@ -43,7 +43,7 @@ SMODS.Joker {
         if context.individual and
             context.cardarea == G.play and
             context.other_card:get_id() == 14 then
-            assert(SMODS.destroy_cards(context.other_card))()
+            SMODS.destroy_cards(context.other_card)
             return {
                 mult = card.ability.extra.mult,
                 chips = card.ability.extra.chips,
