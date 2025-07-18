@@ -1,7 +1,7 @@
-SMODS.Joker{ --Ijiraq.
+SMODS.Joker { --Ijiraq.
     key = 'ijiraq',
-    pos = {x = 0, y = 9},
-    soul_pos = {x = 1, y = 9},
+    pos = { x = 0, y = 9 },
+    soul_pos = { x = 1, y = 9 },
     no_mod_badges = false,
     unlocked = true,
     discovered = false,
@@ -12,17 +12,18 @@ SMODS.Joker{ --Ijiraq.
     eternal_compat = true,
     perishable_compat = false,
     config = {
-        extra = {jkey = 'ijiraq'}
+        extra = { jkey = 'ijiraq' }
     },
-    loc_vars = function (self, info_queue, card)
+    loc_vars = function(self, info_queue, card)
         for _, v in pairs(G.GAME.raqeffects) do
-            info_queue[#info_queue+1] = G.P_CENTERS[v]
+            info_queue[#info_queue + 1] = G.P_CENTERS[v]
         end
-        return{
+        return {
             main_end = main_end,
-        vars = {
-            card.ability.extra.jkey
-        }}
+            vars = {
+                card.ability.extra.jkey
+            }
+        }
     end,
     in_pool = function(self, args)
         return false
@@ -33,24 +34,25 @@ SMODS.Joker{ --Ijiraq.
             if v ~= card then
                 G.E_MANAGER:add_event(Event({
                     func = function()
-                    SMODS.calculate_effect({
-                        message = 'Fall.',
-                        colour = G.C.RED,
-                        sound = 'hpfx_fall'},
-                        card)
-                    return true
+                        SMODS.calculate_effect({
+                                message = 'Fall.',
+                                colour = G.C.RED,
+                                sound = 'hpfx_fall'
+                            },
+                            card)
+                        return true
                     end
                 }))
                 G.E_MANAGER:add_event(Event({
-                    func = function ()
-                    v:start_dissolve({G.C.RED}, nil, 1.6)
-                    return true
+                    func = function()
+                        v:start_dissolve({ G.C.RED }, nil, 1.6)
+                        return true
                     end
                 }))
             end
         end
     end,
-    calc_dollar_bonus = function (self, card) --Golden Joker Ability
+    calc_dollar_bonus = function(self, card)  --Golden Joker Ability
         for _, v in pairs(G.GAME.raqeffects) do
             local bonus = 4
             local found = false
@@ -58,6 +60,17 @@ SMODS.Joker{ --Ijiraq.
                 found = true
             end
             if found then return bonus end
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.modify_scoring_hand and not context.blueprint then
+            for _, v in pairs(G.GAME.raqeffects) do
+                local found = false
+                if v == 'j_splash' then
+                    found = true
+                end
+                if found then return { add_to_hand = true } end
+            end
         end
     end
 }
