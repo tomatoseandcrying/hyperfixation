@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'pomni',
-    pos = {x = 3, y = 3},
+    pos = { x = 3, y = 3 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,16 +12,16 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        mult = 3,
+            mult = 3,
         }
     },
-    loc_vars = function (self, info_queue, card)
+    loc_vars = function(self, info_queue, card)
         if G.jokers then
-            return{
+            return {
                 vars = {
                     card.ability.extra.mult,
                     card.ability.extra.mult * (G.jokers and #G.jokers.cards or 0),
-                    card.ability.extra.joker_count == #G.jokers.cards,
+                    #G.jokers.cards,
                     card.area and card.area == G.jokers and "...?" or ""
                 }
             }
@@ -40,8 +40,8 @@ SMODS.Joker{
         card.ability.extra.new_key = "j_hpfx_pomni_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
-        if card.ability.extra.joker_count >= 5 then
-            func = function ()
+        if #G.jokers.cards >= 4 then
+            func = function()
                 hpfx_Transform(card, context)
             end
         end
@@ -52,5 +52,8 @@ SMODS.Joker{
                 mult = card.ability.extra.mult * #G.jokers.cards
             }
         end
+    end,
+    in_pool = function(self, args)
+        return true, { allow_duplicates = true }
     end
 }

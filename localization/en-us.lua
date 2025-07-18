@@ -369,7 +369,7 @@ return {
                 name = 'Abstract Joker',
                 text = {
                     "{C:mult}+#1#{} Mult for",
-                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
                     "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
@@ -379,7 +379,7 @@ return {
                 name = 'Abstract Joker{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:mult}+#1#{} Mult for",
-                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
                     "{X:hpfx_IjiGray,s:0.75}{C:attention}#3#{}/{C:white}4{}{}"
