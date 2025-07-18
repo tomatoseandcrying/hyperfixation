@@ -49,7 +49,7 @@ SMODS.Joker {
                 chips = card.ability.extra.chips,
             }
         end
-        if context.after and ace_count == 0 then
+        if context.after then
             local ace_count = 0
             if G.playing_cards then
                 for _, playing_card in ipairs(G.playing_cards) do
@@ -58,11 +58,13 @@ SMODS.Joker {
                     end
                 end
             end
-            return {
-                func = function()
-                    hpfx_Transform(card, context)
-                end
-            }
+            if ace_count == 0 then
+                return {
+                    func = function()
+                        hpfx_Transform(card, context)
+                    end
+                }
+            end
         end
     end
 }
