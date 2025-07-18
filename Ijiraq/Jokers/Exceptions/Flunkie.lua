@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'flunkie',
-    pos = {x = 0, y = 4},
+    pos = { x = 0, y = 4 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,12 +12,12 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        mult = 4,
-        chips = 20
+            mult = 4,
+            chips = 20
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.mult,
                 card.ability.extra.chips,
@@ -40,16 +40,9 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        local ace_count = 0
-        if G.playing_cards then
-            for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card:get_id() == 14 then
-                ace_count = ace_count + 1 end
-            end
-        end
         if context.individual and
-        context.cardarea == G.play and
-        context.other_card:get_id() == 14 then
+            context.cardarea == G.play and
+            context.other_card:get_id() == 14 then
             assert(SMODS.destroy_cards(context.other_card))
             return {
                 mult = card.ability.extra.mult,
@@ -57,12 +50,19 @@ SMODS.Joker{
             }
         end
         if context.after and ace_count == 0 then
-            return {
-            func = function()
-                hpfx_Transform(card, context)
+            local ace_count = 0
+            if G.playing_cards then
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card:get_id() == 14 then
+                        ace_count = ace_count + 1
+                    end
+                end
             end
+            return {
+                func = function()
+                    hpfx_Transform(card, context)
+                end
             }
         end
-
     end
 }
