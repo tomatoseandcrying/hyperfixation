@@ -54,9 +54,7 @@ else
 end
 '''
 
-
-# Mary unlock check
-[[patches]]
+[[patches]] # Mary unlock check
 [patches.pattern]
 match_indent = true
 times = 1
@@ -67,8 +65,7 @@ payload = '''
 check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
 '''
 
-# Golden Joker? transformation
-[[patches]]
+[[patches]] # Golden Joker? transformation
 [patches.pattern]
 match_indent = true
 times = 1
@@ -88,8 +85,7 @@ if _card.config.center.key == "j_hpfx_pyramid" or _card.config.center.key == "j_
 end
 '''
 
-# Galilimbo Patch
-[[patches]]
+[[patches]] # Galilimbo Patch
 [patches.pattern]
 match_indent = true
 times = 1
@@ -105,3 +101,15 @@ if next(SMODS.find_card('j_hpfx_galilimbo')) then
     end
 end
 '''
+
+[[patches]] # Post-Discard Context
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = '''
+G.GAME.current_round.discards_used = G.GAME.current_round.discards_used + 1
+'''
+position = "after"
+payload = '''
+SMODS.calculate_context({hpfx_post_discard = true})
+'''
+match_indent = true

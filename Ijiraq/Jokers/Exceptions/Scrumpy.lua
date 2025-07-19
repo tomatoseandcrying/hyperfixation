@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'scrumpy',
-    pos = {x = 1, y = 1},
+    pos = { x = 1, y = 1 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -15,8 +15,8 @@ SMODS.Joker{
             d_size = 1
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.d_size,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -38,13 +38,13 @@ SMODS.Joker{
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
     end,
-    remove_from_deck = function (self, card, from_debuff)
+    remove_from_deck = function(self, card, from_debuff)
         G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
     end,
-    calculate = function (self, card, context)
-        if context.discard then
-            return{
-                func = function ()
+    calculate = function(self, card, context)
+        if context.hpfx_post_discard then
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }

@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'manolo',
-    pos = {x = 4, y = 5},
+    pos = { x = 4, y = 5 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,11 +12,11 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        mult = 8,
+            mult = 8,
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.mult,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -39,13 +39,15 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.debuffed_hand or context.joker_main then
-        if G.GAME.blind.triggered then return {mult = card.ability.extra.mult}
-        end end
-        if context.end_of_round then
-            return{
-            func = function ()
-                hpfx_Transform(card, context)
+            if G.GAME.blind.triggered then
+                return { mult = card.ability.extra.mult }
             end
+        end
+        if context.end_of_round and context.game_over == false then
+            return {
+                func = function()
+                    hpfx_Transform(card, context)
+                end
             }
         end
     end

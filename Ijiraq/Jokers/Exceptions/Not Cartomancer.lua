@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'not_cartomancer',
-    pos = {x = 7, y = 5},
+    pos = { x = 7, y = 5 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,10 +10,10 @@ SMODS.Joker{
     rarity = 1,
     cost = 6,
     atlas = 'IjiraqJokers',
-    config = {extra = {mult = 1}},
-    loc_vars = function (self, info_queue, card)
+    config = { extra = { mult = 1 } },
+    loc_vars = function(self, info_queue, card)
         local new_num, new_denom = SMODS.get_probability_vars(card, 1, 6, 'hpfx_notcartomancer_id')
-        return{
+        return {
             vars = {
                 card.ability.extra.mult,
                 new_num,
@@ -39,19 +39,22 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == "Tarot" then
             if SMODS.pseudorandom_probability(card, 'hpfx_notcartomancer_seed', 1, 6, 'hpfx_notcartomancer_id') then
-                return{
-                    mult = card.ability.extra.mult *
-                    (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.tarot or 0),
-                    func = function ()
+                return {
+                    func = function()
                         hpfx_Transform(card, context)
                     end
                 }
             else
-                return{
-                    mult = card.ability.extra.mult *
-                    (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.tarot or 0)
+                return {
+                    message = localize { type = 'variable', key = 'a_mult', vars = { G.GAME.consumeable_usage_total.tarot } },
                 }
             end
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult *
+                    (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.tarot or 0)
+            }
         end
     end
 }

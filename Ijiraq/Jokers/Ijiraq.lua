@@ -11,12 +11,20 @@ SMODS.Joker { --Ijiraq.
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = false,
+    display_size = { w = 71, h = 95 },
     config = {
         extra = { jkey = 'ijiraq' }
     },
     loc_vars = function(self, info_queue, card)
         for _, v in pairs(G.GAME.raqeffects) do
-            info_queue[#info_queue + 1] = G.P_CENTERS[v]
+            if G.P_CENTERS[v].loc_vars then
+                info_queue[#info_queue + 1] = {
+                    set = "Joker",
+                    key = v,
+                    vars = G.P_CENTERS[v].loc_vars({ ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v] }, {})
+                    .vars
+                }
+            end
         end
         return {
             main_end = main_end,
@@ -52,7 +60,7 @@ SMODS.Joker { --Ijiraq.
             end
         end
     end,
-    calc_dollar_bonus = function(self, card)  --Golden Joker Ability
+    calc_dollar_bonus = function(self, card) --Golden Joker Ability
         for _, v in pairs(G.GAME.raqeffects) do
             local bonus = 4
             local found = false

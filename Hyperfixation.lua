@@ -579,3 +579,7 @@ function toma_debug_porcelaintest()
         card:set_ability(G.P_CENTERS.m_stone)
     end
 end
+
+function tomadebugcostume(key)
+    G.GAME.current_round.fodder_card.jkey = key
+end

@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'take_the_sun',
-    pos = {x = 2, y = 6},
+    pos = { x = 2, y = 6 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,11 +12,12 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        mult = 13,
+            mult = 13,
+            queen_destroyed = false,
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.mult,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -39,8 +40,8 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.hand
-        and not context.end_of_round and
-        context.other_card:get_id() == 12 then
+            and not context.end_of_round and
+            context.other_card:get_id() == 12 then
             if context.other_card.debuff then
                 return {
                     message = localize('k_debuffed'),
@@ -52,14 +53,17 @@ SMODS.Joker{
                 }
             end
         end
-        if context.after then
-            for _, qard in ipairs(G.hand) do
-                if qard:get_id() == 12 then
-                    SMODS.destroy_cards(qard)
-                end
+        if context.destroy_card and context.cardarea == G.hand then
+            if context.destroy_card:get_id() == 12 then
+                extra.queen_destroyed = true
+                return { remove = true }
             end
-            return{
-                hpfx_Transform(card, context)
+        end
+        if context.after and queen_destroyed == true then
+            return {
+                func = function()
+                    hpfx_Transform(card, context)
+                end
             }
         end
     end
