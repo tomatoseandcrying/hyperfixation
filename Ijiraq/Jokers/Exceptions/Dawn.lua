@@ -70,7 +70,7 @@ SMODS.Joker {
                             _card:add_to_deck()
                             G.deck.config.card_limit = G.deck.config.card_limit + 1
                             table.insert(G.playing_cards, _card)
-                            G.deck:emplace(_card)
+                            G.hand:emplace(_card)
                             _card.states.visible = nil
 
                             G.E_MANAGER:add_event(Event({
