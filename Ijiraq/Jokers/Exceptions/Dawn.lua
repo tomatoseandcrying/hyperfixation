@@ -70,7 +70,7 @@ SMODS.Joker {
                             _card:add_to_deck()
                             G.deck.config.card_limit = G.deck.config.card_limit + 1
                             table.insert(G.playing_cards, _card)
-                            G.hand:emplace(_card)
+                            G.deck:emplace(_card)
                             _card.states.visible = nil
 
                             G.E_MANAGER:add_event(Event({
@@ -80,13 +80,15 @@ SMODS.Joker {
                                 end
                             }))
                             SMODS.calculate_context({ playing_card_added = true, cards = _card })
-                            hpfx_Transform(card, context)
                             return true
                         end
                     }))
                     break
                 end
             end
+        end
+        if context.final_scoring_step then
+            return { func = function() hpfx_Transform(card, context) end }
         end
         if context.end_of_round then
             extra.saved_cards = {}
