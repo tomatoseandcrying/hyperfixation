@@ -87,7 +87,7 @@ SMODS.Joker {
                 end
             end
         end
-        if context.final_scoring_step and context.cardarea == G.play and G.GAME.current_round.hands_left == 0 then
+        if context.final_scoring_step and G.GAME.current_round.hands_left == 0 then
             return { func = function() hpfx_Transform(card, context) end }
         end
         if context.end_of_round then
