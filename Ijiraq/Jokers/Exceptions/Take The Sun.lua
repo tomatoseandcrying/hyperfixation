@@ -39,6 +39,7 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        local extra = card.ability and card.ability.extra or {}
         if context.individual and context.cardarea == G.hand
             and not context.end_of_round and
             context.other_card:get_id() == 12 then
@@ -49,7 +50,7 @@ SMODS.Joker {
                 }
             else
                 return {
-                    mult = card.ability.extra.mult
+                    mult = extra.mult
                 }
             end
         end
@@ -59,7 +60,7 @@ SMODS.Joker {
                 return { remove = true }
             end
         end
-        if context.after and queen_destroyed == true then
+        if context.after and extra.queen_destroyed == true then
             return {
                 func = function()
                     hpfx_Transform(card, context)
