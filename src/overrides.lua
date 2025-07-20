@@ -48,17 +48,17 @@ function Card:calculate_joker(context)
 end
 
 local farm = SMODS.pseudorandom_probability
-function SMODS.pseudorandom_probability(card, num, denom, key)
-    local ret = farm(card, num, denom, key)
-    if key == 'wheel_of_fortune' then
+function SMODS.pseudorandom_probability(trigger_obj, seed, base_numerator, base_denominator, identifier)
+    local ret = farm(trigger_obj, seed, base_numerator, base_denominator, identifier)
+    if identifier == 'wheel_of_fortune' then
         if ret then
             G.GAME.wheel_fails = 0
         else
             G.GAME.wheel_fails = G.GAME.wheel_fails + 1
-        end
-        if G.GAME.wheel_fails >= 3 then
-            check_for_unlock({ type = 'hpfx_nope' })
-            G.GAME.wheel_fails = 0
+            if G.GAME.wheel_fails >= 3 then
+                check_for_unlock({ type = 'hpfx_nope' })
+                G.GAME.wheel_fails = 0
+            end
         end
     end
     return ret
