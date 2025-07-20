@@ -41,7 +41,7 @@ SMODS.Joker {
             (to_big(card.ability.extra.mult) > to_big(1)) then
             return {
                 func = function()
-                    hpfx_isaac(card, context)
+                    hpfx_isaacMult(card, context)
                 end
             }
         end
