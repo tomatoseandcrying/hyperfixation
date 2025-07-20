@@ -14,9 +14,7 @@ SMODS.Joker { --Iscariot/Judas
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_gain } }
     end,
     check_for_unlock = function(self, args)
-        if args.type == 'hpfx_devil' then
-            unlock_card(self)
-        end
+        return args.type == 'hpfx_devil'
     end,
     remove_from_deck = function(self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)

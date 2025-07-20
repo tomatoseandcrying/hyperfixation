@@ -1,5 +1,7 @@
 Hyperglobal = SMODS.current_mod
 Hyperglobal.og_boostweight = Hyperglobal.og_boostweight or {}
+G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
 
 --Visual Libraries
 SMODS.Atlas({
@@ -392,8 +394,6 @@ function roundmyshitprettyplease(thingwearerounding, tothemultipleof)
 end
 
 --Unlock Conditions
-G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
-G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
 SMODS.Joker:take_ownership('oops', {
     add_to_deck = function(self, card, context)
         check_for_unlock({ type = 'hpfx_oops' })

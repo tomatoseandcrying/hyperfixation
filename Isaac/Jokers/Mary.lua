@@ -26,11 +26,7 @@ SMODS.Joker {
         }
     end,
     check_for_unlock = function(self, args)
-        if args.type == 'hpfx_7mult' then
-            if to_big(args.mult) >= to_big(7) then
-                unlock_card(self)
-            end
-        end
+        return (args.type == 'hpfx_7mult' and to_big(args.mult) >= to_big(7))
     end,
     remove_from_deck = function(self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)

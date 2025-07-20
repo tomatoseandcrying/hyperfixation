@@ -51,11 +51,14 @@ local farm = SMODS.pseudorandom_probability
 function SMODS.pseudorandom_probability(card, num, denom, key)
     local ret = farm(card, num, denom, key)
     if key == 'wheel_of_fortune' then
-        if not ret then G.GAME.wheel_fails = 0
-        else G.GAME.wheel_fails = G.GAME.wheel_fails + 1
-            if G.GAME.wheel_fails >= 3 then
-                check_for_unlock({ type = 'hpfx_nope' })
-            end
+        if ret then
+            G.GAME.wheel_fails = 0
+        else
+            G.GAME.wheel_fails = G.GAME.wheel_fails + 1
+        end
+        if G.GAME.wheel_fails >= 3 then
+            check_for_unlock({ type = 'hpfx_nope' })
+            G.GAME.wheel_fails = 0
         end
     end
     return ret
@@ -68,7 +71,7 @@ function ease_hands_played(mod, instant)
     G.E_MANAGER:add_event(Event({
         trigger = 'immediate',
         func = function()
-            SMODS.calculate_context({hpfx_change_hands = true})
+            SMODS.calculate_context({ hpfx_change_hands = true })
             return true
         end
     }))
@@ -347,10 +350,12 @@ function G.UIDEF.hpfx_transform_button(card)
     if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq'
         and card.config.center.rarity == 4 then
         local specil = nil
-        for k, v in pairs(exceptions) do if key == v then
+        for k, v in pairs(exceptions) do
+            if key == v then
                 specil = true
                 break
-            end end
+            end
+        end
         if specil or card.visiblyIjiraq then
             transform = {
                 n = G.UIT.C,
