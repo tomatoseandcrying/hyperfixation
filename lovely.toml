@@ -48,10 +48,25 @@ if G.GAME.raqeffects and next(G.GAME.raqeffects) and card.config.center.key == '
             table.insert(jokers_table, joker)
         end
     end
+    G.GAME.hpfx_ijiraq_savedvalues = G.GAME.hpfx_ijiraq_savedvalues or {}
+    G.GAME.hpfx_ijiraq_savedvalues[card.sort_id] = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id] or {}
+    G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][last] = copy_table(card.ability)
     card.ability, card.config.center, card.config.center_key, jokers = old_ability, old_center, old_center_key, SMODS.merge_effects(jokers_table)
 else
     jokers, triggered = card:calculate_joker(context)
 end
+'''
+
+[[patches]] # Ijiraq Patch 4 (patches properly)
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''elseif _c.set == 'Joker' then'''
+position = 'before'
+match_indent = true
+payload = '''
+elseif _c.ijiraq then
+    localize{type = 'descriptions', set = 'Joker', key = _c.key, nodes = desc_nodes, vars = specific_vars or 
+_c.vars, AUT = {info = {}}}
 '''
 
 [[patches]] # Mary unlock check
