@@ -16,21 +16,23 @@ SMODS.Joker { --Ijiraq.
         extra = { jkey = 'ijiraq' }
     },
     loc_vars = function(self, info_queue, card)
-        for _, v in pairs(G.GAME.raqeffects) do
-            if G.P_CENTERS[v].loc_vars then
-                vars = G.P_CENTERS[v]:loc_vars({}, G.P_CENTERS[v]).vars
-            else
-                vars = Card.generate_UIBox_ability_table({
-                    ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v],
-                    config = { center = G.P_CENTERS[v] }
-                }, true)
+        if G.jokers then
+            for _, v in pairs(G.GAME.raqeffects) do
+                if G.P_CENTERS[v].loc_vars then
+                    vars = G.P_CENTERS[v]:loc_vars({}, G.P_CENTERS[v]).vars
+                else
+                    vars = Card.generate_UIBox_ability_table({
+                        ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v],
+                        config = { center = G.P_CENTERS[v] }
+                    }, true)
+                end
+                info_queue[#info_queue + 1] = {
+                    ijiraq = true,
+                    set = "Joker",
+                    key = v,
+                    vars = vars
+                }
             end
-            info_queue[#info_queue + 1] = {
-                ijiraq = true,
-                set = "Joker",
-                key = v,
-                vars = vars
-            }
         end
         return {
             vars = {
