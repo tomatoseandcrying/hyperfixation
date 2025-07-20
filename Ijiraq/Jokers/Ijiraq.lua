@@ -22,9 +22,7 @@ SMODS.Joker { --Ijiraq.
             else
                 vars = Card.generate_UIBox_ability_table({
                     ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v],
-                    config =
-                        G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v],
-                    bypass_lock = true
+                    config = { center = G.P_CENTERS[v] }
                 }, true)
             end
             info_queue[#info_queue + 1] = {
