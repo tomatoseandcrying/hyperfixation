@@ -1,36 +1,40 @@
-SMODS.Joker{ --Cyanosis/Blue Baby
+SMODS.Joker { --Cyanosis/Blue Baby
     key = 'cyanosis',
-    config = {extra = {chips = 0}},
+    config = { extra = { chips = 0 } },
     rarity = 1,
     atlas = 'IsaacJokers',
-    pos = {x = 4, y = 0},
+    pos = { x = 4, y = 0 },
     cost = -1,
     unlocked = false,
     discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    loc_vars = function (self, info_queue, card)
-        return{vars = {card.ability.extra.chips}}
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
     end,
     check_for_unlock = function(self, args)
-    if args.type == 'hpfx_momheart' then
-        unlock_card(self)
-    end
+        if args.type == 'hpfx_momheart' then
+            unlock_card(self)
+        end
     end,
-    remove_from_deck = function (self, card, from_debuff)
+    remove_from_deck = function(self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end,
-    calculate = function (self, card, context)
+    calculate = function(self, card, context)
         if context.joker_main and
-        (to_big(card.ability.extra.chips) > to_big(1)) then
-            return{hpfx_isaacChip(card, context)}
+            (to_big(card.ability.extra.chips) > to_big(1)) then
+            return {
+                func = function()
+                    hpfx_isaacChip(card, context)
+                end
+            }
         end
         if context.hyperfixation_mod_mult_decrease and
-        not context.blueprint_card then
+            not context.blueprint_card then
             card.ability.extra.chips = card.ability.extra.chips +
-            (context.hyperfixation_mod_mult_decrease * 10)
-            return{
+                (context.hyperfixation_mod_mult_decrease * 10)
+            return {
                 message = 'Soul...',
                 colour = G.C.CHIPS,
                 card = card
