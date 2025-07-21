@@ -15,6 +15,7 @@ function Blind:defeat(silent)
         G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount + 1
         if G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount >= 10 then
             check_for_unlock({ type = 'hpfx_momheart' })
+            G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = 0
         end
     end
     return bdf(self, silent)

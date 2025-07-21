@@ -10,8 +10,8 @@ return {
                     "end of the round"
                 },
                 unlock = {
-                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_oops'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
-                    "{C:inactive}--unlock condition: Obtain Oops! All 6s during a run{}"
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_oops'{}",
+                    "{C:inactive}--Obtain {C:hpfx_inattention}Oops! All 6s {C:inactive}during a run{}"
                 },
             },
             j_hpfx_mary = {
@@ -23,8 +23,8 @@ return {
                     "every {C:attention}#3#{} rounds",
                 },
                 unlock = {
-                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_7mult'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
-                    "{C:inactive}--unlock condition: Score at least 7 Mult within a single hand{}",
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_7mult'{}",
+                    "{C:inactive}--Score at least {C:hpfx_multiball}7 {C:inactive}Mult within a {C:hpfx_inattention}single hand{}",
                 },
             },
             j_hpfx_farmer = {
@@ -64,8 +64,8 @@ return {
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
                 },
                 unlock = {
-                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_momheart'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
-                    "{C:inactive}--unlock condition: Defeat Crimson Heart ten times{}",
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_momheart'{}",
+                    "{C:inactive}--Defeat the {C:hpfx_bossmute}Crimson Heart {C:hpfx_inattention}ten {C:inactive}times{}",
                 },
             },
 
