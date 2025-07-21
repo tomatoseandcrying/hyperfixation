@@ -88,6 +88,8 @@ SMODS.load_file('Stickers.lua')()
 --Custom Colors
 loc_colour('red')
 G.ARGS.LOC_COLOURS['hpfx_IjiGray'] = HEX("BFD7D5")
+G.ARGS.LOC_COLOURS['hpfx_inPURPLE'] = HEX("B1A1C0")
+G.ARGS.LOC_COLOURS['hpfx_inattention'] = HEX("ECB96D")
 
 --talisman conversion function
 to_big = to_big or function(x) return x end

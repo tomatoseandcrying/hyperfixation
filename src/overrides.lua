@@ -50,7 +50,7 @@ end
 local farm = SMODS.pseudorandom_probability
 function SMODS.pseudorandom_probability(trigger_obj, seed, base_numerator, base_denominator, identifier)
     local ret = farm(trigger_obj, seed, base_numerator, base_denominator, identifier)
-    if identifier == 'wheel_of_fortune' then
+    if seed == 'wheel_of_fortune' then
         if ret then
             G.GAME.wheel_fails = 0
         else

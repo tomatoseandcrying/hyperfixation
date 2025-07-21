@@ -31,12 +31,13 @@ return {
                 name = 'Farmer',
                 text = {
                     "{C:attention}+#1#{} Joker slot",
-                    "{C:attention}+#1#{} card selection limit"
+                    "{C:attention}+#1#{} card selection limit",
                     --"Doubles the probabilities of {C:purple}certain consumables{}" (hidden effect, commented out on purpose)
+                    "{C:inactive,E:2}#2#",
                 },
                 unlock = {
-                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_nope'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
-                    "{C:inactive}--unlock condition: Nope! on Wheel of Fortune 3 times in a row{}"
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_nope'{}",
+                    "{C:inactive}--{C:hpfx_inPURPLE}Nope!{} {C:inactive}on Wheel of Fortune {C:hpfx_inattention}3 {C:inactive}times {C:hpfx_inattention}in a row{}"
                 },
             },
             j_hpfx_iscariot = {

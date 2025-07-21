@@ -12,7 +12,14 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.size } }
+        local hint = pseudorandom("secrethint", 1, 7)
+        return {
+            vars = {
+                card.ability.extra.size,
+                card.area and card.area == G.jokers and hint == 1 and
+                "Fancy another go at the Big Six?" or "Skip devil deals, ain't worth it"
+            }
+        }
     end,
     check_for_unlock = function(self, args)
         return args.type == 'hpfx_nope'
