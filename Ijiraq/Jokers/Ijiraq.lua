@@ -9,7 +9,7 @@ SMODS.Joker { --Ijiraq.
     cost = 8,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
     config = {
@@ -85,6 +85,15 @@ SMODS.Joker { --Ijiraq.
                     found = true
                 end
                 if found then return { add_to_hand = true } end
+            end
+        end
+        if context.check_eternal and not context.blueprint then
+            for _, v in pairs(G.GAME.raqeffects) do
+                local found = false
+                if v == 'j_mr_bones' then
+                    found = true
+                end
+                if found then return { no_destroy = { override_compat = true } } end
             end
         end
     end

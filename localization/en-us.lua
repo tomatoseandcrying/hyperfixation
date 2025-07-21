@@ -695,7 +695,7 @@ return {
             j_hpfx_manolo = {
                 name = "Matador",
                 text = {
-                    "Earn {C:money}$#1#{} if played",
+                    "Earn {C:mult}$#1#{} if played",
                     "hand triggers the",
                     "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
@@ -703,7 +703,7 @@ return {
             j_hpfx_manolo_alt = {
                 name = "Matador{C:hpfx_IjiGray,s:0.7}...?",
                 text = {
-                    "Earn {C:money}$#1#{} if played",
+                    "Earn {C:mult}$#1#{} if played",
                     "hand triggers the",
                     "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray,s:0.7}#2#{}",
                 },
@@ -1394,7 +1394,7 @@ return {
                 name = 'Shortcut',
                 text = {
                     "Allows {C:attention}Straights{} to be",
-                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#1#{}",
                     "{C:inactive}(ex: {C:attention}10 8 6 5 3{C:inactive})",
                 },
             },
@@ -1402,7 +1402,7 @@ return {
                 name = 'Shortcut{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Allows {C:attention}Straights{} to be",
-                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#1#{}",
                     "{C:inactive}(ex: {C:attention}10 8 6 5 3{C:inactive})",
                 },
             },
