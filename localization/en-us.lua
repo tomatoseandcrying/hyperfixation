@@ -52,7 +52,7 @@ return {
                 },
                 unlock = {
                     "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_devil'{}",
-                    "{C:inactive}--Use The Devil {C:hpfx_inattention}3 {C:inactive}times{}"
+                    "{C:inactive}--Use {C:hpfx_inattention}The Devil {C:inactive}on a card {C:hpfx_inattention}3 {C:inactive}times{}"
                 },
             },
             j_hpfx_cyanosis = {

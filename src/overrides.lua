@@ -26,6 +26,7 @@ function SMODS.calculate_context(context, return_table)
         G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount + 1
         if G.PROFILES[G.SETTINGS.profile].hpfx_devilCount >= 3 then
             check_for_unlock({ type = 'hpfx_devil' })
+            G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = 0
         end
     end
     return ccc(context, return_table)
