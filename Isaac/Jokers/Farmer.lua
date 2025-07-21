@@ -12,7 +12,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     loc_vars = function(self, info_queue, card)
-        local hint = pseudorandom("secrethint", 1, 7)
+        local hint = pseudorandom("cainhint", 1, 7)
         return {
             vars = {
                 card.ability.extra.size,

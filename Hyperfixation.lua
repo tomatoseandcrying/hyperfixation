@@ -1,7 +1,7 @@
 Hyperglobal = SMODS.current_mod
 Hyperglobal.og_boostweight = Hyperglobal.og_boostweight or {}
-G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = hpfx_crimsonCount or 0
-G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = hpfx_devilCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount or 0
 
 --Visual Libraries
 SMODS.Atlas({

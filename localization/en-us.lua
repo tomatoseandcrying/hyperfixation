@@ -51,8 +51,8 @@ return {
 
                 },
                 unlock = {
-                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_devil'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
-                    "{C:inactive}--unlock condition: Use The Devil 3 times{}"
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_devil'{}",
+                    "{C:inactive}--Use The Devil {C:hpfx_inattention}3 {C:inactive}times{}"
                 },
             },
             j_hpfx_cyanosis = {
