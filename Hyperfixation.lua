@@ -119,13 +119,6 @@ function hpfx_isaacMult(card, context)
     }, card)
 end
 
-function counterIncrement(card, context)
-    if context.main_eval and (to_big(card.ability.extra.mult) > to_big(1))
-        and (to_big(card.ability.extra.mult_gain) > to_big(1)) then
-        card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1 --otherwise adds 1 to the counter
-    end
-end
-
 function stoneGeneration(card, context)
     local stone_card = create_playing_card(
         { center = G.P_CENTERS.m_stone },

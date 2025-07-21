@@ -12,7 +12,7 @@ SMODS.Joker {
     config = { extra = {
         mult = 8,
         mult_gain = 2,
-        rounds = 3,
+        rounds = 4,
         c_rounds = 0
     } },
     loc_vars = function(self, info_queue, card)
@@ -41,24 +41,26 @@ SMODS.Joker {
                 end
             }
         end
-        if context.end_of_round then
-            if not context.blueprint_card and
-                card.ability.extra.c_rounds >= card.ability.extra.rounds then
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if (to_big(card.ability.extra.mult) > to_big(1)) and (to_big(card.ability.extra.mult_gain) > to_big(1)) then
+                card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1
+            end
+            if card.ability.extra.c_rounds == card.ability.extra.rounds then
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                 card.ability.extra.c_rounds = 0
                 return {
                     message = 'Yum!',
                     sound = "hpfx_gulp",
-                    colour = G.C.MULT
+                    colour = G.C.MULT,
+                    card = card,
                 }
             end
-            return {
-                func = function()
-                    counterIncrement(card, context)
-                end
-            }
+            if card.ability.extra.rounds - 1 == card.ability.extra.c_rounds then
+                local eval = function(card) return card.ability.extra.c_rounds ~= 0 and not G.RESET_JIGGLES end
+                juice_card_until(card, eval, true)
+            end
         end
-    end,
+    end
     --[[     in_pool = function (self, args)
         return Hyperglobal.config.Isaac
     end, ]]

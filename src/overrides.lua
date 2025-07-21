@@ -46,7 +46,7 @@ function Card:calculate_joker(context)
             G.GAME.hpfx_nothingEverHappens = true
         end
     end
-    return chud(self, context)
+    return ret, trig
 end
 
 local farm = SMODS.pseudorandom_probability
