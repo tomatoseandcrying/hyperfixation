@@ -40,7 +40,7 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.check_eternal and not context.blueprint and card.config.center.key == 'j_hpfx_close_michelle' then
+        if context.check_eternal and not context.blueprint and context.other_card == card then
             return { no_destroy = { override_compat = true } }
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
