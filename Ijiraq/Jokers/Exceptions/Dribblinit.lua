@@ -1,8 +1,8 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'dribblinit',
-    pos = {x = 4, y = 8},
-    soul_pos = {x = 4, y = 9},
+    pos = { x = 4, y = 8 },
+    soul_pos = { x = 4, y = 9 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -13,12 +13,12 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 2,
-        xmult_gain = math.sqrt(2)
+            xmult = 2,
+            xmult_gain = 2
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 card.area and card.area == G.jokers and "...?" or "",
@@ -42,15 +42,15 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and
-        (context.other_card:get_id() == 12 or context.other_card:get_id() == 13)
-        and not context.blueprint and not context.end_of_round and not context.after then
+            (context.other_card:get_id() == 12 or context.other_card:get_id() == 13)
+            and not context.blueprint and not context.end_of_round and not context.after then
             card.ability.extra.xmult = (card.ability.extra.xmult * card.ability.extra.xmult_gain)
             return {
-                message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
+                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
                 colour = G.C.RED,
                 message_card = context.other_card
             }
         end
-        if context.joker_main then return {xmult = card.ability.extra.xmult} end
+        if context.joker_main then return { xmult = card.ability.extra.xmult } end
     end
 }

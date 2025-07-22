@@ -12,7 +12,7 @@ SMODS.Joker {
     perishable_compat = true,
     config = { extra = {
         xmult = 2,
-        xmult_gain = math.sqrt(10),
+        xmult_gain = 10,
     } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain } }
