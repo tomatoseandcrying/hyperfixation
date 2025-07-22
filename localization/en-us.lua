@@ -908,7 +908,7 @@ return {
                 name = 'Gros Michel',
                 text = {
                     "{C:mult}+#1#{} Mult",
-                    "{C:green}#2# in 6{} chance this",
+                    "{C:green}#2# in #3#{} chance this",
                     "card is destroyed",
                     "at end of round{C:hpfx_IjiGray,s:0.7}#4#{}",
                 },
@@ -917,7 +917,7 @@ return {
                 name = 'Gros Michel{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:mult}+#1#{} Mult",
-                    "{C:green}#2# in 6{} chance this",
+                    "{C:green}#2# in #3#{} chance this",
                     "card is destroyed",
                     "at end of round{C:hpfx_IjiGray,s:0.7}#4#{}",
                 },

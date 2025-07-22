@@ -199,6 +199,14 @@ function hpfx_Transform(card, context)
             return true
         end,
     }))
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            SMODS.calculate_context({ hpfx_raqeffect_check = true })
+            return true
+        end,
+    }))
     return true
 end
 
@@ -248,6 +256,14 @@ function Card:Transfodd(context)
             return true
         end
     }))
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            SMODS.calculate_context({ hpfx_raqeffect_check = true })
+            return true
+        end,
+    }))
     return true
 end
 
@@ -296,9 +312,15 @@ function G.FUNCS.hpfx_Transbutt(e)
             return true
         end,
     }))
-    --here?
+    G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.15,
+        func = function()
+            SMODS.calculate_context({ hpfx_raqeffect_check = true })
+            return true
+        end,
+    }))
     return true
-    --or maybe here?
 end
 
 function G.FUNCS.hpfx_Perktoggle(e)

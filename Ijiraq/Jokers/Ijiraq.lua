@@ -13,7 +13,7 @@ SMODS.Joker { --Ijiraq.
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
     config = {
-        extra = { jkey = 'ijiraq' }
+        extra = { jkey = 'ijiraq', d_size = 1 }
     },
     loc_vars = function(self, info_queue, card)
         if G.jokers then
@@ -36,7 +36,8 @@ SMODS.Joker { --Ijiraq.
         end
         return {
             vars = {
-                card.ability.extra.jkey
+                card.ability.extra.jkey,
+                card.ability.extra.d_size
             }
         }
     end,
@@ -66,9 +67,31 @@ SMODS.Joker { --Ijiraq.
                 }))
             end
         end
+        for _, v in pairs(G.GAME.raqeffects) do --Drunkard
+            local found = false
+            if v == 'j_drunkard' then
+                found = true
+            end
+            if found then
+                ease_discard(card.ability.extra.d_size, true, true)
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
+            end
+        end
     end,
-    calc_dollar_bonus = function(self, card) --Golden Joker Ability
+    remove_from_deck = function(self, card, from_debuff)
         for _, v in pairs(G.GAME.raqeffects) do
+            local found = false
+            if v == 'j_drunkard' then
+                found = true
+            end
+            if found then
+                ease_discard(-card.ability.extra.d_size, true, true)
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
+            end
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        for _, v in pairs(G.GAME.raqeffects) do --And Golden Joker
             local bonus = 4
             local found = false
             if v == 'j_golden' then
@@ -78,7 +101,7 @@ SMODS.Joker { --Ijiraq.
         end
     end,
     calculate = function(self, card, context)
-        if context.modify_scoring_hand and not context.blueprint then
+        if context.modify_scoring_hand and not context.blueprint then --And Splash
             for _, v in pairs(G.GAME.raqeffects) do
                 local found = false
                 if v == 'j_splash' then
@@ -87,7 +110,7 @@ SMODS.Joker { --Ijiraq.
                 if found then return { add_to_hand = true } end
             end
         end
-        if context.check_eternal and not context.blueprint then
+        if context.check_eternal and not context.blueprint then --And Mr. Bones
             for _, v in pairs(G.GAME.raqeffects) do
                 local found = false
                 if v == 'j_mr_bones' then

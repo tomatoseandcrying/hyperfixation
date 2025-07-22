@@ -292,7 +292,7 @@ function Card:highlight(is_higlighted)
     self.highlighted = is_higlighted
     local key = self.config.center.key
     local owned = self.area and self.area == G.jokers and self.ability.set == 'Joker'
-    if owned and key == 'j_hpfx_perknado' then
+    if owned and key == 'j_hpfx_perknado' and key ~= 'j_hpfx_ijiraq' then
         if self.highlighted then
             if self.children.toggle_button then
                 self.children.toggle_button:remove()
@@ -335,7 +335,7 @@ function Card:highlight(is_higlighted)
                 }
             end
         end
-    elseif key == 'j_hpfx_ijiraq' then
+    elseif owned and key == 'j_hpfx_ijiraq' and not self.highlighted then
         if self.children.toggle_button then
             self.children.toggle_button:remove()
             self.children.toggle_button = nil

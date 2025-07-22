@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'close_michelle',
-    pos = {x = 7, y = 6},
+    pos = { x = 7, y = 6 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -11,15 +11,17 @@ SMODS.Joker{
     rarity = 1,
     cost = 5,
     atlas = 'IjiraqJokers',
-    config = {extra = {mult = 15}},
-    loc_vars = function (self, info_queue, card)
-        local new_num, new_denom = SMODS.get_probability_vars(card, 1, 1, 'hpfx_michelle_id')
-        return{
+    config = { extra = { mult = 15, dynadenom = 1 } },
+    loc_vars = function(self, info_queue, card)
+        local new_num, new_denom = SMODS.get_probability_vars(card, 1, card.ability.extra.dynadenom,
+            'hpfx_michelle_id')
+        return {
             vars = {
                 card.ability.extra.mult,
                 new_num,
-                new_denom,
-                card.area and card.area == G.jokers and "...?" or ""
+                card.area and card.area == G.jokers and new_denom or '6',
+                card.area and card.area == G.jokers and "...?" or "",
+                card.ability.extra.dynadenom
             }
         }
     end,
@@ -39,11 +41,11 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.check_eternal and not context.blueprint then
-            return{no_destroy = {override_compat = true}}
+            return { no_destroy = { override_compat = true } }
         end
-        if context.end_of_round and context.game_over == false and 
-        context.main_eval and not context.blueprint then
-            if SMODS.pseudorandom_probability(card, 'hpfx_michelle_seed', 1, 1, 'hpfx_michelle_id') then
+        if context.end_of_round and context.game_over == false and
+            context.main_eval and not context.blueprint then
+            if SMODS.pseudorandom_probability(card, 'hpfx_michelle_seed', context.numerator, card.ability.extra.dynadenom, 'hpfx_michelle_id') then
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         play_sound('tarot1')
@@ -57,25 +59,23 @@ SMODS.Joker{
                             delay = 0.3,
                             blockable = false,
                             func = function()
-                                michelleSacrifice:hpfx_Transform(michelleSacrifice, context)
+                                hpfx_Transform(michelleSacrifice, context)
+                                if card.ability.extra.dynadenom > 0 then
+                                    card.ability.extra.dynadenom = card.ability.dynadenom + 1
+                                end
                                 return true
                             end
                         }))
                         return true
                     end
                 }))
-                if context.mod_probability then
-                    return{
-                        denominator = context.denominator + 1
-                    }
-                end
                 return {
-                    message = localize('hpfx_spread_ex')             
+                    message = localize('hpfx_spread_ex')
                 }
             else
                 return {
                     message = localize('hpfx_wither_ex'),
-                    func = function ()
+                    func = function()
                         hpfx_Transform(card, context)
                     end
                 }
