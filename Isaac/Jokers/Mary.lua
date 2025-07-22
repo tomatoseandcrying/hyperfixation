@@ -55,8 +55,9 @@ SMODS.Joker {
                     card = card,
                 }
             end
+            print(card.ability.extra.c_rounds, card.ability.extra.rounds)
             if card.ability.extra.rounds - 1 == card.ability.extra.c_rounds then
-                local eval = function(card) return card.ability.extra.c_rounds ~= 0 and not G.RESET_JIGGLES end
+                local eval = function(card) return card.ability.extra.c_rounds ~= 0 end
                 juice_card_until(card, eval, true)
             end
         end
