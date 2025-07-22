@@ -24,7 +24,7 @@ SMODS.Joker {
         if context.mod_probability and not context.blueprint then
             return { denominator = context.denominator * 10 }
         end
-        if context.pseudorandom_result and context.result and not context.blueprint then
+        if context.pseudorandom_result and context.result and context.main_eval and not context.blueprint then
             card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
             return { message = localize('k_upgrade_ex'), colour = G.C.MULT, message_card = card }
         end
