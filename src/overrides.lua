@@ -391,6 +391,7 @@ function G.UIDEF.hpfx_transform_button(card)
     end
 end
 
+--Apophenia Trolling (Thanks Finity)
 local boss = get_new_boss
 function get_new_boss()
     local ret = boss()
