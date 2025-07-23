@@ -40,6 +40,7 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        local endlist = 0
         if context.check_eternal and not context.blueprint and context.other_card == card then
             return { no_destroy = { override_compat = true } }
         end
@@ -54,7 +55,7 @@ SMODS.Joker {
                         card:juice_up(0.3, 0.4)
                         local candidates = {}
                         for _, j in ipairs(G.jokers.cards) do
-                            if j ~= card then
+                            if j ~= card and j ~= 'j_hpfx_ijiraq' then
                                 table.insert(candidates, j)
                             end
                         end
@@ -75,12 +76,16 @@ SMODS.Joker {
                         return true
                     end
                 }))
+                if endlist == 4 then endlist = 1 else endlist = endlist + 1 end
                 return {
-                    message = localize('hpfx_spread_ex')
+                    message = localize('hpfx_spread_ex'),
+                    sound = ('hpfx_end') .. endlist
                 }
             else
+                endlist = 1
                 return {
                     message = localize('hpfx_wither_ex'),
+                    sound = ('hpfx_boowomp'),
                     no_destroy = { override_compat = true },
                     func = function()
                         hpfx_Transform(card, context)

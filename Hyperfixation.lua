@@ -67,6 +67,26 @@ SMODS.Sound({
     path = "lastwishpickup.ogg",
     volume = 0.6,
 })
+SMODS.Sound({
+    key = "hpfx_end1",
+    path = "end1.ogg",
+})
+SMODS.Sound({
+    key = "hpfx_end2",
+    path = "end2.ogg",
+})
+SMODS.Sound({
+    key = "hpfx_end3",
+    path = "end3.ogg",
+})
+SMODS.Sound({
+    key = "hpfx_end4",
+    path = "end4.ogg",
+})
+SMODS.Sound({
+    key = "hpfx_boowomp",
+    path = "boowomp.ogg",
+})
 
 --File Loading
 mod_path = "" .. SMODS.current_mod.path
