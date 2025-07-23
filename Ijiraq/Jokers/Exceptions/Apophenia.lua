@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'apophenia',
-    pos = {x = 6, y = 3},
+    pos = { x = 6, y = 3 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,9 +10,9 @@ SMODS.Joker{
     rarity = 2,
     cost = 5,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
-        return{
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -31,13 +31,21 @@ SMODS.Joker{
         card.ability.extra.new_key = "j_hpfx_apophenia_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
+        G.FUNCS.reroll_boss()
+        ease_dollars(10)
         for _, pard in ipairs(G.playing_cards) do
-            if not pard:get_id() == 11 or not pard:get_id() == 12 or not pard:get_id() == 13 then
+            if not pard:is_face() then
                 SMODS.destroy_cards(pard)
             end
         end
-        func = function ()
-            hpfx_Transform(card, context)
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            return {
+                func = function()
+                    hpfx_Transform(card, context)
+                end
+            }
         end
     end
 }

@@ -390,3 +390,14 @@ function G.UIDEF.hpfx_transform_button(card)
         return transform
     end
 end
+
+local boss = get_new_boss
+function get_new_boss()
+    local ret = boss()
+    if next(SMODS.find_card('j_hpfx_apophenia')) then
+        if G.GAME.round_resets.ante % G.GAME.win_ante ~= 0 then
+            ret = "bl_plant"
+        end
+    end
+    return ret
+end

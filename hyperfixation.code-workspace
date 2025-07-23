@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "../Steamodded"
+		},
+		{
+			"path": "../DebugPlus"
 		}
 	],
 	"settings": {}
