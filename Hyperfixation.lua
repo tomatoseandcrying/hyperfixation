@@ -355,6 +355,14 @@ function G.FUNCS.hpfx_Perktoggle(e)
     }))
 end
 
+function G.FUNCS.hpfx_Perkcheck(e)
+    local _card = e.config.ref_table
+    if _card.config.center.key == 'j_hpfx_ijiraq' then
+        _card.children.toggle_button:remove()
+        _card.children.toggle_button = nil
+    end
+end
+
 function Hyperglobal.safe_set_ability(self, center)
     if not self or not center then return nil end
     local oldcenter = self.config.center

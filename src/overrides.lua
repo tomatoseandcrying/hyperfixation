@@ -313,6 +313,7 @@ function Card:highlight(is_higlighted)
                         colour = G.C.DARK_EDITION,
                         one_press = false,
                         button = 'hpfx_Perktoggle',
+                        func = 'hpfx_Perkcheck',
                         minh = 0.6,
                         instance_type = "UIBOX"
                     },
