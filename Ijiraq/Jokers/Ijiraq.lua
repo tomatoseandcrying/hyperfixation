@@ -13,10 +13,16 @@ SMODS.Joker { --Ijiraq.
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
     config = {
-        extra = { jkey = 'ijiraq', d_size = 1 }
+        extra = {
+            jkey = 'ijiraq',
+            d_size = 1,
+            cash = 1,
+            goldcash = 4,
+            gratcash = 2
+        }
     },
     loc_vars = function(self, info_queue, card)
-        if G.jokers then
+        if G.jokers and card.area == G.jokers then
             for _, v in pairs(G.GAME.raqeffects) do
                 if G.P_CENTERS[v].loc_vars then
                     vars = G.P_CENTERS[v]:loc_vars({}, G.P_CENTERS[v]).vars
@@ -37,7 +43,10 @@ SMODS.Joker { --Ijiraq.
         return {
             vars = {
                 card.ability.extra.jkey,
-                card.ability.extra.d_size
+                card.ability.extra.d_size,
+                card.ability.extra.cash,
+                card.ability.extra.goldcash,
+                card.ability.extra.gratcash,
             }
         }
     end,
@@ -91,14 +100,37 @@ SMODS.Joker { --Ijiraq.
         end
     end,
     calc_dollar_bonus = function(self, card)
-        for _, v in pairs(G.GAME.raqeffects) do --And Golden Joker
-            local bonus = 4
-            local found = false
+        local totalcash = 0
+        for _, v in pairs(G.GAME.raqeffects) do
+            local obj = card.ability and card.ability.extra
             if v == 'j_golden' then
-                found = true
+                totalcash = totalcash + obj.goldcash
             end
-            if found then return bonus end
+            if v == 'j_cloud_9' then
+                local nine_tally = 0
+                for _, pcard in ipairs(G.playing_cards) do
+                    if pcard:get_id() == 9 then nine_tally = nine_tally + 1 end
+                end
+                if nine_tally > 0 then
+                    totalcash = totalcash + (obj.cash * nine_tally)
+                end
+            end
+            if v == 'j_rocket' then
+                totalcash = totalcash + obj.cash
+            end
+            if v == 'j_satellite' then
+                local planets_used = 0
+                for k, _v in pairs(G.GAME.consumeable_usage) do
+                    if _v.set == 'Planet' then planets_used = planets_used + 1 end
+                end
+                totalcash = totalcash + (obj.cash * planets_used)
+            end
+            if v == 'j_delayed_grat' and G.GAME.current_round.discards_used == 0
+                and G.GAME.current_round.discards_left > 0 then
+                totalcash = totalcash + (obj.gratcash * G.GAME.current_round.discards_left)
+            end
         end
+        return totalcash
     end,
     calculate = function(self, card, context)
         if context.modify_scoring_hand and not context.blueprint then --And Splash

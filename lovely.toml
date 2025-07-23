@@ -84,7 +84,7 @@ payload = '''
 check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
 '''
 
-[[patches]] # Golden Joker? transformation
+[[patches]] # calc_dollar_bonus transformation
 [patches.pattern]
 match_indent = true
 times = 1
@@ -99,7 +99,7 @@ end
 '''
 position = "after"
 payload = '''
-if _card.config.center.key == "j_hpfx_pyramid" or _card.config.center.key == "j_hpfx_earthbound" or _card.config.center.key == "j_hpfx_blastoff" or _card.config.center.key == "j_hpfx_take_the_moon" then
+if calcdollarjokesters[_card.config.center.key] then
     hpfx_Transform(_card)
 end
 '''

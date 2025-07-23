@@ -608,6 +608,13 @@ exceptions = {
     j_smiley = 'j_hpfx_frowny',
     j_walkie_talkie = 'j_hpfx_talkie_walkie',
 }
+calcdollarjokesters = {
+    j_hpfx_pyramid = 'j_golden',
+    j_hpfx_earthbound = 'j_cloud_9',
+    j_hpfx_blastoff = 'j_rocket',
+    j_hpfx_take_the_moon = 'j_to_the_moon',
+    j_hpfx_apollo = 'j_satellite',
+}
 
 --debug
 function maxx_debug(txt)
@@ -643,4 +650,12 @@ function lalegion()
     SMODS.add_card({ key = 'j_hpfx_familia' })
     SMODS.add_card({ key = 'j_hpfx_orden' })
     SMODS.add_card({ key = 'j_hpfx_tribu' })
+end
+
+function bagchase()
+    SMODS.add_card({ key = 'j_hpfx_pyramid' })
+    SMODS.add_card({ key = 'j_hpfx_earthbound' })
+    SMODS.add_card({ key = 'j_hpfx_blastoff' })
+    SMODS.add_card({ key = 'j_hpfx_belated_grat' })
+    SMODS.add_card({ key = 'j_hpfx_apollo' })
 end
