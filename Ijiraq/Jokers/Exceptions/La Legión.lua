@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'dupla',
-    pos = {x = 5, y = 4},
+    pos = { x = 5, y = 4 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,12 +12,13 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 2,
-        type = 'Pair'
+            xmult = 2,
+            type = 'Pair',
+            lowest_count_destroyed = false
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 localize(card.ability.extra.type, 'poker_hands'),
@@ -40,28 +41,46 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        extra = card.ability and card.ability.extra or {}
         if context.joker_main and next(context.poker_hands[card.ability.extra.type]) then
             return {
                 xmult = card.ability.extra.xmult,
             }
         end
-        if context.destroy_card and not context.blueprint then
-            if #context.full_hand >= 2 and context.destroy_card ==
-            context.full_hand[context.poker_hands[card.ability.extra.type]]
-            then return {
-                remove = true,
-                func = function ()
+        if context.destroy_card and not context.blueprint and context.scoring_hand then
+            -- Count occurrences of each rank in scoring_hand
+            local rank_counts = {}
+            for _, c in ipairs(context.scoring_hand) do
+                local rank = c:get_id()
+                rank_counts[rank] = (rank_counts[rank] or 0) + 1
+            end
+
+            -- Find the minimum count
+            local min_count = math.huge
+            for _, count in pairs(rank_counts) do
+                if count < min_count then min_count = count end
+            end
+
+            -- If the destroyed card is one of the lowest count ranks, remove it
+            local destroyed_rank = context.destroy_card:get_id()
+            if rank_counts[destroyed_rank] == min_count then
+                extra.lowest_count_destroyed = true
+                return { remove = true }
+            end
+        end
+        if context.after and extra.lowest_count_destroyed then
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
-                }
-            end
+            }
         end
     end
 }
 
-SMODS.Joker{
+SMODS.Joker {
     key = 'triada',
-    pos = {x = 6, y = 4},
+    pos = { x = 6, y = 4 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -72,12 +91,13 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 3,
-        type = 'Three of a Kind'
+            xmult = 3,
+            type = 'Three of a Kind',
+            lowest_count_destroyed = false
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 localize(card.ability.extra.type, 'poker_hands'),
@@ -100,28 +120,46 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        extra = card.ability and card.ability.extra or {}
         if context.joker_main and next(context.poker_hands[card.ability.extra.type]) then
             return {
                 xmult = card.ability.extra.xmult,
             }
         end
-        if context.destroy_card and not context.blueprint then
-            if #context.full_hand >= 3 and context.destroy_card ==
-            context.full_hand[context.poker_hands[card.ability.extra.type]]
-            then return {
-                remove = true,
-                func = function ()
+        if context.destroy_card and not context.blueprint and context.scoring_hand then
+            -- Count occurrences of each rank in scoring_hand
+            local rank_counts = {}
+            for _, c in ipairs(context.scoring_hand) do
+                local rank = c:get_id()
+                rank_counts[rank] = (rank_counts[rank] or 0) + 1
+            end
+
+            -- Find the minimum count
+            local min_count = math.huge
+            for _, count in pairs(rank_counts) do
+                if count < min_count then min_count = count end
+            end
+
+            -- If the destroyed card is one of the lowest count ranks, remove it
+            local destroyed_rank = context.destroy_card:get_id()
+            if rank_counts[destroyed_rank] == min_count then
+                extra.lowest_count_destroyed = true
+                return { remove = true }
+            end
+        end
+        if context.after and extra.lowest_count_destroyed then
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
-                }
-            end
+            }
         end
     end
 }
 
-SMODS.Joker{
+SMODS.Joker {
     key = 'familia',
-    pos = {x = 7, y = 4},
+    pos = { x = 7, y = 4 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -132,12 +170,13 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 4,
-        type = 'Four of a Kind'
+            xmult = 4,
+            type = 'Four of a Kind',
+            lowest_count_destroyed = false
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 localize(card.ability.extra.type, 'poker_hands'),
@@ -160,28 +199,46 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        extra = card.ability and card.ability.extra or {}
         if context.joker_main and next(context.poker_hands[card.ability.extra.type]) then
             return {
                 xmult = card.ability.extra.xmult,
             }
         end
-        if context.destroy_card and not context.blueprint then
-            if #context.full_hand >= 4 and context.destroy_card ==
-            context.full_hand[context.poker_hands[card.ability.extra.type]]
-            then return {
-                remove = true,
-                func = function ()
+        if context.destroy_card and not context.blueprint and context.scoring_hand then
+            -- Count occurrences of each rank in scoring_hand
+            local rank_counts = {}
+            for _, c in ipairs(context.scoring_hand) do
+                local rank = c:get_id()
+                rank_counts[rank] = (rank_counts[rank] or 0) + 1
+            end
+
+            -- Find the minimum count
+            local min_count = math.huge
+            for _, count in pairs(rank_counts) do
+                if count < min_count then min_count = count end
+            end
+
+            -- If the destroyed card is one of the lowest count ranks, remove it
+            local destroyed_rank = context.destroy_card:get_id()
+            if rank_counts[destroyed_rank] == min_count then
+                extra.lowest_count_destroyed = true
+                return { remove = true }
+            end
+        end
+        if context.after and extra.lowest_count_destroyed then
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
-                }
-            end
+            }
         end
     end
 }
 
-SMODS.Joker{
+SMODS.Joker {
     key = 'orden',
-    pos = {x = 8, y = 4},
+    pos = { x = 8, y = 4 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -192,12 +249,13 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 3,
-        type = 'Straight'
+            xmult = 3,
+            type = 'Straight',
+            lowest_count_destroyed = false
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 localize(card.ability.extra.type, 'poker_hands'),
@@ -220,28 +278,46 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        extra = card.ability and card.ability.extra or {}
         if context.joker_main and next(context.poker_hands[card.ability.extra.type]) then
             return {
                 xmult = card.ability.extra.xmult,
             }
         end
-        if context.destroy_card and not context.blueprint then
-            if #context.full_hand >= 5 and context.destroy_card ==
-            context.full_hand[context.poker_hands[card.ability.extra.type]]
-            then return {
-                remove = true,
-                func = function ()
+        if context.destroy_card and not context.blueprint and context.scoring_hand then
+            -- Count occurrences of each rank in scoring_hand
+            local rank_counts = {}
+            for _, c in ipairs(context.scoring_hand) do
+                local rank = c:get_id()
+                rank_counts[rank] = (rank_counts[rank] or 0) + 1
+            end
+
+            -- Find the minimum count
+            local min_count = math.huge
+            for _, count in pairs(rank_counts) do
+                if count < min_count then min_count = count end
+            end
+
+            -- If the destroyed card is one of the lowest count ranks, remove it
+            local destroyed_rank = context.destroy_card:get_id()
+            if rank_counts[destroyed_rank] == min_count then
+                extra.lowest_count_destroyed = true
+                return { remove = true }
+            end
+        end
+        if context.after and extra.lowest_count_destroyed then
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
-                }
-            end
+            }
         end
     end
 }
 
-SMODS.Joker{
+SMODS.Joker {
     key = 'tribu',
-    pos = {x = 9, y = 4},
+    pos = { x = 9, y = 4 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -252,12 +328,13 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 2,
-        type = 'Flush'
+            xmult = 2,
+            type = 'Flush',
+            lowest_count_destroyed = false
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 localize(card.ability.extra.type, 'poker_hands'),
@@ -280,21 +357,39 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        extra = card.ability and card.ability.extra or {}
         if context.joker_main and next(context.poker_hands[card.ability.extra.type]) then
             return {
                 xmult = card.ability.extra.xmult,
             }
         end
-        if context.destroy_card and not context.blueprint then
-            if #context.full_hand >= 5 and context.destroy_card ==
-            context.full_hand[context.poker_hands[card.ability.extra.type]]
-            then return {
-                remove = true,
-                func = function ()
+        if context.destroy_card and not context.blueprint and context.scoring_hand then
+            -- Count occurrences of each rank in scoring_hand
+            local rank_counts = {}
+            for _, c in ipairs(context.scoring_hand) do
+                local rank = c:get_id()
+                rank_counts[rank] = (rank_counts[rank] or 0) + 1
+            end
+
+            -- Find the minimum count
+            local min_count = math.huge
+            for _, count in pairs(rank_counts) do
+                if count < min_count then min_count = count end
+            end
+
+            -- If the destroyed card is one of the lowest count ranks, remove it
+            local destroyed_rank = context.destroy_card:get_id()
+            if rank_counts[destroyed_rank] == min_count then
+                extra.lowest_count_destroyed = true
+                return { remove = true }
+            end
+        end
+        if context.after and extra.lowest_count_destroyed then
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
-                }
-            end
+            }
         end
     end
 }

@@ -628,3 +628,11 @@ end
 function tomaheart(count)
     G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = count
 end
+
+function lalegion()
+    SMODS.add_card({ key = 'j_hpfx_dupla' })
+    SMODS.add_card({ key = 'j_hpfx_triada' })
+    SMODS.add_card({ key = 'j_hpfx_familia' })
+    SMODS.add_card({ key = 'j_hpfx_orden' })
+    SMODS.add_card({ key = 'j_hpfx_tribu' })
+end
