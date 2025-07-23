@@ -81,7 +81,7 @@ SMODS.Joker { --Ijiraq.
     remove_from_deck = function(self, card, from_debuff)
         for _, v in pairs(G.GAME.raqeffects) do
             local found = false
-            if v == 'j_drunkard' then
+            if v == 'j_drunkard' then --Also Drunkard
                 found = true
             end
             if found then
