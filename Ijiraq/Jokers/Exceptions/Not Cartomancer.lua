@@ -16,6 +16,7 @@ SMODS.Joker {
         return {
             vars = {
                 card.ability.extra.mult,
+                card.ability.extra.mult * (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.tarot or 0),
                 new_num,
                 new_denom,
                 card.area and card.area == G.jokers and "...?" or ""

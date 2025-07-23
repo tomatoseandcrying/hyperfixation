@@ -100,14 +100,14 @@ return {
                 name = 'Acrobat',
                 text = {
                     "{X:red,C:white}X#1#{} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}hand{} of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_trapezoid_alt = {
                 name = 'Acrobat{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{X:red,C:white}X#1#{} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}hand{} of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_scaryandy = {
@@ -115,7 +115,7 @@ return {
                 text = {
                     "{C:red}+#1#{} discards",
                     "each round,",
-                    "{C:red}#2#{} hand size{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:red}#2#{} hand size{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_scaryandy_alt = {
@@ -123,35 +123,35 @@ return {
                 text = {
                     "{C:red}+#1#{} discards",
                     "each round,",
-                    "{C:red}#2#{} hand size{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:red}#2#{} hand size{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_expired = {
                 name = 'Credit Card',
                 text = {
                     "Go up to",
-                    "{C:red}-$#1#{} in debt{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:red}-$#1#{} in debt{C:hpfx_IjiGray}#2#{}",
                 }
             },
             j_hpfx_expired_alt = {
                 name = 'Credit Card{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Go up to",
-                    "{C:red}-$#1#{} in debt{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:red}-$#1#{} in debt{C:hpfx_IjiGray}#2#{}",
                 }
             },
             j_hpfx_bard = {
                 name = 'Troubadour',
                 text = {
                     "{C:attention}+#1#{} hand size,",
-                    "{C:blue}#2#{} hand each round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:blue}#2#{} hand each round{C:hpfx_IjiGray}#3#{}",
                 }
             },
             j_hpfx_bard_alt = {
                 name = 'Troubadour{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:attention}+#1#{} hand size,",
-                    "{C:blue}#2#{} hand each round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:blue}#2#{} hand each round{C:hpfx_IjiGray}#3#{}",
                 }
             },
             j_hpfx_flag = {
@@ -159,7 +159,7 @@ return {
                 text = {
                     "{C:chips}+#1#{} Chips for",
                     "each remaining",
-                    "{C:attention}discard{}{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}discard{}{C:hpfx_IjiGray}#2#{}",
                 }
             },
             j_hpfx_flag_alt = {
@@ -167,7 +167,7 @@ return {
                 text = {
                     "{C:chips}+#1#{} Chips for",
                     "each remaining",
-                    "{C:attention}discard{}{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}discard{}{C:hpfx_IjiGray}#2#{}",
                 }
             },
             j_hpfx_twistit = {
@@ -175,7 +175,7 @@ return {
                 text = {
                     "{C:mult}+#1#{} Mult when",
                     "{C:attention}#2#{} discards",
-                    "remaining{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "remaining{C:hpfx_IjiGray}#3#{}",
                 }
             },
             j_hpfx_twistit_alt = {
@@ -183,7 +183,7 @@ return {
                 text = {
                     "{C:mult}+#1#{} Mult when",
                     "{C:attention}#2#{} discards",
-                    "remaining{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "remaining{C:hpfx_IjiGray}#3#{}",
                 }
             },
             j_hpfx_porcelain = {
@@ -191,30 +191,30 @@ return {
                 text = {
                     "Adds one {C:attention}Stone{} card",
                     "to deck when",
-                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_porcelain_alt = {
-                name = "Marble Joker{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Marble Joker{C:hpfx_IjiGray}...?",
                 text = {
                     "Adds one {C:attention}Stone{} card",
                     "to deck when",
-                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Blind{} is selected{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_redeemed = {
                 name = "Loyalty Card",
                 text = {
                     "{X:red,C:white}X#1#{} Mult every",
-                    "{C:attention}6{} hands played{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:attention}6{} hands played{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}5 remaining",
                 },
             },
             j_hpfx_redeemed_alt = {
-                name = "Loyalty Card{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Loyalty Card{C:hpfx_IjiGray}...?",
                 text = {
                     "{X:red,C:white}X#1#{} Mult every",
-                    "{C:attention}6{} hands played{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:attention}6{} hands played{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}5 remaining",
                 },
             },
@@ -223,15 +223,15 @@ return {
                 text = {
                     "Retrigger",
                     "each played",
-                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_whack_alt = {
-                name = "Hack{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Hack{C:hpfx_IjiGray}...?",
                 text = {
                     "Retrigger",
                     "each played",
-                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_reprint = {
@@ -241,7 +241,7 @@ return {
                 },
             },
             j_hpfx_reprint_alt = {
-                name = "Misprint{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Misprint{C:hpfx_IjiGray}...?",
                 text = {
                     ""
                 },
@@ -251,16 +251,16 @@ return {
                 text = {
                     "Gives {X:mult,C:white}X#1#{} Mult",
                     "for each {C:attention}Steel Card",
-                    "in your {C:attention}full deck{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "in your {C:attention}full deck{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
             j_hpfx_iron_alt = {
-                name = "Steel Joker{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Steel Joker{C:hpfx_IjiGray}...?",
                 text = {
                     "Gives {X:mult,C:white} X#1# {} Mult",
                     "for each {C:attention}Steel Card",
-                    "in your {C:attention}full deck{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "in your {C:attention}full deck{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -269,83 +269,83 @@ return {
                 text = {
                     "Adds {C:attention}double{} the rank",
                     "of {C:attention}lowest{} ranked card",
-                    "held in hand to Mult{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "held in hand to Mult{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_braised_alt = {
-                name = "Raised Fist{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Raised Fist{C:hpfx_IjiGray}...?",
                 text = {
                     "Adds {C:attention}double{} the rank",
                     "of {C:attention}lowest{} ranked card",
-                    "held in hand to Mult{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "held in hand to Mult{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_pyramid = {
                 name = "Golden Joker",
                 text = {
                     "Earn {C:money}$#1#{} at",
-                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_pyramid_alt = {
-                name = "Golden Joker{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Golden Joker{C:hpfx_IjiGray}...?",
                 text = {
                     "Earn {C:money}$#1#{} at",
-                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_bluebell = {
                 name = "Blueprint",
                 text = {
                     "Copies ability of",
-                    "{C:attention}Joker{} to the right{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Joker{} to the right{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_bluebell_alt = {
-                name = "Blueprint{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Blueprint{C:hpfx_IjiGray}...?",
                 text = {
                     "Copies ability of",
-                    "{C:attention}Joker{} to the right{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Joker{} to the right{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_chaoz = {
                 name = "Chaos the Clown",
                 text = {
                     "{C:attention}#1#{} free {C:green}Reroll",
-                    "per shop{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "per shop{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_chaoz_alt = {
-                name = "Chaos the Clown{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Chaos the Clown{C:hpfx_IjiGray}...?",
                 text = {
                     "{C:attention}#1#{} free {C:green}Reroll",
-                    "per shop{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "per shop{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_jiggler = {
                 name = "Juggler",
                 text = {
-                    "{C:attention}+#1#{} hand size{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}+#1#{} hand size{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_jiggler_alt = {
-                name = "Juggler{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Juggler{C:hpfx_IjiGray}...?",
                 text = {
-                    "{C:attention}+#1#{} hand size{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}+#1#{} hand size{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_scrumpy = {
                 name = "Drunkard",
                 text = {
                     "{C:red}+#1#{} discard",
-                    "each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_scrumpy_alt = {
-                name = "Drunkard{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Drunkard{C:hpfx_IjiGray}...?",
                 text = {
                     "{C:red}+#1#{} discard",
-                    "each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_fiberglass = {
@@ -353,16 +353,16 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Glass Card",
-                    "that is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "that is destroyed{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
             j_hpfx_fiberglass_alt = {
-                name = "Glass Joker{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Glass Joker{C:hpfx_IjiGray}...?",
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Glass Card",
-                    "that is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "that is destroyed{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -370,7 +370,7 @@ return {
                 name = 'Abstract Joker',
                 text = {
                     "{C:mult}+#1#{} Mult for",
-                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "each {C:attention}Joker{} card{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
                     "{X:hpfx_IjiGray,C:white}#3#/4{}"
@@ -380,7 +380,7 @@ return {
                 name = 'Abstract Joker{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:mult}+#1#{} Mult for",
-                    "each {C:attention}Joker{} card{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "each {C:attention}Joker{} card{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                     "",
                     "{X:hpfx_IjiGray,C:white}#3#/4{}"
@@ -391,7 +391,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} per {C:attention}discard{} if",
                     "no discards are used",
-                    "by end of the round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "by end of the round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_belated_grat_alt = {
@@ -399,21 +399,21 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} per {C:attention}discard{} if",
                     "no discards are used",
-                    "by end of the round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "by end of the round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_tocket = {
                 name = 'Golden Ticket',
                 text = {
                     "Played {C:attention}Gold{} cards",
-                    "earn {C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "earn {C:money}$#1#{} when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_tocket_alt = {
                 name = 'Golden Ticket{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Played {C:attention}Gold{} cards",
-                    "earn {C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "earn {C:money}$#1#{} when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_apophenia = {
@@ -421,7 +421,7 @@ return {
                 text = {
                     "All cards are",
                     "considered",
-                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}face{} cards{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_apophenia_alt = {
@@ -429,14 +429,14 @@ return {
                 text = {
                     "All cards are",
                     "considered",
-                    "{C:attention}face{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}face{} cards{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_not_fortune_teller = {
                 name = 'Cartomancer',
                 text = {
                     "Create a {C:tarot}Tarot{} card",
-                    "when {C:attention}Blind{} is selected{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "when {C:attention}Blind{} is selected{C:hpfx_IjiGray}#1#{}",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -444,7 +444,7 @@ return {
                 name = 'Cartomancer{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Create a {C:tarot}Tarot{} card",
-                    "when {C:attention}Blind{} is selected{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "when {C:attention}Blind{} is selected{C:hpfx_IjiGray}#1#{}",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -453,7 +453,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:attention}even{} rank give",
-                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(10, 8, 6, 4, 2)",
                 },
             },
@@ -462,7 +462,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:attention}even{} rank give",
-                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(10, 8, 6, 4, 2)",
                 },
             },
@@ -471,7 +471,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:attention}odd{} rank give",
-                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(A, 9, 7, 5, 3)",
                 },
             },
@@ -480,7 +480,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:attention}odd{} rank give",
-                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(A, 9, 7, 5, 3)",
                 },
             },
@@ -490,7 +490,7 @@ return {
                     "Played {C:attention}Aces{}",
                     "give {C:chips}+#2#{} Chips",
                     "and {C:mult}+#1#{} Mult",
-                    "when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_flunkie_alt = {
@@ -499,7 +499,7 @@ return {
                     "Played {C:attention}Aces{}",
                     "give {C:chips}+#2#{} Chips",
                     "and {C:mult}+#1#{} Mult",
-                    "when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_ribtickler = {
@@ -509,7 +509,7 @@ return {
                     "if chips scored",
                     "are at least {C:attention}25%",
                     "of required chips",
-                    "{S:1.1,C:red,E:2}self destructs{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{S:1.1,C:red,E:2}self destructs{}{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_ribtickler_alt = {
@@ -519,7 +519,7 @@ return {
                     "if chips scored",
                     "are at least {C:attention}25%",
                     "of required chips",
-                    "{S:1.1,C:red,E:2}self destructs{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{S:1.1,C:red,E:2}self destructs{}{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_peeking_twice = {
@@ -528,7 +528,7 @@ return {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand has a scoring",
                     "{C:clubs}Club{} card and a scoring",
-                    "card of any other {C:attention}suit{}{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "card of any other {C:attention}suit{}{C:hpfx_IjiGray}#5#{}",
                     "",
                     "{s:0.5}[{C:diamonds}#2#{}, {C:hearts}#3#{}, {C:spades}#4#{}]{}",
                 },
@@ -539,7 +539,7 @@ return {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand has a scoring",
                     "{C:clubs}Club{} card and a scoring",
-                    "card of any other {C:attention}suit{}{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "card of any other {C:attention}suit{}{C:hpfx_IjiGray}#5#{}",
                     "",
                     "{s:0.5}[{C:diamonds}#2#{}, {C:hearts}#3#{}, {C:spades}#4#{}]{}",
                 },
@@ -549,7 +549,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_dupla_alt = {
@@ -557,7 +557,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_triada = {
@@ -565,7 +565,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_triada_alt = {
@@ -573,7 +573,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_familia = {
@@ -581,7 +581,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_familia_alt = {
@@ -589,7 +589,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_orden = {
@@ -597,7 +597,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_orden_alt = {
@@ -605,7 +605,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_tribu = {
@@ -613,7 +613,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_tribu_alt = {
@@ -621,7 +621,7 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if played",
                     "hand contains",
-                    "a {C:attention}#2#{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:attention}#2#{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_7_ball = {
@@ -630,7 +630,7 @@ return {
                     "{C:green}#1# in #2#{} chance for each",
                     "played {C:attention}#4#{} to create a",
                     "{C:tarot}Tarot{} card when scored",
-                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_7_ball_alt = {
@@ -639,7 +639,7 @@ return {
                     "{C:green}#1# in #2#{} chance for each",
                     "played {C:attention}#4#{} to create a",
                     "{C:tarot}Tarot{} card when scored",
-                    "{C:inactive}(Must have room){C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:inactive}(Must have room){C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_golden_ratio = {
@@ -647,7 +647,7 @@ return {
                 text = {
                     "Each played #4#,",
                     "#5#, #6#, #7#, or #8# gives",
-                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_golden_ratio_alt = {
@@ -655,7 +655,7 @@ return {
                 text = {
                     "Each played #4#,",
                     "#5#, #6#, #7#, or #8# gives",
-                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_cutout = {
@@ -664,7 +664,7 @@ return {
                     "{X:red,C:white}X1{} Mult for each",
                     "empty {C:attention}Joker{} slot",
                     "{s:0.8}Joker Stencil included",
-                    "{C:inactive}(Currently {X:red,C:white}X#1#{C:inactive}{C:hpfx_IjiGray,s:0.7}#2#{})",
+                    "{C:inactive}(Currently {X:red,C:white}X#1#{C:inactive}{C:hpfx_IjiGray}#2#{})",
                 },
             },
             j_hpfx_cutout_alt = {
@@ -673,7 +673,7 @@ return {
                     "{X:red,C:white}X1{} Mult for each",
                     "empty {C:attention}Joker{} slot",
                     "{s:0.8}Joker Stencil included",
-                    "{C:inactive}(Currently {X:red,C:white}X#1#{C:inactive}{C:hpfx_IjiGray,s:0.7}#2#{})",
+                    "{C:inactive}(Currently {X:red,C:white}X#1#{C:inactive}{C:hpfx_IjiGray}#2#{})",
                 },
             },
             j_hpfx_time = {
@@ -681,15 +681,15 @@ return {
                 text = {
                     "{C:green}#1# in #2#{} chance to",
                     "upgrade level of",
-                    "played {C:attention}poker hand{}{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "played {C:attention}poker hand{}{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_time_alt = {
-                name = "Space Joker{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Space Joker{C:hpfx_IjiGray}...?",
                 text = {
                     "{C:green}#1# in #2#{} chance to",
                     "upgrade level of",
-                    "played {C:attention}poker hand{}{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "played {C:attention}poker hand{}{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_manolo = {
@@ -697,15 +697,15 @@ return {
                 text = {
                     "Earn {C:mult}$#1#{} if played",
                     "hand triggers the",
-                    "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_manolo_alt = {
-                name = "Matador{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Matador{C:hpfx_IjiGray}...?",
                 text = {
                     "Earn {C:mult}$#1#{} if played",
                     "hand triggers the",
-                    "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}Boss Blind{} ability{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_ritual = {
@@ -714,17 +714,17 @@ return {
                     "When {C:attention}Blind{} is selected,",
                     "destroy Joker to the right",
                     "and permanently add {C:attention}double",
-                    "its sell value to this {C:red}Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "its sell value to this {C:red}Mult{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 }
             },
             j_hpfx_ritual_alt = {
-                name = "Ceremonial Dagger{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Ceremonial Dagger{C:hpfx_IjiGray}...?",
                 text = {
                     "When {C:attention}Blind{} is selected,",
                     "destroy Joker to the right",
                     "and permanently add {C:attention}double",
-                    "its sell value to this {C:red}Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "its sell value to this {C:red}Mult{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 }
             },
@@ -733,15 +733,15 @@ return {
                 text = {
                     "{C:attention}Joker{}, {C:tarot}Tarot{}, {C:planet}Planet{},",
                     "and {C:spectral}Spectral{} cards may",
-                    "appear multiple times{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "appear multiple times{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_showman_alt = {
-                name = "Showman{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Showman{C:hpfx_IjiGray}...?",
                 text = {
                     "{C:attention}Joker{}, {C:tarot}Tarot{}, {C:planet}Planet{},",
                     "and {C:spectral}Spectral{} cards may",
-                    "appear multiple times{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "appear multiple times{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_nix_sense = {
@@ -749,16 +749,16 @@ return {
                 text = {
                     "If {C:attention}first hand{} of round is",
                     "a single {C:attention}6{}, destroy it and",
-                    "create a {C:spectral}Spectral{} card{C:hpfx_IjiGray,s:0.7}#1#",
+                    "create a {C:spectral}Spectral{} card{C:hpfx_IjiGray}#1#",
                     "{C:inactive}(Must have room)",
                 },
             },
             j_hpfx_nix_sense_alt = {
-                name = "Sixth Sense{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Sixth Sense{C:hpfx_IjiGray}...?",
                 text = {
                     "If {C:attention}first hand{} of round is",
                     "a single {C:attention}6{}, destroy it and",
-                    "create a {C:spectral}Spectral{} card{C:hpfx_IjiGray,s:0.7}#1#",
+                    "create a {C:spectral}Spectral{} card{C:hpfx_IjiGray}#1#",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -766,15 +766,15 @@ return {
                 name = "Fortune Teller",
                 text = {
                     "{C:red}+#1#{} Mult per {C:purple}Tarot{}",
-                    "card used this run{C:hpfx_IjiGray,s:0.7}#5#",
+                    "card used this run{C:hpfx_IjiGray}#5#",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive})",
                 },
             },
             j_hpfx_not_cartomancer_alt = {
-                name = "Fortune Teller{C:hpfx_IjiGray,s:0.7}...?",
+                name = "Fortune Teller{C:hpfx_IjiGray}...?",
                 text = {
                     "{C:red}+#1#{} Mult per {C:purple}Tarot{}",
-                    "card used this run{C:hpfx_IjiGray,s:0.7}#5#",
+                    "card used this run{C:hpfx_IjiGray}#5#",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive})",
                 },
             },
@@ -783,7 +783,7 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Jack{}",
-                    "discarded this round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "discarded this round{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                     "",
                     "#4#",
@@ -794,7 +794,7 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Jack{}",
-                    "discarded this round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "discarded this round{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                     "",
                     "#4#",
@@ -806,7 +806,7 @@ return {
                     "{X:mult,C:white}X#1#{} Mult if poker",
                     "hand contains a",
                     "#3# card, #4# card,",
-                    "#5# card, and #6# card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "#5# card, and #6# card{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_daisy_vase_alt = {
@@ -815,7 +815,7 @@ return {
                     "{X:mult,C:white}X#1#{} Mult if poker",
                     "hand contains a",
                     "#3# card, #4# card,",
-                    "#5# card, and #6# card{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "#5# card, and #6# card{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_get_an_uber = {
@@ -824,7 +824,7 @@ return {
                     "This Joker gains {C:mult}+#1#{} Mult",
                     "per {C:attention}consecutive{} hand",
                     "played without a",
-                    "scoring {C:attention}face{} card{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "scoring {C:attention}face{} card{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
@@ -834,7 +834,7 @@ return {
                     "This Joker gains {C:mult}+#1#{} Mult",
                     "per {C:attention}consecutive{} hand",
                     "played without a",
-                    "scoring {C:attention}face{} card{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "scoring {C:attention}face{} card{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
@@ -843,7 +843,7 @@ return {
                 text = {
                     "Each {C:attention}Queen{}",
                     "held in hand",
-                    "gives {C:mult}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "gives {C:mult}+#1#{} Mult{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_take_the_sun_alt = {
@@ -851,7 +851,7 @@ return {
                 text = {
                     "Each {C:attention}Queen{}",
                     "held in hand",
-                    "gives {C:mult}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "gives {C:mult}+#1#{} Mult{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_smudged = {
@@ -860,7 +860,7 @@ return {
                     "{C:hearts}Hearts{} and {C:diamonds}Diamonds",
                     "count as the same suit,",
                     "{C:spades}Spades{} and {C:clubs}Clubs",
-                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "count as the same suit{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_smudged_alt = {
@@ -869,14 +869,14 @@ return {
                     "{C:hearts}Hearts{} and {C:diamonds}Diamonds",
                     "count as the same suit,",
                     "{C:spades}Spades{} and {C:clubs}Clubs",
-                    "count as the same suit{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "count as the same suit{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_whoops = {
                 name = 'Oops! All 6s',
                 text = {
                     "Doubles all {C:attention}listed",
-                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray}#1#{}",
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
                 },
             },
@@ -884,7 +884,7 @@ return {
                 name = 'Oops! All 6s{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Doubles all {C:attention}listed",
-                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:green,E:1,S:1.1}probabilities{}{C:hpfx_IjiGray}#1#{}",
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
                 },
             },
@@ -893,7 +893,7 @@ return {
                 text = {
                     "All {C:attention}Flushes{} and",
                     "{C:attention}Straights{} can be",
-                    "made with {C:attention}4{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "made with {C:attention}4{} cards{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_and_thumb_alt = {
@@ -901,7 +901,7 @@ return {
                 text = {
                     "All {C:attention}Flushes{} and",
                     "{C:attention}Straights{} can be",
-                    "made with {C:attention}4{} cards{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "made with {C:attention}4{} cards{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_close_michelle = {
@@ -910,7 +910,7 @@ return {
                     "{C:mult}+#1#{} Mult",
                     "{C:green}#2# in #3#{} chance this",
                     "card is destroyed",
-                    "at end of round{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "at end of round{C:hpfx_IjiGray}#4#{}",
                 },
             },
             j_hpfx_close_michelle_alt = {
@@ -919,21 +919,21 @@ return {
                     "{C:mult}+#1#{} Mult",
                     "{C:green}#2# in #3#{} chance this",
                     "card is destroyed",
-                    "at end of round{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "at end of round{C:hpfx_IjiGray}#4#{}",
                 },
             },
             j_hpfx_buttowski = {
                 name = 'Stuntman',
                 text = {
                     "{C:chips}+#1#{} Chips,",
-                    "{C:attention}-#2#{} hand size{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:attention}-#2#{} hand size{C:hpfx_IjiGray}#4#{}",
                 },
             },
             j_hpfx_buttowski_alt = {
                 name = 'Stuntman{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:chips}+#1#{} Chips,",
-                    "{C:attention}-#2#{} hand size{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:attention}-#2#{} hand size{C:hpfx_IjiGray}#4#{}",
                 },
             },
             j_hpfx_hung_chad = {
@@ -941,7 +941,7 @@ return {
                 text = {
                     "Retrigger {C:attention}first{} played",
                     "card used in scoring",
-                    "{C:attention}#1#{} additional times{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}#1#{} additional times{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_hung_chad_alt = {
@@ -949,7 +949,7 @@ return {
                 text = {
                     "Retrigger {C:attention}first{} played",
                     "card used in scoring",
-                    "{C:attention}#1#{} additional times{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}#1#{} additional times{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_learners_permit = {
@@ -957,7 +957,7 @@ return {
                 text = {
                     "{X:mult,C:white} X#1# {} Mult if you have",
                     "at least {C:attention}16{} Enhanced",
-                    "cards in your full deck{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "cards in your full deck{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive})"
                 },
             },
@@ -966,7 +966,7 @@ return {
                 text = {
                     "{X:mult,C:white} X#1# {} Mult if you have",
                     "at least {C:attention}16{} Enhanced",
-                    "cards in your full deck{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "cards in your full deck{C:hpfx_IjiGray}#2#{}",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive})",
                 },
             },
@@ -975,7 +975,7 @@ return {
                 text = {
                     "After {C:attention}#1#{} rounds,",
                     "sell this card to",
-                    "{C:attention}Duplicate{} a random Joker{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:attention}Duplicate{} a random Joker{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
                 },
             },
@@ -984,7 +984,7 @@ return {
                 text = {
                     "After {C:attention}#1#{} rounds,",
                     "sell this card to",
-                    "{C:attention}Duplicate{} a random Joker{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:attention}Duplicate{} a random Joker{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
                 },
             },
@@ -993,7 +993,7 @@ return {
                 text = {
                     "All {C:planet}Planet{} cards and",
                     "{C:planet}Celestial Packs{} in",
-                    "the shop are {C:attention}free{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "the shop are {C:attention}free{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_galilimbo_alt = {
@@ -1001,7 +1001,7 @@ return {
                 text = {
                     "All {C:planet}Planet{} cards and",
                     "{C:planet}Celestial Packs{} in",
-                    "the shop are {C:attention}free{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "the shop are {C:attention}free{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_charred = {
@@ -1009,7 +1009,7 @@ return {
                 text = {
                     "Upgrade the level of",
                     "the first {C:attention}discarded",
-                    "poker hand each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "poker hand each round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_charred_alt = {
@@ -1017,7 +1017,7 @@ return {
                 text = {
                     "Upgrade the level of",
                     "the first {C:attention}discarded",
-                    "poker hand each round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "poker hand each round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_dawn = {
@@ -1025,7 +1025,7 @@ return {
                 text = {
                     "Retrigger all played",
                     "cards in {C:attention}final",
-                    "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}hand{} of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_dawn_alt = {
@@ -1033,14 +1033,14 @@ return {
                 text = {
                     "Retrigger all played",
                     "cards in {C:attention}final",
-                    "{C:attention}hand{} of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}hand{} of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_flashforward = {
                 name = 'Throwback',
                 text = {
                     "{X:mult,C:white}X#1#{} Mult for each",
-                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1048,7 +1048,7 @@ return {
                 name = 'Throwback{C:hpfx_IjiGray,}...?{}',
                 text = {
                     "{X:mult,C:white}X#1#{} Mult for each",
-                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:attention}Blind{} skipped this run{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1056,14 +1056,14 @@ return {
                 name = 'Brainstorm',
                 text = {
                     "Copies the ability",
-                    "of leftmost {C:attention}Joker{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "of leftmost {C:attention}Joker{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_stormcloud_alt = {
                 name = 'Brainstorm{C:hpfx_IjiGray,}...?{}',
                 text = {
                     "Copies the ability",
-                    "of leftmost {C:attention}Joker{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "of leftmost {C:attention}Joker{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_apollo = {
@@ -1071,7 +1071,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} at end of",
                     "round per unique {C:planet}Planet",
-                    "card used this run{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "card used this run{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
             },
@@ -1080,7 +1080,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} at end of",
                     "round per unique {C:planet}Planet",
-                    "card used this run{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "card used this run{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
             },
@@ -1089,7 +1089,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:diamonds}Diamond{} suit earn",
-                    "{C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:money}$#1#{} when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_snowgrave_alt = {
@@ -1097,7 +1097,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:diamonds}Diamond{} suit earn",
-                    "{C:money}$#1#{} when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:money}$#1#{} when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_sanguinerock = {
@@ -1106,7 +1106,7 @@ return {
                     "{C:green}#1# in #2#{} chance for",
                     "played cards with",
                     "{C:hearts}Heart{} suit to give",
-                    "{X:mult,C:white}X#3#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{X:mult,C:white}X#3#{} Mult when scored{C:hpfx_IjiGray}#4#{}",
                 },
             },
             j_hpfx_sanguinerock_alt = {
@@ -1115,7 +1115,7 @@ return {
                     "{C:green}#1# in #2#{} chance for",
                     "played cards with",
                     "{C:hearts}Heart{} suit to give",
-                    "{X:mult,C:white}X#3#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{X:mult,C:white}X#3#{} Mult when scored{C:hpfx_IjiGray}#4#{}",
                 },
             },
             j_hpfx_ahead = {
@@ -1123,7 +1123,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:spades}Spade{} suit give",
-                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_ahead_alt = {
@@ -1131,7 +1131,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:spades}Spade{} suit give",
-                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_obsidian = {
@@ -1139,7 +1139,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:clubs}Club{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_obsidian_alt = {
@@ -1147,7 +1147,7 @@ return {
                 text = {
                     "Played cards with",
                     "{C:clubs}Club{} suit give",
-                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_canio = {
@@ -1155,7 +1155,7 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "when a {C:attention}face{} card",
-                    "is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "is destroyed{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1164,7 +1164,7 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "when a {C:attention}face{} card",
-                    "is destroyed{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "is destroyed{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1173,7 +1173,7 @@ return {
                 text = {
                     "Played {C:attention}Kings{} and",
                     "{C:attention}Queens{} each give",
-                    "{X:mult,C:white}X#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{X:mult,C:white}X#1#{} Mult when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_dribblinit_alt = {
@@ -1181,7 +1181,7 @@ return {
                 text = {
                     "Played {C:attention}Kings{} and",
                     "{C:attention}Queens{} each give",
-                    "{X:mult,C:white}X#1#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{X:mult,C:white}X#1#{} Mult when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_yomorty = {
@@ -1189,7 +1189,7 @@ return {
                 text = {
                     "This Joker gains",
                     "{X:mult,C:white}X#1#{} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
-                    "cards discarded{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "cards discarded{C:hpfx_IjiGray}#5#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
                 },
             },
@@ -1198,7 +1198,7 @@ return {
                 text = {
                     "This Joker gains",
                     "{X:mult,C:white} X#1# {} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
-                    "cards discarded{C:hpfx_IjiGray,s:0.7}#5#{}",
+                    "cards discarded{C:hpfx_IjiGray}#5#{}",
                     "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
                 },
             },
@@ -1206,14 +1206,14 @@ return {
                 name = 'Chicot',
                 text = {
                     "Disables effect of",
-                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "every {C:attention}Boss Blind{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_anglerais_alt = {
                 name = 'Chicot{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Disables effect of",
-                    "every {C:attention}Boss Blind{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "every {C:attention}Boss Blind{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_perknado = {
@@ -1222,7 +1222,7 @@ return {
                     "Creates a {C:dark_edition}Negative{} copy of",
                     "{C:attention}1{} random {C:attention}#3#{}",
                     "card in your possession",
-                    "at the end of the {C:attention}shop{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "at the end of the {C:attention}shop{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_perknado_alt = {
@@ -1231,7 +1231,7 @@ return {
                     "Creates a {C:dark_edition}Negative{} copy of",
                     "{C:attention}1{} random {C:attention}#3#{}",
                     "#4#in your possession",
-                    "at the end of the {C:attention}shop{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "at the end of the {C:attention}shop{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_sirtificate = {
@@ -1240,7 +1240,7 @@ return {
                     "When round begins,",
                     "add a random {C:attention}playing",
                     "{C:attention}card{} with a random",
-                    "{C:attention}seal{} to your hand{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}seal{} to your hand{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_sirtificate_alt = {
@@ -1249,14 +1249,14 @@ return {
                     "When round begins,",
                     "add a random {C:attention}playing",
                     "{C:attention}card{} with a random",
-                    "{C:attention}seal{} to your hand{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}seal{} to your hand{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_shoebuckles = {
                 name = 'Bootstraps',
                 text = {
                     "{C:mult}+#1#{} Mult for every",
-                    "{C:money}$#2#{} you have{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:money}$#2#{} you have{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
                 },
             },
@@ -1264,7 +1264,7 @@ return {
                 name = 'Bootstraps{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:mult}+#1#{} Mult for every",
-                    "{C:money}$#2#{} you have{C:hpfx_IjiGray,s:0.7}#4#{}",
+                    "{C:money}$#2#{} you have{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
                 },
             },
@@ -1273,7 +1273,7 @@ return {
                 text = {
                     "Gains {C:money}$#1#{} of",
                     "{C:attention}sell value{} at",
-                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_chicken_alt = {
@@ -1281,7 +1281,7 @@ return {
                 text = {
                     "Gains {C:money}$#1#{} of",
                     "{C:attention}sell value{} at",
-                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_robber = {
@@ -1289,7 +1289,7 @@ return {
                 text = {
                     "When {C:attention}Blind{} is selected,",
                     "gain {C:blue}+#1#{} Hands and",
-                    "{C:attention}lose all discards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}lose all discards{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_robber_alt = {
@@ -1297,21 +1297,21 @@ return {
                 text = {
                     "When {C:attention}Blind{} is selected,",
                     "gain {C:blue}+#1#{} Hands and",
-                    "{C:attention}lose all discards{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:attention}lose all discards{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_splatter = {
                 name = 'Splash',
                 text = {
                     "Every {C:attention}played card",
-                    "counts in scoring{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "counts in scoring{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_splatter_alt = {
                 name = 'Splash{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Every {C:attention}played card",
-                    "counts in scoring{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "counts in scoring{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_sagittarius = {
@@ -1319,7 +1319,7 @@ return {
                 text = {
                     "This Joker gains",
                     "{X:mult,C:white}X#1#{} Mult every time",
-                    "a {C:planet}Planet{} card is used{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:planet}Planet{} card is used{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1328,7 +1328,7 @@ return {
                 text = {
                     "This Joker gains",
                     "{X:mult,C:white}X#1#{} Mult every time",
-                    "a {C:planet}Planet{} card is used{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "a {C:planet}Planet{} card is used{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
@@ -1337,7 +1337,7 @@ return {
                 text = {
                     "Every played {C:attention}card{}",
                     "permanently gains",
-                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_hitchhiker_alt = {
@@ -1345,7 +1345,7 @@ return {
                 text = {
                     "Every played {C:attention}card{}",
                     "permanently gains",
-                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:chips}+#1#{} Chips when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_noface = {
@@ -1354,7 +1354,7 @@ return {
                     "Earn {C:money}$#1#{} if {C:attention}#2#{} or",
                     "more {C:attention}face cards{}",
                     "are discarded",
-                    "at the same time{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "at the same time{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_noface_alt = {
@@ -1363,7 +1363,7 @@ return {
                     "Earn {C:money}$#1#{} if {C:attention}#2#{} or",
                     "more {C:attention}face cards{}",
                     "are discarded",
-                    "at the same time{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "at the same time{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_rectangle = {
@@ -1381,20 +1381,20 @@ return {
             j_hpfx_jumbo = {
                 name = 'Joker',
                 text = {
-                    "{C:red,s:1.1}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:red,s:1.1}+#1#{} Mult{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_jumbo_alt = {
                 name = 'Joker{C:hpfx_IjiGray}...?{}',
                 text = {
-                    "{C:red,s:1.1}+#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "{C:red,s:1.1}+#1#{} Mult{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_secretway = {
                 name = 'Shortcut',
                 text = {
                     "Allows {C:attention}Straights{} to be",
-                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray}#1#{}",
                     "{C:inactive}(ex: {C:attention}10 8 6 5 3{C:inactive})",
                 },
             },
@@ -1402,7 +1402,7 @@ return {
                 name = 'Shortcut{C:hpfx_IjiGray}...?{}',
                 text = {
                     "Allows {C:attention}Straights{} to be",
-                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "made with gaps of {C:attention}1 rank{C:hpfx_IjiGray}#1#{}",
                     "{C:inactive}(ex: {C:attention}10 8 6 5 3{C:inactive})",
                 },
             },
@@ -1411,7 +1411,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} for each",
                     "{C:attention}9{} in your {C:attention}full deck",
-                    "at end of round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "at end of round{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:money}$#2#{}{C:inactive})",
                 },
             },
@@ -1420,7 +1420,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} for each",
                     "{C:attention}9{} in your {C:attention}full deck",
-                    "at end of round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "at end of round{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Currently {C:money}$#2#{}{C:inactive})",
                 },
             },
@@ -1429,7 +1429,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} at end of round",
                     "Payout increases by {C:money}$#2#{}",
-                    "when {C:attention}Boss Blind{} is defeated{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "when {C:attention}Boss Blind{} is defeated{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_blastoff_alt = {
@@ -1437,7 +1437,7 @@ return {
                 text = {
                     "Earn {C:money}$#1#{} at end of round",
                     "Payout increases by {C:money}$#2#{}",
-                    "when {C:attention}Boss Blind{} is defeated{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "when {C:attention}Boss Blind{} is defeated{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_wrestler = {
@@ -1445,7 +1445,7 @@ return {
                 text = {
                     "Sell this card to",
                     "disable the current",
-                    "{C:attention}Boss Blind{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Boss Blind{}{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_wrestler_alt = {
@@ -1453,7 +1453,7 @@ return {
                 text = {
                     "Sell this card to",
                     "disable the current",
-                    "{C:attention}Boss Blind{}{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Boss Blind{}{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_card = {
@@ -1462,7 +1462,7 @@ return {
                     "Add {C:money}$#1#{} of {C:attention}sell value",
                     "to every {C:attention}Joker{} and",
                     "{C:attention}Consumable{} card at",
-                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_card_alt = {
@@ -1471,7 +1471,7 @@ return {
                     "Add {C:money}$#1#{} of {C:attention}sell value",
                     "to every {C:attention}Joker{} and",
                     "{C:attention}Consumable{} card at",
-                    "end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_lima_bean = {
@@ -1479,7 +1479,7 @@ return {
                 text = {
                     "{C:attention}+#1#{} hand size,",
                     "reduces by",
-                    "{C:red}#2#{} every round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:red}#2#{} every round{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_lima_bean_alt = {
@@ -1487,7 +1487,7 @@ return {
                 text = {
                     "{C:attention}+#1#{} hand size,",
                     "reduces by",
-                    "{C:red}#2#{} every round{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:red}#2#{} every round{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_take_the_moon = {
@@ -1495,7 +1495,7 @@ return {
                 text = {
                     "Earn an extra {C:money}$#1#{} of",
                     "{C:attention}interest{} for every {C:money}$5{} you",
-                    "have at end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "have at end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_take_the_moon_alt = {
@@ -1503,7 +1503,7 @@ return {
                 text = {
                     "Earn an extra {C:money}$#1#{} of",
                     "{C:attention}interest{} for every {C:money}$5{} you",
-                    "have at end of round{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "have at end of round{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_illusion = {
@@ -1511,7 +1511,7 @@ return {
                 text = {
                     "{C:green}#1# in #2#{} chance to create",
                     "a {C:tarot}Tarot{} card when any",
-                    "{C:attention}Booster Pack{} is opened{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:attention}Booster Pack{} is opened{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -1520,7 +1520,7 @@ return {
                 text = {
                     "{C:green}#1# in #2#{} chance to create",
                     "a {C:tarot}Tarot{} card when any",
-                    "{C:attention}Booster Pack{} is opened{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:attention}Booster Pack{} is opened{C:hpfx_IjiGray}#3#{}",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -1528,14 +1528,14 @@ return {
                 name = 'Baseball Card',
                 text = {
                     "{C:green}Uncommon{} Jokers",
-                    "each give {X:mult,C:white}X#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each give {X:mult,C:white}X#1#{} Mult{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_softball_alt = {
                 name = 'Baseball Card{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:green}Uncommon{} Jokers",
-                    "each give {X:mult,C:white}X#1#{} Mult{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "each give {X:mult,C:white}X#1#{} Mult{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_cola = {
@@ -1543,7 +1543,7 @@ return {
                 text = {
                     "Sell this card to",
                     "create a free",
-                    "{C:attention}Double Tag{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Double Tag{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_cola_alt = {
@@ -1551,7 +1551,7 @@ return {
                 text = {
                     "Sell this card to",
                     "create a free",
-                    "{C:attention}Double Tag{C:hpfx_IjiGray,s:0.7}#1#{}",
+                    "{C:attention}Double Tag{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_collecting = {
@@ -1559,7 +1559,7 @@ return {
                 text = {
                     "If {C:attention}first discard{} of round",
                     "has only {C:attention}1{} card, destroy",
-                    "it and earn {C:money}$#1#{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "it and earn {C:money}$#1#{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_collecting_alt = {
@@ -1567,7 +1567,7 @@ return {
                 text = {
                     "If {C:attention}first discard{} of round",
                     "has only {C:attention}1{} card, destroy",
-                    "it and earn {C:money}$#1#{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "it and earn {C:money}$#1#{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_seltzer = {
@@ -1575,7 +1575,7 @@ return {
                 text = {
                     "Retrigger all",
                     "cards played for",
-                    "the next {C:attention}#1#{} hands{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "the next {C:attention}#1#{} hands{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_seltzer_alt = {
@@ -1583,7 +1583,7 @@ return {
                 text = {
                     "Retrigger all",
                     "cards played for",
-                    "the next {C:attention}#1#{} hands{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "the next {C:attention}#1#{} hands{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_frowny = {
@@ -1591,7 +1591,7 @@ return {
                 text = {
                     "Played {C:attention}face{} cards",
                     "give {C:mult}+#1#{} Mult",
-                    "when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_frowny_alt = {
@@ -1599,7 +1599,7 @@ return {
                 text = {
                     "Played {C:attention}face{} cards",
                     "give {C:mult}+#1#{} Mult",
-                    "when scored{C:hpfx_IjiGray,s:0.7}#2#{}",
+                    "when scored{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_talkie_walkie = {
@@ -1607,7 +1607,7 @@ return {
                 text = {
                     "Each played {C:attention}10{} or {C:attention}4",
                     "gives {C:chips}+#1#{} Chips and",
-                    "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_talkie_walkie_alt = {
@@ -1615,7 +1615,7 @@ return {
                 text = {
                     "Each played {C:attention}10{} or {C:attention}4",
                     "gives {C:chips}+#1#{} Chips and",
-                    "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray,s:0.7}#3#{}",
+                    "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
         },
