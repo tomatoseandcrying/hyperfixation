@@ -1,0 +1,14 @@
+{
+    "id": "crosstest",
+    "name": "Crosstest",
+    "display_name": "Cross",
+    "author": [
+        "me"
+    ],
+    "description": "test",
+    "prefix": "test",
+    "main_file": "main.lua",
+    "priority": 2,
+    "version": "1.0.0",
+    "dependencies": []
+}
