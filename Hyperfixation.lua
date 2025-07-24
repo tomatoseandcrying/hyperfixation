@@ -126,16 +126,12 @@ Hyperglobal = Hyperglobal or {
         else
             local k, v = joker_key, ijiraq_joker_key
             -- Adds the joker to the exceptions table
-            if type(v) ~= string then
-                Hyperglobal.exceptions[k] = tostring(v)
-            else
-                Hyperglobal.exceptions[k] = v
-            end
+            Hyperglobal.exceptions[k] = tostring(v)
 
             -- Check if the table has a calc_dollar_bonus function
             local obj = G.P_CENTERS[v]
             if obj and obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' and onpayout == true then
-                Hyperglobal.calcdollarjokesters[v] = k
+                Hyperglobal.calcdollarjokesters[v] = tostring(k)
             else
                 -- If the function does not exist, print a message to the console
                 print("calc_dollar_bonus does not exist.")
