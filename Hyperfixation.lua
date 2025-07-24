@@ -565,13 +565,16 @@ end
 ]]
 
 function Hyperglobal.hypercross(SMODS_current_mod, joker_key, ijiraq_joker_key)
+    -- Check if the mod is loaded
     if SMODS_current_mod then
+        -- Adds the joker to the exceptions table
         local k, v = joker_key, ijiraq_joker_key
         table.insert(exceptions, { key = k, value = v })
         -- Check if the table has a calc_dollar_bonus function
         if type(G.P_CENTERS[v].calc_dollar_bonus) == "function" then
             table.insert(calcdollarjokesters, { key = v, value = k })
         else
+            -- If the function does not exist, print a message to the console
             print("calc_dollar_bonus does not exist.")
         end
     end
