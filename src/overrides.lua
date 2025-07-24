@@ -203,7 +203,7 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
         ihatethis = ihatethis .. '{C:hpfx_IjiGray}...?{}'
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
         desc = G.localization.descriptions[_c.set][_c.key]['text']
-        desc[#desc] = desc[#desc] .. "{C:hpfx_IjiGray,s:0.7}...?{}"
+        desc[#desc] = desc[#desc] .. "{C:hpfx_IjiGray}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
         changed = true
         init_localization()
@@ -213,7 +213,7 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
     if changed then
         ihatethis = ihatethis:sub(1, ihatethis:len() - 22)       --22 is the exact length of the string "{C:hpfx_IjiGray}...?{}", change this only if you change the string's length
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
-        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 28) --same here but with "{C:hpfx_IjiGray,s:0.7}...?{}"
+        desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 22) --same here but with "{C:hpfx_IjiGray,s:0.7}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
         init_localization()
     end

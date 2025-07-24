@@ -223,7 +223,7 @@ return {
                 text = {
                     "Retrigger",
                     "each played",
-                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray}#3#{}",
+                    "{C:attention}#4#{}, {C:attention}#5#{}, {C:attention}#6#{}, or {C:attention}#7#{}{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_whack_alt = {
@@ -231,7 +231,7 @@ return {
                 text = {
                     "Retrigger",
                     "each played",
-                    "#4#, #5#, #6#, or #7#{C:hpfx_IjiGray}#3#{}",
+                    "{C:attention}#4#{}, {C:attention}#5#{}, {C:attention}#6#{}, or {C:attention}#7#{}{C:hpfx_IjiGray}#3#{}",
                 },
             },
             j_hpfx_reprint = {
