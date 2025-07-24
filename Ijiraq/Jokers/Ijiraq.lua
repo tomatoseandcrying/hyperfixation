@@ -138,7 +138,7 @@ SMODS.Joker { --Ijiraq.
                 totalcash = totalcash + obj.cash
             end
         end
-        return totalcash
+        if totalcash > 0 then return totalcash end
     end,
     calculate = function(self, card, context)
         if context.modify_scoring_hand and not context.blueprint then --And Splash

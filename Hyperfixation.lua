@@ -1,5 +1,70 @@
-Hyperglobal = SMODS.current_mod
-Hyperglobal.og_boostweight = Hyperglobal.og_boostweight or {}
+Hyperglobal = Hyperglobal or {
+    SMODS.current_mod,
+    og_boostweight = og_boostweight or {},
+    hypercross = function(mod_id, joker_key, ijiraq_joker_key)
+        -- Adds the joker to the exceptions table
+        local k, v = joker_key, ijiraq_joker_key
+        exceptions[k] = v
+        -- Check if the table has a calc_dollar_bonus function
+        local obj = v.config.center
+        if obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
+            calcdollarjokesters[v] = k
+        else
+            -- If the function does not exist, print a message to the console
+            print("calc_dollar_bonus does not exist.")
+        end
+    end,
+    safe_set_ability = function(self, center)
+        if not self or not center then return nil end
+        local oldcenter = self.config.center
+        G.GAME.hpfx_ijiraq_savedvalues = G.GAME.hpfx_ijiraq_savedvalues or {}
+        G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] = G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] or {}
+        G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][oldcenter.key] = copy_table(self.ability)
+        for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][center.key] or center.config) do
+            if type(v) == 'table' then
+                self.ability[k] = copy_table(v)
+            else
+                self.ability[k] = v
+                if k == "Xmult" then self.ability.x_mult = v end
+            end
+        end
+        self.ability.x_mult = center.config.Xmult or center.config.x_mult or 1
+        self.ability.name = center.name
+        self.ability.set = center.set
+        self.ability.effect = center.effect
+        self.config.center = center
+        for k, v in pairs(G.P_CENTERS) do
+            if center == v then self.config.center_key = k end
+        end
+        if self.ability.name == "Invisible Joker" then
+            self.ability.invis_rounds = 0
+        end
+        if self.ability.name == 'To Do List' then
+            local _poker_hands = {}
+            for k, v in pairs(G.GAME.hands) do
+                if v.visible then _poker_hands[#_poker_hands + 1] = k end
+            end
+            local old_hand = self.ability.to_do_poker_hand
+            self.ability.to_do_poker_hand = nil
+            while not self.ability.to_do_poker_hand do
+                self.ability.to_do_poker_hand = pseudorandom_element(_poker_hands,
+                    pseudoseed((self.area and self.area.config.type == 'title') and 'false_to_do' or 'to_do'))
+                if self.ability.to_do_poker_hand == old_hand then self.ability.to_do_poker_hand = nil end
+            end
+        end
+        if self.ability.name == 'Caino' then
+            self.ability.caino_xmult = 1
+        end
+        if self.ability.name == 'Yorick' then
+            self.ability.yorick_discards = self.ability.extra.discards
+        end
+        if self.ability.name == 'Loyalty Card' then
+            self.ability.burnt_hand = 0
+            self.ability.loyalty_remaining = self.ability.extra.every
+        end
+    end
+}
+
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount or 0
 
@@ -306,56 +371,6 @@ function G.FUNCS.hpfx_Perkcheck(e)
 end
 
 --Effect Table
-function Hyperglobal.safe_set_ability(self, center)
-    if not self or not center then return nil end
-    local oldcenter = self.config.center
-    G.GAME.hpfx_ijiraq_savedvalues = G.GAME.hpfx_ijiraq_savedvalues or {}
-    G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] = G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] or {}
-    G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][oldcenter.key] = copy_table(self.ability)
-    for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][center.key] or center.config) do
-        if type(v) == 'table' then
-            self.ability[k] = copy_table(v)
-        else
-            self.ability[k] = v
-            if k == "Xmult" then self.ability.x_mult = v end
-        end
-    end
-    self.ability.x_mult = center.config.Xmult or center.config.x_mult or 1
-    self.ability.name = center.name
-    self.ability.set = center.set
-    self.ability.effect = center.effect
-    self.config.center = center
-    for k, v in pairs(G.P_CENTERS) do
-        if center == v then self.config.center_key = k end
-    end
-    if self.ability.name == "Invisible Joker" then
-        self.ability.invis_rounds = 0
-    end
-    if self.ability.name == 'To Do List' then
-        local _poker_hands = {}
-        for k, v in pairs(G.GAME.hands) do
-            if v.visible then _poker_hands[#_poker_hands + 1] = k end
-        end
-        local old_hand = self.ability.to_do_poker_hand
-        self.ability.to_do_poker_hand = nil
-        while not self.ability.to_do_poker_hand do
-            self.ability.to_do_poker_hand = pseudorandom_element(_poker_hands,
-                pseudoseed((self.area and self.area.config.type == 'title') and 'false_to_do' or 'to_do'))
-            if self.ability.to_do_poker_hand == old_hand then self.ability.to_do_poker_hand = nil end
-        end
-    end
-    if self.ability.name == 'Caino' then
-        self.ability.caino_xmult = 1
-    end
-    if self.ability.name == 'Yorick' then
-        self.ability.yorick_discards = self.ability.extra.discards
-    end
-    if self.ability.name == 'Loyalty Card' then
-        self.ability.burnt_hand = 0
-        self.ability.loyalty_remaining = self.ability.extra.every
-    end
-end
-
 function Card:set_booster_weight(booster_kind, new_weight)
     for _, booster in pairs(G.P_CENTER_POOLS.Booster or {}) do
         if Hyperglobal.og_boostweight[booster.kind] == nil then
@@ -563,22 +578,6 @@ if Hyperglobal then
 end
 
 ]]
-
-function Hyperglobal.hypercross(SMODS_current_mod, joker_key, ijiraq_joker_key)
-    -- Check if the mod is loaded
-    if SMODS_current_mod then
-        -- Adds the joker to the exceptions table
-        local k, v = joker_key, ijiraq_joker_key
-        table.insert(exceptions, { key = k, value = v })
-        -- Check if the table has a calc_dollar_bonus function
-        if type(G.P_CENTERS[v].calc_dollar_bonus) == "function" then
-            table.insert(calcdollarjokesters, { key = v, value = k })
-        else
-            -- If the function does not exist, print a message to the console
-            print("calc_dollar_bonus does not exist.")
-        end
-    end
-end
 
 --Jokesters that calculate dollar bonuses.
 calcdollarjokesters = {
