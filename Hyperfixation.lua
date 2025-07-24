@@ -5,14 +5,15 @@ Hyperglobal = Hyperglobal or {
         -- Adds the joker to the exceptions table
         local k, v = joker_key, ijiraq_joker_key
         exceptions[k] = v
-        -- Check if the table has a calc_dollar_bonus function
-        local obj = v.config.center
+
+        -- Check if the table has a calc_dollar_bonus function [not working]
+        --[[ local obj = v.config.center
         if obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
             calcdollarjokesters[v] = k
         else
             -- If the function does not exist, print a message to the console
             print("calc_dollar_bonus does not exist.")
-        end
+        end ]]
     end,
     safe_set_ability = function(self, center)
         if not self or not center then return nil end
@@ -573,8 +574,10 @@ exceptions = {
 --If certain mods are installed, add their crossmodded jokers to the exceptions table.
 --[[ I think this would be called with something like
 
-if Hyperglobal then
-    Hyperglobal.hypercross(mod, j_joker, j_joker_but_evil)
+if Hyperglobal and Hyperglobal.hypercross then
+    if type(Hyperglobal) == "table" and type(Hyperglobal.hypercross) == "function" then
+        Hyperglobal.hypercross('mod_id', 'j_prefix_realjoker', 'j_prefix_fakejoker')
+    end
 end
 
 ]]
