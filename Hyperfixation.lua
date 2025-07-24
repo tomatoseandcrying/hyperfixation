@@ -134,7 +134,7 @@ Hyperglobal = Hyperglobal or {
 
             -- Check if the table has a calc_dollar_bonus function
             local obj = G.P_CENTERS[v]
-            if type(obj.calc_dollar_bonus) == 'function' and onpayout == true then
+            if obj and obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' and onpayout == true then
                 Hyperglobal.calcdollarjokesters[v] = k
             else
                 -- If the function does not exist, print a message to the console

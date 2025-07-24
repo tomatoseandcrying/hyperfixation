@@ -137,7 +137,7 @@ SMODS.Joker { --Ijiraq.
                 totalcash = totalcash + (obj.gratcash * G.GAME.current_round.discards_left)
             end
             --Auto-setup for modded Jokers.
-            if joker.calc_dollar_bonus and type(joker.calc_dollar_bonus) == 'function' then
+            if joker and joker.calc_dollar_bonus and type(joker.calc_dollar_bonus) == 'function' then
                 local bonus = joker:calc_dollar_bonus(card)
                 if bonus and bonus > 0 then
                     totalcash = totalcash + bonus
