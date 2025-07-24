@@ -456,8 +456,6 @@ Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
     end
 end
 
---Ijiraq Tables
-
 --Jokesters that Costume will skip over when deciding which Joker to disguise as.
 --(Jokers that don't use hand calculations or have custom transformation conditions should be included here.)
 --(Jokers that do use hand calculations and do not have custom transformation logic are transformed after a scored hand.)
@@ -566,9 +564,9 @@ end
 
 ]]
 
-function Hyperglobal.hypercross(SMODS_current_mod, joker_key, ijiraq_key)
+function Hyperglobal.hypercross(SMODS_current_mod, joker_key, ijiraq_joker_key)
     if SMODS_current_mod then
-        local k, v = joker_key, ijiraq_key
+        local k, v = joker_key, ijiraq_joker_key
         table.insert(exceptions, { key = k, value = v })
         -- Check if the table has a calc_dollar_bonus function
         if type(G.P_CENTERS[v].calc_dollar_bonus) == "function" then
