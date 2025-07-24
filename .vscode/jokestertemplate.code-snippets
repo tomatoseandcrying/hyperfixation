@@ -1,6 +1,6 @@
 {
     "jokester template": {
-        "prefix": "G.C.hpfx_IjiGray",
+        "prefix": "joketemp",
         "body": [
             "G.C.hpfx_IjiGray = HEX('BFD7D5')\r",
             "SMODS.Joker{\r",
@@ -14,7 +14,7 @@
             "    eternal_compat = ${5|true,false|},\r",
             "    perishable_compat = ${6|true,false|},\r",
             "    rarity = ${7|1,2,3,4|},\r",
-            "    cost = ${8|1,2,3,4,5,6,7,8,9,10|},\r",
+            "    cost = ${8|1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20|},\r",
             "    atlas = 'IjiraqJokers',\r",
             "    config = {\r",
             "        extra = {\r",
