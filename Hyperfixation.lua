@@ -108,7 +108,6 @@ SMODS.load_file('Stickers.lua')()
 --Custom Colors
 loc_colour('red')
 G.ARGS.LOC_COLOURS['hpfx_IjiGray'] = HEX("BFD7D5")
-
 G.ARGS.LOC_COLOURS['hpfx_inPURPLE'] = HEX("B1A1C0")
 G.ARGS.LOC_COLOURS['hpfx_inattention'] = HEX("ECB96D")
 G.ARGS.LOC_COLOURS['hpfx_multiball'] = HEX("EC9C96")
@@ -117,65 +116,7 @@ G.ARGS.LOC_COLOURS['hpfx_bossmute'] = HEX("C78F85")
 --talisman conversion function
 to_big = to_big or function(x) return x end
 
---Functions
-function hpfx_chipGain(card, context)
-    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-end
-
-function hpfx_isaacChip(card, context)
-    SMODS.calculate_effect({
-        chip_mod = card.ability.extra.chips,
-        sound = "hpfx_thumbsup",
-        colour = G.C.CHIPS,
-        message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }
-    }, card)
-end
-
-function hpfx_isaacMult(card, context)
-    SMODS.calculate_effect({
-        mult_mod = card.ability.extra.mult,
-        sound = 'hpfx_1up',
-        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
-    }, card)
-end
-
-function stoneGeneration(card, context)
-    local stone_card = create_playing_card(
-        { center = G.P_CENTERS.m_stone },
-        G.discard,
-        true,
-        false,
-        nil,
-        true
-    )
-    G.E_MANAGER:add_event(Event({
-        func = function()
-            stone_card:start_materialize({ G.C.SECONDARY_SET.Enhanced })
-            G.play:emplace(stone_card)
-            return true
-        end
-    }))
-    return {
-        message = localize('k_plus_stone'),
-        colour = G.C.SECONDARY_SET.Enhanced,
-        func = function()
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    G.deck.config.card_limit =
-                        G.deck.config.card_limit + 1
-                    return true
-                end
-            }))
-            draw_card(G.play, G.deck, 90, 'up')
-            SMODS.calculate_context(
-                {
-                    playing_card_added = true,
-                    cards = { stone_card }
-                })
-        end
-    }
-end
-
+--Ijiraq Functions | Transformations
 function hpfx_Transform(card, context)
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
@@ -343,6 +284,7 @@ function G.FUNCS.hpfx_Transbutt(e)
     return true
 end
 
+--Perkeo?
 function G.FUNCS.hpfx_Perktoggle(e)
     local _card = e.config.ref_table
     G.E_MANAGER:add_event(Event({
@@ -363,6 +305,7 @@ function G.FUNCS.hpfx_Perkcheck(e)
     end
 end
 
+--Effect Table
 function Hyperglobal.safe_set_ability(self, center)
     if not self or not center then return nil end
     local oldcenter = self.config.center
@@ -436,6 +379,7 @@ function Card:set_booster_weight(booster_kind, new_weight)
     end
 end
 
+--Egg? |
 function roundmyshitprettyplease(thingwearerounding, tothemultipleof)
     local getdivided = thingwearerounding / (tothemultipleof or 1)
     local getrounded = tothemultipleof * math.floor(getdivided)
@@ -512,7 +456,7 @@ Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
     end
 end
 
---tables
+--Ijiraq Tables
 exceptions = {
     j_misprint = 'j_hpfx_reprint',
     j_raised_fist = 'j_hpfx_braised',
@@ -616,7 +560,7 @@ calcdollarjokesters = {
     j_hpfx_apollo = 'j_satellite',
 }
 
---debug
+--Debug Functions
 function maxx_debug(txt)
     attention_text({
         text = txt,
@@ -630,14 +574,15 @@ function maxx_debug(txt)
     })
 end
 
-function toma_debug_porcelaintest()
+function porcelaintest()
     for _, card in ipairs(G.playing_cards) do
         card:set_ability(G.P_CENTERS.m_stone)
     end
 end
 
-function tomadebugcostume(key)
+function costume(key)
     G.GAME.current_round.fodder_card.jkey = key
+    SMODS.add_card { key = 'j_hpfx_costume' }
 end
 
 function tomaheart(count)
@@ -661,7 +606,8 @@ function bagchase()
 end
 
 function transformtest()
-    table.insert(G.GAME.raqeffects, 'j_hpfx_moriah')
+    G.GAME.current_round.fodder_card.jkey = 'j_hpfx_moriah'
+    SMODS.add_card { key = 'j_hpfx_costume' }
     print('raqeffects:')
     for i, v in ipairs(G.GAME.raqeffects) do
         print('  [' .. i .. ']: ' .. tostring(v))
@@ -670,5 +616,4 @@ function transformtest()
     for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues or {}) do
         print('  [' .. tostring(k) .. ']: ' .. tostring(v))
     end
-    SMODS.add_card({ key = 'j_hpfx_ijiraq' })
 end

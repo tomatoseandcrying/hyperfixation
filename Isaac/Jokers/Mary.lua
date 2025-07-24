@@ -36,9 +36,9 @@ SMODS.Joker {
             G.GAME.current_round.hands_left == 0 and
             (to_big(card.ability.extra.mult) > to_big(1)) then
             return {
-                func = function()
-                    hpfx_isaacMult(card, context)
-                end
+                mult_mod = card.ability.extra.mult,
+                sound = 'hpfx_1up',
+                message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
             }
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then

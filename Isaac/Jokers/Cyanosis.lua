@@ -23,9 +23,10 @@ SMODS.Joker { --Cyanosis/Blue Baby
         if context.joker_main and
             (to_big(card.ability.extra.chips) > to_big(1)) then
             return {
-                func = function()
-                    hpfx_isaacChip(card, context)
-                end
+                chip_mod = card.ability.extra.chips,
+                sound = "hpfx_thumbsup",
+                colour = G.C.CHIPS,
+                message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }
             }
         end
         if context.hyperfixation_mod_mult_decrease and

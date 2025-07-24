@@ -38,13 +38,14 @@ SMODS.Joker {
             (to_big(card.ability.extra.chips) > to_big(1)) and
             (to_big(card.ability.extra.mult) > to_big(1)) then
             return {
-                func = function()
-                    hpfx_isaacChip(card, context)
-                end,
+                chip_mod = card.ability.extra.chips,
+                sound = "hpfx_thumbsup",
+                colour = G.C.CHIPS,
+                message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
                 extra = {
-                    func = function()
-                        hpfx_isaacMult(card, context)
-                    end
+                    mult_mod = card.ability.extra.mult,
+                    sound = 'hpfx_1up',
+                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
                 },
             }
         end

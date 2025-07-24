@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'smudged',
-    pos = {x = 4, y = 6},
+    pos = { x = 4, y = 6 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,9 +10,9 @@ SMODS.Joker{
     rarity = 2,
     cost = 7,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
-        return{
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -31,11 +31,9 @@ SMODS.Joker{
         card.ability.extra.new_key = "j_hpfx_smudged_alt"
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
-        func = function()
-            for _, smard in ipairs(G.playing_cards) do
-                smard:set_ability(G.P_CENTERS.m_wild)
-            end
-            hpfx_Transform(card)
+        for _, pcard in ipairs(G.playing_cards) do
+            pcard:set_ability(G.P_CENTERS.m_wild)
         end
+        hpfx_Transform(card)
     end
 }

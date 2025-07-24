@@ -40,23 +40,23 @@ SMODS.Joker { --Iscariot/Judas
             (to_big(card.ability.extra.chips) > to_big(1)) and
             (to_big(card.ability.extra.chip_gain) > to_big(1)) then
             return {
-                func = function()
-                    hpfx_isaacChip(card, context)
-                end
+                chip_mod = card.ability.extra.chips,
+                sound = "hpfx_thumbsup",
+                colour = G.C.CHIPS,
+                message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }
             }
         end
         if context.cardarea == G.play and
             context.main_eval then
             if G.GAME.blind.triggered then
                 if blind_keys[G.GAME.blind.config.blind.key] then
+                    card.ability.extra.chips = card.ability.extra.chips
+                        + card.ability.extra.chip_gain
                     return {
                         message = 'Silver!',
                         sound = 'hpfx_silver',
                         colour = G.C.CHIPS,
-                        card = card,
-                        func = function()
-                            hpfx_chipGain(card, context)
-                        end
+                        card = card
                     }
                 end
             end
