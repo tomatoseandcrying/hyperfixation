@@ -457,6 +457,9 @@ Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
 end
 
 --Ijiraq Tables
+
+--Jokesters that Costume will skip over when deciding which Joker to disguise as.
+--(Jokers that don't use hand calculations or have custom transformation conditions should be included here.)
 exceptions = {
     j_misprint = 'j_hpfx_reprint',
     j_raised_fist = 'j_hpfx_braised',
@@ -552,6 +555,27 @@ exceptions = {
     j_smiley = 'j_hpfx_frowny',
     j_walkie_talkie = 'j_hpfx_talkie_walkie',
 }
+--If certain mods are installed, add their crossmodded jokers to the exceptions table.
+--[[
+I think this would be called with something like
+if Hyperglobal then
+    Hyperglobal.hypercross(mod, j_joker, j_joker_but_evil)
+end
+]]
+function Hyperglobal.hypercross(SMODS_current_mod, joker_key, ijiraq_key)
+    if SMODS_current_mod then
+        local k, v = joker_key, ijiraq_key
+        table.insert(exceptions, { key = k, value = v })
+        -- Check if the table has a calc_dollar_bonus function
+        if type(G.P_CENTERS[v].calc_dollar_bonus) == "function" then
+            table.insert(calcdollarjokesters, { key = v, value = k })
+        else
+            print("calc_dollar_bonus does not exist.")
+        end
+    end
+end
+
+--Jokesters that calculate dollar bonuses.
 calcdollarjokesters = {
     j_hpfx_pyramid = 'j_golden',
     j_hpfx_earthbound = 'j_cloud_9',
