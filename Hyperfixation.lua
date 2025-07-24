@@ -1,20 +1,148 @@
 Hyperglobal = Hyperglobal or {
     SMODS.current_mod,
-    og_boostweight = og_boostweight or {},
-    hypercross = function(mod_id, joker_key, ijiraq_joker_key)
-        -- Adds the joker to the exceptions table
-        local k, v = joker_key, ijiraq_joker_key
-        exceptions[k] = v
 
-        -- Check if the table has a calc_dollar_bonus function [not working]
-        --[[ local obj = v.config.center
-        if obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
-            calcdollarjokesters[v] = k
+    ---Used to store the original weights of boosters.
+    og_boostweight = og_boostweight or {},
+
+
+    --[[ keys Ijiraq will skip when deciding disguises
+    Jokers that don't use hand calc or have custom conditions should be included here.
+    Jokers that do use hand calc and do not have custom logic transform after a hand. ]]
+
+    ---Jokesters that overwrite the automatic behavior Costume would use
+    exceptions = exceptions or {
+        j_misprint = 'j_hpfx_reprint',
+        j_raised_fist = 'j_hpfx_braised',
+        j_mystic_summit = 'j_hpfx_twistit',
+        j_loyalty_card = 'j_hpfx_redeemed',
+        j_steel_joker = 'j_hpfx_iron',
+        j_acrobat = 'j_hpfx_trapezoid',
+        j_banner = 'j_hpfx_flag',
+        j_merry_andy = 'j_hpfx_scaryandy',
+        j_troubadour = 'j_hpfx_bard',
+        j_hack = 'j_hpfx_whack',
+        j_marble = 'j_hpfx_porcelain',
+        j_golden = 'j_hpfx_pyramid',
+        j_credit_card = 'j_hpfx_expired',
+        j_blueprint = 'j_hpfx_bluebell',
+        j_chaos = 'j_hpfx_chaoz',
+        j_juggler = 'j_hpfx_jiggler',
+        j_drunkard = 'j_hpfx_scrumpy',
+        j_glass = 'j_hpfx_fiberglass',
+        j_abstract = 'j_hpfx_pomni',
+        j_delayed_grat = 'j_hpfx_belated_grat',
+        j_ticket = 'j_hpfx_tocket',
+        j_pareidolia = 'j_hpfx_apophenia',
+        j_cartomancer = 'j_hpfx_not_fortune_teller',
+        j_even_steven = 'j_hpfx_odd_steven',
+        j_odd_todd = 'j_hpfx_even_todd',
+        j_scholar = 'j_hpfx_flunkie',
+        j_mr_bones = 'j_hpfx_ribtickler',
+        j_seeing_double = 'j_hpfx_peeking_twice',
+        j_duo = 'j_hpfx_dupla',
+        j_trio = 'j_hpfx_triada',
+        j_family = 'j_hpfx_familia',
+        j_order = 'j_hpfx_orden',
+        j_tribe = 'j_hpfx_tribu',
+        j_8_ball = 'j_hpfx_7_ball',
+        j_fibonacci = 'j_hpfx_golden_ratio',
+        j_stencil = 'j_hpfx_cutout',
+        j_space = 'j_hpfx_time',
+        j_matador = 'j_hpfx_manolo',
+        j_ceremonial = 'j_hpfx_ritual',
+        j_ring_master = 'j_hpfx_showman',
+        j_sixth_sense = 'j_hpfx_nix_sense',
+        j_fortune_teller = 'j_hpfx_not_cartomancer',
+        j_hit_the_road = 'j_hpfx_dont_come_back',
+        j_flower_pot = 'j_hpfx_daisy_vase',
+        j_ride_the_bus = 'j_hpfx_get_an_uber',
+        j_shoot_the_moon = 'j_hpfx_take_the_sun',
+        j_smeared = 'j_hpfx_smudged',
+        j_oops = 'j_hpfx_whoops',
+        j_four_fingers = 'j_hpfx_and_thumb',
+        j_gros_michel = 'j_hpfx_close_michelle',
+        j_stuntman = 'j_hpfx_buttowski',
+        j_hanging_chad = 'j_hpfx_hung_chad',
+        j_drivers_license = 'j_learners_permit',
+        j_invisible = 'j_hpfx_invincible',
+        j_astronomer = 'j_hpfx_galilimbo',
+        j_burnt = 'j_hpfx_charred',
+        j_dusk = 'j_hpfx_dawn',
+        j_throwback = 'j_hpfx_flashforward',
+        j_brainstorm = 'j_hpfx_stormcloud',
+        j_satellite = 'j_hpfx_apollo',
+        j_rough_gem = 'j_hpfx_snowgrave',
+        j_bloodstone = 'j_hpfx_sanguinerock',
+        j_arrowhead = 'j_hpfx_ahead',
+        j_onyx_agate = 'j_hpfx_obsidian',
+        j_caino = 'j_hpfx_canio',
+        j_triboulet = 'j_hpfx_dribblinit',
+        j_yorick = 'j_hpfx_yomorty',
+        j_chicot = 'j_hpfx_anglerais',
+        j_perkeo = 'j_hpfx_perknado',
+        j_certificate = 'j_hpfx_sirtificate',
+        j_bootstraps = 'j_hpfx_shoebuckles',
+        j_egg = 'j_hpfx_chicken',
+        j_burglar = 'j_hpfx_robber',
+        j_splash = 'j_hpfx_splatter',
+        j_constellation = 'j_hpfx_sagittarius',
+        j_hiker = 'j_hpfx_hitchhiker',
+        j_faceless = 'j_hpfx_noface',
+        j_square = 'j_hpfx_rectangle',
+        j_joker = 'j_hpfx_jumbo',
+        j_shortcut = 'j_hpfx_secretway',
+        j_cloud_9 = 'j_hpfx_earthbound',
+        j_rocket = 'j_hpfx_blastoff',
+        j_luchador = 'j_hpfx_wrestler',
+        j_gift = 'j_hpfx_card',
+        j_turtle_bean = 'j_hpfx_lima_bean',
+        j_to_the_moon = 'j_hpfx_take_the_moon',
+        j_hallucination = 'j_hpfx_illusion',
+        j_baseball = 'j_hpfx_softball',
+        j_diet_cola = 'j_hpfx_cola',
+        j_trading_card = 'j_hpfx_collecting',
+        j_selzer = 'j_hpfx_seltzer',
+        j_smiley = 'j_hpfx_frowny',
+        j_walkie_talkie = 'j_hpfx_talkie_walkie',
+    },
+    ---Jokesters that calculate dollar bonuses. Jokester is k, Joker is v
+    calcdollarjokesters = calcdollarjokesters or {
+        j_hpfx_pyramid = 'j_golden',
+        j_hpfx_earthbound = 'j_cloud_9',
+        j_hpfx_blastoff = 'j_rocket',
+        j_hpfx_take_the_moon = 'j_to_the_moon',
+        j_hpfx_apollo = 'j_satellite',
+    },
+
+    ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperglobal exists and is a table.
+    ---@param mod_id any The ID of the mod to check. Can be found in `metadata.json`.
+    ---@param joker_key any The key of the Joker the Ijiraq will be mimicking.
+    ---@param ijiraq_joker_key any The key of the Joker the Ijiraq will transform from. Make sure it calls `hpfx_Transform(card, context)`
+    ---@param onpayout boolean Jokers in this table will transform after payout. Set to `false` to disable this.
+    hypercross = function(mod_id, joker_key, ijiraq_joker_key, onpayout)
+        if SMODS.find_mod(mod_id) == nil then
+            print("Hyperfixation: hypercross: Mod not found: " .. tostring(mod_id))
+            return
         else
-            -- If the function does not exist, print a message to the console
-            print("calc_dollar_bonus does not exist.")
-        end ]]
+            local k, v = joker_key, ijiraq_joker_key
+            -- Adds the joker to the exceptions table
+            if type(v) ~= string then
+                Hyperglobal.exceptions[k] = tostring(v)
+            else
+                Hyperglobal.exceptions[k] = v
+            end
+
+            -- Check if the table has a calc_dollar_bonus function
+            local obj = G.P_CENTERS[v]
+            if type(obj.calc_dollar_bonus) == 'function' and onpayout == true then
+                Hyperglobal.calcdollarjokesters[v] = k
+            else
+                -- If the function does not exist, print a message to the console
+                print("calc_dollar_bonus does not exist.")
+            end
+        end
     end,
+    --Value storing for Ijiraq's abilities
     safe_set_ability = function(self, center)
         if not self or not center then return nil end
         local oldcenter = self.config.center
@@ -63,7 +191,7 @@ Hyperglobal = Hyperglobal or {
             self.ability.burnt_hand = 0
             self.ability.loyalty_remaining = self.ability.extra.every
         end
-    end
+    end,
 }
 
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
@@ -169,7 +297,7 @@ SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 SMODS.load_file('4Fun/FunZone.lua')()
 SMODS.load_file('Stickers.lua')()
---SMODS.load_file('crossmodtest/main.lua')() mod made to test crossmod compatibility, ZIP file
+SMODS.load_file('crossmodtest/crossmodtest/main.lua')() --mod made to test crossmod compatibility, ZIP file
 
 
 --Custom Colors
@@ -184,6 +312,10 @@ G.ARGS.LOC_COLOURS['hpfx_bossmute'] = HEX("C78F85")
 to_big = to_big or function(x) return x end
 
 --Ijiraq Functions | Transformations
+
+---Function used for Jokesters with custom transformation logic.
+---@param card Card|table The card being transformed.
+---@param context any Must be `context`. Use only within a Card's `calculate` context.
 function hpfx_Transform(card, context)
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
@@ -238,6 +370,8 @@ function hpfx_Transform(card, context)
     return true
 end
 
+---Function used for Jokesters with no custom/automatic logic. You will not need to use this function.
+---@param context any Must be `context`. Use only within a Card's `calculate` context.
 function Card:Transfodd(context)
     G.E_MANAGER:add_event(Event({
         trigger = "immediate",
@@ -472,125 +606,6 @@ Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
         hpfx_eternal_jimbo(self, arg1, arg2, arg3)
     end
 end
-
---Jokesters that Costume will skip over when deciding which Joker to disguise as.
---(Jokers that don't use hand calculations or have custom transformation conditions should be included here.)
---(Jokers that do use hand calculations and do not have custom transformation logic are transformed after a scored hand.)
-exceptions = {
-    j_misprint = 'j_hpfx_reprint',
-    j_raised_fist = 'j_hpfx_braised',
-    j_mystic_summit = 'j_hpfx_twistit',
-    j_loyalty_card = 'j_hpfx_redeemed',
-    j_steel_joker = 'j_hpfx_iron',
-    j_acrobat = 'j_hpfx_trapezoid',
-    j_banner = 'j_hpfx_flag',
-    j_merry_andy = 'j_hpfx_scaryandy',
-    j_troubadour = 'j_hpfx_bard',
-    j_hack = 'j_hpfx_whack',
-    j_marble = 'j_hpfx_porcelain',
-    j_golden = 'j_hpfx_pyramid',
-    j_credit_card = 'j_hpfx_expired',
-    j_blueprint = 'j_hpfx_bluebell',
-    j_chaos = 'j_hpfx_chaoz',
-    j_juggler = 'j_hpfx_jiggler',
-    j_drunkard = 'j_hpfx_scrumpy',
-    j_glass = 'j_hpfx_fiberglass',
-    j_abstract = 'j_hpfx_pomni',
-    j_delayed_grat = 'j_hpfx_belated_grat',
-    j_ticket = 'j_hpfx_tocket',
-    j_pareidolia = 'j_hpfx_apophenia',
-    j_cartomancer = 'j_hpfx_not_fortune_teller',
-    j_even_steven = 'j_hpfx_odd_steven',
-    j_odd_todd = 'j_hpfx_even_todd',
-    j_scholar = 'j_hpfx_flunkie',
-    j_mr_bones = 'j_hpfx_ribtickler',
-    j_seeing_double = 'j_hpfx_peeking_twice',
-    j_duo = 'j_hpfx_dupla',
-    j_trio = 'j_hpfx_triada',
-    j_family = 'j_hpfx_familia',
-    j_order = 'j_hpfx_orden',
-    j_tribe = 'j_hpfx_tribu',
-    j_8_ball = 'j_hpfx_7_ball',
-    j_fibonacci = 'j_hpfx_golden_ratio',
-    j_stencil = 'j_hpfx_cutout',
-    j_space = 'j_hpfx_time',
-    j_matador = 'j_hpfx_manolo',
-    j_ceremonial = 'j_hpfx_ritual',
-    j_ring_master = 'j_hpfx_showman',
-    j_sixth_sense = 'j_hpfx_nix_sense',
-    j_fortune_teller = 'j_hpfx_not_cartomancer',
-    j_hit_the_road = 'j_hpfx_dont_come_back',
-    j_flower_pot = 'j_hpfx_daisy_vase',
-    j_ride_the_bus = 'j_hpfx_get_an_uber',
-    j_shoot_the_moon = 'j_hpfx_take_the_sun',
-    j_smeared = 'j_hpfx_smudged',
-    j_oops = 'j_hpfx_whoops',
-    j_four_fingers = 'j_hpfx_and_thumb',
-    j_gros_michel = 'j_hpfx_close_michelle',
-    j_stuntman = 'j_hpfx_buttowski',
-    j_hanging_chad = 'j_hpfx_hung_chad',
-    j_drivers_license = 'j_learners_permit',
-    j_invisible = 'j_hpfx_invincible',
-    j_astronomer = 'j_hpfx_galilimbo',
-    j_burnt = 'j_hpfx_charred',
-    j_dusk = 'j_hpfx_dawn',
-    j_throwback = 'j_hpfx_flashforward',
-    j_brainstorm = 'j_hpfx_stormcloud',
-    j_satellite = 'j_hpfx_apollo',
-    j_rough_gem = 'j_hpfx_snowgrave',
-    j_bloodstone = 'j_hpfx_sanguinerock',
-    j_arrowhead = 'j_hpfx_ahead',
-    j_onyx_agate = 'j_hpfx_obsidian',
-    j_caino = 'j_hpfx_canio',
-    j_triboulet = 'j_hpfx_dribblinit',
-    j_yorick = 'j_hpfx_yomorty',
-    j_chicot = 'j_hpfx_anglerais',
-    j_perkeo = 'j_hpfx_perknado',
-    j_certificate = 'j_hpfx_sirtificate',
-    j_bootstraps = 'j_hpfx_shoebuckles',
-    j_egg = 'j_hpfx_chicken',
-    j_burglar = 'j_hpfx_robber',
-    j_splash = 'j_hpfx_splatter',
-    j_constellation = 'j_hpfx_sagittarius',
-    j_hiker = 'j_hpfx_hitchhiker',
-    j_faceless = 'j_hpfx_noface',
-    j_square = 'j_hpfx_rectangle',
-    j_joker = 'j_hpfx_jumbo',
-    j_shortcut = 'j_hpfx_secretway',
-    j_cloud_9 = 'j_hpfx_earthbound',
-    j_rocket = 'j_hpfx_blastoff',
-    j_luchador = 'j_hpfx_wrestler',
-    j_gift = 'j_hpfx_card',
-    j_turtle_bean = 'j_hpfx_lima_bean',
-    j_to_the_moon = 'j_hpfx_take_the_moon',
-    j_hallucination = 'j_hpfx_illusion',
-    j_baseball = 'j_hpfx_softball',
-    j_diet_cola = 'j_hpfx_cola',
-    j_trading_card = 'j_hpfx_collecting',
-    j_selzer = 'j_hpfx_seltzer',
-    j_smiley = 'j_hpfx_frowny',
-    j_walkie_talkie = 'j_hpfx_talkie_walkie',
-}
-
---If certain mods are installed, add their crossmodded jokers to the exceptions table.
---[[ I think this would be called with something like
-
-if Hyperglobal and Hyperglobal.hypercross then
-    if type(Hyperglobal) == "table" and type(Hyperglobal.hypercross) == "function" then
-        Hyperglobal.hypercross('mod_id', 'j_prefix_realjoker', 'j_prefix_fakejoker')
-    end
-end
-
-]]
-
---Jokesters that calculate dollar bonuses.
-calcdollarjokesters = {
-    j_hpfx_pyramid = 'j_golden',
-    j_hpfx_earthbound = 'j_cloud_9',
-    j_hpfx_blastoff = 'j_rocket',
-    j_hpfx_take_the_moon = 'j_to_the_moon',
-    j_hpfx_apollo = 'j_satellite',
-}
 
 --Debug Functions
 function maxx_debug(txt)

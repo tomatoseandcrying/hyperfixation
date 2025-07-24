@@ -106,8 +106,10 @@ SMODS.Joker { --Ijiraq.
     end,
     calc_dollar_bonus = function(self, card)
         local totalcash = 0
+        if not card:can_calculate() then return end
         for _, v in pairs(G.GAME.raqeffects) do
             local obj = card.ability and card.ability.extra
+            local joker = G.P_CENTERS[v]
             if v == 'j_golden' then
                 totalcash = totalcash + obj.goldcash
             end
@@ -134,8 +136,12 @@ SMODS.Joker { --Ijiraq.
                 and G.GAME.current_round.discards_left > 0 then
                 totalcash = totalcash + (obj.gratcash * G.GAME.current_round.discards_left)
             end
-            if v == 'j_hpfx_moriah' then
-                totalcash = totalcash + obj.cash
+            --Auto-setup for modded Jokers.
+            if joker.calc_dollar_bonus and type(joker.calc_dollar_bonus) == 'function' then
+                local bonus = joker:calc_dollar_bonus(card)
+                if bonus and bonus > 0 then
+                    totalcash = totalcash + bonus
+                end
             end
         end
         if totalcash > 0 then return totalcash end
