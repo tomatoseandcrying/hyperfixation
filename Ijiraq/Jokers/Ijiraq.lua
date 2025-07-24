@@ -25,7 +25,12 @@ SMODS.Joker { --Ijiraq.
         if G.jokers and card.area == G.jokers then
             for _, v in pairs(G.GAME.raqeffects) do
                 if G.P_CENTERS[v].loc_vars then
-                    vars = G.P_CENTERS[v]:loc_vars({}, G.P_CENTERS[v]).vars
+                    if not G.P_CENTERS[v].original_mod then
+                        vars = G.P_CENTERS[v]:loc_vars({}, G.P_CENTERS[v]).vars
+                    else
+                        vars = G.P_CENTERS[v]:loc_vars({}, { ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v] })
+                            .vars
+                    end
                 else
                     vars = Card.generate_UIBox_ability_table({
                         ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v],
