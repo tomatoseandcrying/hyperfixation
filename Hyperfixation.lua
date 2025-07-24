@@ -460,6 +460,7 @@ end
 
 --Jokesters that Costume will skip over when deciding which Joker to disguise as.
 --(Jokers that don't use hand calculations or have custom transformation conditions should be included here.)
+--(Jokers that do use hand calculations and do not have custom transformation logic are transformed after a scored hand.)
 exceptions = {
     j_misprint = 'j_hpfx_reprint',
     j_raised_fist = 'j_hpfx_braised',
@@ -555,13 +556,16 @@ exceptions = {
     j_smiley = 'j_hpfx_frowny',
     j_walkie_talkie = 'j_hpfx_talkie_walkie',
 }
+
 --If certain mods are installed, add their crossmodded jokers to the exceptions table.
---[[
-I think this would be called with something like
+--[[ I think this would be called with something like
+
 if Hyperglobal then
     Hyperglobal.hypercross(mod, j_joker, j_joker_but_evil)
 end
+
 ]]
+
 function Hyperglobal.hypercross(SMODS_current_mod, joker_key, ijiraq_key)
     if SMODS_current_mod then
         local k, v = joker_key, ijiraq_key
