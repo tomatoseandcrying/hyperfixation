@@ -129,6 +129,9 @@ SMODS.Joker { --Ijiraq.
                 and G.GAME.current_round.discards_left > 0 then
                 totalcash = totalcash + (obj.gratcash * G.GAME.current_round.discards_left)
             end
+            if v == 'j_hpfx_moriah' then
+                totalcash = totalcash + obj.cash
+            end
         end
         return totalcash
     end,

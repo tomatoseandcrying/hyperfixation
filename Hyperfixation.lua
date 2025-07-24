@@ -659,3 +659,16 @@ function bagchase()
     SMODS.add_card({ key = 'j_hpfx_belated_grat' })
     SMODS.add_card({ key = 'j_hpfx_apollo' })
 end
+
+function transformtest()
+    table.insert(G.GAME.raqeffects, 'j_hpfx_moriah')
+    print('raqeffects:')
+    for i, v in ipairs(G.GAME.raqeffects) do
+        print('  [' .. i .. ']: ' .. tostring(v))
+    end
+    print('values:')
+    for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues or {}) do
+        print('  [' .. tostring(k) .. ']: ' .. tostring(v))
+    end
+    SMODS.add_card({ key = 'j_hpfx_ijiraq' })
+end
