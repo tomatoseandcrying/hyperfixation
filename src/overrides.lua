@@ -130,7 +130,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
     end
     for _, card in ipairs(G.jokers.cards) do
-        if card.isIjiraq or exceptions[G.GAME.current_round.fodder_card.jkey] and
+        if card.isIjiraq or Hyperglobal.exceptions[G.GAME.current_round.fodder_card.jkey] and
             not card.config.center.key == 'j_hpfx_ijiraq' then
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -353,7 +353,7 @@ function G.UIDEF.hpfx_transform_button(card)
     if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq'
         and card.config.center.rarity == 4 then
         local specil = nil
-        for k, v in pairs(exceptions) do
+        for k, v in pairs(Hyperglobal.exceptions) do
             if key == v then
                 specil = true
                 break

@@ -330,7 +330,7 @@ function hpfx_Transform(card, context)
         func = function()
             if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
-                for k, v in pairs(exceptions) do
+                for k, v in pairs(Hyperglobal.exceptions) do
                     if key == v then
                         key = k
                     end
@@ -386,7 +386,7 @@ function Card:Transfodd(context)
         func = function()
             if self.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = self.config.center.key
-                for k, v in pairs(exceptions) do
+                for k, v in pairs(Hyperglobal.exceptions) do
                     if key == v then
                         key = k
                     end
@@ -444,7 +444,7 @@ function G.FUNCS.hpfx_Transbutt(e)
         func = function()
             if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
-                for k, v in pairs(exceptions) do
+                for k, v in pairs(Hyperglobal.exceptions) do
                     if key == v then
                         key = k
                     end
