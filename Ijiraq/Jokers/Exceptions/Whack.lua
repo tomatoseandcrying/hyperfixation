@@ -59,15 +59,19 @@ SMODS.Joker { --Hack?
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.before and context.cardarea == G.jokers then
+        if context.before and context.cardarea == G.jokers
+            and context.main_eval and not context.blueprint then
             for _, kard in ipairs(context.scoring_hand) do
                 if kard:get_id() == 2 or kard:get_id() == 3 or
                     kard:get_id() == 4 or kard:get_id() == 5 then
                     table.insert(card.ability.extra.played_cards, kard)
-                    return {
-                        message = localize(kard),
-                        colour = G.C.hpfx_IjiGray
-                    }
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.calculate_effect(
+                                { message = localize(kard), colour = G.C.hpfx_IjiGray }, kard)
+                            return true
+                        end
+                    }))
                 end
             end
         end
@@ -86,17 +90,15 @@ SMODS.Joker { --Hack?
             for _, v in ipairs(card.ability.extra.played_cards) do
                 if v:get_id() == 2 then
                     p2 = true
-                end
-                if v:get_id() == 3 then
+                elseif v:get_id() == 3 then
                     p3 = true
-                end
-                if v:get_id() == 4 then
+                elseif v:get_id() == 4 then
                     p4 = true
-                end
-                if v:get_id() == 5 then
+                elseif v:get_id() == 5 then
                     p5 = true
                 end
             end
+            print(card.ability.extra.played_cards)
             if p2 and p3 and p4 and p5 then
                 return {
                     func = function()
