@@ -16,6 +16,8 @@ SMODS.Joker { --Ijiraq.
         extra = {
             jkey = 'ijiraq',
             d_size = 1,
+            h_size = 2,
+            h_plays = -1,
             cash = 1,
             goldcash = 4,
             gratcash = 2
@@ -60,7 +62,7 @@ SMODS.Joker { --Ijiraq.
     end,
     add_to_deck = function(self, card, from_debuff)
         card:remove_sticker('hpfx_priceless')
-        for k, v in ipairs(SMODS.find_card('j_hpfx_ijiraq')) do
+        for k, v in ipairs(SMODS.find_card('j_hpfx_ijiraq')) do --Only 1 Ijiraq.
             if v ~= card then
                 G.E_MANAGER:add_event(Event({
                     func = function()
@@ -81,26 +83,40 @@ SMODS.Joker { --Ijiraq.
                 }))
             end
         end
-        for _, v in pairs(G.GAME.raqeffects) do --Drunkard
+        for _, v in pairs(G.GAME.raqeffects) do
             local found = false
-            if v == 'j_drunkard' then
+            if v == 'j_drunkard' or v == 'j_troubadour' then
                 found = true
             end
             if found then
-                ease_discard(card.ability.extra.d_size, true, true)
-                G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
+                if v == 'j_drunkard' then
+                    ease_discard(card.ability.extra.d_size, true, true)
+                    G.GAME.round_resets.discards = G.GAME.round_resets.discards
+                        + card.ability.extra.d_size
+                elseif v == 'j_troubadour' then
+                    G.GAME.round_resets.hands = G.GAME.round_resets.hands
+                        + card.ability.extra.h_plays
+                    G.hand:change_size(card.ability.extra.h_size)
+                end
             end
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
         for _, v in pairs(G.GAME.raqeffects) do
             local found = false
-            if v == 'j_drunkard' then --Also Drunkard
+            if v == 'j_drunkard' or v == 'j_troubadour' then
                 found = true
             end
             if found then
-                ease_discard(-card.ability.extra.d_size, true, true)
-                G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
+                if v == 'j_drunkard' then
+                    ease_discard(-card.ability.extra.d_size, true, true)
+                    G.GAME.round_resets.discards = G.GAME.round_resets.discards
+                        - card.ability.extra.d_size
+                elseif v == 'j_troubadour' then
+                    G.GAME.round_resets.hands = G.GAME.round_resets.hands
+                        - card.ability.extra.h_plays
+                    G.hand:change_size(-card.ability.extra.h_size)
+                end
             end
         end
     end,
