@@ -146,7 +146,9 @@ Hyperglobal = Hyperglobal or {
             end
         end
     end,
-    --Value storing for Ijiraq's abilities
+    ---Value storing for Ijiraq's abilities
+    ---@param self any The card object with the values that you want to save. (ex: `card`, `self`, etc.)
+    ---@param center any The center where values are being set. (ex: `G.P_CENTERS`, `SMODS.Centers`, etc.)
     safe_set_ability = function(self, center)
         if not self or not center then return nil end
         local oldcenter = self.config.center
@@ -288,6 +290,9 @@ SMODS.Sound({
 
 --File Loading
 mod_path = "" .. SMODS.current_mod.path
+
+---Loads all files in a folder (Will load unordered.)
+---@param folder any The filepath to the folder you want to load. (ex: "Ijiraq/Exceptions")
 function load_folder(folder)
     files = NFS.getDirectoryItems(mod_path .. folder)
     for i, file in ipairs(files) do
@@ -432,6 +437,8 @@ function Card:Transfodd(context)
     return true
 end
 
+---Function used for transformation from a UI button
+---@param e any Leave this as `e`, this is a G.FUNC, and they can't use `card`
 function G.FUNCS.hpfx_Transbutt(e)
     local card = e.config.ref_table
     G.E_MANAGER:add_event(Event({
@@ -488,7 +495,8 @@ function G.FUNCS.hpfx_Transbutt(e)
     return true
 end
 
---Perkeo?
+---Function used to toggle Perkeo?'s targeting flag.
+---@param e any Leave this as `e`, this is a G.FUNC, and they can't use `card`
 function G.FUNCS.hpfx_Perktoggle(e)
     local _card = e.config.ref_table
     G.E_MANAGER:add_event(Event({
@@ -501,6 +509,8 @@ function G.FUNCS.hpfx_Perktoggle(e)
     }))
 end
 
+---Function used to de-render the toggle button if shown on Ijiraq.
+---@param e any Leave this as `e`, this is a G.FUNC, and they can't use `card`
 function G.FUNCS.hpfx_Perkcheck(e)
     local _card = e.config.ref_table
     if _card.config.center.key == 'j_hpfx_ijiraq' then
@@ -509,7 +519,9 @@ function G.FUNCS.hpfx_Perkcheck(e)
     end
 end
 
---Effect Table
+---Modify the weight of a booster in the Booster pool. Made by me!!! ^ u ^
+---@param booster_kind any
+---@param new_weight any
 function Card:set_booster_weight(booster_kind, new_weight)
     for _, booster in pairs(G.P_CENTER_POOLS.Booster or {}) do
         if Hyperglobal.og_boostweight[booster.kind] == nil then
@@ -533,7 +545,9 @@ function Card:set_booster_weight(booster_kind, new_weight)
     end
 end
 
---Egg? |
+---Rounds a number to the nearest multiple of another number.
+---@param thingwearerounding any The number you want to round.
+---@param tothemultipleof any The multiple you want to round to. Defaults to 1 if not provided.
 function roundmyshitprettyplease(thingwearerounding, tothemultipleof)
     local getdivided = thingwearerounding / (tothemultipleof or 1)
     local getrounded = tothemultipleof * math.floor(getdivided)
