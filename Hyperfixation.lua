@@ -113,7 +113,7 @@ Hyperglobal = Hyperglobal or {
         j_hpfx_take_the_moon = 'j_to_the_moon',
         j_hpfx_apollo = 'j_satellite',
     },
-    print("Is j_test_broken in G.P_CENTERS?: ", G.P_CENTERS["j_test_broken"]),
+
     ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperglobal exists and is a table.
     ---@param mod_id any The ID of the mod to check. Can be found in `metadata.json`.
     ---@param joker_key any The key of the Joker the Ijiraq will be mimicking.
@@ -125,7 +125,6 @@ Hyperglobal = Hyperglobal or {
             return
         else
             local k, v = joker_key, ijiraq_joker_key
-            print("key type: ", type(v), "value type: ", type(k))
             -- Adds the joker to the exceptions table
             Hyperglobal.exceptions[k] = tostring(v)
 
@@ -134,13 +133,10 @@ Hyperglobal = Hyperglobal or {
             if not obj then
                 print("SMODS.Centers does not contain key: ", v)
                 -- Optionally: return or skip further logic
-            end
-            if obj and obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
-                print("Before: ", Hyperglobal.calcdollarjokesters[v])
+            elseif obj and obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
                 if onpayout == true then
                     Hyperglobal.calcdollarjokesters[v] = tostring(k)
                 end
-                print("After: ", Hyperglobal.calcdollarjokesters[v])
             else
                 -- If the function does not exist, print a message to the console
                 print("calc_dollar_bonus does not exist.")
