@@ -113,28 +113,40 @@ Hyperglobal = Hyperglobal or {
         j_hpfx_take_the_moon = 'j_to_the_moon',
         j_hpfx_apollo = 'j_satellite',
     },
-
+    print("Is j_test_broken in G.P_CENTERS?: ", G.P_CENTERS["j_test_broken"]),
     ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperglobal exists and is a table.
     ---@param mod_id any The ID of the mod to check. Can be found in `metadata.json`.
     ---@param joker_key any The key of the Joker the Ijiraq will be mimicking.
     ---@param ijiraq_joker_key any The key of the Joker the Ijiraq will transform from. Make sure it calls `hpfx_Transform(card, context)`
     ---@param onpayout boolean Jokers in this table will transform after payout. Set to `false` to disable this.
     hypercross = function(mod_id, joker_key, ijiraq_joker_key, onpayout)
-        if SMODS.find_mod(mod_id) == nil then
+        if not next(SMODS.find_mod(mod_id)) then
             print("Hyperfixation: hypercross: Mod not found: " .. tostring(mod_id))
             return
         else
             local k, v = joker_key, ijiraq_joker_key
+            print("key type: ", type(v), "value type: ", type(k))
             -- Adds the joker to the exceptions table
             Hyperglobal.exceptions[k] = tostring(v)
 
             -- Check if the table has a calc_dollar_bonus function
-            local obj = G.P_CENTERS[v]
-            if obj and obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' and onpayout == true then
-                Hyperglobal.calcdollarjokesters[v] = tostring(k)
+            local obj = SMODS.Centers[v]
+            if not obj then
+                print("SMODS.Centers does not contain key: ", v)
+                -- Optionally: return or skip further logic
+            end
+            if obj and obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
+                print("Before: ", Hyperglobal.calcdollarjokesters[v])
+                if onpayout == true then
+                    Hyperglobal.calcdollarjokesters[v] = tostring(k)
+                end
+                print("After: ", Hyperglobal.calcdollarjokesters[v])
             else
                 -- If the function does not exist, print a message to the console
                 print("calc_dollar_bonus does not exist.")
+                print("obj: " .. tostring(obj))
+                print('key: ' .. tostring(k))
+                print('value: ' .. tostring(v))
             end
         end
     end,
@@ -199,7 +211,7 @@ SMODS.Atlas({
     path = "icon.png",
     px = 32,
     py = 32,
-}):register()
+})
 SMODS.Atlas {
     key = 'IsaacJokers',
     path = "IsaacJokers.png",
@@ -293,7 +305,6 @@ SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 SMODS.load_file('4Fun/FunZone.lua')()
 SMODS.load_file('Stickers.lua')()
-SMODS.load_file('crossmodtest/crossmodtest/main.lua')() --mod made to test crossmod compatibility, ZIP file
 
 
 --Custom Colors

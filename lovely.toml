@@ -99,7 +99,7 @@ end
 '''
 position = "after"
 payload = '''
-if calcdollarjokesters[_card.config.center.key] then
+if Hyperglobal.calcdollarjokesters[_card.config.center.key] then
     hpfx_Transform(_card)
 end
 '''
