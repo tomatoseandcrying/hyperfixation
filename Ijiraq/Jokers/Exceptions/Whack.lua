@@ -13,7 +13,8 @@ SMODS.Joker { --Hack?
     config = {
         extra = {
             repetitions = 1,
-            played_cards = {}
+            played_cards = {},
+            trig = {}
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -41,6 +42,7 @@ SMODS.Joker { --Hack?
                 (p3 and "X") or '3',
                 (p4 and "X") or '4',
                 (p5 and "X") or '5',
+                card.ability.extra.trig
             }
         }
     end,
@@ -65,14 +67,38 @@ SMODS.Joker { --Hack?
                 if kard:get_id() == 2 or kard:get_id() == 3 or
                     kard:get_id() == 4 or kard:get_id() == 5 then
                     table.insert(card.ability.extra.played_cards, kard)
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            SMODS.calculate_effect(
-                                { message = localize(kard), colour = G.C.hpfx_IjiGray }, kard)
-                            return true
-                        end
-                    }))
+                    table.insert(card.ability.extra.trig, false)
                 end
+            end
+        end
+        if context.individual and context.cardarea == G.play and not context.blueprint then
+            local ind
+            for i, v in ipairs(card.ability.extra.played_cards) do
+                if v == context.other_card then
+                    ind = i
+                end
+            end
+            if ind and card.ability.extra.trig[ind] == false then
+                for _, kaard in ipairs(card.ability.extra.played_cards) do
+                    local other = context.other_card
+                    if other:get_id() == kaard:get_id() then
+                        G.E_MANAGER:add_event(Event({
+                            delay = 0.8,
+                            trigger = 'immediate',
+                            blocking = false,
+                            func = function()
+                                SMODS.calculate_effect(
+                                    {
+                                        message = other:get_id() .. "...",
+                                        colour = G.C.hpfx_IjiGray,
+                                        instant = true
+                                    }, card)
+                                return true
+                            end
+                        }))
+                    end
+                end
+                card.ability.extra.trig[ind] = true
             end
         end
         if context.repetition and context.cardarea == G.play then
@@ -87,6 +113,9 @@ SMODS.Joker { --Hack?
         end
         if context.after then
             local p2, p3, p4, p5 = false, false, false, false
+            for i, v in ipairs(card.ability.extra.trig) do
+                v = false
+            end
             for _, v in ipairs(card.ability.extra.played_cards) do
                 if v:get_id() == 2 then
                     p2 = true
@@ -98,7 +127,6 @@ SMODS.Joker { --Hack?
                     p5 = true
                 end
             end
-            print(card.ability.extra.played_cards)
             if p2 and p3 and p4 and p5 then
                 return {
                     func = function()
