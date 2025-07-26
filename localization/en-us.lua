@@ -805,8 +805,8 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if poker",
                     "hand contains a",
-                    "#3# card, #4# card,",
-                    "#5# card, and #6# card{C:hpfx_IjiGray}#2#{}",
+                    "{C:diamonds}#3#{} card, {C:hearts}#4#{} card,",
+                    "{C:spades}#5#{} card, and {C:clubs}#6#{} card{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_daisy_vase_alt = {
@@ -814,8 +814,8 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{} Mult if poker",
                     "hand contains a",
-                    "#3# card, #4# card,",
-                    "#5# card, and #6# card{C:hpfx_IjiGray}#2#{}",
+                    "{C:diamonds}#3#{} card, {C:hearts}#4#{} card,",
+                    "{C:spades}#5#{} card, and {C:clubs}#6#{} card{C:hpfx_IjiGray}#2#{}",
                 },
             },
             j_hpfx_get_an_uber = {

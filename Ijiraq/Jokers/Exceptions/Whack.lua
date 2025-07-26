@@ -38,10 +38,10 @@ SMODS.Joker { --Hack?
                 card.ability.extra.repetitions + 1,
                 card.ability.extra.played_cards,
                 (card.area and card.area == G.jokers and "...?") or "",
-                (p2 and "X") or '2',
-                (p3 and "X") or '3',
-                (p4 and "X") or '4',
-                (p5 and "X") or '5',
+                (p2 and "■") or '2',
+                (p3 and "■") or '3',
+                (p4 and "■") or '4',
+                (p5 and "■") or '5',
                 card.ability.extra.trig
             }
         }
