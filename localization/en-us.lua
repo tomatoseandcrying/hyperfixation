@@ -783,10 +783,9 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Jack{}",
-                    "discarded this round{C:hpfx_IjiGray}#3#{}",
+                    "discarded this round{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
-                    "",
-                    "#4#",
+                    "{C:attention}#5#{} #6#",
                 },
             },
             j_hpfx_dont_come_back_alt = {
@@ -794,10 +793,9 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "for every {C:attention}Jack{}",
-                    "discarded this round{C:hpfx_IjiGray}#3#{}",
+                    "discarded this round{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
-                    "",
-                    "#4#",
+                    "{C:attention}#5#{} #6#",
                 },
             },
             j_hpfx_daisy_vase = {

@@ -1,9 +1,6 @@
 Hyperglobal = Hyperglobal or {
-    SMODS.current_mod,
-
     ---Used to store the original weights of boosters.
     og_boostweight = og_boostweight or {},
-
 
     --[[ keys Ijiraq will skip when deciding disguises
     Jokers that don't use hand calc or have custom conditions should be included here.
@@ -146,6 +143,7 @@ Hyperglobal = Hyperglobal or {
             end
         end
     end,
+
     ---Value storing for Ijiraq's abilities
     ---@param self any The card object with the values that you want to save. (ex: `card`, `self`, etc.)
     ---@param center any The center where values are being set. (ex: `G.P_CENTERS`, `SMODS.Centers`, etc.)
@@ -198,6 +196,16 @@ Hyperglobal = Hyperglobal or {
             self.ability.loyalty_remaining = self.ability.extra.every
         end
     end,
+}
+
+SMODS.current_mod.optional_features = {
+    post_trigger = true,
+    retrigger_joker = true,
+    quantum_enhancements = false,
+    cardareas = {
+        discard = true,
+        deck = true
+    }
 }
 
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
@@ -291,7 +299,7 @@ SMODS.Sound({
 --File Loading
 mod_path = "" .. SMODS.current_mod.path
 
----Loads all files in a folder (Will load unordered.)
+---Loads all files in a folder (Will likely load unordered.)
 ---@param folder any The filepath to the folder you want to load. (ex: "Ijiraq/Exceptions")
 function load_folder(folder)
     files = NFS.getDirectoryItems(mod_path .. folder)
@@ -319,7 +327,7 @@ G.ARGS.LOC_COLOURS['hpfx_bossmute'] = HEX("C78F85")
 --talisman conversion function
 to_big = to_big or function(x) return x end
 
---Ijiraq Functions | Transformations
+--[ Ijiraq Functions | Transformations ]
 
 ---Function used for Jokesters with custom transformation logic.
 ---@param card Card|table The card being transformed.
@@ -562,7 +570,7 @@ SMODS.Joker:take_ownership('oops', {
 }, true)
 
 --Config
-local config = SMODS.current_mod.config
+local config = Hyperglobal.config
 --[[ SMODS.current_mod.config_tab = function ()
 	return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
 		{n = G.UIT.R, config = {align = "cl", padding = 0}, nodes = {
@@ -588,17 +596,6 @@ local config = SMODS.current_mod.config
 		}}
 	}}
 end ]]
-SMODS.current_mod.optional_features = function()
-    return {
-        post_trigger = true,
-        retrigger_joker = true,
-        quantum_enhancements = true,
-        cardareas = {
-            discard = true,
-            deck = true
-        }
-    }
-end
 --[[ G.FUNCS.hpfx_save_and_apply = function()
     G.ACTIVE_MOD_UI = nil
     SMODS.save_all_config()

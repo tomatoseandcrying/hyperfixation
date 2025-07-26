@@ -38,6 +38,8 @@ SMODS.Joker { --Ijiraq.
                         ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v],
                         config = { center = G.P_CENTERS[v] }
                     }, true)
+                    --print(vars)
+                    --print(G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v])
                 end
                 info_queue[#info_queue + 1] = {
                     ijiraq = true,
