@@ -53,6 +53,8 @@ SMODS.Joker { --Ijiraq.
             vars = {
                 card.ability.extra.jkey,
                 card.ability.extra.d_size,
+                card.ability.extra.h_size,
+                card.ability.extra.h_plays,
                 card.ability.extra.cash,
                 card.ability.extra.goldcash,
                 card.ability.extra.gratcash,

@@ -49,7 +49,7 @@ SMODS.Joker {
                                 {
                                     message = localize {
                                         type = 'variable',
-                                        key = 'a_hands',
+                                        key = 'hpfx_m_hands',
                                         vars = { card.ability.extra.hands
                                         } }
                                 },
