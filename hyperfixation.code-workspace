@@ -1,19 +1,7 @@
 {
-	"Lua.workspace.library": [
-		"C:\\Users\\deadb\\AppData\\Roaming\\Hyperfixation\\Mods\\Steamodded\\lsp_def",
-		"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro",
-		"C:\\Users\\deadb\\love2d-main"
-	],
-	"Lua.diagnostics.disable": [
-		"undefined-global",
-		"lowercase-global",
-		"need-check-nil",
-		"duplicate-set-field",
-		"inject-field",
-		"undefined-field"
-	],
-	"Lua.runtime.version": "LuaJIT",
-	"Lua.type.weakUnionCheck": true,
-	"Lua.type.weakNilCheck": true,
-	"folders": []
+	"folders": [
+		{
+			"path": "."
+		}
+	]
 }

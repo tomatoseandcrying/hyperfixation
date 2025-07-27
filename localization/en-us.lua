@@ -1,6 +1,8 @@
 return {
     descriptions = {
         Joker = {
+
+            --Isaac
             j_hpfx_moriah = {
                 name = 'Moriah',
                 text = {
@@ -69,6 +71,7 @@ return {
                 },
             },
 
+            --Non-Specific Additions
             j_hpfx_chud = {
                 name = 'chud joker',
                 text = {
@@ -83,6 +86,7 @@ return {
                 },
             },
 
+            --Ijiraq
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
