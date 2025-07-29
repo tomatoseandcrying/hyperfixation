@@ -101,6 +101,14 @@ SMODS.Joker { --Ijiraq.
                     G.GAME.round_resets.hands = G.GAME.round_resets.hands
                         + card.ability.extra.h_plays
                     G.hand:change_size(card.ability.extra.h_size)
+                elseif v == 'j_ring_master' then
+                    local ijishowman = SMODS.showman
+                    function SMODS.shortcut()
+                        if next(SMODS.find_card('j_hpfx_ijiraq')) then
+                            return true
+                        end
+                        return ijishowman()
+                    end
                 end
             end
         end

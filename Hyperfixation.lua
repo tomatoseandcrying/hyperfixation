@@ -527,15 +527,29 @@ function G.FUNCS.hpfx_Perkcheck(e)
     end
 end
 
----Modify the weight of a booster in the Booster pool. Made by me!!! ^ u ^
----@param booster_kind any
----@param new_weight any
-function Card:set_booster_weight(booster_kind, new_weight)
+---Modifies the weights of boosters in the Booster pool. (`G.P_CENTER_POOLS.Booster`)\
+---made by me! ^ u ^
+---@param booster_kind string|true Booster to be modified. Set to `true` to affect all boosters in pool
+---@param new_weight number? New weight of booster(s). Leave unspecified or `nil` to reset to default
+---@param override boolean? If `true`, will override the first shop's guaranteed Buffoon Pack
+---\
+---__examples:__\
+---All Boosters except Buffoon Packs disabled:\
+---`Card:set_booster_weight(true, 0)`\
+---`Card:set_booster_weight('Buffoon')` <- within an event\
+---\
+---Standard Packs reenabled at original weight:\
+---`Card:set_booster_weight('Standard')`\
+---\
+---All Buffoon Packs (including the guaranteed) disabled:\
+---`Card:set_booster_weight('Buffoon', 0, true)`
+function Card:set_booster_weight(booster_kind, new_weight, override)
     for _, booster in pairs(G.P_CENTER_POOLS.Booster or {}) do
         if Hyperglobal.og_boostweight[booster.kind] == nil then
             Hyperglobal.og_boostweight[booster.kind] = booster.weight
         end
         local boostertable = Hyperglobal.og_boostweight[booster.kind]
+        if override == true then G.GAME.first_shop_buffoon = true end
         if booster_kind == true or booster.kind == booster_kind then
             if boostertable == nil then boostertable = booster.weight end
             if new_weight == nil then
@@ -548,6 +562,61 @@ function Card:set_booster_weight(booster_kind, new_weight)
                 end
             else
                 print('invalid use of set_booster_weight')
+            end
+        end
+    end
+end
+
+---Modifies the weights (rates) of card objects. (`G.GAME.` ? `_rate`)\
+---made by me! ^ u ^
+---@param card_kind 'joker'|'tarot'|'planet'|'spectral'|'playing'|true Cardtype to be modified. Set to `true` to affect all cardtypes
+---@param new_rate number? New weight of cardtype(s). Leave unspecified or `nil` to reset to default
+---\
+---__examples:__\
+---Jokers don't appear, weight of Planets becomes 10:\
+---`Card:set_card_rate('joker', 0)`\
+---`Card:set_card_rate('planet', 10)` <- within an event
+function Card:set_card_rate(card_kind, new_rate)
+    local rate_map = {
+        joker = "joker_rate",
+        tarot = "tarot_rate",
+        planet = "planet_rate",
+        spectral = "spectral_rate",
+        playing = "playing_card_rate"
+    }
+    if not G or not G.GAME then return end
+    for rcard, rate in pairs(rate_map) do
+        if card_kind == true or card_kind == rcard then
+            if Hyperglobal.og_cardrate[rcard] == nil then
+                Hyperglobal.og_cardrate[rcard] = G.GAME[rate]
+            end
+            if new_rate == nil then
+                if type(Hyperglobal.og_cardrate[rcard]) == "number" then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
+                            return true
+                        end
+                    }))
+                end
+            elseif type(new_rate) == "number" then
+                if new_rate >= 0 then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.GAME[rate] = new_rate
+                            return true
+                        end
+                    }))
+                else
+                    if type(Hyperglobal.og_cardrate[rcard]) == "number" then
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
+                                return true
+                            end
+                        }))
+                    end
+                end
             end
         end
     end

@@ -8,6 +8,13 @@ function Game:init_game_object()
     return ret
 end
 
+local cardraterun = Game.start_run
+function Game:start_run(args)
+    local ret = cardraterun(self, args)
+    Hyperglobal.og_cardrate = Hyperglobal.og_cardrate or {}
+    return ret
+end
+
 --Unlock Conditions
 local bdf = Blind.defeat
 function Blind:defeat(silent)
