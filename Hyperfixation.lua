@@ -592,29 +592,14 @@ function Card:set_card_rate(card_kind, new_rate)
             end
             if new_rate == nil then
                 if type(Hyperglobal.og_cardrate[rcard]) == "number" then
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
-                            return true
-                        end
-                    }))
+                    G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
                 end
             elseif type(new_rate) == "number" then
                 if new_rate >= 0 then
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            G.GAME[rate] = new_rate
-                            return true
-                        end
-                    }))
+                    G.GAME[rate] = new_rate
                 else
                     if type(Hyperglobal.og_cardrate[rcard]) == "number" then
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
-                                return true
-                            end
-                        }))
+                        G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
                     end
                 end
             end
