@@ -60,7 +60,7 @@ Hyperglobal = Hyperglobal or {
         j_gros_michel = 'j_hpfx_close_michelle',
         j_stuntman = 'j_hpfx_buttowski',
         j_hanging_chad = 'j_hpfx_hung_chad',
-        j_drivers_license = 'j_learners_permit',
+        j_drivers_license = 'j_hpfx_learners_permit',
         j_invisible = 'j_hpfx_invincible',
         j_astronomer = 'j_hpfx_galilimbo',
         j_burnt = 'j_hpfx_charred',
@@ -220,19 +220,19 @@ SMODS.Atlas({
 })
 SMODS.Atlas {
     key = 'IsaacJokers',
-    path = "IsaacJokers.png",
+    path = "TBOI/jokers/IsaacJokers.png",
     px = 71,
     py = 95
 }
 SMODS.Atlas {
     key = 'Jokers4Fun',
-    path = "Jokers4Fun.png",
+    path = "4Fun/jokers/Jokers4Fun.png",
     px = 71,
     py = 95
 }
 SMODS.Atlas {
     key = 'IjiraqJokers',
-    path = "IjiraqJokers.png",
+    path = "inscryption/jokers/IjiraqJokers.png",
     px = 71,
     py = 95
 }
@@ -240,60 +240,62 @@ SMODS.Atlas {
 --Audio Libraries
 SMODS.Sound({
     key = "hpfx_1up",
-    path = "1up.ogg",
+    path = "TBOI/1up.ogg",
 })
 SMODS.Sound({
     key = "hpfx_thumbsup",
-    path = "thumbsup.ogg",
+    path = "TBOI/thumbsup.ogg",
 })
+
 SMODS.Sound({
     key = "hpfx_gulp",
-    path = "gulp.ogg",
+    path = "TBOI/mary/gulp.ogg",
 })
+
 SMODS.Sound({
     key = "hpfx_silver",
-    path = "dimedrop.ogg",
+    path = "TBOI/iscariot/dimedrop.ogg",
 })
 SMODS.Sound({
     key = "hpfx_death1",
-    path = "Isaac_dies_new.ogg",
+    path = "TBOI/deathsounds/Isaac_dies_new.ogg",
 })
 SMODS.Sound({
     key = "hpfx_death2",
-    path = "Isaac_dies_new_1.ogg",
+    path = "TBOI/deathsounds/Isaac_dies_new_1.ogg",
 })
 SMODS.Sound({
     key = "hpfx_death3",
-    path = "Isaac_dies_new_2.ogg",
+    path = "TBOI/deathsounds/Isaac_dies_new_2.ogg",
 })
 SMODS.Sound({
     key = "hpfx_fall",
-    path = "lich-fall.ogg",
+    path = "inscryption/bigraq/lich-fall.ogg",
 })
 SMODS.Sound({
     key = "hpfx_pickup",
-    path = "lastwishpickup.ogg",
+    path = "inscryption/ringmaster/lastwishpickup.ogg",
     volume = 0.6,
 })
 SMODS.Sound({
     key = "hpfx_end1",
-    path = "end1.ogg",
+    path = "inscryption/closemichelle/end1.ogg",
 })
 SMODS.Sound({
     key = "hpfx_end2",
-    path = "end2.ogg",
+    path = "inscryption/closemichelle/end2.ogg",
 })
 SMODS.Sound({
     key = "hpfx_end3",
-    path = "end3.ogg",
+    path = "inscryption/closemichelle/end3.ogg",
 })
 SMODS.Sound({
     key = "hpfx_end4",
-    path = "end4.ogg",
+    path = "inscryption/closemichelle/end4.ogg",
 })
 SMODS.Sound({
     key = "hpfx_boowomp",
-    path = "boowomp.ogg",
+    path = "inscryption/closemichelle/boowomp.ogg",
 })
 
 --File Loading
@@ -731,4 +733,11 @@ function transformtest()
     for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues or {}) do
         print('  [' .. tostring(k) .. ']: ' .. tostring(v))
     end
+end
+
+function guh()
+    local selected = G.CONTROLLER and
+        (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
+    G.GAME.current_round.fodder_card.jkey = selected.config.center.key
+    selected:set_ability('j_hpfx_costume')
 end
