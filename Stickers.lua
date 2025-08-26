@@ -1,15 +1,15 @@
-SMODS.Atlas{
-    key = 'hpfxstickers',
-    path = "hpfxstickers.png",
+SMODS.Atlas {
+    key = 'inscrstickers',
+    path = "inscryption/jokers/inscrstickers.png",
     px = 71,
     py = 95
 }
 
-SMODS.Sticker{
+SMODS.Sticker {
     key = "priceless",
     default_compat = true,
-    atlas = "hpfxstickers",
-    pos = {x = 0, y = 0},
+    atlas = "inscrstickers",
+    pos = { x = 0, y = 0 },
     badge_colour = HEX("FCB3EA"),
     sets = {
         Joker = true,

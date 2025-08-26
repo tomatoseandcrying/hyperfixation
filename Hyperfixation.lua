@@ -315,7 +315,6 @@ SMODS.load_file('lib/ui.lua')()
 SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 SMODS.load_file('4Fun/FunZone.lua')()
-SMODS.load_file('Stickers.lua')()
 
 
 --Custom Colors
@@ -741,3 +740,5 @@ function guh()
     G.GAME.current_round.fodder_card.jkey = selected.config.center.key
     selected:set_ability('j_hpfx_costume')
 end
+
+--Balatesting
