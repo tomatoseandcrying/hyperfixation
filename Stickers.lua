@@ -1,6 +1,6 @@
 SMODS.Atlas {
     key = 'inscrstickers',
-    path = "inscryption/jokers/inscrstickers.png",
+    path = "inscryption/stickers/inscrstickers.png",
     px = 71,
     py = 95
 }

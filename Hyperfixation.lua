@@ -315,6 +315,7 @@ SMODS.load_file('lib/ui.lua')()
 SMODS.load_file('Isaac/IsaacCenter.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 SMODS.load_file('4Fun/FunZone.lua')()
+SMODS.load_file('Stickers.lua')()
 
 
 --Custom Colors

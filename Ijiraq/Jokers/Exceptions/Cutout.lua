@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'cutout',
-    pos = {x = 2, y = 5},
+    pos = { x = 2, y = 5 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,12 +10,12 @@ SMODS.Joker{
     rarity = 2,
     cost = 8,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
-        return{
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 G.jokers and math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
-                + #SMODS.find_card("j_hpfx_cutout", true)) or 1,
+                    + #SMODS.find_card("j_hpfx_cutout", true)) or 1,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -38,13 +38,14 @@ SMODS.Joker{
         if context.joker_main then
             return {
                 xmult = math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
-                + #SMODS.find_card("j_hpfx_cutout", true)),
+                    + #SMODS.find_card("j_hpfx_cutout", true)),
             }
         end
         if context.main_eval and
-        math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
-        + #SMODS.find_card("j_hpfx_cutout", true)) <= 1 then return
-        {func = function ()hpfx_Transform(card, context) end}
+            math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
+                + #SMODS.find_card("j_hpfx_cutout", true)) <= 1 then
+            return
+            { func = function() hpfx_Transform(card, context) end }
         end
     end
 }
