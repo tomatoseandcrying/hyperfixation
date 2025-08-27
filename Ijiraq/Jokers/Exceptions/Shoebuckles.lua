@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'shoebuckles',
-    pos = {x = 9, y = 8},
+    pos = { x = 9, y = 8 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,14 +12,18 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        mult = 2,
-        dollars = 5
+            mult = 2,
+            dollars = 5
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.mult,
+                card.ability.extra.dollars,
+                card.ability.extra.mult *
+                math.floor(((G.GAME.dollars or 0) +
+                    (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars),
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -38,11 +42,17 @@ SMODS.Joker{
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
     end,
-    calc_dollar_bonus = function (self, card)
+    calc_dollar_bonus = function(self, card)
         local bonus = 5
-        local multdeux = math.floor(mult/2)
+        local multdeux = math.floor(mult / 2)
         if multdeux > 0 then
-            return bonus * multdeux
+            return bonus * multdeux,
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        hpfx_Transform(card, context)
+                        return true
+                    end
+                }))
         end
     end,
     calculate = function(self, card, context)
@@ -50,15 +60,8 @@ SMODS.Joker{
             return {
                 mult = card.ability.extra.mult *
                     math.floor(((G.GAME.dollars or 0) +
-                    (G.GAME.dollar_buffer or 0)) /
-                card.ability.extra.dollars)
-            }
-        end
-        if context.end_of_round then
-            return {
-                func = function ()
-                    hpfx_Transform(card, context)
-                end
+                            (G.GAME.dollar_buffer or 0)) /
+                        card.ability.extra.dollars)
             }
         end
     end
