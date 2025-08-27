@@ -741,5 +741,3 @@ function guh()
     G.GAME.current_round.fodder_card.jkey = selected.config.center.key
     selected:set_ability('j_hpfx_costume')
 end
-
---Balatesting

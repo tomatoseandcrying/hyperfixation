@@ -1,8 +1,8 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'canio',
-    pos = {x = 3, y = 8},
-    soul_pos = {x = 3, y = 9},
+    pos = { x = 3, y = 8 },
+    soul_pos = { x = 3, y = 9 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -13,12 +13,12 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 1,
-        xmult_gain = 1
+            xmult = 1,
+            xmult_gain = 1
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult_gain,
                 card.ability.extra.xmult,
@@ -41,12 +41,14 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
         for _, ccard in ipairs(G.playing_cards) do
             if ccard:is_face() then
-                local destroyed = {} local face_cards = 0
-                SMODS.destroy_cards(ccard) table.insert(ccard, destroyed)
+                local destroyed = {}
+                local face_cards = 0
+                SMODS.destroy_cards(ccard)
+                table.insert(ccard, destroyed)
                 face_cards = face_cards + 1
                 if face_cards > 0 then
-                card.ability.extra.xmult = card.ability.extra.xmult +
-                    face_cards * card.ability.extra.xmult_gain
+                    card.ability.extra.xmult = card.ability.extra.xmult +
+                        face_cards * card.ability.extra.xmult_gain
                 end
             end
         end
@@ -61,13 +63,19 @@ SMODS.Joker{
                 card.ability.extra.xmult = card.ability.extra.xmult +
                     face_cards * card.ability.extra.xmult_gain
                 return {
-                    message = localize{
+                    message = localize {
                         type = 'variable',
                         key = 'a_xmult',
                         vars = {
                             card.ability.extra.xmult
-                    }}}
+                        } }
+                }
             end
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
         end
     end
 }
