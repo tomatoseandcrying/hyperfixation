@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'learners_permit',
-    pos = {x = 0, y = 7},
+    pos = { x = 0, y = 7 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,12 +12,12 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 3,
-        cards = 16
+            xmult = 3,
+            cards = 16
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 card.area and card.area == G.jokers and "...?" or "",
@@ -39,7 +39,7 @@ SMODS.Joker{
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
         G.E_MANAGER:add_event(Event({
-            func = function ()
+            func = function()
                 local cards = {}
                 for i = 1, card.ability.extra.cards do
                     local additions = {}
@@ -59,7 +59,7 @@ SMODS.Joker{
                     cards[i] = create_playing_card({
                         front = G.P_CARDS[_suit .. '_' .. _rank],
                         center = pseudorandom_element(cen_pool, pseudoseed('learner_per'))
-                    }, G.hand, nil, i ~= 1, { G.C.SECONDARY_SET.Spectral })
+                    }, G.deck, nil, i ~= 1, { G.C.SECONDARY_SET.Spectral })
                 end
                 SMODS.calculate_context({ playing_card_added = true, cards = cards })
                 hpfx_Transform(card)

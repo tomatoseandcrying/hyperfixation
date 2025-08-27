@@ -45,7 +45,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Planet' then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
             if SMODS.pseudorandom_probability(card, 'hpfx_sagittarius_seed', 8, 88, 'hpfx_sagittarius_id') then
                 return {
                     func = function()
