@@ -10,7 +10,7 @@ SMODS.Joker {
     rarity = 2,
     cost = 8,
     atlas = 'IjiraqJokers',
-    config = { extra = {} },
+    config = { trig = false, extra = {} },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -34,18 +34,24 @@ SMODS.Joker {
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, card, true)
     end,
+    update = function(self, card, dt)
+        if math.max(1, (G.jokers.config.card_limit - #G.jokers.cards) +
+                #SMODS.find_card("j_hpfx_cutout", true)) <= 1 and card.ability.trig == false then
+            card.ability.trig = true
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    hpfx_Transform(card)
+                    return true
+                end
+            }))
+        end
+    end,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
                 xmult = math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
                     + #SMODS.find_card("j_hpfx_cutout", true)),
             }
-        end
-        if context.main_eval and
-            math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
-                + #SMODS.find_card("j_hpfx_cutout", true)) <= 1 then
-            return
-            { func = function() hpfx_Transform(card, context) end }
         end
     end
 }
