@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'charred',
-    pos = {x = 3, y = 7},
+    pos = { x = 3, y = 7 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,9 +10,9 @@ SMODS.Joker{
     rarity = 3,
     cost = 8,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
-        return{
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -41,9 +41,13 @@ SMODS.Joker{
             }
         end
         if context.discard then
-            return{
-                remove = true,
-                func = function ()
+            return {
+                remove = true
+            }
+        end
+        if context.hpfx_post_discard then
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }
