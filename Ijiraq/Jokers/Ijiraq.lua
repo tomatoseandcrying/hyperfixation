@@ -15,12 +15,6 @@ SMODS.Joker { --Ijiraq.
     config = {
         extra = {
             jkey = 'ijiraq',
-            d_size = 1,
-            h_size = 2,
-            h_plays = -1,
-            cash = 1,
-            goldcash = 4,
-            gratcash = 2
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -52,12 +46,6 @@ SMODS.Joker { --Ijiraq.
         return {
             vars = {
                 card.ability.extra.jkey,
-                card.ability.extra.d_size,
-                card.ability.extra.h_size,
-                card.ability.extra.h_plays,
-                card.ability.extra.cash,
-                card.ability.extra.goldcash,
-                card.ability.extra.gratcash,
             }
         }
     end,
@@ -89,18 +77,14 @@ SMODS.Joker { --Ijiraq.
         end
         for _, v in pairs(G.GAME.raqeffects) do
             local found = false
-            if v == 'j_drunkard' or v == 'j_troubadour' then
-                found = true
-            end
+            if v == 'j_drunkard' or v == 'j_troubadour' or v == 'j_ring_master' or v == 'j_stuntman' then found = true end
             if found then
                 if v == 'j_drunkard' then
-                    ease_discard(card.ability.extra.d_size, true, true)
-                    G.GAME.round_resets.discards = G.GAME.round_resets.discards
-                        + card.ability.extra.d_size
+                    ease_discard(1, true, true)
+                    G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
                 elseif v == 'j_troubadour' then
-                    G.GAME.round_resets.hands = G.GAME.round_resets.hands
-                        + card.ability.extra.h_plays
-                    G.hand:change_size(card.ability.extra.h_size)
+                    G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
+                    G.hand:change_size(2)
                 elseif v == 'j_ring_master' then
                     local ijishowman = SMODS.showman
                     function SMODS.shortcut()
@@ -109,6 +93,8 @@ SMODS.Joker { --Ijiraq.
                         end
                         return ijishowman()
                     end
+                elseif v == 'j_stuntman' then
+                    G.hand:change_size(-2)
                 end
             end
         end
@@ -116,18 +102,16 @@ SMODS.Joker { --Ijiraq.
     remove_from_deck = function(self, card, from_debuff)
         for _, v in pairs(G.GAME.raqeffects) do
             local found = false
-            if v == 'j_drunkard' or v == 'j_troubadour' then
-                found = true
-            end
+            if v == 'j_drunkard' or v == 'j_troubadour' or v == 'j_stuntman' then found = true end
             if found then
                 if v == 'j_drunkard' then
-                    ease_discard(-card.ability.extra.d_size, true, true)
-                    G.GAME.round_resets.discards = G.GAME.round_resets.discards
-                        - card.ability.extra.d_size
+                    ease_discard(-1, true, true)
+                    G.GAME.round_resets.discards = G.GAME.round_resets.discards - 1
                 elseif v == 'j_troubadour' then
-                    G.GAME.round_resets.hands = G.GAME.round_resets.hands
-                        - card.ability.extra.h_plays
-                    G.hand:change_size(-card.ability.extra.h_size)
+                    G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+                    G.hand:change_size(-2)
+                elseif v == 'j_stuntman' then
+                    G.hand:change_size(-2)
                 end
             end
         end
@@ -136,10 +120,9 @@ SMODS.Joker { --Ijiraq.
         local totalcash = 0
         if not card:can_calculate() then return end
         for _, v in pairs(G.GAME.raqeffects) do
-            local obj = card.ability and card.ability.extra
             local joker = G.P_CENTERS[v]
             if v == 'j_golden' then
-                totalcash = totalcash + obj.goldcash
+                totalcash = totalcash + 4
             end
             if v == 'j_cloud_9' then
                 local nine_tally = 0
@@ -147,22 +130,22 @@ SMODS.Joker { --Ijiraq.
                     if pcard:get_id() == 9 then nine_tally = nine_tally + 1 end
                 end
                 if nine_tally > 0 then
-                    totalcash = totalcash + (obj.cash * nine_tally)
+                    totalcash = totalcash + (1 * nine_tally)
                 end
             end
             if v == 'j_rocket' then
-                totalcash = totalcash + obj.cash
+                totalcash = totalcash + 1
             end
             if v == 'j_satellite' then
                 local planets_used = 0
                 for k, _v in pairs(G.GAME.consumeable_usage) do
                     if _v.set == 'Planet' then planets_used = planets_used + 1 end
                 end
-                totalcash = totalcash + (obj.cash * planets_used)
+                totalcash = totalcash + (1 * planets_used)
             end
             if v == 'j_delayed_grat' and G.GAME.current_round.discards_used == 0
                 and G.GAME.current_round.discards_left > 0 then
-                totalcash = totalcash + (obj.gratcash * G.GAME.current_round.discards_left)
+                totalcash = totalcash + (2 * G.GAME.current_round.discards_left)
             end
             --Auto-setup for modded Jokers.
             if joker and joker.calc_dollar_bonus and type(joker.calc_dollar_bonus) == 'function' then
@@ -178,18 +161,14 @@ SMODS.Joker { --Ijiraq.
         if context.modify_scoring_hand and not context.blueprint then --And Splash
             for _, v in pairs(G.GAME.raqeffects) do
                 local found = false
-                if v == 'j_splash' then
-                    found = true
-                end
+                if v == 'j_splash' then found = true end
                 if found then return { add_to_hand = true } end
             end
         end
         if context.check_eternal and not context.blueprint then --And Mr. Bones
             for _, v in pairs(G.GAME.raqeffects) do
                 local found = false
-                if v == 'j_mr_bones' then
-                    found = true
-                end
+                if v == 'j_mr_bones' then found = true end
                 if found then return { no_destroy = { override_compat = true } } end
             end
         end

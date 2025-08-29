@@ -935,7 +935,7 @@ return {
                 name = 'Stuntman{C:hpfx_IjiGray}...?{}',
                 text = {
                     "{C:chips}+#1#{} Chips,",
-                    "{C:attention}-#2#{} hand size{C:hpfx_IjiGray}#4#{}",
+                    "{C:attention}#5##2#{} hand size{C:hpfx_IjiGray}#4#{}",
                 },
             },
             j_hpfx_hung_chad = {
