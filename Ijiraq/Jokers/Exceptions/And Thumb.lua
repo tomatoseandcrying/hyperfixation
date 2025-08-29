@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'and_thumb',
-    pos = {x = 6, y = 6},
+    pos = { x = 6, y = 6 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,9 +10,9 @@ SMODS.Joker{
     rarity = 2,
     cost = 7,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
-        return{
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -33,10 +33,10 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and context.main_eval and not context.blueprint then
+        if context.joker_main and not context.blueprint then
             if next(context.poker_hands['Flush']) or next(context.poker_hands['Straight']) then
                 return {
-                    func = function ()
+                    func = function()
                         hpfx_Transform(card, context)
                     end
                 }

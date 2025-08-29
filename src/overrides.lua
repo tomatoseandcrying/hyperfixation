@@ -43,7 +43,7 @@ end
 local chud = Card.calculate_joker
 function Card:calculate_joker(context)
     local ret, trig = chud(self, context)
-    if (ret and next(ret)) or trig then
+    if (type(ret) == "table" and next(ret)) or trig then
         G.GAME.hpfx_nothingEverHappens = false
     end
     if context.end_of_round and context.beat_boss and G.GAME.round_resets.ante >= 3 then

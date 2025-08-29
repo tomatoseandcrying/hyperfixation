@@ -76,43 +76,48 @@ SMODS.Joker { --Ijiraq.
             end
         end
         for _, v in pairs(G.GAME.raqeffects) do
-            local found = false
-            if v == 'j_drunkard' or v == 'j_troubadour' or v == 'j_ring_master' or v == 'j_stuntman' then found = true end
-            if found then
-                if v == 'j_drunkard' then
-                    ease_discard(1, true, true)
-                    G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
-                elseif v == 'j_troubadour' then
-                    G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
-                    G.hand:change_size(2)
-                elseif v == 'j_ring_master' then
-                    local ijishowman = SMODS.showman
-                    function SMODS.shortcut()
-                        if next(SMODS.find_card('j_hpfx_ijiraq')) then
-                            return true
-                        end
-                        return ijishowman()
-                    end
-                elseif v == 'j_stuntman' then
-                    G.hand:change_size(-2)
+            if v == 'j_drunkard' then
+                ease_discard(1, true, true)
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
+            elseif v == 'j_troubadour' then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
+                G.hand:change_size(2)
+            elseif v == 'j_ring_master' then
+                local ijishowman = SMODS.showman
+                function SMODS.showman()
+                    if next(SMODS.find_card('j_hpfx_ijiraq')) then return true end
+                    return ijishowman()
+                end
+            elseif v == 'j_stuntman' then
+                G.hand:change_size(-2)
+            elseif v == 'j_chaos' then
+                SMODS.change_free_rerolls(1)
+            elseif v == 'j_four_fingers' then
+                local ijifour = SMODS.four_fingers
+                function SMODS.four_fingers()
+                    if next(SMODS.find_card('j_hpfx_ijiraq')) then return 4 end
+                    return ijifour()
+                end
+            elseif v == 'j_pareidolia' then
+                local ijiface = Card.is_face
+                function Card:is_face(from_boss)
+                    return ijiface(self, from_boss) or (self:get_id() and next(SMODS.find_card("j_hpfx_ijiraq")))
                 end
             end
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
         for _, v in pairs(G.GAME.raqeffects) do
-            local found = false
-            if v == 'j_drunkard' or v == 'j_troubadour' or v == 'j_stuntman' then found = true end
-            if found then
-                if v == 'j_drunkard' then
-                    ease_discard(-1, true, true)
-                    G.GAME.round_resets.discards = G.GAME.round_resets.discards - 1
-                elseif v == 'j_troubadour' then
-                    G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
-                    G.hand:change_size(-2)
-                elseif v == 'j_stuntman' then
-                    G.hand:change_size(-2)
-                end
+            if v == 'j_drunkard' then
+                ease_discard(-1, true, true)
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards - 1
+            elseif v == 'j_troubadour' then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+                G.hand:change_size(-2)
+            elseif v == 'j_stuntman' then
+                G.hand:change_size(-2)
+            elseif v == 'j_chaos' then
+                SMODS.change_free_rerolls(1)
             end
         end
     end,
@@ -158,19 +163,9 @@ SMODS.Joker { --Ijiraq.
         if totalcash > 0 then return totalcash end
     end,
     calculate = function(self, card, context)
-        if context.modify_scoring_hand and not context.blueprint then --And Splash
-            for _, v in pairs(G.GAME.raqeffects) do
-                local found = false
-                if v == 'j_splash' then found = true end
-                if found then return { add_to_hand = true } end
-            end
-        end
-        if context.check_eternal and not context.blueprint then --And Mr. Bones
-            for _, v in pairs(G.GAME.raqeffects) do
-                local found = false
-                if v == 'j_mr_bones' then found = true end
-                if found then return { no_destroy = { override_compat = true } } end
-            end
+        for _, v in pairs(G.GAME.raqeffects) do
+            if v == 'j_splash' and context.modify_scoring_hand and not context.blueprint then return { add_to_hand = true } end
+            if v == 'j_mr_bones' and context.check_eternal then return { no_destroy = { override_compat = true } } end
         end
     end
 }

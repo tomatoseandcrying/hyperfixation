@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'nix_sense',
-    pos = {x = 8, y = 1},
+    pos = { x = 8, y = 1 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,9 +10,9 @@ SMODS.Joker{
     rarity = 2,
     cost = 6,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
-        return{
+    config = { sixdes = false, extra = {} },
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -34,42 +34,47 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.destroy_card and
-        not context.blueprint then
+            not context.blueprint then
             if #context.full_hand == 1
-            and context.destroy_card == context.full_hand[1]
-            and context.full_hand[1]:get_id() == 6
-            and G.GAME.current_round.hands_played == 0 then
+                and context.destroy_card == context.full_hand[1]
+                and context.full_hand[1]:get_id() == 6
+                and G.GAME.current_round.hands_played == 0 then
                 if #G.consumeables.cards + G.GAME.consumeable_buffer
-                < G.consumeables.config.card_limit then
-                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                G.E_MANAGER:add_event(Event({
-                    func = (function()
-                        SMODS.add_card{
-                            set = 'Spectral',
-                            key_append = 'hpfx_nix_sense'
-                        }
-                        G.GAME.consumeable_buffer = 0
-                        for _, spard in ipairs(G.playing_cards) do
-                            if spard:get_id() == 6 then
-                                SMODS.destroy_cards(spard)
+                    < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            SMODS.add_card {
+                                set = 'Spectral',
+                                key_append = 'hpfx_nix_sense'
+                            }
+                            G.GAME.consumeable_buffer = 0
+                            for _, spard in ipairs(G.playing_cards) do
+                                if spard:get_id() == 6 then
+                                    SMODS.destroy_cards(spard)
+                                end
                             end
-                        end
-                        return true
-                    end)
-                }))
-                return{
-                    message = localize('k_plus_spectral'),
-                    colour = G.C.SECONDARY_SET.Spectral,
-                    remove = true
-                }
-            end
+                            return true
+                        end)
+                    }))
+                    return {
+                        message = localize('k_plus_spectral'),
+                        colour = G.C.SECONDARY_SET.Spectral,
+                        remove = true
+                    }
+                end
+                card.ability.sixdes = true
                 return {
                     remove = true,
-                    func = function ()
-                        hpfx_Transform(card, context)
-                    end
                 }
             end
+        end
+        if context.after and card.ability.sixdes == true then
+            return {
+                func = function()
+                    hpfx_Transform(card, context)
+                end
+            }
         end
     end
 }
