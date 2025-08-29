@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'peeking_twice',
-    pos = {x = 4, y = 4},
+    pos = { x = 4, y = 4 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,41 +12,43 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 2,
+            xmult = 2,
         }
     },
-    update = function (self, card, dt)
+    update = function(self, card, dt)
         local heartcount = 0
         local diamondcount = 0
         local spadecount = 0
         if G.jokers and G.playing_cards then
             for _, kard in pairs(G.playing_cards) do
                 if kard:is_suit('Hearts') then
-                heartcount = heartcount + 1
-                card.ability.heartcount = heartcount
-                    elseif kard:is_suit('Diamonds') then
+                    heartcount = heartcount + 1
+                elseif kard:is_suit('Diamonds') then
                     diamondcount = diamondcount + 1
-                    card.ability.diamondcount = diamondcount
                 elseif kard:is_suit('Spades') then
-                spadecount = spadecount + 1
-                card.ability.spadecount = spadecount
+                    spadecount = spadecount + 1
                 end
             end
-            if (card.ability.heartcount == 0 and
-               card.ability.heartcount ~= heartcount) or
-              (card.ability.diamondcount == 0 and
-               card.ability.diamondcount ~= diamondcount) or
-              (card.ability.spadecount == 0 and
-               card.ability.spadecount ~= spadecount) then
-              func = function () hpfx_Transform(card) end
+            if not card.ability.trig and (
+                    heartcount == 0 or
+                    diamondcount == 0 or
+                    spadecount == 0
+                ) then
+                card.ability.trig = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        hpfx_Transform(card)
+                        return true
+                    end
+                }))
             end
             card.ability.heartcount = heartcount
             card.ability.diamondcount = diamondcount
             card.ability.spadecount = spadecount
         end
     end,
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 card.ability.diamondcount or 0,
@@ -72,9 +74,9 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.joker_main and
-        SMODS.seeing_double_check(context.scoring_hand, 'Clubs') then
+            SMODS.seeing_double_check(context.scoring_hand, 'Clubs') then
             return {
-            xmult = card.ability.extra.xmult
+                xmult = card.ability.extra.xmult
             }
         end
         if context.after then
