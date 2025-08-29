@@ -46,7 +46,11 @@ SMODS.Joker {
         end
         if context.discard and not context.blueprint then
             return {
-                remove = true,
+                remove = true
+            }
+        end
+        if context.hpfx_post_discard then
+            return {
                 func = function()
                     hpfx_Transform(card, context)
                 end
