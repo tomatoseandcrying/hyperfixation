@@ -1649,7 +1649,7 @@ return {
             hpfx_perknado = "Refocus",
             hpfx_hey = "Don't worry about him.",
             hpfx_no = "No!",
-            hpfx_val_down = "Value Down!",
+            hpfx_val_down = "Value Down!?",
         },
         labels = {
             hpfx_priceless = "Priceless",

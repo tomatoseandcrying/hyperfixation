@@ -30,8 +30,7 @@ SMODS.Joker {
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end,
     calc_dollar_bonus = function(self, card)
-        local bonus = card.ability.extra.money
-        if bonus > 0 then return bonus end
+        return card.ability.extra.money
     end,
     calculate = function(self, card, context)
         if context.joker_main and
