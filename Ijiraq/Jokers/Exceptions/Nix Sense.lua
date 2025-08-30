@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
 SMODS.Joker {
     key = 'nix_sense',
-    pos = { x = 8, y = 1 },
+    pos = { x = 8, y = 10 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -33,15 +33,13 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.destroy_card and
-            not context.blueprint then
-            if #context.full_hand == 1
-                and context.destroy_card == context.full_hand[1]
-                and context.full_hand[1]:get_id() == 6
-                and G.GAME.current_round.hands_played == 0 then
-                if #G.consumeables.cards + G.GAME.consumeable_buffer
-                    < G.consumeables.config.card_limit then
+        if context.destroy_card and not context.blueprint then
+            if #context.full_hand == 1 and context.destroy_card == context.full_hand[1]
+                and context.full_hand[1]:get_id() == 6 and G.GAME.current_round.hands_played == 0 then
+                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+                    and card.ability.sixdes == false then
                     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    card.ability.sixdes = true
                     G.E_MANAGER:add_event(Event({
                         func = (function()
                             SMODS.add_card {
@@ -49,11 +47,7 @@ SMODS.Joker {
                                 key_append = 'hpfx_nix_sense'
                             }
                             G.GAME.consumeable_buffer = 0
-                            for _, spard in ipairs(G.playing_cards) do
-                                if spard:get_id() == 6 then
-                                    SMODS.destroy_cards(spard)
-                                end
-                            end
+                            hpfx_Transform(card, context)
                             return true
                         end)
                     }))
@@ -63,18 +57,10 @@ SMODS.Joker {
                         remove = true
                     }
                 end
-                card.ability.sixdes = true
                 return {
                     remove = true,
                 }
             end
-        end
-        if context.after and card.ability.sixdes == true then
-            return {
-                func = function()
-                    hpfx_Transform(card, context)
-                end
-            }
         end
     end
 }
