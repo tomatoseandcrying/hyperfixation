@@ -103,6 +103,8 @@ SMODS.Joker { --Ijiraq.
                 function Card:is_face(from_boss)
                     return ijiface(self, from_boss) or (self:get_id() and next(SMODS.find_card("j_hpfx_ijiraq")))
                 end
+            elseif v == 'j_turtle_bean' then
+                G.hand:change_size(5)
             end
         end
     end,
@@ -118,6 +120,8 @@ SMODS.Joker { --Ijiraq.
                 G.hand:change_size(-2)
             elseif v == 'j_chaos' then
                 SMODS.change_free_rerolls(1)
+            elseif v == 'j_turtle_bean' then
+                G.hand:change_size(-5)
             end
         end
     end,
@@ -163,9 +167,31 @@ SMODS.Joker { --Ijiraq.
         if totalcash > 0 then return totalcash end
     end,
     calculate = function(self, card, context)
+        local c = context
         for _, v in pairs(G.GAME.raqeffects) do
-            if v == 'j_splash' and context.modify_scoring_hand and not context.blueprint then return { add_to_hand = true } end
-            if v == 'j_mr_bones' and context.check_eternal then return { no_destroy = { override_compat = true } } end
+            if v == 'j_splash' and c.modify_scoring_hand and not c.blueprint then return { add_to_hand = true } end
+            if v == 'j_mr_bones' and c.check_eternal then return { no_destroy = { override_compat = true } } end
+            if v == 'j_turtle_bean' and c.end_of_round and c.game_over == false and c.main_eval and not c.blueprint then
+                if G.hand.config.card_limit - 1 <= 0 then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            table.remove(G.GAME.raqeffects, v)
+                            return true
+                        end
+                    }))
+                    return {
+                        message = localize('k_eaten_ex'),
+                        colour = G.C.FILTER
+                    }
+                else
+                    G.hand.config.card_limit = G.hand.config.card_limit - 1
+                    G.hand:change_size(-1)
+                    return {
+                        message = localize { type = 'variable', key = 'a_handsize_minus', vars = { 1 } },
+                        colour = G.C.FILTER
+                    }
+                end
+            end
         end
     end
 }
