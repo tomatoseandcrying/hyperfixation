@@ -33,7 +33,7 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and context.main_eval and not context.blueprint then
+        if context.joker_main and not context.blueprint then
             if next(context.poker_hands['Straight']) then
                 return {
                     func = function()

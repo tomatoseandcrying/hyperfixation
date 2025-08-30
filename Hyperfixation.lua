@@ -346,6 +346,23 @@ function hpfx_Transform(card, context)
                         key = k
                     end
                 end
+                if key == 'j_luchador' then
+                    local lmao = Card.can_sell_card
+                    function Card:can_sell_card(context)
+                        if card.config.center.key == 'j_hpfx_ijiraq' then
+                            return false
+                        end
+                        return lmao(card, context)
+                    end
+                else
+                    local lmao = Card.can_sell_card
+                    function Card:can_sell_card(context)
+                        if card.config.center.key == 'j_hpfx_ijiraq' then
+                            return true
+                        end
+                        return lmao(card, context)
+                    end
+                end
                 table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
