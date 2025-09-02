@@ -1649,6 +1649,7 @@ return {
             hpfx_perknado = "Refocus",
             hpfx_hey = "Don't worry about him.",
             hpfx_no = "No!",
+            hpfx_wait = "Wait!",
             hpfx_val_down = "Value Down!?",
             hpfx_coward_ex = "Coward.",
         },

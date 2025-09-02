@@ -32,30 +32,34 @@ SMODS.Joker {
         card.ability.extra.new_key = "j_hpfx_rectangle_alt"
         G.GAME.joker_buffer = G.GAME.joker_buffer + 1
         G.E_MANAGER:add_event(Event({
-            delay = 0.3,
+            trigger = 'before',
+            blockable = false,
+            delay = 0.5 * G.SETTINGS.GAMESPEED, -- Delay before the first event
             func = function()
-                local keey =
-                    SMODS.add_card {
-                        set = 'Joker',
-                        key = "j_hpfx_jumbo",
-                        key_append = 'hpfx_prisoner'
-                    }
+                G.GAME.current_round.fodder_card.jkey = 'j_joker'
+                local jumbo = SMODS.add_card {
+                    set = 'Joker',
+                    key = "j_hpfx_costume",
+                    key_append = 'hpfx_prisoner'
+                }
                 SMODS.calculate_effect({
                     message = localize('hpfx_hey'),
                     colour = G.C.hpfx_IjiGray,
-                }, keey)
+                }, jumbo)
                 G.GAME.joker_buffer = 0
-                return true
-            end
-        }))
-        G.E_MANAGER:add_event(Event({
-            delay = 0.3,
-            func = function()
-                SMODS.calculate_effect({
-                    message = localize('hpfx_no'),
-                    colour = G.C.hpfx_IjiGray,
-                }, card)
-                SMODS.destroy_cards(card, true)
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    blockable = false,
+                    delay = 1.0 * G.SETTINGS.GAMESPEED, -- Delay before the second event
+                    func = function()
+                        SMODS.calculate_effect({
+                            message = localize('hpfx_wait'),
+                            colour = G.C.FILTER,
+                        }, card)
+                        SMODS.destroy_cards(card, true)
+                        return true
+                    end
+                }))
                 return true
             end
         }))
