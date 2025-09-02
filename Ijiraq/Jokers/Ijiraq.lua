@@ -76,35 +76,39 @@ SMODS.Joker { --Ijiraq.
             end
         end
         for _, v in pairs(G.GAME.raqeffects) do
-            if v == 'j_drunkard' then
-                ease_discard(1, true, true)
-                G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
-            elseif v == 'j_troubadour' then
-                G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
-                G.hand:change_size(2)
-            elseif v == 'j_ring_master' then
-                local ijishowman = SMODS.showman
-                function SMODS.showman()
-                    if next(SMODS.find_card('j_hpfx_ijiraq')) then return true end
-                    return ijishowman()
+            for _, v in pairs(G.GAME.raqeffects) do
+                if v == 'j_stuntman' then G.hand:change_size(-2) end
+                if v == 'j_juggler' then G.hand:change_size(1) end
+                if v == 'j_turtle_bean' then G.hand:change_size(5) end
+                if v == 'j_chaos' then SMODS.change_free_rerolls(1) end
+                if v == 'j_drunkard' then
+                    ease_discard(1, true, true)
+                    G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
                 end
-            elseif v == 'j_stuntman' then
-                G.hand:change_size(-2)
-            elseif v == 'j_chaos' then
-                SMODS.change_free_rerolls(1)
-            elseif v == 'j_four_fingers' then
-                local ijifour = SMODS.four_fingers
-                function SMODS.four_fingers()
-                    if next(SMODS.find_card('j_hpfx_ijiraq')) then return 4 end
-                    return ijifour()
+                if v == 'j_troubadour' then
+                    G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
+                    G.hand:change_size(2)
                 end
-            elseif v == 'j_pareidolia' then
-                local ijiface = Card.is_face
-                function Card:is_face(from_boss)
-                    return ijiface(self, from_boss) or (self:get_id() and next(SMODS.find_card("j_hpfx_ijiraq")))
+                if v == 'j_ring_master' then
+                    local ijishowman = SMODS.showman
+                    function SMODS.showman()
+                        if next(SMODS.find_card('j_hpfx_ijiraq')) then return true end
+                        return ijishowman()
+                    end
                 end
-            elseif v == 'j_turtle_bean' then
-                G.hand:change_size(5)
+                if v == 'j_four_fingers' then
+                    local ijifour = SMODS.four_fingers
+                    function SMODS.four_fingers()
+                        if next(SMODS.find_card('j_hpfx_ijiraq')) then return 4 end
+                        return ijifour()
+                    end
+                end
+                if v == 'j_pareidolia' then
+                    local ijiface = Card.is_face
+                    function Card:is_face(from_boss)
+                        return ijiface(self, from_boss) or (self:get_id() and next(SMODS.find_card("j_hpfx_ijiraq")))
+                    end
+                end
             end
         end
     end,
