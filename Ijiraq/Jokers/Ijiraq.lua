@@ -49,9 +49,7 @@ SMODS.Joker { --Ijiraq.
             }
         }
     end,
-    in_pool = function(self, args)
-        return false
-    end,
+    in_pool = function(self, args) return false end,
     add_to_deck = function(self, card, from_debuff)
         card:remove_sticker('hpfx_priceless')
         for k, v in ipairs(SMODS.find_card('j_hpfx_ijiraq')) do --Only 1 Ijiraq.
@@ -79,8 +77,8 @@ SMODS.Joker { --Ijiraq.
             for _, v in pairs(G.GAME.raqeffects) do
                 if v == 'j_stuntman' then G.hand:change_size(-2) end
                 if v == 'j_juggler' then G.hand:change_size(1) end
-                if v == 'j_turtle_bean' then G.hand:change_size(5) end
                 if v == 'j_chaos' then SMODS.change_free_rerolls(1) end
+                if v == 'j_turtle_bean' then G.hand:change_size(5) end
                 if v == 'j_drunkard' then
                     ease_discard(1, true, true)
                     G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
@@ -114,18 +112,17 @@ SMODS.Joker { --Ijiraq.
     end,
     remove_from_deck = function(self, card, from_debuff)
         for _, v in pairs(G.GAME.raqeffects) do
+            if v == 'j_stuntman' then G.hand:change_size(-2) end
+            if v == 'j_juggler' then G.hand:change_size(-1) end
+            if v == 'j_chaos' then SMODS.change_free_rerolls(-1) end
+            if v == 'j_turtle_bean' then G.hand:change_size(-5) end
             if v == 'j_drunkard' then
                 ease_discard(-1, true, true)
                 G.GAME.round_resets.discards = G.GAME.round_resets.discards - 1
-            elseif v == 'j_troubadour' then
+            end
+            if v == 'j_troubadour' then
                 G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
                 G.hand:change_size(-2)
-            elseif v == 'j_stuntman' then
-                G.hand:change_size(-2)
-            elseif v == 'j_chaos' then
-                SMODS.change_free_rerolls(1)
-            elseif v == 'j_turtle_bean' then
-                G.hand:change_size(-5)
             end
         end
     end,
@@ -174,7 +171,6 @@ SMODS.Joker { --Ijiraq.
         local c = context
         for _, v in pairs(G.GAME.raqeffects) do
             if v == 'j_splash' and c.modify_scoring_hand and not c.blueprint then return { add_to_hand = true } end
-            if v == 'j_mr_bones' and c.check_eternal then return { no_destroy = { override_compat = true } } end
             if v == 'j_turtle_bean' and c.end_of_round and c.game_over == false and c.main_eval and not c.blueprint then
                 if G.hand.config.card_limit - 1 <= 0 then
                     G.E_MANAGER:add_event(Event({

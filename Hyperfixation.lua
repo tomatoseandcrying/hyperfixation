@@ -297,6 +297,10 @@ SMODS.Sound({
     key = "hpfx_boowomp",
     path = "inscryption/closemichelle/boowomp.ogg",
 })
+SMODS.Sound({
+    key = "hpfx_discvc",
+    path = "inscryption/invincible/discord-leave-noise.ogg",
+})
 
 --File Loading
 mod_path = "" .. SMODS.current_mod.path

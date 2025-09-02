@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'invincible',
-    pos = {x = 1, y = 7},
+    pos = { x = 1, y = 7 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -18,11 +18,11 @@ SMODS.Joker{
     end,
     config = {
         extra = {
-        invis_rounds = 0,
-        total_rounds = 2
+            invis_rounds = 0,
+            total_rounds = 2
         }
     },
-    loc_vars = function (self, info_queue, card)
+    loc_vars = function(self, info_queue, card)
         local main_end
         if G.jokers and G.jokers.cards then
             for _, joker in ipairs(G.jokers.cards) do
@@ -33,7 +33,7 @@ SMODS.Joker{
                 end
             end
         end
-        return{
+        return {
             vars = {
                 card.ability.extra.total_rounds,
                 card.ability.extra.invis_rounds,
@@ -58,9 +58,9 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.selling_self and
-        card.ability.extra.invis_rounds >=
-        card.ability.extra.total_rounds and
-        not context.blueprint then
+            card.ability.extra.invis_rounds >=
+            card.ability.extra.total_rounds and
+            not context.blueprint then
             local jokers = {}
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] ~= card then
@@ -69,14 +69,16 @@ SMODS.Joker{
             end
             if #jokers > 0 then
                 if #G.jokers.cards <= G.jokers.config.card_limit then
-                    local chosen_joker = card
-                    local copied_joker = copy_card(chosen_joker, nil, nil, nil, nil)
-                    copied_joker:add_to_deck()
-                    copied_joker:set_edition('e_negative', true, true)
-                    G.jokers:emplace(copied_joker)
+                    local chosen_joker = 'j_invisible'
+                    SMODS.add_card {
+                        set = 'Joker',
+                        key = chosen_joker,
+                        key_append = 'hpfx_invinc',
+                        edition = 'e_negative'
+                    }
                     return {
                         message = localize('k_duplicated_ex'),
-                        func = function ()
+                        func = function()
                             hpfx_Transform(card, context)
                         end
                     }
@@ -87,12 +89,37 @@ SMODS.Joker{
                 return { message = localize('k_no_other_jokers') }
             end
         end
-        if context.end_of_round and context.game_over == false 
-        and context.main_eval and not context.blueprint then
+        if context.end_of_round and context.game_over == false
+            and context.main_eval and not context.blueprint then
             card.ability.extra.invis_rounds = card.ability.extra.invis_rounds + 1
             if card.ability.extra.invis_rounds == card.ability.extra.total_rounds then
                 local eval = function(card) return not card.REMOVED end
                 juice_card_until(card, eval, true)
+                if card.ability.hpfx_priceless then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.5,
+                        func = function()
+                            attention_text({
+                                text = localize('hpfx_no'),
+                                scale = 0.8,
+                                hold = 1,
+                                major = card,
+                                backdrop_colour = G.C.RED,
+                                align = 'tr',
+                                offset = {
+                                    x = -0.5,
+                                    y = 0.5
+                                },
+                                silent = true
+                            })
+                            card:remove_sticker('hpfx_priceless')
+                            play_sound('hpfx_discvc', 1, 0.7)
+                            card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
+                end
             end
             return {
                 message = (card.ability.extra.invis_rounds < card.ability.extra.total_rounds) and

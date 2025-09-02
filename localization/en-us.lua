@@ -1545,7 +1545,7 @@ return {
                 text = {
                     "Sell this card to",
                     "create a free",
-                    "{C:attention}Double Tag{C:hpfx_IjiGray}#1#{}",
+                    "{C:attention}#2#{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_cola_alt = {
@@ -1553,7 +1553,7 @@ return {
                 text = {
                     "Sell this card to",
                     "create a free",
-                    "{C:attention}Double Tag{C:hpfx_IjiGray}#1#{}",
+                    "{C:attention}#2#{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_collecting = {
@@ -1650,6 +1650,7 @@ return {
             hpfx_hey = "Don't worry about him.",
             hpfx_no = "No!",
             hpfx_val_down = "Value Down!?",
+            hpfx_coward_ex = "Coward.",
         },
         labels = {
             hpfx_priceless = "Priceless",

@@ -14,9 +14,11 @@ SMODS.Joker {
     atlas = 'IjiraqJokers',
     config = { extra = {} },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'tag_double', set = 'Tag' }
         return {
             vars = {
-                card.area and card.area == G.jokers and "...?" or ""
+                card.area and card.area == G.jokers and "...?" or "",
+                localize { type = 'name_text', set = 'Tag', key = 'tag_double' }
             }
         }
     end,
@@ -44,7 +46,7 @@ SMODS.Joker {
         play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
         play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
         func = function()
-            hpfx_Transform(card, context)
+            hpfx_Transform(card)
         end
     end
 }
