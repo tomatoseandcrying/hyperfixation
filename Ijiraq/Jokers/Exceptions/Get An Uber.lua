@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'get_an_uber',
-    pos = {x = 1, y = 6},
+    pos = { x = 1, y = 6 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -13,12 +13,12 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        mult_gain = 1,
-        mult = 0
+            mult_gain = 1,
+            mult = 0
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.mult_gain,
                 card.ability.extra.mult,
@@ -41,6 +41,7 @@ SMODS.Joker{
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
+        extra = card.ability and card.ability.extra
         if context.before and context.main_eval and not context.blueprint then
             local faces = false
             for _, playing_card in ipairs(context.scoring_hand) do
@@ -50,16 +51,18 @@ SMODS.Joker{
                 end
             end
             if faces then
-                local last_mult = card.ability.extra.mult
-                card.ability.extra.mult = 0
+                local last_mult = extra.mult
+                extra.mult = 0
                 if last_mult > 0 then
                     return {
                         message = localize('hpfx_missmiji'),
-                        func = function ()
+                        func = function()
                             hpfx_Transform(card, context)
                         end
                     }
                 end
+            else
+                extra.mult = extra.mult + extra.mult_gain
             end
         end
     end
