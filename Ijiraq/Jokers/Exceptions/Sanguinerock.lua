@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'sanguinerock',
-    pos = {x = 0, y = 8},
+    pos = { x = 0, y = 8 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,10 +10,10 @@ SMODS.Joker{
     rarity = 2,
     cost = 7,
     atlas = 'IjiraqJokers',
-    config = {extra = {xmult = 1.5}},
-    loc_vars = function (self, info_queue, card)
+    config = { extra = { xmult = 1.5 } },
+    loc_vars = function(self, info_queue, card)
         local new_num, new_denom = SMODS.get_probability_vars(card, 1, 2, 'hpfx_sanguinerock_id')
-        return{
+        return {
             vars = {
                 new_num,
                 new_denom,
@@ -37,10 +37,10 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") and
-            SMODS.pseudorandom_probability(card, 'hpfx_sanguinerock_seed', 1, 4, 'hpfx_sanguinerock_id') then
+            SMODS.pseudorandom_probability(card, 'hpfx_sanguinerock_seed', 1, 2, 'hpfx_sanguinerock_id') then
             return {
-                xmult = card.ability.extra.Xmult,
-                func = function ()
+                xmult = card.ability.extra.xmult,
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }
