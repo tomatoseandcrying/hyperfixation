@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'golden_ratio',
-    pos = {x = 1, y = 5},
+    pos = { x = 1, y = 5 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -16,26 +16,34 @@ SMODS.Joker{
             played_cards = {}
         }
     },
-    loc_vars = function (self, info_queue, card)
+    loc_vars = function(self, info_queue, card)
         local p2, p3, p5, p8, pA = false, false, false, false, false
         for _, v in ipairs(card.ability.extra.played_cards) do
-        if v:get_id() == 2 then p2 = true
-        elseif v:get_id() == 3 then p3 = true
-        elseif v:get_id() == 5 then p5 = true
-        elseif v:get_id() == 8 then p8 = true
-        elseif v:get_id() == 14 then pA = true end
-        if p2 and p3 and p5 and p8 and pA then
-        break end end
-        return{
+            if v:get_id() == 2 then
+                p2 = true
+            elseif v:get_id() == 3 then
+                p3 = true
+            elseif v:get_id() == 5 then
+                p5 = true
+            elseif v:get_id() == 8 then
+                p8 = true
+            elseif v:get_id() == 14 then
+                pA = true
+            end
+            if p2 and p3 and p5 and p8 and pA then
+                break
+            end
+        end
+        return {
             vars = {
                 card.ability.extra.mult,
                 card.ability.extra.played_cards,
                 card.area and card.area == G.jokers and "...?" or "",
-                card.area and card.area == G.jokers and pA and "Ace" or "{C:attention}Ace{}",
-                card.area and card.area == G.jokers and p2 and "2" or "{C:attention}2{}",
-                card.area and card.area == G.jokers and p3 and "3" or "{C:attention}3{}",
-                card.area and card.area == G.jokers and p5 and "5" or "{C:attention}5{}",
-                card.area and card.area == G.jokers and p8 and "8" or "{C:attention}8{}"
+                pA and "■" or "Ace",
+                p2 and "■" or "2",
+                p3 and "■" or "3",
+                p5 and "■" or "5",
+                p8 and "■" or "8"
             }
         }
     end,
@@ -57,9 +65,9 @@ SMODS.Joker{
         if context.before and context.cardarea == G.jokers then
             for _, gard in ipairs(context.scoring_hand) do
                 if gard:get_id() == 2 or gard:get_id() == 3 or
-                gard:get_id() == 5 or gard:get_id() == 8 or
-                gard:get_id() == 14 then
-                table.insert(card.ability.extra.played_cards, gard)
+                    gard:get_id() == 5 or gard:get_id() == 8 or
+                    gard:get_id() == 14 then
+                    table.insert(card.ability.extra.played_cards, gard)
                 end
             end
         end
@@ -77,16 +85,28 @@ SMODS.Joker{
         if context.after then
             local p2, p3, p5, p8, pA = false, false, false, false, false
             for _, v in ipairs(card.ability.extra.played_cards) do
-            if v:get_id() == 2 then p2 = true
-            elseif v:get_id() == 3 then p3 = true
-            elseif v:get_id() == 5 then p5 = true
-            elseif v:get_id() == 8 then p8 = true
-            elseif v:get_id() == 14 then pA = true end
+                if v:get_id() == 2 then
+                    p2 = true
+                elseif v:get_id() == 3 then
+                    p3 = true
+                elseif v:get_id() == 5 then
+                    p5 = true
+                elseif v:get_id() == 8 then
+                    p8 = true
+                elseif v:get_id() == 14 then
+                    pA = true
+                end
+                if p2 and p3 and p5 and p8 and pA then
+                    break
+                end
+            end
             if p2 and p3 and p5 and p8 and pA then
-            break end end
-            if p2 and p3 and p5 and p8 and pA then
-            return {func = function()
-            hpfx_Transform(card, context) end} end
+                return {
+                    func = function()
+                        hpfx_Transform(card, context)
+                    end
+                }
+            end
         end
     end
 }

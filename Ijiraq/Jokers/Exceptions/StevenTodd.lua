@@ -11,6 +11,7 @@ SMODS.Joker {
     cost = 4,
     atlas = 'IjiraqJokers',
     config = {
+        trig = false,
         extra = {
             mult = 4,
         }
@@ -45,13 +46,18 @@ SMODS.Joker {
                 local rand = pseudorandom('oddeven', 0, 4)
                 rand = (rand * 2) + 1
                 assert(SMODS.modify_rank(context.other_card, rand))
+                card.ability.trig = true
                 return {
                     mult = card.ability.extra.mult,
-                    func = function()
-                        hpfx_Transform(card, context)
-                    end
                 }
             end
+        end
+        if context.final_scoring_step and card.ability.trig then
+            return {
+                func = function()
+                    hpfx_Transform(card, context)
+                end
+            }
         end
     end
 }

@@ -13,6 +13,7 @@ SMODS.Joker {
     cost = 4,
     atlas = 'IjiraqJokers',
     config = {
+        trig = false,
         extra = {
             xmult = 5,
         }
@@ -40,7 +41,8 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() and card.ability.trig == false then
+            card.ability.trig = true
             return {
                 xmult = card.ability.extra.xmult,
                 func = function()

@@ -649,8 +649,8 @@ return {
             j_hpfx_golden_ratio = {
                 name = 'Fibonacci',
                 text = {
-                    "Each played #4#,",
-                    "#5#, #6#, #7#, or #8# gives",
+                    "Each played {C:attention}#4#{},",
+                    "{C:attention}#5#{}, {C:attention}#6#{}, {C:attention}#7#{}, or {C:attention}#8#{} gives",
                     "{C:mult}+#1#{} Mult when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
