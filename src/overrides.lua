@@ -127,6 +127,54 @@ function ease_ante(mod)
     return ret
 end
 
+local ref_card_update = Card.update
+function Card:update(dt)
+    local ret = ref_card_update(self, dt)
+
+    if not self.area then
+        self.hfpx_current_area = nil
+        return
+    elseif self.area and not self.hfpx_current_area then
+        self.hfpx_current_area = self.area
+        self.hfpx_current_cards = {}
+    end
+
+    local joker_idx = 1
+    local size_changed = #self.area.cards ~= #self.hfpx_current_cards
+    local order_changed = false
+
+    for i, v in ipairs(self.area.cards) do
+        if v == self then
+            joker_idx = i
+            if order_changed then
+                break
+            end
+        end
+
+        if not order_changed and v.ID ~= self.hfpx_current_cards[i] then
+            order_changed = true
+        end
+    end
+
+    -- don't do potentially expensive sprite creation if nothing has changed
+    if not size_changed and not order_changed and self.hfpx_current_area == self.area and joker_idx == self.hfpx_last_index then
+        return
+    end
+
+    local eval = eval_card(self,
+        { card_pos_changed = true, new_pos = joker_idx, order_changed = true, size_changed = true })
+    SMODS.trigger_effects({ eval }, self)
+
+    self.hfpx_current_area = self.area
+    self.hfpx_current_cards = {}
+    for i = 1, #self.area.cards do
+        self.hfpx_current_cards[i] = self.area.cards[i].ID
+    end
+    self.hfpx_last_index = joker_idx
+
+    return ret
+end
+
 --Jokester Transformation Logic
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start or G.GAME.round_resets.blind_states.Boss == "Defeated" then
