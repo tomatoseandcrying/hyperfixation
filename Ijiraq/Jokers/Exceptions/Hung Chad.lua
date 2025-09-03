@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'hung_chad',
-    pos = {x = 9, y = 6},
+    pos = { x = 9, y = 6 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,11 +12,11 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        repetitions = 2,
+            repetitions = 2,
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.repetitions,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -43,11 +43,11 @@ SMODS.Joker{
                 repetitions = card.ability.extra.repetitions
             }
         end
-        if context.end_of_round then
+        if context.end_of_round and context.main_eval then
             card.ability.extra.repetitions = card.ability.extra.repetitions - 1
             if card.ability.extra.repetitions == 0 then
                 return {
-                    func = function ()
+                    func = function()
                         hpfx_Transform(card, context)
                     end
                 }

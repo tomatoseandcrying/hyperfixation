@@ -760,5 +760,8 @@ function guh()
     local selected = G.CONTROLLER and
         (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
     G.GAME.current_round.fodder_card.jkey = selected.config.center.key
+    if JokerDisplay then
+        selected:joker_display_remove()
+    end
     selected:set_ability('j_hpfx_costume')
 end

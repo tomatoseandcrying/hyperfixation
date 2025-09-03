@@ -40,20 +40,16 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        if context.scoring_hand and not context.blueprint then
-            return {
-                add_to_hand = true
-            }
-        end
         if context.repetition and context.cardarea == G.play then
             if SMODS.pseudorandom_probability(card, 'hpfx_seltzer_seed', 1, 4, 'hpfx_seltzer_id') then
                 return {
                     repetitions = 1
                 }
             else
-                return {
-                    message = localize('k_nope_ex')
-                }
+                SMODS.calculate_effect({
+                    message = localize('k_nope_ex'),
+                    colour = G.C.PURPLE
+                }, context.blueprint_card or card)
             end
         end
         if context.after and not context.blueprint then
