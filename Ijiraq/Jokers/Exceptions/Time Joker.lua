@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'time',
-    pos = {x = 3, y = 5},
+    pos = { x = 3, y = 5 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,10 +10,10 @@ SMODS.Joker{
     rarity = 2,
     cost = 5,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
+    config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
         local new_num, new_denom = SMODS.get_probability_vars(card, 1, 4, 'hpfx_time_id')
-        return{
+        return {
             vars = {
                 new_num,
                 new_denom,
@@ -37,18 +37,18 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.before and context.main_eval and
-        SMODS.pseudorandom_probability(card, 'hpfx_time_seed', 1, 4, 'hpfx_time_id') then
+            SMODS.pseudorandom_probability(card, 'hpfx_time_seed', 1, 4, 'hpfx_time_id') then
             local hand_table = G.handlist
-            local played_hand = G.GAME.hands[context.scoring_name]
+            local played_hand = context.scoring_name
             local filtered_hand_table = {}
             for _, v in ipairs(hand_table) do
-            if v ~= played_hand then table.insert(filtered_hand_table, v) end
+                if v ~= played_hand then table.insert(filtered_hand_table, v) end
             end
             for _, v in ipairs(filtered_hand_table) do
-                SMODS.smart_level_up_hand(card, v, true, 1)
+                SMODS.smart_level_up_hand(card, v, false, 1)
             end
-            return{
-                func = function ()
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }
