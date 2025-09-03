@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'stormcloud',
-    pos = {x = 7, y = 7},
+    pos = { x = 7, y = 7 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -10,8 +10,8 @@ SMODS.Joker{
     rarity = 3,
     cost = 10,
     atlas = 'IjiraqJokers',
-    config = {extra = {}},
-    loc_vars = function (self, info_queue, card)
+    config = { trig = false, extra = {} },
+    loc_vars = function(self, info_queue, card)
         if card.area and card.area == G.jokers then
             local other_joker
             for i = 1, #G.jokers.cards do
@@ -19,13 +19,13 @@ SMODS.Joker{
             end
             local compatible = other_joker and other_joker ~= card and
                 other_joker.config.center.blueprint_compat
-            main_end = {{
+            main_end = { {
                 n = G.UIT.C,
                 config = {
                     align = "bm",
                     minh = 0.4
                 },
-                nodes = {{
+                nodes = { {
                     n = G.UIT.C,
                     config = {
                         ref_table = card,
@@ -36,19 +36,20 @@ SMODS.Joker{
                         r = 0.05,
                         padding = 0.06
                     },
-                    nodes = {{
+                    nodes = { {
                         n = G.UIT.T,
                         config = {
                             text = ' ' .. localize('k_' ..
-                            (compatible and 'compatible' or 'incompatible')) .. ' ',
+                                (compatible and 'compatible' or 'incompatible')) .. ' ',
                             colour = G.C.UI.TEXT_LIGHT,
                             scale = 0.32 * 0.8
-                        }},
+                        }
+                    },
                     }
-                }}
-            }}
+                } }
+            } }
         end
-        return{
+        return {
             vars = {
                 main_end = main_end.
                 card.area and card.area == G.jokers and "...?" or ""
@@ -74,11 +75,14 @@ SMODS.Joker{
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i - 1] end
         end
-        return {
-            SMODS.blueprint_effect(card, other_joker, context),
-            func = function ()
-                hpfx_Transform(card, context)
-            end
-        }
+        if card.ability.trig == false then
+            card.ability.trig = true
+            return {
+                SMODS.blueprint_effect(card, other_joker, context),
+                func = function()
+                    hpfx_Transform(card, context)
+                end
+            }
+        end
     end
 }
