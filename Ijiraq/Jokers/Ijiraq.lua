@@ -12,11 +12,7 @@ SMODS.Joker { --Ijiraq.
     eternal_compat = false,
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
-    config = {
-        extra = {
-            jkey = 'ijiraq',
-        }
-    },
+    config = {},
     loc_vars = function(self, info_queue, card)
         if G.jokers and card.area == G.jokers then
             for _, v in pairs(G.GAME.raqeffects) do
@@ -43,11 +39,6 @@ SMODS.Joker { --Ijiraq.
                 }
             end
         end
-        return {
-            vars = {
-                card.ability.extra.jkey,
-            }
-        }
     end,
     in_pool = function(self, args) return false end,
     add_to_deck = function(self, card, from_debuff)

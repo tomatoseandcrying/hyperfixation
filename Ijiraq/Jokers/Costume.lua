@@ -4,14 +4,8 @@ SMODS.Joker { --Costume (The costume setup only works before, during, or after h
 	rarity = 3,
 	blueprint_compat = false,
 	pos = { x = 0, y = 0 },
-	config = { extra = {
-		jkey = 'fodder'
-	}
-	},
+	config = {},
 	no_collection = true,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.jkey } }
-	end,
 	set_ability = function(self, card, initial, delay_sprites)
 		card.isIjiraq = (Hyperglobal.exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
 		card.visiblyIjiraq = false
