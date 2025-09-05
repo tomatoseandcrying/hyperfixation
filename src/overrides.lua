@@ -37,6 +37,15 @@ function SMODS.calculate_context(context, return_table)
             G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = 0
         end
     end
+    if context.remove_playing_cards then
+        for _, i in ipairs(context.removed) do
+            G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount + 1
+            if G.PROFILES[G.SETTINGS.profile].hpfx_queenCount >= 37 then
+                check_for_unlock({ type = 'hpfx_head' })
+                G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = 0
+            end
+        end
+    end
     return ccc(context, return_table)
 end
 

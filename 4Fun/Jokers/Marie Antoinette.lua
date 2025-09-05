@@ -18,7 +18,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain } }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'hpfx_marie'
+        return args.type == 'hpfx_head'
     end,
     calculate = function(self, card, context)
         if context.post_trigger and context.other_card == card and context.main_eval then
