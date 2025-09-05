@@ -81,9 +81,22 @@ return {
 
                 },
                 unlock = {
-                    "{C:purple}if{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_chud'{} {C:purple}then{} {C:red}unlock_card{}{C:purple}({}{C:red}self{}{C:purple}) end{}",
-                    "{C:inactive}--unlock condition: Win a Boss Blind past Ante 2 without triggering your Jokers{}"
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_chud'{}",
+                    "{C:inactive}--Defeat a {C:hpfx_bossmute}Boss Blind {C:inactive}past Ante 2 {C:hpfx_inattention}without {C:inactive}triggering a Joker{}"
                 },
+            },
+            j_hpfx_marie = {
+                name = 'Marie Antoinette',
+                text = {
+                    "This Joker gains {X:mult,C:white}X#2#{} Mult when",
+                    "a {C:attention}Queen{} is destroyed, resets",
+                    "when {C:attention}Boss Blind{} is defeated",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+                },
+                unlock = {
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_head'{}",
+                    "{C:inactive}--Destroy {C:hpfx_inattention}37 {C:inactive}Queens"
+                }
             },
 
             --Ijiraq
