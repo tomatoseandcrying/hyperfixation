@@ -37,20 +37,6 @@ SMODS.Joker {
                             card:set_cost()
                         end
                     end
-                    --[[ for _, area in ipairs(G.jokers) do
-                        for _, c in ipairs(area.cards) do
-                            if c.config.center.key == 'j_hpfx_marie' and c == card then
-                                if c.set_cost then
-                                    if c.config.center.rarity == 2 then
-                                        c.cost = 6
-                                    else
-                                        c.cost = 8
-                                    end
-                                    c:set_cost()
-                                end
-                            end
-                        end
-                    end ]]
                     attention_text({
                         text = '!',
                         scale = 0.8,
@@ -78,6 +64,12 @@ SMODS.Joker {
         end
         if context.joker_main and (to_big(card.ability.extra.xmult) > to_big(1)) then
             return { x_mult = card.ability.extra.xmult }
+        end
+        if context.end_of_round and context.main_eval and context.beat_boss and not context.blueprint then
+            if card.ability.extra.xmult > 2 then
+                card.ability.extra.xmult = 2
+                return { message = localize('k_reset'), colour = G.C.RED, message_card = card }
+            end
         end
     end
 }
