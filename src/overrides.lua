@@ -209,10 +209,9 @@ end
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start or G.GAME.round_resets.blind_states.Boss == "Defeated" then
         local ijiraq_pool = get_current_pool("Joker")
-        local excluded_keys = { ["j_hologram"] = true, ["j_hpfx_ijiraq"] = true }
         local filtered_pool = {}
         for _, key in ipairs(ijiraq_pool) do
-            if not excluded_keys[key] then
+            if not Hyperglobal.brokejokes[key] then
                 table.insert(filtered_pool, key)
             end
         end

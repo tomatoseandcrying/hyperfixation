@@ -164,6 +164,28 @@ Hyperglobal = Hyperglobal or {
         "money_altered",
     },
 
+    --iji make sure you dont pretend to be these
+    brokejokes = brokejokes or {
+        --basegame
+        ['j_caino'] = true,
+        ['j_constellation'] = true,
+        ['j_hologram'] = true,
+        ['j_madness'] = true,
+        ['j_faceless'] = true,
+        ['j_yorick'] = true,
+        ['j_invisible'] = true,
+        ['j_vampire'] = true,
+        ['j_obelisk'] = true,
+        ['j_lucky_cat'] = true,
+        ['j_ramen'] = true,
+        ['j_campfire'] = true,
+        ['j_hit_the_road'] = true,
+        ['j_todo_list'] = true,
+        --hpfx
+        ['j_hpfx_ijiraq'] = true,
+        ['j_hpfx_moriah'] = true,
+    },
+
     ---Jokesters that calculate dollar bonuses. Jokester is k, Joker is v
     calcdollarjokesters = calcdollarjokesters or {
         j_hpfx_pyramid = 'j_golden',
@@ -781,42 +803,8 @@ function porcelaintest()
     end
 end
 
-function costume(key)
-    G.GAME.current_round.fodder_card.jkey = key
-    SMODS.add_card { key = 'j_hpfx_costume' }
-end
-
 function tomaheart(count)
     G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = count
-end
-
-function lalegion()
-    SMODS.add_card({ key = 'j_hpfx_dupla' })
-    SMODS.add_card({ key = 'j_hpfx_triada' })
-    SMODS.add_card({ key = 'j_hpfx_familia' })
-    SMODS.add_card({ key = 'j_hpfx_orden' })
-    SMODS.add_card({ key = 'j_hpfx_tribu' })
-end
-
-function bagchase()
-    SMODS.add_card({ key = 'j_hpfx_pyramid' })
-    SMODS.add_card({ key = 'j_hpfx_earthbound' })
-    SMODS.add_card({ key = 'j_hpfx_blastoff' })
-    SMODS.add_card({ key = 'j_hpfx_belated_grat' })
-    SMODS.add_card({ key = 'j_hpfx_apollo' })
-end
-
-function transformtest()
-    G.GAME.current_round.fodder_card.jkey = 'j_hpfx_moriah'
-    SMODS.add_card { key = 'j_hpfx_costume' }
-    print('raqeffects:')
-    for i, v in ipairs(G.GAME.raqeffects) do
-        print('  [' .. i .. ']: ' .. tostring(v))
-    end
-    print('values:')
-    for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues or {}) do
-        print('  [' .. tostring(k) .. ']: ' .. tostring(v))
-    end
 end
 
 function guh()
