@@ -82,6 +82,27 @@ function SMODS.pseudorandom_probability(trigger_obj, seed, base_numerator, base_
     return ret
 end
 
+local dontcallherneedy = win_game
+function win_game()
+    local ret = dontcallherneedy()
+    local _handname, _played = 'High Card', -1
+    for hand_key, hand in pairs(G.GAME.hands) do
+        if hand.played > _played then
+            _played = hand.played
+            _handname = hand_key
+        end
+    end
+    local most_played = _handname
+    local handd = G.GAME.hands[most_played]
+    --print('Most played hand is ' .. most_played .. ' with ' .. _played .. ' plays.')
+    if handd.level == 1 and most_played ~= 'None' then
+        if handd.played ~= nil and handd.played >= 1 then
+            check_for_unlock({ type = 'hpfx_needle' })
+        end
+    end
+    return ret
+end
+
 --Gamestate Change Detections
 local ref_ease_hands = ease_hands_played
 function ease_hands_played(mod, instant)
@@ -188,7 +209,14 @@ end
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start or G.GAME.round_resets.blind_states.Boss == "Defeated" then
         local ijiraq_pool = get_current_pool("Joker")
-        local jokester = pseudorandom_element(ijiraq_pool, pseudoseed('ijiraq'))
+        local excluded_keys = { ["j_hologram"] = true, ["j_hpfx_ijiraq"] = true }
+        local filtered_pool = {}
+        for _, key in ipairs(ijiraq_pool) do
+            if not excluded_keys[key] then
+                table.insert(filtered_pool, key)
+            end
+        end
+        local jokester = pseudorandom_element(filtered_pool, pseudoseed('ijiraq'))
         ---@diagnostic disable-next-line: cast-local-type
         if jokester and jokester == 'UNAVAILABLE' then jokester = 'j_joker' end
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'

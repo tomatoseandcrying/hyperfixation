@@ -98,6 +98,18 @@ return {
                     "{C:inactive}--Destroy {C:hpfx_inattention}37 {C:inactive}Queens"
                 }
             },
+            j_hpfx_space_needle = {
+                name = 'Space Needle',
+                text = {
+                    "{C:green}#1# in #2#{} chance to create the",
+                    "{C:planet}Planet{} card of your {C:attention}most played{} hand",
+                    "{C:inactive}(Timing changes on trigger and {E:1,C:dark_edition}per ante?{C:inactive}){}",
+                },
+                unlock = {
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_needle'{}",
+                    "{C:inactive}--Win a run without upgrading your {C:hpfx_inattention}most played{} hand"
+                },
+            },
 
             --Ijiraq
             j_hpfx_ijiraq = {
@@ -1642,7 +1654,13 @@ return {
                     "can still be destroyed.",
                 },
             },
-        }
+            hpfx_needlecon = {
+                name = 'Current Context',
+                text = {
+                    "{E:2}context.{C:attention,E:2}#1#{}",
+                },
+            }
+        },
     },
     misc = {
         dictionary = {
