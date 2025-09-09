@@ -46,6 +46,13 @@ function SMODS.calculate_context(context, return_table)
             end
         end
     end
+    if context.joker_main then
+        for i = 1, #context.scoring_hand do
+            if context.scoring_hand[i]:get_id() == 12 then
+                G.PROFILES[G.SETTINGS.profile].hpfx_bitch = true
+            end
+        end
+    end
     return ccc(context, return_table)
 end
 
@@ -99,6 +106,9 @@ function win_game()
         if handd.played ~= nil and handd.played >= 1 then
             check_for_unlock({ type = 'hpfx_needle' })
         end
+    end
+    if G.PROFILES[G.SETTINGS.profile].hpfx_bitch == false then
+        check_for_unlock({ type = 'hpfx_no_bitches' })
     end
     return ret
 end
@@ -255,6 +265,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.raqeffects = {}
         local chick = pseudorandom('hpfxchicken', 3, 123456789)
         G.GAME.nugget = roundmyshitprettyplease(chick, 3)
+        G.PROFILES[G.SETTINGS.profile].hpfx_bitch = false
     end
 end
 
@@ -493,4 +504,54 @@ function get_new_boss()
         end
     end
     return ret
+end
+
+--funny image shit i stole from Yahimod
+local upd = Game.update
+function Game:update(dt)
+    upd(self, dt)
+
+    -- tick based events
+    if Hyperglobal.ticks == nil then Hyperglobal.ticks = 0 end
+    if Hyperglobal.dtcounter == nil then Hyperglobal.dtcounter = 0 end
+    Hyperglobal.dtcounter = Hyperglobal.dtcounter + dt
+    Hyperglobal.dt = dt
+
+    while Hyperglobal.dtcounter >= 0.010 do
+        Hyperglobal.ticks = Hyperglobal.ticks + 1
+        Hyperglobal.dtcounter = Hyperglobal.dtcounter - 0.010
+        if G.shobitches and G.shobitches > 0 then G.shobitches = G.shobitches - 1 end
+    end
+end
+
+local drawhook = love.draw
+function love.draw()
+    drawhook()
+
+    function loadmyimageistg(fn)
+        local full_path = (Hyperglobal.path
+            .. "customimages/" .. fn)
+        local file_data = assert(NFS.newFileData(full_path), ("Epic fail"))
+        local tempimagedata = assert(love.image.newImageData(file_data), ("Epic fail 2"))
+        --print ("LTFNI: Successfully loaded " .. fn)
+        return (assert(love.graphics.newImage(tempimagedata), ("Epic fail 3")))
+    end
+
+    local _xscale = love.graphics.getWidth() / 1920
+    local _yscale = love.graphics.getHeight() / 1080
+
+    -- debugging ticks & dt & dtcounter
+    if Hyperglobal.debug then
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.print("ticks:" .. Hyperglobal.ticks, 300, 16)
+        love.graphics.print("dtcounter:" .. Hyperglobal.dtcounter, 300, 16 + 32)
+        love.graphics.print("dt:" .. Hyperglobal.dt, 300, 16 + 64)
+    end
+
+    -- no bitches screen
+    if G.shobitches and (G.shobitches > 0) then
+        if Hyperglobal.nobitches == nil then Hyperglobal.nobitches = loadmyimageistg("nobitchesscreen.png") end
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(Hyperglobal.nobitches, 0 * _xscale * 2, 0 * _yscale * 2, 0, _xscale * 2 * 2, _yscale * 2 * 2)
+    end
 end

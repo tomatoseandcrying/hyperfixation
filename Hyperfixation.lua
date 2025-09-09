@@ -1,4 +1,8 @@
+--File Loading
+mod_path = "" .. SMODS.current_mod.path
+
 Hyperglobal = Hyperglobal or {
+    path = mod_path,
     ---Used to store the original weights of boosters.
     og_boostweight = og_boostweight or {},
 
@@ -295,6 +299,7 @@ SMODS.current_mod.optional_features = {
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_bitch or false
 
 --Visual Libraries
 SMODS.Atlas({
@@ -341,6 +346,7 @@ SMODS.Sound({
     key = "hpfx_silver",
     path = "TBOI/iscariot/dimedrop.ogg",
 })
+
 SMODS.Sound({
     key = "hpfx_death1",
     path = "TBOI/deathsounds/Isaac_dies_new.ogg",
@@ -353,15 +359,18 @@ SMODS.Sound({
     key = "hpfx_death3",
     path = "TBOI/deathsounds/Isaac_dies_new_2.ogg",
 })
+
 SMODS.Sound({
     key = "hpfx_fall",
     path = "inscryption/bigraq/lich-fall.ogg",
 })
+
 SMODS.Sound({
     key = "hpfx_pickup",
     path = "inscryption/ringmaster/lastwishpickup.ogg",
     volume = 0.6,
 })
+
 SMODS.Sound({
     key = "hpfx_end1",
     path = "inscryption/closemichelle/end1.ogg",
@@ -382,13 +391,16 @@ SMODS.Sound({
     key = "hpfx_boowomp",
     path = "inscryption/closemichelle/boowomp.ogg",
 })
+
 SMODS.Sound({
     key = "hpfx_discvc",
     path = "inscryption/invincible/discord-leave-noise.ogg",
 })
 
---File Loading
-mod_path = "" .. SMODS.current_mod.path
+SMODS.Sound({
+    key = "hpfx_vineboom",
+    path = "4Fun/bitchless/vineboom.ogg",
+})
 
 ---Loads all files in a folder (Will likely load unordered.)
 ---@param folder any The filepath to the folder you want to load. (ex: "Ijiraq/Exceptions")

@@ -55,7 +55,7 @@ SMODS.Joker {
                         card:juice_up(0.3, 0.4)
                         local candidates = {}
                         for _, j in ipairs(G.jokers.cards) do
-                            if j ~= card and j.label ~= 'j_hpfx_ijiraq' then
+                            if j ~= card and j.label ~= 'j_hpfx_ijiraq' and not Hyperglobal.brokejokes[j.label] then
                                 table.insert(candidates, j)
                             end
                         end

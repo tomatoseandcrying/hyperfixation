@@ -110,6 +110,18 @@ return {
                     "{C:inactive}--Win a run without upgrading your {C:hpfx_inattention}most played{} hand"
                 },
             },
+            j_hpfx_no_bitches = {
+                name = 'No Bitches?',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult for every Queen",
+                    "{C:attention}not{} in your {C:attention}full deck{}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
+                },
+                unlock = {
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_no_bitches'{}",
+                    "{C:inactive}--Win a run without scoring a {C:hpfx_inattention}Queen{}"
+                },
+            },
 
             --Ijiraq
             j_hpfx_ijiraq = {
