@@ -1,6 +1,31 @@
 --File Loading
 mod_path = "" .. SMODS.current_mod.path
+---Loads all files in a folder (Will likely load unordered.)
+---@param folder any The filepath to the folder you want to load. (ex: "Ijiraq/Exceptions")
+function load_folder(folder)
+    files = NFS.getDirectoryItems(mod_path .. folder)
+    for i, file in ipairs(files) do
+        SMODS.load_file(folder .. "/" .. file)()
+    end
+end
 
+--singles
+SMODS.load_file('src/overrides.lua')()
+SMODS.load_file('lib/ui.lua')()
+SMODS.load_file('Stickers.lua')()
+--centers
+SMODS.load_file('Isaac/IsaacCenter.lua')()
+SMODS.load_file('4Fun/FunZone.lua')()
+SMODS.load_file('Ijiraq/RaqShack.lua')()
+
+--Mod Tech
+to_big = to_big or function(x) return x end --talisman conversion function
+--profile vars
+G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount or 0
+G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_bitch or false
+--global tables/funcs
 Hyperglobal = Hyperglobal or {
     path = mod_path,
     ---Used to store the original weights of boosters.
@@ -285,7 +310,7 @@ Hyperglobal = Hyperglobal or {
         end
     end,
 }
-
+--more features
 SMODS.current_mod.optional_features = {
     post_trigger = true,
     retrigger_joker = true,
@@ -295,19 +320,46 @@ SMODS.current_mod.optional_features = {
         deck = true
     }
 }
-
-G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
-G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount or 0
-G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount or 0
-G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_bitch or false
+--calcbased unlocks
+SMODS.current_mod.calculate = function(self, context)
+    --Iscariot
+    if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
+        G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount + 1
+        if G.PROFILES[G.SETTINGS.profile].hpfx_devilCount >= 3 then
+            check_for_unlock({ type = 'hpfx_devil' })
+            G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = 0
+        end
+    end
+    --Marie Antoinette
+    if context.remove_playing_cards then
+        for _, i in ipairs(context.removed) do
+            if i:get_id() == 12 then
+                G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount + 1
+            end
+        end
+        if G.PROFILES[G.SETTINGS.profile].hpfx_queenCount >= 37 then
+            check_for_unlock({ type = 'hpfx_head' })
+            G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = 0
+        end
+    end
+    --No Bitches
+    if context.before then
+        for i = 1, #context.scoring_hand do
+            if context.scoring_hand[i]:get_id() == 12 then
+                G.PROFILES[G.SETTINGS.profile].hpfx_bitch = true
+            end
+        end
+    end
+end
 
 --Visual Libraries
-SMODS.Atlas({
+SMODS.Atlas({ --icon
     key = "modicon",
     path = "icon.png",
     px = 32,
     py = 32,
 })
+--jokers
 SMODS.Atlas {
     key = 'IsaacJokers',
     path = "TBOI/jokers/IsaacJokers.png",
@@ -328,7 +380,7 @@ SMODS.Atlas {
 }
 
 --Audio Libraries
-SMODS.Sound({
+SMODS.Sound({ --moriah
     key = "hpfx_1up",
     path = "TBOI/1up.ogg",
 })
@@ -336,17 +388,17 @@ SMODS.Sound({
     key = "hpfx_thumbsup",
     path = "TBOI/thumbsup.ogg",
 })
-
+--mary
 SMODS.Sound({
     key = "hpfx_gulp",
     path = "TBOI/mary/gulp.ogg",
 })
-
+--iscariot
 SMODS.Sound({
     key = "hpfx_silver",
     path = "TBOI/iscariot/dimedrop.ogg",
 })
-
+--death noises
 SMODS.Sound({
     key = "hpfx_death1",
     path = "TBOI/deathsounds/Isaac_dies_new.ogg",
@@ -359,18 +411,18 @@ SMODS.Sound({
     key = "hpfx_death3",
     path = "TBOI/deathsounds/Isaac_dies_new_2.ogg",
 })
-
+--ijiraq
 SMODS.Sound({
     key = "hpfx_fall",
     path = "inscryption/bigraq/lich-fall.ogg",
 })
-
+--not showman
 SMODS.Sound({
     key = "hpfx_pickup",
     path = "inscryption/ringmaster/lastwishpickup.ogg",
     volume = 0.6,
 })
-
+--not gros michel
 SMODS.Sound({
     key = "hpfx_end1",
     path = "inscryption/closemichelle/end1.ogg",
@@ -391,46 +443,28 @@ SMODS.Sound({
     key = "hpfx_boowomp",
     path = "inscryption/closemichelle/boowomp.ogg",
 })
-
+--not invisible
 SMODS.Sound({
     key = "hpfx_discvc",
     path = "inscryption/invincible/discord-leave-noise.ogg",
 })
-
+--no bitches
 SMODS.Sound({
     key = "hpfx_vineboom",
     path = "4Fun/bitchless/vineboom.ogg",
 })
 
----Loads all files in a folder (Will likely load unordered.)
----@param folder any The filepath to the folder you want to load. (ex: "Ijiraq/Exceptions")
-function load_folder(folder)
-    files = NFS.getDirectoryItems(mod_path .. folder)
-    for i, file in ipairs(files) do
-        SMODS.load_file(folder .. "/" .. file)()
-    end
-end
-
-SMODS.load_file('src/overrides.lua')()
-SMODS.load_file('lib/ui.lua')()
-SMODS.load_file('Isaac/IsaacCenter.lua')()
-SMODS.load_file('Ijiraq/RaqShack.lua')()
-SMODS.load_file('4Fun/FunZone.lua')()
-SMODS.load_file('Stickers.lua')()
-
-
 --Custom Colors
 loc_colour('red')
+--ijiraq
 G.ARGS.LOC_COLOURS['hpfx_IjiGray'] = HEX("BFD7D5")
+--unlock conditions
 G.ARGS.LOC_COLOURS['hpfx_inPURPLE'] = HEX("B1A1C0")
 G.ARGS.LOC_COLOURS['hpfx_inattention'] = HEX("ECB96D")
 G.ARGS.LOC_COLOURS['hpfx_multiball'] = HEX("EC9C96")
 G.ARGS.LOC_COLOURS['hpfx_bossmute'] = HEX("C78F85")
 
---talisman conversion function
-to_big = to_big or function(x) return x end
-
---[ Ijiraq Functions | Transformations ]
+--Ijiraq Funcs
 
 ---Function used for Jokesters with custom transformation logic.
 ---@param card Card|table The card being transformed.
@@ -736,13 +770,6 @@ function roundmyshitprettyplease(thingwearerounding, tothemultipleof)
     return getrounded
 end
 
---Unlock Conditions
-SMODS.Joker:take_ownership('oops', {
-    add_to_deck = function(self, card, context)
-        check_for_unlock({ type = 'hpfx_oops' })
-    end,
-}, true)
-
 --Config
 local config = Hyperglobal.config
 --[[ SMODS.current_mod.config_tab = function ()
@@ -795,8 +822,8 @@ Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
     end
 end
 
---Debug Functions
-function maxx_debug(txt)
+--Stored Debug Functions
+--[[ function maxx_debug(txt)
     attention_text({
         text = txt,
         scale = 1.3,
@@ -807,18 +834,17 @@ function maxx_debug(txt)
         offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0 },
         silent = true
     })
-end
-
-function porcelaintest()
+end ]]
+--[[ function porcelaintest()
     for _, card in ipairs(G.playing_cards) do
         card:set_ability(G.P_CENTERS.m_stone)
     end
-end
-
-function tomaheart(count)
+end ]]
+--[[ function tomaheart(count)
     G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = count
-end
+end ]]
 
+--Active Debug Functions
 function guh()
     local selected = G.CONTROLLER and
         (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)

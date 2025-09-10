@@ -1,75 +1,168 @@
-### Please report any issues here, or in my mod's [thread](https://discord.com/channels/1116389027176787968/1335324781528092672) in the Balatro Discord. Alternatively, report them as a tester in the mod's [official server](https://discord.gg/QwJtrdy4xS).
+#### Please report any issues here, or in my mod's [thread](https://discord.com/channels/1116389027176787968/1335324781528092672) in the Balatro Discord. Alternatively, report them as a tester in the mod's [official server](https://discord.gg/QwJtrdy4xS).
 
 
-### Ownerships:
-<ins>**Oops! All 6s**</ins>\
-Moriah (Unlock)
+## Patches:
+### <ins>state_events.lua</ins>
+
+__G.FUNCS.evaluate_play(e)__
+- Mary's unlock condition
+- calc_dollar_bonus Jokester transformations
+
+__G.FUNCS.discard_cards_from_highlighted(e, hook)__
+- custom post-discard context
+
+### <ins>card.lua</ins>
+
+__Card:save()__
+- adding self properties to vars
 
 
-### state_events.lua Patches:
-<ins>**evaluate_play_final_scoring**</ins>\
-Mary (Unlock)
+__Card:load()__
+- cardTable conversion
 
-<ins>**calculate_dollar_bonus**</ins>\
-Golden Joker? (Transformation)
-
-### card.lua Patches:
-<ins>**Ijiraq**</ins>\
-cardTable conversion\
-adding self properties to vars/
-pack content manipulation (Astronomer?)
-
-### common_events.lua Patches:
-<ins>**Ijiraq**</ins>/
-effect table storing and merging
+__Card:open()__
+- pack content manipulation (Astronomer?)
 
 
-### Overrides:
+### <ins>common_events.lua</ins>
 
+__eval_card(card, context)__
+- storing and merging of Ijiraq's effect table
 
+__generate_card_ui(\_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)__
+- automatic Jokester descriptions
 
-<ins>**init_game_object**</ins>/
-Costume (Run Seeding)/
-Farmer (Unlock)/
-Chud Joker (Unlock)
+## Overrides:
+### <ins>Game:init_game_object()</ins>
 
-<ins>**defeat**</ins>/
-Cyanosis (Unlock)
+__The Binding of Isaac__
+- Farmer's unlock condition
 
-<ins>**calculate_context**</ins>/
-Iscariot (Unlock)
+__Inscryption__
+- automatic run seeding
 
-<ins>**calculate_joker**</ins>/
-Chud Joker (Unlock)/
-Costume (Transformation)/
-Costume (Animation)
+__4Fun__
+- Chud Joker's unlock condition
 
-<ins>**pseudorandom_probability**</ins>/
-Farmer (Unlock)
+### <ins>Game:start_run(args)</ins>
 
-<ins>**ease_hands_played**</ins>/
-Hand Change (Custom Context)
+__Inscryption__
+- Card:set_card_rate(card_kind, new_rate)
 
-<ins>**ease_discard**</ins>/
-Discard Change (Custom Context)
+### <ins>Blind:defeat(silent)</ins>
 
-<ins>**ease_dollars**</ins>/
-Dollar Change (Custom Context)
+__The Binding of Isaac__
+- Cyanosis' unlock condition
 
-<ins>**ease_ante**</ins>/
-Ante Change (Custom Context)
+### <ins>Card:calculate_joker(context)</ins>
 
-<ins>**reset_game_globals**</ins>/
-Costume (Run Seeding)/
-Ijiraq (Effect Table init)/
-Egg? (Sell Value Seeding)
+__Inscryption__
+- automatic transformations (disguised)
+- automatic animations (disguised)
 
-<ins>**generate_card_ui**</ins>/
-Costume (Dynamic Descriptions)
+__4Fun__
+- Chud Joker's unlock condition
 
-<ins>**add_to_deck**</ins>/
-Costume (Variable Management)/
-Costume (Sticker Application)
+### <ins>SMODS.pseudorandom_probability(trigger_obj, seed, base_numerator, base_denominator, identifier)</ins>
 
-<ins>**set_cost**</ins>/
-Astronomer? 
+__The Binding of Isaac__
+- Farmer's unlock condition
+
+### <ins>win_game()</ins>
+
+__4Fun__
+- Space Needle's unlock condition
+- No Bitches?' unlock condition
+
+### <ins>ease_hands_played(mod, instant)</ins>
+
+__Inscryption__
+- custom hand change context
+
+### <ins>ease_discard(mod, instant, silent)</ins>
+
+__Inscryption__
+- custom discard change context
+
+### <ins>ease_dollars(mod, instant)</ins>
+
+__Inscryption__
+- custom dollar change context
+
+### <ins>ease_ante(mod)</ins>
+
+__Inscryption__
+- custom ante change context
+
+### <ins>Card:update(dt)</ins>
+
+__Inscryption__
+- Blueprint?'s transformation
+
+### <ins>SMODS.current_mod.reset_game_globals(run_start)</ins>
+
+__Inscryption__
+- automatic run seeding
+- Egg?'s effect
+
+__4Fun__
+- No Bitches?' unlock condition
+
+### <ins>generate_card_ui(\_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start, main_end, card)</ins>
+
+__Inscryption__
+- automatic Jokester descriptions
+
+### <ins>Card:add_to_deck(from_debuff)</ins>
+
+__The Binding of Isaac__
+- Moriah's unlock condition
+
+__Inscryption__
+- automatic sticker application
+
+### <ins>Card:set_cost()</ins>
+
+__Inscryption__
+- Astronomer?'s effect
+- Ijiraq's Astronomer effect
+
+### <ins>SMODS.four_fingers()</ins>
+
+__Inscryption__
+- Four Fingers?
+
+### <ins>SMODS.shortcut()</ins>
+
+__Inscryption__
+- Shortcut?
+
+### <ins>G.UIDEF.use_and_sell_buttons(card)</ins>
+
+__Inscryption__
+- Perkeo?'s button rendering
+
+### <ins>Card:highlight(is_higlighted)</ins>
+
+__Inscryption__
+- Perkeo?'s button rendering
+
+### <ins>G.UIDEF.hpfx_transform_button(card)</ins>
+
+__Inscryption__
+- manual transformation button
+
+### <ins>get_new_boss()</ins>
+
+__Inscryption__
+- Pareidolia?'s effect
+
+### <ins>Game:update(dt)</ins>
+
+__4Fun__
+- No Bitches?' effect
+
+### <ins>love.draw()</ins>
+
+__4Fun__
+- No Bitches?' effect

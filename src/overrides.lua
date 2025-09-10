@@ -28,34 +28,6 @@ function Blind:defeat(silent)
     return bdf(self, silent)
 end
 
-local ccc = SMODS.calculate_context
-function SMODS.calculate_context(context, return_table)
-    if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
-        G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount + 1
-        if G.PROFILES[G.SETTINGS.profile].hpfx_devilCount >= 3 then
-            check_for_unlock({ type = 'hpfx_devil' })
-            G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = 0
-        end
-    end
-    if context.remove_playing_cards then
-        for _, i in ipairs(context.removed) do
-            G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount + 1
-            if G.PROFILES[G.SETTINGS.profile].hpfx_queenCount >= 37 then
-                check_for_unlock({ type = 'hpfx_head' })
-                G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = 0
-            end
-        end
-    end
-    if context.joker_main then
-        for i = 1, #context.scoring_hand do
-            if context.scoring_hand[i]:get_id() == 12 then
-                G.PROFILES[G.SETTINGS.profile].hpfx_bitch = true
-            end
-        end
-    end
-    return ccc(context, return_table)
-end
-
 local chud = Card.calculate_joker
 function Card:calculate_joker(context)
     local ret, trig = chud(self, context)
@@ -329,6 +301,9 @@ function Card:add_to_deck(from_debuff)
         self.visiblyIjiraq = true
         local sticker = SMODS.Stickers['hpfx_priceless']
         sticker.apply(sticker, self, true)
+    end
+    if self.config.center_key == 'j_oops' then --surprise unlock condition lmao
+        check_for_unlock({ type = 'hpfx_oops' })
     end
     add2deck_ref(self, from_debuff)
 end

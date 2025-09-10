@@ -82,7 +82,7 @@ target = "functions/state_events.lua"
 pattern = "check_for_unlock({type = 'chip_score', chips = math.floor(hand_chips*mult)})"
 position = "after"
 payload = '''
-check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
+check_for_unlock({type = 'chip_score', chips = math.floor( SMODS.calculate_round_score() )})
 '''
 
 [[patches]] # calc_dollar_bonus transformation
