@@ -79,10 +79,10 @@ _c.vars, AUT = {info = {}}}
 match_indent = true
 times = 1
 target = "functions/state_events.lua"
-pattern = "check_for_unlock({type = 'chip_score', chips = math.floor(hand_chips*mult)})"
+pattern = "check_for_unlock({type = 'chip_score', chips = math.floor( SMODS.calculate_round_score() )})"
 position = "after"
 payload = '''
-check_for_unlock({type = 'chip_score', chips = math.floor( SMODS.calculate_round_score() )})
+check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
 '''
 
 [[patches]] # calc_dollar_bonus transformation
