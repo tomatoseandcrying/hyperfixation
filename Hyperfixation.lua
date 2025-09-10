@@ -350,6 +350,17 @@ SMODS.current_mod.calculate = function(self, context)
             end
         end
     end
+    --Chud
+    if context.post_trigger then
+        G.GAME.hpfx_nothingEverHappens = false
+    end
+    if context.end_of_round and context.beat_boss and G.GAME.round_resets.ante >= 3 then
+        if G.GAME.hpfx_nothingEverHappens then
+            check_for_unlock({ type = 'hpfx_chud' })
+        else
+            G.GAME.hpfx_nothingEverHappens = true
+        end
+    end
 end
 
 --Visual Libraries
