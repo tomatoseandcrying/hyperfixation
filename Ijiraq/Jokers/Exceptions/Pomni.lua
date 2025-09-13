@@ -17,12 +17,11 @@ SMODS.Joker {
     },
     loc_vars = function(self, info_queue, card)
         local main_end
-        if G.jokers and G.jokers.cards then
-            for k, v in ipairs(G.jokers.cards) do
-                if #G.jokers.cards > 0 then
-                    main_end = {}
-                    localize { type = 'other', key = 'hpfx_pomcount', nodes = main_end, vars = { #G.jokers.cards } }
-                end
+        if G.jokers and G.jokers.cards and card.area == G.jokers then
+            if #G.jokers.cards > 0 then
+                main_end = {}
+                localize { type = 'other', key = 'hpfx_pomcount', nodes = main_end, vars = { #G.jokers.cards - 1 } }
+                main_end = main_end[1]
             end
         end
         return {
@@ -67,6 +66,21 @@ SMODS.Joker {
             return {
                 mult = card.ability.extra.mult * #G.jokers.cards
             }
+        end
+        if context.card_added and context.cardarea == G.jokers then
+            if #G.jokers.cards >= 4 then
+                for k, v in ipairs(SMODS.find_card('j_hpfx_pomni')) do
+                    if v ~= card then
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                v:start_dissolve({ G.C.RED }, nil, 1.6)
+                                return true
+                            end
+                        }))
+                    end
+                end
+                hpfx_Transform(card, context)
+            end
         end
     end,
     in_pool = function(self, args)
