@@ -11,30 +11,47 @@ SMODS.Joker {
     cost = 8,
     atlas = 'IjiraqJokers',
     config = {
+        jackstack = 1,
         extra = {
             xmult_gain = 0.5,
             xmult = 1,
-            jackstack = 1,
         }
     },
-    loc_vars = function(self, info_queue, card)
-        local stackjack = 0
-        if G.playing_cards then
+    update = function(self, card, dt)
+        local jerkoff = 0
+        if G.playing_cards and G.jokers then
             for _, jack in ipairs(G.playing_cards) do
                 if jack:get_id() == 11 then
-                    stackjack = stackjack + 1
+                    jerkoff = jerkoff + 1
                 end
+            end
+        end
+        if not card.ability.trig and jerkoff == 0 then
+            card.ability.trig = true
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    hpfx_Transform(card)
+                    return true
+                end
+            }))
+        end
+        card.ability.jackstack = jerkoff
+    end,
+    loc_vars = function(self, info_queue, card)
+        if G.jokers and G.jokers.cards and card.area == G.jokers then
+            if #G.jokers.cards > 0 then
+                main_end = {}
+                localize { type = 'other', key = 'hpfx_dontcount', nodes = main_end, vars = { card.ability.jackstack } }
+                main_end = main_end[1]
             end
         end
         return {
             vars = {
                 card.ability.extra.xmult_gain,
                 card.ability.extra.xmult,
-                card.ability.extra.jackstack,
                 card.area and card.area == G.jokers and "...?" or "",
-                card.area and card.area == G.jokers and (card.ability.extra.jackstack * stackjack) or "",
-                card.area and card.area == G.jokers and "remaining" or "",
-            }
+            },
+            main_end = main_end
         }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
@@ -52,48 +69,24 @@ SMODS.Joker {
         sticker.apply(sticker, card, true)
     end,
     calculate = function(self, card, context)
-        local extra = card.ability and card.ability.extra or {}
-        local stackjack = 0
-        if G.playing_cards then
-            for _, jack in ipairs(G.playing_cards) do
-                if jack:get_id() == 11 then
-                    stackjack = stackjack + 1
-                end
-            end
-        end
+        local extra = card.ability and card.ability.extra
         if context.discard and not context.blueprint and
             context.other_card:get_id() == 11 then
             extra.xmult = extra.xmult + extra.xmult_gain
-            if (extra.jackstack * stackjack) <= 1 then
-                return {
-                    remove = true,
-                    func = function()
-                        hpfx_Transform(card, context)
-                    end
-                }
-            else
-                return {
-                    message = localize
-                        {
-                            type = 'variable',
-                            key = 'a_xmult',
-                            vars = { card.ability.extra.xmult }
-                        },
-                    colour = G.C.RED,
-                    remove = true
-                }
-            end
-        end
-        if context.hpfx_post_discard and (extra.jackstack * stackjack) <= 0 then
             return {
-                func = function()
-                    hpfx_Transform(card, context)
-                end
+                message = localize
+                    {
+                        type = 'variable',
+                        key = 'a_xmult',
+                        vars = { extra.xmult }
+                    },
+                colour = G.C.RED,
+                remove = true
             }
         end
         if context.joker_main then
             return {
-                xmult = card.ability.extra.xmult
+                xmult = extra.xmult
             }
         end
         if context.end_of_round and context.game_over == false and
