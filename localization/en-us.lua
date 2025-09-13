@@ -566,8 +566,6 @@ return {
                     "hand has a scoring",
                     "{C:clubs}Club{} card and a scoring",
                     "card of any other {C:attention}suit{}{C:hpfx_IjiGray}#5#{}",
-                    "",
-                    "{s:0.5}[{C:diamonds}#2#{}, {C:hearts}#3#{}, {C:spades}#4#{}]{}",
                 },
             },
             j_hpfx_peeking_twice_alt = {
@@ -577,8 +575,6 @@ return {
                     "hand has a scoring",
                     "{C:clubs}Club{} card and a scoring",
                     "card of any other {C:attention}suit{}{C:hpfx_IjiGray}#5#{}",
-                    "",
-                    "{s:0.5}[{C:diamonds}#2#{}, {C:hearts}#3#{}, {C:spades}#4#{}]{}",
                 },
             },
             j_hpfx_dupla = {
@@ -1674,7 +1670,14 @@ return {
                     "",
                     "{X:hpfx_IjiGray,C:white}#1#/4"
                 }
-            }
+            },
+            hpfx_peekount = {
+                name = 'p',
+                text = {
+                    "",
+                    "{s:0.5}[{C:diamonds}#1#{}, {C:hearts}#2#{}, {C:spades}#3#{}]{}",
+                }
+            },
         },
     },
     misc = {
