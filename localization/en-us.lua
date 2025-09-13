@@ -413,8 +413,6 @@ return {
                     "{C:mult}+#1#{} Mult for",
                     "each {C:attention}Joker{} card{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
-                    "",
-                    "{X:hpfx_IjiGray,C:white}#3#/4{}"
                 },
             },
             j_hpfx_pomni_alt = {
@@ -423,8 +421,6 @@ return {
                     "{C:mult}+#1#{} Mult for",
                     "each {C:attention}Joker{} card{C:hpfx_IjiGray}#4#{}",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
-                    "",
-                    "{X:hpfx_IjiGray,C:white}#3#/4{}"
                 },
             },
             j_hpfx_belated_grat = {
@@ -1671,6 +1667,13 @@ return {
                 text = {
                     "{E:2}context.{C:attention,E:2}#1#{}",
                 },
+            },
+            hpfx_pomcount = {
+                name = 'p',
+                text = {
+                    "",
+                    "{X:hpfx_IjiGray,C:white}#1#/4"
+                }
             }
         },
     },

@@ -16,16 +16,24 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        if G.jokers then
-            return {
-                vars = {
-                    card.ability.extra.mult,
-                    card.ability.extra.mult * (G.jokers and #G.jokers.cards or 0),
-                    #G.jokers.cards,
-                    card.area and card.area == G.jokers and "...?" or ""
-                }
-            }
+        local main_end
+        if G.jokers and G.jokers.cards then
+            for k, v in ipairs(G.jokers.cards) do
+                if #G.jokers.cards > 0 then
+                    main_end = {}
+                    localize { type = 'other', key = 'hpfx_pomcount', nodes = main_end, vars = { #G.jokers.cards } }
+                end
+            end
         end
+        return {
+            vars = {
+                card.ability.extra.mult,
+                card.ability.extra.mult * (G.jokers and #G.jokers.cards or 0),
+                #G.jokers.cards,
+                card.area and card.area == G.jokers and "...?" or ""
+            },
+            main_end = main_end
+        }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize {
