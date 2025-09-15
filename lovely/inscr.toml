@@ -118,5 +118,12 @@ target = "functions/state_events.lua"
 pattern = "local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))"
 position = "at"
 payload = '''
-local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or next(find_card('Ijiraq'))
+local function has_splash_effect()
+    if not (G.GAME.raqeffects and next(G.GAME.raqeffects)) then return false end
+    for _, effect in pairs(G.GAME.raqeffects) do
+        if effect == 'j_splash' then return true end
+    end
+    return false
+end
+local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or (next(SMODS.find_card('j_hpfx_ijiraq')) and has_splash_effect())
 '''
