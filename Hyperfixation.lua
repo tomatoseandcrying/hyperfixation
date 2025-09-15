@@ -324,7 +324,11 @@ SMODS.current_mod.optional_features = {
 SMODS.current_mod.calculate = function(self, context)
     --Iscariot
     if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
+        if type(G.PROFILES[G.SETTINGS.profile].hpfx_devilCount) ~= "number" then
+            G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = 0
+        end
         G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount + 1
+        --print("Devil Count: " .. tostring(G.PROFILES[G.SETTINGS.profile].hpfx_devilCount))
         if G.PROFILES[G.SETTINGS.profile].hpfx_devilCount >= 3 then
             check_for_unlock({ type = 'hpfx_devil' })
             G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = 0

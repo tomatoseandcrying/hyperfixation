@@ -1,0 +1,9 @@
+#app-specific
+.code-workspace
+.lovelyignore
+.luarc.json
+.vscode
+
+#text files
+.md
+!README.md
