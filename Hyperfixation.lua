@@ -12,10 +12,10 @@ end
 --singles
 SMODS.load_file('src/overrides.lua')()
 SMODS.load_file('lib/ui.lua')()
-SMODS.load_file('Stickers.lua')()
+SMODS.load_file('items/Stickers.lua')()
 --centers
-SMODS.load_file('Isaac/IsaacCenter.lua')()
-SMODS.load_file('4Fun/FunZone.lua')()
+SMODS.load_file('items/Isaac/IsaacCenter.lua')()
+SMODS.load_file('items/4Fun/FunZone.lua')()
 SMODS.load_file('Ijiraq/RaqShack.lua')()
 
 --Mod Tech
@@ -882,10 +882,17 @@ function guh2() -- just put the key in the table bro (inserts the hovered Joker'
     table.insert(G.GAME.raqeffects, selected.config.center.key)
 end
 
-debugs_one_line_long = {                         --other debug commands that just go into the console
-    "eval G.GAME.raqeffects",                    -- prints the current effects Ijiraq has stored
-    "eval Hyperglobal.exceptions",               -- prints the current table of Jokesters with custom transformation logic
-    "eval Hyperglobal.calcdollarjokesters",      -- prints the current table of Jokesters that calculate dollar bonuses
-    "eval G.jokers.cards[1].config.center.key",  -- checks the first joker's key
-    "eval G.GAME.current_round.fodder_card.jkey" -- checks the stored key of the fodder card
+debugs_one_line_long = { --other debug commands that just go into the console
+    "eval G.GAME.raqeffects",
+    -- prints all current effects Ijiraq has stored
+    "eval Hyperglobal.exceptions",
+    -- prints the current table of Jokesters with custom transformation logic
+    "eval Hyperglobal.calcdollarjokesters",
+    -- prints the current table of Jokesters that calculate dollar bonuses
+    "eval G.jokers.cards[1].config.center.key",
+    -- checks the first joker's key
+    "eval G.GAME.current_round.fodder_card.jkey",
+    -- checks the stored key of the fodder card
+    "eval G.GAME.trig"
+    -- prints current effects ijiraq has stored from add_to_deck. prevents effect resets if a different Ijiraq is removed
 }

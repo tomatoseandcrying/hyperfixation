@@ -74,17 +74,6 @@ elseif _c.ijiraq then
 _c.vars, AUT = {info = {}}}
 '''
 
-[[patches]] # Mary unlock check
-[patches.pattern]
-match_indent = true
-times = 1
-target = "functions/state_events.lua"
-pattern = "check_for_unlock({type = 'chip_score', chips = math.floor( SMODS.calculate_round_score() )})"
-position = "after"
-payload = '''
-check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
-'''
-
 [[patches]] # calc_dollar_bonus transformation
 [patches.pattern]
 match_indent = true
@@ -121,15 +110,3 @@ if next(SMODS.find_card('j_hpfx_galilimbo')) then
     end
 end
 '''
-
-[[patches]] # Post-Discard Context
-[patches.pattern]
-target = 'functions/state_events.lua'
-pattern = '''
-G.GAME.current_round.discards_used = G.GAME.current_round.discards_used + 1
-'''
-position = "after"
-payload = '''
-SMODS.calculate_context({hpfx_post_discard = true})
-'''
-match_indent = true

@@ -490,7 +490,7 @@ function love.draw()
 
     function loadmyimageistg(fn)
         local full_path = (Hyperglobal.path
-            .. "customimages/" .. fn)
+            .. "assets/customimages/" .. fn)
         local file_data = assert(NFS.newFileData(full_path), ("Epic fail"))
         local tempimagedata = assert(love.image.newImageData(file_data), ("Epic fail 2"))
         --print ("LTFNI: Successfully loaded " .. fn)
