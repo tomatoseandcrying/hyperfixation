@@ -1,5 +1,0 @@
-{
-    "files.autoSave": "onFocusChange",
-    "editor.defaultFormatter": "sumneko.lua",
-    "editor.formatOnSave": true
-}
