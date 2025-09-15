@@ -515,10 +515,3 @@ function love.draw()
         love.graphics.draw(Hyperglobal.nobitches, 0 * _xscale * 2, 0 * _yscale * 2, 0, _xscale * 2 * 2, _yscale * 2 * 2)
     end
 end
-
-local squirt = SMODS.score_card
-function SMODS.score_card(card, context)
-    local ret = squirt(card, context)
-    --whatever tf youre talking about
-    return ret
-end

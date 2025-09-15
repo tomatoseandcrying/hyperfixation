@@ -240,22 +240,32 @@ SMODS.Joker { --Ijiraq.
         if totalcash > 0 then return totalcash end
     end,
     calculate = function(self, card, context)
-        for _, v in pairs(G.GAME.raqeffects) do
-            if context.end_of_round and v == 'j_turtle_bean' then
-                if context.game_over == false and context.main_eval then
-                    if G.hand.config.card_limit - 1 <= 0 then
-                        table.remove(G.GAME.raqeffects, _)
-                        return {
-                            message = localize('k_eaten_ex'),
-                            colour = G.C.FILTER
-                        }
-                    else
-                        G.hand.config.card_limit = G.hand.config.card_limit - 1
-                        G.hand:change_size(-1)
-                        return {
-                            message = localize { type = 'variable', key = 'a_handsize_minus', vars = { 1 } },
-                            colour = G.C.FILTER
-                        }
+        if context.modify_scoring_hand and not context.blueprint then
+            for _, v in pairs(G.GAME.raqeffects) do
+                if v == 'j_splash' then
+                    print('Splash!')
+                    return { add_to_hand = true }
+                end
+            end
+        end
+        if context.end_of_round then
+            for _, v in pairs(G.GAME.raqeffects) do
+                if v == 'j_turtle_bean' then
+                    if context.game_over == false and context.main_eval then
+                        if G.hand.config.card_limit - 1 <= 0 then
+                            table.remove(G.GAME.raqeffects, _)
+                            return {
+                                message = localize('k_eaten_ex'),
+                                colour = G.C.FILTER
+                            }
+                        else
+                            G.hand.config.card_limit = G.hand.config.card_limit - 1
+                            G.hand:change_size(-1)
+                            return {
+                                message = localize { type = 'variable', key = 'a_handsize_minus', vars = { 1 } },
+                                colour = G.C.FILTER
+                            }
+                        end
                     end
                 end
             end

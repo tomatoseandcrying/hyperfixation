@@ -336,6 +336,9 @@ SMODS.current_mod.calculate = function(self, context)
     end
     --Marie Antoinette
     if context.remove_playing_cards then
+        if type(G.PROFILES[G.SETTINGS.profile].hpfx_queenCount) ~= "number" then
+            G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = 0
+        end
         for _, i in ipairs(context.removed) do
             if i:get_id() == 12 then
                 G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount + 1

@@ -3,7 +3,7 @@ version = "1.0.0"
 priority = 0
 
 
-[[patches]] # Ijiraq Patch 1 (patches properly) WORKS
+[[patches]] # cardTable assignments
 [patches.pattern]
 target = "card.lua"
 pattern = "self.seal = cardTable.seal"
@@ -15,7 +15,7 @@ self.visiblyIjiraq = cardTable.visiblyIjiraq
 '''
 times = 1
 
-[[patches]] # Ijiraq Patch 2 (patches properly) WORKS
+[[patches]] # object assignments
 [patches.pattern]
 target = "card.lua"
 pattern = "seal = self.seal,"
@@ -27,7 +27,7 @@ visiblyIjiraq = self.visiblyIjiraq,
 '''
 times = 1
 
-[[patches]] # Ijiraq Patch 3 (patches properly) WORKS
+[[patches]] # effect merging
 [patches.pattern]
 times = 1
 match_indent = true
@@ -62,7 +62,7 @@ else
 end
 '''
 
-[[patches]] # Ijiraq Patch 4 (patches properly)
+[[patches]] # description rendering
 [patches.pattern]
 target = 'functions/common_events.lua'
 pattern = '''elseif _c.set == 'Joker' then'''
@@ -94,7 +94,7 @@ if Hyperglobal.calcdollarjokesters[_card.config.center.key] then
 end
 '''
 
-[[patches]] # Galilimbo Patch
+[[patches]] # galilimbo patch
 [patches.pattern]
 match_indent = true
 times = 1
@@ -109,4 +109,14 @@ if next(SMODS.find_card('j_hpfx_galilimbo')) then
         card = create_card("Planet", G.pack_cards, nil, nil, true, true, nil, 'glb')
     end
 end
+'''
+[[patches]] # splatter patch
+[patches.pattern]
+match_indent = true
+times = 1
+target = "functions/state_events.lua"
+pattern = "local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))"
+position = "at"
+payload = '''
+local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or next(find_card('Ijiraq'))
 '''
