@@ -7,3 +7,9 @@
 #text files
 .md
 !README.md
+.luarc.json
+.vscode/jokesterlocalization.code-snippets
+.vscode/jokestertemplate.code-snippets
+.vscode/settings.json
+fortunes.md
+hyperfixation.code-workspace
