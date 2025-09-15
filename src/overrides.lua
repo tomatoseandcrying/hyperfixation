@@ -219,6 +219,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
     if run_start then
         G.GAME.raqeffects = {}
+        G.GAME.trig = {}
         local chick = pseudorandom('hpfxchicken', 3, 123456789)
         G.GAME.nugget = roundmyshitprettyplease(chick, 3)
         G.PROFILES[G.SETTINGS.profile].hpfx_bitch = false

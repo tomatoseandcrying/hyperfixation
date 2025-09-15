@@ -875,6 +875,13 @@ function guh() --Convert the Joker you're hovering over into its Jokester varian
     selected:set_ability('j_hpfx_costume')
 end
 
+function guh2() -- just put the key in the table bro (inserts the hovered Joker's key into Ijiraq's effects table directly)
+    local selected = G.CONTROLLER and
+        (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
+    if Hyperglobal.brokejokes[selected.config.center.key] then return print('This one\'s disabled until I can fix it!') end
+    table.insert(G.GAME.raqeffects, selected.config.center.key)
+end
+
 debugs_one_line_long = {                         --other debug commands that just go into the console
     "eval G.GAME.raqeffects",                    -- prints the current effects Ijiraq has stored
     "eval Hyperglobal.exceptions",               -- prints the current table of Jokesters with custom transformation logic
