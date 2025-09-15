@@ -36,8 +36,7 @@ SMODS.Joker {
         Card:set_card_rate(true, 0)
         Card:set_booster_weight(true, 0, true)
         card.ability.extra.new_key = "j_hpfx_showman_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
         G.E_MANAGER:add_event(Event({
             func = function()
                 Card:set_booster_weight('Standard')

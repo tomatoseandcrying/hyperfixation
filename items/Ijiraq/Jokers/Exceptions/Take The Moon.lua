@@ -35,8 +35,7 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
         G.GAME.interest_amount = G.GAME.interest_amount + 9999
         card.ability.extra.new_key = "j_hpfx_take_the_moon_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.interest_amount = G.GAME.interest_amount - 9999

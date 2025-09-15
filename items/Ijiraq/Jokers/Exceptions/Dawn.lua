@@ -36,8 +36,7 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_dawn_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
         if not card.ability then
             card.ability = { extra = { saved_cards = {}, duplicated_cards = {} } }
         elseif not card.ability.extra then

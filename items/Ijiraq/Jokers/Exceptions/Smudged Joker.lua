@@ -29,8 +29,7 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_smudged_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
         for _, pcard in ipairs(G.playing_cards) do
             pcard:set_ability(G.P_CENTERS.m_wild)
         end

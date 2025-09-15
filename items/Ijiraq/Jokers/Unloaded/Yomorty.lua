@@ -1,8 +1,8 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'yomorty',
-    pos = {x = 5, y = 8},
-    soul_pos = {x = 5, y = 9},
+    pos = { x = 5, y = 8 },
+    soul_pos = { x = 5, y = 9 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -13,14 +13,14 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 1,
-        xmult_gain = 1,
-        dis = 23,
-        dis_rem = 23
+            xmult = 1,
+            xmult_gain = 1,
+            dis = 23,
+            dis_rem = 23
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult_gain,
                 card.ability.extra.dis,
@@ -41,34 +41,33 @@ SMODS.Joker{
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_yomorty_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
         if (context.discard or context.hand_drawn) and not context.blueprint then
             local subtract = context.hand_drawn and #context.hand_drawn or 1
             local dis_rem = card.ability.extra.dis_rem
             local will_trigger = dis_rem <= 1 or (dis_rem - subtract <= 0)
-            return{
+            return {
                 func = function()
                     if will_trigger then
                         local overflow = subtract - dis_rem
                         card.ability.extra.dis_rem = card.ability.extra.dis
-                            card.ability.extra.xmult =
+                        card.ability.extra.xmult =
                             card.ability.extra.xmult + card.ability.extra.xmult_gain
-                                card.ability.extra.dis_rem =
-                                card.ability.extra.dis_rem - overflow
+                        card.ability.extra.dis_rem =
+                            card.ability.extra.dis_rem - overflow
                     else
                         card.ability.extra.dis_rem = dis_rem - subtract
                     end
                 end,
-                message = will_trigger and localize{type = 'variable', key = 'a_xmult',
-                    vars = {card.ability.extra.xmult + card.ability.extra.xmult_gain}} or nil,
+                message = will_trigger and localize { type = 'variable', key = 'a_xmult',
+                    vars = { card.ability.extra.xmult + card.ability.extra.xmult_gain } } or nil,
                 colour = will_trigger and G.C.RED or nil
             }
         end
         if context.joker_main then
-            return{
+            return {
                 xmult = card.ability.extra.xmult
             }
         end

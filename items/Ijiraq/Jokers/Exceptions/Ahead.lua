@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'ahead',
-    pos = {x = 1, y = 8},
+    pos = { x = 1, y = 8 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,11 +12,11 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        chips = 50,
+            chips = 50,
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.chips,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -34,19 +34,18 @@ SMODS.Joker{
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_ahead_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play
-        and context.other_card:is_suit("Spades") then
+            and context.other_card:is_suit("Spades") then
             context.other_card.ability.perma_bonus =
-            (context.other_card.ability.perma_bonus or 0) + card.ability.extra.chips
+                (context.other_card.ability.perma_bonus or 0) + card.ability.extra.chips
             return {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.CHIPS,
                 chips = card.ability.extra.chips,
-                func = function ()
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }

@@ -10,13 +10,14 @@ SMODS.Joker {
     rarity = 2,
     cost = 7,
     atlas = 'IjiraqJokers',
-    config = { extra = { xmult = 1.5 } },
+    config = { trig = false, extra = { xmult = 1.5 } },
     loc_vars = function(self, info_queue, card)
         local new_num, new_denom = SMODS.get_probability_vars(card, 1, 2, 'hpfx_sanguinerock_id')
         return {
             vars = {
                 new_num,
                 new_denom,
+                card.ability.extra.xmult,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
@@ -32,12 +33,13 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_sanguinerock_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") and
-            SMODS.pseudorandom_probability(card, 'hpfx_sanguinerock_seed', 1, 2, 'hpfx_sanguinerock_id') then
+            SMODS.pseudorandom_probability(card, 'hpfx_sanguinerock_seed', 1, 2, 'hpfx_sanguinerock_id')
+            and card.ability.trig == false then
+            card.ability.trig = true
             return {
                 xmult = card.ability.extra.xmult,
                 func = function()

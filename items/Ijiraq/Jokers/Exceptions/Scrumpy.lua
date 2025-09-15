@@ -35,8 +35,7 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
         G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
         card.ability.extra.new_key = "j_hpfx_scrumpy_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size

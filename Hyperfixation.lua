@@ -16,7 +16,7 @@ SMODS.load_file('items/Stickers.lua')()
 --centers
 SMODS.load_file('items/Isaac/IsaacCenter.lua')()
 SMODS.load_file('items/4Fun/FunZone.lua')()
-SMODS.load_file('Ijiraq/RaqShack.lua')()
+SMODS.load_file('items/Ijiraq/RaqShack.lua')()
 
 --Mod Tech
 to_big = to_big or function(x) return x end --talisman conversion function

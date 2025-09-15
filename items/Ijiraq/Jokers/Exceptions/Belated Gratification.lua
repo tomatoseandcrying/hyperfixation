@@ -35,8 +35,7 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_belated_grat_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     calc_dollar_bonus = function(self, card)
         if G.GAME.current_round.discards_used == 0 and G.GAME.current_round.discards_left > 0 then

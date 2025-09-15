@@ -19,14 +19,6 @@ SMODS.Sticker {
     needs_enabled_flag = false,
     calculate = function(self, card, context)
     end,
-    apply = function(self, card, val)
-        if val then
-            card.ability[self.key] = val
-        else
-            card.ability[self.key] = nil
-        end
-        card:set_cost()
-    end
 }
 local nosellsticker_hook = Card.can_sell_card
 function Card:can_sell_card(context)

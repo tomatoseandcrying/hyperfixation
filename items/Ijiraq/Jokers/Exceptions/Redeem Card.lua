@@ -38,8 +38,7 @@ SMODS.Joker { --Loyalty Card?
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_redeemed_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     rarity = 2,
     cost = 5,

@@ -7,9 +7,9 @@ SMODS.Joker { --Credit Card?
     discovered = true,
     no_collection = true,
     config = {
-        extra = { 
-            credit = 20, 
-            dollars = 0 
+        extra = {
+            credit = 20,
+            dollars = 0
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -22,18 +22,17 @@ SMODS.Joker { --Credit Card?
         }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize { 
-            type = 'name', 
-            set = "Joker", 
-            key = card.ability and card.ability.extra.new_key or "j_hpfx_expired", 
+        full_UI_table.name = localize {
+            type = 'name',
+            set = "Joker",
+            key = card.ability and card.ability.extra.new_key or "j_hpfx_expired",
             nodes = {} }
         SMODS.Center.generate_ui(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_expired_alt"
         G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.credit
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.credit
@@ -44,8 +43,8 @@ SMODS.Joker { --Credit Card?
     blueprint_compat = false,
     calculate = function(self, card, context)
         if context.buying_card and not context.blueprint
-        and to_big(G.GAME.dollars) - to_big(context.card.cost) <=
-        to_big(card.ability.extra.dollars)
+            and to_big(G.GAME.dollars) - to_big(context.card.cost) <=
+            to_big(card.ability.extra.dollars)
         then
             hpfx_Transform(card, context)
         end

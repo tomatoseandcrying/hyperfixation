@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'flashforward',
-    pos = {x = 5, y = 7},
+    pos = { x = 5, y = 7 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,11 +12,11 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        xmult = 0.25,
+            xmult = 0.25,
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.xmult,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -34,15 +34,14 @@ SMODS.Joker{
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_flashforward_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
         if context.skip_blind and not context.blueprint then
             local anteskip = G.GAME.round_resets.ante % 8
             ease_ante(8 - anteskip)
             return {
-                func = function ()
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }

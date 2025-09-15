@@ -38,8 +38,7 @@ SMODS.Joker {
     add_to_deck = function(self, card, from_debuff)
         G.hand:change_size(card.ability.extra.h_size)
         card.ability.extra.new_key = "j_hpfx_lima_bean_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.hand:change_size(-card.ability.extra.h_size)

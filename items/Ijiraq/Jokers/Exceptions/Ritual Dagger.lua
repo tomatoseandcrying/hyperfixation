@@ -36,16 +36,17 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_ritual_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint then
             local my_pos = nil
-            for i = 1, #G.jokers.cards do if G.jokers.cards[i] == card then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
                     my_pos = i
                     break
-                end end
+                end
+            end
 
             if my_pos and G.jokers.cards[my_pos + 1] and not G.jokers.cards[my_pos + 1].ability.eternal and
                 not G.jokers.cards[my_pos + 1].getting_sliced then

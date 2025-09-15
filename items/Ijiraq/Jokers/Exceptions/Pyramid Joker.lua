@@ -1,20 +1,22 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{ --Golden Joker?
+SMODS.Joker { --Golden Joker?
     key = 'pyramid',
     atlas = 'IjiraqJokers',
-    pos = {x = 9, y = 2},
+    pos = { x = 9, y = 2 },
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
     no_collection = true,
     config = {
-        extra = {money = 4}
+        extra = { money = 4 }
     },
-    loc_vars = function (self, info_queue, card)
-        return{vars = {
-            card.ability.extra.money,
-            card.area and card.area == G.jokers and "...?" or ""
-        }}
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.money,
+                card.area and card.area == G.jokers and "...?" or ""
+            }
+        }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
         full_UI_table.name = localize {
@@ -28,8 +30,7 @@ SMODS.Joker{ --Golden Joker?
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_pyramid_alt"
         G.GAME.dollars = G.GAME.dollars + card.ability.extra.money
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.dollars = G.GAME.dollars - card.ability.extra.money

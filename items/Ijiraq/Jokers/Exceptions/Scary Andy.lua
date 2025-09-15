@@ -32,8 +32,7 @@ SMODS.Joker { --Merry Andy?
         G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discard_size
         ease_discard(card.ability.extra.discard_size)
         G.hand:change_size(card.ability.extra.hand_size)
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discard_size

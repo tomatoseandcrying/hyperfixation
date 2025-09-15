@@ -33,8 +33,7 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_cola_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
         local tag_pool = get_current_pool('Tag')
         local selected_tag = pseudorandom_element(tag_pool, pseudoseed('hpfx_cola'))
         local it = 1

@@ -29,8 +29,7 @@ SMODS.Joker {
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_galilimbo_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
         Card:set_booster_weight('Celestial', 0)
         G.E_MANAGER:add_event(Event({
             func = function()

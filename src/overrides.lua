@@ -69,7 +69,7 @@ function win_game()
     return ret
 end
 
---Gamestate Change Detections
+--Gamestate Changes
 local ref_ease_hands = ease_hands_played
 function ease_hands_played(mod, instant)
     local ret = ref_ease_hands(mod, instant)
@@ -514,4 +514,11 @@ function love.draw()
         love.graphics.setColor(1, 1, 1, 1)
         love.graphics.draw(Hyperglobal.nobitches, 0 * _xscale * 2, 0 * _yscale * 2, 0, _xscale * 2 * 2, _yscale * 2 * 2)
     end
+end
+
+local squirt = SMODS.score_card
+function SMODS.score_card(card, context)
+    local ret = squirt(card, context)
+    --whatever tf youre talking about
+    return ret
 end

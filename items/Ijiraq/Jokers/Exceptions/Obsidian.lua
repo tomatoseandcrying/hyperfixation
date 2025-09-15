@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'obsidian',
-    pos = {x = 2, y = 8},
+    pos = { x = 2, y = 8 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -12,11 +12,11 @@ SMODS.Joker{
     atlas = 'IjiraqJokers',
     config = {
         extra = {
-        mult = 7,
+            mult = 7,
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.mult,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -34,16 +34,15 @@ SMODS.Joker{
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_obsidian_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play
-        and context.other_card:is_suit("Clubs") then
+            and context.other_card:is_suit("Clubs") then
             context.other_card.ability.perma_mult =
-            (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
+                (context.other_card.ability.perma_mult or 0) + card.ability.extra.mult
             return {
-                func = function ()
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }

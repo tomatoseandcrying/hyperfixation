@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'jiggler',
-    pos = {x = 0, y = 1},
+    pos = { x = 0, y = 1 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -15,7 +15,7 @@ SMODS.Joker{
             h_size = 1
         }
     },
-    loc_vars = function (self, info_queue, card)
+    loc_vars = function(self, info_queue, card)
         return {
             vars = {
                 card.ability.extra.h_size,
@@ -35,17 +35,16 @@ SMODS.Joker{
     add_to_deck = function(self, card, from_debuff)
         G.hand:change_size(card.ability.extra.h_size)
         card.ability.extra.new_key = "j_hpfx_jiggler_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
-    remove_from_deck = function (self, card, from_debuff)
+    remove_from_deck = function(self, card, from_debuff)
         G.hand:change_size(-card.ability.extra.h_size)
     end,
-    calculate = function (self, card, context)
+    calculate = function(self, card, context)
         if context.after then
             return {
-                func = function ()
-                hpfx_Transform(card, context)
+                func = function()
+                    hpfx_Transform(card, context)
                 end
             }
         end

@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{
+SMODS.Joker {
     key = 'chaoz',
-    pos = {x = 1, y = 0},
+    pos = { x = 1, y = 0 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,
@@ -15,8 +15,8 @@ SMODS.Joker{
             rerolls = 1
         }
     },
-    loc_vars = function (self, info_queue, card)
-        return{
+    loc_vars = function(self, info_queue, card)
+        return {
             vars = {
                 card.ability.extra.rerolls,
                 card.area and card.area == G.jokers and "...?" or ""
@@ -35,16 +35,15 @@ SMODS.Joker{
     add_to_deck = function(self, card, from_debuff)
         SMODS.change_free_rerolls(card.ability.extra.rerolls)
         card.ability.extra.new_key = "j_hpfx_chaoz_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
-    remove_from_deck = function (self, card, from_debuff)
+    remove_from_deck = function(self, card, from_debuff)
         SMODS.change_free_rerolls(-card.ability.extra.rerolls)
     end,
-    calculate = function (self, card, context)
+    calculate = function(self, card, context)
         if context.reroll_shop then
-            return{
-                func = function ()
+            return {
+                func = function()
                     hpfx_Transform(card, context)
                 end
             }

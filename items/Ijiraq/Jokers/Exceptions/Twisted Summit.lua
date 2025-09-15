@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
-SMODS.Joker{--Mystic Summit?
+SMODS.Joker { --Mystic Summit?
     key = 'twistit',
-    pos = {x = 2, y = 2},
+    pos = { x = 2, y = 2 },
     no_mod_badges = true,
     unlocked = true,
     discovered = true,
@@ -12,7 +12,7 @@ SMODS.Joker{--Mystic Summit?
             discards_remaining = 0
         },
     },
-    loc_vars = function (self, info_queue, card)
+    loc_vars = function(self, info_queue, card)
         return {
             vars = {
                 card.ability.extra.mult,
@@ -22,7 +22,7 @@ SMODS.Joker{--Mystic Summit?
         }
     end,
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-        full_UI_table.name = localize{
+        full_UI_table.name = localize {
             type = 'name',
             set = "Joker",
             key = card.ability and card.ability.extra.new_key or "j_hpfx_twistit",
@@ -32,8 +32,7 @@ SMODS.Joker{--Mystic Summit?
     end,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.new_key = "j_hpfx_twistit_alt"
-        local sticker = SMODS.Stickers['hpfx_priceless']
-        sticker.apply(sticker, card, true)
+        card:add_sticker('hpfx_priceless')
     end,
     rarity = 1,
     cost = 5,
@@ -41,16 +40,16 @@ SMODS.Joker{--Mystic Summit?
     blueprint_compat = true,
     calculate = function(self, card, context)
         if context.joker_main and
-        G.GAME.current_round.discards_left ~=
-        card.ability.extra.discards_remaining then
+            G.GAME.current_round.discards_left ~=
+            card.ability.extra.discards_remaining then
             return {
                 mult = card.ability.extra.mult,
             }
         end
         if context.before and
-        G.GAME.current_round.discards_left ==
-        card.ability.extra.discards_remaining then
-            return{
+            G.GAME.current_round.discards_left ==
+            card.ability.extra.discards_remaining then
+            return {
                 func = function()
                     hpfx_Transform(card, context)
                 end,
