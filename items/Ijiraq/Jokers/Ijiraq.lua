@@ -8,7 +8,7 @@ SMODS.Joker { --Ijiraq.
     rarity = 3,
     cost = 8,
     atlas = 'IjiraqJokers',
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = false,
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
@@ -141,11 +141,17 @@ SMODS.Joker { --Ijiraq.
                 end
             end
             if v == 'j_juggler' then
-                for eat, shit in ipairs(G.GAME.trig) do
-                    if shit == v then
-                        G.hand:change_size(-1)
-                        table.remove(G.GAME.trig, eat)
-                        break
+                local count = 0
+                for tl, dr in pairs(G.GAME.raqeffects) do
+                    if tl == 'j_juggler' then count = count + 1 end
+                end
+                for i = 1, count do
+                    for eat, shit in ipairs(G.GAME.trig) do
+                        if shit == v then
+                            G.hand:change_size(-1)
+                            table.remove(G.GAME.trig, eat)
+                            break
+                        end
                     end
                 end
             end

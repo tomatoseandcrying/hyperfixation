@@ -9,17 +9,19 @@ SMODS.Sticker {
     key = "priceless",
     default_compat = true,
     atlas = "inscrstickers",
-    pos = { x = 0, y = 0 },
     badge_colour = HEX("FCB3EA"),
+    needs_enable_flag = false,
+    rate = 0,
+    pos = { x = 0, y = 0 },
     sets = {
         Joker = true,
         Consumable = false
     },
-    rate = 0,
-    needs_enabled_flag = false,
-    calculate = function(self, card, context)
-    end,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end
 }
+
 local nosellsticker_hook = Card.can_sell_card
 function Card:can_sell_card(context)
     if self.ability.hpfx_priceless then

@@ -18,8 +18,7 @@ SMODS.Joker { --Costume (The costume setup only works before, during, or after h
 		card.children.center:reset()
 	end,
 	add_to_deck = function(self, card, from_debuff)
-		local sticker = SMODS.Stickers['hpfx_priceless']
-		sticker.apply(sticker, card, true)
+		card:add_sticker('hpfx_priceless')
 	end,
 	--[[ 	calculate = function(self,card,context)
 		if context.before and context.cardarea == G.jokers then
