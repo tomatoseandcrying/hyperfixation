@@ -42,6 +42,8 @@ SMODS.Joker { --Ijiraq.
     end,
     in_pool = function(self, args) return false end,
     add_to_deck = function(self, card, from_debuff)
+        -- Removes other copies of Ijiraq
+        --
         card.ability.allgone = false
         card:remove_sticker('hpfx_priceless')
         local raqjug = 0
@@ -72,22 +74,28 @@ SMODS.Joker { --Ijiraq.
                 end
             }))
         end
-        for _, v in pairs(G.GAME.raqeffects) do --counts how many juggler stacks are available
+
+        --Applies effects that shouldn't stack in mass iterator
+        --
+        for _, v in pairs(G.GAME.raqeffects) do --juggler stacks
             if v == 'j_juggler' then
                 raqjug = raqjug + 1
             end
         end
-        for i, trig_v in ipairs(G.GAME.trig) do --counts how many juggler stacks are already active
+        for i, trig_v in ipairs(G.GAME.trig) do --juggler procs
             if trig_v == 'j_juggler' then
                 trigjug = trigjug + 1
             end
         end
         local to_add = raqjug - trigjug
-        for i = 1, to_add do --hand size increase (juggler)
+        for i = 1, to_add do --juggler increase
             G.hand:change_size(1)
             table.insert(G.GAME.trig, 'j_juggler')
         end
-        for _, v in pairs(G.GAME.raqeffects) do --everyone else
+
+        --Effects that can stack in mass iterator
+        --
+        for _, v in pairs(G.GAME.raqeffects) do
             if v == 'j_stuntman' then
                 G.hand:change_size(-2)
                 table.insert(G.GAME.trig, v)
