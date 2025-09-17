@@ -110,6 +110,7 @@ if next(SMODS.find_card('j_hpfx_galilimbo')) then
     end
 end
 '''
+
 [[patches]] # splatter patch
 [patches.pattern]
 match_indent = true

@@ -44,6 +44,8 @@ SMODS.Joker { --Ijiraq.
     add_to_deck = function(self, card, from_debuff)
         card.ability.allgone = false
         card:remove_sticker('hpfx_priceless')
+        local raqjug = 0
+        local trigjug = 0
         for k, v in ipairs(SMODS.find_card('j_hpfx_ijiraq')) do --Only 1 Ijiraq.
             if v ~= card then
                 G.E_MANAGER:add_event(Event({
@@ -56,7 +58,7 @@ SMODS.Joker { --Ijiraq.
                 card.ability.allgone = true
             end
         end
-        if card.ability.allgone and card:can_calculate() then
+        if card.ability.allgone and card:can_calculate() then --prevents message spam
             G.E_MANAGER:add_event(Event({
                 func = function()
                     SMODS.calculate_effect({
@@ -70,13 +72,24 @@ SMODS.Joker { --Ijiraq.
                 end
             }))
         end
-        for _, v in pairs(G.GAME.raqeffects) do
+        for _, v in pairs(G.GAME.raqeffects) do --counts how many juggler stacks are available
+            if v == 'j_juggler' then
+                raqjug = raqjug + 1
+            end
+        end
+        for i, trig_v in ipairs(G.GAME.trig) do --counts how many juggler stacks are already active
+            if trig_v == 'j_juggler' then
+                trigjug = trigjug + 1
+            end
+        end
+        local to_add = raqjug - trigjug
+        for i = 1, to_add do --hand size increase (juggler)
+            G.hand:change_size(1)
+            table.insert(G.GAME.trig, 'j_juggler')
+        end
+        for _, v in pairs(G.GAME.raqeffects) do --everyone else
             if v == 'j_stuntman' then
                 G.hand:change_size(-2)
-                table.insert(G.GAME.trig, v)
-            end
-            if v == 'j_juggler' then
-                G.hand:change_size(1)
                 table.insert(G.GAME.trig, v)
             end
             if v == 'j_chaos' then
@@ -130,6 +143,13 @@ SMODS.Joker { --Ijiraq.
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
+        local weAreTheIjilings = SMODS.find_card("j_hpfx_ijiraq")
+        local GiveUsYourEffectStacks = 0
+        for GETTHEFUCK, OUTOFMYHOUSE in ipairs(weAreTheIjilings) do
+            if OUTOFMYHOUSE ~= card then
+                GiveUsYourEffectStacks = GiveUsYourEffectStacks + 1
+            end
+        end
         for _, v in pairs(G.GAME.raqeffects) do
             if v == 'j_stuntman' then
                 for eat, shit in ipairs(G.GAME.trig) do
@@ -141,17 +161,16 @@ SMODS.Joker { --Ijiraq.
                 end
             end
             if v == 'j_juggler' then
-                local count = 0
-                for tl, dr in pairs(G.GAME.raqeffects) do
-                    if tl == 'j_juggler' then count = count + 1 end
-                end
-                for i = 1, count do
-                    for eat, shit in ipairs(G.GAME.trig) do
-                        if shit == v then
-                            G.hand:change_size(-1)
-                            table.remove(G.GAME.trig, eat)
-                            break
+                if GiveUsYourEffectStacks == 0 then
+                    local to_remove = {}
+                    for i, trig_v in ipairs(G.GAME.trig) do
+                        if trig_v == 'j_juggler' then
+                            table.insert(to_remove, i)
                         end
+                    end
+                    for i = #to_remove, 1, -1 do
+                        G.hand:change_size(-1)
+                        table.remove(G.GAME.trig, to_remove[i])
                     end
                 end
             end
