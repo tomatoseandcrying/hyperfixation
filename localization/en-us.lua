@@ -1038,7 +1038,7 @@ return {
                 text = {
                     "Upgrade the level of",
                     "the first {C:attention}discarded",
-                    "poker hand each round{C:hpfx_IjiGray}#2#{}",
+                    "poker hand each round{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_charred_alt = {
@@ -1046,7 +1046,7 @@ return {
                 text = {
                     "Upgrade the level of",
                     "the first {C:attention}discarded",
-                    "poker hand each round{C:hpfx_IjiGray}#2#{}",
+                    "poker hand each round{C:hpfx_IjiGray}#1#{}",
                 },
             },
             j_hpfx_dawn = {

@@ -11,6 +11,7 @@ SMODS.Joker {
     cost = 7,
     atlas = 'IjiraqJokers',
     config = {
+        trig = false,
         extra = {
             dollars = 1,
         }
@@ -38,7 +39,8 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play
-            and context.other_card:is_suit("Diamonds") then
+            and context.other_card:is_suit("Diamonds") and card.ability.trig == false then
+            card.ability.trig = true
             G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
             return {
                 dollars = card.ability.extra.dollars,
