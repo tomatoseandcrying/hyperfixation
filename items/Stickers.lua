@@ -21,11 +21,3 @@ SMODS.Sticker {
         card.ability[self.key] = val
     end
 }
-
-local nosellsticker_hook = Card.can_sell_card
-function Card:can_sell_card(context)
-    if self.ability.hpfx_priceless then
-        return false
-    end
-    return nosellsticker_hook(self, context)
-end

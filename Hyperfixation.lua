@@ -472,6 +472,30 @@ SMODS.Sound({
     path = "4Fun/bitchless/vineboom.ogg",
 })
 
+--Font Libraries
+SMODS.Font({
+    key = "roboto",
+    path = "Roboto-Regular.ttf",
+    render_scale = 450,
+    TEXT_HEIGHT_SCALE = 0.5,
+    TEXT_OFFSET = { x = 0, y = 0 },
+    FONTSCALE = 0.12,
+    squish = 1,
+    DESCSCALE = 1,
+    class_prefix = "hpfx_"
+})
+SMODS.Font({
+    key = "ascii",
+    path = "SawarabiMincho-Regular.ttf",
+    render_scale = 200,
+    TEXT_HEIGHT_SCALE = 0.5,
+    TEXT_OFFSET = { x = 0, y = 0 },
+    FONTSCALE = 0.07,
+    squish = 1,
+    DESCSCALE = 1,
+    class_prefix = "hpfx_"
+})
+
 --Custom Colors
 loc_colour('red')
 --ijiraq
@@ -497,23 +521,6 @@ function hpfx_Transform(card, context)
                 for k, v in pairs(Hyperglobal.exceptions) do
                     if key == v then
                         key = k
-                    end
-                end
-                if key == 'j_luchador' then
-                    local lmao = Card.can_sell_card
-                    function Card:can_sell_card(context)
-                        if card.config.center.key == 'j_hpfx_ijiraq' then
-                            return false
-                        end
-                        return lmao(card, context)
-                    end
-                else
-                    local lmao = Card.can_sell_card
-                    function Card:can_sell_card(context)
-                        if card.config.center.key == 'j_hpfx_ijiraq' then
-                            return true
-                        end
-                        return lmao(card, context)
                     end
                 end
                 table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)

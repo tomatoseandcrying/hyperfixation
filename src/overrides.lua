@@ -514,3 +514,26 @@ function love.draw()
         love.graphics.draw(Hyperglobal.nobitches, 0 * _xscale * 2, 0 * _yscale * 2, 0, _xscale * 2 * 2, _yscale * 2 * 2)
     end
 end
+
+-- selling shit
+local nosell_hook = Card.can_sell_card
+function Card:can_sell_card(context)
+    local key = self.config.center.key
+    nosell_hook(self, context)
+    local found = false
+    if G.GAME.raqeffects then
+        for _, v in pairs(G.GAME.raqeffects) do
+            if v == 'j_luchador' then found = true end
+        end
+    end
+    if self.ability.hpfx_priceless then
+        return false
+    else
+        if key == 'j_hpfx_ijiraq' and found == true then
+            if G.GAME.blind and not G.GAME.blind.boss then
+                return false
+            end
+        end
+        return true
+    end
+end

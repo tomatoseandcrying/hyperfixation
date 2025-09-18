@@ -31,12 +31,21 @@ SMODS.Joker { --Ijiraq.
                     --print(vars)
                     --print(G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v])
                 end
-                info_queue[#info_queue + 1] = {
-                    ijiraq = true,
-                    set = "Joker",
-                    key = v,
-                    vars = vars
-                }
+                if v == 'j_luchador' and G.GAME.blind and not G.GAME.blind.boss then
+                    --lol, lmao
+                    info_queue[#info_queue + 1] = {
+                        ijiraq = true,
+                        key = 'hpfx_troll',
+                        set = 'Other'
+                    }
+                else
+                    info_queue[#info_queue + 1] = {
+                        ijiraq = true,
+                        set = "Joker",
+                        key = v,
+                        vars = vars
+                    }
+                end
             end
         end
     end,
