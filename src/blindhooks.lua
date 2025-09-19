@@ -22,5 +22,3 @@ function get_new_boss()
     end
     return ret
 end
-
-G.GAME.blind.effect {}
