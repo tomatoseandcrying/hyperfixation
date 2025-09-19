@@ -29,4 +29,14 @@ function love.draw()
         love.graphics.setColor(1, 1, 1, 1)
         love.graphics.draw(Hyperglobal.nobitches, 0 * _xscale * 2, 0 * _yscale * 2, 0, _xscale * 2 * 2, _yscale * 2 * 2)
     end
+
+    -- he's old
+    if G.gyahaha then
+        if Hyperglobal.gerson == nil then Hyperglobal.gerson = loadmyimageistg("imold.png") end
+        local iw, ih = Hyperglobal.gerson:getWidth(), Hyperglobal.gerson:getHeight()
+        local x = love.graphics.getWidth() - iw * _xscale
+        local y = love.graphics.getHeight() - ih * _yscale
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(Hyperglobal.gerson, x, y, 0, _xscale, _yscale)
+    end
 end

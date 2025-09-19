@@ -870,19 +870,35 @@ SMODS.JimboQuip({
             end
         end
         if hpfx_jEternal then
-            self.extra.text_key = self.key .. pseudorandom('ejimbo', 1, 4)
+            self.extra.text_key = self.key .. pseudorandom('ejimbo', 4, 4)
             if self.extra.text_key == self.key .. 4 then
-                self.extra.pitch = 1
+                self.extra.pitch = 0.6
                 self.extra.times = 3
                 self.extra.delay = 0.5
-                self.extra.sound = 'hpfx_voice1'
+                hpfx_jOldternal = true
             else
-                self.extra.sound = 'voice1'
+                hpfx_jOldternal = false
             end
-            return true, { weight = 100 }
+            return true, { weight = 100000000 }
         end
     end,
-
+    play_sounds = function(self, times)
+        if hpfx_jOldternal then
+            self.hpfxvoxcount = (self.hpfxvoxcount or 0) + 1
+            if self.hpfxvoxcount == 1 then
+                play_sound('hpfx_voice1', 1, 1)
+                G.gyahaha = 1
+            else
+                SMODS.Sound:create_stop_sound('voice1', 1)
+                play_sound('voice1', 0.6, 0)
+            end
+            if self.hpfxvoxcount >= 3 then
+                self.hpfxvoxcount = 0 -- resets after third call
+            end
+        else
+            play_sound('voice1', 0.6, 1)
+        end
+    end
 })
 
 --list of debug functions
