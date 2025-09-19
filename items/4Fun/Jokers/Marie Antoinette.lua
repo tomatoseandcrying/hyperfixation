@@ -24,7 +24,7 @@ SMODS.Joker {
         if context.post_trigger and context.other_card == card and context.main_eval then
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    if card.config.center.rarity == 2 then
+                    if card:is_rarity(2) then
                         card.config.center.rarity = 3
                         if card.set_cost then
                             card.ability.extra_value = (card.ability.extra_value or 0) + 2
