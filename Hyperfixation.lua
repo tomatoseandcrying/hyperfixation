@@ -472,6 +472,12 @@ SMODS.Sound({
     key = "hpfx_vineboom",
     path = "4Fun/bitchless/vineboom.ogg",
 })
+--he's old
+SMODS.Sound({
+    key = "hpfx_voice1",
+    path = "4Fun/eternimbo/imold.ogg",
+    volume = 2,
+})
 
 --Font Libraries
 SMODS.Font({
@@ -506,6 +512,8 @@ G.ARGS.LOC_COLOURS['hpfx_inPURPLE'] = HEX("B1A1C0")
 G.ARGS.LOC_COLOURS['hpfx_inattention'] = HEX("ECB96D")
 G.ARGS.LOC_COLOURS['hpfx_multiball'] = HEX("EC9C96")
 G.ARGS.LOC_COLOURS['hpfx_bossmute'] = HEX("C78F85")
+--other
+G.ARGS.LOC_COLOURS['hpfx_oldgreen'] = HEX("009900")
 
 --Ijiraq Funcs
 
@@ -830,25 +838,51 @@ end ]]
 end ]]
 
 --Quips
-hpfx_eternal_jimbo = Card_Character.add_speech_bubble
-hpfx_jEternal = hpfx_jEternal or false
-Card_Character.add_speech_bubble = function(self, arg1, arg2, arg3)
-    for _, v in ipairs(SMODS.find_card('j_joker')) do
-        if v.ability.eternal then
-            hpfx_jEternal = true
-            break
-        else
-            hpfx_jEternal = false
+SMODS.JimboQuip({
+    key = 'hpfx_eternal_jimbo',
+    type = 'loss',
+    extra = {
+        center = 'j_hpfx_eternimbo',
+        times = 5,
+        pitch = 0.6,
+        juice = { 0.3, 0.7 },
+        delay = 0.25,
+        particle_colours = {
+            G.C.MULT,
+            G.C.CHIPS,
+            G.C.GOLD
+        },
+        materialize_colours = {
+            G.C.MULT,
+            G.C.CHIPS,
+            G.C.GOLD
+        },
+    },
+
+    filter = function(self, type)
+        for _, v in ipairs(SMODS.find_card('j_joker', true)) do
+            if v.ability.eternal then
+                hpfx_jEternal = true
+                break
+            else
+                hpfx_jEternal = false
+            end
         end
-    end
-    if hpfx_jEternal then
-        hpfx_eternal_jimbo(self, 'hpfx_eternal_jimbo' .. pseudorandom("ejimbo", 1, 2), nil, { quip = true })
-    else
-        hpfx_eternal_jimbo(self, arg1, arg2, arg3)
-    end
-end
+        if hpfx_jEternal then
+            self.extra.text_key = self.key .. pseudorandom('ejimbo', 1, 4)
+            if self.extra.text_key == self.key .. 4 then
+                self.extra.pitch = 1
+                self.extra.times = 3
+                self.extra.delay = 0.5
+                self.extra.sound = 'hpfx_voice1'
+            else
+                self.extra.sound = 'voice1'
+            end
+            return true, { weight = 100 }
+        end
+    end,
 
-
+})
 
 --list of debug functions
 

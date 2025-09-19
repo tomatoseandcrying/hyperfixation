@@ -122,6 +122,10 @@ return {
                     "{C:inactive}--Win a run without scoring a {C:hpfx_inattention}Queen{}"
                 },
             },
+            j_hpfx_eternimbo = {
+                name = 'Joker, The Eternal',
+                text = {},
+            },
 
             --Ijiraq
             j_hpfx_ijiraq = {
@@ -1731,14 +1735,21 @@ return {
         },
         quips = {
             hpfx_eternal_jimbo1 = {
-                "They say you draw the",
-                "hand life gives you...",
-                "I drew eternity.",
+                "They say ye draw the",
+                "hand life gives ye...",
+                "{C:attention}I{} drew {E:1,C:dark_edition}eternity{}.",
             },
             hpfx_eternal_jimbo2 = {
-                "Your luck remains fleeting,",
-                "while Jimbo remains eternal."
-            }
+                "Yer luck remains fleetin',",
+                "but ol' {C:attention}Jimbo{} stays {E:1,C:dark_edition}eternal{}."
+            },
+            hpfx_eternal_jimbo3 = {
+                "Don't ye go {C:attention}forgettin'{} now!",
+                "We're a pair in the {E:1,C:dark_edition}dark{}.",
+            },
+            hpfx_eternal_jimbo4 = {
+                "* {C:hpfx_oldgreen,s:1.5}I'm old!{}",
+            },
         },
         v_dictionary = {
             hpfx_m_hands = "-#1# Hands",
