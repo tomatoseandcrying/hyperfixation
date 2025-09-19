@@ -19,7 +19,7 @@ function G.UIDEF.hpfx_transform_button(card)
     local transform = nil
     local key = card.config.center.key
     if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq'
-        and card.config.center.rarity == 4 then
+        and card:is_rarity(4) then
         local specil = nil
         for k, v in pairs(Hyperglobal.exceptions) do
             if key == v then
