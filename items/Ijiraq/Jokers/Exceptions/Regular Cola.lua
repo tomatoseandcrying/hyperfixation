@@ -44,8 +44,14 @@ SMODS.Joker {
         add_tag(Tag(selected_tag, false, 'Small'))
         play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
         play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
-        func = function()
-            hpfx_Transform(card)
+    end,
+    calculate = function(self, card, context)
+        if context.tag_triggered then
+            return {
+                func = function()
+                    hpfx_Transform(card, context)
+                end
+            }
         end
     end
 }
