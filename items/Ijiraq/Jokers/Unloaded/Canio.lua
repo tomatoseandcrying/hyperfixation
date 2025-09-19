@@ -42,7 +42,7 @@ SMODS.Joker {
             if ccard:is_face() then
                 local destroyed = {}
                 local face_cards = 0
-                SMODS.destroy_cards(ccard)
+                SMODS.destroy_cards(ccard, true, true, true)
                 table.insert(ccard, destroyed)
                 face_cards = face_cards + 1
                 if face_cards > 0 then
