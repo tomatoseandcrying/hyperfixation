@@ -39,7 +39,7 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.other_joker and (context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon") then
+        if context.other_joker and (context.other_joker:is_rarity(2) or context.other_joker:is_rarity("Uncommon")) then
             return {
                 xmult = -card.ability.extra.xmult
             }
