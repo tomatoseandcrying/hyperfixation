@@ -16,8 +16,5 @@ SMODS.Sticker {
     sets = {
         Joker = true,
         Consumable = false
-    },
-    apply = function(self, card, val)
-        card.ability[self.key] = val
-    end
+    }
 }
