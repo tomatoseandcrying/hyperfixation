@@ -34,7 +34,7 @@ SMODS.Joker {
         ease_dollars(10)
         for _, pard in ipairs(G.playing_cards) do
             if not pard:is_face() then
-                SMODS.destroy_cards(pard)
+                SMODS.destroy_cards(pard, true, true, true)
             end
         end
     end,
