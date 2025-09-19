@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'farmer',
-    config = { extra = { size = 1 } },
+    config = {
+        card_limit = 1,
+        extra_slots_used = -1,
+        extra = { size = 1 }
+    },
     unlocked = false,
     discovered = false,
     rarity = 2,
@@ -25,19 +29,16 @@ SMODS.Joker {
         return args.type == 'hpfx_nope'
     end,
     add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.size = math.floor(card.ability.extra.size)
-        G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.size
         G.hand.config.highlighted_limit = G.hand.config.highlighted_limit + card.ability.extra.size
         SMODS.change_play_limit(card.ability.extra.size)
         SMODS.change_discard_limit(card.ability.extra.size)
+        card.ability.extra.size = math.floor(card.ability.extra.size)
     end,
     remove_from_deck = function(self, card, from_debuff)
+        G.hand.config.highlighted_limit = G.hand.config.highlighted_limit - card.ability.extra.size
+        G.hand:unhighlight_all()
         SMODS.change_play_limit(-card.ability.extra.size)
         SMODS.change_discard_limit(-card.ability.extra.size)
-        G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.size
-        G.hand.config.highlighted_limit = G.hand.config.highlighted_limit - card.ability.extra.size
-        if G.hand.config.highlighted_limit < 5 then G.hand.config.highlighted_limit = 5 end
-        G.hand:unhighlight_all()
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end,
 }
