@@ -514,6 +514,7 @@ G.ARGS.LOC_COLOURS['hpfx_multiball'] = HEX("EC9C96")
 G.ARGS.LOC_COLOURS['hpfx_bossmute'] = HEX("C78F85")
 --other
 G.ARGS.LOC_COLOURS['hpfx_oldgreen'] = HEX("009900")
+G.ARGS.LOC_COLOURS['hpfx_black'] = HEX("000000")
 
 --Ijiraq Funcs
 
@@ -941,3 +942,20 @@ debugs_one_line_long = { --other debug commands that just go into the console
     "eval G.GAME.trig"
     -- prints current effects ijiraq has stored from add_to_deck. prevents effect resets if a different Ijiraq is removed
 }
+
+function heold() --Test function to simulate the Ejimbo game over
+    SMODS.add_card
+    {
+        set = 'Joker',
+        stickers = { 'eternal' },
+        key = 'j_joker',
+        force_stickers = { 'eternal' }
+    }
+    G.STATE = G.STATES.GAME_OVER
+    if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then
+        G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+    end
+    G:save_settings()
+    G.FILE_HANDLER.force = true
+    G.STATE_COMPLETE = false
+end

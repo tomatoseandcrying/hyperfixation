@@ -1737,15 +1737,15 @@ return {
             hpfx_eternal_jimbo1 = {
                 "They say ye draw the",
                 "hand life gives ye...",
-                "{C:attention}I{} drew {E:1,C:dark_edition}eternity{}.",
+                "Well, {C:attention}I{} drew {E:1,C:dark_edition}eternity{}.",
             },
             hpfx_eternal_jimbo2 = {
-                "Yer luck remains fleetin',",
+                "Yer {C:green}luck{} remains fleetin',",
                 "but ol' {C:attention}Jimbo{} stays {E:1,C:dark_edition}eternal{}."
             },
             hpfx_eternal_jimbo3 = {
                 "Don't ye go {C:attention}forgettin'{} now!",
-                "We're a pair in the {E:1,C:dark_edition}dark{}.",
+                "We're a {C:planet}Pair{} in the {E:1,C:dark_edition}dark{}.",
             },
             hpfx_eternal_jimbo4 = {
                 "* {C:hpfx_oldgreen,s:1.5}I'm old!{}",
