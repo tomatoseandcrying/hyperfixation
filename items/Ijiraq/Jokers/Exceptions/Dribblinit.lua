@@ -43,12 +43,12 @@ SMODS.Joker {
         if context.individual and context.cardarea == G.play and
             (context.other_card:get_id() == 12 or context.other_card:get_id() == 13)
             and not context.blueprint and not context.end_of_round and not context.after then
-            card.ability.extra.xmult = (card.ability.extra.xmult * card.ability.extra.xmult_gain)
-            return {
-                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-                colour = G.C.RED,
-                message_card = context.other_card
-            }
+            SMODS.scale_card(card, {
+                operation = "X",
+                ref_table = card.ability.extra,
+                ref_value = "xmult",
+                scalar_value = "xmult_gain",
+            })
         end
         if context.joker_main then return { xmult = card.ability.extra.xmult } end
     end
