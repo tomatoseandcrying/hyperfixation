@@ -25,19 +25,6 @@ function ease_discard(mod, instant, silent)
     return ret
 end
 
-local ref_ease_dollars = ease_dollars
-function ease_dollars(mod, instant)
-    local ret = ref_ease_dollars(mod, instant)
-    G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-            SMODS.calculate_context({ hpfx_change_dollars = true })
-            return true
-        end
-    }))
-    return ret
-end
-
 local ref_ease_ante = ease_ante
 function ease_ante(mod)
     local ret = ref_ease_ante(mod)
