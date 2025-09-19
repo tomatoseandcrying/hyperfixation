@@ -870,7 +870,7 @@ SMODS.JimboQuip({
             end
         end
         if hpfx_jEternal then
-            self.extra.text_key = self.key .. pseudorandom('ejimbo', 4, 4)
+            self.extra.text_key = self.key .. pseudorandom('ejimbo', 1, 4)
             if self.extra.text_key == self.key .. 4 then
                 self.extra.pitch = 0.6
                 self.extra.times = 3
