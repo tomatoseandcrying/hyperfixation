@@ -25,8 +25,16 @@ SMODS.Joker {
             return { denominator = context.denominator * 10 }
         end
         if context.pseudorandom_result and context.result and context.main_eval and not context.blueprint then
-            card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.xmult_gain
-            return { message = localize('k_upgrade_ex'), colour = G.C.MULT, message_card = card }
+            SMODS.scale_card(card, {
+                operation = "+",
+                ref_table = card.ability.extra,
+                ref_value = "xmult",
+                scalar_value = "xmult_gain",
+                scaling_message = {
+                    message = 'Something!?',
+                    colour = G.C.MULT
+                }
+            })
         end
         if context.joker_main and (to_big(card.ability.extra.xmult) > to_big(1)) then
             return { x_mult = card.ability.extra.xmult }
