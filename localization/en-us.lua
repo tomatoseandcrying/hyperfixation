@@ -1711,7 +1711,6 @@ return {
             --hpfx_ijiraq_option = "Release the Ijiraq.",
 
             hpfx_fakesaved_ex = "Saved?",
-            hpfx_ribtickler = "Spared... for now.",
             hpfx_pickup1_ex = "Pick it up.",
             hpfx_pickup2_ex = "Pick.",
             hpfx_pickup3_ex = "It.",

@@ -48,7 +48,7 @@ SMODS.Joker {
                 }))
                 return {
                     message = localize('hpfx_fakesaved_ex'),
-                    saved = 'hpfx_ribtickler',
+                    saved = "Spared... for now.",
                     colour = G.C.RED
                 }
             end
