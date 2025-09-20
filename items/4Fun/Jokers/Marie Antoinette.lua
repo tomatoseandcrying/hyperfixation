@@ -27,13 +27,29 @@ SMODS.Joker {
                     if card:is_rarity(2) then
                         card.config.center.rarity = 3
                         if card.set_cost then
-                            card.ability.extra_value = (card.ability.extra_value or 0) + 2
+                            SMODS.scale_card(card, {
+                                ref_table = card.ability,
+                                ref_value = 'extra_value',
+                                scalar_value = 'xmult_gain',
+                                operation = '+',
+                                block_overrides = {
+                                    message = true
+                                }
+                            })
                             card:set_cost()
                         end
                     else
                         card.config.center.rarity = 2
                         if card.set_cost then
-                            card.ability.extra_value = (card.ability.extra_value or 0) - 2
+                            SMODS.scale_card(card, {
+                                ref_table = card.ability,
+                                ref_value = 'extra_value',
+                                scalar_value = 'xmult_gain',
+                                operation = '-',
+                                block_overrides = {
+                                    message = true
+                                }
+                            })
                             card:set_cost()
                         end
                     end
