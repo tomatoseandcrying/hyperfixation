@@ -50,14 +50,18 @@ SMODS.Joker { --Iscariot/Judas
             context.main_eval then
             if G.GAME.blind.triggered then
                 if blind_keys[G.GAME.blind.config.blind.key] then
-                    card.ability.extra.chips = card.ability.extra.chips
-                        + card.ability.extra.chip_gain
-                    return {
-                        message = 'Silver!',
-                        sound = 'hpfx_silver',
-                        colour = G.C.CHIPS,
-                        card = card
-                    }
+                    SMODS.scale_card(card, {
+                        operation = "+",
+                        ref_table = card.ability.extra,
+                        ref_value = "chips",
+                        scalar_value = "chip_gain",
+                        scaling_message = {
+                            message = 'Silver!',
+                            colour = G.C.CHIPS,
+                            card = card,
+                            sound = 'hpfx_silver'
+                        }
+                    })
                 end
             end
         end
