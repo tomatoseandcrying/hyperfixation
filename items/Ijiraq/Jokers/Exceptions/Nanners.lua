@@ -11,7 +11,7 @@ SMODS.Joker {
     rarity = 1,
     cost = 5,
     atlas = 'IjiraqJokers',
-    config = { extra = { mult = 15, dynadenom = 1 } },
+    config = { extra = { mult = 15, dynadenom = 1, denomd = 1 } },
     loc_vars = function(self, info_queue, card)
         local new_num, new_denom = SMODS.get_probability_vars(card, 1, card.ability.extra.dynadenom,
             'hpfx_michelle_id')
@@ -21,7 +21,9 @@ SMODS.Joker {
                 new_num,
                 card.area and card.area == G.jokers and new_denom or '6',
                 card.area and card.area == G.jokers and "...?" or "",
-                card.ability.extra.dynadenom
+                card.ability.extra.dynadenom,
+                card.ability.extra.denomd
+
             }
         }
     end,
@@ -45,8 +47,7 @@ SMODS.Joker {
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             local numerator = tonumber(context.numerator) or 1
-            local dynadenom = card.ability.extra.dynadenom or 1
-
+            local dynadenom = card.ability.extra.dynadenom
             if SMODS.pseudorandom_probability(card, 'hpfx_michelle_seed', numerator, dynadenom, 'hpfx_michelle_id') then
                 G.E_MANAGER:add_event(Event({
                     func = function()
@@ -67,7 +68,15 @@ SMODS.Joker {
                                 blockable = false,
                                 func = function()
                                     hpfx_Transform(michelleSacrifice, context)
-                                    card.ability.extra.dynadenom = dynadenom + 1
+                                    SMODS.scale_card(card, {
+                                        ref_table = card.ability.extra,
+                                        ref_value = 'dynadenom',
+                                        scalar_value = 'denomd',
+                                        operation = '+',
+                                        block_overrides = {
+                                            message = true
+                                        }
+                                    })
                                     return true
                                 end
                             }))
