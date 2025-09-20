@@ -40,12 +40,18 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
-            card.ability.extra.dollars = card.ability.extra.dollars + card.ability.extra.increase
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.MONEY
-            }
+        if context.end_of_round and context.game_over == false
+            and context.main_eval and context.beat_boss then
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = 'dollars',
+                scalar_value = 'increase',
+                operation = '+',
+                scaling_message = {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.MONEY
+                }
+            })
         end
     end,
     calc_dollar_bonus = function(self, card)
