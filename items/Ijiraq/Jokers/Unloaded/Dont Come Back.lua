@@ -75,11 +75,7 @@ SMODS.Joker {
                 operation = "+",
                 ref_table = card.ability.extra,
                 ref_value = "xmult",
-                scalar_value = "xmult_gain",
-                scaling_message = {
-                    message = 'Something!?',
-                    colour = G.C.MULT
-                }
+                scalar_value = "xmult_gain"
             })
             return {
                 message = localize
