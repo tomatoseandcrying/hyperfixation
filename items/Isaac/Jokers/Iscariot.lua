@@ -46,23 +46,20 @@ SMODS.Joker { --Iscariot/Judas
                 message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }
             }
         end
-        if context.cardarea == G.play and
-            context.main_eval then
-            if G.GAME.blind.triggered then
-                if blind_keys[G.GAME.blind.config.blind.key] then
-                    SMODS.scale_card(card, {
-                        operation = "+",
-                        ref_table = card.ability.extra,
-                        ref_value = "chips",
-                        scalar_value = "chip_gain",
-                        scaling_message = {
-                            message = 'Silver!',
-                            colour = G.C.CHIPS,
-                            card = card,
-                            sound = 'hpfx_silver'
-                        }
-                    })
-                end
+        if context.cardarea == G.play and context.main_eval then
+            if G.GAME.blind.triggered and blind_keys[G.GAME.blind.config.blind.key] then
+                SMODS.scale_card(card, {
+                    operation = "+",
+                    ref_table = card.ability.extra,
+                    ref_value = "chips",
+                    scalar_value = "chip_gain",
+                    scaling_message = {
+                        message = 'Silver!',
+                        colour = G.C.CHIPS,
+                        card = card,
+                        sound = 'hpfx_silver'
+                    }
+                })
             end
         end
     end
