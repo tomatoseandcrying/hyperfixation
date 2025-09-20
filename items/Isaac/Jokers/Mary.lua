@@ -46,14 +46,19 @@ SMODS.Joker {
                 card.ability.extra.c_rounds = card.ability.extra.c_rounds + 1
             end
             if card.ability.extra.c_rounds == card.ability.extra.rounds then
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                SMODS.scale_card(card, {
+                    operation = "+",
+                    ref_table = card.ability.extra,
+                    ref_value = "mult",
+                    scalar_value = "mult_gain",
+                    scaling_message = {
+                        message = 'Yum!',
+                        sound = "hpfx_gulp",
+                        colour = G.C.MULT,
+                        card = card,
+                    }
+                })
                 card.ability.extra.c_rounds = 0
-                return {
-                    message = 'Yum!',
-                    sound = "hpfx_gulp",
-                    colour = G.C.MULT,
-                    card = card,
-                }
             end
             if card.ability.extra.rounds - 1 == card.ability.extra.c_rounds then
                 local eval = function(card) return card.ability.extra.c_rounds ~= 0 end
