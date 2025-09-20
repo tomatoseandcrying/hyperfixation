@@ -46,8 +46,14 @@ SMODS.Joker {
                 table.insert(ccard, destroyed)
                 face_cards = face_cards + 1
                 if face_cards > 0 then
-                    card.ability.extra.xmult = card.ability.extra.xmult +
-                        face_cards * card.ability.extra.xmult_gain
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "xmult",
+                        scalar_value = "xmult_gain",
+                        operation = function(ref_table, ref_value, initial, change)
+                            ref_table[ref_value] = initial + face_cards * change
+                        end
+                    })
                 end
             end
         end
@@ -59,8 +65,14 @@ SMODS.Joker {
                 if removed_card:is_face() then face_cards = face_cards + 1 end
             end
             if face_cards > 0 then
-                card.ability.extra.xmult = card.ability.extra.xmult +
-                    face_cards * card.ability.extra.xmult_gain
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "xmult",
+                    scalar_value = "xmult_gain",
+                    operation = function(ref_table, ref_value, initial, change)
+                        ref_table[ref_value] = initial + face_cards * change
+                    end
+                })
                 return {
                     message = localize {
                         type = 'variable',
