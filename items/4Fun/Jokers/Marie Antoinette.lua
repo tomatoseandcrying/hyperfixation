@@ -10,10 +10,14 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = false,
     perishable_compat = false,
-    config = { extra = {
-        xmult = 2,
-        xmult_gain = 2,
-    } },
+    config = {
+        extra_value = 0,
+        change = 2,
+        extra = {
+            xmult = 2,
+            xmult_gain = 2,
+        }
+    },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain } }
     end,
@@ -30,7 +34,7 @@ SMODS.Joker {
                             SMODS.scale_card(card, {
                                 ref_table = card.ability,
                                 ref_value = 'extra_value',
-                                scalar_value = 'xmult_gain',
+                                scalar_value = 'change',
                                 operation = '+',
                                 block_overrides = {
                                     message = true
@@ -44,8 +48,8 @@ SMODS.Joker {
                             SMODS.scale_card(card, {
                                 ref_table = card.ability,
                                 ref_value = 'extra_value',
-                                scalar_value = 'xmult_gain',
-                                operation = '-',
+                                scalar_value = 'change',
+                                operation = '+',
                                 block_overrides = {
                                     message = true
                                 }
