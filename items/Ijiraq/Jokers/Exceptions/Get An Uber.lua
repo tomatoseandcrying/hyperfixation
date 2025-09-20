@@ -61,7 +61,12 @@ SMODS.Joker {
                     }
                 end
             else
-                extra.mult = extra.mult + extra.mult_gain
+                SMODS.scale_card(card, {
+                    operation = "+",
+                    ref_table = card.ability.extra,
+                    ref_value = "mult",
+                    scalar_value = "mult_gain"
+                })
             end
         end
     end
