@@ -69,7 +69,14 @@ SMODS.Joker {
                             func = function()
                                 G.E_MANAGER:add_event(Event({
                                     func = function()
-                                        extra.xmult = extra.xmult - (extra.xmult_gain * glass_cards)
+                                        SMODS.scale_card(card, {
+                                            ref_table = card.ability.extra,
+                                            ref_value = "xmult",
+                                            scalar_value = "xmult_gain",
+                                            operation = function(ref_table, ref_value, initial, change)
+                                                ref_table[ref_value] = initial - glass_cards * change
+                                            end
+                                        })
                                         return true
                                     end
                                 }))
@@ -95,7 +102,14 @@ SMODS.Joker {
                 end
             end
             if glass_cards > 0 then
-                extra.xmult = extra.xmult - (extra.xmult_gain * glass_cards)
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "xmult",
+                    scalar_value = "xmult_gain",
+                    operation = function(ref_table, ref_value, initial, change)
+                        ref_table[ref_value] = initial - glass_cards * change
+                    end
+                })
                 return {
                     message = localize {
                         type = 'variable', key = 'a_xmult', vars = { extra.xmult }
