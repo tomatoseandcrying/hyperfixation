@@ -71,7 +71,16 @@ SMODS.Joker {
         local extra = card.ability and card.ability.extra
         if context.discard and not context.blueprint and
             context.other_card:get_id() == 11 then
-            extra.xmult = extra.xmult + extra.xmult_gain
+            SMODS.scale_card(card, {
+                operation = "+",
+                ref_table = card.ability.extra,
+                ref_value = "xmult",
+                scalar_value = "xmult_gain",
+                scaling_message = {
+                    message = 'Something!?',
+                    colour = G.C.MULT
+                }
+            })
             return {
                 message = localize
                     {
