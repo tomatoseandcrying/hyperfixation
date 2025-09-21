@@ -1,4 +1,8 @@
-#### Please report any issues here, or in my mod's [thread](https://discord.com/channels/1116389027176787968/1335324781528092672) in the Balatro Discord. Alternatively, report them as a tester in the mod's [official server](https://discord.gg/QwJtrdy4xS).
+#### Please report any issues here, or in my mod's [thread](https://discord.com/channels/1116389027176787968/1335324781528092672) in the Balatro Discord. Alternatively, report them as a tester in the mod's [official server](https://discord.gg/QwJtrdy4xS). Thank you for playing, and please enjoy...
+
+<p align="center"><img width="568" height="400" alt="hyperfixation logo" src="https://github.com/user-attachments/assets/d03466b2-eb50-414e-bb8a-84dad4a61756" />
+<p align="center">a content-ish mod.
+
 
 
 ## Patches:
@@ -7,6 +11,7 @@
 __G.FUNCS.evaluate_play(e)__
 - Mary's unlock condition
 - calc_dollar_bonus Jokester transformations
+- Ijiraq mimicking Splash
 
 __G.FUNCS.discard_cards_from_highlighted(e, hook)__
 - custom post-discard context
@@ -60,9 +65,6 @@ __Inscryption__
 - automatic transformations (disguised)
 - automatic animations (disguised)
 
-__4Fun__
-- Chud Joker's unlock condition
-
 ### <ins>SMODS.pseudorandom_probability(trigger_obj, seed, base_numerator, base_denominator, identifier)</ins>
 
 __The Binding of Isaac__
@@ -82,17 +84,7 @@ __Inscryption__
 ### <ins>ease_discard(mod, instant, silent)</ins>
 
 __Inscryption__
-- custom discard change context
-
-### <ins>ease_dollars(mod, instant)</ins>
-
-__Inscryption__
 - custom dollar change context
-
-### <ins>ease_ante(mod)</ins>
-
-__Inscryption__
-- custom ante change context
 
 ### <ins>Card:update(dt)</ins>
 
@@ -146,11 +138,6 @@ __Inscryption__
 
 __Inscryption__
 - Perkeo?'s button rendering
-
-### <ins>G.UIDEF.hpfx_transform_button(card)</ins>
-
-__Inscryption__
-- manual transformation button
 
 ### <ins>get_new_boss()</ins>
 
