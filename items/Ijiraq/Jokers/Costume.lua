@@ -7,10 +7,10 @@ SMODS.Joker { --Costume (The costume setup only works before, during, or after h
 	config = {},
 	no_collection = true,
 	set_ability = function(self, card, initial, delay_sprites)
-		card.isIjiraq = (Hyperglobal.exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
+		card.isIjiraq = (Hyperfixation.exceptions[G.GAME.current_round.fodder_card.jkey] == nil)
 		card.visiblyIjiraq = false
 		card:set_ability(
-			Hyperglobal.exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or
+			Hyperfixation.exceptions[G.GAME.current_round.fodder_card.jkey] or G.GAME.current_round.fodder_card.jkey or
 			'j_joker', true)
 		card:set_cost()
 		card.children.center.sprite_pos = G.P_CENTERS[G.GAME.current_round.fodder_card.jkey].pos

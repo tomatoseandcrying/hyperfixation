@@ -50,6 +50,6 @@ SMODS.Joker {
         end
     end
     --[[     in_pool = function (self, args)
-        return Hyperglobal.config.Isaac
+        return Hyperfixation.config.Isaac
     end, ]]
 }

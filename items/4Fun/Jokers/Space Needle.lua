@@ -27,7 +27,7 @@ SMODS.Joker {
         return { vars = { num, dem } }
     end,
     add_to_deck = function(self, card, from_debuff)
-        card.ability.needled = (Hyperglobal and Hyperglobal.allcalcs[math.floor(pseudorandom('needle', 1, #Hyperglobal.allcalcs))]) or
+        card.ability.needled = (Hyperfixation and Hyperfixation.allcalcs[math.floor(pseudorandom('needle', 1, #Hyperfixation.allcalcs))]) or
             ':3'
     end,
     calculate = function(self, card, context)
@@ -72,7 +72,8 @@ SMODS.Joker {
         end
         if context.pseudorandom_result and context.identifier == 'hpfx_space_needle' then
             local lastneedle = card.ability.needled
-            card.ability.needled = Hyperglobal.allcalcs[math.floor(pseudorandom('needle', 1, #Hyperglobal.allcalcs))]
+            card.ability.needled = Hyperfixation.allcalcs
+            [math.floor(pseudorandom('needle', 1, #Hyperfixation.allcalcs))]
             if lastneedle ~= card.ability.needled then
                 card.ability.trig = false
             end

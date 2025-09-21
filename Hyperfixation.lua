@@ -27,7 +27,7 @@ G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].
 G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_bitch or false
 --global tables/funcs
-Hyperglobal = Hyperglobal or {
+Hyperfixation = Hyperfixation or {
     path = mod_path,
     ---Used to store the original weights of boosters.
     og_boostweight = og_boostweight or {},
@@ -225,7 +225,7 @@ Hyperglobal = Hyperglobal or {
         j_hpfx_apollo = 'j_satellite',
     },
 
-    ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperglobal exists and is a table.
+    ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperfixation exists and is a table.
     ---@param mod_id any The ID of the mod to check. Can be found in `metadata.json`.
     ---@param joker_key any The key of the Joker the Ijiraq will be mimicking.
     ---@param ijiraq_joker_key any The key of the Joker the Ijiraq will transform from. Make sure it calls `hpfx_Transform(card, context)`
@@ -237,7 +237,7 @@ Hyperglobal = Hyperglobal or {
         else
             local k, v = joker_key, ijiraq_joker_key
             -- Adds the joker to the exceptions table
-            Hyperglobal.exceptions[k] = tostring(v)
+            Hyperfixation.exceptions[k] = tostring(v)
 
             -- Check if the table has a calc_dollar_bonus function
             local obj = SMODS.Centers[v]
@@ -246,7 +246,7 @@ Hyperglobal = Hyperglobal or {
                 -- Optionally: return or skip further logic
             elseif obj and obj.calc_dollar_bonus and type(obj.calc_dollar_bonus) == 'function' then
                 if onpayout == true then
-                    Hyperglobal.calcdollarjokesters[v] = tostring(k)
+                    Hyperfixation.calcdollarjokesters[v] = tostring(k)
                 end
             else
                 -- If the function does not exist, print a message to the console
@@ -528,7 +528,7 @@ function hpfx_Transform(card, context)
         func = function()
             if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
-                for k, v in pairs(Hyperglobal.exceptions) do
+                for k, v in pairs(Hyperfixation.exceptions) do
                     if key == v then
                         key = k
                     end
@@ -584,7 +584,7 @@ function Card:Transfodd(context)
         func = function()
             if self.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = self.config.center.key
-                for k, v in pairs(Hyperglobal.exceptions) do
+                for k, v in pairs(Hyperfixation.exceptions) do
                     if key == v then
                         key = k
                     end
@@ -644,7 +644,7 @@ function G.FUNCS.hpfx_Transbutt(e)
         func = function()
             if card.config.center.key ~= 'j_hpfx_ijiraq' then
                 local key = card.config.center.key
-                for k, v in pairs(Hyperglobal.exceptions) do
+                for k, v in pairs(Hyperfixation.exceptions) do
                     if key == v then
                         key = k
                     end
@@ -734,10 +734,10 @@ end
 ---`Card:set_booster_weight('Buffoon', 0, true)`
 function Card:set_booster_weight(booster_kind, new_weight, override)
     for _, booster in pairs(G.P_CENTER_POOLS.Booster or {}) do
-        if Hyperglobal.og_boostweight[booster.kind] == nil then
-            Hyperglobal.og_boostweight[booster.kind] = booster.weight
+        if Hyperfixation.og_boostweight[booster.kind] == nil then
+            Hyperfixation.og_boostweight[booster.kind] = booster.weight
         end
-        local boostertable = Hyperglobal.og_boostweight[booster.kind]
+        local boostertable = Hyperfixation.og_boostweight[booster.kind]
         if override == true then G.GAME.first_shop_buffoon = true end
         if booster_kind == true or booster.kind == booster_kind then
             if boostertable == nil then boostertable = booster.weight end
@@ -776,19 +776,19 @@ function Card:set_card_rate(card_kind, new_rate)
     if not G or not G.GAME then return end
     for rcard, rate in pairs(rate_map) do
         if card_kind == true or card_kind == rcard then
-            if Hyperglobal.og_cardrate[rcard] == nil then
-                Hyperglobal.og_cardrate[rcard] = G.GAME[rate]
+            if Hyperfixation.og_cardrate[rcard] == nil then
+                Hyperfixation.og_cardrate[rcard] = G.GAME[rate]
             end
             if new_rate == nil then
-                if type(Hyperglobal.og_cardrate[rcard]) == "number" then
-                    G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
+                if type(Hyperfixation.og_cardrate[rcard]) == "number" then
+                    G.GAME[rate] = Hyperfixation.og_cardrate[rcard]
                 end
             elseif type(new_rate) == "number" then
                 if new_rate >= 0 then
                     G.GAME[rate] = new_rate
                 else
-                    if type(Hyperglobal.og_cardrate[rcard]) == "number" then
-                        G.GAME[rate] = Hyperglobal.og_cardrate[rcard]
+                    if type(Hyperfixation.og_cardrate[rcard]) == "number" then
+                        G.GAME[rate] = Hyperfixation.og_cardrate[rcard]
                     end
                 end
             end
@@ -806,12 +806,12 @@ function roundmyshitprettyplease(thingwearerounding, tothemultipleof)
 end
 
 --Config
-local config = Hyperglobal.config
+local config = Hyperfixation.config
 --[[ SMODS.current_mod.config_tab = function ()
 	return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
 		{n = G.UIT.R, config = {align = "cl", padding = 0}, nodes = {
 			{n = G.UIT.C, config = {align = "cl", padding = 0.05}, nodes = {
-				create_toggle{ col = true, label = "", scale = 0.85, w = 0, shadow = true, hover = true, ref_table = Hyperglobal.config, ref_value = "Isaac" },
+				create_toggle{ col = true, label = "", scale = 0.85, w = 0, shadow = true, hover = true, ref_table = Hyperfixation.config, ref_value = "Isaac" },
 			}},
 			{n = G.UIT.C, config = {align = "c", padding = 0 }, nodes = {
 				{n = G.UIT.T, config = {text = localize('hpfx_isaac_option'), scale = 0.45, colour = G.C.UI.TEXT_LIGHT }},
@@ -819,7 +819,7 @@ local config = Hyperglobal.config
 		}},
 		{n = G.UIT.R, config = {align = "cl", padding = 0}, nodes = {
 			{n = G.UIT.C, config = {align = "cl", padding = 0.05}, nodes = {
-				create_toggle{col = true, label = "", scale = 0.85, w = 0, shadow = true, hover = true, ref_table = Hyperglobal.config, ref_value = "Ijiraq" },
+				create_toggle{col = true, label = "", scale = 0.85, w = 0, shadow = true, hover = true, ref_table = Hyperfixation.config, ref_value = "Ijiraq" },
 			}},
 			{n = G.UIT.C, config = {align = "c", padding = 0}, nodes = {
 				{n = G.UIT.T, config = {text = localize('hpfx_ijiraq_option'), scale = 0.45, colour = G.C.RED}},
@@ -929,7 +929,7 @@ end
 function guh() --Convert the Joker you're hovering over into its Jokester variant
     local selected = G.CONTROLLER and
         (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
-    if Hyperglobal.brokejokes[selected.config.center.key] then return print('This one\'s disabled until I can fix it!') end
+    if Hyperfixation.brokejokes[selected.config.center.key] then return print('This one\'s disabled until I can fix it!') end
     G.GAME.current_round.fodder_card.jkey = selected.config.center.key
     if JokerDisplay then
         selected:joker_display_remove()
@@ -940,16 +940,16 @@ end
 function guh2() -- just put the key in the table bro (inserts the hovered Joker's key into Ijiraq's effects table directly)
     local selected = G.CONTROLLER and
         (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
-    if Hyperglobal.brokejokes[selected.config.center.key] then return print('This one\'s disabled until I can fix it!') end
+    if Hyperfixation.brokejokes[selected.config.center.key] then return print('This one\'s disabled until I can fix it!') end
     table.insert(G.GAME.raqeffects, selected.config.center.key)
 end
 
 debugs_one_line_long = { --other debug commands that just go into the console
     "eval G.GAME.raqeffects",
     -- prints all current effects Ijiraq has stored
-    "eval Hyperglobal.exceptions",
+    "eval Hyperfixation.exceptions",
     -- prints the current table of Jokesters with custom transformation logic
-    "eval Hyperglobal.calcdollarjokesters",
+    "eval Hyperfixation.calcdollarjokesters",
     -- prints the current table of Jokesters that calculate dollar bonuses
     "eval G.jokers.cards[1].config.center.key",
     -- checks the first joker's key

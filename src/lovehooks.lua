@@ -4,7 +4,7 @@ function love.draw()
     drawhook()
 
     function loadmyimageistg(fn)
-        local full_path = (Hyperglobal.path
+        local full_path = (Hyperfixation.path
             .. "assets/customimages/" .. fn)
         local file_data = assert(NFS.newFileData(full_path), ("Epic fail"))
         local tempimagedata = assert(love.image.newImageData(file_data), ("Epic fail 2"))
@@ -16,27 +16,27 @@ function love.draw()
     local _yscale = love.graphics.getHeight() / 1080
 
     -- debugging ticks & dt & dtcounter
-    if Hyperglobal.debug then
+    if Hyperfixation.debug then
         love.graphics.setColor(1, 1, 1, 1)
-        love.graphics.print("ticks:" .. Hyperglobal.ticks, 300, 16)
-        love.graphics.print("dtcounter:" .. Hyperglobal.dtcounter, 300, 16 + 32)
-        love.graphics.print("dt:" .. Hyperglobal.dt, 300, 16 + 64)
+        love.graphics.print("ticks:" .. Hyperfixation.ticks, 300, 16)
+        love.graphics.print("dtcounter:" .. Hyperfixation.dtcounter, 300, 16 + 32)
+        love.graphics.print("dt:" .. Hyperfixation.dt, 300, 16 + 64)
     end
 
     -- no bitches screen
     if G.shobitches and (G.shobitches > 0) then
-        if Hyperglobal.nobitches == nil then Hyperglobal.nobitches = loadmyimageistg("nobitchesscreen.png") end
+        if Hyperfixation.nobitches == nil then Hyperfixation.nobitches = loadmyimageistg("nobitchesscreen.png") end
         love.graphics.setColor(1, 1, 1, 1)
-        love.graphics.draw(Hyperglobal.nobitches, 0 * _xscale * 2, 0 * _yscale * 2, 0, _xscale * 2 * 2, _yscale * 2 * 2)
+        love.graphics.draw(Hyperfixation.nobitches, 0 * _xscale * 2, 0 * _yscale * 2, 0, _xscale * 2 * 2, _yscale * 2 * 2)
     end
 
     -- he's old
     if G.gyahaha then
-        if Hyperglobal.gerson == nil then Hyperglobal.gerson = loadmyimageistg("imold.png") end
-        local iw, ih = Hyperglobal.gerson:getWidth(), Hyperglobal.gerson:getHeight()
+        if Hyperfixation.gerson == nil then Hyperfixation.gerson = loadmyimageistg("imold.png") end
+        local iw, ih = Hyperfixation.gerson:getWidth(), Hyperfixation.gerson:getHeight()
         local x = love.graphics.getWidth() - iw * _xscale
         local y = love.graphics.getHeight() - ih * _yscale
         love.graphics.setColor(1, 1, 1, 1)
-        love.graphics.draw(Hyperglobal.gerson, x, y, 0, _xscale, _yscale)
+        love.graphics.draw(Hyperfixation.gerson, x, y, 0, _xscale, _yscale)
     end
 end

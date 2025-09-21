@@ -21,7 +21,7 @@ function G.UIDEF.hpfx_transform_button(card)
     if card.area and card.area.config.type == 'joker' and key ~= 'j_hpfx_ijiraq'
         and card:is_rarity(4) then
         local specil = nil
-        for k, v in pairs(Hyperglobal.exceptions) do
+        for k, v in pairs(Hyperfixation.exceptions) do
             if key == v then
                 specil = true
                 break
