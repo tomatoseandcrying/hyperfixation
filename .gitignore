@@ -1,0 +1,13 @@
+#app-specific ftypes
+*.code-workspace
+
+#app-specific files
+.lovelyignore
+.luarc.json
+.vscode
+
+#text types
+*.md
+
+#text files
+!README.md

@@ -1,0 +1,130 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+
+[[patches]] # cardTable assignments
+[patches.pattern]
+target = "card.lua"
+pattern = "self.seal = cardTable.seal"
+position = "after"
+match_indent = true
+payload = '''
+self.isIjiraq  = cardTable.isIjiraq
+self.visiblyIjiraq = cardTable.visiblyIjiraq
+'''
+times = 1
+
+[[patches]] # object assignments
+[patches.pattern]
+target = "card.lua"
+pattern = "seal = self.seal,"
+position = "after"
+match_indent = true
+payload = '''
+isIjiraq = self.isIjiraq,
+visiblyIjiraq = self.visiblyIjiraq,
+'''
+times = 1
+
+[[patches]] # effect merging
+[patches.pattern]
+times = 1
+match_indent = true
+target = "functions/common_events.lua"
+pattern = "local jokers, triggered = card:calculate_joker(context)"
+position = "at"
+payload = '''
+local jokers, triggered
+if G.GAME.raqeffects and next(G.GAME.raqeffects) and card.config.center.key == 'j_hpfx_ijiraq' then
+    local old_ability, old_center, old_center_key, extra_jokers_list, jokers_table = copy_table(card.ability), card.config.center, card.config.center_key, copy_table(G.GAME.raqeffects), {}
+    table.sort(extra_jokers_list, function(a, b) return (G.P_CENTERS[a].order or 0) < (G.P_CENTERS[b].order or 0) end)
+    for _, k in ipairs(extra_jokers_list) do
+        Hyperfixation.safe_set_ability(card, G.P_CENTERS[k])
+        card:update(0.016)
+        --print(card.ability.extra)
+        local joker, trig = card:calculate_joker(context)
+        triggered = triggered or trig
+        if joker then
+            table.insert(jokers_table, joker)
+        end
+        last = k
+    end
+    if jokers then
+        table.insert(jokers_table, 1, jokers)
+    end
+    G.GAME.hpfx_ijiraq_savedvalues = G.GAME.hpfx_ijiraq_savedvalues or {}
+    G.GAME.hpfx_ijiraq_savedvalues[card.sort_id] = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id] or {}
+    G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][last] = copy_table(card.ability)
+    card.ability, card.config.center, card.config.center_key, jokers = old_ability, old_center, old_center_key, SMODS.merge_effects(jokers_table)
+else
+    jokers, triggered = card:calculate_joker(context)
+end
+'''
+
+[[patches]] # description rendering
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''elseif _c.set == 'Joker' then'''
+position = 'before'
+match_indent = true
+payload = '''
+elseif _c.ijiraq then
+    localize{type = 'descriptions', set = 'Joker', key = _c.key, nodes = desc_nodes, vars = specific_vars or 
+_c.vars, AUT = {info = {}}}
+'''
+
+[[patches]] # calc_dollar_bonus transformation
+[patches.pattern]
+match_indent = true
+times = 1
+target = "functions/state_events.lua"
+pattern = '''
+if ret then
+    i = i+1
+    add_round_eval_row({dollars = ret, bonus = true, name='joker'..i, pitch = pitch, card = _card})
+    pitch = pitch + 0.06
+    dollars = dollars + ret
+end
+'''
+position = "after"
+payload = '''
+if Hyperfixation.calcdollarjokesters[_card.config.center.key] then
+    hpfx_Transform(_card)
+end
+'''
+
+[[patches]] # galilimbo patch
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = "card.T.x = self.T.x"
+position = "at"
+payload = '''
+if next(SMODS.find_card('j_hpfx_galilimbo')) then
+    if pseudorandom('galilimbo') > 0.8 then
+        card:remove()
+        card = nil
+        card = create_card("Planet", G.pack_cards, nil, nil, true, true, nil, 'glb')
+    end
+end
+'''
+
+[[patches]] # splatter patch
+[patches.pattern]
+match_indent = true
+times = 1
+target = "functions/state_events.lua"
+pattern = "local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))"
+position = "at"
+payload = '''
+local function has_splash_effect()
+    if not (G.GAME.raqeffects and next(G.GAME.raqeffects)) then return false end
+    for _, effect in pairs(G.GAME.raqeffects) do
+        if effect == 'j_splash' then return true end
+    end
+    return false
+end
+local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or (next(SMODS.find_card('j_hpfx_ijiraq')) and has_splash_effect())
+'''
