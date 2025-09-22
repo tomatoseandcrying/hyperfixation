@@ -12,7 +12,7 @@
 	"priority": 1,
 	"badge_colour": "000000",
 	"badge_text_colour": "FCB3EA",
-	"version": "0.5.0~BETA",
+	"version": "0.5.0",
 	"dependencies": [
 		"Steamodded (>=1.0.0~BETA-0827c)",
 		"Lovely (>=0.8)"
