@@ -1,4 +1,6 @@
 local jd_def = JokerDisplay.Definitions
+--#region The Binding of Isaac
+
 ---@class JDJokerDefinition
 jd_def["j_hpfx_moriah"] = {
     text = {
@@ -72,3 +74,12 @@ jd_def["j_hpfx_iscariot"] = {
         return false
     end
 }
+---@class JDJokerDefinition
+jd_def["j_hpfx_cyanosis"] = {
+    text = {
+        { text = "+", },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.CHIPS },
+}
+--#endregion
