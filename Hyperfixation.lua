@@ -12,6 +12,9 @@ end
 --singles
 SMODS.load_file('lib/ui.lua')()
 SMODS.load_file('items/Stickers.lua')()
+if JokerDisplay then
+    SMODS.load_file('lib/joker-display_defs.lua')()
+end
 --centers
 SMODS.load_file('items/Isaac/IsaacCenter.lua')()
 SMODS.load_file('items/4Fun/FunZone.lua')()
