@@ -47,7 +47,7 @@ return {
                 text = {
                     "This Joker gains {C:chips}+#2#{} Chips for",
                     "each played card if played hand",
-                    "triggers the {C:attention}Boss Blind{}",
+                    "triggers the {C:attention}Boss Blind{} ability",
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
                     --"Turns {C:attention}Traitor{} when sold",
 
