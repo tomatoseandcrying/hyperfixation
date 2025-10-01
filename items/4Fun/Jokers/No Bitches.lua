@@ -19,7 +19,7 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        if G.playing_cards then
+        if G.playing_cards and card.area == G.jokers then
             for _, playing_card in ipairs(G.playing_cards) do
                 if playing_card:get_id() == 12 then
                     SMODS.scale_card(card, {
