@@ -134,3 +134,11 @@ jd_def["j_hpfx_space_needle"] = {
     end
 }
 --#endregion
+--#region Inscryption
+---@class JDJokerDefinition
+jd_def["j_hpfx_ijiraq"] = {
+    text = {
+        { text = "HELL", colour = G.C.MULT },
+        { text = " no", },
+    },
+}

@@ -42,12 +42,9 @@ if G.GAME.raqeffects and next(G.GAME.raqeffects) and card.config.center.key == '
     for _, k in ipairs(extra_jokers_list) do
         Hyperfixation.safe_set_ability(card, G.P_CENTERS[k])
         card:update(0.016)
-        --print(card.ability.extra)
         local joker, trig = card:calculate_joker(context)
         triggered = triggered or trig
-        if joker then
-            table.insert(jokers_table, joker)
-        end
+        if joker then table.insert(jokers_table, joker) end
         last = k
     end
     if jokers then

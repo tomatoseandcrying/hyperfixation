@@ -261,7 +261,7 @@ Hyperfixation = Hyperfixation or {
         end
     end,
 
-    ---Value storing for Ijiraq's abilities
+    ---Value storing for Ijiraq's abilities that I stole from Somecom (kidding ty somecom)
     ---@param self any The card object with the values that you want to save. (ex: `card`, `self`, etc.)
     ---@param center any The center where values are being set. (ex: `G.P_CENTERS`, `SMODS.Centers`, etc.)
     safe_set_ability = function(self, center)
@@ -270,21 +270,40 @@ Hyperfixation = Hyperfixation or {
         G.GAME.hpfx_ijiraq_savedvalues = G.GAME.hpfx_ijiraq_savedvalues or {}
         G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] = G.GAME.hpfx_ijiraq_savedvalues[self.sort_id] or {}
         G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][oldcenter.key] = copy_table(self.ability)
-        for k, v in pairs(G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][center.key] or center.config) do
-            if type(v) == 'table' then
-                self.ability[k] = copy_table(v)
-            else
-                self.ability[k] = v
-                if k == "Xmult" then self.ability.x_mult = v end
-            end
+        configSAVE = G.GAME.hpfx_ijiraq_savedvalues[self.sort_id][center.key]
+        config = {}
+        for k, v in pairs(center.config) do config[k] = v end
+        if configSAVE then
+            for k, v in pairs(configSAVE) do config[k] = v end
         end
-        self.ability.x_mult = center.config.Xmult or center.config.x_mult or 1
-        self.ability.name = center.name
-        self.ability.set = center.set
-        self.ability.effect = center.effect
         self.config.center = center
         for k, v in pairs(G.P_CENTERS) do
             if center == v then self.config.center_key = k end
+        end
+        if self.ability and oldcenter and oldcenter.config.bonus then
+            self.ability.bonus = self.ability.bonus - oldcenter.config.bonus
+        end
+        local new_ability = {
+            name = center.name,
+            effect = center.effect,
+            set = center.set,
+            mult = config.mult or 0,
+            h_mult = config.h_mult or 0,
+            h_x_mult = config.h_x_mult or 0,
+            h_dollars = config.h_dollars or 0,
+            p_dollars = config.p_dollars or 0,
+            t_mult = config.t_mult or 0,
+            t_chips = config.t_chips or 0,
+            x_mult = config.Xmult or config.x_mult or 1,
+            h_chips = config.h_chips or 0,
+            x_chips = config.x_chips or 1,
+            h_x_chips = config.h_x_chips or 1,
+        }
+        self.ability = self.ability or {}
+        for k, v in pairs({ new_ability, config }) do
+            for l, u in pairs(v) do
+                self.ability[l] = copy_table(u)
+            end
         end
         if self.ability.name == "Invisible Joker" then
             self.ability.invis_rounds = 0
@@ -292,7 +311,7 @@ Hyperfixation = Hyperfixation or {
         if self.ability.name == 'To Do List' then
             local _poker_hands = {}
             for k, v in pairs(G.GAME.hands) do
-                if v.visible then _poker_hands[#_poker_hands + 1] = k end
+                if SMODS.is_poker_hand_visible(k) then _poker_hands[#_poker_hands + 1] = k end
             end
             local old_hand = self.ability.to_do_poker_hand
             self.ability.to_do_poker_hand = nil
