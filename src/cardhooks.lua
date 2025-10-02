@@ -132,7 +132,7 @@ local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
     if self.isIjiraq then
         self.visiblyIjiraq = true
-        card:add_sticker('hpfx_priceless')
+        self:add_sticker('hpfx_priceless')
     end
     if self.config.center_key == 'j_oops' then --surprise unlock condition lmao
         check_for_unlock({ type = 'hpfx_oops' })
