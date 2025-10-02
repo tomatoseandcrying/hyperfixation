@@ -113,7 +113,7 @@ jd_def["j_hpfx_no_bitches"] = {
         {
             border_nodes = {
                 { text = "X", },
-                { ref_table = "Hyperfixation", ref_value = "bitchXM", retrigger_type = "exp" },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" },
             }
         }
     },
