@@ -19,7 +19,17 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
+        if G.STAGE and G.STAGE == G.STAGES.RUN then
+            if Hyperfixation.bitchXM == 0 then
+                card.ability.extra.xmult = 2
+            else
+                card.ability.extra.xmult = Hyperfixation.bitchXM
+            end
+        else
+            card.ability.extra.xmult = 4
+        end
         if G.playing_cards and card.area == G.jokers then
+            card.ability.qc = 0
             for _, playing_card in ipairs(G.playing_cards) do
                 if playing_card:get_id() == 12 then
                     SMODS.scale_card(card, {
@@ -27,8 +37,10 @@ SMODS.Joker {
                         ref_value = 'qc',
                         scalar_value = 'changes',
                         operation = '+',
+                        no_message = true,
                         block_overrides = {
-                            message = true
+                            value = true,
+                            scalar = true,
                         }
                     })
                 end
@@ -41,19 +53,20 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            if G.playing_cards then
-                for _, playing_card in ipairs(G.playing_cards) do
-                    if playing_card:get_id() == 12 then
-                        SMODS.scale_card(card, {
-                            ref_table = card.ability,
-                            ref_value = 'qc',
-                            scalar_value = 'changes',
-                            operation = '+',
-                            block_overrides = {
-                                message = true
-                            }
-                        })
-                    end
+            card.ability.qc = 0
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card:get_id() == 12 then
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability,
+                        ref_value = 'qc',
+                        scalar_value = 'changes',
+                        operation = '+',
+                        no_message = true,
+                        block_overrides = {
+                            value = true,
+                            scalar = true,
+                        }
+                    })
                 end
             end
             if math.max(card.ability.extra.xmult - card.ability.qc, 0) > 0 then
