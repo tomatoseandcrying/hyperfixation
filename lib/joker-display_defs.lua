@@ -83,3 +83,54 @@ jd_def["j_hpfx_cyanosis"] = {
     text_config = { colour = G.C.CHIPS },
 }
 --#endregion
+--#region 4Fun
+
+---@class JDJokerDefinition
+jd_def["j_hpfx_chud"] = {
+    text = {
+        {
+            border_nodes = {
+                { text = "X", },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" },
+            }
+        }
+    },
+}
+---@class JDJokerDefinition
+jd_def["j_hpfx_marie"] = {
+    text = {
+        {
+            border_nodes = {
+                { text = "X", },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" },
+            }
+        }
+    },
+}
+---@class JDJokerDefinition
+jd_def["j_hpfx_no_bitches"] = {
+    text = {
+        {
+            border_nodes = {
+                { text = "X", },
+                { ref_table = "Hyperfixation", ref_value = "bitchXM", retrigger_type = "exp" },
+            }
+        }
+    },
+}
+---@class JDJokerDefinition
+jd_def["j_hpfx_space_needle"] = {
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local num, dem = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'jdis_hpfx_needle')
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { num, dem } }
+    end
+}
+--#endregion
