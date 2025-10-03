@@ -111,7 +111,7 @@ return {
                 },
             },
             j_hpfx_no_bitches = {
-                name = 'No Bitches?',
+                name = 'No Bitches#3#',
                 text = {
                     "{X:mult,C:white}X#1#{} Mult for every Queen",
                     "{C:attention}not{} in your {C:attention}full deck{}",

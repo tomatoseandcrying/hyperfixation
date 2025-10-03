@@ -49,7 +49,7 @@ SMODS.Joker {
         if card.ability.extra.xmult - card.ability.qc < 0 then
             card.ability.extra.xmult = 0
         end
-        return { vars = { card.ability.extra.xmult_loss, math.max(card.ability.extra.xmult - card.ability.qc, 0) } }
+        return { vars = { card.ability.extra.xmult_loss, math.max(card.ability.extra.xmult - card.ability.qc, 0), '?' } }
     end,
     calculate = function(self, card, context)
         if context.joker_main then
