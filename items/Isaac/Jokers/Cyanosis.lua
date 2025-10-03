@@ -4,7 +4,7 @@ SMODS.Joker { --Cyanosis/Blue Baby
     rarity = 1,
     atlas = 'IsaacJokers',
     pos = { x = 4, y = 0 },
-    cost = -1,
+    cost = 0,
     unlocked = false,
     discovered = false,
     blueprint_compat = true,
@@ -15,6 +15,9 @@ SMODS.Joker { --Cyanosis/Blue Baby
     end,
     check_for_unlock = function(self, args)
         return args.type == 'hpfx_momheart'
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        ease_dollars(1)
     end,
     remove_from_deck = function(self, card, from_debuff)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)

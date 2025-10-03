@@ -6,10 +6,8 @@ return {
             j_hpfx_moriah = {
                 name = 'Moriah',
                 text = {
-                    "{C:chips}+#1#{} Chips",
-                    "and {C:mult}+#2#{} Mult",
-                    "Earn {C:money}$#3#{} at",
-                    "end of the round"
+                    "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+                    "Earn {C:money}$#3#{} at end of the round"
                 },
                 unlock = {
                     "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_oops'{}",
@@ -47,7 +45,7 @@ return {
                 text = {
                     "This Joker gains {C:chips}+#2#{} Chips for",
                     "each played card if played hand",
-                    "triggers the {C:attention}Boss Blind{}",
+                    "triggers the {C:attention}Boss Blind{} ability",
                     "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
                     --"Turns {C:attention}Traitor{} when sold",
 
@@ -111,7 +109,7 @@ return {
                 },
             },
             j_hpfx_no_bitches = {
-                name = 'No Bitches?',
+                name = 'No Bitches#3#',
                 text = {
                     "{X:mult,C:white}X#1#{} Mult for every Queen",
                     "{C:attention}not{} in your {C:attention}full deck{}",
@@ -131,8 +129,8 @@ return {
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
-                    "{C:attention}Inherits{} the ability of every Joker it disguised as {C:attention}this run.{}",
-                    "{C:red,E:2}Destroys{} all other copies of Ijiraq."
+                    "{C:attention}Inherits{} the ability of every Joker it disguised as {C:attention}this run{}",
+                    "{C:red,E:2}Destroys{} all other copies of Ijiraq"
                 },
             },
             j_hpfx_costume = {

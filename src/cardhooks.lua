@@ -92,7 +92,9 @@ function generate_card_ui(_c, full_UI_table, specific_vars, card_type, badges, h
     local hatethisonethemost = stupidRef(_c, full_UI_table, specific_vars, card_type, badges, hide_desc, main_start,
         main_end, card)
     if changed then
-        ihatethis = ihatethis:sub(1, ihatethis:len() - 22)       --22 is the exact length of the string "{C:hpfx_IjiGray}...?{}", change this only if you change the string's length
+        if type(ihatethis) == "string" and #ihatethis >= 22 then
+            ihatethis = ihatethis:sub(1, #ihatethis - 22)
+        end                                                      --22 is the exact length of the string "{C:hpfx_IjiGray}...?{}", change this only if you change the string's length
         G.localization.descriptions[_c.set][_c.key]['name'] = ihatethis
         desc[#desc] = desc[#desc]:sub(1, desc[#desc]:len() - 22) --same here but with "{C:hpfx_IjiGray,s:0.7}...?{}"
         G.localization.descriptions[_c.set][_c.key]['text'] = desc
@@ -130,7 +132,7 @@ local add2deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
     if self.isIjiraq then
         self.visiblyIjiraq = true
-        card:add_sticker('hpfx_priceless')
+        self:add_sticker('hpfx_priceless')
     end
     if self.config.center_key == 'j_oops' then --surprise unlock condition lmao
         check_for_unlock({ type = 'hpfx_oops' })

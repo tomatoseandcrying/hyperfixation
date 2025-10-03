@@ -41,4 +41,11 @@ SMODS.Joker {
         SMODS.change_discard_limit(-card.ability.extra.size)
         play_sound((('hpfx_death') .. pseudorandom("isold", 1, 3)), 1, 0.55)
     end,
+    calculate = function(self, card, context)
+        if context.mod_probability and context.identifier == 'wheel_of_fortune' then
+            return {
+                numerator = context.numerator * 2
+            }
+        end
+    end,
 }

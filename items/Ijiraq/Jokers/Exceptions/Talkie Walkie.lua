@@ -22,6 +22,7 @@ SMODS.Joker {
         return {
             vars = {
                 card.ability.extra.chips,
+                card.ability.extra.mult,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }

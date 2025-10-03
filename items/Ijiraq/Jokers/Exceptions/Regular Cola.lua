@@ -1,7 +1,7 @@
 G.C.hpfx_IjiGray = HEX('BFD7D5')
 SMODS.Joker {
     key = 'cola',
-    pos = { x = 2, y = 6 },
+    pos = { x = 8, y = 14 },
     no_mod_badges = true,
     no_collection = true,
     unlocked = true,

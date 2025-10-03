@@ -106,10 +106,20 @@ function SMODS.current_mod.reset_game_globals(run_start)
         end
     end
     if run_start then
+        --Ijiraq
         G.GAME.raqeffects = {}
         G.GAME.trig = {}
+        --Egg?
         local chick = pseudorandom('hpfxchicken', 3, 123456789)
         G.GAME.nugget = roundmyshitprettyplease(chick, 3)
+        --No Bitches
+        local bitchxl = 0
         G.PROFILES[G.SETTINGS.profile].hpfx_bitch = false
+        for _, playing_card in ipairs(G.playing_cards) do
+            if playing_card:get_id() == 12 then
+                bitchxl = bitchxl + 1
+            end
+        end
+        Hyperfixation.bitchXM = bitchxl
     end
 end
