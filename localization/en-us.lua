@@ -131,8 +131,8 @@ return {
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
-                    "{C:attention}Inherits{} the ability of every Joker it disguised as {C:attention}this run.{}",
-                    "{C:red,E:2}Destroys{} all other copies of Ijiraq."
+                    "{C:attention}Inherits{} the ability of every Joker it disguised as {C:attention}this run{}",
+                    "{C:red,E:2}Destroys{} all other copies of Ijiraq"
                 },
             },
             j_hpfx_costume = {
