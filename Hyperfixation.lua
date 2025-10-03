@@ -966,21 +966,6 @@ function guh2() -- just put the key in the table bro (inserts the hovered Joker'
     table.insert(G.GAME.raqeffects, selected.config.center.key)
 end
 
-debugs_one_line_long = { --other debug commands that just go into the console
-    "eval G.GAME.raqeffects",
-    -- prints all current effects Ijiraq has stored
-    "eval Hyperfixation.exceptions",
-    -- prints the current table of Jokesters with custom transformation logic
-    "eval Hyperfixation.calcdollarjokesters",
-    -- prints the current table of Jokesters that calculate dollar bonuses
-    "eval G.jokers.cards[1].config.center.key",
-    -- checks the first joker's key
-    "eval G.GAME.current_round.fodder_card.jkey",
-    -- checks the stored key of the fodder card
-    "eval G.GAME.trig"
-    -- prints current effects ijiraq has stored from add_to_deck. prevents effect resets if a different Ijiraq is removed
-}
-
 function heold() --Test function to simulate the Ejimbo game over
     SMODS.add_card
     {
@@ -997,3 +982,26 @@ function heold() --Test function to simulate the Ejimbo game over
     G.FILE_HANDLER.force = true
     G.STATE_COMPLETE = false
 end
+
+function bitchslap() --Destroys all Queens in your deck
+    for _, c in ipairs(G.playing_cards) do
+        if c:get_id() == 12 then
+            SMODS.destroy_cards(c, true, true)
+        end
+    end
+end
+
+debugs_one_line_long = { --other debug commands that just go into the console
+    "eval G.GAME.raqeffects",
+    -- prints all current effects Ijiraq has stored
+    "eval Hyperfixation.exceptions",
+    -- prints the current table of Jokesters with custom transformation logic
+    "eval Hyperfixation.calcdollarjokesters",
+    -- prints the current table of Jokesters that calculate dollar bonuses
+    "eval G.jokers.cards[1].config.center.key",
+    -- checks the first joker's key
+    "eval G.GAME.current_round.fodder_card.jkey",
+    -- checks the stored key of the fodder card
+    "eval G.GAME.trig"
+    -- prints current effects ijiraq has stored from add_to_deck. prevents effect resets if a different Ijiraq is removed
+}

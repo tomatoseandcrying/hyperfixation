@@ -19,16 +19,7 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        if G.STAGE and G.STAGE == G.STAGES.RUN then
-            if Hyperfixation.bitchXM == 0 then
-                card.ability.extra.xmult = 2
-            else
-                card.ability.extra.xmult = Hyperfixation.bitchXM
-            end
-        else
-            card.ability.extra.xmult = 4
-        end
-        if G.playing_cards and card.area == G.jokers then
+        if G.playing_cards then
             card.ability.qc = 0
             for _, playing_card in ipairs(G.playing_cards) do
                 if playing_card:get_id() == 12 then
@@ -45,6 +36,15 @@ SMODS.Joker {
                     })
                 end
             end
+        end
+        if G.STAGE and G.STAGE == G.STAGES.RUN then
+            if Hyperfixation.bitchXM == 0 and G.GAME.selected_back.effect.center.key == 'b_abandoned' then
+                card.ability.extra.xmult = 2
+            else
+                card.ability.extra.xmult = Hyperfixation.bitchXM - card.ability.qc
+            end
+        else
+            card.ability.extra.xmult = 4
         end
         if card.ability.extra.xmult - card.ability.qc < 0 then
             card.ability.extra.xmult = 0

@@ -6,10 +6,8 @@ return {
             j_hpfx_moriah = {
                 name = 'Moriah',
                 text = {
-                    "{C:chips}+#1#{} Chips",
-                    "and {C:mult}+#2#{} Mult",
-                    "Earn {C:money}$#3#{} at",
-                    "end of the round"
+                    "{C:chips}+#1#{} Chips and {C:mult}+#2#{} Mult",
+                    "Earn {C:money}$#3#{} at end of the round"
                 },
                 unlock = {
                     "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_oops'{}",
