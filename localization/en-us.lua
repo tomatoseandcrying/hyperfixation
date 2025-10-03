@@ -105,7 +105,7 @@ return {
                 },
                 unlock = {
                     "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_needle'{}",
-                    "{C:inactive}--Win a run without upgrading your {C:hpfx_inattention}most played{} hand"
+                    "{C:inactive}--Win a run without upgrading your {C:hpfx_inattention}most played{C:inactive} hand"
                 },
             },
             j_hpfx_no_bitches = {
