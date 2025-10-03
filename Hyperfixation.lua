@@ -444,10 +444,12 @@ SMODS.Sound({
     key = "hpfx_death1",
     path = "TBOI/deathsounds/Isaac_dies_new.ogg",
 })
+--not showman
 SMODS.Sound({
     key = "hpfx_death2",
     path = "TBOI/deathsounds/Isaac_dies_new_1.ogg",
 })
+--not gros michel
 SMODS.Sound({
     key = "hpfx_death3",
     path = "TBOI/deathsounds/Isaac_dies_new_2.ogg",
