@@ -17,10 +17,8 @@ return {
             j_hpfx_mary = {
                 name = 'Mary',
                 text = {
-                    "{C:mult}+#1#{} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round",
-                    "Gains {C:mult}+#2#{} Mult",
-                    "every {C:attention}#3#{} rounds",
+                    "{C:mult}+#1#{} Mult on {C:attention}final {C:attention}hand{} of round",
+                    "Gains {C:mult}+#2#{} Mult every {C:attention}#3#{} rounds",
                 },
                 unlock = {
                     "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_7mult'{}",
