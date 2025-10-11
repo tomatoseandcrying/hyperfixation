@@ -26,7 +26,7 @@ SMODS.Joker {
         end
         if context.pseudorandom_result and context.result and context.main_eval and not context.blueprint then
             SMODS.scale_card(card, {
-                operation = "+",
+                operation = "X",
                 ref_table = card.ability.extra,
                 ref_value = "xmult",
                 scalar_value = "xmult_gain",

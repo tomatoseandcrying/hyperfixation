@@ -17,10 +17,8 @@ return {
             j_hpfx_mary = {
                 name = 'Mary',
                 text = {
-                    "{C:mult}+#1#{} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round",
-                    "Gains {C:mult}+#2#{} Mult",
-                    "every {C:attention}#3#{} rounds",
+                    "{C:mult}+#1#{} Mult on {C:attention}final {C:attention}hand{} of round",
+                    "Gains {C:mult}+#2#{} Mult every {C:attention}#3#{} rounds",
                 },
                 unlock = {
                     "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_7mult'{}",
@@ -105,7 +103,7 @@ return {
                 },
                 unlock = {
                     "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_needle'{}",
-                    "{C:inactive}--Win a run without upgrading your {C:hpfx_inattention}most played{} hand"
+                    "{C:inactive}--Win a run without upgrading your {C:hpfx_inattention}most played{C:inactive} hand"
                 },
             },
             j_hpfx_no_bitches = {
