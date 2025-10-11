@@ -1648,6 +1648,15 @@ return {
                 },
             },
         },
+        Blind = {
+            bl_hpfx_double_trouble = {
+                name = 'Double Trouble!?',
+                text = {
+                    "Test your mettle against",
+                    "{E:2}DOUBLE{} the bosses!",
+                },
+            },
+        },
         Other = {
             hpfx_priceless = {
                 name = 'Priceless',
