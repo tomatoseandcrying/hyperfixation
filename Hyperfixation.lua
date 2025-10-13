@@ -9,19 +9,6 @@ function load_folder(folder)
     end
 end
 
---singles
-SMODS.load_file('lib/ui.lua')()
-SMODS.load_file('items/Stickers.lua')()
-if JokerDisplay then
-    SMODS.load_file('lib/joker-display_defs.lua')()
-end
---centers
-SMODS.load_file('items/Isaac/IsaacCenter.lua')()
-SMODS.load_file('items/4Fun/FunZone.lua')()
-SMODS.load_file('items/Ijiraq/RaqShack.lua')()
---folders
-load_folder('src')
-
 --Mod Tech
 to_big = to_big or function(x) return x end --talisman conversion function
 --profile vars
@@ -32,6 +19,9 @@ G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_
 --global tables/funcs
 Hyperfixation = Hyperfixation or {
     path = mod_path,
+    --Double Trouble defaults
+    hpfxDT_idx1 = G.P_BLINDS and G.P_BLINDS[1] or {},
+    hpfxDT_idx2 = G.P_BLINDS and G.P_BLINDS[2] or {},
     ---Used to store the original weights of boosters.
     og_boostweight = og_boostweight or {},
 
@@ -382,13 +372,13 @@ SMODS.current_mod.calculate = function(self, context)
     end
     --Chud
     if context.post_trigger then
-        G.GAME.hpfx_nothingEverHappens = false
+        Hyperfixation.nothingEverHappens = false
     end
     if context.end_of_round and context.beat_boss and G.GAME.round_resets.ante >= 3 then
-        if G.GAME.hpfx_nothingEverHappens then
+        if Hyperfixation.nothingEverHappens then
             check_for_unlock({ type = 'hpfx_chud' })
         else
-            G.GAME.hpfx_nothingEverHappens = true
+            Hyperfixation.nothingEverHappens = true
         end
     end
 end
@@ -557,7 +547,7 @@ function hpfx_Transform(card, context)
                         key = k
                     end
                 end
-                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(Hyperfixation.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
@@ -613,7 +603,7 @@ function Card:Transfodd(context)
                         key = k
                     end
                 end
-                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(Hyperfixation.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
@@ -673,7 +663,7 @@ function G.FUNCS.hpfx_Transbutt(e)
                         key = k
                     end
                 end
-                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(Hyperfixation.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             G.jokers:unhighlight_all()
             return true
@@ -965,7 +955,7 @@ function guh2() -- just put the key in the table bro (inserts the hovered Joker'
     local selected = G.CONTROLLER and
         (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
     if Hyperfixation.brokejokes[selected.config.center.key] then return print('This one\'s disabled until I can fix it!') end
-    table.insert(G.GAME.raqeffects, selected.config.center.key)
+    table.insert(Hyperfixation.raqeffects, selected.config.center.key)
 end
 
 function heold() --Test function to simulate the Ejimbo game over
@@ -994,7 +984,7 @@ function bitchslap() --Destroys all Queens in your deck
 end
 
 debugs_one_line_long = { --other debug commands that just go into the console
-    "eval G.GAME.raqeffects",
+    "eval Hyperfixation.raqeffects",
     -- prints all current effects Ijiraq has stored
     "eval Hyperfixation.exceptions",
     -- prints the current table of Jokesters with custom transformation logic
@@ -1004,6 +994,21 @@ debugs_one_line_long = { --other debug commands that just go into the console
     -- checks the first joker's key
     "eval G.GAME.current_round.fodder_card.jkey",
     -- checks the stored key of the fodder card
-    "eval G.GAME.trig"
+    "eval Hyperfixation.trig"
     -- prints current effects ijiraq has stored from add_to_deck. prevents effect resets if a different Ijiraq is removed
 }
+
+--singles
+SMODS.load_file('lib/ui.lua')()
+if JokerDisplay then
+    SMODS.load_file('lib/joker-display_defs.lua')()
+end
+SMODS.load_file('items/Stickers.lua')()
+--centers
+SMODS.load_file('items/Isaac/IsaacCenter.lua')()
+SMODS.load_file('items/4Fun/FunZone.lua')()
+SMODS.load_file('items/Ijiraq/RaqShack.lua')()
+--folders
+load_folder('src')
+--stuff i have to load here so it doesnt crash
+SMODS.load_file('items/Isaac/Blinds/Double Trouble.lua')()

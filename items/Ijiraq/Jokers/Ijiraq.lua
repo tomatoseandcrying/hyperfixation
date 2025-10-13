@@ -15,7 +15,7 @@ SMODS.Joker { --Ijiraq.
     config = {},
     loc_vars = function(self, info_queue, card)
         if G.jokers and card.area == G.jokers then
-            for _, v in pairs(G.GAME.raqeffects) do
+            for _, v in pairs(Hyperfixation.raqeffects) do
                 if G.P_CENTERS[v].loc_vars then
                     if not G.P_CENTERS[v].original_mod then
                         vars = G.P_CENTERS[v]:loc_vars({}, G.P_CENTERS[v]).vars
@@ -86,12 +86,12 @@ SMODS.Joker { --Ijiraq.
 
         --Applies effects that shouldn't stack in mass iterator
         --
-        for _, v in pairs(G.GAME.raqeffects) do --juggler stacks
+        for _, v in pairs(Hyperfixation.raqeffects) do --juggler stacks
             if v == 'j_juggler' then
                 raqjug = raqjug + 1
             end
         end
-        for i, trig_v in ipairs(G.GAME.trig) do --juggler procs
+        for i, trig_v in ipairs(Hyperfixation.trig) do --juggler procs
             if trig_v == 'j_juggler' then
                 trigjug = trigjug + 1
             end
@@ -99,33 +99,33 @@ SMODS.Joker { --Ijiraq.
         local to_add = raqjug - trigjug
         for i = 1, to_add do --juggler increase
             G.hand:change_size(1)
-            table.insert(G.GAME.trig, 'j_juggler')
+            table.insert(Hyperfixation.trig, 'j_juggler')
         end
 
         --Effects that can stack in mass iterator
         --
-        for _, v in pairs(G.GAME.raqeffects) do
+        for _, v in pairs(Hyperfixation.raqeffects) do
             if v == 'j_stuntman' then
                 G.hand:change_size(-2)
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_chaos' then
                 SMODS.change_free_rerolls(1)
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_turtle_bean' then
                 G.hand:change_size(5)
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_drunkard' then
                 ease_discard(1, true, true)
                 G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_troubadour' then
                 G.GAME.round_resets.hands = G.GAME.round_resets.hands - 1
                 G.hand:change_size(2)
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_ring_master' then
                 local ijishowman = SMODS.showman
@@ -134,7 +134,7 @@ SMODS.Joker { --Ijiraq.
                     return ijishowman()
                 end
 
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_four_fingers' then
                 local ijifour = SMODS.four_fingers
@@ -143,7 +143,7 @@ SMODS.Joker { --Ijiraq.
                     return ijifour()
                 end
 
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_pareidolia' then
                 local ijiface = Card.is_face
@@ -151,11 +151,11 @@ SMODS.Joker { --Ijiraq.
                     return ijiface(self, from_boss) or (self:get_id() and next(SMODS.find_card("j_hpfx_ijiraq")))
                 end
 
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
             if v == 'j_credit_card' then
                 G.GAME.bankrupt_at = G.GAME.bankrupt_at - 20
-                table.insert(G.GAME.trig, v)
+                table.insert(Hyperfixation.trig, v)
             end
         end
     end,
@@ -167,12 +167,12 @@ SMODS.Joker { --Ijiraq.
                 GiveUsYourEffectStacks = GiveUsYourEffectStacks + 1
             end
         end
-        for _, v in pairs(G.GAME.raqeffects) do
+        for _, v in pairs(Hyperfixation.raqeffects) do
             if v == 'j_stuntman' then
-                for eat, shit in ipairs(G.GAME.trig) do
+                for eat, shit in ipairs(Hyperfixation.trig) do
                     if shit == v then
                         G.hand:change_size(-2)
-                        table.remove(G.GAME.trig, eat)
+                        table.remove(Hyperfixation.trig, eat)
                         break
                     end
                 end
@@ -180,60 +180,60 @@ SMODS.Joker { --Ijiraq.
             if v == 'j_juggler' then
                 if GiveUsYourEffectStacks == 0 then
                     local to_remove = {}
-                    for i, trig_v in ipairs(G.GAME.trig) do
+                    for i, trig_v in ipairs(Hyperfixation.trig) do
                         if trig_v == 'j_juggler' then
                             table.insert(to_remove, i)
                         end
                     end
                     for i = #to_remove, 1, -1 do
                         G.hand:change_size(-1)
-                        table.remove(G.GAME.trig, to_remove[i])
+                        table.remove(Hyperfixation.trig, to_remove[i])
                     end
                 end
             end
             if v == 'j_chaos' then
-                for eat, shit in ipairs(G.GAME.trig) do
+                for eat, shit in ipairs(Hyperfixation.trig) do
                     if shit == v then
                         SMODS.change_free_rerolls(-1)
-                        table.remove(G.GAME.trig, eat)
+                        table.remove(Hyperfixation.trig, eat)
                         break
                     end
                 end
             end
             if v == 'j_turtle_bean' then
-                for eat, shit in ipairs(G.GAME.trig) do
+                for eat, shit in ipairs(Hyperfixation.trig) do
                     if shit == v then
                         G.hand:change_size(-5)
-                        table.remove(G.GAME.trig, eat)
+                        table.remove(Hyperfixation.trig, eat)
                         break
                     end
                 end
             end
             if v == 'j_drunkard' then
-                for eat, shit in ipairs(G.GAME.trig) do
+                for eat, shit in ipairs(Hyperfixation.trig) do
                     if shit == v then
                         ease_discard(-1, true, true)
                         G.GAME.round_resets.discards = G.GAME.round_resets.discards - 1
-                        table.remove(G.GAME.trig, eat)
+                        table.remove(Hyperfixation.trig, eat)
                         break
                     end
                 end
             end
             if v == 'j_troubadour' then
-                for eat, shit in ipairs(G.GAME.trig) do
+                for eat, shit in ipairs(Hyperfixation.trig) do
                     if shit == v then
                         G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
                         G.hand:change_size(-2)
-                        table.remove(G.GAME.trig, eat)
+                        table.remove(Hyperfixation.trig, eat)
                         break
                     end
                 end
             end
             if v == 'j_credit_card' then
-                for eat, shit in ipairs(G.GAME.trig) do
+                for eat, shit in ipairs(Hyperfixation.trig) do
                     if shit == v then
                         G.GAME.bankrupt_at = G.GAME.bankrupt_at + 20
-                        table.remove(G.GAME.trig, eat)
+                        table.remove(Hyperfixation.trig, eat)
                         break
                     end
                 end
@@ -243,7 +243,7 @@ SMODS.Joker { --Ijiraq.
     calc_dollar_bonus = function(self, card)
         local totalcash = 0
         if not card:can_calculate() then return end
-        for _, v in pairs(G.GAME.raqeffects) do
+        for _, v in pairs(Hyperfixation.raqeffects) do
             local joker = G.P_CENTERS[v]
             if v == 'j_golden' then
                 totalcash = totalcash + 4
@@ -283,7 +283,7 @@ SMODS.Joker { --Ijiraq.
     end,
     calculate = function(self, card, context)
         if context.modify_scoring_hand and not context.blueprint then
-            for _, v in pairs(G.GAME.raqeffects) do
+            for _, v in pairs(Hyperfixation.raqeffects) do
                 if v == 'j_splash' then
                     print('Splash!')
                     return { add_to_hand = true }
@@ -291,11 +291,11 @@ SMODS.Joker { --Ijiraq.
             end
         end
         if context.end_of_round then
-            for _, v in pairs(G.GAME.raqeffects) do
+            for _, v in pairs(Hyperfixation.raqeffects) do
                 if v == 'j_turtle_bean' then
                     if context.game_over == false and context.main_eval then
                         if G.hand.config.card_limit - 1 <= 0 then
-                            table.remove(G.GAME.raqeffects, _)
+                            table.remove(Hyperfixation.raqeffects, _)
                             return {
                                 message = localize('k_eaten_ex'),
                                 colour = G.C.FILTER

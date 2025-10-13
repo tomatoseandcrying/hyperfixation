@@ -112,8 +112,8 @@ function Card:set_cost()
         self.sell_cost = math.max(1, math.floor(self.cost / 2)) + (self.ability.extra_value or 0)
         self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
     end
-    if G.GAME.raqeffects then
-        for _, v in pairs(G.GAME.raqeffects) do
+    if Hyperfixation.raqeffects then
+        for _, v in pairs(Hyperfixation.raqeffects) do
             local found = false
             if v == 'j_astronomer' then
                 found = true
@@ -207,8 +207,8 @@ function Card:can_sell_card(context)
     local key = self.config.center.key
     nosell_hook(self, context)
     local found = false
-    if G.GAME.raqeffects then
-        for _, v in pairs(G.GAME.raqeffects) do
+    if Hyperfixation.raqeffects then
+        for _, v in pairs(Hyperfixation.raqeffects) do
             if v == 'j_luchador' then found = true end
         end
     end

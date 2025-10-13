@@ -41,7 +41,7 @@ SMODS.Joker {
             context.main_eval and not context.blueprint then
             card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
             card:set_cost()
-            local nugget = G.GAME.nugget
+            local nugget = Hyperfixation.nugget
             if card.sell_cost == nugget then
                 return {
                     func = function()

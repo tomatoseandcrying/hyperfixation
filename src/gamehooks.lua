@@ -115,14 +115,20 @@ function SMODS.current_mod.reset_game_globals(run_start)
         if jokester and jokester == 'UNAVAILABLE' then jokester = 'j_joker' end
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
         --Double Trouble
-        G.GAME.hpfxDT_idx1, G.GAME.hpfxDT_idx2 = pseudorandom_element(G.P_BLINDS, "hpfx_double_trouble")
+        local idx1 = pseudorandom_element(G.P_BLINDS, "hpfx_double_trouble")
+        local idx2 = idx1
+        while idx2 == idx1 do
+            idx2 = pseudorandom_element(G.P_BLINDS, "hpfx_double_trouble_2")
+        end
+        Hyperfixation.hpfxDT_idx1 = idx1
+        Hyperfixation.hpfxDT_idx2 = idx2
         if run_start then
             -- Ijiraq
-            G.GAME.raqeffects = {}
-            G.GAME.trig = {}
+            Hyperfixation.raqeffects = {}
+            Hyperfixation.trig = {}
             -- Egg?
             local chick = pseudorandom('hpfxchicken', 3, 123456789)
-            G.GAME.nugget = roundmyshitprettyplease(chick, 3)
+            Hyperfixation.nugget = roundmyshitprettyplease(chick, 3)
             -- No Bitches
             local bitchxl = 0
             G.PROFILES[G.SETTINGS.profile].hpfx_bitch = false

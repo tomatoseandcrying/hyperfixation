@@ -36,8 +36,8 @@ pattern = "local jokers, triggered = card:calculate_joker(context)"
 position = "at"
 payload = '''
 local jokers, triggered
-if G.GAME.raqeffects and next(G.GAME.raqeffects) and card.config.center.key == 'j_hpfx_ijiraq' then
-    local old_ability, old_center, old_center_key, extra_jokers_list, jokers_table = copy_table(card.ability), card.config.center, card.config.center_key, copy_table(G.GAME.raqeffects), {}
+if Hyperfixation.raqeffects and next(Hyperfixation.raqeffects) and card.config.center.key == 'j_hpfx_ijiraq' then
+    local old_ability, old_center, old_center_key, extra_jokers_list, jokers_table = copy_table(card.ability), card.config.center, card.config.center_key, copy_table(Hyperfixation.raqeffects), {}
     table.sort(extra_jokers_list, function(a, b) return (G.P_CENTERS[a].order or 0) < (G.P_CENTERS[b].order or 0) end)
     for _, k in ipairs(extra_jokers_list) do
         Hyperfixation.safe_set_ability(card, G.P_CENTERS[k])
@@ -117,8 +117,8 @@ pattern = "local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_jo
 position = "at"
 payload = '''
 local function has_splash_effect()
-    if not (G.GAME.raqeffects and next(G.GAME.raqeffects)) then return false end
-    for _, effect in pairs(G.GAME.raqeffects) do
+    if not (Hyperfixation.raqeffects and next(Hyperfixation.raqeffects)) then return false end
+    for _, effect in pairs(Hyperfixation.raqeffects) do
         if effect == 'j_splash' then return true end
     end
     return false
