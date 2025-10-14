@@ -9,7 +9,6 @@ local function hpfx_chexMix(hex1, hex2)
 
     local function hpfx_cathodeScreens(hex)
         hex = hex:gsub("#", "")
-        -- 0 padding
         hex = hex .. string.rep("0", 6 - #hex)
         local r = tonumber("0x" .. hex:sub(1, 2)) or 0
         local g = tonumber("0x" .. hex:sub(3, 4)) or 0
@@ -18,7 +17,7 @@ local function hpfx_chexMix(hex1, hex2)
     end
 
     local function hpfx_cathodeScreams(r, g, b)
-        return string.format("#%02X%02X%02X", r, g, b)
+        return string.format("%02X%02X%02X", r, g, b) -- no #
     end
 
     local r1, g1, b1 = hpfx_cathodeScreens(hex1)
@@ -32,20 +31,19 @@ local function hpfx_chexMix(hex1, hex2)
 end
 --hex grabber with rgb handling
 local function get_hex_string(col)
+    -- ...existing code...
+    local hex = nil
     if type(col) == "string" and col:match("^#?%x%x%x%x%x%x$") then
-        return col:sub(1, 1) == "#" and col or "#" .. col
-    end
-    if type(col) == "table" and col.hex and type(col.hex) == "string" and col.hex:match("^#?%x%x%x%x%x%x$") then
-        return col.hex:sub(1, 1) == "#" and col.hex or "#" .. col.hex
-    end
-    -- Handle RGB
-    if type(col) == "table" and #col >= 3 then
+        hex = col:sub(1, 1) == "#" and col:sub(2) or col
+    elseif type(col) == "table" and col.hex and type(col.hex) == "string" and col.hex:match("^#?%x%x%x%x%x%x$") then
+        hex = col.hex:sub(1, 1) == "#" and col.hex:sub(2) or col.hex
+    elseif type(col) == "table" and #col >= 3 then
         local r = math.floor((col[1] or 0) * 255)
         local g = math.floor((col[2] or 0) * 255)
         local b = math.floor((col[3] or 0) * 255)
-        return string.format("#%02X%02X%02X", r, g, b)
+        hex = string.format("%02X%02X%02X", r, g, b)
     end
-    return "#FCB3EA"
+    return hex or "FCB3EA" -- fallback, no #
 end
 
 -- merges properties of two blind tables, Blind:set_blind tweak made to handle the merging
@@ -67,6 +65,7 @@ function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
             get_hex_string(idx2.boss_colour)
         ),
     }
+    print("Mixed color:", merged_blind.boss_colour)
     -- Merge the blind debuff tables
     for k, v in pairs(idx1.debuff or {}) do merged_blind.debuff[k] = v end
     for k, v in pairs(idx2.debuff or {}) do merged_blind.debuff[k] = v end
@@ -94,6 +93,7 @@ SMODS.Blind {
         local H = Hyperfixation
         local b = G.GAME and G.GAME.blind
         if context.setting_blind and b and H.hpfxDT_idx1 and H.hpfxDT_idx2 then
+            print("Double Trouble calculate called", Hyperfixation.hpfxDT_idx1, Hyperfixation.hpfxDT_idx2)
             b:set_double_trouble_blind(H.hpfxDT_idx1, H.hpfxDT_idx2, false, true)
         end
     end

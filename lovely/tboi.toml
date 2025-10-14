@@ -20,4 +20,9 @@ pattern = "(?<indent>[\t ]*)(if|elseif) self.name == '(?<blindname>[^']+)'(?<res
 position = "at"
 line_prepend = "$indent"
 payload = "$2 Hyperfixation and Hyperfixation.blind_has_name(self, '$blindname')$rest"
-times = 0
+[[patches]]
+[patches.regex]
+target = "blind.lua"
+pattern = "or self.name == '(?<blindname>[^']+)'"
+position = "at"
+payload = "or (Hyperfixation and Hyperfixation.blind_has_name(self, '$blindname'))"
