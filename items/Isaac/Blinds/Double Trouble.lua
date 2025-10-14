@@ -53,19 +53,20 @@ end
 ---@param silent boolean If true, suppresses notifs
 function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
     local merged_blind = {
-        name = "Double Trouble",
+        name = "Double Trouble!?",
+        key = "bl_hpfx_double_trouble",
         names = { idx1.name, idx2.name },
         dollars = (idx1.dollars or 0) + (idx2.dollars or 0),
         mult = (idx1.mult or 0) + (idx2.mult or 0),
         debuff = {},
         pos = idx1.pos or idx2.pos,
+        positions = { idx1.pos, idx2.pos },
         boss = (idx1.boss or false) or (idx2.boss or false),
-        boss_colour = hpfx_chexMix(
+        boss_colour = HEX(hpfx_chexMix(
             get_hex_string(idx1.boss_colour),
             get_hex_string(idx2.boss_colour)
-        ),
+        )),
     }
-    print("Mixed color:", merged_blind.boss_colour)
     -- Merge the blind debuff tables
     for k, v in pairs(idx1.debuff or {}) do merged_blind.debuff[k] = v end
     for k, v in pairs(idx2.debuff or {}) do merged_blind.debuff[k] = v end
@@ -78,22 +79,25 @@ function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
     end
     -- sets itself to merged version of blind
     self:set_blind(merged_blind, reset, silent)
+    self.names = merged_blind.names
+    self.boss_colour = merged_blind.boss_colour
+    self.colour = self.boss_colour
+    self.dark_colour = mix_colours(self.boss_colour, G.C.BLACK, 0.4)
 end
 
 SMODS.Blind {
     key = 'double_trouble',
     discovered = true,
     pos = { x = 0, y = 0 },
-    dollars = math.random(1, 20),
-    mult = math.random(1, 100),
-    debuff = {},
-    boss = { min = 1, max = 10 },
-    boss_colour = HEX("FCB3EA"),
+    dollars = G and G.GAME and G.GAME.blind.dollars or 1,
+    mult = G and G.GAME and G.GAME.blind.dollars or 1,
+    debuff = G and G.GAME and G.GAME.blind.debuff or {},
+    boss = { min = 1, max = 1000 },
+    boss_colour = G and G.GAME and G.GAME.blind.boss_colour or HEX("FCB3EA"),
     calculate = function(self, blind, context)
         local H = Hyperfixation
         local b = G.GAME and G.GAME.blind
         if context.setting_blind and b and H.hpfxDT_idx1 and H.hpfxDT_idx2 then
-            print("Double Trouble calculate called", Hyperfixation.hpfxDT_idx1, Hyperfixation.hpfxDT_idx2)
             b:set_double_trouble_blind(H.hpfxDT_idx1, H.hpfxDT_idx2, false, true)
         end
     end
