@@ -1,3 +1,10 @@
+function table.contains(tbl, val)
+    for _, v in ipairs(tbl) do
+        if v == val then return true end
+    end
+    return false
+end
+
 --new run vars
 local igo = Game.init_game_object
 function Game:init_game_object()
@@ -115,11 +122,21 @@ function SMODS.current_mod.reset_game_globals(run_start)
         if jokester and jokester == 'UNAVAILABLE' then jokester = 'j_joker' end
         G.GAME.current_round.fodder_card.jkey = jokester or 'j_joker'
         --Double Trouble
-        local idx1 = pseudorandom_element(G.P_BLINDS, "hpfx_double_trouble")
-        local idx2 = idx1
-        while idx2 == idx1 do
-            idx2 = pseudorandom_element(G.P_BLINDS, "hpfx_double_trouble_2")
+        local forbidden_keys = { "bl_hpfx_double_trouble", "bl_big", "bl_small" }
+
+        local function is_forbidden(blind)
+            return blind.key and table.contains(forbidden_keys, blind.key)
         end
+
+        local idx1, idx2
+        repeat
+            idx1 = pseudorandom_element(G.P_BLINDS, "hpfx_double_trouble")
+        until idx1 and not is_forbidden(idx1)
+
+        repeat
+            idx2 = pseudorandom_element(G.P_BLINDS, "hpfx_double_trouble_2")
+        until idx2 and idx2 ~= idx1 and not is_forbidden(idx2)
+
         Hyperfixation.hpfxDT_idx1 = idx1
         Hyperfixation.hpfxDT_idx2 = idx2
         if run_start then

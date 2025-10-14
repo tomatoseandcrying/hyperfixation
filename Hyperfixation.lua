@@ -322,7 +322,16 @@ Hyperfixation = Hyperfixation or {
             self.ability.loyalty_remaining = self.ability.extra.every
         end
     end,
+    blind_has_name = function(self, target)
+        if type(self.names) == "table" then
+            for _, n in ipairs(self.names) do
+                if n == target then return true end
+            end
+        end
+        return self.name == target
+    end
 }
+
 --more features
 SMODS.current_mod.optional_features = {
     post_trigger = true,
@@ -981,6 +990,10 @@ function bitchslap() --Destroys all Queens in your deck
             SMODS.destroy_cards(c, true, true)
         end
     end
+end
+
+function doubletrouble() --Prints the hpfx_idx keys for Double Trouble blind
+    print("Double Trouble keys: " .. Hyperfixation.hpfxDT_idx1.key .. " and " .. Hyperfixation.hpfxDT_idx2.key)
 end
 
 debugs_one_line_long = { --other debug commands that just go into the console

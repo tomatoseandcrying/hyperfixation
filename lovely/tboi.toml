@@ -12,3 +12,12 @@ position = "after"
 payload = '''
 check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
 '''
+
+[[patches]] # Blind effect overhaul
+[patches.regex]
+target = "blind.lua"
+pattern = "(?<indent>[\t ]*)(if|elseif) self.name == '(?<blindname>[^']+)'(?<rest>.*)"
+position = "at"
+line_prepend = "$indent"
+payload = "$2 Hyperfixation and Hyperfixation.blind_has_name(self, '$blindname')$rest"
+times = 0
