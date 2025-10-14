@@ -52,32 +52,14 @@ SMODS.Blind {
     key = 'double_trouble',
     discovered = true,
     pos = { x = 0, y = 0 },
-    dollars = ((
-        (Hyperfixation.hpfxDT_idx1.dollars or 1) +
-        (Hyperfixation.hpfxDT_idx2.dollars or 1)) / 2
-    ),
-    mult = ((
-        (Hyperfixation.hpfxDT_idx1.mult or 1) +
-        (Hyperfixation.hpfxDT_idx2.mult or 1)) / 2
-    ),
+    dollars = (Hyperfixation.hpfxDT_idx1.dollars or 0) + (Hyperfixation.hpfxDT_idx2.dollars or 0),
+    mult = (Hyperfixation.hpfxDT_idx1.mult or 0) + (Hyperfixation.hpfxDT_idx2.mult or 0),
+    debuff = hpfx_dudeThisTableKicksAss(Hyperfixation.hpfxDT_idx1.debuff or {}, Hyperfixation.hpfxDT_idx2.debuff or {}),
+    boss = hpfx_dudeThisTableKicksAss(Hyperfixation.hpfxDT_idx1.boss or {}, Hyperfixation.hpfxDT_idx2.boss or {}),
     boss_colour = HEX(
         hpfx_chexMix(
             get_hex_string(Hyperfixation.hpfxDT_idx1.boss_colour),
             get_hex_string(Hyperfixation.hpfxDT_idx2.boss_colour)
         ):gsub("#", "")
     ),
-    debuff = hpfx_dudeThisTableKicksAss(
-        Hyperfixation.hpfxDT_idx1.debuff or {},
-        Hyperfixation.hpfxDT_idx2.debuff or {}
-    ),
-    boss = {
-        min = ((
-            (Hyperfixation.hpfxDT_idx1.boss and Hyperfixation.hpfxDT_idx1.boss.min or 1) +
-            (Hyperfixation.hpfxDT_idx2.boss and Hyperfixation.hpfxDT_idx2.boss.min or 1)) / 2
-        ),
-        max = ((
-            (Hyperfixation.hpfxDT_idx1.boss and Hyperfixation.hpfxDT_idx1.boss.max or 10) +
-            (Hyperfixation.hpfxDT_idx2.boss and Hyperfixation.hpfxDT_idx2.boss.max or 10)) / 2
-        ),
-    },
 }
