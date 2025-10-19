@@ -1653,7 +1653,8 @@ return {
                 name = 'Double Trouble!?',
                 text = {
                     "Test your mettle against",
-                    "{E:2}DOUBLE{} the bosses!",
+                    "DOUBLE the bosses!",
+                    "(#1#)"
                 },
             },
         },

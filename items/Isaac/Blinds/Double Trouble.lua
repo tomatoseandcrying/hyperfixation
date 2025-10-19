@@ -52,6 +52,8 @@ end
 ---@param reset boolean If true, resets blind effects before applying new blind
 ---@param silent boolean If true, suppresses notifs
 function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
+    local name1 = idx1.name or (idx1.names and table.concat(idx1.names, " & ")) or ""
+    local name2 = idx2.name or (idx2.names and table.concat(idx2.names, " & ")) or ""
     local merged_blind = {
         name = "Double Trouble!?",
         key = "bl_hpfx_double_trouble",
@@ -66,6 +68,7 @@ function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
             get_hex_string(idx1.boss_colour),
             get_hex_string(idx2.boss_colour)
         )),
+        vars = { (table.concat({ name1, name2 }, " & ")) }
     }
     -- Merge the blind debuff tables
     for k, v in pairs(idx1.debuff or {}) do merged_blind.debuff[k] = v end
@@ -94,6 +97,35 @@ SMODS.Blind {
     debuff = G and G.GAME and G.GAME.blind.debuff or {},
     boss = { min = 1, max = 1000 },
     boss_colour = G and G.GAME and G.GAME.blind.boss_colour or HEX("FCB3EA"),
+    loc_vars = function(self)
+        local function namingMyShitSafely(n)
+            if not n or n == '' then return "???" end
+            if type(n) == 'table' then
+                for _, m in ipairs(n) do
+                    if m and m ~= '' then
+                        return "???"
+                    end
+                end
+            end
+            return tostring(n)
+        end
+        local nayme, naymer
+        if self.names and (#self.names >= 2) then
+            nayme = namingMyShitSafely(self.names[1])
+            naymer = namingMyShitSafely(self.names[2])
+        else
+            local notGlobal = rawget(_G, 'Hyperfixation')
+            if notGlobal and notGlobal.hpfxDT_idx1 and notGlobal.hpfxDT_idx2 then
+                nayme = namingMyShitSafely(notGlobal.hpfxDT_idx1.name or
+                    (notGlobal.hpfxDT_idx1.names and notGlobal.hpfxDT_idx1.names[1]))
+                naymer = namingMyShitSafely(notGlobal.hpfxDT_idx2.name or
+                    (notGlobal.hpfxDT_idx2.names and notGlobal.hpfxDT_idx2.names[1]))
+            else
+                nayme, naymer = "???", "???"
+            end
+        end
+        return { vars = { nayme .. " & " .. naymer } }
+    end,
     calculate = function(self, blind, context)
         local H = Hyperfixation
         local b = G.GAME and G.GAME.blind
