@@ -453,7 +453,21 @@ SMODS.JimboQuip({
 })
 
 --Configuration
+loc_colour('red')
+G.ARGS.LOC_COLOURS['hpfx_mypink'] = HEX("FCB3EA")
 local config = SMODS.current_mod.config
+SMODS.current_mod.ui_config = {
+    colour = G.C.BLACK,
+    -- Color of the mod menu BG
+    author_colour = G.C.hpfx_mypink,
+    -- Color of the text displaying the mod authors
+    bg_colour = { G.C.BLACK[1], G.C.BLACK[2], G.C.BLACK[3], 0.5 },
+    -- Color of the area behind the mod menu.
+    back_colour = G.C.hpfx_mypink,
+    -- Color of the "Back" button
+    tab_button_colour = G.C.hpfx_mypink,
+    -- Color of the tab buttons
+}
 
 --singles
 SMODS.load_file('lib/ui.lua')()
