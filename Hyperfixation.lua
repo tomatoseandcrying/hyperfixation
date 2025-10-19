@@ -331,15 +331,13 @@ Hyperfixation = Hyperfixation or {
 }
 
 --more features
-SMODS.current_mod.optional_features = {
-    post_trigger = true,
-    retrigger_joker = true,
-    quantum_enhancements = false,
-    cardareas = {
-        discard = true,
-        deck = true
+SMODS.current_mod.optional_features = function()
+    return {
+        post_trigger = true,
+        retrigger_joker = true,
+        cardareas = { discard = true, deck = true }
     }
-}
+end
 
 --calcbased unlocks
 SMODS.current_mod.calculate = function(self, context)
@@ -453,6 +451,9 @@ SMODS.JimboQuip({
         end
     end
 })
+
+--Configuration
+local config = SMODS.current_mod.config
 
 --singles
 SMODS.load_file('lib/ui.lua')()
