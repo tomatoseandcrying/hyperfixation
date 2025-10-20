@@ -459,13 +459,13 @@ local config = SMODS.current_mod.config
 SMODS.current_mod.ui_config = {
     colour = G.C.BLACK,
     -- Color of the mod menu BG
-    author_colour = G.C.hpfx_mypink,
+    author_colour = HEX("FCB3EA"),
     -- Color of the text displaying the mod authors
-    bg_colour = { G.C.BLACK[1], G.C.BLACK[2], G.C.BLACK[3], 0.5 },
+    bg_colour = { G.C.ORANGE[1], G.C.RARITY[4][1], G.C.GOLD[1], 0.5 },
     -- Color of the area behind the mod menu.
-    back_colour = G.C.hpfx_mypink,
+    back_colour = HEX("FCB3EA"),
     -- Color of the "Back" button
-    tab_button_colour = G.C.hpfx_mypink,
+    tab_button_colour = HEX("FCB3EA"),
     -- Color of the tab buttons
 }
 
