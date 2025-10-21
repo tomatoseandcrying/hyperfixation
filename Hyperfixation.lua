@@ -215,6 +215,14 @@ Hyperfixation = Hyperfixation or {
         j_hpfx_take_the_moon = 'j_to_the_moon',
         j_hpfx_apollo = 'j_satellite',
     },
+    --Isaac joker keys
+    isaac_jokers = isaac_jokers or {
+        'j_hpfx_moriah',
+        'j_hpfx_mary',
+        'j_hpfx_iscariot',
+        'j_hpfx_farmer',
+        'j_hpfx_cyanosis'
+    },
 
     ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperfixation exists and is a table.
     ---@param mod_id any The ID of the mod to check. Can be found in `metadata.json`.
@@ -453,21 +461,68 @@ SMODS.JimboQuip({
 })
 
 --Configuration
-loc_colour('red')
-G.ARGS.LOC_COLOURS['hpfx_mypink'] = HEX("FCB3EA")
 local config = SMODS.current_mod.config
 SMODS.current_mod.ui_config = {
-    colour = G.C.BLACK,
+    colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },
     -- Color of the mod menu BG
     author_colour = HEX("FCB3EA"),
     -- Color of the text displaying the mod authors
-    bg_colour = { G.C.ORANGE[1], G.C.RARITY[4][1], G.C.GOLD[1], 0.5 },
+    bg_colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 0.5 },
     -- Color of the area behind the mod menu.
     back_colour = HEX("FCB3EA"),
     -- Color of the "Back" button
     tab_button_colour = HEX("FCB3EA"),
     -- Color of the tab buttons
 }
+function G.FUNCS.hpfx_oldIsaacSprites(e)
+    local _card = e.config.ref_table
+    if _card.atlas == 'IsaacJokers' then
+        _card.atlas = 'OldIsaacJokers'
+    else
+        _card.atlas = 'IsaacJokers'
+    end
+end
+
+SMODS.current_mod.config_tab = function()
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            align = "c",
+            minw = 9,
+            minh = 6,
+            padding = 0.2,
+            r = 0.1,
+            colour = { G.C.BLACK[1], G.C.BLACK[2], G.C.BLACK[3], 0.4 },
+            outline = 3,
+            outline_colour = G.C.WHITE,
+            hover = true,
+            shadow = true
+        },
+        nodes = { {
+            n = G.UIT.C,
+            config = {
+                align = "tl",
+                minw = 4,
+                minh = 6,
+                padding = 0.2
+            },
+            nodes = { {
+                n = G.UIT.C,
+                config = { padding = 0 },
+                nodes = { create_toggle {
+                    col = true,
+                    shadow = true,
+                    hover = true,
+                    ref_table = Hyperfixation.config,
+                    ref_value = "rebirth",
+                    label = localize('hpfx_rebirth_title'),
+                    info = localize('hpfx_rebirth_option'),
+                    right = true,
+                } }
+            } }
+        } }
+    }
+end
 
 --singles
 SMODS.load_file('lib/ui.lua')()

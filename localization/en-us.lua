@@ -1712,12 +1712,17 @@ return {
                     "{f:hpfx_ascii}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠓⠶⠴⣤⣠⣀⠀⠀⠀⠀⠀⢀⣠⠼⠃⠀",
                     "{f:hpfx_ascii}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠈⠋⠓⠓⠓⠋⠋⠈⠀⠀⠀"
                 }
-            }
+            },
         },
     },
     misc = {
         dictionary = {
-            --hpfx_isaac_option = "Play with my TBOI stuff!",
+            ['hpfx_rebirth_title'] = 'Hyperfixation: Rebirth',
+            ['hpfx_rebirth_option'] = {
+                "Jokers from the Binding",
+                "of Isaac will use their",
+                "updated sprites"
+            },
             --hpfx_ijiraq_option = "Release the Ijiraq.",
 
             hpfx_fakesaved_ex = "Saved?",
