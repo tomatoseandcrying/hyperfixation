@@ -1,10 +1,3 @@
-function table.contains(tbl, val)
-    for _, v in ipairs(tbl) do
-        if v == val then return true end
-    end
-    return false
-end
-
 --new run vars
 local igo = Game.init_game_object
 function Game:init_game_object()

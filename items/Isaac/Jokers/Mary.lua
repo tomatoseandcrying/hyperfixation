@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = 'mary',
     rarity = 1,
-    atlas = Hyperfixation.current_mod.config.rebirth and 'IsaacJokers' or 'OldIsaacJokers',
+    atlas = 'IsaacJokers',
     pos = { x = 1, y = 0 },
     cost = 4,
     unlocked = false,

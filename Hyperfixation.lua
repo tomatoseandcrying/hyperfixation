@@ -9,6 +9,14 @@ function load_folder(folder)
     end
 end
 
+--Table Contains
+function table.contains(tbl, val)
+    for _, v in ipairs(tbl) do
+        if v == val then return true end
+    end
+    return false
+end
+
 --Mod Tech
 to_big = to_big or function(x) return x end --talisman conversion function
 --profile vars
@@ -338,7 +346,26 @@ Hyperfixation = {
         return self.name == target
     end,
 
-
+    --Isaac rebirth sprite toggle function
+    isaacSpriteFunction = function()
+        for k, v in pairs(G.I.CARD) do
+            if v and v.config and v.config.center and
+                table.contains(Hyperfixation.isaac_jokers, v.config.center.key) then
+                local c = v.children
+                if not c then goto continue end
+                local center = c.center
+                local float = c.floating_sprite
+                if center and center.atlas == G.ASSET_ATLAS["hpfx_OldIsaacJokers"] then
+                    if center then center.atlas = G.ASSET_ATLAS["hpfx_IsaacJokers"] end
+                    if float then float.atlas = G.ASSET_ATLAS["hpfx_IsaacJokers"] end
+                else
+                    if center then center.atlas = G.ASSET_ATLAS["hpfx_OldIsaacJokers"] end
+                    if float then float.atlas = G.ASSET_ATLAS["hpfx_OldIsaacJokers"] end
+                end
+            end
+            ::continue::
+        end
+    end,
 }
 
 --more features
