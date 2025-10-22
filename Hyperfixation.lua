@@ -519,7 +519,6 @@ end
 
 --singles
 SMODS.load_file('lib/ui.lua')()
-SMODS.load_file('lib/config.lua')()
 SMODS.load_file('lib/debug.lua')()
 SMODS.load_file('lib/sounds.lua')()
 SMODS.load_file('lib/sprites.lua')()
