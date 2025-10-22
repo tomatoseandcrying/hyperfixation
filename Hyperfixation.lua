@@ -337,8 +337,9 @@ Hyperfixation = {
         end
         return self.name == target
     end,
-}
 
+
+}
 
 --more features
 SMODS.current_mod.optional_features = function()
@@ -463,7 +464,6 @@ SMODS.JimboQuip({
 })
 
 --Configuration
-local config = SMODS.current_mod.config
 SMODS.current_mod.ui_config = {
     colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },
     -- Color of the mod menu BG
@@ -511,7 +511,7 @@ SMODS.current_mod.config_tab = function()
                     right = true,
                     ref_table = Hyperfixation.current_mod.config,
                     ref_value = "rebirth",
-                    callback = Hyperfixation.reload_localization,
+                    callback = Hyperfixation.isaacSpriteFunction
                 }) }
             } }
         } }
