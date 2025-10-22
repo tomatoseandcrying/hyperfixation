@@ -2,7 +2,7 @@ SMODS.Joker { --Cyanosis/Blue Baby
     key = 'cyanosis',
     config = { extra = { chips = 0 } },
     rarity = 1,
-    atlas = Hyperfixation.config and 'IsaacJokers' or 'OldIsaacJokers',
+    atlas = Hyperfixation.current_mod.config and 'IsaacJokers' or 'OldIsaacJokers',
     pos = { x = 4, y = 0 },
     cost = 0,
     unlocked = false,

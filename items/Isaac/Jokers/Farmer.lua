@@ -8,7 +8,7 @@ SMODS.Joker {
     unlocked = false,
     discovered = false,
     rarity = 2,
-    atlas = Hyperfixation.config and 'IsaacJokers' or 'OldIsaacJokers',
+    atlas = Hyperfixation.current_mod.config and 'IsaacJokers' or 'OldIsaacJokers',
     pos = { x = 2, y = 0 },
     soul_pos = { x = 2, y = 1 },
     cost = 5,

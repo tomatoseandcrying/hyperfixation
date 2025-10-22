@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = 'moriah',
     rarity = 2,
-    atlas = Hyperfixation.config and 'IsaacJokers' or 'OldIsaacJokers',
+    atlas = Hyperfixation.current_mod.config and 'IsaacJokers' or 'OldIsaacJokers',
     pos = { x = 0, y = 0 },
     cost = 6,
     unlocked = false,
@@ -49,7 +49,5 @@ SMODS.Joker {
             }
         end
     end
-    --[[     in_pool = function (self, args)
-        return Hyperfixation.config.Isaac
-    end, ]]
+
 }

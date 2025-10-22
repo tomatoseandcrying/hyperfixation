@@ -18,8 +18,9 @@ G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].
 G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_bitch or false
 
 --global tables/funcs
-Hyperfixation = Hyperfixation or {
+Hyperfixation = {
     path = mod_path,
+    current_mod = SMODS.current_mod,
     --Double Trouble defaults
     hpfxDT_idx1 = G.P_BLINDS and G.P_BLINDS[1] or {},
     hpfxDT_idx2 = G.P_BLINDS and G.P_BLINDS[2] or {},
@@ -338,6 +339,7 @@ Hyperfixation = Hyperfixation or {
     end,
 }
 
+
 --more features
 SMODS.current_mod.optional_features = function()
     return {
@@ -501,17 +503,16 @@ SMODS.current_mod.config_tab = function()
             nodes = { {
                 n = G.UIT.C,
                 config = { padding = 0 },
-                nodes = { create_toggle {
-                    col = true,
-                    shadow = true,
-                    hover = true,
-                    ref_table = Hyperfixation.config,
-                    ref_value = "rebirth",
-                    callback = Hyperfixation.reload_localization,
+                nodes = { create_toggle({
                     label = localize('hpfx_rebirth_title'),
                     info = localize('hpfx_rebirth_option'),
+                    active_colour = G.C.GREEN,
+                    col = true,
                     right = true,
-                } }
+                    ref_table = Hyperfixation.current_mod.config,
+                    ref_value = "rebirth",
+                    callback = Hyperfixation.reload_localization,
+                }) }
             } }
         } }
     }
