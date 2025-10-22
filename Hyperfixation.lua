@@ -474,14 +474,6 @@ SMODS.current_mod.ui_config = {
     tab_button_colour = HEX("FCB3EA"),
     -- Color of the tab buttons
 }
-function G.FUNCS.hpfx_oldIsaacSprites(e)
-    local _card = e.config.ref_table
-    if _card.atlas == 'IsaacJokers' then
-        _card.atlas = 'OldIsaacJokers'
-    else
-        _card.atlas = 'IsaacJokers'
-    end
-end
 
 SMODS.current_mod.config_tab = function()
     return {
@@ -515,6 +507,7 @@ SMODS.current_mod.config_tab = function()
                     hover = true,
                     ref_table = Hyperfixation.config,
                     ref_value = "rebirth",
+                    callback = Hyperfixation.reload_localization,
                     label = localize('hpfx_rebirth_title'),
                     info = localize('hpfx_rebirth_option'),
                     right = true,

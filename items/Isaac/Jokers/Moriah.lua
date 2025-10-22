@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = 'moriah',
     rarity = 2,
-    atlas = 'IsaacJokers',
+    atlas = Hyperfixation.config and 'IsaacJokers' or 'OldIsaacJokers',
     pos = { x = 0, y = 0 },
     cost = 6,
     unlocked = false,

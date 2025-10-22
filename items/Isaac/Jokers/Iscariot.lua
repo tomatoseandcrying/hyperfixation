@@ -2,7 +2,7 @@ SMODS.Joker { --Iscariot/Judas
     key = 'iscariot',
     config = { extra = { chips = 30, chip_gain = 4 } },
     rarity = 1,
-    atlas = 'IsaacJokers',
+    atlas = Hyperfixation.config and 'IsaacJokers' or 'OldIsaacJokers',
     pos = { x = 3, y = 0 },
     cost = 3,
     unlocked = false,
