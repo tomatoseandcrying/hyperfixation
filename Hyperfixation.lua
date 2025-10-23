@@ -491,6 +491,7 @@ SMODS.JimboQuip({
 })
 
 --Configuration
+
 SMODS.current_mod.ui_config = {
     colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },
     -- Color of the mod menu BG
@@ -503,7 +504,6 @@ SMODS.current_mod.ui_config = {
     tab_button_colour = HEX("FCB3EA"),
     -- Color of the tab buttons
 }
-
 SMODS.current_mod.config_tab = function()
     return {
         n = G.UIT.ROOT,
@@ -535,7 +535,6 @@ SMODS.current_mod.config_tab = function()
                     info = localize('hpfx_rebirth_option'),
                     active_colour = G.C.GREEN,
                     col = true,
-                    right = true,
                     ref_table = Hyperfixation.current_mod.config,
                     ref_value = "rebirth",
                     callback = Hyperfixation.isaacSpriteFunction
