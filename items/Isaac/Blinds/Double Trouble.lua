@@ -92,6 +92,8 @@ SMODS.Blind {
     key = 'double_trouble',
     discovered = true,
     pos = { x = 0, y = 0 },
+    atlas = "IsaacBlinds",
+
     dollars = G and G.GAME and G.GAME.blind.dollars or 1,
     mult = G and G.GAME and G.GAME.blind.dollars or 1,
     debuff = G and G.GAME and G.GAME.blind.debuff or {},

@@ -30,3 +30,20 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
+
+--stickers
+SMODS.Atlas {
+    key = 'inscrstickers',
+    path = "inscryption/stickers/inscrstickers.png",
+    px = 71,
+    py = 95
+}
+--blinds
+SMODS.Atlas {
+    key = 'IsaacBlinds',
+    path = "TBOI/blinds/IsaacBlinds.png",
+    px = 32,
+    py = 32,
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 21
+}

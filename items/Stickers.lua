@@ -1,10 +1,3 @@
-SMODS.Atlas {
-    key = 'inscrstickers',
-    path = "inscryption/stickers/inscrstickers.png",
-    px = 71,
-    py = 95
-}
-
 SMODS.Sticker {
     key = "priceless",
     default_compat = true,
