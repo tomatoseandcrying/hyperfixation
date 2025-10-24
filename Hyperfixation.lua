@@ -549,6 +549,7 @@ SMODS.load_file('lib/ui.lua')()
 SMODS.load_file('lib/debug.lua')()
 SMODS.load_file('lib/sounds.lua')()
 SMODS.load_file('lib/sprites.lua')()
+SMODS.load_file('lib/fontsncolors.lua')()
 if JokerDisplay then
     SMODS.load_file('lib/joker-display_defs.lua')()
 end

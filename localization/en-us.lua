@@ -1658,6 +1658,16 @@ return {
                 },
             },
         },
+        Spectral = {
+            c_hpfx_iji_deceit = {
+                name = 'Deceit',
+                text = {
+                    "The {C:attention}Joker{} selected",
+                    "will become but a",
+                    "{C:hpfx_IjiGray,E:1}Costume{} of itself",
+                },
+            }
+        },
         Other = {
             hpfx_priceless = {
                 name = 'Priceless',
