@@ -118,7 +118,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         local forbidden_keys = { "bl_hpfx_double_trouble", "bl_big", "bl_small" }
 
         local function is_forbidden(blind)
-            return blind.key and table.contains(forbidden_keys, blind.key)
+            return blind.key and Hyperfixation.table.contains(forbidden_keys, blind.key)
         end
 
         local idx1, idx2
