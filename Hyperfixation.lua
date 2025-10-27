@@ -557,7 +557,7 @@ SMODS.load_file('items/Stickers.lua')()
 --centers
 SMODS.load_file('items/Isaac/IsaacCenter.lua')()
 SMODS.load_file('items/4Fun/FunZone.lua')()
-SMODS.load_file('items/Ijiraq/RaqShack.lua')()
+SMODS.load_file('items/Inscryption/InscryptionSection.lua')()
 --folders
 load_folder('src')
 --stuff i have to load here so it doesnt crash

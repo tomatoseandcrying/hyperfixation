@@ -1,7 +1,6 @@
-assert(SMODS.load_file('items/Ijiraq/Jokers/Ijiraq.lua'))()
-assert(SMODS.load_file('items/Ijiraq/Jokers/Costume.lua'))()
-load_folder('items/Ijiraq/Jokers/Exceptions')
-load_folder('items/Ijiraq/Consumables')
+assert(SMODS.load_file('items/Inscryption/Ijiraq/Jokers/Ijiraq.lua'))()
+assert(SMODS.load_file('items/Inscryption/Ijiraq/Jokers/Costume.lua'))()
+load_folder('items/Inscryption/Ijiraq/Jokers/Exceptions')
 
 --Ijiraq Funcs
 
