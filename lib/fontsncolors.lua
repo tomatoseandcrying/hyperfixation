@@ -24,8 +24,9 @@ SMODS.Font({
 
 --Custom Colors
 loc_colour('red')
---ijiraq
+--inscryption
 G.ARGS.LOC_COLOURS['hpfx_IjiGray'] = HEX("BFD7D5")
+G.ARGS.LOC_COLOURS['hpfx_LeshyOrange'] = HEX("F97717")
 --unlock conditions
 G.ARGS.LOC_COLOURS['hpfx_inPURPLE'] = HEX("B1A1C0")
 G.ARGS.LOC_COLOURS['hpfx_inattention'] = HEX("ECB96D")

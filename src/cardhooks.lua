@@ -223,3 +223,22 @@ function Card:can_sell_card(context)
         return true
     end
 end
+
+--Perma-Boulder
+local boulder_lock = Card.set_ability
+function Card:set_ability(center, initial, delay_sprites)
+    if self.ability and self.ability.name == 'Boulder Card' then
+        local bouldnbrash = false
+        if type(center) == 'table' then
+            bouldnbrash = (center.key == 'm_hpfx_boulder' or
+                center.name == 'Boulder Card')
+        else
+            bouldnbrash = (center == 'm_hpfx_boulder' or
+                center == 'Boulder Card')
+        end
+        if not bouldnbrash then
+            return --it BELONGS in the TRASH
+        end
+    end
+    return boulder_lock(self, center, initial, delay_sprites)
+end

@@ -1668,6 +1668,16 @@ return {
                 },
             }
         },
+        Enhanced = {
+            m_hpfx_boulder = {
+                name = 'Boulder Card',
+                text = {
+                    "{C:chips}+500{} Chips",
+                    "no rank or suit,",
+                    "cannot unenhance"
+                },
+            },
+        },
         Other = {
             hpfx_priceless = {
                 name = 'Priceless',
@@ -1724,6 +1734,15 @@ return {
                 }
             },
         },
+        hpfx_inscr_act1_items = {
+            c_hpfx_act1_boulderbottle = {
+                name = 'Boulder in a Bottle',
+                text = {
+                    "Creates #1# {C:attention,T:m_hpfx_boulder}Boulder{} in your hand",
+                    "{C:inactive}(Removed after blind defeat){}",
+                },
+            },
+        }
     },
     misc = {
         dictionary = {
