@@ -49,5 +49,4 @@ SMODS.Joker {
             }
         end
     end
-
 }
