@@ -10,4 +10,8 @@ SMODS.ConsumableType({
             text = { '\"You cannot use that now.\"' },
         }
     },
+    collection_rows = { 6, 6 },
+    shop_rate = 0.3,
+    text_colour = HEX('F97717'),
+    select_card = 'consumeables'
 })
