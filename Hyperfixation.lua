@@ -1,31 +1,68 @@
---File Loading
+--#region File Loading
 mod_path = "" .. SMODS.current_mod.path
 ---Loads all files in a folder (Will likely load unordered.)
----@param folder any The filepath to the folder you want to load. (ex: "Ijiraq/Exceptions")
-function load_folder(folder)
-    files = NFS.getDirectoryItems(mod_path .. folder)
+---@param folder string The filepath to the folder you want to load. (ex: "Ijiraq/Exceptions")
+---@param opts table? Filepath or table of filepaths to skip during the folder loading. Filetype not required
+function HPFX_load_folder(folder, opts)
+    opts = opts or {}
+    local except_map = {}
+    if opts.except then
+        if type(opts.except) == "string" then
+            except_map[opts.except] = true
+        elseif type(opts.except) == "table" then
+            for _, v in ipairs(opts.except) do except_map[v] = true end
+        end
+    end
+
+    local files = NFS.getDirectoryItems(mod_path .. folder) or {}
     for i, file in ipairs(files) do
-        SMODS.load_file(folder .. "/" .. file)()
+        local name_no_ext = file:match("(.+)%..+$") or file
+        if not except_map[file] and not except_map[name_no_ext] then
+            local path = folder .. "/" .. file
+            local HPFX_foad_lolder = SMODS.load_file(path)
+            if type(HPFX_foad_lolder) == "function" then
+                HPFX_foad_lolder()
+            else
+                -- directory recursion
+                local sub = NFS.getDirectoryItems(mod_path .. path)
+                if sub and #sub > 0 then
+                    HPFX_load_folder(path, opts)
+                else
+                    print("hpfx - skip for recursion:", path)
+                end
+            end
+        else
+            print("hpfx - skipped:", file)
+        end
     end
 end
 
---Table Contains
-function table.contains(tbl, val)
-    for _, v in ipairs(tbl) do
-        if v == val then return true end
-    end
-    return false
-end
+--folders
+HPFX_load_folder('src')
+HPFX_load_folder('items/4Fun')
 
---Mod Tech
+--folders with exceptions
+HPFX_load_folder('items/Isaac', { except = { 'IsaacCenter' } })
+HPFX_load_folder('items/Inscryption', { except = { 'Unloaded' } })
+HPFX_load_folder('lib', { except = { 'joker-display_defs' } })
+
+--singles
+SMODS.load_file('items/Stickers.lua')()
+SMODS.load_file('items/Isaac/IsaacCenter.lua')()
+--#endregion
+--#region Mod Compat Stuff
 to_big = to_big or function(x) return x end --talisman conversion function
---profile vars
+if JokerDisplay then
+    SMODS.load_file('lib/joker-display_defs.lua')()
+end
+--#endregion
+--#region Profile Settings Initialization
 G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_devilCount = G.PROFILES[G.SETTINGS.profile].hpfx_devilCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_queenCount = G.PROFILES[G.SETTINGS.profile].hpfx_queenCount or 0
 G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_bitch or false
-
---global tables/funcs
+--#endregion
+--#region Global Features
 Hyperfixation = {
     path = mod_path,
     current_mod = SMODS.current_mod,
@@ -367,18 +404,14 @@ Hyperfixation = {
         end
     end,
 }
-
---more features
-SMODS.current_mod.optional_features = function()
+SMODS.current_mod.optional_features = function() --more features
     return {
         post_trigger = true,
         retrigger_joker = true,
         cardareas = { discard = true, deck = true }
     }
 end
-
---calcbased unlocks
-SMODS.current_mod.calculate = function(self, context)
+SMODS.current_mod.calculate = function(self, context) --calcbased unlocks
     --Iscariot
     if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
         if type(G.PROFILES[G.SETTINGS.profile].hpfx_devilCount) ~= "number" then
@@ -426,8 +459,68 @@ SMODS.current_mod.calculate = function(self, context)
         end
     end
 end
+SMODS.current_mod.ui_config = { --Configuration
+    colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },
+    -- Color of the mod menu BG
+    author_colour = HEX("FCB3EA"),
+    -- Color of the text displaying the mod authors
+    bg_colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 0.5 },
+    -- Color of the area behind the mod menu.
+    back_colour = HEX("FCB3EA"),
+    -- Color of the "Back" button
+    tab_button_colour = HEX("FCB3EA"),
+    -- Color of the tab buttons
+}
+SMODS.current_mod.config_tab = function() --Also Configuration
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            align = "c",
+            minw = 9,
+            minh = 6,
+            padding = 0.2,
+            r = 0.1,
+            colour = { G.C.BLACK[1], G.C.BLACK[2], G.C.BLACK[3], 0.4 },
+            outline = 3,
+            outline_colour = G.C.WHITE,
+            hover = true,
+            shadow = true
+        },
+        nodes = { {
+            n = G.UIT.C,
+            config = {
+                align = "tl",
+                minw = 4,
+                minh = 6,
+                padding = 0.2
+            },
+            nodes = { {
+                n = G.UIT.C,
+                config = { padding = 0 },
+                nodes = { create_toggle({
+                    label = localize('hpfx_rebirth_title'),
+                    info = localize('hpfx_rebirth_option'),
+                    active_colour = G.C.GREEN,
+                    col = true,
+                    ref_table = Hyperfixation.current_mod.config,
+                    ref_value = "rebirth",
+                    callback = Hyperfixation.isaacSpriteFunction
+                }) }
+            } }
+        } }
+    }
+end
+--#endregion
 
---Quips
+--table.contains
+function table.contains(tbl, val)
+    for _, v in ipairs(tbl) do
+        if v == val then return true end
+    end
+    return false
+end
+
+--JimboQuip
 SMODS.JimboQuip({
     key = 'hpfx_eternal_jimbo',
     type = 'loss',
@@ -489,76 +582,3 @@ SMODS.JimboQuip({
         end
     end
 })
-
---Configuration
-
-SMODS.current_mod.ui_config = {
-    colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },
-    -- Color of the mod menu BG
-    author_colour = HEX("FCB3EA"),
-    -- Color of the text displaying the mod authors
-    bg_colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 0.5 },
-    -- Color of the area behind the mod menu.
-    back_colour = HEX("FCB3EA"),
-    -- Color of the "Back" button
-    tab_button_colour = HEX("FCB3EA"),
-    -- Color of the tab buttons
-}
-SMODS.current_mod.config_tab = function()
-    return {
-        n = G.UIT.ROOT,
-        config = {
-            align = "c",
-            minw = 9,
-            minh = 6,
-            padding = 0.2,
-            r = 0.1,
-            colour = { G.C.BLACK[1], G.C.BLACK[2], G.C.BLACK[3], 0.4 },
-            outline = 3,
-            outline_colour = G.C.WHITE,
-            hover = true,
-            shadow = true
-        },
-        nodes = { {
-            n = G.UIT.C,
-            config = {
-                align = "tl",
-                minw = 4,
-                minh = 6,
-                padding = 0.2
-            },
-            nodes = { {
-                n = G.UIT.C,
-                config = { padding = 0 },
-                nodes = { create_toggle({
-                    label = localize('hpfx_rebirth_title'),
-                    info = localize('hpfx_rebirth_option'),
-                    active_colour = G.C.GREEN,
-                    col = true,
-                    ref_table = Hyperfixation.current_mod.config,
-                    ref_value = "rebirth",
-                    callback = Hyperfixation.isaacSpriteFunction
-                }) }
-            } }
-        } }
-    }
-end
-
---singles
-SMODS.load_file('lib/ui.lua')()
-SMODS.load_file('lib/debug.lua')()
-SMODS.load_file('lib/sounds.lua')()
-SMODS.load_file('lib/sprites.lua')()
-SMODS.load_file('lib/fontsncolors.lua')()
-if JokerDisplay then
-    SMODS.load_file('lib/joker-display_defs.lua')()
-end
-SMODS.load_file('items/Stickers.lua')()
---centers
-SMODS.load_file('items/Isaac/IsaacCenter.lua')()
-SMODS.load_file('items/4Fun/FunZone.lua')()
-SMODS.load_file('items/Inscryption/InscryptionSection.lua')()
---folders
-load_folder('src')
---stuff i have to load here so it doesnt crash
-SMODS.load_file('items/Isaac/Blinds/Double Trouble.lua')()

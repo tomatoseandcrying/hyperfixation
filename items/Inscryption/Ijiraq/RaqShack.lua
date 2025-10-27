@@ -1,9 +1,3 @@
-assert(SMODS.load_file('items/Inscryption/Ijiraq/Jokers/Ijiraq.lua'))()
-assert(SMODS.load_file('items/Inscryption/Ijiraq/Jokers/Costume.lua'))()
-load_folder('items/Inscryption/Ijiraq/Jokers/Exceptions')
-
---Ijiraq Funcs
-
 ---Function used for Jokesters with custom transformation logic.
 ---@param card Card|table The card being transformed.
 ---@param context any Must be `context`. Use only within a Card's `calculate` context.
