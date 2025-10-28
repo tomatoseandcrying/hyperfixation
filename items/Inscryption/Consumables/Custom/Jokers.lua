@@ -14,6 +14,9 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult } }
     end,
+    set_badges = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('hpfx_cabin'), G.C.BLACK, HEX("F97717"), 1.2)
+    end,
     calculate = function(self, card, context)
         if context.joker_main then
             return {

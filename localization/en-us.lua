@@ -1783,6 +1783,7 @@ return {
             hpfx_wait = "Wait!",
             hpfx_val_down = "Value Down!?",
             hpfx_coward_ex = "Coward.",
+            hpfx_cabin = 'Leshy\'s Cabin',
         },
         labels = {
             hpfx_priceless = "Priceless",
