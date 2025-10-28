@@ -227,6 +227,6 @@ end
 --Perma-Boulder
 local boulder_lock = Card.set_ability
 function Card:set_ability(center, initial, delay_sprites)
-    if self.config.center.key == 'm_hpfx_boulder' then return end
+    if G.STAGE and G.STAGE == G.STAGES.RUN and self.config.center.key == 'm_hpfx_boulder' then return end
     return boulder_lock(self, center, initial, delay_sprites)
 end

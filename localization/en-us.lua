@@ -1,8 +1,7 @@
 return {
     descriptions = {
         Joker = {
-
-            --Isaac
+            --#region Isaac
             j_hpfx_moriah = {
                 name = 'Moriah',
                 text = {
@@ -66,8 +65,8 @@ return {
                     "{C:inactive}--Defeat the {C:hpfx_bossmute}Crimson Heart {C:hpfx_inattention}ten {C:inactive}times{}",
                 },
             },
-
-            --Non-Specific Additions
+            --#endregion
+            --#region 4Fun
             j_hpfx_chud = {
                 name = 'chud joker',
                 text = {
@@ -120,10 +119,18 @@ return {
             },
             j_hpfx_eternimbo = {
                 name = 'Joker, The Eternal',
-                text = {},
+                text = { "{C:hpfx_oldgreen}\"Enjoy yourselves! You got", "{C:hpfx_oldgreen}a {E:2,C:hpfx_oldgreen}lot{C:hpfx_oldgreen} ahead of you...\"" },
             },
-
-            --Ijiraq
+            --#endregion
+            --#region Inscryption
+            j_hpfx_squirrel = {
+                name = 'Squirrel',
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                },
+            },
+            --#endregion
+            --#region Ijiraq
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
@@ -1647,6 +1654,7 @@ return {
                     "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
+            --#endregion
         },
         Blind = {
             bl_hpfx_double_trouble = {
@@ -1738,8 +1746,14 @@ return {
             c_hpfx_act1_boulderbottle = {
                 name = 'Boulder in a Bottle',
                 text = {
-                    "Creates #1# {C:attention,T:m_hpfx_boulder}Boulder{} in your hand",
+                    "Creates #1# {C:attention}Boulder{} in your hand",
                     "{C:inactive}(Removed after blind defeat){}",
+                },
+            },
+            c_hpfx_act1_squirrelbottle = {
+                name = 'Squirrel in a Bottle',
+                text = {
+                    "Creates #1# {C:attention}Squirrel{} in your hand",
                 },
             },
         }

@@ -37,18 +37,16 @@ function HPFX_load_folder(folder, opts)
     end
 end
 
---folders
-HPFX_load_folder('src')
-HPFX_load_folder('items/4Fun')
-
---folders with exceptions
-HPFX_load_folder('items/Isaac', { except = { 'IsaacCenter' } })
-HPFX_load_folder('items/Inscryption', { except = { 'Unloaded' } })
-HPFX_load_folder('lib', { except = { 'joker-display_defs' } })
-
---singles
-SMODS.load_file('items/Stickers.lua')()
+--ordered loading for aesthetic reasons
 SMODS.load_file('items/Isaac/IsaacCenter.lua')()
+HPFX_load_folder('items/Isaac', { except = { 'IsaacCenter' } })
+HPFX_load_folder('items/4Fun')
+HPFX_load_folder('items/Inscryption', { except = { 'Unloaded' } })
+
+--order doesn't matter here
+HPFX_load_folder('src')
+HPFX_load_folder('lib', { except = { 'joker-display_defs' } })
+SMODS.load_file('items/Stickers.lua')()
 --#endregion
 --#region Mod Compat Stuff
 to_big = to_big or function(x) return x end --talisman conversion function
@@ -468,7 +466,7 @@ SMODS.current_mod.calculate = function(self, context) --calcbased unlocks
         end
     end
     --Boulder
-    if context.end_of_round then
+    if context.end_of_round and context.game_over == false and context.main_eval then
         for _, playing_card in ipairs(G.playing_cards) do
             if SMODS.has_enhancement(playing_card, 'm_hpfx_boulder') then
                 SMODS.destroy_cards(playing_card, true, true)

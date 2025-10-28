@@ -45,3 +45,33 @@ SMODS.Consumable({
         return G.hand and is_in_blind
     end
 })
+
+--Squirrel in a Bottle
+SMODS.Consumable({
+    key = 'act1_squirrelbottle',
+    set = 'hpfx_inscr_act1_items',
+    pos = { x = 1, y = 0 },
+    config = { extra = { squirrels = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.squirrels } }
+    end,
+    use = function(self, card, area, copier)
+        for i = 1, card.ability.extra.squirrels do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    play_sound('timpani')
+                    SMODS.add_card({ set = 'Joker', key = 'j_hpfx_squirrel' })
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+        end
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        local is_in_blind = G.GAME.blind.in_blind
+        return G.hand and is_in_blind
+    end
+})
