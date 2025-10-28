@@ -467,6 +467,14 @@ SMODS.current_mod.calculate = function(self, context) --calcbased unlocks
             Hyperfixation.nothingEverHappens = true
         end
     end
+    --Boulder
+    if context.end_of_round then
+        for _, playing_card in ipairs(G.playing_cards) do
+            if SMODS.has_enhancement(playing_card, 'm_hpfx_boulder') then
+                SMODS.destroy_cards(playing_card, true, true)
+            end
+        end
+    end
 end
 SMODS.current_mod.ui_config = { --Configuration
     colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },

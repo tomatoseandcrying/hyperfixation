@@ -25,16 +25,14 @@ SMODS.Consumable({
         return { vars = { card.ability.extra.boulders } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, math.min(card.ability.extra.boulders, G.consumeables.config.card_limit - #G.consumeables.cards) do
+        for i = 1, card.ability.extra.boulders do
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 delay = 0.4,
                 func = function()
-                    if G.consumeables.config.card_limit > #G.consumeables.cards then
-                        play_sound('timpani')
-                        SMODS.add_card({ set = 'Base', enhancement = 'm_hpfx_boulder' })
-                        card:juice_up(0.3, 0.5)
-                    end
+                    play_sound('timpani')
+                    SMODS.add_card({ set = 'Base', enhancement = 'm_hpfx_boulder' })
+                    card:juice_up(0.3, 0.5)
                     return true
                 end
             }))
@@ -58,6 +56,5 @@ SMODS.Enhancement({
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.bonus } }
     end,
-    weight = 0,
-    shatters = true
+    weight = 0
 })
