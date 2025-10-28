@@ -99,5 +99,8 @@ SMODS.Consumable({
             }))
         end
         delay(0.6)
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.cards >= 0
     end
 })
