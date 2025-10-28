@@ -21,6 +21,21 @@ SMODS.Consumable({
     key = 'act1_boulderbottle',
     set = 'hpfx_inscr_act1_items',
     pos = { x = 0, y = 0 },
+    soul_pos = {
+        x = 1,
+        y = 0,
+        draw = function(card, scale_mod, rotate_mod)
+            scale_mod = 0.05 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) *
+                    math.pi * 14) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            rotate_mod = 0.05 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL) * math.pi * 5) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+            card.children.floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    },
+    atlas = 'InscryptionAct1Items',
     config = { extra = { boulders = 1 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.boulders } }
@@ -50,7 +65,22 @@ SMODS.Consumable({
 SMODS.Consumable({
     key = 'act1_squirrelbottle',
     set = 'hpfx_inscr_act1_items',
-    pos = { x = 1, y = 0 },
+    pos = { x = 0, y = 0 },
+    soul_pos = {
+        x = 2,
+        y = 0,
+        draw = function(card, scale_mod, rotate_mod)
+            scale_mod = 0.05 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) *
+                    math.pi * 14) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            rotate_mod = 0.05 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL) * math.pi * 5) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+            card.children.floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    },
+    atlas = 'InscryptionAct1Items',
     config = { extra = { squirrels = 1 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.squirrels } }
@@ -69,9 +99,5 @@ SMODS.Consumable({
             }))
         end
         delay(0.6)
-    end,
-    can_use = function(self, card)
-        local is_in_blind = G.GAME.blind.in_blind
-        return G.hand and is_in_blind
     end
 })

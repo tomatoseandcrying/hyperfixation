@@ -47,3 +47,10 @@ SMODS.Atlas {
     atlas_table = 'ANIMATION_ATLAS',
     frames = 21
 }
+--act 1
+SMODS.Atlas {
+    key = 'InscryptionAct1Items',
+    path = "inscryption/consumables/act1.png",
+    px = 100,
+    py = 150
+}

@@ -1753,7 +1753,7 @@ return {
             c_hpfx_act1_squirrelbottle = {
                 name = 'Squirrel in a Bottle',
                 text = {
-                    "Creates #1# {C:attention}Squirrel{} in your hand",
+                    "Creates #1# {C:attention}Squirrel{}",
                 },
             },
         }
