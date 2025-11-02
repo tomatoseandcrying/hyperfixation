@@ -145,7 +145,7 @@ SMODS.Consumable({
     end,
     in_pool = function(self)
         local no_pliers = true
-        if SMODS.find_card('act1_pliers', true) then no_pliers = false end
+        if SMODS.find_card('c_hpfx_act1_pliers', true) then no_pliers = false end
         return no_pliers
     end
 })
@@ -180,4 +180,51 @@ SMODS.Consumable({
         local is_in_blind = G.GAME.blind.in_blind
         return is_in_blind and not G.GAME.blind.boss and G.GAME.blind.chips > 0
     end,
+})
+
+--Pliers
+SMODS.Consumable({
+    key = 'act1_pliers',
+    set = 'hpfx_inscr_act1_items',
+    pos = { x = 0, y = 0 },
+    soul_pos = {
+        x = 5,
+        y = 0,
+        draw = function(card, scale_mod, rotate_mod)
+            scale_mod = 0.05 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) *
+                    math.pi * 14) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            rotate_mod = 0.05 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL) * math.pi * 5) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+            card.children.floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    },
+    atlas = 'InscryptionAct1Items',
+    use = function(self, card, area, copier)
+        play_sound('timpani')
+        G.GAME.chips = G.GAME.chips + math.floor(0.1 * G.GAME.blind.chips)
+        G.GAME.chips_text = number_format(G.GAME.chips_text)
+        delay(0.6)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                card:juice_up(0.3, 0.5)
+                ease_dollars(-10, true)
+                return true
+            end
+        }))
+    end,
+    can_use = function(self, card)
+        local is_in_blind = G.GAME.blind.in_blind
+        return is_in_blind
+    end,
+    in_pool = function(self)
+        local no_dagger = true
+        if SMODS.find_card('c_hpfx_act1_specialdagger', true) then no_dagger = false end
+        return no_dagger
+    end
 })

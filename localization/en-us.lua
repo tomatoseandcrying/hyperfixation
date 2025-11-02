@@ -1775,7 +1775,17 @@ return {
                     "{C:attention}Halves{} current blind requirement",
                     "{C:inactive}(Cannot be used on Boss Blind){}",
                 },
-            }
+            },
+            c_hpfx_act1_pliers = {
+                name = 'Pliers',
+                text = {
+                    {
+                        "Immediately adds {C:attention}10%{} of the",
+                        "blind {C:attention}goal{} to the current blind",
+                        "{C:attention}score{}, but lose {C:money}$10{} on use"
+                    },
+                },
+            },
         }
     },
     misc = {
