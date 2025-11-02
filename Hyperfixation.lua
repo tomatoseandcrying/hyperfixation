@@ -41,7 +41,7 @@ end
 SMODS.load_file('items/Isaac/IsaacCenter.lua')()
 HPFX_load_folder('items/Isaac', { except = { 'IsaacCenter' } })
 HPFX_load_folder('items/4Fun')
-HPFX_load_folder('items/Inscryption', { except = { 'Unloaded' } })
+HPFX_load_folder('items/Inscryption', { except = { 'Unloaded', 'Acts' } })
 
 --order doesn't matter here
 HPFX_load_folder('src')

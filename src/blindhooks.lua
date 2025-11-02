@@ -8,6 +8,32 @@ function Blind:defeat(silent)
             G.PROFILES[G.SETTINGS.profile].hpfx_crimsonCount = 0
         end
     end
+    local function wrightworthJokers()
+        local jpool = (G.jokers and G.jokers.cards) or {}
+        local jn = #jpool
+        local jcount = math.floor(jn / 2)
+        --Shouldn't happen since can_use checks for >=0, but just in case yk?
+        if jcount <= 0 then return {} end
+        local selected = {}
+        for i = jn - jcount + 1, jn do
+            table.insert(selected, jpool[i])
+        end
+        return selected
+    end
+    local victims = wrightworthJokers()
+    for _, j in pairs(victims) do
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                j:juice_up(0.3, 0.5)
+                SMODS.debuff_card(j, true, 'hpfx_daggered')
+                SMODS.recalc_debuff(j)
+                return true
+            end
+        }))
+    end
     return bdf(self, silent)
 end
 

@@ -1756,6 +1756,19 @@ return {
                     "Creates #1# {C:attention}Squirrel{}",
                 },
             },
+            c_hpfx_act1_specialdagger = {
+                name = 'Special Dagger',
+                text = {
+                    {
+                        "Immediately adds {C:attention}40%{} of the blind",
+                        "{C:attention}goal{} to the current blind {C:attention}score{}"
+                    },
+                    {
+                        "{C:red}Debuffs{} all current {C:attention}right-side{} Jokers",
+                        "until current blind is defeated"
+                    }
+                },
+            },
         }
     },
     misc = {
