@@ -118,7 +118,7 @@ return {
                 },
             },
             j_hpfx_eternimbo = {
-                name = 'Joker, The Eternal',
+                name = 'The Jester of Justice',
                 text = { "{C:hpfx_oldgreen}\"Enjoy yourselves! You got", "{C:hpfx_oldgreen}a {E:2,C:hpfx_oldgreen}lot{C:hpfx_oldgreen} ahead of you...\"" },
             },
             --#endregion
@@ -1769,6 +1769,13 @@ return {
                     }
                 },
             },
+            c_hpfx_act1_scissors = {
+                name = 'Scissors',
+                text = {
+                    "{C:attention}Halves{} current blind requirement",
+                    "{C:inactive}(Cannot be used on Boss Blind){}",
+                },
+            }
         }
     },
     misc = {

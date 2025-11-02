@@ -141,6 +141,38 @@ SMODS.Consumable({
     end,
     can_use = function(self, card)
         local is_in_blind = G.GAME.blind.in_blind
-        return G.jokers and is_in_blind and #G.jokers.cards >= 0
+        return G.jokers and is_in_blind and #G.jokers.cards > 0
+    end
+})
+
+--Scissors
+SMODS.Consumable({
+    key = 'act1_scissors',
+    set = 'hpfx_inscr_act1_items',
+    pos = { x = 0, y = 0 },
+    soul_pos = {
+        x = 4,
+        y = 0,
+        draw = function(card, scale_mod, rotate_mod)
+            scale_mod = 0.05 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) *
+                    math.pi * 14) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            rotate_mod = 0.05 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL) * math.pi * 5) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+            card.children.floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    },
+    atlas = 'InscryptionAct1Items',
+    use = function(self, card, area, copier)
+        play_sound('slice1', 0.96 + math.random() * 0.08)
+        G.GAME.blind.chips = math.floor(G.GAME.blind.chips - G.GAME.blind.chips * 0.5)
+        G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        local is_in_blind = G.GAME.blind.in_blind
+        return is_in_blind and G.GAME.blind.boss and G.GAME.blind.chips > 0
     end
 })
