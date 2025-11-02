@@ -142,6 +142,11 @@ SMODS.Consumable({
     can_use = function(self, card)
         local is_in_blind = G.GAME.blind.in_blind
         return G.jokers and is_in_blind and #G.jokers.cards > 0
+    end,
+    in_pool = function(self)
+        local no_pliers = true
+        if SMODS.find_card('act1_pliers', true) then no_pliers = false end
+        return no_pliers
     end
 })
 
@@ -173,6 +178,6 @@ SMODS.Consumable({
     end,
     can_use = function(self, card)
         local is_in_blind = G.GAME.blind.in_blind
-        return is_in_blind and G.GAME.blind.boss and G.GAME.blind.chips > 0
-    end
+        return is_in_blind and not G.GAME.blind.boss and G.GAME.blind.chips > 0
+    end,
 })
