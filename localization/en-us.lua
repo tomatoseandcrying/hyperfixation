@@ -129,6 +129,12 @@ return {
                     "{C:mult}+#1#{} Mult",
                 },
             },
+            j_hpfx_blackgoat = {
+                name = 'Black Goat',
+                text = {
+                    "Can be destroyed {C:attention}#1#{} times",
+                },
+            },
             --#endregion
             --#region Ijiraq
             j_hpfx_ijiraq = {
@@ -1805,7 +1811,13 @@ return {
                 text = {
                     "{C:hpfx_LeshyOrange}Nothing will happen.{}",
                 },
-            }
+            },
+            c_hpfx_act1_blackgoatbottle = {
+                name = 'Black Goat in a Bottle',
+                text = {
+                    "Creates #1# {C:attention}Black Goat{}",
+                },
+            },
         }
     },
     misc = {

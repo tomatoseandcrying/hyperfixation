@@ -29,3 +29,41 @@ SMODS.Joker({
     end
 
 })
+SMODS.Joker({
+    key = 'blackgoat',
+    pos = { x = 0, y = 0 },
+    config = { extra = { deaths = 3 } },
+    rarity = 1,
+    cost = 1,
+    no_collection = true,
+    unlocked = true,
+    discovered = true,
+    blueprint_compat = true,
+    eternal_compat = false,
+    perishable_compat = false,
+    hpfx_priceless_compat = false,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.deaths } }
+    end,
+    set_badges = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('hpfx_cabin'), G.C.BLACK, HEX("F97717"), 1.2)
+    end,
+    calculate = function(self, card, context)
+        if context.check_eternal then
+            if card.ability.extra.deaths > 1 then
+                card.ability.extra.deaths = card.ability.extra.deaths - 1
+                card:juice_up(0.8, 0.8)
+                return { no_destroy = { override_compat = true } }
+            else
+                return { no_destroy = false }
+            end
+        end
+        if card.getting_sliced then
+            SMODS.calculate_context({ check_eternal = true }, card)
+        end
+    end,
+    in_pool = function(self, args)
+        return false, { allow_duplicates = true }
+    end
+
+})

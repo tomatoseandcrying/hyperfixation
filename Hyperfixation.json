@@ -14,7 +14,7 @@
 	"badge_text_colour": "FCB3EA",
 	"version": "0.7",
 	"dependencies": [
-		"Steamodded (>=1.0.0~BETA-1101a)",
+		"Steamodded (>=1.0.0~BETA-1103a)",
 		"Lovely (>=0.8)"
 	],
 	"conflicts": [

@@ -27,8 +27,7 @@ function Blind:defeat(silent)
             delay = 0.4,
             func = function()
                 play_sound('timpani')
-                j:juice_up(0.3, 0.5)
-                SMODS.debuff_card(j, true, 'hpfx_daggered')
+                SMODS.debuff_card(j, "reset", 'hpfx_daggered')
                 SMODS.recalc_debuff(j)
                 return true
             end
