@@ -134,8 +134,9 @@ return {
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
-                    "{C:attention}Inherits{} the ability of every Joker it disguised as {C:attention}this run{}",
-                    "{C:red,E:2}Destroys{} all other copies of Ijiraq"
+                    "{C:attention}Inherits{} the ability of every",
+                    "Joker it disguised as {C:attention}this run{}",
+                    "{C:inactive,s:0.8}({C:red,E:2,s:0.8}Destroys{s:0.8,C:inactive} all other copies of Ijiraq){}"
                 },
             },
             j_hpfx_costume = {
@@ -1784,6 +1785,13 @@ return {
                         "blind {C:attention}goal{} to the current blind",
                         "{C:attention}score{}, but lose {C:money}$10{} on use"
                     },
+                },
+            },
+            c_hpfx_act1_hoggybank = {
+                name = 'Hoggy Bank',
+                text = {
+                    "Chips are worth {C:white,X:chips}X4{}",
+                    "as much this blind",
                 },
             },
         }

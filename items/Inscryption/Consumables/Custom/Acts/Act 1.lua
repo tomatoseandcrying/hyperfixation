@@ -228,3 +228,113 @@ SMODS.Consumable({
         return no_dagger
     end
 })
+
+--Hoggy Bank
+SMODS.Consumable({
+    key = 'act1_hoggybank',
+    set = 'hpfx_inscr_act1_items',
+    pos = { x = 0, y = 0 },
+    soul_pos = {
+        x = 6,
+        y = 0,
+        draw = function(card, scale_mod, rotate_mod)
+            scale_mod = 0.05 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) *
+                    math.pi * 14) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            rotate_mod = 0.05 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL) * math.pi * 5) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+            card.children.floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    },
+    atlas = 'InscryptionAct1Items',
+    use = function(self, card, area, copier)
+        play_sound('timpani')
+        SMODS.set_scoring_calculation('hpfx_hog_multiply')
+        Hyperfixation.usedHoggy = true
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        local is_in_blind = G.GAME.blind.in_blind
+        return is_in_blind
+    end,
+})
+SMODS.Scoring_Parameter({
+    key = 'hoggy_bank',
+    default_value = 4,
+    colour = G.C.BLUE,
+    calculation_keys = { 'hoggy' },
+    calc_effect = function(self, effect, scored_card, key, amount, from_edition)
+        if not SMODS.Calculation_Controls.chips then return end
+        if amount then
+            if effect.card and effect.card ~= scored_card then juice_card(effect.card) end
+            self:modify(self.current * amount)
+            card_eval_status_text(scored_card, 'extra', nil, percent, nil, {
+                message = localize {
+                    type = 'variable',
+                    key = amount > 0 and 'a_chips' or 'a_chips_minus',
+                    vars = { 'X' .. amount }
+                },
+                colour = self.colour
+            })
+            return true
+        end
+    end
+})
+SMODS.Scoring_Calculation({
+    key = 'hog_multiply',
+    func = function(self, chips, mult, flames)
+        return chips * SMODS.get_scoring_parameter('hpfx_hoggy_bank')
+    end,
+    parameters = { 'chips', 'mult', 'hpfx_hoggy_bank' },
+    replace_ui = function(self)
+        local scale = 0.3
+        return
+        {
+            n = G.UIT.R,
+            config = { align = "cm", minh = 1, padding = 0.1 },
+            nodes = {
+                {
+                    n = G.UIT.C,
+                    config = { align = 'cm', id = 'hand_chips' },
+                    nodes = {
+                        SMODS.GUI.score_container({
+                            type = 'chips',
+                            text = 'chip_text',
+                            align = 'cr',
+                            w = 1.1,
+                            scale = scale
+                        })
+                    }
+                },
+                SMODS.GUI.operator(scale * 0.75),
+                {
+                    n = G.UIT.C,
+                    config = { align = 'cm', id = 'hand_hpfx_hoggy_bank' },
+                    nodes = {
+                        SMODS.GUI.score_container({
+                            type = 'hpfx_hoggy_bank',
+                            align = 'cm',
+                            w = 1.1,
+                            scale = scale
+                        })
+                    }
+                },
+                SMODS.GUI.operator(scale * 0.75),
+                {
+                    n = G.UIT.C,
+                    config = { align = 'cm', id = 'hand_mult' },
+                    nodes = {
+                        SMODS.GUI.score_container({
+                            type = 'mult',
+                            align = 'cl',
+                            w = 1.1,
+                            scale = scale
+                        })
+                    }
+                },
+            }
+        }
+    end
+})
