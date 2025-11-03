@@ -1794,6 +1794,12 @@ return {
                     "as much this blind",
                 },
             },
+            c_hpfx_act1_hourglass = {
+                name = 'Hourglass',
+                text = {
+                    "{C:blue}+1{} hand this round",
+                },
+            },
         }
     },
     misc = {

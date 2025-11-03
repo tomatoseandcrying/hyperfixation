@@ -338,3 +338,34 @@ SMODS.Scoring_Calculation({
         }
     end
 })
+
+--Hourglass
+SMODS.Consumable({
+    key = 'act1_hourglass',
+    set = 'hpfx_inscr_act1_items',
+    pos = { x = 0, y = 0 },
+    soul_pos = {
+        x = 7,
+        y = 0,
+        draw = function(card, scale_mod, rotate_mod)
+            scale_mod = 0.05 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) *
+                    math.pi * 14) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            rotate_mod = 0.05 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL) * math.pi * 5) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+            card.children.floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    },
+    atlas = 'InscryptionAct1Items',
+    use = function(self, card, area, copier)
+        play_sound('timpani')
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + 1
+        delay(0.6)
+    end,
+    can_use = function(self, card)
+        local is_in_blind = G.GAME.blind.in_blind
+        return is_in_blind
+    end,
+})
