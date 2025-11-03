@@ -1800,6 +1800,12 @@ return {
                     "{C:blue}+1{} hand this round",
                 },
             },
+            c_hpfx_act1_goobert = {
+                name = 'Goobert',
+                text = {
+                    "{C:hpfx_LeshyOrange}Nothing will happen.{}",
+                },
+            }
         }
     },
     misc = {
