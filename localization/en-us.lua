@@ -1838,6 +1838,13 @@ return {
                     "Creates #1# {C:attention}Frozen Opossum{}",
                 },
             },
+            c_hpfx_act1_harpiebirdlegfan = {
+                name = 'Harpie\'s Birdleg Fan',
+                text = {
+                    "{C:green}UNDebuffs{} all current {C:red}debuffed{} Jokers",
+                    "until current blind is defeated"
+                },
+            }
         }
     },
     misc = {

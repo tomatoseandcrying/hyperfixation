@@ -54,3 +54,9 @@ SMODS.Atlas {
     px = 100,
     py = 150
 }
+SMODS.Atlas {
+    key = 'InscryptionAct1ItemsBL',
+    path = "inscryption/consumables/actbirdleg.png",
+    px = 100,
+    py = 168
+}
