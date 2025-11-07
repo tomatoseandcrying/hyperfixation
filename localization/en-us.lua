@@ -135,6 +135,20 @@ return {
                     "Can be destroyed {C:attention}#1#{} times",
                 },
             },
+            j_hpfx_frozenopossum = {
+                name = 'Frozen Opossum',
+                text = {
+                    "Creates an {C:attention}Opossum{}",
+                    "when destroyed",
+                },
+            },
+            j_hpfx_opossum = {
+                name = 'Opossum',
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "{C:mult}+#2#{} Mult",
+                },
+            },
             --#endregion
             --#region Ijiraq
             j_hpfx_ijiraq = {
@@ -1816,6 +1830,12 @@ return {
                 name = 'Black Goat in a Bottle',
                 text = {
                     "Creates #1# {C:attention}Black Goat{}",
+                },
+            },
+            c_hpfx_act1_frozenopossumbottle = {
+                name = 'Frozen Opossum in a Bottle',
+                text = {
+                    "Creates #1# {C:attention}Frozen Opossum{}",
                 },
             },
         }
