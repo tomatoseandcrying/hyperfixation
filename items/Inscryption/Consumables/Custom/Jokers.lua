@@ -83,7 +83,7 @@ SMODS.Joker({
         badges[#badges + 1] = create_badge(localize('hpfx_cabin'), G.C.BLACK, HEX("F97717"), 1.2)
     end,
     add_to_deck = function(self, card, from_debuff)
-        card:add_sticker('eternal')
+        card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
         if card.getting_sliced then
