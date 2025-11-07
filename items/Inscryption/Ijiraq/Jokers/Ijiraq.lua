@@ -285,7 +285,7 @@ SMODS.Joker { --Ijiraq.
         if context.modify_scoring_hand and not context.blueprint then
             for _, v in pairs(Hyperfixation.raqeffects) do
                 if v == 'j_splash' then
-                    print('Splash!')
+                    --print('Splash!')
                     return { add_to_hand = true }
                 end
             end
