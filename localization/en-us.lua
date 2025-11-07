@@ -1841,8 +1841,7 @@ return {
             c_hpfx_act1_harpiebirdlegfan = {
                 name = 'Harpie\'s Birdleg Fan',
                 text = {
-                    "{C:green}UNDebuffs{} all current {C:red}debuffed{} Jokers",
-                    "until current blind is defeated"
+                    "{C:green}UNdebuffs{} all Jokers {C:red}debuffed{} this blind",
                 },
             }
         }
