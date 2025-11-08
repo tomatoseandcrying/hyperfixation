@@ -65,6 +65,7 @@ Hyperfixation = {
     path = mod_path,
     current_mod = SMODS.current_mod,
     usedHoggy = false,
+    raqeffects = {},
     --Double Trouble defaults
     hpfxDT_idx1 = G.P_BLINDS and G.P_BLINDS[1] or {},
     hpfxDT_idx2 = G.P_BLINDS and G.P_BLINDS[2] or {},
