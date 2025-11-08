@@ -72,6 +72,7 @@ SMODS.Joker({
     pos = { x = 0, y = 0 },
     rarity = 2,
     cost = 10,
+    config = { trig = false },
     no_collection = true,
     unlocked = true,
     discovered = true,
@@ -89,13 +90,14 @@ SMODS.Joker({
         if card.getting_sliced then
             SMODS.calculate_context({ check_eternal = true }, card)
         end
-        if context.check_eternal then
+        if context.check_eternal and card.ability.trig == false then
             card:juice_up(0.8, 0.8)
             SMODS.add_card {
                 set = 'Joker',
                 key = 'j_hpfx_opossum',
                 key_append = 'hpfx_possumblock'
             }
+            card.ability.trig = true
             return { no_destroy = false }
         end
     end,
