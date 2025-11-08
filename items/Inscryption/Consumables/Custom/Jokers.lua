@@ -90,7 +90,7 @@ SMODS.Joker({
         if card.getting_sliced then
             SMODS.calculate_context({ check_eternal = true }, card)
         end
-        if context.check_eternal and card.ability.trig == false then
+        if context.check_eternal and card.getting_sliced and card.ability.trig == false then
             card:juice_up(0.8, 0.8)
             SMODS.add_card {
                 set = 'Joker',
