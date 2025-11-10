@@ -477,6 +477,14 @@ SMODS.current_mod.calculate = function(self, context) --calcbased unlocks
             end
         end
     end
+    --The Jester of Justice
+    if context.game_over then
+        for _, v in ipairs(SMODS.find_card('j_joker', true)) do
+            if v.ability.eternal then
+                check_for_unlock({ type = 'hpfx_old' })
+            end
+        end
+    end
 end
 SMODS.current_mod.ui_config = { --Configuration
     colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },

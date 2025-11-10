@@ -120,6 +120,11 @@ return {
             j_hpfx_eternimbo = {
                 name = 'The Jester of Justice',
                 text = { "{C:hpfx_oldgreen}\"Enjoy yourselves! You got", "{C:hpfx_oldgreen}a {E:2,C:hpfx_oldgreen}lot{C:hpfx_oldgreen} ahead of you...\"" },
+                unlock = {
+                    "{C:inactive}* GARY{}",
+                    "{C:inactive}* RENOWNED HARLEQUIN, BUFFOON, AND{}",
+                    "{C:inactive}JESTER{}"
+                },
             },
             --#endregion
             --#region Inscryption

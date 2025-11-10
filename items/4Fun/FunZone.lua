@@ -48,7 +48,6 @@ SMODS.JimboQuip({
             if self.hpfxvoxcount == 1 then
                 play_sound('hpfx_voice1', 1, 1)
                 G.gyahaha = 1
-                check_for_unlock({ type = 'hpfx_old' })
             else
                 SMODS.Sound:create_stop_sound('voice1', 1)
                 play_sound('voice1', 0.6, 0)
