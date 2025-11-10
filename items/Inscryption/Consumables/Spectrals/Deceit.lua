@@ -111,10 +111,10 @@ SMODS.Consumable({
                             end,
                         }))
                     end
-                    G.jokers:unhighlight_all()
                     return true
                 end
             }))
         end
+        --G.jokers:unhighlight_all()
     end
 })

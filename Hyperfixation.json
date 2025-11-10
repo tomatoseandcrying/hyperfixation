@@ -6,7 +6,7 @@
 		"tomatose",
 		"deadbeet even"
 	],
-	"description": "A collection of my current and past hyperfixations translated into the Balatro universe!",
+	"description": "A collection of my current and past hyperfixations translated into the Balatro universe! It is recommended to play this mod with an unlocked base game save.",
 	"prefix": "hpfx",
 	"main_file": "Hyperfixation.lua",
 	"priority": 1,
