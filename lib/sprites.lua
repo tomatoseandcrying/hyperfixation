@@ -60,3 +60,10 @@ SMODS.Atlas {
     px = 100,
     py = 168
 }
+--ruby
+SMODS.Atlas {
+    key = 'TarotRuby',
+    path = "4Fun/deat.png",
+    px = 219,
+    py = 78
+}
