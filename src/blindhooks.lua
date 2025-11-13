@@ -21,17 +21,21 @@ function Blind:defeat(silent)
         return selected
     end
     local victims = wrightworthJokers()
-    for _, j in pairs(victims) do
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.4,
-            func = function()
-                play_sound('timpani')
-                SMODS.debuff_card(j, "reset", 'hpfx_daggered')
-                SMODS.recalc_debuff(j)
-                return true
-            end
-        }))
+    if Hyperfixation.table.contains(Hyperfixation.daggercheck, 'cookie_clicker') then
+        for _, j in pairs(victims) do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    play_sound('timpani')
+                    j:juice_up(0.3, 0.5)
+                    SMODS.debuff_card(j, nil, 'hpfx_daggered')
+                    SMODS.recalc_debuff(j)
+                    return true
+                end
+            }))
+        end
+        Hyperfixation.daggercheck = {}
     end
     if Hyperfixation.usedHoggy then
         Hyperfixation.usedHoggy = false

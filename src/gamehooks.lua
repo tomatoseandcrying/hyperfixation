@@ -13,6 +13,7 @@ local cardRateStoring = Game.start_run
 function Game:start_run(args)
     local ret = cardRateStoring(self, args)
     Hyperfixation.og_cardrate = Hyperfixation.og_cardrate or {}
+    Hyperfixation.daggercheck = Hyperfixation.daggercheck or {}
     return ret
 end
 

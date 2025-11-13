@@ -138,6 +138,7 @@ SMODS.Consumable({
                 end
             }))
         end
+        table.insert(Hyperfixation.daggercheck, 'cookie_clicker')
     end,
     can_use = function(self, card)
         local is_in_blind = G.GAME.blind.in_blind
