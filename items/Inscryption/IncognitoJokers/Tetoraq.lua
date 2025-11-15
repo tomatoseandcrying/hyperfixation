@@ -14,7 +14,7 @@ SMODS.Joker({
         extra_slots_used = 0,
         extra = { iji_retriggers = 0 },
     },
-    dependencies = { 'incognito' },
+    dependencies = { 'Incognito' },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -23,7 +23,7 @@ SMODS.Joker({
         }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'incognito'
+        return args.type == 'Incognito'
     end,
     add_to_deck = function(self, card, from_debuff)
         local retrigger_joker = 0

@@ -60,7 +60,7 @@ to_big = to_big or function(x) return x end --talisman conversion function
 if JokerDisplay then
     SMODS.load_file('lib/joker-display_defs.lua')()
 end
-if incognito then
+if Incognito then
     HPFX_load_folder('items/Inscryption/IncognitoJokers')
     HPFX_load_folder('items/Inscryption/IncognitoVouchers')
 end

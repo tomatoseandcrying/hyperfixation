@@ -50,9 +50,16 @@ SMODS.Joker { --Ijiraq.
         end
     end,
     in_pool = function(self, args) return false end,
+    update = function(self, card, dt)
+        if Incognito and next(SMODS.find_card('j_hpfx_tetoraq', false)) then
+            card.config.center.rarity = 'nic_teto'
+        else
+            card.config.center.rarity = 3
+        end
+    end,
     add_to_deck = function(self, card, from_debuff)
-        if incognito then
-            check_for_unlock({ type = 'incognito' })
+        if Incognito then
+            check_for_unlock({ type = 'Incognito' })
         end
         -- Removes other copies of Ijiraq
         --
@@ -312,15 +319,6 @@ SMODS.Joker { --Ijiraq.
                             }
                         end
                     end
-                end
-            end
-        end
-        if context.cardarea == G.jokers then
-            if context.card_added or context.hpfx_joker_removed then
-                if next(SMODS.find_card('j_hpfx_tetoraq', false)) then
-                    card.config.center.rarity = 'nic_teto'
-                else
-                    card.config.center.rarity = 3
                 end
             end
         end
