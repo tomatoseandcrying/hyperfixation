@@ -61,7 +61,7 @@ end
 function bitchslap() --Destroys all Queens in your deck
     for _, c in ipairs(G.playing_cards) do
         if c:get_id() == 12 then
-            SMODS.destroy_cards(c, true, true)
+            SMODS.destroy_cards(c, true, true, true)
         end
     end
 end

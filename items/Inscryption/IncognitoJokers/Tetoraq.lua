@@ -28,7 +28,7 @@ SMODS.Joker({
     add_to_deck = function(self, card, from_debuff)
         local retrigger_joker = 0
         for _, c in pairs(G.jokers.cards) do
-            if c.config.center.rarity == 'nic_teto' then
+            if c:is_rarity('nic_teto') then
                 retrigger_joker = retrigger_joker + 1
             end
         end
@@ -38,7 +38,7 @@ SMODS.Joker({
         if context.card_added or context.hpfx_joker_removed then
             local retrigger_joker = 0
             for _, c in pairs(G.jokers.cards) do
-                if c.config.center.rarity == 'nic_teto' then
+                if c:is_rarity('nic_teto') then
                     retrigger_joker = retrigger_joker + 1
                 end
             end

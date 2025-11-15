@@ -1,15 +1,15 @@
 SMODS.Joker {
     key = 'chud',
-    rarity = 2,
     atlas = 'Jokers4Fun',
-    pos = { x = 0, y = 0 },
-    soul_pos = { x = 1, y = 0 },
+    rarity = 2,
     cost = 4,
     unlocked = false,
     discovered = false,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 0 },
     config = { extra = {
         xmult = 2,
         xmult_gain = 10,

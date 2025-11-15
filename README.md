@@ -6,15 +6,20 @@
 
 
 ## Patches:
-### <ins>state_events.lua</ins>
+### <ins>Inscryption</ins>
 
-__G.FUNCS.evaluate_play(e)__
-- Mary's unlock condition
-- calc_dollar_bonus Jokester transformations
-- Ijiraq mimicking Splash
+__card__
+- Ijiraq cardTable assignments
+- Ijiraq object assignments
+- Astronomer? functionality
 
-__G.FUNCS.discard_cards_from_highlighted(e, hook)__
-- custom post-discard context
+__common_events__
+- Ijiraq effect merging
+- Ijiraq description rendering
+
+__state_events__
+- Transformations on dollar bonuses
+- Splash? functionality
 
 ### <ins>card.lua</ins>
 

@@ -484,7 +484,7 @@ SMODS.current_mod.calculate = function(self, context) --calcbased unlocks
     if context.end_of_round and context.game_over == false and context.main_eval then
         for _, playing_card in ipairs(G.playing_cards) do
             if SMODS.has_enhancement(playing_card, 'm_hpfx_boulder') then
-                SMODS.destroy_cards(playing_card, true, true)
+                SMODS.destroy_cards(playing_card, true, true, true)
             end
         end
     end
