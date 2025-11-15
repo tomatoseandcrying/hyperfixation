@@ -225,7 +225,7 @@ SMODS.Consumable({
     end,
     in_pool = function(self)
         local no_dagger = true
-        if SMODS.find_card('c_hpfx_act1_specialdagger', true) then no_dagger = false end
+        if next(SMODS.find_card('c_hpfx_act1_specialdagger', true)) then no_dagger = false end
         return no_dagger
     end
 })

@@ -53,7 +53,7 @@ SMODS.Joker({
     end,
     in_pool = function(self, args)
         for _, j in ipairs(G.jokers.cards) do
-            if SMODS.find_card('j_hpfx_ijiraq', true) then
+            if next(SMODS.find_card('j_hpfx_ijiraq', true)) then
                 return true
             else
                 return false
