@@ -35,7 +35,7 @@ SMODS.Joker({
         card.ability.extra.iji_retriggers = retrigger_joker
     end,
     calculate = function(self, card, context)
-        if context.card_added then
+        if context.card_added or context.hpfx_joker_removed then
             local retrigger_joker = 0
             for _, c in pairs(G.jokers.cards) do
                 if c.config.center.rarity == 'nic_teto' then
