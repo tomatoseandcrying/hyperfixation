@@ -10,16 +10,16 @@ Patches can be found in the lovely folder.
 ## Overrides
 Overrides can be found in the src folder.
 ## Compatibilities
-Talisman\
-Joker Display\
+[Talisman]([url](https://github.com/SpectralPack/Talisman))\
+[JokerDisplay]([url](https://github.com/nh6574/JokerDisplay))\
 Incognito (not released)\
 *more to come...*
 ## Incompatibilities
-Talisman\
+[Talisman]([url](https://github.com/SpectralPack/Talisman))\
 Incantation\
 Overflow\
 Multiplayer\
 *more to come...*
 ## Crossovers
-Incognito\
+Incognito (not released)\
 *more to come...*
