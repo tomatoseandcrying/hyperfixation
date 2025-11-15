@@ -36,3 +36,5 @@ G.ARGS.LOC_COLOURS['hpfx_bossmute'] = HEX("C78F85")
 G.ARGS.LOC_COLOURS['hpfx_oldgreen'] = HEX("009900")
 G.ARGS.LOC_COLOURS['hpfx_black'] = HEX("000000")
 G.ARGS.LOC_COLOURS['hpfx_mypink'] = HEX("FCB3EA")
+--crossmod
+G.ARGS.LOC_COLOURS['hpfx_inc_teto'] = HEX("E15D73")

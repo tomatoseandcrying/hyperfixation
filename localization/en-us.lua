@@ -1681,6 +1681,21 @@ return {
                 },
             },
             --#endregion
+            --#region Crossmod
+            j_hpfx_tetoraq = {
+                name = '{C:hpfx_inc_teto}Teto{}raq',
+                text = {
+                    {
+                        "{C:hpfx_multiball,T:j_hpfx_tetoraq}Ijiraq{} is now {C:hpfx_inc_teto}Teto{} rarity.",
+                        "{C:hpfx_multiball}Ijiraq{} retriggers {C:attention}once{}",
+                        "for every {C:hpfx_inc_teto}Teto{} Joker. (#2#)",
+                        "{C:attention}Takes up no space."
+                    },
+                },
+                unlock = {
+                    "{C:hpfx_inc_teto}Thank you for playing Incognito!{}"
+                },
+            },
         },
         Blind = {
             bl_hpfx_double_trouble = {
@@ -1767,6 +1782,7 @@ return {
                     "{f:hpfx_ascii}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠈⠋⠓⠓⠓⠋⠋⠈⠀⠀⠀"
                 }
             },
+
         },
         hpfx_inscr_act1_items = {
             c_hpfx_act1_boulderbottle = {

@@ -24,3 +24,13 @@ function ease_discard(mod, instant, silent)
     }))
     return ret
 end
+
+--thanks winter
+local ref_card_dissolve = Card.start_dissolve
+function Card:start_dissolve(dissolve_colours, silent, dissolve_time_fac, no_juice)
+    local ret = ref_card_dissolve(self, dissolve_colours, silent, dissolve_time_fac, no_juice)
+    if self.area and self.ability.set == 'Joker' then
+        SMODS.calculate_context({ hpfx_joker_removed = self })
+    end
+    return ret
+end

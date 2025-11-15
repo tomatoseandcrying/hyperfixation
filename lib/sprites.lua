@@ -67,3 +67,10 @@ SMODS.Atlas {
     px = 219,
     py = 78
 }
+--crossmod
+SMODS.Atlas {
+    key = 'J!CrossMod',
+    path = "crossmod/CM!jokers.png",
+    px = 71,
+    py = 95
+}

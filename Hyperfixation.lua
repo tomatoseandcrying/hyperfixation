@@ -41,7 +41,14 @@ end
 SMODS.load_file('items/Isaac/IsaacCenter.lua')()
 HPFX_load_folder('items/Isaac', { except = { 'IsaacCenter' } })
 HPFX_load_folder('items/4Fun')
-HPFX_load_folder('items/Inscryption', { except = { 'Unloaded', 'Acts' } })
+HPFX_load_folder('items/Inscryption', {
+    except = {
+        'Unloaded',
+        'Acts',
+        'IncognitoJokers',
+        'IncognitoVouchers',
+    }
+})
 
 --order doesn't matter here
 HPFX_load_folder('src')
@@ -52,6 +59,10 @@ SMODS.load_file('items/Stickers.lua')()
 to_big = to_big or function(x) return x end --talisman conversion function
 if JokerDisplay then
     SMODS.load_file('lib/joker-display_defs.lua')()
+end
+if incognito then
+    HPFX_load_folder('items/Inscryption/IncognitoJokers')
+    HPFX_load_folder('items/Inscryption/IncognitoVouchers')
 end
 --#endregion
 --#region Profile Settings Initialization
