@@ -265,6 +265,12 @@ Hyperfixation = {
         --hpfx
         ['j_hpfx_ijiraq'] = true,
         ['j_hpfx_moriah'] = true,
+        ['j_hpfx_mary'] = true,
+        ['j_hpfx_iscariot'] = true,
+        ['j_hpfx_cyanosis'] = true,
+        ['j_hpfx_marie'] = true,
+        ['j_hpfx_space_needle'] = true,
+        ['j_hpfx_no_bitches'] = true,
     },
     ---Jokesters that calculate dollar bonuses. Jokester is k, Joker is v
     calcdollarjokesters = calcdollarjokesters or {
