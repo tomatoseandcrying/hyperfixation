@@ -163,7 +163,7 @@ SMODS.Joker { --Ijiraq.
         end
     end,
     remove_from_deck = function(self, card, from_debuff)
-        local weAreTheIjilings = next(SMODS.find_card("j_hpfx_ijiraq"))
+        local weAreTheIjilings = SMODS.find_card("j_hpfx_ijiraq")
         local GiveUsYourEffectStacks = 0
         for GETTHEFUCK, OUTOFMYHOUSE in ipairs(weAreTheIjilings) do
             if OUTOFMYHOUSE ~= card then
