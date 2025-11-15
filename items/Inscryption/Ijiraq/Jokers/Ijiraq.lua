@@ -317,7 +317,7 @@ SMODS.Joker { --Ijiraq.
         end
         if context.cardarea == G.jokers then
             if context.card_added or context.hpfx_joker_removed then
-                if incognito and SMODS.find_card('j_hpfx_tetoraq') then
+                if SMODS.find_card('j_hpfx_tetoraq', false) then
                     card.config.center.rarity = 'nic_teto'
                 else
                     card.config.center.rarity = 3

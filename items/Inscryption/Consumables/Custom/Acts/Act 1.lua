@@ -146,7 +146,7 @@ SMODS.Consumable({
     end,
     in_pool = function(self)
         local no_pliers = true
-        if SMODS.find_card('c_hpfx_act1_pliers', true) then no_pliers = false end
+        if next(SMODS.find_card('c_hpfx_act1_pliers', true)) then no_pliers = false end
         return no_pliers
     end
 })
