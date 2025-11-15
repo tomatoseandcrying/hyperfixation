@@ -3,6 +3,13 @@
 <p align="center"><img width="568" height="400" alt="hyperfixation logo" src="https://github.com/user-attachments/assets/d03466b2-eb50-414e-bb8a-84dad4a61756" />
 <p align="center">a content-ish mod.
 
+ <br/><br/>
+<p align="center"><img width="608" height="437" alt="Screenshot 2025-11-15 141232" src="https://github.com/user-attachments/assets/d9996ddb-cdba-4a45-81a0-4530381cc0c2" />
+
+<p align="center">
+  <img width="500" alt="Screenshot 2025-10-14 030421" src="https://github.com/user-attachments/assets/9188a1fa-09fb-4af3-94c6-1b17f742359f" />
+  <img width="500" alt="Screenshot 2025-10-01 211139" src="https://github.com/user-attachments/assets/55f5b2be-e0b3-4af3-b1ad-140db3f41441" />
+</p>
 
 
 ## Patches
@@ -20,6 +27,9 @@ Incantation\
 Overflow\
 Multiplayer\
 *more to come...*
+
 ## Crossovers
 Incognito (not released)\
 *more to come...*
+
+
