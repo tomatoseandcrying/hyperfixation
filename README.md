@@ -19,7 +19,7 @@ Overrides can be found in the src folder.
 ## Compatibilities
 [Talisman](https://github.com/SpectralPack/Talisman)\
 [JokerDisplay](https://github.com/nh6574/JokerDisplay)\
-Incognito (not released)\
+[Incognito](https://github.com/IncognitoN71/Incognito)\
 *more to come...*
 ## Incompatibilities
 [Talisman](https://github.com/SpectralPack/Talisman)\
