@@ -19,6 +19,7 @@ SMODS.Joker {
         return {
             vars = {
                 card.ability.extra.xmult,
+                1 + G.GAME.skips * card.ability.extra.xmult,
                 card.area and card.area == G.jokers and "...?" or ""
             }
         }
