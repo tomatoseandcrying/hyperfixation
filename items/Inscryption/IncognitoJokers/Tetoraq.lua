@@ -7,7 +7,7 @@ SMODS.Joker({
     cost = 8,
     unlocked = false,
     discovered = false,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     config = {
@@ -25,26 +25,15 @@ SMODS.Joker({
     check_for_unlock = function(self, args)
         return args.type == 'Incognito'
     end,
-    add_to_deck = function(self, card, from_debuff)
+    calculate = function(self, card, context)
         local retrigger_joker = 0
         for _, c in pairs(G.jokers.cards) do
-            if c:is_rarity('nic_teto') then
+            if c:is_rarity('nic_teto') or c.ability.nic_tetosticker then
                 retrigger_joker = retrigger_joker + 1
-            end
-        end
-        card.ability.extra.iji_retriggers = retrigger_joker
-    end,
-    calculate = function(self, card, context)
-        if context.card_added or context.hpfx_joker_removed then
-            local retrigger_joker = 0
-            for _, c in pairs(G.jokers.cards) do
-                if c:is_rarity('nic_teto') then
-                    retrigger_joker = retrigger_joker + 1
-                end
             end
             card.ability.extra.iji_retriggers = retrigger_joker
         end
-        if context.repetition and context.cardarea == G.jokers
+        if context.retrigger_joker_check
             and context.other_card.config.center_key == 'j_hpfx_ijiraq' then
             return {
                 repetitions = card.ability.extra.iji_retriggers
