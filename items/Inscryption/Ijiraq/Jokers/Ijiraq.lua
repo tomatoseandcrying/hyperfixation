@@ -156,6 +156,7 @@ SMODS.Joker { --Ijiraq.
 
                 table.insert(Hyperfixation.trig, v)
             else
+                local ijifour = SMODS.four_fingers
                 function SMODS.four_fingers()
                     if next(SMODS.find_card('j_hpfx_ijiraq')) then return 5 end
                     return ijifour()
