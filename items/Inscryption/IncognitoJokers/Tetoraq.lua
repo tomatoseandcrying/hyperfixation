@@ -11,7 +11,7 @@ SMODS.Joker({
     eternal_compat = true,
     perishable_compat = true,
     config = {
-        extra_slots_used = 0,
+        extra_slots_used = -1,
         extra = { iji_retriggers = 0 },
     },
     dependencies = { 'Incognito' },
