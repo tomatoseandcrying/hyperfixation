@@ -34,7 +34,7 @@ SMODS.Joker {
             return {
                 mult_mod = card.ability.extra.mult,
                 sound = "hpfx_1up",
-                colour = G.C.CHIPS,
+                colour = G.C.MULT,
                 message = localize { type = "variable", key = "a_mult", vars = { card.ability.extra.mult } },
                 extra = {
                     xmult_mod = card.ability.extra.xmult,

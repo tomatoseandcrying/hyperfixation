@@ -111,14 +111,15 @@ SMODS.Joker { --Ijiraq.
             G.hand:change_size(1)
             table.insert(Hyperfixation.trig, 'j_juggler')
         end
-
-        --Effects that can stack in mass iterator
-        --
         for _, v in pairs(Hyperfixation.raqeffects) do
             if v == 'j_stuntman' then
                 G.hand:change_size(-2)
                 table.insert(Hyperfixation.trig, v)
             end
+        end
+        --Effects that can stack in mass iterator
+        --
+        for _, v in pairs(Hyperfixation.raqeffects) do
             if v == 'j_chaos' then
                 SMODS.change_free_rerolls(1)
                 table.insert(Hyperfixation.trig, v)
@@ -154,6 +155,11 @@ SMODS.Joker { --Ijiraq.
                 end
 
                 table.insert(Hyperfixation.trig, v)
+            else
+                function SMODS.four_fingers()
+                    if next(SMODS.find_card('j_hpfx_ijiraq')) then return 5 end
+                    return ijifour()
+                end
             end
             if v == 'j_pareidolia' then
                 local ijiface = Card.is_face

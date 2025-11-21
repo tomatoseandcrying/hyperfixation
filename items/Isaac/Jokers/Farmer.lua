@@ -2,7 +2,6 @@ SMODS.Joker {
     key = 'farmer',
     config = {
         card_limit = 1,
-        extra_slots_used = -1,
         extra = { size = 1 }
     },
     unlocked = false,
