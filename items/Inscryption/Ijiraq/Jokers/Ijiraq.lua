@@ -8,7 +8,7 @@ SMODS.Joker { --Ijiraq.
     rarity = 3,
     cost = 8,
     atlas = 'IjiraqJokers',
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = false,
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
