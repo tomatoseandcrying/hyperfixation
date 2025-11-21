@@ -65,6 +65,16 @@ return {
                     "{C:inactive}--Defeat the {C:hpfx_bossmute}Crimson Heart {C:hpfx_inattention}ten {C:inactive}times{}",
                 },
             },
+            j_hpfx_favorite = {
+                name = 'Favorite',
+                text = {
+                    "{C:mult}+#1#{} and {X:mult,C:white}X#2#{} Mult",
+                },
+                unlock = {
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_nomultjoker'{}",
+                    "{C:inactive}--Win a run without scoring {C:hpfx_multiball}Mult. Period.{}",
+                },
+            },
             --#endregion
             --#region 4Fun
             j_hpfx_chud = {

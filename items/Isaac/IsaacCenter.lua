@@ -9,6 +9,8 @@ assert(SMODS.load_file('items/Isaac/Jokers/Iscariot.lua'))()
 --tainted unlock condition: Win a run with Dark Judas
 assert(SMODS.load_file('items/Isaac/Jokers/Cyanosis.lua'))()
 --tainted unlock condition: Have Blueprint copy Blue Joker
+assert(SMODS.load_file('items/Isaac/Jokers/Favorite.lua'))()
+--tainted unlock condition: Win a run without scoring Mult. Period.
 
 --#region Double Trouble?!
 

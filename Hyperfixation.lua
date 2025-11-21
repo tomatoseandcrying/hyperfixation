@@ -286,7 +286,8 @@ Hyperfixation = {
         'j_hpfx_mary',
         'j_hpfx_iscariot',
         'j_hpfx_farmer',
-        'j_hpfx_cyanosis'
+        'j_hpfx_cyanosis',
+        'j_hpfx_favorite',
     },
 
     ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperfixation exists and is a table.
