@@ -65,6 +65,16 @@ return {
                     "{C:inactive}--Defeat the {C:hpfx_bossmute}Crimson Heart {C:hpfx_inattention}ten {C:inactive}times{}",
                 },
             },
+            j_hpfx_favorite = {
+                name = 'Favorite',
+                text = {
+                    "{C:mult}+#1#{} and {X:mult,C:white}X#2#{} Mult",
+                },
+                unlock = {
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_nomultjoker'{}",
+                    "{C:inactive}--Win a run without scoring {C:hpfx_multiball}Mult. Period.{}",
+                },
+            },
             --#endregion
             --#region 4Fun
             j_hpfx_chud = {
@@ -1685,15 +1695,13 @@ return {
             j_hpfx_tetoraq = {
                 name = '{C:hpfx_inc_teto}Teto{}raq',
                 text = {
-                    {
-                        "{C:hpfx_multiball,T:j_hpfx_tetoraq}Ijiraq{} is now {C:hpfx_inc_teto}Teto{} rarity.",
-                        "{C:hpfx_multiball}Ijiraq{} retriggers {C:attention}once{}",
-                        "for every {C:hpfx_inc_teto}Teto{} Joker. (#1#)",
-                        "{C:attention}Takes up no space."
-                    },
+                    "{C:hpfx_multiball,T:j_hpfx_tetoraq}Ijiraq{} is now {C:hpfx_inc_teto}Teto{} rarity.",
+                    "{C:hpfx_multiball}Ijiraq{} retriggers {C:attention}once{}",
+                    "for every {C:hpfx_inc_teto}Teto{} Joker. {C:inactive}(#1#){}",
+                    "{C:attention}Takes up no space."
                 },
                 unlock = {
-                    "{C:hpfx_inc_teto}Thank you for playing Incognito!{}"
+                    "{C:hpfx_inc_teto}Thanks for the plug :3 - Incognito{}"
                 },
             },
         },
