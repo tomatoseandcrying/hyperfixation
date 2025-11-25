@@ -13,42 +13,6 @@ SMODS.Joker { --Ijiraq.
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
     config = {},
-    --[[ loc_vars = function(self, info_queue, card)
-        if G.jokers and card.area == G.jokers then
-            for _, v in pairs(Hyperfixation.raqeffects) do
-                if G.P_CENTERS[v].loc_vars then
-                    if not G.P_CENTERS[v].original_mod then
-                        vars = G.P_CENTERS[v]:loc_vars({}, G.P_CENTERS[v]).vars
-                    else
-                        vars = G.P_CENTERS[v]:loc_vars({}, { ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v] })
-                            .vars
-                    end
-                else
-                    vars = Card.generate_UIBox_ability_table({
-                        ability = G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v],
-                        config = { center = G.P_CENTERS[v] }
-                    }, true)
-                    --print(vars)
-                    --print(G.GAME.hpfx_ijiraq_savedvalues[card.sort_id][v])
-                end
-                if v == 'j_luchador' and G.GAME.blind and not G.GAME.blind.boss then
-                    --lol, lmao
-                    info_queue[#info_queue + 1] = {
-                        ijiraq = true,
-                        key = 'hpfx_troll',
-                        set = 'Other'
-                    }
-                else
-                    info_queue[#info_queue + 1] = {
-                        ijiraq = true,
-                        set = "Joker",
-                        key = v,
-                        vars = vars
-                    }
-                end
-            end
-        end
-    end, ]]
     -- loc_vars rewrite fix
     loc_vars = function(self, info_queue, card)
         if not (G.jokers and card and card.area == G.jokers) then return end
