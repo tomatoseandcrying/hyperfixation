@@ -14,7 +14,7 @@ SMODS.Joker { --Costume (The costume setup only works before, during, or after h
 			'j_joker', true)
 		card:set_cost()
 		--Thanks Delirium
-		ijiraq_atlas = nil
+		local ijiraq_atlas
 		if card.children.center.ijiraq_atlas then ijiraq_atlas = card.children.center.ijiraq_atlas end
 		card.children.center.sprite_pos = ijiraq_atlas.pos or G.P_CENTERS[G.GAME.current_round.fodder_card.jkey].pos
 		card.children.center.atlas.name = ijiraq_atlas.atlas or 'hpfx_IjiraqJokers'
