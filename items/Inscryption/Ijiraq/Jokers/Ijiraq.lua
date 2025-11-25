@@ -13,7 +13,7 @@ SMODS.Joker { --Ijiraq.
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
     config = {},
-    loc_vars = function(self, info_queue, card)
+    --[[ loc_vars = function(self, info_queue, card)
         if G.jokers and card.area == G.jokers then
             for _, v in pairs(Hyperfixation.raqeffects) do
                 if G.P_CENTERS[v].loc_vars then
@@ -46,6 +46,58 @@ SMODS.Joker { --Ijiraq.
                         vars = vars
                     }
                 end
+            end
+        end
+    end, ]]
+    -- loc_vars rewrite fix
+    loc_vars = function(self, info_queue, card)
+        if not (G.jokers and card and card.area == G.jokers) then return end
+        local raq = Hyperfixation and Hyperfixation.raqeffects
+        local saved = G.GAME and G.GAME.hpfx_ijiraq_savedvalues
+        if not raq then return end
+
+        for _, v in pairs(raq) do
+            local vars = {}
+            local center = G.P_CENTERS and G.P_CENTERS[v]
+
+            if center then
+                if center.loc_vars then
+                    if not center.original_mod then
+                        local out = center:loc_vars({}, center)
+                        vars = (out and out.vars) or {}
+                    else
+                        local ability_entry = saved and saved[card.sort_id] and saved[card.sort_id][v]
+                        local out = center:loc_vars({}, { ability = ability_entry })
+                        vars = (out and out.vars) or {}
+                    end
+                else
+                    local ability_entry = saved and saved[card.sort_id] and saved[card.sort_id][v]
+                    local ok, out = pcall(function()
+                        return Card.generate_UIBox_ability_table({
+                            ability = ability_entry,
+                            config = { center = center }
+                        }, true)
+                    end)
+                    if ok and out then vars = out else vars = {} end
+                end
+            else
+                -- missing center definition; keep vars empty to avoid nil indexing downstream
+                vars = {}
+            end
+
+            if v == 'j_luchador' and G.GAME and G.GAME.blind and not G.GAME.blind.boss then
+                info_queue[#info_queue + 1] = {
+                    ijiraq = true,
+                    key = 'hpfx_troll',
+                    set = 'Other'
+                }
+            else
+                info_queue[#info_queue + 1] = {
+                    ijiraq = true,
+                    set = "Joker",
+                    key = v,
+                    vars = vars
+                }
             end
         end
     end,
@@ -288,10 +340,11 @@ SMODS.Joker { --Ijiraq.
                 and G.GAME.current_round.discards_left > 0 then
                 totalcash = totalcash + (2 * G.GAME.current_round.discards_left)
             end
-            --Auto-setup for modded Jokers.
+            -- Auto-setup for modded Jokers.
             if joker and joker.calc_dollar_bonus and type(joker.calc_dollar_bonus) == 'function' then
-                local bonus = joker:calc_dollar_bonus(card)
-                if bonus and bonus > 0 then
+                local probe = { ability = { extra = (joker.config and joker.config.extra) or {} } }
+                local ok, bonus = pcall(function() return joker:calc_dollar_bonus(probe) end)
+                if ok and bonus and bonus > 0 then
                     totalcash = totalcash + bonus
                 end
             end

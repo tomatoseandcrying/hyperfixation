@@ -18,8 +18,6 @@
 		"Lovely (>=0.8)"
 	],
 	"conflicts": [
-		"incantation (>=0.5)",
-		"Overflow (>=1.0.4)",
 		"Multiplayer (>=0.2.18)",
 		"HotPotato (>=1.0.7b)"
 	]
