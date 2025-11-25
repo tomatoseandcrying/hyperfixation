@@ -277,9 +277,9 @@ SMODS.Joker { --Ijiraq.
         local totalcash = 0
         if not card:can_calculate() then return end
         for _, v in pairs(Hyperfixation.raqeffects) do
-            local _center = v.config.center
+            local _center = G.P_CENTERS[v]
             if type(_center.calc_dollar_bonus) == "function" then
-                totalcash = totalcash + _center:calc_dollar_bonus(v)
+                totalcash = totalcash + _center:calc_dollar_bonus(card)
             end
         end
         if totalcash > 0 then return totalcash end
