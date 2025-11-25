@@ -18,7 +18,6 @@
 		"Lovely (>=0.8)"
 	],
 	"conflicts": [
-		"Multiplayer (>=0.2.18)",
-		"HotPotato (>=1.0.7b)"
+		"Multiplayer (>=0.2.18)"
 	]
 }

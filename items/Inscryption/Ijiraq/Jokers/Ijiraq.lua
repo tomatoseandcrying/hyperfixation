@@ -277,40 +277,9 @@ SMODS.Joker { --Ijiraq.
         local totalcash = 0
         if not card:can_calculate() then return end
         for _, v in pairs(Hyperfixation.raqeffects) do
-            local joker = G.P_CENTERS[v]
-            if v == 'j_golden' then
-                totalcash = totalcash + 4
-            end
-            if v == 'j_cloud_9' then
-                local nine_tally = 0
-                for _, pcard in ipairs(G.playing_cards) do
-                    if pcard:get_id() == 9 then nine_tally = nine_tally + 1 end
-                end
-                if nine_tally > 0 then
-                    totalcash = totalcash + (1 * nine_tally)
-                end
-            end
-            if v == 'j_rocket' then
-                totalcash = totalcash + 1
-            end
-            if v == 'j_satellite' then
-                local planets_used = 0
-                for k, _v in pairs(G.GAME.consumeable_usage) do
-                    if _v.set == 'Planet' then planets_used = planets_used + 1 end
-                end
-                totalcash = totalcash + (1 * planets_used)
-            end
-            if v == 'j_delayed_grat' and G.GAME.current_round.discards_used == 0
-                and G.GAME.current_round.discards_left > 0 then
-                totalcash = totalcash + (2 * G.GAME.current_round.discards_left)
-            end
-            -- Auto-setup for modded Jokers.
-            if joker and joker.calc_dollar_bonus and type(joker.calc_dollar_bonus) == 'function' then
-                local probe = { ability = { extra = (joker.config and joker.config.extra) or {} } }
-                local ok, bonus = pcall(function() return joker:calc_dollar_bonus(probe) end)
-                if ok and bonus and bonus > 0 then
-                    totalcash = totalcash + bonus
-                end
+            local _center = v.config.center
+            if type(_center.calc_dollar_bonus) == "function" then
+                totalcash = totalcash + _center:calc_dollar_bonus(v)
             end
         end
         if totalcash > 0 then return totalcash end
