@@ -277,10 +277,10 @@ SMODS.Joker { --Ijiraq.
         local totalcash = 0
         if not card:can_calculate() then return end
         for _, v in pairs(Hyperfixation.raqeffects) do
-            local _center = G.P_CENTERS[v]
-            if type(_center.calc_dollar_bonus) == "function" then
-                totalcash = totalcash + _center:calc_dollar_bonus(card)
-            end
+            local _card = SMODS.create_card({ key = v, no_edition = true, skip_materialize = true })
+            -- makes the card riculously small and way offscreen
+            _card:hard_set_T(420, 420, 0, 0)
+            totalcash = totalcash + (_card:calculate_dollar_bonus() or 0)
         end
         if totalcash > 0 then return totalcash end
     end,
