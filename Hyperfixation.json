@@ -18,6 +18,7 @@
 		"Lovely (>=0.8)"
 	],
 	"conflicts": [
-		"Multiplayer (>=0.2.18)"
+		"Multiplayer (>=0.2.18)",
+		"MoreFluff (>=1.6.0)"
 	]
 }
