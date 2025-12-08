@@ -103,6 +103,10 @@ end
 
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start or G.GAME.round_resets.blind_states.Boss == "Defeated" then
+        SMODS.set_scoring_calculation('multiply')
+        update_ui = function(self, container, chip_display, mult_display, operator)
+            operator.UIBox:recalculate()
+        end
         -- Joker pool logic
         local ijiraq_pool = get_current_pool("Joker")
         local filtered_pool = {}
