@@ -149,7 +149,6 @@ function SMODS.current_mod.reset_game_globals(run_start)
                 end
             end
             Hyperfixation.bitchXM = bitchxl
-            SMODS.set_scoring_calculation('multiply')
         end
     end
 end

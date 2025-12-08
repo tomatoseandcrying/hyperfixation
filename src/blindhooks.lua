@@ -37,13 +37,13 @@ function Blind:defeat(silent)
         end
         Hyperfixation.daggercheck = {}
     end
-    if Hyperfixation.usedHoggy then
+    --[[ if Hyperfixation.usedHoggy then
         Hyperfixation.usedHoggy = false
         SMODS.set_scoring_calculation('multiply')
         update_ui = function(self, container, chip_display, mult_display, operator)
             operator.UIBox:recalculate()
         end
-    end
+    end ]]
     return bdf(self, silent)
 end
 

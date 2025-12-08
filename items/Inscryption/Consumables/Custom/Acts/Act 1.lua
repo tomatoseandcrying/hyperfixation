@@ -231,7 +231,7 @@ SMODS.Consumable({
 })
 
 --Hoggy Bank
-SMODS.Consumable({
+--[[ SMODS.Consumable({
     key = 'act1_hoggybank',
     set = 'hpfx_inscr_act1_items',
     pos = { x = 0, y = 0 },
@@ -338,7 +338,7 @@ SMODS.Scoring_Calculation({
             }
         }
     end
-})
+}) ]]
 
 --Hourglass
 SMODS.Consumable({
