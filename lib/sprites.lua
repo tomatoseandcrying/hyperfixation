@@ -30,6 +30,24 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
+SMODS.Atlas {
+    key = 'Ijiraq',
+    path = "inscryption/jokers/Ijiraq.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'InscryptionJokers',
+    path = "inscryption/jokers/InscryptionJokers.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'Tetoraq',
+    path = "crossmod/Tetoraq.png",
+    px = 71,
+    py = 95
+}
 
 --stickers
 SMODS.Atlas {
