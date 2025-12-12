@@ -1,18 +1,53 @@
 SMODS.Joker { --Ijiraq.
     key = 'ijiraq',
-    pos = { x = 0, y = 9 },
-    soul_pos = { x = 1, y = 9 },
+    pos = { x = 0, y = 0 },
+    soul_pos = { 
+        x = 1, 
+        y = 0,
+        draw = function(card, scale_mod, rotate_mod)
+            scale_mod = 0.07 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) *
+                    math.pi * 14) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+            rotate_mod = 0.2 * math.sin(1.219 * G.TIMERS.REAL) +
+                0.00 * math.sin((G.TIMERS.REAL) * math.pi * 5) *
+                (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+
+            card.children.hpfx_floating_sprite:draw_shader('dissolve',
+                0, nil, nil, card.children.center, scale_mod, nil, nil, 0.1)
+            card.children.hpfx_floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, nil)
+
+            card.children.floating_sprite:draw_shader('dissolve',
+                0, nil, nil, card.children.center, scale_mod, rotate_mod, nil, 0.1)
+            card.children.floating_sprite:draw_shader('dissolve',
+                nil, nil, nil, card.children.center, scale_mod, rotate_mod)
+        end
+    },
     no_mod_badges = false,
     unlocked = true,
     discovered = false,
     rarity = 3,
     cost = 8,
-    atlas = 'IjiraqJokers',
+    atlas = 'Ijiraq',
     blueprint_compat = true,
     eternal_compat = false,
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
     config = {},
+    -- sprite my ass >:(
+    set_sprites = function(self, card, front)
+        if self.discovered or card.bypass_discovery_center then
+            card.children.hpfx_floating_sprite =
+                Sprite(card.T.x, card.T.y, card.T.w, card.T.h,
+                    G.ASSET_ATLAS[card.config.center.atlas], {
+                        x = 2,
+                        y = 0
+                    })
+            card.children.hpfx_floating_sprite.role.draw_major = card
+            card.children.hpfx_floating_sprite.states.hover.can = false
+            card.children.hpfx_floating_sprite.states.click.can = false
+        end
+    end,
     -- loc_vars rewrite fix
     loc_vars = function(self, info_queue, card)
         if not (G.jokers and card and card.area == G.jokers) then return end
