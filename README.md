@@ -23,8 +23,7 @@ Overrides can be found in the src folder.
 *more to come...*
 ## Incompatibilities
 [Talisman](https://github.com/SpectralPack/Talisman)\
-Incantation\
-Overflow\
+MoreFluff\
 Multiplayer\
 *more to come...*
 
