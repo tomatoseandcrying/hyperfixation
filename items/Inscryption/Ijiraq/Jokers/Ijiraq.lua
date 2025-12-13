@@ -1,8 +1,8 @@
 SMODS.Joker { --Ijiraq.
     key = 'ijiraq',
     pos = { x = 0, y = 0 },
-    soul_pos = { 
-        x = 1, 
+    soul_pos = {
+        x = 1,
         y = 0,
         draw = function(card, scale_mod, rotate_mod)
             scale_mod = 0.07 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
@@ -131,18 +131,33 @@ SMODS.Joker { --Ijiraq.
             end
         end
         if card.ability.allgone and card:can_calculate() then --prevents message spam
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    SMODS.calculate_effect({
-                            message = 'Fall.',
-                            colour = G.C.RED,
-                            sound = 'hpfx_fall'
-                        },
-                        card)
-                    card.ability.allgone = false
-                    return true
-                end
-            }))
+            if SMODS.pseudorandom_probability(card, 'hpfx_ijiraq', 1, 10) then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        SMODS.calculate_effect({
+                                message = 'FAAHHH!',
+                                colour = G.C.RED,
+                                sound = 'hpfx_faaaah'
+                            },
+                            card)
+                        card.ability.allgone = false
+                        return true
+                    end
+                }))
+            else
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        SMODS.calculate_effect({
+                                message = 'Fall.',
+                                colour = G.C.RED,
+                                sound = 'hpfx_fall'
+                            },
+                            card)
+                        card.ability.allgone = false
+                        return true
+                    end
+                }))
+            end
         end
 
         --Applies effects that shouldn't stack in mass iterator

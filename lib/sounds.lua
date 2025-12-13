@@ -37,6 +37,11 @@ SMODS.Sound({
     key = "hpfx_fall",
     path = "inscryption/bigraq/lich-fall.ogg",
 })
+--FAAAAAAAAAAAAAAH
+SMODS.Sound({
+    key = "hpfx_faaaah",
+    path = "inscryption/bigraq/iji-faaaah.ogg"
+})
 --not showman
 SMODS.Sound({
     key = "hpfx_pickup",
