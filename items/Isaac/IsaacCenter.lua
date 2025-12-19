@@ -66,8 +66,10 @@ end
 ---@param reset boolean If true, resets blind effects before applying new blind
 ---@param silent boolean If true, suppresses notifs
 function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
-    local name1 = idx1.name or (idx1.names and table.concat(idx1.names, " & ")) or ""
-    local name2 = idx2.name or (idx2.names and table.concat(idx2.names, " & ")) or ""
+    local name1 = (idx1.original_mod and idx1.loc_txt.name) or idx1.name or
+        (idx1.names and table.concat(idx1.names, " & ")) or ""
+    local name2 = (idx2.original_mod and idx2.loc_txt.name) or idx2.name or
+        (idx2.names and table.concat(idx2.names, " & ")) or ""
     local merged_blind = {
         name = "Double Trouble!?",
         key = "bl_hpfx_double_trouble",
