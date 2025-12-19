@@ -60,8 +60,8 @@ SMODS.Atlas {
 SMODS.Atlas {
     key = 'IsaacBlinds',
     path = "TBOI/blinds/IsaacBlinds.png",
-    px = 32,
-    py = 32,
+    px = 34,
+    py = 34,
     atlas_table = 'ANIMATION_ATLAS',
     frames = 21
 }
