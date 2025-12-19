@@ -84,7 +84,7 @@ function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
             get_hex_string(idx1.boss_colour),
             get_hex_string(idx2.boss_colour)
         )),
-        vars = { (table.concat({ name1, name2 }, " & ")) }
+        vars = { (table.concat({ name1, name2 }, " & ")) },
     }
     -- Merge the blind debuff tables
     for k, v in pairs(idx1.debuff or {}) do merged_blind.debuff[k] = v end
@@ -96,12 +96,13 @@ function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
             max = (idx1.boss.max or 10) + (idx2.boss.max or 10),
         }
     end
-    -- sets itself to merged version of blind
-    self:set_blind(merged_blind, reset, silent)
-    self.names = merged_blind.names
+    -- table init
+    self.names = merged_blind.namesr
     self.boss_colour = merged_blind.boss_colour
     self.colour = self.boss_colour
     self.dark_colour = mix_colours(self.boss_colour, G.C.BLACK, 0.4)
+    -- function init
+    self:set_blind(merged_blind, reset, silent)
 end
 
 function namingMyShitSafely(n)
