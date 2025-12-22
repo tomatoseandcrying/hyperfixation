@@ -1717,11 +1717,9 @@ return {
         },
         Tarot = {
             c_hpfx_ruby = {
-                name = 'i think i\'d rather be death',
+                name = 'i think i\'d rather death',
                 text = {
-                    "At the start of each round,",
-                    "gain an extra {C:attention}Hand{}",
-                    "for every {C:attention}Tarot{} card you have{C:hpfx_IjiGray}#1#{}",
+                    "i think she\'d rather death",
                 },
             },
         },
