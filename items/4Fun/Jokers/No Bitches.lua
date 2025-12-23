@@ -86,4 +86,4 @@ SMODS.Joker {
         return args.type == 'hpfx_no_bitches'
     end
 }
---no 122a update needed
+--no 1221a update needed
