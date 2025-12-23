@@ -29,7 +29,7 @@ SMODS.Joker { --Ijiraq.
     rarity = 3,
     cost = 8,
     atlas = 'Ijiraq',
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = false,
     perishable_compat = false,
     display_size = { w = 71, h = 95 },
@@ -335,7 +335,7 @@ SMODS.Joker { --Ijiraq.
         if totalcash > 0 then return totalcash end
     end,
     calculate = function(self, card, context)
-        if context.modify_scoring_hand and not context.blueprint then
+        if context.modify_scoring_hand then
             for _, v in pairs(Hyperfixation.raqeffects) do
                 if v == 'j_splash' then
                     --print('Splash!')
@@ -367,3 +367,4 @@ SMODS.Joker { --Ijiraq.
         end
     end
 }
+--updated to 1221a
