@@ -41,3 +41,4 @@ SMODS.Joker {
         end
     end
 }
+--updated to 1221a
