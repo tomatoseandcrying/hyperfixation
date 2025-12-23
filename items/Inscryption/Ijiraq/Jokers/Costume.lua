@@ -29,3 +29,4 @@ SMODS.Joker { --Costume (The costume setup only works before, during, or after h
 		end
 	end ]]
 }
+--no 1221a update needed
