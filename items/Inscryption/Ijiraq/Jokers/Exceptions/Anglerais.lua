@@ -59,8 +59,7 @@ SMODS.Joker {
         if context.setting_blind and #G.consumeables.cards
             + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-            local b = G.GAME.blind.config.blind.key
-            if b == 'bl_ox' then --Hermit | Ox
+            if SMODS.is_active_blind('bl_ox', false) then --Hermit | Ox
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -85,7 +84,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_hook' then --Medium | Hook
+            elseif SMODS.is_active_blind('bl_hook', false) then --Medium | Hook
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -110,7 +109,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_mouth' then --Planet Card (Telescope Effect) | Mouth
+            elseif SMODS.is_active_blind('bl_mouth', false) then --Planet Card (Telescope Effect) | Mouth
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -150,7 +149,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_fish' or b == 'bl_house' or b == 'bl_mark' then --Tarot Card (Enhancement) + Seal | Fish, House, Mark
+            elseif SMODS.is_active_blind('bl_fish', false) or SMODS.is_active_blind('bl_house', false) or SMODS.is_active_blind('bl_mark', false) then --Tarot Card (Enhancement) + Seal | Fish, House, Mark
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -209,7 +208,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_club' then --Non-Club Suit-Tarot | Club
+            elseif SMODS.is_active_blind('bl_club', false) then --Non-Club Suit-Tarot | Club
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -250,7 +249,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_manacle' then --Cryptid | Manacle
+            elseif SMODS.is_active_blind('bl_manacle', false) then --Cryptid | Manacle
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -275,7 +274,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_tooth' then --2 Talisman | Tooth
+            elseif SMODS.is_active_blind('bl_tooth', false) then --2 Talisman | Tooth
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -316,7 +315,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_wall' or b == 'bl_water' or b == 'bl_plant' or b == 'bl_final_vessel' or b == 'bl_final_heart' then --Nope!
+            elseif SMODS.is_active_blind('bl_wall', false) or SMODS.is_active_blind('bl_water', false) or SMODS.is_active_blind('bl_plant', false) or SMODS.is_active_blind('bl_final_vessel', false) or SMODS.is_active_blind('bl_final_heart', false) then --Nope!
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -332,7 +331,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_final_bell' then --Death + Hanged Man | Cerulean Bell
+            elseif SMODS.is_active_blind('bl_final_bell', false) then --Death + Hanged Man | Cerulean Bell
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -373,7 +372,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_wheel' then --Tarot Card (Enhancement) + Ouija + WOF | Wheel
+            elseif SMODS.is_active_blind('bl_wheel', false) then --Tarot Card (Enhancement) + Ouija + WOF | Wheel
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -444,7 +443,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_arm' then --2 Black Hole | Arm
+            elseif SMODS.is_active_blind('bl_arm', false) then --2 Black Hole | Arm
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -485,7 +484,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_psychic' then --Familiar + Grim + Incantation | Psychic
+            elseif SMODS.is_active_blind('bl_psychic', false) then --Familiar + Grim + Incantation | Psychic
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -542,7 +541,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_goad' then --Non-Spade Suit-Tarot | Goad
+            elseif SMODS.is_active_blind('bl_goad', false) then --Non-Spade Suit-Tarot | Goad
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -583,7 +582,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_eye' then --Justice + Chariot | Eye
+            elseif SMODS.is_active_blind('bl_eye', false) then --Justice + Chariot | Eye
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -624,7 +623,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_needle' then --Justice | Needle
+            elseif SMODS.is_active_blind('bl_needle', false) then --Justice | Needle
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -649,7 +648,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_head' then --Non-Heart Suit-Tarot | Head
+            elseif SMODS.is_active_blind('bl_head', false) then --Non-Heart Suit-Tarot | Head
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -690,7 +689,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_final_leaf' then --Judgement + Wraith | Verdant Leaf
+            elseif SMODS.is_active_blind('bl_final_leaf', false) then --Judgement + Wraith | Verdant Leaf
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -731,7 +730,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_window' then --Non-Diamond Suit-Tarot | Window
+            elseif SMODS.is_active_blind('bl_window', false) then --Non-Diamond Suit-Tarot | Window
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -772,7 +771,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_serpent' then --2 Justice | Serpent
+            elseif SMODS.is_active_blind('bl_serpent', false) then --2 Justice | Serpent
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -813,7 +812,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_pillar' then --Non-Suit Tarot | Pillar
+            elseif SMODS.is_active_blind('bl_pillar', false) then --Non-Suit Tarot | Pillar
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -852,7 +851,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_flint' then --Empress and Hierophant | Flint
+            elseif SMODS.is_active_blind('bl_flint', false) then --Empress and Hierophant | Flint
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -894,7 +893,7 @@ SMODS.Joker {
                         }))
                     end
                 }
-            elseif b == 'bl_final_acorn' then --Ankh | Amber Acorn
+            elseif SMODS.is_active_blind('bl_final_acorn', false) then --Ankh | Amber Acorn
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -920,10 +919,12 @@ SMODS.Joker {
                     end
                 }
             else
-                G.E_MANAGER:add_event(Event({ func = function()
-                    G.GAME.consumeable_buffer = 0
-                    return true
-                end }))
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end
+                }))
                 return nil, true
             end
             G.GAME.consumeable_buffer = 0 --just in case
