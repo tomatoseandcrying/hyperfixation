@@ -80,7 +80,7 @@ SMODS.Joker { --Hack?
             if ind and card.ability.extra.trig[ind] == false then
                 for _, kaard in ipairs(card.ability.extra.played_cards) do
                     local other = context.other_card
-                    if other:get_id() == kaard:get_id() then
+                    if other and other:get_id() == kaard:get_id() then
                         G.E_MANAGER:add_event(Event({
                             delay = 0.8,
                             trigger = 'immediate',

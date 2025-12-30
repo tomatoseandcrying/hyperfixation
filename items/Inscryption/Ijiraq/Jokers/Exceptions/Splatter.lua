@@ -32,7 +32,7 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.modify_scoring_hand and not context.blueprint then
+        if context.modify_scoring_hand then
             return {
                 add_to_hand = true
             }

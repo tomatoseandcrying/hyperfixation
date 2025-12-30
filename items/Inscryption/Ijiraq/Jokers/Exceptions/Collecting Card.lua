@@ -43,7 +43,7 @@ SMODS.Joker {
             local eval = function() return G.GAME.current_round.discards_used == 0 and not G.RESET_JIGGLES end
             juice_card_until(card, eval, true)
         end
-        if context.discard and not context.blueprint then
+        if context.discard then
             return {
                 remove = true
             }

@@ -58,8 +58,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.selling_self and
             card.ability.extra.invis_rounds >=
-            card.ability.extra.total_rounds and
-            not context.blueprint then
+            card.ability.extra.total_rounds then
             local jokers = {}
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] ~= card then
@@ -89,7 +88,7 @@ SMODS.Joker {
             end
         end
         if context.end_of_round and context.game_over == false
-            and context.main_eval and not context.blueprint then
+            and context.main_eval then
             card.ability.extra.invis_rounds = card.ability.extra.invis_rounds + 1
             if card.ability.extra.invis_rounds == card.ability.extra.total_rounds then
                 local eval = function(card) return not card.REMOVED end

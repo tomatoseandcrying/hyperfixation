@@ -32,10 +32,10 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.mod_probability and not context.blueprint then
+        if context.mod_probability then
             return { denominator = context.denominator * 2 }
         end
-        if context.pseudorandom_result and context.result and context.main_eval and not context.blueprint then
+        if context.pseudorandom_result and context.result and context.main_eval then
             return {
                 func = function()
                     hpfx_Transform(card, context)

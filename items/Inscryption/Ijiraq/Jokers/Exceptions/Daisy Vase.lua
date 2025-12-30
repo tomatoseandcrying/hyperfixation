@@ -80,7 +80,7 @@ SMODS.Joker {
             if ind and card.ability.extra.trig[ind] == false then
                 for _, suit in ipairs(card.ability.extra.played_suits) do
                     local other = context.other_card
-                    if other:is_suit(suit.base.suit) then
+                    if other and other:is_suit(suit.base.suit) then
                         G.E_MANAGER:add_event(Event({
                             delay = 0.8,
                             trigger = 'immediate',

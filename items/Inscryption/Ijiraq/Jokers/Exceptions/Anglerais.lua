@@ -56,7 +56,7 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.setting_blind and not context.blueprint and #G.consumeables.cards
+        if context.setting_blind and #G.consumeables.cards
             + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             local b = G.GAME.blind.config.blind.key

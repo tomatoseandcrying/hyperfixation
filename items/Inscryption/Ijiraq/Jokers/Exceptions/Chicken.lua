@@ -38,7 +38,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and
-            context.main_eval and not context.blueprint then
+            context.main_eval then
             card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
             card:set_cost()
             local nugget = Hyperfixation.nugget

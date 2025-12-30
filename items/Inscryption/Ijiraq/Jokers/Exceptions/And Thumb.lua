@@ -32,7 +32,7 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.joker_main and not context.blueprint then
+        if context.joker_main then
             if next(context.poker_hands['Flush']) or next(context.poker_hands['Straight']) then
                 return {
                     func = function()
