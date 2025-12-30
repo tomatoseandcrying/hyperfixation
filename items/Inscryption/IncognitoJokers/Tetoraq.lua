@@ -3,8 +3,8 @@ SMODS.Joker({
     rarity = 'nic_teto',
     atlas = 'Tetoraq',
     pos = { x = 0, y = 0 },
-    soul_pos = { 
-        x = 1, 
+    soul_pos = {
+        x = 1,
         y = 0,
         draw = function(card, scale_mod, rotate_mod)
             scale_mod = 0.07 + 0.02 * math.sin(1.8 * G.TIMERS.REAL) +
