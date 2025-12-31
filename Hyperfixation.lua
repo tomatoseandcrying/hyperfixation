@@ -248,7 +248,7 @@ Hyperfixation = {
     --iji make sure you dont pretend to be these
     brokejokes = brokejokes or {
         --basegame
-        ['j_caino'] = true,
+        --['j_caino'] = true,
         ['j_constellation'] = true,
         ['j_hologram'] = true,
         ['j_madness'] = true,
@@ -383,7 +383,7 @@ Hyperfixation = {
             end
         end
         if self.ability.name == 'Caino' then
-            self.ability.caino_xmult = 1
+            self.ability.caino_xmult = self.ability.caino_xmult or 1
         end
         if self.ability.name == 'Yorick' then
             self.ability.yorick_discards = self.ability.extra.discards

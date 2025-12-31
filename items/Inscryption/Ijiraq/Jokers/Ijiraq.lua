@@ -335,6 +335,26 @@ SMODS.Joker { --Ijiraq.
         if totalcash > 0 then return totalcash end
     end,
     calculate = function(self, card, context)
+        if context.remove_playing_cards then
+            for _, v in pairs(Hyperfixation.raqeffects) do
+                if v == 'j_caino' then
+                    local face_cards = 0
+                    for _, removed_card in ipairs(context.removed) do
+                        if removed_card:is_face() then face_cards = face_cards + 1 end
+                    end
+                    if face_cards > 0 then
+                        SMODS.scale_card(card, {
+                            ref_table = card.ability,
+                            ref_value = "caino_xmult",
+                            scalar_value = "xmult_gain",
+                            operation = function(ref_table, ref_value, initial, change)
+                                ref_table[ref_value] = initial + face_cards * change
+                            end
+                        })
+                    end
+                end
+            end
+        end
         if context.modify_scoring_hand then
             for _, v in pairs(Hyperfixation.raqeffects) do
                 if v == 'j_splash' then
