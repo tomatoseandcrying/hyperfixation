@@ -42,12 +42,6 @@ SMODS.Atlas {
     px = 71,
     py = 95
 }
-SMODS.Atlas {
-    key = 'Tetoraq',
-    path = "crossmod/Tetoraq.png",
-    px = 71,
-    py = 95
-}
 
 --stickers
 SMODS.Atlas {

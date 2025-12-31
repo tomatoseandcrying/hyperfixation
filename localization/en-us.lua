@@ -1692,7 +1692,7 @@ return {
             },
             --#endregion
             --#region Crossmod
-            j_hpfx_tetoraq = {
+            j_nic_tetoraq = {
                 name = '{C:hpfx_inc_teto}Teto{}raq',
                 text = {
                     "{C:hpfx_multiball,T:j_hpfx_tetoraq}Ijiraq{} is now {C:hpfx_inc_teto}Teto{} rarity.",
