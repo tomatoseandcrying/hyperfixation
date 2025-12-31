@@ -248,7 +248,6 @@ Hyperfixation = {
     --iji make sure you dont pretend to be these
     brokejokes = brokejokes or {
         --basegame
-        --['j_caino'] = true,
         ['j_constellation'] = true,
         ['j_hologram'] = true,
         ['j_madness'] = true,
@@ -260,7 +259,6 @@ Hyperfixation = {
         ['j_lucky_cat'] = true,
         ['j_ramen'] = true,
         ['j_campfire'] = true,
-        ['j_hit_the_road'] = true,
         ['j_todo_list'] = true,
         --hpfx
         ['j_hpfx_ijiraq'] = true,
