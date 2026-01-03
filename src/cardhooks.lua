@@ -230,3 +230,5 @@ function Card:set_ability(center, initial, delay_sprites)
     if G.STAGE and G.STAGE == G.STAGES.RUN and self.config.center.key == 'm_hpfx_boulder' then return end
     return boulder_lock(self, center, initial, delay_sprites)
 end
+
+--Decrease spawn rate of Jokesters

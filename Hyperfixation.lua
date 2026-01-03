@@ -253,7 +253,6 @@ Hyperfixation = {
         ['j_madness'] = true,
         ['j_faceless'] = true,
         ['j_yorick'] = true,
-        ['j_invisible'] = true,
         ['j_vampire'] = true,
         ['j_obelisk'] = true,
         ['j_lucky_cat'] = true,
@@ -365,7 +364,7 @@ Hyperfixation = {
             end
         end
         if self.ability.name == "Invisible Joker" then
-            self.ability.invis_rounds = 0
+            self.ability.invis_rounds = self.ability.invis_rounds or 0
         end
         if self.ability.name == 'To Do List' then
             local _poker_hands = {}
