@@ -20,7 +20,7 @@ SMODS.Consumable({
         return G.jokers and
             #G.jokers.highlighted <= card.ability.max_highlighted and
             #G.jokers.highlighted > 0 and
-            not Hyperfixation.brokejokes[G.jokers.highlighted[i].config.center.key]
+            Hyperfixation.brokejokes[G.jokers.highlighted[i].config.center.key] == false
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
