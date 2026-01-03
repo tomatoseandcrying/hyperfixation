@@ -35,7 +35,7 @@ SMODS.Joker { --Golden Joker?
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.dollars = G.GAME.dollars - card.ability.extra.money
     end,
-    rarity = 1,
+    rarity = 'hpfx_orthodox',
     cost = 6,
     blueprint_compat = false,
     calc_dollar_bonus = function(self, card)

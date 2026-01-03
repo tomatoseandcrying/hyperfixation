@@ -28,7 +28,7 @@ SMODS.Joker { --Acrobat?
         card.ability.extra.new_key = "j_hpfx_trapezoid_alt"
         card:add_sticker('hpfx_priceless')
     end,
-    rarity = 2,
+    rarity = 'hpfx_infrequent',
     cost = 6,
     blueprint_compat = true,
     calculate = function(self, card, context)

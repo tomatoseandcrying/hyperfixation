@@ -7,7 +7,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     blueprint_compat = false,
-    rarity = 2,
+    rarity = 'hpfx_infrequent',
     cost = 7,
     atlas = 'IjiraqJokers',
     config = { extra = {} },

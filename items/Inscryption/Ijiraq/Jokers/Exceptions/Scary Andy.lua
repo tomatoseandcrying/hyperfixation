@@ -39,7 +39,7 @@ SMODS.Joker { --Merry Andy?
         ease_discard(-card.ability.extra.discard_size)
         G.hand:change_size(-card.ability.extra.hand_size)
     end,
-    rarity = 2,
+    rarity = 'hpfx_infrequent',
     cost = 7,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,

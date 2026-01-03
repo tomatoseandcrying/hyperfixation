@@ -1909,9 +1909,15 @@ return {
             hpfx_val_down = "Value Down!?",
             hpfx_coward_ex = "Coward.",
             hpfx_cabin = 'Leshy\'s Cabin',
+            k_hpfx_orthodox = "Common",
+            k_hpfx_infrequent = "Uncommon",
+            k_hpfx_sparse = "Rare",
         },
         labels = {
             hpfx_priceless = "Priceless",
+            k_hpfx_orthodox = "Common",
+            k_hpfx_infrequent = "Uncommon",
+            k_hpfx_sparse = "Rare",
         },
         quips = {
             hpfx_eternal_jimbo1 = {

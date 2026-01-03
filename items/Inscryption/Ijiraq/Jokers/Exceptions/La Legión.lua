@@ -7,7 +7,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 8,
     atlas = 'IjiraqJokers',
     config = {
@@ -80,7 +80,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 8,
     atlas = 'IjiraqJokers',
     config = {
@@ -153,7 +153,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 8,
     atlas = 'IjiraqJokers',
     config = {
@@ -226,7 +226,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 8,
     atlas = 'IjiraqJokers',
     config = {
@@ -299,7 +299,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 8,
     atlas = 'IjiraqJokers',
     config = {

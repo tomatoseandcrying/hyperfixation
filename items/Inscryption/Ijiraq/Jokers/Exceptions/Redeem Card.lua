@@ -40,7 +40,7 @@ SMODS.Joker { --Loyalty Card?
         card.ability.extra.new_key = "j_hpfx_redeemed_alt"
         card:add_sticker('hpfx_priceless')
     end,
-    rarity = 2,
+    rarity = 'hpfx_infrequent',
     cost = 5,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,

@@ -6,7 +6,7 @@ SMODS.Joker { --Blueprint?
     unlocked = true,
     discovered = true,
     no_collection = true,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 10,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,

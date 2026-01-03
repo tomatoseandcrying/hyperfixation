@@ -34,7 +34,7 @@ SMODS.Joker { --Mystic Summit?
         card.ability.extra.new_key = "j_hpfx_twistit_alt"
         card:add_sticker('hpfx_priceless')
     end,
-    rarity = 1,
+    rarity = 'hpfx_orthodox',
     cost = 5,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,

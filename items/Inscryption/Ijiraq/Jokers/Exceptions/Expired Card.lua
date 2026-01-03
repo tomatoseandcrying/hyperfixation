@@ -37,7 +37,7 @@ SMODS.Joker { --Credit Card?
     remove_from_deck = function(self, card, from_debuff)
         G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.credit
     end,
-    rarity = 1,
+    rarity = 'hpfx_orthodox',
     cost = 1,
     atlas = 'IjiraqJokers',
     blueprint_compat = false,

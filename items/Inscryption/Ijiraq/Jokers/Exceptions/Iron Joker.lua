@@ -41,7 +41,7 @@ SMODS.Joker { --Steel Joker?
         card.ability.extra.new_key = "j_hpfx_iron_alt"
         card:add_sticker('hpfx_priceless')
     end,
-    rarity = 2,
+    rarity = 'hpfx_infrequent',
     cost = 7,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,

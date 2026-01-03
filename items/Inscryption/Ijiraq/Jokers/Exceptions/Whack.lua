@@ -7,7 +7,7 @@ SMODS.Joker { --Hack?
     unlocked = true,
     discovered = true,
     no_collection = true,
-    rarity = 2,
+    rarity = 'hpfx_infrequent',
     cost = 5,
     blueprint_compat = true,
     config = {

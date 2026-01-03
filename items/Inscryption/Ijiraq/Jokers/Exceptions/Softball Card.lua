@@ -9,7 +9,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 8,
     atlas = 'IjiraqJokers',
     config = {

@@ -29,7 +29,7 @@ SMODS.Joker { --Misprint?
                 config = {
                     object = DynaText({
                         string = {
-                            { string = 'toma()',                                                                                                                                                                 colour = G.C.JOKER_GREY },
+                            { string = 'toma()',                                                                                                                                                                      colour = G.C.JOKER_GREY },
                             { string = "#@" .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.id or 11) .. (G.deck and G.deck.cards[1] and G.deck.cards[#G.deck.cards].base.suit:sub(1, 1) or 'D'), colour = G.C.RED },
                             local_mult, local_mult, local_mult, local_mult, local_mult, local_mult, local_mult,
                             local_mult, local_mult, local_mult, local_mult, local_mult, local_mult },
@@ -43,7 +43,8 @@ SMODS.Joker { --Misprint?
                     })
                 }
             },
-            card.area == G.jokers and { n = G.UIT.T, config = { text = '...?', colour = G.C.hpfx_IjiGray, scale = 0.32 } } or
+            card.area == G.jokers and
+            { n = G.UIT.T, config = { text = '...?', colour = G.C.hpfx_IjiGray, scale = 0.32 } } or
             nil,
         }
         return { main_start = main_start }
@@ -56,7 +57,7 @@ SMODS.Joker { --Misprint?
         card.ability.extra.new_key = "j_hpfx_reprint_alt"
         card:add_sticker('hpfx_priceless')
     end,
-    rarity = 1,
+    rarity = 'hpfx_orthodox',
     cost = 4,
     atlas = 'IjiraqJokers',
     blueprint_compat = true,

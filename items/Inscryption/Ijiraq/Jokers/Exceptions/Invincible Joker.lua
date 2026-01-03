@@ -8,7 +8,7 @@ SMODS.Joker {
     discovered = true,
     blueprint_compat = false,
     eternal_compat = false,
-    rarity = 3,
+    rarity = 'hpfx_sparse',
     cost = 8,
     atlas = 'IjiraqJokers',
     draw = function(self, card, layer)

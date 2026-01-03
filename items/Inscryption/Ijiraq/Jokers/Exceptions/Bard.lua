@@ -41,7 +41,7 @@ SMODS.Joker { --Troubadour?
         G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hand_plays
         G.hand:change_size(-card.ability.extra.hand_size)
     end,
-    rarity = 2,
+    rarity = 'hpfx_infrequent',
     cost = 6,
     blueprint_compat = false,
     eternal_compat = false,
