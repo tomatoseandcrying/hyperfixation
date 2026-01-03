@@ -251,7 +251,7 @@ Hyperfixation = {
         ['j_constellation'] = true,
         ['j_hologram'] = true,
         ['j_madness'] = true,
-        --['j_faceless'] = true,
+        ['j_faceless'] = true,
         ['j_yorick'] = true,
         ['j_vampire'] = true,
         ['j_obelisk'] = true,
@@ -356,6 +356,7 @@ Hyperfixation = {
             h_chips = config.h_chips or 0,
             x_chips = config.x_chips or 1,
             h_x_chips = config.h_x_chips or 1,
+            extra = copy_table(center.config.extra) or nil
         }
         self.ability = self.ability or {}
         for k, v in pairs({ new_ability, config }) do
