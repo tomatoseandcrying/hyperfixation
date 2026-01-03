@@ -20,7 +20,7 @@ SMODS.Consumable({
         return G.jokers and
             #G.jokers.highlighted <= card.ability.max_highlighted and
             #G.jokers.highlighted > 0 and
-            Hyperfixation.table.contains(Hyperfixation.brokejokes, G.jokers.highlighted[1].config.center.key) == false
+            not Hyperfixation.brokejokes[G.jokers.highlighted[i].config.center.key]
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
@@ -105,13 +105,16 @@ SMODS.Consumable({
                                 return true
                             end,
                         }))
+                        local percent = 1.15 - (i - 0.999) / (#G.jokers.highlighted - 0.998) * 0.3
                         G.E_MANAGER:add_event(Event({
-                            trigger = "after",
+                            trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                card:flip()
+                                G.jokers.highlighted[i]:flip()
+                                play_sound('card1', percent)
+                                G.jokers.highlighted[i]:juice_up(0.3, 0.3)
                                 return true
-                            end,
+                            end
                         }))
                     end
                     return true

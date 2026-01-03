@@ -248,7 +248,7 @@ Hyperfixation = {
     --iji make sure you dont pretend to be these
     brokejokes = brokejokes or {
         --basegame
-        ['j_constellation'] = Overflow or false,
+        ['j_constellation'] = next(SMODS.find_mod('Overflow')) or false,
         ['j_hologram'] = true,
         ['j_madness'] = true,
         ['j_faceless'] = true,
