@@ -102,7 +102,7 @@ SMODS.Joker { --Ijiraq.
     end,
     in_pool = function(self, args) return false end,
     update = function(self, card, dt)
-        if Incognito and next(SMODS.find_card('j_hpfx_tetoraq', false)) then
+        if Incognito and next(SMODS.find_card('j_nic_tetoraq', false)) then
             card.config.center.rarity = 'nic_teto'
         else
             card.config.center.rarity = 3
