@@ -72,6 +72,15 @@ SMODS.Atlas {
     px = 100,
     py = 168
 }
+
+-- Deceit
+SMODS.Atlas {
+    key = 'SpectralDeceit',
+    path = "inscryption/consumables/deceit.png",
+    px = 71,
+    py = 95
+}
+
 --ruby
 SMODS.Atlas {
     key = 'TarotRuby',

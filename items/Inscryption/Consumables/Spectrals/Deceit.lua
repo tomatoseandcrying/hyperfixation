@@ -1,7 +1,8 @@
 SMODS.Consumable({
     key = 'iji_deceit',
     set = 'Spectral',
-    pos = { x = 5, y = 5 },
+    atlas = 'SpectralDeceit',
+    pos = { x = 0, y = 0 },
     config = { max_highlighted = 1 },
     unlocked = true,
     discovered = true,
