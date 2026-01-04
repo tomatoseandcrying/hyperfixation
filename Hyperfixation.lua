@@ -356,7 +356,6 @@ Hyperfixation = {
             h_chips = config.h_chips or 0,
             x_chips = config.x_chips or 1,
             h_x_chips = config.h_x_chips or 1,
-            extra = copy_table(center.config.extra) or nil
         }
         self.ability = self.ability or {}
         for k, v in pairs({ new_ability, config }) do
@@ -384,7 +383,7 @@ Hyperfixation = {
             self.ability.caino_xmult = self.ability.caino_xmult or 1
         end
         if self.ability.name == 'Yorick' then
-            self.ability.yorick_discards = self.ability.extra.discards
+            self.ability.yorick_discards = self.ability.extra.discards or 23
         end
         if self.ability.name == 'Loyalty Card' then
             self.ability.burnt_hand = 0

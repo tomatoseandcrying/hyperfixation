@@ -55,23 +55,19 @@ SMODS.Joker {
                         card.ability.extra.dis_rem = card.ability.extra.dis
                         card.ability.extra.dis_rem =
                             card.ability.extra.dis_rem - overflow
-                        SMODS.scale_card(card, {
-                            operation = "+",
-                            ref_table = card.ability.extra,
+                        SMODS.scale_card(self, {
+                            ref_table = self.ability,
                             ref_value = "xmult",
+                            scalar_table = self.ability.extra,
                             scalar_value = "xmult_gain",
-                            scaling_message = {
-                                message = 'Something!?',
-                                colour = G.C.MULT
-                            }
+                            message_key = 'a_xmult',
+                            message_colour = G.C.RED,
+                            message_delay = 0.2,
                         })
                     else
                         card.ability.extra.dis_rem = dis_rem - subtract
                     end
                 end,
-                message = will_trigger and localize { type = 'variable', key = 'a_xmult',
-                    vars = { card.ability.extra.xmult + card.ability.extra.xmult_gain } } or nil,
-                colour = will_trigger and G.C.RED or nil
             }
         end
         if context.joker_main then
