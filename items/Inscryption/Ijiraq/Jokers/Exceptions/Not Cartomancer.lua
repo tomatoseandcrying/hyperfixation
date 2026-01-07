@@ -10,7 +10,7 @@ SMODS.Joker {
     rarity = 'hpfx_orthodox',
     cost = 6,
     atlas = 'IjiraqJokers',
-    config = { extra = { mult = 1 } },
+    config = { extra = { mult = 1, moon = false, perma_mult = 7 } },
     loc_vars = function(self, info_queue, card)
         local new_num, new_denom = SMODS.get_probability_vars(card, 1, 6, 'hpfx_notcartomancer_id')
         return {
@@ -37,6 +37,27 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
+        if next(SMODS.find_card("j_hpfx_obsidian")) then
+            if context.using_consumeable and not context.blueprint and context.consumeable.config.center.key == 'c_moon' then
+                card.ability.extra.moon = true
+            end
+            if card.ability.extra.moon == true and context.change_suit then
+                if (context.new_suit == 'Clubs') then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.perma_mult
+                            return true
+                        end
+                    }))
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            card.ability.extra.moon = false
+                            return true
+                        end
+                    }))
+                end
+            end
+        end
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == "Tarot" then
             if SMODS.pseudorandom_probability(card, 'hpfx_notcartomancer_seed', 1, 6, 'hpfx_notcartomancer_id') then
                 return {
