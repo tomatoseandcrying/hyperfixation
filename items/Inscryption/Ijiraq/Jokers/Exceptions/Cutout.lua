@@ -12,9 +12,17 @@ SMODS.Joker {
     atlas = 'IjiraqJokers',
     config = { trig = false, extra = {} },
     loc_vars = function(self, info_queue, card)
+        local uncommon = 0
+        if next(SMODS.find_card("j_hpfx_softball")) then
+            for _, c in pairs(G.jokers.cards) do
+                if c:is_rarity('Uncommon') then
+                    uncommon = uncommon + 1
+                end
+            end
+        end
         return {
             vars = {
-                G.jokers and math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
+                G.jokers and math.max(1, ((G.jokers.config.card_limit + uncommon) - #G.jokers.cards)
                     + #SMODS.find_card("j_hpfx_cutout", true)) or 1,
                 card.area and card.area == G.jokers and "...?" or ""
             }
@@ -34,7 +42,15 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     update = function(self, card, dt)
-        if math.max(1, (G.jokers.config.card_limit - #G.jokers.cards) +
+        local uncommon = 0
+        if next(SMODS.find_card("j_hpfx_softball")) then
+            for _, c in pairs(G.jokers.cards) do
+                if c:is_rarity('Uncommon') then
+                    uncommon = uncommon + 1
+                end
+            end
+        end
+        if math.max(1, ((G.jokers.config.card_limit + uncommon) - #G.jokers.cards) +
                 #SMODS.find_card("j_hpfx_cutout", true)) <= 1 and card.ability.trig == false then
             card.ability.trig = true
             G.E_MANAGER:add_event(Event({
@@ -46,9 +62,17 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
+        local uncommon = 0
+        if next(SMODS.find_card("j_hpfx_softball")) then
+            for _, c in pairs(G.jokers.cards) do
+                if c:is_rarity('Uncommon') then
+                    uncommon = uncommon + 1
+                end
+            end
+        end
         if context.joker_main then
             return {
-                xmult = math.max(1, (G.jokers.config.card_limit - #G.jokers.cards)
+                xmult = math.max(1, ((G.jokers.config.card_limit + uncommon) - #G.jokers.cards)
                     + #SMODS.find_card("j_hpfx_cutout", true)),
             }
         end
