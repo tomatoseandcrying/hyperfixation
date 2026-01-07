@@ -11,6 +11,7 @@ SMODS.Joker {
     cost = 4,
     atlas = 'IjiraqJokers',
     config = {
+        priceee = 3,
         extra = {
             price = 3,
         }
@@ -40,6 +41,21 @@ SMODS.Joker {
         if context.end_of_round and context.game_over == false and
             context.main_eval then
             card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
+            for _, v in ipairs(G.jokers.cards) do
+                if v.config.center_key == 'j_hpfx_ijiraq' and
+                    Hyperfixation.table.contains(Hyperfixation.raqeffects, 'j_flower_pot') then
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability,
+                        ref_value = "extra_value",
+                        scalar_value = "priceee",
+                        operation = 'X',
+                        scaling_message = {
+                            message = localize('k_val_up'),
+                            colour = G.C.MONEY
+                        }
+                    })
+                end
+            end
             card:set_cost()
             local nugget = Hyperfixation.nugget
             if card.sell_cost == nugget then
