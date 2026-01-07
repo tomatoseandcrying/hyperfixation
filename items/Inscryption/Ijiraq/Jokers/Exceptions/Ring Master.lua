@@ -50,6 +50,29 @@ SMODS.Joker {
         Card:set_card_rate(true)
     end,
     calculate = function(self, card, context)
+        if next(SMODS.find_card("j_hpfx_ahead")) then
+            if context.modify_shop_card then
+                if context.card:is_suit("Spades") then
+                    context.card.ability.perma_bonus = (context.card.ability.perma_bonus or 0) + 50
+                end
+            end
+            if context.open_booster then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        if G.pack_cards then
+                            for i = 1, #G.pack_cards.cards do
+                                G.pack_cards.cards[i]:change_suit('Spades')
+                                if G.pack_cards.cards[i]:is_suit("Spades") then
+                                    G.pack_cards.cards[i].ability.perma_bonus = (G.pack_cards.cards[i].ability.perma_bonus or 0) + 50
+                                end
+                            end
+                        end
+                        return true
+                    end
+                }))
+            end
+        end
+
         if context.open_booster then card.ability.deck = #G.playing_cards end
         if context.buying_card or (context.ending_booster and card.ability.deck < #G.playing_cards) then
             if SMODS.pseudorandom_probability(card, 'hpfxshowman_seed', 1, card.ability.denom, 'hpfxshowman_id') then
