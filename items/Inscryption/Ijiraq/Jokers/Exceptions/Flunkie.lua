@@ -13,7 +13,8 @@ SMODS.Joker {
     config = {
         extra = {
             mult = 4,
-            chips = 20
+            chips = 20,
+            dollars = 2
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -43,10 +44,18 @@ SMODS.Joker {
             context.cardarea == G.play and
             context.other_card:get_id() == 14 then
             SMODS.destroy_cards(context.other_card, false, true, false)
-            return {
-                mult = card.ability.extra.mult,
-                chips = card.ability.extra.chips,
-            }
+            if next(SMODS.find_card('j_hpfx_pyramid')) then
+                return {
+                    mult = card.ability.extra.mult,
+                    chips = card.ability.extra.chips,
+                    dollars = card.ability.extra.dollars
+                }
+            else
+                return {
+                    mult = card.ability.extra.mult,
+                    chips = card.ability.extra.chips,
+                }
+            end
         end
         if context.after then
             local ace_count = 0
