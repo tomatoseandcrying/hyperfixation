@@ -58,6 +58,7 @@ SMODS.Joker {
                 end
             end
         end
+        
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == "Tarot" then
             if SMODS.pseudorandom_probability(card, 'hpfx_notcartomancer_seed', 1, 6, 'hpfx_notcartomancer_id') then
                 return {

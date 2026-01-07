@@ -66,12 +66,29 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.setting_blind and G.GAME.blind.boss then
-            return {
-                func = function()
-                    hpfx_Transform(card, context)
+        if G.GAME.blind.boss then
+            if next(SMODS.find_card("j_hpfx_not_cartomancer")) then
+                if context.using_consumeable and not context.blueprint and context.consumeable.config.center.key == 'c_temperance' then
+                    return {
+                        message = localize('ph_boss_disabled'),
+                        func = function()
+                            G.GAME.blind:disable()
+                            hpfx_Transform(card, context)
+                        end
+                    }
                 end
-            }
+            end
+        end
+        
+        if context.setting_blind and G.GAME.blind.boss then
+            if next(SMODS.find_card("j_hpfx_not_cartomancer")) then
+            else
+                return {
+                    func = function()
+                        hpfx_Transform(card, context)
+                    end
+                }
+            end
         end
     end
 }
