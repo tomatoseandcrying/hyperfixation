@@ -5,6 +5,7 @@ SMODS.Consumable {
     pos = { x = 0, y = 0 },
     config = { max_highlighted = 2, min_highlighted = 2 },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_death
         return { vars = { card.ability.max_highlighted } }
     end,
     use = function(self, card, area, copier)

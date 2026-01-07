@@ -1720,6 +1720,7 @@ return {
                 name = 'i think i\'d rather death',
                 text = {
                     "i think she\'d rather death",
+                    "{C:inactive}(It's just {C:tarot}Death{C:inactive})",
                 },
             },
         },
