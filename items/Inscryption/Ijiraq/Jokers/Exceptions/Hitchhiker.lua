@@ -40,13 +40,36 @@ SMODS.Joker {
         if context.individual and context.cardarea == G.play then
             context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +
                 card.ability.extra.chips
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.CHIPS,
-                func = function()
-                    hpfx_Transform(card, context)
+            if next(SMODS.find_card('j_hpfx_iron')) then
+                local steel_tally = 0
+                if G.playing_cards then
+                    for _, playing_card in pairs(G.playing_cards) do
+                        if SMODS.has_enhancement(playing_card, 'm_steel') then
+                            steel_tally = steel_tally + 1
+                        end
+                    end
                 end
-            }
+                context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + (1 * steel_tally)
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.CHIPS,
+                    extra = {
+                        message = localize('k_upgrade_ex'),
+                        colour = G.C.MULT,
+                    },
+                    func = function()
+                        hpfx_Transform(card, context)
+                    end
+                }
+            else
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.CHIPS,
+                    func = function()
+                        hpfx_Transform(card, context)
+                    end
+                }
+            end
         end
     end
 }
