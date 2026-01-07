@@ -78,10 +78,21 @@ SMODS.Joker {
                     }
                 end
             end
+            if next(SMODS.find_card("j_hpfx_familia")) then
+                if context.joker_main and next(context.poker_hands["Four of a Kind"]) then
+                    return {
+                        message = localize('ph_boss_disabled'),
+                        func = function()
+                            G.GAME.blind:disable()
+                            hpfx_Transform(card, context)
+                        end
+                    }
+                end
+            end
         end
         
         if context.setting_blind and G.GAME.blind.boss then
-            if next(SMODS.find_card("j_hpfx_not_cartomancer")) then
+            if next(SMODS.find_card("j_hpfx_not_cartomancer")) or next(SMODS.find_card("j_hpfx_familia")) then
             else
                 return {
                     func = function()
