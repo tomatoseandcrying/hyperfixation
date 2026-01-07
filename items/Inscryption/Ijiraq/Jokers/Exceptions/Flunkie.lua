@@ -40,9 +40,31 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.individual and
-            context.cardarea == G.play and
-            context.other_card:get_id() == 14 then
+        if next(SMODS.find_card('j_hpfx_dupla')) then
+            if context.joker_main and next(context.poker_hands["Pair"]) then
+                local ace = 0
+                for _, c in pairs(context.scoring_hand) do
+                    if c:get_id() == 14 then
+                        ace = ace + 1
+                    end
+                end
+                if ace >= 2 then
+                    for i = 1, #G.playing_cards do
+                        if G.playing_cards[i]:get_id() == 14 then
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    SMODS.destroy_cards(G.playing_cards[i], false, true, false)
+                                    return true
+                                end
+                            }))
+                            delay(0.1)
+                        end
+                    end
+                end
+            end
+        end
+
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 14 then
             SMODS.destroy_cards(context.other_card, false, true, false)
             if next(SMODS.find_card('j_hpfx_pyramid')) then
                 return {
