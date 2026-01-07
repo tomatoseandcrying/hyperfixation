@@ -41,10 +41,15 @@ SMODS.Joker {
         if context.end_of_round and context.game_over == false and
             context.main_eval then
             card.ability.extra_value = card.ability.extra_value + card.ability.extra.price
-
             card:set_cost()
             local nugget = Hyperfixation.nugget
-            if card.sell_cost == nugget then
+            for _, v in ipairs(G.jokers.cards) do
+                if v.config.center_key == 'j_hpfx_card' then
+                    card.sell_cost = ( nugget - 1 )
+                    card.ability.extra_value = ( nugget - 1 )
+                end
+            end
+            if card.sell_cost >= nugget then
                 return {
                     func = function()
                         hpfx_Transform(card, context)
