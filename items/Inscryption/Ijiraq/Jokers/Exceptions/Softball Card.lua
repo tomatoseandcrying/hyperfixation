@@ -39,6 +39,14 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and next(SMODS.find_card('j_hpfx_apophenia')) then
+            if context.other_card:is_face() then
+                return {
+                    xmult = card.ability.extra.xmult,
+                    message_card = context.other_card
+                }
+            end
+        end
         if context.other_joker and (context.other_joker:is_rarity(2) or context.other_joker:is_rarity("Uncommon")) then
             return {
                 xmult = -card.ability.extra.xmult

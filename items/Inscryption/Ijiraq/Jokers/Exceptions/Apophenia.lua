@@ -39,7 +39,7 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        if context.setting_blind then
+        if context.setting_blind and not next(SMODS.find_card('j_hpfx_softball')) then
             return {
                 func = function()
                     hpfx_Transform(card, context)
