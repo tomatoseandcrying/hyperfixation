@@ -37,8 +37,22 @@ SMODS.Joker {
         card:add_sticker('hpfx_priceless')
     end,
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and
-            context.main_eval then
+        if context.end_of_round and context.game_over == false and context.main_eval then
+            if next(SMODS.find_card("j_hpfx_earthbound")) then
+                for i = 1, #G.playing_cards do
+                    if G.playing_cards[i]:get_id() == 9 then
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.playing_cards[i]:juice_up()
+                                play_sound('gold_seal')
+                                G.playing_cards[i]:set_seal('Gold', nil, true)
+                                return true
+                            end
+                        }))
+                        delay(0.1)
+                    end
+                end
+            end
             for _, area in ipairs({ G.jokers, G.consumeables }) do
                 for _, other_card in ipairs(area.cards) do
                     if other_card.set_cost then
