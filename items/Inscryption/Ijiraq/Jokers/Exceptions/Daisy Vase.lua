@@ -158,6 +158,20 @@ SMODS.Joker {
             if pleart and pliamond and plade and plub then
                 return {
                     func = function()
+                        for _, v in ipairs(G.jokers.cards) do
+                            if v.config.center_key == 'j_hpfx_chicken' then
+                                SMODS.scale_card(v, {
+                                    ref_table = v.ability,
+                                    ref_value = "extra_value",
+                                    scalar_value = "priceee",
+                                    operation = 'X',
+                                    scaling_message = {
+                                        message = localize('k_val_up'),
+                                        colour = G.C.MONEY
+                                    }
+                                })
+                            end
+                        end
                         hpfx_Transform(card, context)
                     end
                 }
