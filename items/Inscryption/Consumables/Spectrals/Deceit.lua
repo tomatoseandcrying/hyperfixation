@@ -44,9 +44,6 @@ SMODS.Consumable({
                     return true
                 end
             }))
-        end
-        delay(0.2)
-        for i = 1, #G.jokers.highlighted do
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 delay = 0.1,
@@ -91,7 +88,9 @@ SMODS.Consumable({
                             trigger = "after",
                             delay = 0.15,
                             func = function()
-                                G.jokers.highlighted[i]:flip()
+                                G.jokers.highlighted[i]:set_ability(G.P_CENTERS["j_hpfx_costume"])
+                                play_sound("card1")
+                                G.jokers.highlighted[i]:juice_up(0.3, 0.3)
                                 return true
                             end,
                         }))
@@ -99,28 +98,15 @@ SMODS.Consumable({
                             trigger = "after",
                             delay = 0.15,
                             func = function()
-                                G.jokers.highlighted[i]:set_ability(G.P_CENTERS["j_hpfx_costume"])
-                                play_sound("card1")
-                                G.jokers.highlighted[i]:juice_up(0.3, 0.3)
+                                G.jokers.highlighted[i]:flip()
+                                G.jokers:unhighlight_all()
                                 return true
                             end,
-                        }))
-                        local percent = 1.15 - (i - 0.999) / (#G.jokers.highlighted - 0.998) * 0.3
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.15,
-                            func = function()
-                                G.jokers.highlighted[i]:flip()
-                                play_sound('card1', percent)
-                                G.jokers.highlighted[i]:juice_up(0.3, 0.3)
-                                return true
-                            end
                         }))
                     end
                     return true
                 end
             }))
         end
-        --G.jokers:unhighlight_all()
     end
 })
