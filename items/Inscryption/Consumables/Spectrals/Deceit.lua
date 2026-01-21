@@ -18,9 +18,11 @@ SMODS.Consumable({
         return false
     end,
     can_use = function(self, card)
-        return G.jokers and
-            #G.jokers.highlighted <= card.ability.max_highlighted and
-            #G.jokers.highlighted > 0
+        return 
+            G.jokers and #G.jokers.highlighted <= card.ability.max_highlighted and #G.jokers.highlighted > 0 
+            and not G.jokers.highlighted[card.ability.max_highlighted].ability.hpfx_priceless
+            and not G.jokers.highlighted[1].config.center.key == 'j_hpfx_ijiraq'
+            and not G.jokers.highlighted[1].config.center.key == 'j_nic_tetoraq'
     end,
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
