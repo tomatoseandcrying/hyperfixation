@@ -5,6 +5,12 @@ SMODS.Atlas({ --icon
     px = 32,
     py = 32,
 })
+SMODS.Atlas({ --logo
+    key = "logo",
+    path = "hyperfixation_logo.png",
+    px = 278,
+    py = 92,
+})
 --jokers
 SMODS.Atlas {
     key = 'IsaacJokers',
@@ -39,6 +45,12 @@ SMODS.Atlas {
 SMODS.Atlas {
     key = 'InscryptionJokers',
     path = "inscryption/jokers/InscryptionJokers.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'jolyne',
+    path = "ominousjolyne.png",
     px = 71,
     py = 95
 }

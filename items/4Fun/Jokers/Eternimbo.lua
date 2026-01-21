@@ -10,3 +10,13 @@ SMODS.Joker {
         return args.type == 'hpfx_old'
     end
 }
+SMODS.Joker {
+    key = 'jolyne',
+    atlas = 'jolyne',
+    pos = { x = 0, y = 0 },
+    unlocked = true,
+    discovered = true,
+    rarity = 4,
+    no_collection = true,
+    in_pool = function(self, args) return false end,
+}

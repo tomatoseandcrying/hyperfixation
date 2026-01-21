@@ -286,6 +286,10 @@ Hyperfixation = {
         'j_hpfx_cyanosis',
         'j_hpfx_favorite',
     },
+    C = {
+        HPFX_PRIMARY = HEX('fcb3ea'),
+        HPFX_SECONDARY = HEX('ad1515')
+    },
 
     ---If certain mods are installed, add their crossmodded jokers to the exceptions table. Make sure to check if Hyperfixation exists and is a table.
     ---@param mod_id any The ID of the mod to check. Can be found in `metadata.json`.
@@ -512,6 +516,7 @@ SMODS.current_mod.ui_config = { --Configuration
     -- Color of the "Back" button
     tab_button_colour = HEX("FCB3EA"),
     -- Color of the tab buttons
+    back_func = G.ACTIVE_MOD_UI and "openModUI_" .. G.ACTIVE_MOD_UI.id or "your_collection",
 }
 SMODS.current_mod.config_tab = function() --Also Configuration
     return {
