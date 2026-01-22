@@ -1,0 +1,35 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]] # description rendering
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''elseif _c.set == 'Joker' then'''
+position = 'before'
+match_indent = true
+payload = '''
+elseif _c.ijiraq then
+    localize{type = 'descriptions', set = 'Joker', key = _c.key, nodes = desc_nodes, vars = specific_vars or 
+_c.vars, AUT = {info = {}}}
+'''
+
+[[patches]] # calc_dollar_bonus transformation
+[patches.pattern]
+match_indent = true
+times = 1
+target = "functions/state_events.lua"
+pattern = '''
+if ret then
+    i = i+1
+    add_round_eval_row({dollars = ret, bonus = true, name='joker'..i, pitch = pitch, card = _card})
+    pitch = pitch + 0.06
+    dollars = dollars + ret
+end
+'''
+position = "after"
+payload = '''
+if Hyperfixation.calcdollarjokesters[_card.config.center.key] then
+    hpfx_Transform(_card)
+end
+'''

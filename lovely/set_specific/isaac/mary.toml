@@ -1,0 +1,14 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]] # Mary unlock check
+[patches.pattern]
+match_indent = true
+times = 1
+target = "functions/state_events.lua"
+pattern = "check_for_unlock({type = 'chip_score', chips = math.floor( SMODS.calculate_round_score() )})"
+position = "after"
+payload = '''
+check_for_unlock({type = 'hpfx_7mult', mult = math.floor(mult)})
+'''

@@ -1,0 +1,21 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]] # splatter patch
+[patches.pattern]
+match_indent = true
+times = 1
+target = "functions/state_events.lua"
+pattern = "local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash'))"
+position = "at"
+payload = '''
+local function has_splash_effect()
+    if not (Hyperfixation.raqeffects and next(Hyperfixation.raqeffects)) then return false end
+    for _, effect in pairs(Hyperfixation.raqeffects) do
+        if effect == 'j_splash' then return true end
+    end
+    return false
+end
+local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_joker('Splash')) or (next(SMODS.find_card('j_hpfx_ijiraq')) and has_splash_effect())
+'''
