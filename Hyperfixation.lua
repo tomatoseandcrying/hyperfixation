@@ -405,7 +405,7 @@ Hyperfixation = {
     end,
 
     --Isaac rebirth sprite toggle function
-    isaacSpriteFunction = function()
+    --[[ isaacSpriteFunction = function()
         for k, v in pairs(G.I.CARD) do
             if v and v.config and v.config.center and
                 Hyperfixation.table.contains(Hyperfixation.isaac_jokers, v.config.center.key) then
@@ -423,7 +423,7 @@ Hyperfixation = {
             end
             ::continue::
         end
-    end,
+    end, ]]
     -- table checker
     table = {
         contains = function(tbl, val)
@@ -516,7 +516,7 @@ SMODS.current_mod.ui_config = { --Configuration
     -- Color of the "Back" button
     tab_button_colour = HEX("FCB3EA"),
     -- Color of the tab buttons
-    back_func = G.ACTIVE_MOD_UI and "openModUI_" .. G.ACTIVE_MOD_UI.id or "your_collection",
+    --back_func = G.ACTIVE_MOD_UI and "openModUI_" .. G.ACTIVE_MOD_UI.id or "your_collection",
 }
 SMODS.current_mod.config_tab = function() --Also Configuration
     return {
@@ -551,7 +551,6 @@ SMODS.current_mod.config_tab = function() --Also Configuration
                     col = true,
                     ref_table = Hyperfixation.current_mod.config,
                     ref_value = "rebirth",
-                    callback = Hyperfixation.isaacSpriteFunction
                 }) }
             } }
         } }

@@ -10,6 +10,8 @@ SMODS.Joker {
     atlas = 'IsaacJokers',
     pos = { x = 2, y = 0 },
     soul_pos = { x = 2, y = 1 },
+    hpfx_old_art_pos = { x = 2, y = 2 },
+    hpfx_old_art_soul_pos = { x = 2, y = 3 },
     cost = 5,
     blueprint_compat = false,
     eternal_compat = true,

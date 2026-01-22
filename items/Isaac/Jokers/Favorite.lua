@@ -3,6 +3,7 @@ SMODS.Joker {
     rarity = 2,
     atlas = "IsaacJokers",
     pos = { x = 4, y = 1 },
+    hpfx_old_art_pos = { x = 4, y = 3 },
     cost = 5,
     unlocked = false,
     discovered = false,

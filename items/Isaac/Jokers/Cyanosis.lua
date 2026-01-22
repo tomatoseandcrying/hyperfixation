@@ -4,6 +4,7 @@ SMODS.Joker { --Cyanosis/Blue Baby
     rarity = 1,
     atlas = 'IsaacJokers',
     pos = { x = 4, y = 0 },
+    hpfx_old_art_pos = { x = 4, y = 2 },
     cost = 0,
     unlocked = false,
     discovered = false,

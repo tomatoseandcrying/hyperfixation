@@ -4,6 +4,7 @@ SMODS.Joker { --Iscariot/Judas
     rarity = 1,
     atlas = 'IsaacJokers',
     pos = { x = 3, y = 0 },
+    hpfx_old_art_pos = { x = 3, y = 2 },
     cost = 3,
     unlocked = false,
     discovered = false,
