@@ -254,6 +254,7 @@ end
 local update_hook = Game.update
 function Game:update(dt)
     update_hook(self, dt)
+    --Hyperfixation.updatecollectionitems()
     for _, card in pairs(G.I.CARD) do
         if card.config and card.config.center and card.config.center.hpfx_old_art_pos and card.children and card.children.center then
             local center = card.config.center

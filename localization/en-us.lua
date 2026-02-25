@@ -1892,6 +1892,12 @@ return {
                 "of Isaac will use their",
                 "updated sprites"
             },
+            ['hpfx_md_title'] = "Master Detective",
+            ['hpfx_md_option'] = {
+                "Jokers with Jokester",
+                "variants will be hidden",
+                "from the collection"
+            },
             --hpfx_ijiraq_option = "Release the Ijiraq.",
 
             hpfx_fakesaved_ex = "Saved?",

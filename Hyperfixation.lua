@@ -403,27 +403,6 @@ Hyperfixation = {
         end
         return self.name == target
     end,
-
-    --Isaac rebirth sprite toggle function
-    --[[ isaacSpriteFunction = function()
-        for k, v in pairs(G.I.CARD) do
-            if v and v.config and v.config.center and
-                Hyperfixation.table.contains(Hyperfixation.isaac_jokers, v.config.center.key) then
-                local c = v.children
-                if not c then goto continue end
-                local center = c.center
-                local float = c.floating_sprite
-                if center and center.atlas == G.ASSET_ATLAS["hpfx_OldIsaacJokers"] then
-                    if center then center.atlas = G.ASSET_ATLAS["hpfx_IsaacJokers"] end
-                    if float then float.atlas = G.ASSET_ATLAS["hpfx_IsaacJokers"] end
-                else
-                    if center then center.atlas = G.ASSET_ATLAS["hpfx_OldIsaacJokers"] end
-                    if float then float.atlas = G.ASSET_ATLAS["hpfx_OldIsaacJokers"] end
-                end
-            end
-            ::continue::
-        end
-    end, ]]
     -- table checker
     table = {
         contains = function(tbl, val)
@@ -433,6 +412,25 @@ Hyperfixation = {
             return false
         end,
     },
+    --thanks toga
+    updatecollectionitems = function()
+        local ijiraq_pool = get_current_pool("Joker")
+        local filtered_pool = {}
+        for _, key in ipairs(ijiraq_pool) do
+            if not Hyperfixation.brokejokes[key] then
+                table.insert(filtered_pool, key)
+            end
+        end
+        for _, t in ipairs { G.P_CENTERS } do
+            for k, v in pairs(t) do
+                if Hyperfixation.table.contains(filtered_pool, v.key) then
+                    v.no_collection = true
+                else
+                    v.no_collection = nil
+                end
+            end
+        end
+    end
 }
 SMODS.current_mod.optional_features = function() --more features
     return {
@@ -541,18 +539,42 @@ SMODS.current_mod.config_tab = function() --Also Configuration
                 minh = 6,
                 padding = 0.2
             },
-            nodes = { {
-                n = G.UIT.C,
-                config = { padding = 0 },
-                nodes = { create_toggle({
-                    label = localize('hpfx_rebirth_title'),
-                    info = localize('hpfx_rebirth_option'),
-                    active_colour = G.C.GREEN,
-                    col = true,
-                    ref_table = Hyperfixation.current_mod.config,
-                    ref_value = "rebirth",
-                }) }
-            } }
+            nodes = {
+                {
+                    n = G.UIT.R,
+                    nodes = {
+                        {
+                            n = G.UIT.C,
+                            config = { padding = 0 },
+                            nodes = { create_toggle({
+                                label = localize('hpfx_rebirth_title'),
+                                info = localize('hpfx_rebirth_option'),
+                                active_colour = G.C.GREEN,
+                                col = true,
+                                ref_table = Hyperfixation.current_mod.config,
+                                ref_value = "rebirth",
+                            }) }
+                        }
+                    }
+                },
+                {
+                    n = G.UIT.R,
+                    nodes = {
+                        {
+                            n = G.UIT.C,
+                            config = { padding = 0 },
+                            nodes = { create_toggle({
+                                label = localize('hpfx_md_title'),
+                                info = localize('hpfx_md_option'),
+                                active_colour = G.C.GREEN,
+                                col = true,
+                                ref_table = Hyperfixation.current_mod.config,
+                                ref_value = "masterdetective",
+                            }) }
+                        }
+                    },
+                }
+            }
         } }
     }
 end
