@@ -414,19 +414,21 @@ Hyperfixation = {
     },
     --thanks toga
     updatecollectionitems = function()
-        local ijiraq_pool = get_current_pool("Joker")
+        local ijiraq_pool = G.P_CENTER_POOLS.Joker
         local filtered_pool = {}
-        for _, key in ipairs(ijiraq_pool) do
-            if not Hyperfixation.brokejokes[key] then
-                table.insert(filtered_pool, key)
+        for _, cen in ipairs(ijiraq_pool) do
+            if not Hyperfixation.brokejokes[cen.key] then
+                table.insert(filtered_pool, cen.key)
             end
         end
         for _, t in ipairs { G.P_CENTERS } do
             for k, v in pairs(t) do
                 if Hyperfixation.table.contains(filtered_pool, v.key) then
-                    v.no_collection = true
-                else
-                    v.no_collection = nil
+                    if Hyperfixation.current_mod.config.masterdetective then
+                        v.no_collection = true
+                    else
+                        v.no_collection = nil
+                    end
                 end
             end
         end
