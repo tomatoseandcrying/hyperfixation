@@ -1898,7 +1898,7 @@ return {
                 "variants will be hidden",
                 "from the collection"
             },
-            --hpfx_ijiraq_option = "Release the Ijiraq.",
+            ['hpfx_fortune_cookie_teaser'] = "Coming soon...",
 
             hpfx_fakesaved_ex = "Saved?",
             hpfx_pickup1_ex = "Pick it up.",

@@ -430,16 +430,17 @@ Hyperfixation = {
                 end
             end
         end
-    end
+    end,
 }
-SMODS.current_mod.optional_features = function() --more features
+
+Hyperfixation.current_mod.optional_features = function() --more features
     return {
         post_trigger = true,
         retrigger_joker = true,
         cardareas = { discard = true, deck = true }
     }
 end
-SMODS.current_mod.calculate = function(self, context) --calcbased unlocks
+Hyperfixation.current_mod.calculate = function(self, context) --calcbased unlocks
     --Iscariot
     if context.using_consumeable and context.consumeable.config.center.key == "c_devil" then
         if type(G.PROFILES[G.SETTINGS.profile].hpfx_devilCount) ~= "number" then
@@ -503,7 +504,7 @@ SMODS.current_mod.calculate = function(self, context) --calcbased unlocks
         end
     end
 end
-SMODS.current_mod.ui_config = { --Configuration
+Hyperfixation.current_mod.ui_config = { --Configuration
     colour = { G.C.SET.Tarot[2], G.C.SECONDARY_SET.Planet[1], G.C.SO_2.Hearts[3], 1 },
     -- Color of the mod menu BG
     author_colour = HEX("FCB3EA"),
@@ -516,7 +517,7 @@ SMODS.current_mod.ui_config = { --Configuration
     -- Color of the tab buttons
     --back_func = G.ACTIVE_MOD_UI and "openModUI_" .. G.ACTIVE_MOD_UI.id or "your_collection",
 }
-SMODS.current_mod.config_tab = function() --Also Configuration
+Hyperfixation.current_mod.config_tab = function() --Also Configuration
     return {
         n = G.UIT.ROOT,
         config = {
@@ -576,6 +577,40 @@ SMODS.current_mod.config_tab = function() --Also Configuration
                 }
             }
         } }
+    }
+end
+
+function Hyperfixation.fortune_cookie_ui() --Fortune Cookie
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            emboss = 0.05,
+            r = 0.1,
+            padding = 0.1,
+            colour = G.C.BLACK,
+            align = "cm",
+            minw = 6,
+            minh = 4
+        },
+        nodes = {
+            {
+                n = G.UIT.T,
+                config = {
+                    text = localize('hpfx_fortune_cookie_teaser'),
+                    colour = G.C.UI.TEXT_LIGHT,
+                    scale = 0.8,
+                }
+            }
+        }
+    }
+end
+
+SMODS.current_mod.extra_tabs = function() --Mod Tabs
+    return {
+        {
+            label = 'Fortune',
+            tab_definition_function = Hyperfixation.fortune_cookie_ui,
+        },
     }
 end
 --#endregion
