@@ -50,15 +50,17 @@ SMODS.Joker {
                 end
             end
         end
-        if math.max(1, ((G.jokers.config.card_limit + uncommon) - #G.jokers.cards) +
-                #SMODS.find_card("j_hpfx_cutout", true)) <= 1 and card.ability.trig == false then
-            card.ability.trig = true
-            G.E_MANAGER:add_event(Event({
-                func = function()
-                    hpfx_Transform(card)
-                    return true
-                end
-            }))
+        if G.jokers then
+            if math.max(1, ((G.jokers.config.card_limit + uncommon) - #G.jokers.cards) +
+                    #SMODS.find_card("j_hpfx_cutout", true)) <= 1 and card.ability.trig == false then
+                card.ability.trig = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        hpfx_Transform(card)
+                        return true
+                    end
+                }))
+            end
         end
     end,
     calculate = function(self, card, context)
