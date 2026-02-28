@@ -2,8 +2,10 @@
 SMODS.Atlas({ --icon
     key = "modicon",
     path = "icon.png",
-    px = 32,
-    py = 32,
+    px = 34,
+    py = 34,
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 38
 })
 SMODS.Atlas({ --logo
     key = "logo",
