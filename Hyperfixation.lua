@@ -269,6 +269,24 @@ Hyperfixation = {
         ['j_hpfx_marie'] = true,
         ['j_hpfx_space_needle'] = true,
         ['j_hpfx_no_bitches'] = true,
+        --incognito
+        ['j_nic_crazydave'] = true,
+        ['j_nic_peashooter'] = true,
+        ['j_nic_sunflower'] = true,
+        ['j_nic_cherrybomb'] = true,
+        ['j_nic_wallnut'] = true,
+        ['j_nic_potatomine'] = true,
+        ['j_nic_snowpea'] = true,
+        ['j_nic_chomper'] = true,
+        ['j_nic_repeater'] = true,
+        ['j_nic_puffshroom'] = true,
+        ['j_nic_sunshroom'] = true,
+        ['j_nic_fumeshroom'] = true,
+        ['j_nic_gravebuster'] = true,
+        ['j_nic_hypnoshroom'] = true,
+        ['j_nic_scaredyshroom'] = true,
+        ['j_nic_iceshroom'] = true,
+        ['j_nic_doomshroom'] = true
     },
     ---Jokesters that calculate dollar bonuses. Jokester is k, Joker is v
     calcdollarjokesters = calcdollarjokesters or {

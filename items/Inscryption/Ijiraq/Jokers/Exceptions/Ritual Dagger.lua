@@ -21,7 +21,7 @@ SMODS.Joker {
             vars = {
                 card.ability.extra.mult,
                 card.area and card.area == G.jokers and "...?" or "",
-                card.ability.extra.joker_count == #G.jokers.cards
+                G.jokers and card.ability.extra.joker_count == #G.jokers.cards or false
             }
         }
     end,
