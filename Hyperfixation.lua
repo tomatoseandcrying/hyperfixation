@@ -286,7 +286,13 @@ Hyperfixation = {
         ['j_nic_hypnoshroom'] = true,
         ['j_nic_scaredyshroom'] = true,
         ['j_nic_iceshroom'] = true,
-        ['j_nic_doomshroom'] = true
+        ['j_nic_doomshroom'] = true,
+
+        ['j_nic_mysteto'] = true,
+        ['j_nic_tetoxko'] = true,
+        ['j_nic_tetoraq'] = true,
+        ['j_nic_triteto'] = true,
+        ['j_nic_tetorobo'] = true
     },
     ---Jokesters that calculate dollar bonuses. Jokester is k, Joker is v
     calcdollarjokesters = calcdollarjokesters or {
