@@ -74,6 +74,7 @@ G.PROFILES[G.SETTINGS.profile].hpfx_bitch = G.PROFILES[G.SETTINGS.profile].hpfx_
 --#region Global Features
 Hyperfixation = {
     path = mod_path,
+    masdet = false,
     current_mod = SMODS.current_mod,
     --usedHoggy = false,
     wheel_fails = 0,

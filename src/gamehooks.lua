@@ -254,6 +254,9 @@ end
 local update_hook = Game.update
 function Game:update(dt)
     update_hook(self, dt)
+    if Hyperfixation and Hyperfixation.masdet then
+        Hyperfixation.updatecollectionitems()
+    end
     for _, card in pairs(G.I.CARD) do
         if card.config and card.config.center and card.config.center.hpfx_old_art_pos and card.children and card.children.center then
             local center = card.config.center
@@ -271,5 +274,6 @@ end
 local masdet = Game.splash_screen
 function Game:splash_screen()
     masdet(self)
+    Hyperfixation.masdet = true
     Hyperfixation.updatecollectionitems()
 end
