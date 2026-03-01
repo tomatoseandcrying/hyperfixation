@@ -1824,10 +1824,10 @@ return {
                     "Other Help",
                 }
             },
-            hpfx_green_and_in_between_credits = {
+            hpfx_bwuh_credits = {
                 name = " ",
                 text = {
-                    "Green and in Between",
+                    "bwuh",
                 }
             },
         },

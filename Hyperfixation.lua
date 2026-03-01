@@ -644,7 +644,7 @@ function Hyperfixation.credits_ui()
         nodes = {
             create_tabs({
                 snap_to_nav = true,
-                colour = darken(G.C.JOY.MOD, 0.2),
+                colour = darken(Hyperfixation.C.HPFX_PRIMARY, 0.2),
                 scale = 0.8,
                 tabs = {
                     {
@@ -668,9 +668,9 @@ function Hyperfixation.credits_ui()
                         tab_definition_function = Hyperfixation.other_help_ui,
                     },
                     {
-                        label = "Green and in Between",
+                        label = "bwuh",
                         chosen = false,
-                        tab_definition_function = Hyperfixation.green_and_in_between_ui,
+                        tab_definition_function = Hyperfixation.bwuh_ui,
                     },
                 }
             }),
@@ -774,12 +774,12 @@ function Hyperfixation.other_help_ui()
     }
 end
 
-function Hyperfixation.green_and_in_between_ui()
+function Hyperfixation.bwuh_ui()
     local modNodes = {}
 
     modNodes[#modNodes + 1] = {}
     local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
-    localize { type = 'descriptions', key = "hpfx_green_and_in_between_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    localize { type = 'descriptions', key = "hpfx_bwuh_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
     modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
     modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
 
