@@ -275,5 +275,10 @@ local masdet = Game.splash_screen
 function Game:splash_screen()
     masdet(self)
     Hyperfixation.masdet = true
+    if Hyperfixation then
+        for _, v in ipairs(G.P_CENTER_POOLS.Joker) do
+            Hyperfixation.no_collection[v.key] = v.no_collection
+        end
+    end
     Hyperfixation.updatecollectionitems()
 end
