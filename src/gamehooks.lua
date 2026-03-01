@@ -185,6 +185,7 @@ Game.main_menu = function(change_context)
         function G.SPLASH_HPFX_LOGO:click()
             play_sound('button', 1, 0.3)
             play_sound('hpfx_faaaah', 1, 0.8)
+            G.FUNCS.Incognito_Plug()
         end
 
         function G.SPLASH_HPFX_LOGO:hover()
