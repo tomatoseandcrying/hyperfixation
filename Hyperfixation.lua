@@ -644,7 +644,7 @@ function Hyperfixation.credits_ui()
         nodes = {
             create_tabs({
                 snap_to_nav = true,
-                colour = darken(Hyperfixation.C.HPFX_PRIMARY, 0.2),
+                colour = Hyperfixation.C.HPFX_PRIMARY,
                 scale = 0.8,
                 tabs = {
                     {
@@ -678,6 +678,7 @@ function Hyperfixation.credits_ui()
     }
 end
 
+--thanks n'
 function Hyperfixation.isaac_ui()
     local modNodes = {}
 

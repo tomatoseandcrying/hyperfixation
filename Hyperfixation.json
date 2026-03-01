@@ -19,7 +19,8 @@
 	],
 	"conflicts": [
 		"Multiplayer (>=0.2.18)",
-		"MoreFluff (>=1.6.0)"
+		"MoreFluff (>=1.6.0)",
+		"Multiverse (<=0.09b~PRERELEASE)"
 	],
 	"no_marquee": true
 }
