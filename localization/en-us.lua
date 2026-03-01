@@ -1800,12 +1800,34 @@ return {
                 }
             },
 
-            hpfx_credits = {
-                name = "Credits",
+            hpfx_isaac_credits = {
+                name = " ",
                 text = {
-                    "{button:Incognito_Plug,C:dark_edition}Niju{} is actually awesome",
-                    "aw thanks",
-                    "JOLYNE IS PEAK TOOO",
+                    "Isaac",
+                }
+            },
+            hpfx_inscryption_credits = {
+                name = " ",
+                text = {
+                    "Inscryption",
+                }
+            },
+            hpfx_fourfun_credits = {
+                name = " ",
+                text = {
+                    "4Fun",
+                }
+            },
+            hpfx_other_help_credits = {
+                name = " ",
+                text = {
+                    "Other Help",
+                }
+            },
+            hpfx_green_and_in_between_credits = {
+                name = " ",
+                text = {
+                    "Green and in Between",
                 }
             },
         },

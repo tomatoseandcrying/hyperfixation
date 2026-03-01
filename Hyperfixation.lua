@@ -638,11 +638,148 @@ function G.FUNCS.Incognito_Plug()
 end
 
 function Hyperfixation.credits_ui()
+    return {
+        n = G.UIT.ROOT,
+        config = { r = 0.1, minw = 8, align = "tm", padding = 0.2, colour = G.C.BLACK },
+        nodes = {
+            create_tabs({
+                snap_to_nav = true,
+                colour = darken(G.C.JOY.MOD, 0.2),
+                scale = 0.8,
+                tabs = {
+                    {
+                        label = "Isaac",
+                        chosen = true,
+                        tab_definition_function = Hyperfixation.isaac_ui,
+                    },
+                    {
+                        label = "Inscryption",
+                        chosen = false,
+                        tab_definition_function = Hyperfixation.inscryption_ui,
+                    },
+                    {
+                        label = "4Fun",
+                        chosen = false,
+                        tab_definition_function = Hyperfixation.fourfun_ui,
+                    },
+                    {
+                        label = "Other Help",
+                        chosen = false,
+                        tab_definition_function = Hyperfixation.other_help_ui,
+                    },
+                    {
+                        label = "Green and in Between",
+                        chosen = false,
+                        tab_definition_function = Hyperfixation.green_and_in_between_ui,
+                    },
+                }
+            }),
+        }
+    }
+end
+
+function Hyperfixation.isaac_ui()
     local modNodes = {}
 
     modNodes[#modNodes + 1] = {}
     local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
-    localize { type = 'descriptions', key = "hpfx_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    localize { type = 'descriptions', key = "hpfx_isaac_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+    modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            emboss = 0.05,
+            minh = 6,
+            r = 0.1,
+            minw = 6,
+            align = "cm",
+            padding = 0.2,
+            colour = G.C.BLACK
+        },
+        nodes = modNodes
+    }
+end
+
+function Hyperfixation.inscryption_ui()
+    local modNodes = {}
+
+    modNodes[#modNodes + 1] = {}
+    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
+    localize { type = 'descriptions', key = "hpfx_inscryption_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+    modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            emboss = 0.05,
+            minh = 6,
+            r = 0.1,
+            minw = 6,
+            align = "cm",
+            padding = 0.2,
+            colour = G.C.BLACK
+        },
+        nodes = modNodes
+    }
+end
+
+function Hyperfixation.fourfun_ui()
+    local modNodes = {}
+
+    modNodes[#modNodes + 1] = {}
+    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
+    localize { type = 'descriptions', key = "hpfx_fourfun_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+    modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            emboss = 0.05,
+            minh = 6,
+            r = 0.1,
+            minw = 6,
+            align = "cm",
+            padding = 0.2,
+            colour = G.C.BLACK
+        },
+        nodes = modNodes
+    }
+end
+
+function Hyperfixation.other_help_ui()
+    local modNodes = {}
+
+    modNodes[#modNodes + 1] = {}
+    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
+    localize { type = 'descriptions', key = "hpfx_other_help_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+    modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+    return {
+        n = G.UIT.ROOT,
+        config = {
+            emboss = 0.05,
+            minh = 6,
+            r = 0.1,
+            minw = 6,
+            align = "cm",
+            padding = 0.2,
+            colour = G.C.BLACK
+        },
+        nodes = modNodes
+    }
+end
+
+function Hyperfixation.green_and_in_between_ui()
+    local modNodes = {}
+
+    modNodes[#modNodes + 1] = {}
+    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
+    localize { type = 'descriptions', key = "hpfx_green_and_in_between_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
     modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
     modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
 
