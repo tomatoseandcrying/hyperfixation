@@ -1,0 +1,111 @@
+--Visual Libraries
+SMODS.Atlas({ --icon
+    key = "modicon",
+    path = "icon.png",
+    px = 34,
+    py = 34,
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 38
+})
+SMODS.Atlas({ --logo
+    key = "logo",
+    path = "hyperfixation_logo.png",
+    px = 278,
+    py = 92,
+})
+--jokers
+SMODS.Atlas {
+    key = 'IsaacJokers',
+    path = "TBOI/jokers/IsaacJokers.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'OldIsaacJokers',
+    path = "TBOI/jokers/OldIsaacJokers.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'Jokers4Fun',
+    path = "4Fun/jokers/Jokers4Fun.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'IjiraqJokers',
+    path = "inscryption/jokers/IjiraqJokers.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'Ijiraq',
+    path = "inscryption/jokers/Ijiraq.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'InscryptionJokers',
+    path = "inscryption/jokers/InscryptionJokers.png",
+    px = 71,
+    py = 95
+}
+SMODS.Atlas {
+    key = 'jolyne',
+    path = "ominousjolyne.png",
+    px = 71,
+    py = 95
+}
+
+--stickers
+SMODS.Atlas {
+    key = 'inscrstickers',
+    path = "inscryption/stickers/inscrstickers.png",
+    px = 71,
+    py = 95
+}
+--blinds
+SMODS.Atlas {
+    key = 'IsaacBlinds',
+    path = "TBOI/blinds/IsaacBlinds.png",
+    px = 34,
+    py = 34,
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 21
+}
+--act 1
+SMODS.Atlas {
+    key = 'InscryptionAct1Items',
+    path = "inscryption/consumables/act1.png",
+    px = 100,
+    py = 150
+}
+SMODS.Atlas {
+    key = 'InscryptionAct1ItemsBL',
+    path = "inscryption/consumables/actbirdleg.png",
+    px = 100,
+    py = 168
+}
+
+-- Deceit
+SMODS.Atlas {
+    key = 'SpectralDeceit',
+    path = "inscryption/consumables/deceit.png",
+    px = 71,
+    py = 95
+}
+
+--ruby
+SMODS.Atlas {
+    key = 'TarotRuby',
+    path = "4Fun/deat.png",
+    px = 219,
+    py = 78
+}
+--crossmod
+SMODS.Atlas {
+    key = 'J!CrossMod',
+    path = "crossmod/CM!jokers.png",
+    px = 71,
+    py = 95
+}

@@ -142,3 +142,13 @@ jd_def["j_hpfx_ijiraq"] = {
         { text = " no", },
     },
 }
+--#endregion
+--#region Crossmod
+---@class JDJokerDefinition
+jd_def["j_hpfx_tetoraq"] = {
+    text = {
+        { text = "(+" },
+        { ref_table = "card.ability.extra", ref_value = "iji_retriggers", retrigger_type = "add", colour = G.C.ORANGE },
+        { text = " triggers)" },
+    },
+}

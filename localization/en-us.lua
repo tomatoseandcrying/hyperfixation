@@ -1,8 +1,7 @@
 return {
     descriptions = {
         Joker = {
-
-            --Isaac
+            --#region Isaac
             j_hpfx_moriah = {
                 name = 'Moriah',
                 text = {
@@ -66,8 +65,18 @@ return {
                     "{C:inactive}--Defeat the {C:hpfx_bossmute}Crimson Heart {C:hpfx_inattention}ten {C:inactive}times{}",
                 },
             },
-
-            --Non-Specific Additions
+            j_hpfx_favorite = {
+                name = 'Favorite',
+                text = {
+                    "{C:mult}+#1#{} and {X:mult,C:white}X#2#{} Mult",
+                },
+                unlock = {
+                    "{C:purple}return{} args.{C:red}type{} {C:purple}=={} {C:green}'hpfx_nomultjoker'{}",
+                    "{C:inactive}--Win a run without scoring {C:hpfx_multiball}Mult. Period.{}",
+                },
+            },
+            --#endregion
+            --#region 4Fun
             j_hpfx_chud = {
                 name = 'chud joker',
                 text = {
@@ -119,16 +128,50 @@ return {
                 },
             },
             j_hpfx_eternimbo = {
-                name = 'Joker, The Eternal',
-                text = {},
+                name = 'The Jester of Justice',
+                text = { "{C:hpfx_oldgreen}\"Enjoy yourselves! You got", "{C:hpfx_oldgreen}a {E:2,C:hpfx_oldgreen}lot{C:hpfx_oldgreen} ahead of you...\"" },
+                unlock = {
+                    "{C:inactive}* GARY{}",
+                    "{C:inactive}* RENOWNED HARLEQUIN, BUFFOON, AND{}",
+                    "{C:inactive}JESTER{}"
+                },
             },
-
-            --Ijiraq
+            --#endregion
+            --#region Inscryption
+            j_hpfx_squirrel = {
+                name = 'Squirrel',
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                },
+            },
+            j_hpfx_blackgoat = {
+                name = 'Black Goat',
+                text = {
+                    "Can be destroyed {C:attention}#1#{} times",
+                },
+            },
+            j_hpfx_frozenopossum = {
+                name = 'Frozen Opossum',
+                text = {
+                    "Creates an {C:attention}Opossum{}",
+                    "when destroyed",
+                },
+            },
+            j_hpfx_opossum = {
+                name = 'Opossum',
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "{C:mult}+#2#{} Mult",
+                },
+            },
+            --#endregion
+            --#region Ijiraq
             j_hpfx_ijiraq = {
                 name = 'Ijiraq',
                 text = {
-                    "{C:attention}Inherits{} the ability of every Joker it disguised as {C:attention}this run{}",
-                    "{C:red,E:2}Destroys{} all other copies of Ijiraq"
+                    "{C:attention}Inherits{} the ability of every",
+                    "Joker it disguised as {C:attention}this run{}",
+                    "{C:inactive,s:0.8}({C:red,E:2,s:0.8}Destroys{s:0.8,C:inactive} all other copies of Ijiraq){}"
                 },
             },
             j_hpfx_costume = {
@@ -1647,6 +1690,59 @@ return {
                     "{C:mult}+#2#{} Mult when scored{C:hpfx_IjiGray}#3#{}",
                 },
             },
+            --#endregion
+            --#region Crossmod
+            j_nic_tetoraq = {
+                name = '{C:hpfx_inc_teto}Teto{}raq',
+                text = {
+                    "{C:hpfx_multiball,T:j_hpfx_tetoraq}Ijiraq{} is now {C:hpfx_inc_teto}Teto{} rarity.",
+                    "{C:hpfx_multiball}Ijiraq{} retriggers {C:attention}once{}",
+                    "for every {C:hpfx_inc_teto}Teto{} Joker. {C:inactive}(#1#){}",
+                    "{C:attention}Takes up no space."
+                },
+                unlock = {
+                    "{C:hpfx_inc_teto}Thanks for the plug :3 - Incognito{}"
+                },
+            },
+        },
+        Blind = {
+            bl_hpfx_double_trouble = {
+                name = 'Double Trouble!?',
+                text = {
+                    "Test your mettle against",
+                    "DOUBLE the bosses!",
+                    "(#1#)"
+                },
+            },
+        },
+        Tarot = {
+            c_hpfx_ruby = {
+                name = 'i think i\'d rather death',
+                text = {
+                    "i think she\'d rather death",
+                    "{C:inactive}(It's just {C:tarot}Death{C:inactive})",
+                },
+            },
+        },
+        Spectral = {
+            c_hpfx_iji_deceit = {
+                name = 'Deceit',
+                text = {
+                    "The {C:attention}Joker{} selected",
+                    "will become but a",
+                    "{C:hpfx_IjiGray,E:1}Costume{} of itself",
+                },
+            }
+        },
+        Enhanced = {
+            m_hpfx_boulder = {
+                name = 'Boulder Card',
+                text = {
+                    "{C:chips}+500{} Chips",
+                    "no rank or suit,",
+                    "cannot unenhance"
+                },
+            },
         },
         Other = {
             hpfx_priceless = {
@@ -1702,13 +1798,107 @@ return {
                     "{f:hpfx_ascii}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠓⠶⠴⣤⣠⣀⠀⠀⠀⠀⠀⢀⣠⠼⠃⠀",
                     "{f:hpfx_ascii}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠈⠋⠓⠓⠓⠋⠋⠈⠀⠀⠀"
                 }
-            }
+            },
+
         },
+        hpfx_inscr_act1_items = {
+            c_hpfx_act1_boulderbottle = {
+                name = 'Boulder in a Bottle',
+                text = {
+                    "Creates #1# {C:attention}Boulder{} in your hand",
+                    "{C:inactive}(Removed after blind defeat){}",
+                },
+            },
+            c_hpfx_act1_squirrelbottle = {
+                name = 'Squirrel in a Bottle',
+                text = {
+                    "Creates #1# {C:attention}Squirrel{}",
+                },
+            },
+            c_hpfx_act1_specialdagger = {
+                name = 'Special Dagger',
+                text = {
+                    {
+                        "Immediately adds {C:attention}40%{} of the blind",
+                        "{C:attention}goal{} to the current blind {C:attention}score{}"
+                    },
+                    {
+                        "{C:red}Debuffs{} all current {C:attention}right-side{} Jokers",
+                        "until current blind is defeated"
+                    }
+                },
+            },
+            c_hpfx_act1_scissors = {
+                name = 'Scissors',
+                text = {
+                    "{C:attention}Halves{} current blind requirement",
+                    "{C:inactive}(Cannot be used on Boss Blind){}",
+                },
+            },
+            c_hpfx_act1_pliers = {
+                name = 'Pliers',
+                text = {
+                    {
+                        "Immediately adds {C:attention}10%{} of the",
+                        "blind {C:attention}goal{} to the current blind",
+                        "{C:attention}score{}, but lose {C:money}$10{} on use"
+                    },
+                },
+            },
+            c_hpfx_act1_hoggybank = {
+                name = 'Hoggy Bank',
+                text = {
+                    "Chips are worth {C:white,X:chips}X4{}",
+                    "as much this blind",
+                },
+            },
+            c_hpfx_act1_hourglass = {
+                name = 'Hourglass',
+                text = {
+                    "{C:blue}+1{} hand this round",
+                },
+            },
+            c_hpfx_act1_goobert = {
+                name = 'Goobert',
+                text = {
+                    "{C:hpfx_LeshyOrange}Nothing will happen.{}",
+                },
+            },
+            c_hpfx_act1_blackgoatbottle = {
+                name = 'Black Goat in a Bottle',
+                text = {
+                    "Creates #1# {C:attention}Black Goat{}",
+                },
+            },
+            c_hpfx_act1_frozenopossumbottle = {
+                name = 'Frozen Opossum in a Bottle',
+                text = {
+                    "Creates #1# {C:attention}Frozen Opossum{}",
+                },
+            },
+            c_hpfx_act1_harpiebirdlegfan = {
+                name = 'Harpie\'s Birdleg Fan',
+                text = {
+                    "{C:green}UNdebuffs{} all Jokers {C:red}debuffed{} this blind",
+                },
+            }
+        }
     },
     misc = {
         dictionary = {
-            --hpfx_isaac_option = "Play with my TBOI stuff!",
-            --hpfx_ijiraq_option = "Release the Ijiraq.",
+            ['hpfx_rebirth_title'] = 'Hyperfixation: Rebirth',
+            ['hpfx_rebirth_option'] = {
+                "Jokers from the Binding",
+                "of Isaac will use their",
+                "updated sprites"
+            },
+            ['hpfx_md_title'] = "Master Detective",
+            ['hpfx_md_option'] = {
+                "Jokers with Jokester",
+                "variants will be hidden",
+                "from the collection"
+            },
+            ['hpfx_fortune_cookie_teaser'] = "Coming soon...",
 
             hpfx_fakesaved_ex = "Saved?",
             hpfx_pickup1_ex = "Pick it up.",
@@ -1725,9 +1915,16 @@ return {
             hpfx_wait = "Wait!",
             hpfx_val_down = "Value Down!?",
             hpfx_coward_ex = "Coward.",
+            hpfx_cabin = 'Leshy\'s Cabin',
+            k_hpfx_orthodox = "Common",
+            k_hpfx_infrequent = "Uncommon",
+            k_hpfx_sparse = "Rare",
         },
         labels = {
             hpfx_priceless = "Priceless",
+            k_hpfx_orthodox = "Common",
+            k_hpfx_infrequent = "Uncommon",
+            k_hpfx_sparse = "Rare",
         },
         quips = {
             hpfx_eternal_jimbo1 = {

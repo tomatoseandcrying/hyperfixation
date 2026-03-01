@@ -1,0 +1,20 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]] # galilimbo patch
+[patches.pattern]
+match_indent = true
+times = 1
+target = "card.lua"
+pattern = "card.T.x = self.T.x"
+position = "at"
+payload = '''
+if next(SMODS.find_card('j_hpfx_galilimbo')) then
+    if pseudorandom('galilimbo') > 0.8 then
+        card:remove()
+        card = nil
+        card = create_card("Planet", G.pack_cards, nil, nil, true, true, nil, 'glb')
+    end
+end
+'''

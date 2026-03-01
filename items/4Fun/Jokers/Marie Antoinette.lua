@@ -7,7 +7,7 @@ SMODS.Joker {
     cost = 6,
     unlocked = false,
     discovered = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = false,
     perishable_compat = false,
     config = {
@@ -93,7 +93,7 @@ SMODS.Joker {
         if context.joker_main and (to_big(card.ability.extra.xmult) > to_big(1)) then
             return { x_mult = card.ability.extra.xmult }
         end
-        if context.end_of_round and context.main_eval and context.beat_boss and not context.blueprint then
+        if context.end_of_round and context.main_eval and context.beat_boss then
             if card.ability.extra.xmult > 2 then
                 card.ability.extra.xmult = 2
                 return { message = localize('k_reset'), colour = G.C.RED, message_card = card }
@@ -101,3 +101,4 @@ SMODS.Joker {
         end
     end
 }
+--updated to 1221a

@@ -38,7 +38,7 @@ SMODS.Joker {
             end
         end
         if G.STAGE and G.STAGE == G.STAGES.RUN then
-            if Hyperfixation.bitchXM == 0 and G.GAME.selected_back.effect.center.key == 'b_abandoned' then
+            if Hyperfixation.bitchXM and Hyperfixation.bitchXM == 0 and G.GAME.selected_back.effect.center.key == 'b_abandoned' then
                 card.ability.extra.xmult = 2
             else
                 card.ability.extra.xmult = Hyperfixation.bitchXM - card.ability.qc
@@ -86,3 +86,4 @@ SMODS.Joker {
         return args.type == 'hpfx_no_bitches'
     end
 }
+--no 1221a update needed

@@ -3,6 +3,7 @@ SMODS.Joker {
     rarity = 1,
     atlas = 'IsaacJokers',
     pos = { x = 1, y = 0 },
+    hpfx_old_art_pos = { x = 1, y = 2 },
     cost = 4,
     unlocked = false,
     discovered = false,
@@ -66,8 +67,4 @@ SMODS.Joker {
             end
         end
     end
-    --[[     in_pool = function (self, args)
-        return Hyperfixation.config.Isaac
-    end, ]]
-
 }

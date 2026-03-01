@@ -3,22 +3,22 @@
 	"name": "Hyperfixation",
 	"display_name": "Hyperfixation",
 	"author": [
-		"tomatose",
-		"deadbeet even"
+		"deadbeet/tomatose",
+		"Incognito"
 	],
-	"description": "A collection of my current and past hyperfixations translated into the Balatro universe!",
+	"description": "A collection of my current and past hyperfixations translated into the Balatro universe! It is recommended to play this mod with an unlocked base game save.",
 	"prefix": "hpfx",
 	"main_file": "Hyperfixation.lua",
 	"priority": 1,
 	"badge_colour": "000000",
 	"badge_text_colour": "FCB3EA",
-	"version": "0.6.1",
+	"version": "0.6.2",
 	"dependencies": [
-		"Steamodded (>=1.0.0~BETA-0827c)",
-		"Lovely (>=0.8)"
+		"Steamodded (>=1.0.0~BETA-1501a)",
+		"Lovely (>=0.9)"
 	],
 	"conflicts": [
-		"incantation (>=0.5)",
-		"Overflow (>=1.0.4)"
+		"Multiplayer (>=0.2.18)",
+		"MoreFluff (>=1.6.0)"
 	]
 }

@@ -73,7 +73,7 @@ SMODS.Joker {
         if context.pseudorandom_result and context.identifier == 'hpfx_space_needle' then
             local lastneedle = card.ability.needled
             card.ability.needled = Hyperfixation.allcalcs
-            [math.floor(pseudorandom('needle', 1, #Hyperfixation.allcalcs))]
+                [math.floor(pseudorandom('needle', 1, #Hyperfixation.allcalcs))]
             if lastneedle ~= card.ability.needled then
                 card.ability.trig = false
             end
@@ -100,3 +100,4 @@ SMODS.Joker {
         return args.type == 'hpfx_needle'
     end,
 }
+--no 1221a update needed
