@@ -21,5 +21,5 @@
 		"Multiplayer (>=0.2.18)",
 		"MoreFluff (>=1.6.0)"
 	],
-	"no_marquee" = true
+	"no_marquee": true
 }
