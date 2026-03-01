@@ -14,7 +14,7 @@ function HPFX_load_folder(folder, opts)
         end
     end
 
-    local files = NFS.getDirectoryItems(mod_path .. folder) or {}
+    local files = SMODS.NFS.getDirectoryItems(mod_path .. folder) or {}
     for i, file in ipairs(files) do
         local name_no_ext = file:match("(.+)%..+$") or file
         if not except_map[file] and not except_map[name_no_ext] then
@@ -24,7 +24,7 @@ function HPFX_load_folder(folder, opts)
                 HPFX_foad_lolder()
             else
                 -- directory recursion
-                local sub = NFS.getDirectoryItems(mod_path .. path)
+                local sub = SMODS.NFS.getDirectoryItems(mod_path .. path)
                 if sub and #sub > 0 then
                     HPFX_load_folder(path, opts)
                 else
