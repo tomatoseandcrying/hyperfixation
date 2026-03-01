@@ -1800,6 +1800,14 @@ return {
                 }
             },
 
+            hpfx_credits = {
+                name = "Credits",
+                text = {
+                    "{button:Incognito_Plug,C:dark_edition}Niju{} is actually awesome",
+                    "aw thanks",
+                    "JOLYNE IS PEAK TOOO",
+                }
+            },
         },
         hpfx_inscr_act1_items = {
             c_hpfx_act1_boulderbottle = {
