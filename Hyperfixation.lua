@@ -680,26 +680,536 @@ end
 
 --thanks n'
 function Hyperfixation.isaac_ui()
-    local modNodes = {}
-
-    modNodes[#modNodes + 1] = {}
-    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
-    localize { type = 'descriptions', key = "hpfx_isaac_credits1", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
-    modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
-    modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
-
     return {
         n = G.UIT.ROOT,
-        config = {
-            emboss = 0.05,
-            minh = 6,
-            r = 0.1,
-            minw = 12,
-            align = "tl",
-            padding = 0.2,
-            colour = G.C.BLACK
-        },
-        nodes = modNodes
+        config = { r = 0.1, minw = 13, minh = 7, align = "tm", padding = 0.2, colour = G.C.BLACK, },
+        nodes = {
+            create_tabs({
+                snap_to_nav = true,
+                colour = Hyperfixation.C.HPFX_PRIMARY,
+                scale = 0.5,
+                tabs = {
+                    {
+                        label = "Astra", -- Label Name
+                        chosen = true, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_astra_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped fix Mary's unlock condition patch", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped fix Mary", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "BakersDozenBagels", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_bagersdozenbagels_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Creator of Cyanosis' mult-decrease scoring", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "context", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "Delirium", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_delirium_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with unlock conditions", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "ejwu", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_ejwu_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped fix Cyanosis for newer better-calc", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with Cyanosis' unlock condition", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "Eremel", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_eremel_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Major Isaac-centric help", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "FoxDeploy", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_foxdeploy_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with unlock conditions", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "Lars", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_lars_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> The reason Farmer works", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "N'", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_n_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Fixed Mary's unlock condition patch", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with both Cyanosis' and Iscariot's", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Unlocked conditions", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with hints", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped fix Mary", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "Somecom", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_somecom_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with unlock conditions", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with hints", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "srock", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_srock_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with unlock conditions", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped fix Mary", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "Winter", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_winter_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with unlock conditions", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped fix Mary", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                    {
+                        label = "Youh", -- Label Name
+                        chosen = false, -- What Tab Starts = True
+                        tab_definition_function = function()
+                            local modNodes = {}
+
+                            modNodes[#modNodes + 1] = {}
+                            local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+                            localize { type = 'descriptions', key = "hpfx_youh_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+                            modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
+                            modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+
+                            -- Joker of Choice 
+                            local joker = "j_hpfx_chud"
+                            local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
+                            local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[joker] ) -- Card Importing
+                            area:emplace(card)
+
+                            return {
+                                n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
+                                    { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
+
+                                        -- Name
+                                        { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = modNodes
+                                        },
+                                        -- Sentence
+                                        { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = {
+                                            {n = G.UIT.T, config = { text = "> Helped with hints", scale = 0.5, colour = G.C.WHITE}},
+                                        }},
+
+                                    }},
+
+                                    -- Card Area
+                                    { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
+                                        { n = G.UIT.O, config = { object = area } }
+                                    }}
+                                }
+                            }
+                        end
+                    },
+                }
+            }),
+        }
     }
 end
 

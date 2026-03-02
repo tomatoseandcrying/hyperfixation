@@ -1800,14 +1800,79 @@ return {
                 }
             },
 
-            hpfx_isaac_credits1 = {
+            hpfx_astra_credits = {
                 name = " ",
                 text = {
                     "{button:astra,C:purple,u:purple}Astra{} {C:hpfx_inPURPLE,s:0.9}(theastra_){}",
-                    "> Helped fix Mary's unlock condition patch",
-                    "> Helped fix Mary",
                 }
             },
+            hpfx_bagersdozenbagels_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}BakersDozenBagels{} {C:inactive,s:0.9}(bakersdozenbagel){}",
+                }
+            },
+            hpfx_delirium_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Delirium{} {C:inactive,s:0.9}(deliriumiscool){}",
+                }
+            },
+            hpfx_ejwu_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}ejwu{} {C:inactive,s:0.9}(ejwu2_98708){}",
+                }
+            },
+            hpfx_eremel_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Eremel{} {C:inactive,s:0.9}(Eremel_){}",
+                }
+            },
+            hpfx_foxdeploy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}FoxDeploy{} {C:inactive,s:0.9}(foxdeploy){}",
+                }
+            },
+            hpfx_lars_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Lars{} {C:inactive,s:0.9}(larswijn){}",
+                }
+            },
+            hpfx_n_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}N'{} {C:inactive,s:0.9}(nh6574){}",
+                }
+            },
+            hpfx_somecom_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Somecom{} {C:inactive,s:0.9}(somethingcom515){}",
+                }
+            },
+            hpfx_srock_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}srock{} {C:inactive,s:0.9}(srockw){}",
+                }
+            },
+            hpfx_winter_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Winter{} {C:inactive,s:0.9}(thewintercomet){}",
+                }
+            },
+            hpfx_youh_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Youh{} {C:inactive,s:0.9}(smolfella37){}",
+                }
+            },
+
             hpfx_inscryption_credits = {
                 name = " ",
                 text = {
