@@ -632,8 +632,8 @@ function Hyperfixation.fortune_cookie_ui() --Fortune Cookie
     }
 end
 
-function G.FUNCS.Incognito_Plug()
-    local url = "https://github.com/IncognitoN71/Incognito"
+function G.FUNCS.astra()
+    local url = "https://github.com/the-Astra/Maximus"
     love.system.openURL(url)
 end
 
@@ -683,8 +683,8 @@ function Hyperfixation.isaac_ui()
     local modNodes = {}
 
     modNodes[#modNodes + 1] = {}
-    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
-    localize { type = 'descriptions', key = "hpfx_isaac_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+    localize { type = 'descriptions', key = "hpfx_isaac_credits1", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
     modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
     modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
 
@@ -694,8 +694,8 @@ function Hyperfixation.isaac_ui()
             emboss = 0.05,
             minh = 6,
             r = 0.1,
-            minw = 6,
-            align = "cm",
+            minw = 12,
+            align = "tl",
             padding = 0.2,
             colour = G.C.BLACK
         },

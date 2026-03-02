@@ -1800,10 +1800,12 @@ return {
                 }
             },
 
-            hpfx_isaac_credits = {
+            hpfx_isaac_credits1 = {
                 name = " ",
                 text = {
-                    "Isaac",
+                    "{button:astra,C:purple,u:purple}Astra{} {C:hpfx_inPURPLE,s:0.9}(theastra_){}",
+                    "> Helped fix Mary's unlock condition patch",
+                    "> Helped fix Mary",
                 }
             },
             hpfx_inscryption_credits = {
