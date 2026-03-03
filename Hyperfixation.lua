@@ -700,7 +700,7 @@ Hyperfixation.isaac_credits_table = {
     { { { name = "youh", category = "isaac", joker = "j_hpfx_jolyne", }, }, },
 }
 
-function Hyperfixation.isaac(page)
+function Hyperfixation.isaac()
     G.mul_credits = {}
     return {
         n = G.UIT.ROOT,
@@ -805,7 +805,17 @@ function Hyperfixation.generate_credits_desc_nodes(entry)
     local area = CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H,
         { card_limit = 1, type = 'title', highlight_limit = 0, collection = true })                      -- Card Area
     local card = Card(area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[entry.joker]) -- Card Importing
+    
     area:emplace(card)
+
+    card.no_ui = true
+    if entry.joker == "j_hpfx_jolyne" then
+        function card:click()
+            play_sound("hpfx_vineboom")
+            self:start_dissolve({G.C.RED})
+            self:juice_up(10, 10)
+        end
+    end
 
     return {
         n = G.UIT.ROOT,
