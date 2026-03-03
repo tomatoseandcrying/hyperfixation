@@ -1800,6 +1800,7 @@ return {
                 }
             },
 
+            -- Title
             hpfx_astra_credits = {
                 name = " ",
                 text = {
@@ -1870,6 +1871,91 @@ return {
                 name = " ",
                 text = {
                     "{C:default,u:default}Youh{} {C:inactive,s:0.9}(smolfella37){}",
+                }
+            },
+
+            -- Isaac Description
+
+            hpfx_astra_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped fix Mary's unlock condition patch",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_bagersdozenbagels_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Creator of Cyanosis' mult-decrease",
+                    "{C:white}scoring context",
+                }
+            },
+            hpfx_delirium_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                }
+            },
+            hpfx_ejwu_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped fix Cyanosis for newer better-calc",
+                    "{C:white}> Helped with Cyanosis' unlock condition",
+                }
+            },
+            hpfx_eremel_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Major Isaac-centric help",
+                }
+            },
+            hpfx_foxdeploy_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                }
+            },
+            hpfx_lars_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> The reason Farmer works",
+                }
+            },
+            hpfx_n_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Fixed Mary's unlock condition patch",
+                    "{C:white}> Helped with both Cyanosis' and Iscariot's",
+                    "{C:white}> Unlocked conditions",
+                    "{C:white}> Helped with hints",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_somecom_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                    "{C:white}> Helped with hints",
+                }
+            },
+            hpfx_srock_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_winter_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_youh_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with hints",
                 }
             },
 
