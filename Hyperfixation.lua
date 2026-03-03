@@ -685,6 +685,78 @@ end
 
 Hyperfixation.selected_credits_page = 1
 
+function Hyperfixation.generate_credits_desc_nodes(entry)
+    local name = {}
+
+    name[#name + 1] = {}
+    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
+    localize { type = 'descriptions', key = "hpfx_" .. entry.name .. "_credits", set = 'Other', nodes = name[#name], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
+    name[#name] = desc_from_rows(name[#name])
+    name[#name].config.colour = loc_vars.background_colour or name[#name].config.colour
+
+    local desc_nodes = {}
+    localize({
+        type = "other",
+        key = "hpfx_" .. entry.name .. "_credits_" .. entry.category .. "_descriptions",
+        nodes = desc_nodes,
+        scale = 2
+    })
+    credits_rows = {}
+    for _, v in ipairs(desc_nodes) do
+        credits_rows[#credits_rows + 1] = { n = G.UIT.R, config = { align = "cl" }, nodes = v }
+    end
+
+    -- Joker of Choice
+    local area = CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H,
+        { card_limit = 1, type = 'title', highlight_limit = 0, collection = true })                      -- Card Area
+    local card = Card(area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[entry.joker]) -- Card Importing
+    
+    area:emplace(card)
+
+    card.no_ui = true
+    if entry.joker == "j_hpfx_jolyne" then
+        function card:click()
+            play_sound("hpfx_vineboom")
+            self:start_dissolve({G.C.RED})
+            self:juice_up(10, 10)
+        end
+    end
+
+    return {
+        n = G.UIT.ROOT,
+        config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cl", padding = 0.05 },
+                nodes = {
+
+                    -- Name
+                    {
+                        n = G.UIT.R,
+                        config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE },
+                        nodes =
+                            name
+                    },
+                    -- Sentence
+                    { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = credits_rows
+                    },
+
+                }
+            },
+
+            -- Card Area
+            {
+                n = G.UIT.C,
+                config = { align = "tr", padding = 0.05 },
+                nodes = {
+                    { n = G.UIT.O, config = { object = area } }
+                }
+            }
+        }
+    }
+end
+
 Hyperfixation.isaac_credits_table = {
     { { { name = "astra", category = "isaac", joker = "j_hpfx_mary", }, }, },
     { { { name = "bagersdozenbagels", category = "isaac", joker = "j_hpfx_cyanosis", }, }, },
@@ -778,78 +850,6 @@ function G.FUNCS.isaac_page(args)
     Hyperfixation.selected_credits_page = args.to_key
     local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Isaac")
     G.FUNCS.change_tab(element)
-end
-
-function Hyperfixation.generate_credits_desc_nodes(entry)
-    local name = {}
-
-    name[#name + 1] = {}
-    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.8 }
-    localize { type = 'descriptions', key = "hpfx_" .. entry.name .. "_credits", set = 'Other', nodes = name[#name], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
-    name[#name] = desc_from_rows(name[#name])
-    name[#name].config.colour = loc_vars.background_colour or name[#name].config.colour
-
-    local desc_nodes = {}
-    localize({
-        type = "other",
-        key = "hpfx_" .. entry.name .. "_credits_" .. entry.category .. "_descriptions",
-        nodes = desc_nodes,
-        scale = 2
-    })
-    credits_rows = {}
-    for _, v in ipairs(desc_nodes) do
-        credits_rows[#credits_rows + 1] = { n = G.UIT.R, config = { align = "cl" }, nodes = v }
-    end
-
-    -- Joker of Choice
-    local area = CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H,
-        { card_limit = 1, type = 'title', highlight_limit = 0, collection = true })                      -- Card Area
-    local card = Card(area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[entry.joker]) -- Card Importing
-    
-    area:emplace(card)
-
-    card.no_ui = true
-    if entry.joker == "j_hpfx_jolyne" then
-        function card:click()
-            play_sound("hpfx_vineboom")
-            self:start_dissolve({G.C.RED})
-            self:juice_up(10, 10)
-        end
-    end
-
-    return {
-        n = G.UIT.ROOT,
-        config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE },
-        nodes = {
-            {
-                n = G.UIT.C,
-                config = { align = "cl", padding = 0.05 },
-                nodes = {
-
-                    -- Name
-                    {
-                        n = G.UIT.R,
-                        config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE },
-                        nodes =
-                            name
-                    },
-                    -- Sentence
-                    { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = credits_rows
-                    },
-
-                }
-            },
-
-            -- Card Area
-            {
-                n = G.UIT.C,
-                config = { align = "tr", padding = 0.05 },
-                nodes = {
-                    { n = G.UIT.O, config = { object = area } }
-                }
-            }
-        }
-    }
 end
 
 function Hyperfixation.inscryption()

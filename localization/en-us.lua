@@ -1808,10 +1808,46 @@ return {
             },
 
             -- Title
+            hpfx_smiley_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}__.smiley.__{}",
+                }
+            },
+            hpfx_aiko_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Aiko{} {C:inactive,s:0.9}(aikoyori){}",
+                }
+            },
             hpfx_astra_credits = {
                 name = " ",
                 text = {
                     "{button:astra,C:purple,u:purple}Astra{} {C:hpfx_inPURPLE,s:0.9}(theastra_){}",
+                }
+            },
+            hpfx_astro_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Astro{} {C:inactive,s:0.9}(silly_goober_0nthewall){}",
+                }
+            },
+            hpfx_autumn_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Autumn{} {C:inactive,s:0.9}(autumnmood){}",
+                }
+            },
+            hpfx_axy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Axy{} {C:inactive,s:0.9}(axyraandas){}",
+                }
+            },
+            hpfx_babeeti_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Babeeti{}",
                 }
             },
             hpfx_bagersdozenbagels_credits = {
@@ -1820,10 +1856,70 @@ return {
                     "{button:bkb,C:hpfx_oldgreen,u:hpfx_oldgreen}BakersDozenBagels{} {C:inactive,s:0.9}(bakersdozenbagels){}",
                 }
             },
+            hpfx_bepis_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Bepis{} {C:inactive,s:0.9}(bepisfever){}",
+                }
+            },
+            hpfx_brother_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}My Brother{}",
+                }
+            },
+            hpfx_carrot_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Carrot{} {C:inactive,s:0.9}(carrotd1scord){}",
+                }
+            },
+            hpfx_carrymehome_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}carrymehome{}",
+                }
+            },
+            hpfx_cheekyrotter_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}cheekyrotter{}",
+                }
+            },
+            hpfx_corobo_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Corobo{} {C:inactive,s:0.9}(thecorobocorner){}",
+                }
+            },
             hpfx_delirium_credits = {
                 name = " ",
                 text = {
                     "{C:default,u:default}Delirium{} {C:inactive,s:0.9}(deliriumiscool){}",
+                }
+            },
+            hpfx_dex_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}DEX{} {C:inactive,s:0.9}(dexterity0){}",
+                }
+            },
+            hpfx_dillku_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Dillku{}",
+                }
+            },
+            hpfx_dilly_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Dilly{} {C:inactive,s:0.9}(dilly_the_dillster){}",
+                }
+            },
+            hpfx_dunk_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Dunk{} {C:inactive,s:0.9}(dunkaccina){}",
                 }
             },
             hpfx_ejwu_credits = {
@@ -1838,10 +1934,70 @@ return {
                     "{C:default,u:default}Eremel{} {C:inactive,s:0.9}(Eremel_){}",
                 }
             },
+            hpfx_eris_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Eris{} {C:inactive,s:0.9}(borb43){}",
+                }
+            },
+            hpfx_fencer_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Fencer{} {C:inactive,s:0.9}(ccfencer){}",
+                }
+            },
+            hpfx_fey_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Fey{} {C:inactive,s:0.9}(feyyy115){}",
+                }
+            },
+            hpfx_finity_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Finity{}",
+                }
+            },
             hpfx_foxdeploy_credits = {
                 name = " ",
                 text = {
                     "{C:default,u:default}FoxDeploy{} {C:inactive,s:0.9}(foxdeploy){}",
+                }
+            },
+            hpfx_ggezsped_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}ggezsped{}",
+                }
+            },
+            hpfx_hamester_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Hamester{} {C:inactive,s:0.9}(hamester){}",
+                }
+            },
+            hpfx_huey_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Huey{} {C:inactive,s:0.9}(theambushingbush){}",
+                }
+            },
+            hpfx_infinityplus05_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}infinityplus05{}",
+                }
+            },
+            hpfx_johndebugplus_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}John DebugPlus{} {C:inactive,s:0.9}(wilsonthewolf){}",
+                }
+            },
+            hpfx_johnlovelyjresq_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}John Lovely Jr Esq.{} {C:inactive,s:0.9}(lovelyparty){}",
                 }
             },
             hpfx_lars_credits = {
@@ -1850,10 +2006,58 @@ return {
                     "{C:default,u:default}Lars{} {C:inactive,s:0.9}(larswijn){}",
                 }
             },
+            hpfx_localthunk_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}LocalThunk{}",
+                }
+            },
+            hpfx_misen_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Misen{} {C:inactive,s:0.9}(misenrol){}",
+                }
+            },
+            hpfx_morefluff_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}MoreFluff{}",
+                }
+            },
             hpfx_n_credits = {
                 name = " ",
                 text = {
                     "{C:default,u:default}N'{} {C:inactive,s:0.9}(nh6574){}",
+                }
+            },
+            hpfx_niko_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Niko{} {C:inactive,s:0.9}(nxkoo_){}",
+                }
+            },
+            hpfx_ortalab_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Ortalab{}",
+                }
+            },
+            hpfx_revo_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Revo{} {C:inactive,s:0.9}(revoo_.){}",
+                }
+            },
+            hpfx_ruby_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Ruby{} {C:inactive,s:0.9}(lord.ruby){}",
+                }
+            },
+            hpfx_snakegirl_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Snakegirl{} {C:inactive,s:0.9}(cookiecreator){}",
                 }
             },
             hpfx_somecom_credits = {
@@ -1862,16 +2066,64 @@ return {
                     "{C:default,u:default}Somecom{} {C:inactive,s:0.9}(somethingcom515){}",
                 }
             },
+            hpfx_someone_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Someone{} {C:inactive,s:0.9}(someone23832){}",
+                }
+            },
+            hpfx_squidquset_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}squidquset{}",
+                }
+            },
             hpfx_srock_credits = {
                 name = " ",
                 text = {
                     "{C:default,u:default}srock{} {C:inactive,s:0.9}(srockw){}",
                 }
             },
+            hpfx_steamodded_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Steamodded{}",
+                }
+            },
+            hpfx_trif_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}trif{} {C:inactive,s:0.9}(trif.net){}",
+                }
+            },
+            hpfx_vanillaremade_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}VanillaRemade{}",
+                }
+            },
+            hpfx_victin_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Victin{} {C:inactive,s:0.9}(victin42){}",
+                }
+            },
+            hpfx_violet_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Violet{} {C:inactive,s:0.9}(violet0727270){}",
+                }
+            },
             hpfx_winter_credits = {
                 name = " ",
                 text = {
                     "{C:default,u:default}Winter{} {C:inactive,s:0.9}(thewintercomet){}",
+                }
+            },
+            hpfx_yahimod_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Yahimod{}",
                 }
             },
             hpfx_youh_credits = {
