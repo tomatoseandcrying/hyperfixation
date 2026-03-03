@@ -681,37 +681,37 @@ end
 Hyperfixation.selected_credits_page = 1
 
 Hyperfixation.isaac_credits_table = {
-	{{{ name = "astra", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "bagersdozenbagels", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "delirium", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "ejwu", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "eremel", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "foxdeploy", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "lars", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "n", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "somecom", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "srock", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "winter", category = "isaac", joker = "j_hpfx_chud", },},},
-    {{{ name = "youh", category = "isaac", joker = "j_hpfx_chud", },},},
+    { { { name = "astra", category = "isaac", joker = "j_hpfx_mary", }, }, },
+    { { { name = "bagersdozenbagels", category = "isaac", joker = "j_hpfx_cyanosis", }, }, },
+    { { { name = "delirium", category = "isaac", joker = "j_hpfx_jolyne", }, }, },
+    { { { name = "ejwu", category = "isaac", joker = "j_hpfx_cyanosis", }, }, },
+    { { { name = "eremel", category = "isaac", joker = "j_hpfx_jolyne", }, }, },
+    { { { name = "foxdeploy", category = "isaac", joker = "j_hpfx_jolyne", }, }, },
+    { { { name = "lars", category = "isaac", joker = "j_hpfx_farmer", }, }, },
+    { { { name = "n", category = "isaac", joker = "j_hpfx_iscariot", }, }, },
+    { { { name = "somecom", category = "isaac", joker = "j_hpfx_jolyne", }, }, },
+    { { { name = "srock", category = "isaac", joker = "j_hpfx_mary", }, }, },
+    { { { name = "winter", category = "isaac", joker = "j_hpfx_mary", }, }, },
+    { { { name = "youh", category = "isaac", joker = "j_hpfx_jolyne", }, }, },
 }
 
 function Hyperfixation.isaac(page)
-	G.mul_credits = {}
-	return {
-		n = G.UIT.ROOT,
-		config = { colour = G.C.CLEAR, align = "cm", minh = 6, r = 0.1, padding = 0.1, emboss = 0.05 },
-		nodes = {
-			{
-				n = G.UIT.O,
-				config = {
-					object = UIBox({
-						definition = Hyperfixation.isaac_ui(Hyperfixation.selected_credits_page),
-						config = { type = "cm" },
-					}),
-				},
-			},
-		},
-	}
+    G.mul_credits = {}
+    return {
+        n = G.UIT.ROOT,
+        config = { colour = G.C.CLEAR, align = "cm", minh = 6, r = 0.1, padding = 0.1, emboss = 0.05 },
+        nodes = {
+            {
+                n = G.UIT.O,
+                config = {
+                    object = UIBox({
+                        definition = Hyperfixation.isaac_ui(Hyperfixation.selected_credits_page),
+                        config = { type = "cm" },
+                    }),
+                },
+            },
+        },
+    }
 end
 
 function Hyperfixation.isaac_ui(page)
@@ -732,47 +732,47 @@ function Hyperfixation.isaac_ui(page)
     end
 
     local pages = {}
-	for i, _ in ipairs(Hyperfixation.isaac_credits_table) do
-		table.insert(pages, localize("k_page") .. string.format(" %s/%s", i, #Hyperfixation.isaac_credits_table))
-	end
+    for i, _ in ipairs(Hyperfixation.isaac_credits_table) do
+        table.insert(pages, localize("k_page") .. string.format(" %s/%s", i, #Hyperfixation.isaac_credits_table))
+    end
     table.insert(rows, {
-		n = G.UIT.R,
-		config = { align = "cm" },
-		nodes = {
-			{
-				n = G.UIT.C,
-				config = { align = "cm" },
-				nodes = {
-					create_option_cycle({
-						options = pages,
-						current_option = page,
+        n = G.UIT.R,
+        config = { align = "cm" },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cm" },
+                nodes = {
+                    create_option_cycle({
+                        options = pages,
+                        current_option = page,
                         opt_callback = "isaac_page",
-					}),
-				},
-			},
-		},
-	})
-    
-	return {
-		n = G.UIT.ROOT,
-		config = { align = "cm", colour = G.C.BLACK },
-		nodes = {
-			{
-				n = G.UIT.C,
-				config = { align = "cm", padding = 0.05 },
-				nodes = rows,
-			},
-		},
-	}
+                    }),
+                },
+            },
+        },
+    })
+
+    return {
+        n = G.UIT.ROOT,
+        config = { align = "cm", colour = G.C.BLACK },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cm", padding = 0.05 },
+                nodes = rows,
+            },
+        },
+    }
 end
 
 function G.FUNCS.isaac_page(args)
-	if not G.OVERLAY_MENU then
-		return
-	end
-	Hyperfixation.selected_credits_page = args.to_key
-	local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Isaac")
-	G.FUNCS.change_tab(element)
+    if not G.OVERLAY_MENU then
+        return
+    end
+    Hyperfixation.selected_credits_page = args.to_key
+    local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Isaac")
+    G.FUNCS.change_tab(element)
 end
 
 function Hyperfixation.generate_credits_desc_nodes(entry)
@@ -783,41 +783,56 @@ function Hyperfixation.generate_credits_desc_nodes(entry)
     localize { type = 'descriptions', key = "hpfx_" .. entry.name .. "_credits", set = 'Other', nodes = name[#name], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
     name[#name] = desc_from_rows(name[#name])
     name[#name].config.colour = loc_vars.background_colour or name[#name].config.colour
-    
-    local desc_nodes = {}
-	localize({
-		type = "other",
-		key = "hpfx_" .. entry.name .. "_credits_" .. entry.category .. "_descriptions",
-		nodes = desc_nodes,
-		scale = 2
-	})
-	credits_rows = {}
-	for _, v in ipairs(desc_nodes) do
-		credits_rows[#credits_rows + 1] = { n = G.UIT.R, config = { align = "cl" }, nodes = v }
-	end
 
-    -- Joker of Choice 
-    local area = CardArea( G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H, { card_limit = 1, type = 'title', highlight_limit = 0, collection = true } ) -- Card Area
-    local card = Card( area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[entry.joker] ) -- Card Importing
+    local desc_nodes = {}
+    localize({
+        type = "other",
+        key = "hpfx_" .. entry.name .. "_credits_" .. entry.category .. "_descriptions",
+        nodes = desc_nodes,
+        scale = 2
+    })
+    credits_rows = {}
+    for _, v in ipairs(desc_nodes) do
+        credits_rows[#credits_rows + 1] = { n = G.UIT.R, config = { align = "cl" }, nodes = v }
+    end
+
+    -- Joker of Choice
+    local area = CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H,
+        { card_limit = 1, type = 'title', highlight_limit = 0, collection = true })                      -- Card Area
+    local card = Card(area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[entry.joker]) -- Card Importing
     area:emplace(card)
 
     return {
-        n = G.UIT.ROOT, config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE }, nodes = {
-            { n = G.UIT.C, config = { align = "cl", padding = 0.05 }, nodes = {
-                
-                -- Name
-                { n = G.UIT.R,  config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE }, nodes = name
-                },
-                -- Sentence
-                { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = credits_rows
-                },
+        n = G.UIT.ROOT,
+        config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.2, colour = G.C.UI.TEXT_INACTIVE },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cl", padding = 0.05 },
+                nodes = {
 
-            }},
+                    -- Name
+                    {
+                        n = G.UIT.R,
+                        config = { emboss = 0.05, r = 0.1, align = "tl", padding = 0.05, colour = G.C.WHITE },
+                        nodes =
+                            name
+                    },
+                    -- Sentence
+                    { n = G.UIT.R, config = { align = "tl", padding = 0.05 }, nodes = credits_rows
+                    },
+
+                }
+            },
 
             -- Card Area
-            { n = G.UIT.C, config = { align = "tr", padding = 0.05 }, nodes = {
-                { n = G.UIT.O, config = { object = area } }
-            }}
+            {
+                n = G.UIT.C,
+                config = { align = "tr", padding = 0.05 },
+                nodes = {
+                    { n = G.UIT.O, config = { object = area } }
+                }
+            }
         }
     }
 end
