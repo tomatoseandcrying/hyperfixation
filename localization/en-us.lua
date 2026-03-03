@@ -2072,7 +2072,7 @@ return {
                     "{C:default,u:default}Someone{} {C:inactive,s:0.9}(someone23832){}",
                 }
             },
-            hpfx_squidquset_credits = {
+            hpfx_squidguset_credits = {
                 name = " ",
                 text = {
                     "{C:default,u:default}squidquset{}",
@@ -2218,12 +2218,216 @@ return {
                 }
             },
 
-            hpfx_inscryption_credits = {
+            -- Inscryption Description
+
+            hpfx_carrot_credits_inscryption_descriptions = {
                 name = " ",
                 text = {
-                    "Inscryption",
+                    "{C:white}> A good chunk of the OG Costume sprites",
                 }
             },
+            hpfx_carrymehome_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Perkeo?'s toggle",
+                }
+            },
+            hpfx_cheekyrotter_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> I forgot to return a function",
+                }
+            },
+            hpfx_corobo_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped a teeny bit with The Shedding",
+                }
+            },
+            hpfx_delirium_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Actually did the reformatting",
+                    "{C:white}of and fixing Ijiraq's code",
+                    "{C:white}> Helped with other Ijiraq issues",
+                    "{C:white}> Fixed the EnJine's effect crash!",
+                    "{C:white}> Fixed the EnJine’s trigger bug!",
+                }
+            },
+            hpfx_dex_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Fixed the transformation animation",
+                }
+            },
+            hpfx_dilly_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped me understand UI",
+                    "{C:white}> Fixed the Dusk? duplication effect",
+                    "{C:white}> Fixed Shoot The Moon?",
+                    "{C:white}> Gave Gros Michel? dynamic probability",
+                    "{C:default,s:1}ok no nvm he fixed the entire joker pop off ig",
+                    "{C:default,s:1}this also applies to La Legión",
+                    "{C:white}> Fixed Ijiraq not being able to mimic Splash",
+                }
+            },
+            hpfx_eremel_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with getting Ijiraq's effect working",
+                    "{C:white}> Random tag generation code",
+                    "{C:white}> Helped fix Ijiraq's info_queue",
+                }
+            },
+            hpfx_eris_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Hanging Chad?'s repetitions",
+                }
+            },
+            hpfx_fey_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Flag variable",
+                }
+            },
+            hpfx_finity_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Pareidolia? boss effect",
+                }
+            },
+            hpfx_hamester_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Sticker help",
+                }
+            },
+            hpfx_huey_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Seeing Double?'s effect",
+                }
+            },
+            hpfx_johndebugplus_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped fix Ijiraq's info_queue",
+                }
+            },
+            hpfx_misen_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Greedy Joker? tweaks done",
+                    "{C:white}in the notes app at 3AM",
+                }
+            },
+            hpfx_n_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white,s:1}> Ijiraq transformation",
+                    "{C:white,s:1}> Initial Ijiraq dynamic description code",
+                    "{C:white,s:1}> Fixed Golden Joker?",
+                    "{C:white,s:1}> Helped with getting Ijiraq's effect working",
+                    "{C:white,s:1}> Fixed my booster ownerships (i later just patched)",
+                    "{C:white,s:1}> Fixed Ijiraq's info_queue",
+                    "{C:white,s:1}> The reason Yorick? works",
+                    "{C:white,s:1}> Helped with Perkeo's toggle",
+                    "{C:white,s:1}> Helped with Perkeo's toggle's visual cues",
+                    "{C:white,s:1}> Hovered card check help (no console)",
+                    "{C:white,s:1}> Helped fix space needle's unlock condition",
+                }
+            },
+            hpfx_niko_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Perkeo?'s toggle's visual cues",
+                }
+            },
+            hpfx_ruby_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Fixed Space Joker?'s leveling logic",
+                }
+            },
+            hpfx_somecom_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white,s:1.7}> Helped with Bluebell's transformation context",
+                    "{C:white,s:1.7}> Helped get Ijiraq's effect working once",
+                    "{C:white,s:1.7}> Helped get Ijiraq's effect working twice",
+                    "{C:white,s:1.7}> Helped get Ijiraq's effect working thrice",
+                    "{C:white,s:1.7}> Helped(???) with The Shedding",
+                    "{C:white,s:1.7}> Post-discard custom context",
+                    "{C:white,s:1.7}> Helped fix Ijiraq's info_queue",
+                }
+            },
+            hpfx_srock_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped somecom's patch to get Ijiraq",
+                    "{C:white}working",
+                    "{C:white}> There's a fucking SMODS function for",
+                    "{C:white}four fingers",
+                    "{C:white}> Fixed Gros Michel?'s dynamic probability",
+                    "{C:white}> Fixed Hack?'s message display",
+                }
+            },
+            hpfx_victin_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Perkeo?'s toggle's visual cues",
+                }
+            },
+            hpfx_winter_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white,s:1.7}> Fixed Blue's transformation context",
+                    "{C:white,s:1.7}> Created joker position update tracker",
+                    "{C:white,s:1.7}> Ante, money, hand and discard change contexts",
+                    "{C:white,s:1.7}> Majorly helped with The Shedding",
+                    "{C:white,s:1.7}> Fixed my button UI",
+                    "{C:white,s:1.7}> Helped fix Ijiraq's info_queue",
+                    "{C:white,s:1.7}> Card order change context",
+                }
+            },
+            -- Mod
+            hpfx_morefluff_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Card creation key-ban code",
+                }
+            },
+            hpfx_ortalab_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Suit change tracker/detection",
+                }
+            },
+            hpfx_squidguset_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> EnJine sprite fix (2nd ver)",
+                }
+            },
+            hpfx_steamodded_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> releasing a fuckign probability context???",
+                    "{C:white}holy shit???",
+                    "{C:default,s:1}...after i already made my own",
+                }
+            },
+            hpfx_vanillaremade_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Basegame Jokers modernified",
+                }
+            },
+            
+            -- 4Fun
+
             hpfx_fourfun_credits = {
                 name = " ",
                 text = {

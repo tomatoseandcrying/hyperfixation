@@ -645,7 +645,7 @@ end
 function Hyperfixation.credits_ui()
     return {
         n = G.UIT.ROOT,
-        config = { r = 0.1, minw = 16, align = "tm", padding = 0.2, colour = G.C.BLACK },
+        config = { r = 0.1, minw = 16, minh = 8, align = "tm", padding = 0.2, colour = G.C.BLACK },
         nodes = {
             create_tabs({
                 snap_to_nav = true,
@@ -682,8 +682,6 @@ function Hyperfixation.credits_ui()
         }
     }
 end
-
-Hyperfixation.selected_credits_page = 1
 
 function Hyperfixation.generate_credits_desc_nodes(entry)
     local name = {}
@@ -772,6 +770,17 @@ Hyperfixation.isaac_credits_table = {
     { { { name = "youh", category = "isaac", joker = "j_hpfx_jolyne", }, }, },
 }
 
+Hyperfixation.isaac_selected_credits_page = 1
+
+function G.FUNCS.isaac_page(args)
+    if not G.OVERLAY_MENU then
+        return
+    end
+    Hyperfixation.isaac_selected_credits_page = args.to_key
+    local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Isaac")
+    G.FUNCS.change_tab(element)
+end
+
 function Hyperfixation.isaac()
     G.mul_credits = {}
     return {
@@ -782,7 +791,7 @@ function Hyperfixation.isaac()
                 n = G.UIT.O,
                 config = {
                     object = UIBox({
-                        definition = Hyperfixation.isaac_ui(Hyperfixation.selected_credits_page),
+                        definition = Hyperfixation.isaac_ui(Hyperfixation.isaac_selected_credits_page),
                         config = { type = "cm" },
                     }),
                 },
@@ -843,36 +852,116 @@ function Hyperfixation.isaac_ui(page)
     }
 end
 
-function G.FUNCS.isaac_page(args)
+Hyperfixation.inscryption_credits_table = {
+    { { { name = "carrot", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "carrymehome", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "cheekyrotter", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "corobo", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "delirium", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "dex", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "dilly", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "eremel", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "eris", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "fey", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "finity", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "hamester", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "huey", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "johndebugplus", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "misen", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "n", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "niko", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "ruby", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "somecom", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "srock", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "victin", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "winter", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    -- Mod
+    { { { name = "morefluff", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "ortalab", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "squidguset", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "steamodded", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "vanillaremade", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+}
+
+Hyperfixation.inscryption_selected_credits_page = 1
+
+function G.FUNCS.inscryption_page(args)
     if not G.OVERLAY_MENU then
         return
     end
-    Hyperfixation.selected_credits_page = args.to_key
-    local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Isaac")
+    Hyperfixation.inscryption_selected_credits_page = args.to_key
+    local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Inscryption")
     G.FUNCS.change_tab(element)
 end
 
 function Hyperfixation.inscryption()
-    local modNodes = {}
+    G.mul_credits = {}
+    return {
+        n = G.UIT.ROOT,
+        config = { colour = G.C.CLEAR, align = "cm", minh = 6, r = 0.1, padding = 0.1, emboss = 0.05 },
+        nodes = {
+            {
+                n = G.UIT.O,
+                config = {
+                    object = UIBox({
+                        definition = Hyperfixation.inscryption_ui(Hyperfixation.inscryption_selected_credits_page),
+                        config = { type = "cm" },
+                    }),
+                },
+            },
+        },
+    }
+end
 
-    modNodes[#modNodes + 1] = {}
-    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
-    localize { type = 'descriptions', key = "hpfx_inscryption_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
-    modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
-    modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+function Hyperfixation.inscryption_ui(page)
+    rows = {}
+
+    if type(Hyperfixation.inscryption_credits_table[page]) == "table" then
+        for _, row in ipairs(Hyperfixation.inscryption_credits_table[page]) do
+            local row_items = {}
+            for _, item in ipairs(row) do
+                table.insert(row_items, Hyperfixation.generate_credits_desc_nodes(item))
+            end
+            table.insert(rows, {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = row_items,
+            })
+        end
+    end
+
+    local pages = {}
+    for i, _ in ipairs(Hyperfixation.inscryption_credits_table) do
+        table.insert(pages, localize("k_page") .. string.format(" %s/%s", i, #Hyperfixation.inscryption_credits_table))
+    end
+    table.insert(rows, {
+        n = G.UIT.R,
+        config = { align = "cm" },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cm" },
+                nodes = {
+                    create_option_cycle({
+                        options = pages,
+                        current_option = page,
+                        opt_callback = "inscryption_page",
+                    }),
+                },
+            },
+        },
+    })
 
     return {
         n = G.UIT.ROOT,
-        config = {
-            emboss = 0.05,
-            minh = 6,
-            r = 0.1,
-            minw = 6,
-            align = "cm",
-            padding = 0.2,
-            colour = G.C.BLACK
+        config = { align = "cm", colour = G.C.BLACK },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cm", padding = 0.05 },
+                nodes = rows,
+            },
         },
-        nodes = modNodes
     }
 end
 
