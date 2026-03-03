@@ -21,6 +21,39 @@ SMODS.Font({
     DESCSCALE = 1,
     class_prefix = "hpfx_"
 })
+SMODS.Font({
+    key = "nerko",
+    path = "NerkoOne-Regular.ttf",
+    render_scale = 200,
+    TEXT_HEIGHT_SCALE = 0.5,
+    TEXT_OFFSET = { x = 0, y = 0 },
+    FONTSCALE = 0.07,
+    squish = 1,
+    DESCSCALE = 1,
+    class_prefix = "hpfx_"
+})
+SMODS.Font({
+    key = "gochi",
+    path = "GochiHand-Regular.ttf",
+    render_scale = 200,
+    TEXT_HEIGHT_SCALE = 0.5,
+    TEXT_OFFSET = { x = 0, y = 0 },
+    FONTSCALE = 0.07,
+    squish = 1,
+    DESCSCALE = 1,
+    class_prefix = "hpfx_"
+})
+SMODS.Font({
+    key = "hpx",
+    path = "Hardpixel.OTF",
+    render_scale = 200,
+    TEXT_HEIGHT_SCALE = 0.5,
+    TEXT_OFFSET = { x = 0, y = 0 },
+    FONTSCALE = 0.07,
+    squish = 1,
+    DESCSCALE = 1,
+    class_prefix = "hpfx_"
+})
 
 --Custom Colors
 loc_colour('red')

@@ -637,6 +637,11 @@ function G.FUNCS.astra()
     love.system.openURL(url)
 end
 
+function G.FUNCS.bkb()
+    local url = "https://gdane.net"
+    love.system.openURL(url)
+end
+
 function Hyperfixation.credits_ui()
     return {
         n = G.UIT.ROOT,

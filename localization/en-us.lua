@@ -1,6 +1,13 @@
 return {
     descriptions = {
         Joker = {
+            j_hpfx_jolyne = {
+                name = '{s:0.001} {}',
+                text = {
+                    "{f:hpfx_hpx,s:1.5}you can look, but {f:hpfx_hpx,s:1.5,C:hpfx_LeshyOrange}don't {f:hpfx_hpx,s:1.5}touch.{}",
+                    "{s:0.65} {}"
+                },
+            },
             --#region Isaac
             j_hpfx_moriah = {
                 name = 'Moriah',
@@ -1810,7 +1817,7 @@ return {
             hpfx_bagersdozenbagels_credits = {
                 name = " ",
                 text = {
-                    "{C:default,u:default}BakersDozenBagels{} {C:inactive,s:0.9}(bakersdozenbagel){}",
+                    "{button:bkb,C:hpfx_oldgreen,u:hpfx_oldgreen}BakersDozenBagels{} {C:inactive,s:0.9}(bakersdozenbagels){}",
                 }
             },
             hpfx_delirium_credits = {
