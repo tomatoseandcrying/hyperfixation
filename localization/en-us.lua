@@ -2030,10 +2030,10 @@ return {
                     "{C:default,u:default}N'{} {C:inactive,s:0.9}(nh6574){}",
                 }
             },
-            hpfx_niko_credits = {
+            hpfx_nxkoo_credits = {
                 name = " ",
                 text = {
-                    "{C:default,u:default}Niko{} {C:inactive,s:0.9}(nxkoo_){}",
+                    "{C:default,u:default}Nxkoo{} {C:inactive,s:0.9}(nxkoo_){}",
                 }
             },
             hpfx_ortalab_credits = {
@@ -2052,6 +2052,12 @@ return {
                 name = " ",
                 text = {
                     "{C:default,u:default}Ruby{} {C:inactive,s:0.9}(lord.ruby){}",
+                }
+            },
+            hpfx_sleepy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Sleepy{} {C:inactive,s:0.9}(sleepy.g11){}",
                 }
             },
             hpfx_snakegirl_credits = {
@@ -2088,6 +2094,18 @@ return {
                 name = " ",
                 text = {
                     "{C:default,u:default}Steamodded{}",
+                }
+            },
+            hpfx_sweetiebabyhoneygravy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default,button:incog}Incognito{} {C:inactive,s:0.9}(incogniton71){}",
+                }
+            },
+            hpfx_thedge_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Thedge{} {C:inactive,s:0.9}(thunderedge){}",
                 }
             },
             hpfx_trif_credits = {
@@ -2339,7 +2357,7 @@ return {
                     "{C:white,s:1}> Helped fix space needle's unlock condition",
                 }
             },
-            hpfx_niko_credits_inscryption_descriptions = {
+            hpfx_nxkoo_credits_inscryption_descriptions = {
                 name = " ",
                 text = {
                     "{C:white}> Helped with Perkeo?'s toggle's visual cues",
@@ -2372,6 +2390,21 @@ return {
                     "{C:white}four fingers",
                     "{C:white}> Fixed Gros Michel?'s dynamic probability",
                     "{C:white}> Fixed Hack?'s message display",
+                }
+            },
+            hpfx_sleepy_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with saving Ijiraq's effects",
+                    "{C:white}> Helped with Ijiraq's info_queue",
+                }
+            },
+            hpfx_thedge_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+
+                    "{C:white}> Helped with saving Ijiraq's effects",
+                    "{C:white}> Helped with Ijiraq's info_queue",
                 }
             },
             hpfx_victin_credits_inscryption_descriptions = {
@@ -2425,7 +2458,7 @@ return {
                     "{C:white}> Basegame Jokers modernified",
                 }
             },
-            
+
             -- 4Fun
 
             hpfx_fourfun_credits = {
@@ -2437,7 +2470,20 @@ return {
             hpfx_other_help_credits = {
                 name = " ",
                 text = {
-                    "Other Help",
+                    hpfx_thedge_credits_other_help_descriptions = {
+                        name = " ",
+                        text = {
+                            "{C:white}> UI Guide",
+                            "{C:white}> The reason these credits can exist",
+                        }
+                    },
+                    hpfx_sweetiebabyhoneygravy_credits_other_help_descriptions = {
+                        name = " ",
+                        text = {
+                            "{C:white}> Co-Developer",
+                            "{C:white}> The reason these credits can exist",
+                        }
+                    },
                 }
             },
             hpfx_bwuh_credits = {

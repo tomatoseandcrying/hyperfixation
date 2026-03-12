@@ -642,6 +642,11 @@ function G.FUNCS.bkb()
     love.system.openURL(url)
 end
 
+function G.FUNCS.incog()
+    local url = "https://github.com/incogniton71/Incognito"
+    love.system.openURL(url)
+end
+
 function Hyperfixation.credits_ui()
     return {
         n = G.UIT.ROOT,
@@ -708,14 +713,14 @@ function Hyperfixation.generate_credits_desc_nodes(entry)
     local area = CardArea(G.ROOM.T.x, G.ROOM.T.y, G.CARD_W, G.CARD_H,
         { card_limit = 1, type = 'title', highlight_limit = 0, collection = true })                      -- Card Area
     local card = Card(area.T.x, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[entry.joker]) -- Card Importing
-    
+
     area:emplace(card)
 
     card.no_ui = true
     if entry.joker == "j_hpfx_jolyne" then
         function card:click()
             play_sound("hpfx_vineboom")
-            self:start_dissolve({G.C.RED})
+            self:start_dissolve({ G.C.RED })
             self:juice_up(10, 10)
         end
     end
@@ -755,6 +760,7 @@ function Hyperfixation.generate_credits_desc_nodes(entry)
     }
 end
 
+--#region Isaac Credits
 Hyperfixation.isaac_credits_table = {
     { { { name = "astra", category = "isaac", joker = "j_hpfx_mary", }, }, },
     { { { name = "bagersdozenbagels", category = "isaac", joker = "j_hpfx_cyanosis", }, }, },
@@ -852,6 +858,8 @@ function Hyperfixation.isaac_ui(page)
     }
 end
 
+--#endregion
+--#region Inscryption Credits
 Hyperfixation.inscryption_credits_table = {
     { { { name = "carrot", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "carrymehome", category = "inscryption", joker = "j_hpfx_chud", }, }, },
@@ -869,7 +877,7 @@ Hyperfixation.inscryption_credits_table = {
     { { { name = "johndebugplus", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "misen", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "n", category = "inscryption", joker = "j_hpfx_chud", }, }, },
-    { { { name = "niko", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "nxkoo", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "ruby", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "somecom", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "srock", category = "inscryption", joker = "j_hpfx_chud", }, }, },
@@ -965,6 +973,8 @@ function Hyperfixation.inscryption_ui(page)
     }
 end
 
+--#endregion
+--#region 4Fun Credits
 function Hyperfixation.fourfun_ui()
     local modNodes = {}
 
@@ -989,30 +999,98 @@ function Hyperfixation.fourfun_ui()
     }
 end
 
-function Hyperfixation.other_help_ui()
-    local modNodes = {}
+--#endregion
+--#region Other Help Credits
+Hyperfixation.other_help_credits_table = {
+    { { { name = "thedge", category = "other_help", joker = "j_hpfx_jolyne", }, }, },
+    { { { name = "sweetiebabyhoneygravy", category = "other_help", joker = "j_hpfx_cyanosis", }, }, },
 
-    modNodes[#modNodes + 1] = {}
-    local loc_vars = { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.4 }
-    localize { type = 'descriptions', key = "hpfx_other_help_credits", set = 'Other', nodes = modNodes[#modNodes], vars = loc_vars.vars, scale = loc_vars.scale, text_colour = loc_vars.text_colour, shadow = loc_vars.shadow }
-    modNodes[#modNodes] = desc_from_rows(modNodes[#modNodes])
-    modNodes[#modNodes].config.colour = loc_vars.background_colour or modNodes[#modNodes].config.colour
+}
 
+Hyperfixation.other_help_selected_credits_page = 1
+
+function G.FUNCS.other_help_page(args)
+    if not G.OVERLAY_MENU then
+        return
+    end
+    Hyperfixation.other_help_selected_credits_page = args.to_key
+    local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Other_Help")
+    G.FUNCS.change_tab(element)
+end
+
+function Hyperfixation.other_help()
+    G.mul_credits = {}
     return {
         n = G.UIT.ROOT,
-        config = {
-            emboss = 0.05,
-            minh = 6,
-            r = 0.1,
-            minw = 6,
-            align = "cm",
-            padding = 0.2,
-            colour = G.C.BLACK
+        config = { colour = G.C.CLEAR, align = "cm", minh = 6, r = 0.1, padding = 0.1, emboss = 0.05 },
+        nodes = {
+            {
+                n = G.UIT.O,
+                config = {
+                    object = UIBox({
+                        definition = Hyperfixation.other_help_ui(Hyperfixation.other_help_selected_credits_page),
+                        config = { type = "cm" },
+                    }),
+                },
+            },
         },
-        nodes = modNodes
     }
 end
 
+function Hyperfixation.other_help_ui(page)
+    rows = {}
+
+    if type(Hyperfixation.other_help_credits_table[page]) == "table" then
+        for _, row in ipairs(Hyperfixation.other_help_credits_table[page]) do
+            local row_items = {}
+            for _, item in ipairs(row) do
+                table.insert(row_items, Hyperfixation.generate_credits_desc_nodes(item))
+            end
+            table.insert(rows, {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = row_items,
+            })
+        end
+    end
+
+    local pages = {}
+    for i, _ in ipairs(Hyperfixation.other_help_credits_table) do
+        table.insert(pages, localize("k_page") .. string.format(" %s/%s", i, #Hyperfixation.other_help_credits_table))
+    end
+    table.insert(rows, {
+        n = G.UIT.R,
+        config = { align = "cm" },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cm" },
+                nodes = {
+                    create_option_cycle({
+                        options = pages,
+                        current_option = page,
+                        opt_callback = "other_help_page",
+                    }),
+                },
+            },
+        },
+    })
+
+    return {
+        n = G.UIT.ROOT,
+        config = { align = "cm", colour = G.C.BLACK },
+        nodes = {
+            {
+                n = G.UIT.C,
+                config = { align = "cm", padding = 0.05 },
+                nodes = rows,
+            },
+        },
+    }
+end
+
+--#endregion
+--#region bwuh Credits
 function Hyperfixation.bwuh_ui()
     local modNodes = {}
 
@@ -1037,6 +1115,7 @@ function Hyperfixation.bwuh_ui()
     }
 end
 
+--#endregion
 SMODS.current_mod.extra_tabs = function() --Mod Tabs
     return {
         {
