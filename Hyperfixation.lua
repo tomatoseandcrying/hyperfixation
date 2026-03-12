@@ -675,7 +675,7 @@ function Hyperfixation.credits_ui()
                     {
                         label = "Other Help",
                         chosen = false,
-                        tab_definition_function = Hyperfixation.other_help_ui,
+                        tab_definition_function = Hyperfixation.other_help,
                     },
                     {
                         label = "bwuh",
@@ -880,7 +880,9 @@ Hyperfixation.inscryption_credits_table = {
     { { { name = "nxkoo", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "ruby", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "somecom", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "sleepy", category = "inscryption", joker = "j_hpfx_ijiraq", }, }, },
     { { { name = "srock", category = "inscryption", joker = "j_hpfx_chud", }, }, },
+    { { { name = "thedge", category = "inscryption", joker = "j_hpfx_ijiraq", }, }, },
     { { { name = "victin", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     { { { name = "winter", category = "inscryption", joker = "j_hpfx_chud", }, }, },
     -- Mod
@@ -1003,7 +1005,7 @@ end
 --#region Other Help Credits
 Hyperfixation.other_help_credits_table = {
     { { { name = "thedge", category = "other_help", joker = "j_hpfx_jolyne", }, }, },
-    { { { name = "sweetiebabyhoneygravy", category = "other_help", joker = "j_hpfx_cyanosis", }, }, },
+    { { { name = "sweetiebabyhoneygravy", category = "other_help", joker = --[[ Incognito and "j_nic_tetoraq" or ]] "j_hpfx_jolyne", }, }, },
 
 }
 

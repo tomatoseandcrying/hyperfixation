@@ -2467,23 +2467,18 @@ return {
                     "4Fun",
                 }
             },
-            hpfx_other_help_credits = {
+            hpfx_thedge_credits_other_help_descriptions = {
                 name = " ",
                 text = {
-                    hpfx_thedge_credits_other_help_descriptions = {
-                        name = " ",
-                        text = {
-                            "{C:white}> UI Guide",
-                            "{C:white}> The reason these credits can exist",
-                        }
-                    },
-                    hpfx_sweetiebabyhoneygravy_credits_other_help_descriptions = {
-                        name = " ",
-                        text = {
-                            "{C:white}> Co-Developer",
-                            "{C:white}> The reason these credits can exist",
-                        }
-                    },
+                    "{C:white}> UI Guide",
+                    "{C:white}> The reason these credits can exist",
+                }
+            },
+            hpfx_sweetiebabyhoneygravy_credits_other_help_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Co-Developer",
+                    "{C:white}> The reason these credits can exist",
                 }
             },
             hpfx_bwuh_credits = {
