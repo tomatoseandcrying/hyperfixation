@@ -17,10 +17,8 @@ SMODS.Blind {
         else
             local notGlobal = rawget(_G, 'Hyperfixation')
             if notGlobal and notGlobal.hpfxDT_idx1 and notGlobal.hpfxDT_idx2 then
-                nayme = namingMyShitSafely((notGlobal.hpfxDT_idx1.original_mod and notGlobal.hpfxDT_idx1.loc_txt.name) or
-                    notGlobal.hpfxDT_idx1.name or (notGlobal.hpfxDT_idx1.names and notGlobal.hpfxDT_idx1.names[1]))
-                naymer = namingMyShitSafely((notGlobal.hpfxDT_idx2.original_mod and notGlobal.hpfxDT_idx2.loc_txt.name) or
-                    notGlobal.hpfxDT_idx2.name or (notGlobal.hpfxDT_idx2.names and notGlobal.hpfxDT_idx2.names[1]))
+                nayme = localize { type = 'name_text', key = notGlobal.hpfxDT_idx1.key, set = 'Blind' }
+                naymer = localize { type = 'name_text', key = notGlobal.hpfxDT_idx2.key, set = 'Blind' }
             else
                 nayme, naymer = "???", "???"
             end

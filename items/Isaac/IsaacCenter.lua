@@ -66,9 +66,11 @@ end
 ---@param reset boolean If true, resets blind effects before applying new blind
 ---@param silent boolean If true, suppresses notifs
 function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
-    local name1 = (idx1.original_mod and idx1.loc_txt.name) or idx1.name or
+    local name1 =
+        (localize { type = 'name_text', key = idx1.key, set = 'Blind' }) or idx1.name or
         (idx1.names and table.concat(idx1.names, " & ")) or ""
-    local name2 = (idx2.original_mod and idx2.loc_txt.name) or idx2.name or
+    local name2 =
+        (localize { type = 'name_text', key = idx2.key, set = 'Blind' }) or idx2.name or
         (idx2.names and table.concat(idx2.names, " & ")) or ""
     local merged_blind = {
         name = "Double Trouble!?",
@@ -77,6 +79,7 @@ function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
         dollars = (idx1.dollars or 0) + (idx2.dollars or 0),
         mult = (idx1.mult or 0) + (idx2.mult or 0),
         debuff = {},
+        atlas = idx1.atlas or idx2.atlas,
         pos = idx1.pos or idx2.pos,
         positions = { idx1.pos, idx2.pos },
         boss = (idx1.boss or false) or (idx2.boss or false),
