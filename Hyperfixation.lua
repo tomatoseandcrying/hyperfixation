@@ -1003,20 +1003,21 @@ end
 
 --#endregion
 --#region Other Help Credits
+Hyperfixation.other_help_selected_credits_page = 1
+
 Hyperfixation.other_help_credits_table = {
     { { { name = "thedge", category = "other_help", joker = "j_hpfx_jolyne", }, }, },
-    { { { name = "sweetiebabyhoneygravy", category = "other_help", joker = --[[ Incognito and "j_nic_tetoraq" or ]] "j_hpfx_jolyne", }, }, },
-
+    { { { name = "sweetiebabyhoneygravy", category = "other_help", joker = next(SMODS.find_mod("Incognito")) and "j_nic_tetoraq" or "j_hpfx_jolyne", }, }, },
 }
 
-Hyperfixation.other_help_selected_credits_page = 1
+Hyperfixation.other_help_ui_selected_credits_page = 1
 
 function G.FUNCS.other_help_page(args)
     if not G.OVERLAY_MENU then
         return
     end
     Hyperfixation.other_help_selected_credits_page = args.to_key
-    local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Other_Help")
+    local element = G.OVERLAY_MENU:get_UIE_by_ID("tab_but_Other Help")
     G.FUNCS.change_tab(element)
 end
 
