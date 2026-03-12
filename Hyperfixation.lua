@@ -1005,7 +1005,7 @@ end
 --#region Other Help Credits
 Hyperfixation.other_help_credits_table = {
     { { { name = "thedge", category = "other_help", joker = "j_hpfx_jolyne", }, }, },
-    { { { name = "sweetiebabyhoneygravy", category = "other_help", joker = --[[ Incognito and "j_nic_tetoraq" or ]] "j_hpfx_jolyne", }, }, },
+    { { { name = "sweetiebabyhoneygravy", category = "other_help", joker = Incognito and "j_nic_tetoraq" or "j_hpfx_jolyne", }, }, },
 
 }
 
