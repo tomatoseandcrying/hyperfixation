@@ -38,7 +38,7 @@ function guh2() -- just put the key in the table bro (inserts the hovered Joker'
     local selected = G.CONTROLLER and
         (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
     if Hyperfixation.brokejokes[selected.config.center.key] then return print('This one\'s disabled until I can fix it!') end
-    table.insert(Hyperfixation.raqeffects, selected.config.center.key)
+    table.insert(G.GAME.raqeffects, selected.config.center.key)
 end
 
 function heold() --Test function to simulate the Ejimbo game over
@@ -71,7 +71,7 @@ function doubletrouble() --Prints the hpfx_idx keys for Double Trouble blind
 end
 
 debugs_one_line_long = { --other debug commands that just go into the console
-    "eval Hyperfixation.raqeffects",
+    "eval G.GAME.raqeffects",
     -- prints all current effects Ijiraq has stored
     "eval Hyperfixation.exceptions",
     -- prints the current table of Jokesters with custom transformation logic

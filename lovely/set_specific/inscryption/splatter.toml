@@ -11,8 +11,8 @@ pattern = "local splashed = SMODS.always_scores(G.play.cards[i]) or next(find_jo
 position = "at"
 payload = '''
 local function has_splash_effect()
-    if not (Hyperfixation.raqeffects and next(Hyperfixation.raqeffects)) then return false end
-    for _, effect in pairs(Hyperfixation.raqeffects) do
+    if not (G.GAME.raqeffects and next(G.GAME.raqeffects)) then return false end
+    for _, effect in pairs(G.GAME.raqeffects) do
         if effect == 'j_splash' then return true end
     end
     return false
