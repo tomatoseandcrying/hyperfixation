@@ -60,6 +60,112 @@ function get_hex_string(col) --hex grabber with rgb handling
     return hex or "FCB3EA" -- fallback, no #
 end
 
+function Blind:set_assist_blind(blind, reset, silent)
+    if not reset then
+        self.config.blind = blind or {}
+        self.effect = type(self.config.blind.config) == "table" and copy_table(self.config.blind.config) or {}
+        self.name = blind and blind.name or ''
+        self.small = blind and not not blind.small
+        self.big = blind and not not blind.big
+        self.base_dollars = blind and blind.dollars or 0
+        self.sound_pings = self.base_dollars + 2
+        if G.GAME.modifiers.no_blind_reward and G.GAME.modifiers.no_blind_reward[self:get_type()] then self.base_dollars = 0 end
+        self.debuff = blind and blind.debuff or {}
+        self.pos = blind and blind.pos
+        self.mult = blind and blind.mult or 0
+        self.disabled = false
+        self.discards_sub = nil
+        self.hands_sub = nil
+        self.boss = blind and not not blind.boss
+        self.blind_set = false
+        self.triggered = nil
+        self.prepped = true
+        self:set_text()
+
+        local obj = self.config.blind
+        self.children.animatedSprite = AnimatedSprite(self.T.x, self.T.y, self.T.w, self.T.h,
+            G.ANIMATION_ATLAS[obj.atlas] or G.ANIMATION_ATLAS['blind_chips'], obj.pos)
+        self.children.animatedSprite.states = self.states
+        G.GAME.last_blind = G.GAME.last_blind or {}
+        G.GAME.last_blind.boss = self.boss
+        G.GAME.last_blind.name = self.name
+
+        if blind and blind.name then
+            self:change_colour()
+            local obj = self.config.blind
+            if obj.load and type(obj.load) == 'function' then
+                obj:load()
+            end
+        else
+            self:change_colour(G.C.BLACK)
+        end
+        if not reset and obj.set_blind and type(obj.set_blind) == 'function' then
+            obj:set_blind()
+        end
+
+        self.original_mult = self.mult
+        self.active = self.active
+        self.small = self.small
+        self.big = self.big
+        self.extra = self.extra
+        self.original_chips = get_blind_amount(G.GAME.round_resets.ante) * G.GAME.starting_params.ante_scaling
+        self.basechips = get_blind_amount(G.GAME.round_resets.ante) * G.GAME.starting_params.ante_scaling
+        self.basechips_text = number_format(self.basechips)
+        self.mult_text = number_format(self.mult)
+        self.blindassist = blind and blind.blindassist or {}
+
+        self.chips = get_blind_amount(G.GAME.round_resets.ante) * self.mult * G.GAME.starting_params.ante_scaling
+        self.chip_text = number_format(self.chips)
+
+        if not blind then self.chips = 0 end
+        ---@diagnostic disable-next-line: redundant-parameter
+        G.HUD_blind:recalculate(false)
+
+        if blind and blind.name and blind.name ~= '' then
+            self:alert_debuff(true)
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.05,
+                blockable = false,
+                func = (function()
+                    G.HUD_blind:get_UIE_by_ID("HUD_blind_name").states.visible = false
+                    G.HUD_blind:get_UIE_by_ID("dollars_to_be_earned").parent.parent.states.visible = false
+                    G.HUD_blind.alignment.offset.y = 0
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.15,
+                        blockable = false,
+                        func = (function()
+                            G.HUD_blind:get_UIE_by_ID("HUD_blind_name").states.visible = true
+                            G.HUD_blind:get_UIE_by_ID("dollars_to_be_earned").parent.parent.states.visible = true
+                            G.HUD_blind:get_UIE_by_ID("dollars_to_be_earned").config.object:pop_in(0)
+                            G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object:pop_in(0)
+                            G.HUD_blind:get_UIE_by_ID("HUD_blind_count"):juice_up()
+                            self.dissolve = 0
+                            self.children.animatedSprite:set_sprite_pos(self.config.blind.pos)
+                            self.blind_set = true
+                            if not reset and not silent then
+                                self:juice_up()
+                                if blind then
+                                    play_sound('chips1', math.random() * 0.1 + 0.55, 0.42); --play_sound('cancel')
+                                end
+                            end
+                            return true
+                        end)
+                    }))
+                    return true
+                end)
+            }))
+        end
+        self.config.h_popup_config = { align = "tm", offset = { x = 0, y = -0.1 }, parent = self }
+    end
+
+    if blind then
+        self.in_blind = true
+    end
+end
+
 -- merges properties of two blind tables, Blind:set_blind tweak made to handle the merging
 ---@param idx1 SMODS.Blind|table First blind to merge
 ---@param idx2 SMODS.Blind|table Second blind to merge
@@ -100,12 +206,16 @@ function Blind:set_double_trouble_blind(idx1, idx2, reset, silent)
         }
     end
     -- table init
-    self.names = merged_blind.namesr
+    self.names = merged_blind.names
     self.boss_colour = merged_blind.boss_colour
     self.colour = self.boss_colour
     self.dark_colour = mix_colours(self.boss_colour, G.C.BLACK, 0.4)
     -- function init
     self:set_blind(merged_blind, reset, silent)
+    --stolen from Blindside
+    self.blindassist = nil
+    G.GAME.blindassist:set_assist_blind(idx2)
+    G.GAME.blindassist:change_dim(1.5, 1.5)
 end
 
 function namingMyShitSafely(n)
