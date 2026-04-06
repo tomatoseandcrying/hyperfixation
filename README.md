@@ -19,16 +19,14 @@ Overrides can be found in the src folder.
 ## Compatibilities
 [Talisman](https://github.com/SpectralPack/Talisman)\
 [JokerDisplay](https://github.com/nh6574/JokerDisplay)\
-[Incognito](https://github.com/IncognitoN71/Incognito)\
 *more to come...*
 ## Incompatibilities
-[Talisman](https://github.com/SpectralPack/Talisman)\
-MoreFluff\
 Multiplayer\
 *more to come...*
 
 ## Crossovers
 [Incognito](https://github.com/IncognitoN71/Incognito)\
+[Revo's Vault](https://github.com/Cdrvo/Revos-Vault---Balatro-Mod)\
 *more to come...*
 
 
