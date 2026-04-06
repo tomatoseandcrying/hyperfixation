@@ -135,7 +135,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         Hyperfixation.hpfxDT_idx2 = idx2
         if run_start then
             -- Ijiraq
-            Hyperfixation.raqeffects = {}
+            G.GAME.raqeffects = {}
             Hyperfixation.trig = {}
             -- Egg?
             local chick = pseudorandom('hpfxchicken', 3, 123456789)

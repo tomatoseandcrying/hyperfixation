@@ -51,7 +51,7 @@ SMODS.Joker { --Ijiraq.
     -- loc_vars rewrite fix
     loc_vars = function(self, info_queue, card)
         if not (G.jokers and card and card.area == G.jokers) then return end
-        local raq = Hyperfixation and Hyperfixation.raqeffects
+        local raq = Hyperfixation and G.GAME.raqeffects
         local saved = G.GAME and G.GAME.hpfx_ijiraq_savedvalues
         if not raq then return end
 
@@ -162,7 +162,7 @@ SMODS.Joker { --Ijiraq.
 
         --Applies effects that shouldn't stack in mass iterator
         --
-        for _, v in pairs(Hyperfixation.raqeffects) do --juggler stacks
+        for _, v in pairs(G.GAME.raqeffects) do --juggler stacks
             if v == 'j_juggler' then
                 raqjug = raqjug + 1
             end
@@ -177,7 +177,7 @@ SMODS.Joker { --Ijiraq.
             G.hand:change_size(1)
             table.insert(Hyperfixation.trig, 'j_juggler')
         end
-        for _, v in pairs(Hyperfixation.raqeffects) do
+        for _, v in pairs(G.GAME.raqeffects) do
             if v == 'j_stuntman' then
                 G.hand:change_size(-2)
                 table.insert(Hyperfixation.trig, v)
@@ -185,7 +185,7 @@ SMODS.Joker { --Ijiraq.
         end
         --Effects that can stack in mass iterator
         --
-        for _, v in pairs(Hyperfixation.raqeffects) do
+        for _, v in pairs(G.GAME.raqeffects) do
             if v == 'j_chaos' then
                 SMODS.change_free_rerolls(1)
                 table.insert(Hyperfixation.trig, v)
@@ -250,7 +250,7 @@ SMODS.Joker { --Ijiraq.
                 GiveUsYourEffectStacks = GiveUsYourEffectStacks + 1
             end
         end
-        for _, v in pairs(Hyperfixation.raqeffects) do
+        for _, v in pairs(G.GAME.raqeffects) do
             if v == 'j_stuntman' then
                 for eat, shit in ipairs(Hyperfixation.trig) do
                     if shit == v then
@@ -326,7 +326,7 @@ SMODS.Joker { --Ijiraq.
     calc_dollar_bonus = function(self, card)
         local totalcash = 0
         if not card:can_calculate() then return end
-        for _, v in pairs(Hyperfixation.raqeffects) do
+        for _, v in pairs(G.GAME.raqeffects) do
             local _card = SMODS.create_card({ key = v, no_edition = true, skip_materialize = true })
             -- makes the card riculously small and way offscreen
             _card:hard_set_T(420, 420, 0, 0)
@@ -336,7 +336,7 @@ SMODS.Joker { --Ijiraq.
     end,
     calculate = function(self, card, context)
         if context.remove_playing_cards then
-            for _, v in pairs(Hyperfixation.raqeffects) do
+            for _, v in pairs(G.GAME.raqeffects) do
                 if v == 'j_caino' then
                     local face_cards = 0
                     for _, removed_card in ipairs(context.removed) do
@@ -356,7 +356,7 @@ SMODS.Joker { --Ijiraq.
             end
         end
         if context.modify_scoring_hand then
-            for _, v in pairs(Hyperfixation.raqeffects) do
+            for _, v in pairs(G.GAME.raqeffects) do
                 if v == 'j_splash' then
                     --print('Splash!')
                     return { add_to_hand = true }
@@ -364,11 +364,11 @@ SMODS.Joker { --Ijiraq.
             end
         end
         if context.end_of_round then
-            for _, v in pairs(Hyperfixation.raqeffects) do
+            for _, v in pairs(G.GAME.raqeffects) do
                 if v == 'j_turtle_bean' then
                     if context.game_over == false and context.main_eval then
                         if G.hand.config.card_limit - 1 <= 0 then
-                            table.remove(Hyperfixation.raqeffects, _)
+                            table.remove(G.GAME.raqeffects, _)
                             return {
                                 message = localize('k_eaten_ex'),
                                 colour = G.C.FILTER

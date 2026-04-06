@@ -1,6 +1,13 @@
 return {
     descriptions = {
         Joker = {
+            j_hpfx_jolyne = {
+                name = '{s:0.001} {}',
+                text = {
+                    "{f:hpfx_hpx,s:1.5}you can look, but {f:hpfx_hpx,s:1.5,C:hpfx_LeshyOrange}don't {f:hpfx_hpx,s:1.5}touch.{}",
+                    "{s:0.65} {}"
+                },
+            },
             --#region Isaac
             j_hpfx_moriah = {
                 name = 'Moriah',
@@ -1800,6 +1807,686 @@ return {
                 }
             },
 
+            -- Title
+            hpfx_smiley_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}__.smiley.__{}",
+                }
+            },
+            hpfx_aiko_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Aiko{} {C:inactive,s:0.9}(aikoyori){}",
+                }
+            },
+            hpfx_astra_credits = {
+                name = " ",
+                text = {
+                    "{button:astra,C:purple,u:purple}Astra{} {C:hpfx_inPURPLE,s:0.9}(theastra_){}",
+                }
+            },
+            hpfx_astro_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Astro{} {C:inactive,s:0.9}(silly_goober_0nthewall){}",
+                }
+            },
+            hpfx_autumn_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Autumn{} {C:inactive,s:0.9}(autumnmood){}",
+                }
+            },
+            hpfx_axy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Axy{} {C:inactive,s:0.9}(axyraandas){}",
+                }
+            },
+            hpfx_babeeti_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Babeeti{}",
+                }
+            },
+            hpfx_bagersdozenbagels_credits = {
+                name = " ",
+                text = {
+                    "{button:bkb,C:hpfx_oldgreen,u:hpfx_oldgreen}BakersDozenBagels{} {C:inactive,s:0.9}(bakersdozenbagels){}",
+                }
+            },
+            hpfx_bepis_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Bepis{} {C:inactive,s:0.9}(bepisfever){}",
+                }
+            },
+            hpfx_brother_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}My Brother{}",
+                }
+            },
+            hpfx_carrot_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Carrot{} {C:inactive,s:0.9}(carrotd1scord){}",
+                }
+            },
+            hpfx_carrymehome_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}carrymehome{}",
+                }
+            },
+            hpfx_cheekyrotter_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}cheekyrotter{}",
+                }
+            },
+            hpfx_corobo_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Corobo{} {C:inactive,s:0.9}(thecorobocorner){}",
+                }
+            },
+            hpfx_delirium_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Delirium{} {C:inactive,s:0.9}(deliriumiscool){}",
+                }
+            },
+            hpfx_dex_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}DEX{} {C:inactive,s:0.9}(dexterity0){}",
+                }
+            },
+            hpfx_dillku_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Dillku{}",
+                }
+            },
+            hpfx_dilly_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Dilly{} {C:inactive,s:0.9}(dilly_the_dillster){}",
+                }
+            },
+            hpfx_dunk_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Dunk{} {C:inactive,s:0.9}(dunkaccina){}",
+                }
+            },
+            hpfx_ejwu_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}ejwu{} {C:inactive,s:0.9}(ejwu2_98708){}",
+                }
+            },
+            hpfx_eremel_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Eremel{} {C:inactive,s:0.9}(Eremel_){}",
+                }
+            },
+            hpfx_eris_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Eris{} {C:inactive,s:0.9}(borb43){}",
+                }
+            },
+            hpfx_fencer_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Fencer{} {C:inactive,s:0.9}(ccfencer){}",
+                }
+            },
+            hpfx_fey_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Fey{} {C:inactive,s:0.9}(feyyy115){}",
+                }
+            },
+            hpfx_finity_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Finity{}",
+                }
+            },
+            hpfx_foxdeploy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}FoxDeploy{} {C:inactive,s:0.9}(foxdeploy){}",
+                }
+            },
+            hpfx_ggezsped_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}ggezsped{}",
+                }
+            },
+            hpfx_hamester_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Hamester{} {C:inactive,s:0.9}(hamester){}",
+                }
+            },
+            hpfx_huey_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Huey{} {C:inactive,s:0.9}(theambushingbush){}",
+                }
+            },
+            hpfx_infinityplus05_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}infinityplus05{}",
+                }
+            },
+            hpfx_johndebugplus_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}John DebugPlus{} {C:inactive,s:0.9}(wilsonthewolf){}",
+                }
+            },
+            hpfx_johnlovelyjresq_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}John Lovely Jr Esq.{} {C:inactive,s:0.9}(lovelyparty){}",
+                }
+            },
+            hpfx_lars_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Lars{} {C:inactive,s:0.9}(larswijn){}",
+                }
+            },
+            hpfx_localthunk_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}LocalThunk{}",
+                }
+            },
+            hpfx_misen_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Misen{} {C:inactive,s:0.9}(misenrol){}",
+                }
+            },
+            hpfx_morefluff_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}MoreFluff{}",
+                }
+            },
+            hpfx_n_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}N'{} {C:inactive,s:0.9}(nh6574){}",
+                }
+            },
+            hpfx_nxkoo_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Nxkoo{} {C:inactive,s:0.9}(nxkoo_){}",
+                }
+            },
+            hpfx_ortalab_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Ortalab{}",
+                }
+            },
+            hpfx_revo_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Revo{} {C:inactive,s:0.9}(revoo_.){}",
+                }
+            },
+            hpfx_ruby_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Ruby{} {C:inactive,s:0.9}(lord.ruby){}",
+                }
+            },
+            hpfx_sleepy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Sleepy{} {C:inactive,s:0.9}(sleepy.g11){}",
+                }
+            },
+            hpfx_snakegirl_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Snakegirl{} {C:inactive,s:0.9}(cookiecreator){}",
+                }
+            },
+            hpfx_somecom_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Somecom{} {C:inactive,s:0.9}(somethingcom515){}",
+                }
+            },
+            hpfx_someone_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Someone{} {C:inactive,s:0.9}(someone23832){}",
+                }
+            },
+            hpfx_squidguset_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}squidquset{}",
+                }
+            },
+            hpfx_srock_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}srock{} {C:inactive,s:0.9}(srockw){}",
+                }
+            },
+            hpfx_steamodded_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Steamodded{}",
+                }
+            },
+            hpfx_sweetiebabyhoneygravy_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default,button:incog}Incognito{} {C:inactive,s:0.9}(incogniton71){}",
+                }
+            },
+            hpfx_thedge_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Thedge{} {C:inactive,s:0.9}(thunderedge){}",
+                }
+            },
+            hpfx_trif_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}trif{} {C:inactive,s:0.9}(trif.net){}",
+                }
+            },
+            hpfx_vanillaremade_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}VanillaRemade{}",
+                }
+            },
+            hpfx_victin_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Victin{} {C:inactive,s:0.9}(victin42){}",
+                }
+            },
+            hpfx_violet_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Violet{} {C:inactive,s:0.9}(violet0727270){}",
+                }
+            },
+            hpfx_winter_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Winter{} {C:inactive,s:0.9}(thewintercomet){}",
+                }
+            },
+            hpfx_yahimod_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Yahimod{}",
+                }
+            },
+            hpfx_youh_credits = {
+                name = " ",
+                text = {
+                    "{C:default,u:default}Youh{} {C:inactive,s:0.9}(smolfella37){}",
+                }
+            },
+
+            -- Isaac Description
+
+            hpfx_astra_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped fix Mary's unlock condition patch",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_bagersdozenbagels_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Creator of Cyanosis' mult-decrease",
+                    "{C:white}scoring context",
+                }
+            },
+            hpfx_delirium_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                }
+            },
+            hpfx_ejwu_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped fix Cyanosis for newer better-calc",
+                    "{C:white}> Helped with Cyanosis' unlock condition",
+                }
+            },
+            hpfx_eremel_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Major Isaac-centric help",
+                }
+            },
+            hpfx_foxdeploy_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                }
+            },
+            hpfx_lars_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> The reason Farmer works",
+                }
+            },
+            hpfx_n_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Fixed Mary's unlock condition patch",
+                    "{C:white}> Helped with both Cyanosis' and Iscariot's",
+                    "{C:white}> Unlocked conditions",
+                    "{C:white}> Helped with hints",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_somecom_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                    "{C:white}> Helped with hints",
+                }
+            },
+            hpfx_srock_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_winter_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with unlock conditions",
+                    "{C:white}> Helped fix Mary",
+                }
+            },
+            hpfx_youh_credits_isaac_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with hints",
+                }
+            },
+
+            -- Inscryption Description
+
+            hpfx_carrot_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> A good chunk of the OG Costume sprites",
+                }
+            },
+            hpfx_carrymehome_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Perkeo?'s toggle",
+                }
+            },
+            hpfx_cheekyrotter_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> I forgot to return a function",
+                }
+            },
+            hpfx_corobo_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped a teeny bit with The Shedding",
+                }
+            },
+            hpfx_delirium_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Actually did the reformatting",
+                    "{C:white}of and fixing Ijiraq's code",
+                    "{C:white}> Helped with other Ijiraq issues",
+                    "{C:white}> Fixed the EnJine's effect crash!",
+                    "{C:white}> Fixed the EnJine’s trigger bug!",
+                }
+            },
+            hpfx_dex_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Fixed the transformation animation",
+                }
+            },
+            hpfx_dilly_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped me understand UI",
+                    "{C:white}> Fixed the Dusk? duplication effect",
+                    "{C:white}> Fixed Shoot The Moon?",
+                    "{C:white}> Gave Gros Michel? dynamic probability",
+                    "{C:default,s:1}ok no nvm he fixed the entire joker pop off ig",
+                    "{C:default,s:1}this also applies to La Legión",
+                    "{C:white}> Fixed Ijiraq not being able to mimic Splash",
+                }
+            },
+            hpfx_eremel_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with getting Ijiraq's effect working",
+                    "{C:white}> Random tag generation code",
+                    "{C:white}> Helped fix Ijiraq's info_queue",
+                }
+            },
+            hpfx_eris_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Hanging Chad?'s repetitions",
+                }
+            },
+            hpfx_fey_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Flag variable",
+                }
+            },
+            hpfx_finity_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Pareidolia? boss effect",
+                }
+            },
+            hpfx_hamester_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Sticker help",
+                }
+            },
+            hpfx_huey_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Seeing Double?'s effect",
+                }
+            },
+            hpfx_johndebugplus_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped fix Ijiraq's info_queue",
+                }
+            },
+            hpfx_misen_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Greedy Joker? tweaks done",
+                    "{C:white}in the notes app at 3AM",
+                }
+            },
+            hpfx_n_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white,s:1}> Ijiraq transformation",
+                    "{C:white,s:1}> Initial Ijiraq dynamic description code",
+                    "{C:white,s:1}> Fixed Golden Joker?",
+                    "{C:white,s:1}> Helped with getting Ijiraq's effect working",
+                    "{C:white,s:1}> Fixed my booster ownerships (i later just patched)",
+                    "{C:white,s:1}> Fixed Ijiraq's info_queue",
+                    "{C:white,s:1}> The reason Yorick? works",
+                    "{C:white,s:1}> Helped with Perkeo's toggle",
+                    "{C:white,s:1}> Helped with Perkeo's toggle's visual cues",
+                    "{C:white,s:1}> Hovered card check help (no console)",
+                    "{C:white,s:1}> Helped fix space needle's unlock condition",
+                }
+            },
+            hpfx_nxkoo_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Perkeo?'s toggle's visual cues",
+                }
+            },
+            hpfx_ruby_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Fixed Space Joker?'s leveling logic",
+                }
+            },
+            hpfx_somecom_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white,s:1.7}> Helped with Bluebell's transformation context",
+                    "{C:white,s:1.7}> Helped get Ijiraq's effect working once",
+                    "{C:white,s:1.7}> Helped get Ijiraq's effect working twice",
+                    "{C:white,s:1.7}> Helped get Ijiraq's effect working thrice",
+                    "{C:white,s:1.7}> Helped(???) with The Shedding",
+                    "{C:white,s:1.7}> Post-discard custom context",
+                    "{C:white,s:1.7}> Helped fix Ijiraq's info_queue",
+                }
+            },
+            hpfx_srock_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped somecom's patch to get Ijiraq",
+                    "{C:white}working",
+                    "{C:white}> There's a fucking SMODS function for",
+                    "{C:white}four fingers",
+                    "{C:white}> Fixed Gros Michel?'s dynamic probability",
+                    "{C:white}> Fixed Hack?'s message display",
+                }
+            },
+            hpfx_sleepy_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with saving Ijiraq's effects",
+                    "{C:white}> Helped with Ijiraq's info_queue",
+                }
+            },
+            hpfx_thedge_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+
+                    "{C:white}> Helped with saving Ijiraq's effects",
+                    "{C:white}> Helped with Ijiraq's info_queue",
+                }
+            },
+            hpfx_victin_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Helped with Perkeo?'s toggle's visual cues",
+                }
+            },
+            hpfx_winter_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white,s:1.7}> Fixed Blue's transformation context",
+                    "{C:white,s:1.7}> Created joker position update tracker",
+                    "{C:white,s:1.7}> Ante, money, hand and discard change contexts",
+                    "{C:white,s:1.7}> Majorly helped with The Shedding",
+                    "{C:white,s:1.7}> Fixed my button UI",
+                    "{C:white,s:1.7}> Helped fix Ijiraq's info_queue",
+                    "{C:white,s:1.7}> Card order change context",
+                }
+            },
+            -- Mod
+            hpfx_morefluff_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Card creation key-ban code",
+                }
+            },
+            hpfx_ortalab_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Suit change tracker/detection",
+                }
+            },
+            hpfx_squidguset_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> EnJine sprite fix (2nd ver)",
+                }
+            },
+            hpfx_steamodded_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> releasing a fuckign probability context???",
+                    "{C:white}holy shit???",
+                    "{C:default,s:1}...after i already made my own",
+                }
+            },
+            hpfx_vanillaremade_credits_inscryption_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Basegame Jokers modernified",
+                }
+            },
+
+            -- 4Fun
+
+            hpfx_fourfun_credits = {
+                name = " ",
+                text = {
+                    "4Fun",
+                }
+            },
+            hpfx_thedge_credits_other_help_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> UI Guide",
+                    "{C:white}> The reason these credits can exist",
+                }
+            },
+            hpfx_sweetiebabyhoneygravy_credits_other_help_descriptions = {
+                name = " ",
+                text = {
+                    "{C:white}> Co-Developer",
+                    "{C:white}> The reason these credits can exist",
+                }
+            },
+            hpfx_bwuh_credits = {
+                name = " ",
+                text = {
+                    "bwuh",
+                }
+            },
         },
         hpfx_inscr_act1_items = {
             c_hpfx_act1_boulderbottle = {

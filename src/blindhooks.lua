@@ -88,38 +88,3 @@ function ease_background_colour_blind(state, blind_override)
     end
     return orig_ease(state, blind_override)
 end
-
-local extrachips = Blind.draw
-function Blind:draw()
-    if not self.states.visible then return end
-    if self.key == "bl_hpfx_double_trouble" and self.config.blind.positions[2] then
-        -- Draw first icon
-        self.children.animatedSprite:set_sprite_pos(self.config.blind.positions[1] or self.config.blind.pos or
-            { x = 0, y = 0 })
-        self.children.animatedSprite:draw_shader('dissolve', 0.1)
-        self.children.animatedSprite:draw_shader('dissolve')
-        -- Draw second icon
-        if not self.children.animatedSprite2 then
-            self.children.animatedSprite2 = AnimatedSprite(
-                self.T.x, self.T.y, self.T.w, self.T.h,
-                G.ANIMATION_ATLAS['blind_chips'], self.config.blind.positions[2]
-            )
-            self.children.animatedSprite2.states = self.states
-        end
-        self.children.animatedSprite2:set_sprite_pos(self.config.blind.positions[2])
-        self.children.animatedSprite2.VT.x = self.children.animatedSprite.VT.x + 0.5
-        self.children.animatedSprite2.VT.y = self.children.animatedSprite.VT.y
-        self.children.animatedSprite2:draw_shader('dissolve', 0.1)
-        self.children.animatedSprite2:draw_shader('dissolve')
-        -- Draw everything else
-        for k, v in pairs(self.children) do
-            if k ~= 'animatedSprite' and k ~= 'animatedSprite2' then
-                v.VT.scale = self.VT.scale
-                v:draw()
-            end
-        end
-        add_to_drawhash(self)
-        return
-    end
-    return extrachips(self)
-end

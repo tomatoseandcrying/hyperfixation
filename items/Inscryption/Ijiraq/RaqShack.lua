@@ -13,8 +13,9 @@ function hpfx_Transform(card, context)
                         key = k
                     end
                 end
-                table.insert(Hyperfixation.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
+            -- do i put it here? also i dont know if it's SMODS.save_run orrrrrr
             return true
         end,
     }))
@@ -69,7 +70,7 @@ function Card:Transfodd(context)
                         key = k
                     end
                 end
-                table.insert(Hyperfixation.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             return true
         end,
@@ -129,7 +130,7 @@ function G.FUNCS.hpfx_Transbutt(e)
                         key = k
                     end
                 end
-                table.insert(Hyperfixation.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
+                table.insert(G.GAME.raqeffects, key or G.GAME.current_round.fodder_card.jkey)
             end
             G.jokers:unhighlight_all()
             return true
